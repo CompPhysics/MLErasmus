@@ -1,37 +1,63 @@
-## Welcome to GitHub Pages
+## The course has two central parts
 
-You can use the [editor on GitHub](https://github.com/CompPhysics/MLErasmus/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+1. Statistical analysis and optimization of data
+2. Machine learning
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### Statistical analysis and optimization of data
 
-### Markdown
+The following topics will be covered
+- Basic concepts, expectation values, variance, covariance, correlation functions and errors;
+- Simpler models, binomial distribution, the Poisson distribution, simple and multivariate normal distributions;
+- Central elements of Bayesian statistics and modeling;
+- Central elements from linear algebra
+- Cubic splines and gradient methods for data optimization
+- Monte Carlo methods, Markov chains, Metropolis-Hastings algorithm, ergodicity;
+- Linear methods for regression and classification;
+- Estimation of errors using blocking, bootstrapping and jackknife methods;
+- Practical optimization using Singular-value decomposition and least squares for parameterizing data.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
 
-```markdown
-Syntax highlighted code block
+### Machine learning
 
-# Header 1
-## Header 2
-### Header 3
+The following topics will be covered
+- Gaussian and Dirichlet processes;
+- Boltzmann machines;
+- Neural networks;
+- Decisions trees and nearest neighbor algorithms
+- Support vector machines
+- Genetic algorithms.
 
-- Bulleted
-- List
+All the above topics will be supported by examples, hands-on exercises and project work.
 
-1. Numbered
-2. List
+Computational aspects play a central role and the students are
+expected to work on numerical examples and projects which illustrate
+the theory and methods. Some of the projects can be coordinated with the high-performance programming course (course code to be added). 
 
-**Bold** and _Italic_ and `Code` text
 
-[Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+## Practicalities
 
-### Jekyll Themes
+1. Lectures are in the morning, from 9am-12pm.
+2. Three hours of laboratory sessions for work on computational projects, from 2pm to 5pm;
+3. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail;
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/CompPhysics/MLErasmus/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
 
-### Support or Contact
+## Possible textbooks
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+_Recommended textbooks_:
+- Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer
+- Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly
+
+_General learning book on statistical analysis_:
+- Christian Robert and George Casella, Monte Carlo Statistical Methods, Springer
+- Peter Hoff, A first course in Bayesian statistical models, Springer
+
+_General Machine Learning Books_:
+- Kevin Murphy, Machine Learning: A Probabilistic Perspective, MIT Press
+- Christopher M. Bishop, Pattern Recognition and Machine Learning, Springer
+- David J.C. MacKay, Information Theory, Inference, and Learning Algorithms, Cambridge University Press
+- David Barber, Bayesian Reasoning and Machine Learning, Cambridge University Press 
+
+
+
+
