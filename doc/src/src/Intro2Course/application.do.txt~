@@ -1,0 +1,60 @@
+TITLE: Turbulence and Machine Learning
+AUTHOR: Morten Hjorth-Jensen  
+DATE: today
+
+
+
+===== Introduction =====
+
+Turbulence plays a central role in weather forecasting.
+
+The central equations reflect momentum balance and are given by the solution of the two coupled partial differential equations, the Navier-Stokes equation and the heat equation, which we here special to the $x$-direction only,
+
+!bt
+\[
+\frac{\partial u}{\partial t}+ u\frac{\partial u}{\partial x}+v\frac{\partial u}{\partial y}+w\frac{\partial u}{\partial z}= -\frac{1}{\rho}\frac{\partial p}{\partial x}+fv +\nu \frac{\partial^2 u}{\partial x^2}+\nu \frac{\partial^2 u}{\partial y^2}+\nu \frac{\partial^2 u}{\partial z^2},
+\]
+!et
+with the constraint
+!bt
+\[
+\frac{\partial u}{\partial x}+\frac{\partial u}{\partial y}+\frac{\partial u}{\partial z}=0.
+\]
+!et
+The heat equation reads
+!bt
+\[
+\frac{\partial \theta}{\partial t}+u\frac{\partial \theta}{\partial x}+v\frac{\partial \theta}{\partial y}+w\frac{\partial \theta}{\partial z}= \nu_T\frac{\partial \theta^2}{\partial x^2}+\nu_T\frac{\partial \theta^2}{\partial y^2}\nu_T\frac{\partial \theta^2}{\partial z^2}+S.
+\]
+!et
+
+Splitting into turbulent and mean motion results in
+!bt
+\[
+u = U+u',
+\]
+!et
+!bt
+\[
+P = P+p',
+\]
+!et
+and 
+!bt
+\[
+\theta = T+\theta',
+\]
+!et
+which leads to the Rayleigh equation for turbulent fluctuations
+!bt
+\[
+\frac{\partial U}{\partial t}+ U\frac{\partial U}{\partial x}+V\frac{\partial U}{\partial y}+W\frac{\partial U}{\partial z}= -\frac{1}{\rho}\frac{\partial P}{\partial x}+fV +\frac{\partial -u'u'}{\partial x}+\frac{\partial -u'v'}{\partial y}+\frac{\partial -u'w'}{\partial z}.
+\]
+!et
+
+The corresponding heat equation becomes
+!bt
+\[
+\frac{\partial T}{\partial t}+U\frac{\partial T}{\partial x}+V\frac{\partial T}{\partial y}+W\frac{\partial \theta}{\partial z}=\frac{\partial -u'\theta}{\partial x}+\frac{\partial -v'\theta}{\partial y}+\frac{\partial -w'\theta}{\partial z}+S.
+\]
+!et
