@@ -1,0 +1,570 @@
+\
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Applied Data Analysis and Machine Learning: Introduction to the course">
+
+<title>Applied Data Analysis and Machine Learning: Introduction to the course</title>
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/white.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/league.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- Printing and PDF exports -->
+<script>
+var link = document.createElement( 'link' );
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+document.getElementsByTagName( 'head' )[0].appendChild( link );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px;
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1 style="text-align: center;">Applied Data Analysis and Machine Learning: Introduction to the course</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Morten Hjorth-Jensen -->
+
+<center>
+<b>Morten Hjorth-Jensen</b> [1, 2]
+</center>
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Department of Physics, University of Oslo</b></center>
+<center>[2] <b>Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University</b></center>
+<br>
+<p>&nbsp;<br>
+<center><h4>Dec 5, 2018</h4></center> <!-- date -->
+<br>
+<p>
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 1999-2018, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
+</center>
+</section>
+
+
+<section>
+<h2 id="___sec0">Suggested Literature </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Possible textbooks
+
+<ul>
+<p><li> HTF: <a href="https://www.springer.com/gp/book/9780387848570" target="_blank">Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer</a></li>
+<p><li> AG: <a href="http://shop.oreilly.com/product/0636920052289.do" target="_blank">Aurelien Geron, Hands&#8209;On Machine Learning with Scikit&#8209;Learn and TensorFlow, O'Reilly</a></li>
+</ul>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec1">Teachers  </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<b>Teachers :</b>
+
+<ol>
+<p><li> <a href="https://www.mn.uio.no/ifi/english/?vrtx=person-view&uid=krisbhei" target="_blank">Kristine B. Heine</a></li>
+<p><li> <a href="http://mhjgit.github.io/info/doc/web/" target="_blank">Morten Hjorth-Jensen</a></li>
+<p><li> <a href="https://www.mn.uio.no/fysikk/english/?vrtx=person-view&uid=bendiksa" target="_blank">Bendik Samseth</a></li>
+</ol>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec2">Lectures and ComputerLab </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<ul>
+<p><li> Time: January 21 to February 1, 2019.</li> 
+<p><li> Place: GANIL, Caen</li>
+</ul>
+</div>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Organization of the day.</b>
+<ol>
+<p><li> Lectures 9am-12pm</li> 
+<p><li> Lunch 12pm-2pm</li>
+<p><li> Computerlab 2pm-6pm</li>
+</ol>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec3">Learning outcomes </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The course introduces a variety of central algorithms and methods essential for studies of data analysis and machine learning. The course is project based and through the various projects, normally three, you will be exposed to fundamental research problems in these fields, with the aim to reproduce state of the art scientific results. You will learn to develop and structure large codes for studying these systems, get acquainted with computing facilities and learn to handle large scientific projects. A good scientific and ethical conduct is emphasized throughout the course. More specifically, after this course you will
+
+<ul>
+<p><li> Learn about basic data analysis, Bayesian statistics, Monte Carlo methods, data optimization and machine learning;</li>
+<p><li> Be capable of extending the acquired knowledge to other systems and cases;</li>
+<p><li> Have an understanding of central algorithms used in data analysis and machine learning;</li>
+<p><li> Gain knowledge of central aspects of Monte Carlo methods, Markov chains, Gibbs samplers and their possible applications;</li>
+<p><li> Understand linear methods for regression and classification;</li>
+<p><li> Learn about neural network, genetic algorithms and Boltzmann machines;</li>
+<p><li> Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++.</li>
+</ul>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec4">Topics covered in this course: Statistical analysis and optimization of data </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The following topics will be covered
+
+<ul>
+<p><li> Basic concepts, expectation values, variance, covariance, correlation functions and errors;</li>
+<p><li> Simpler models, binomial distribution, the Poisson distribution, simple and multivariate normal distributions;</li>
+<p><li> Central elements of Bayesian statistics and modeling;</li>
+<p><li> Central elements from linear algebra</li>
+<p><li> Cubic splines and gradient methods for data optimization</li>
+<p><li> Monte Carlo methods, Markov chains, Metropolis-Hastings algorithm, ergodicity;</li>
+<p><li> Linear methods for regression and classification;</li>
+<p><li> Estimation of errors using cross-validation, blocking, bootstrapping and jackknife methods;</li>
+<p><li> Principal Component Analysis and Clustering algorithms;</li>
+</ul>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec5">Topics covered in this course: Machine Learning </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<ul>
+<p><li> Linear and non-linear regression</li> 
+<p><li> Boltzmann machines;</li>
+<p><li> Neural networks;</li>
+<p><li> Decisions trees and random forests</li>
+<p><li> Support vector machines</li>
+</ul>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec6">Extremely useful tools, strongly recommended </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Discussed at the lab sessions.</b>
+<ul>
+
+<p><li> GIT for version control</li>
+
+<p><li> ipython/jupyter notebook</li>
+
+<p><li> Anaconda and other Python environments</li>
+</ul>
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec7">Course Content and detailed plan  </h2>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Lectures are approximately 45 min each with a small break between each lecture. There is also a coffee break of 30 min in the morning sessions. It will most likely be scheduled around 1045am and is not marked in the program below. Lunch is from 12pm to 2pm. The lab sessions start at 2pm and end at 6pm.
+The acronyms are 
+
+<ul>
+<p><li> BS: Bendik Samseth</li>
+<p><li> KBH: Kristine B. Hein</li>
+<p><li> MHJ: Morten Hjorth-Jensen</li>
+</ul>
+</div>
+
+<h3 id="___sec8">Week 1, January 21-26 </h3>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">    Day     </th> <th align="center">             </th> <th align="center">                Lecture Topics and lecturer                </th> <th align="center">   Projects and exercises   </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   Monday 21       </td> <td align="center">   9am-945am        </td> <td align="center">   Introduction and welcome (MHJ)                                 </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   Review of Python and Linear Algebra (MHJ)                      </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   Getting started with Linear Regression (MHJ)                   </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">   Python installations and setups, anaconda and more             </td> <td align="center">   Exercise set 1 (BS,KBH, MHJ)    </td> </tr>
+<tr><td align="center">   Tuesday 22      </td> <td align="center">   9am-945am        </td> <td align="center">   Linear Regression  (MHJ)                                       </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   Linear Regression, Lasso and Ridge (MHJ)                       </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   Linear Regression, Lasso and Ridge (MHJ)                       </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">   Brief intro to <b>scikit-learn</b>                             </td> <td align="center">   Exercise set 2 (BS,KBH, MHJ)    </td> </tr>
+<tr><td align="center">   Wednesday 23    </td> <td align="center">   9am-945am        </td> <td align="center">   Summary of linear regression (MHJ)                             </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   Statistical analysis of data, bias and variance(MHJ)           </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   Statistical analysis of data, bias and variance (MHJ)          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">                                                                  </td> <td align="center">   (BS,KBH, MHJ)                   </td> </tr>
+<tr><td align="center">   Thursday 24     </td> <td align="center">   9am-945am        </td> <td align="center">   Statistical analysis, cross-validation and Bootstrap (MHJ)     </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   Statistical analysis, crosss-validation and Bootstrap (MHJ)    </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   Optimization and gradient descent (MHJ)                        </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">                                                                  </td> <td align="center">   (BS,KBH, MHJ)                   </td> </tr>
+<tr><td align="center">   Friday 25       </td> <td align="center">   9am-945am        </td> <td align="center">   Optimization and Gradient descent (MHJ)                        </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   Optimization and gradient descent(MHJ)                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   Logistic regression and classification (MHJ)                   </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">                                                                  </td> <td align="center">   (BS,KBH, MHJ)                   </td> </tr>
+<tr><td align="center">   Saturday 26     </td> <td align="center">   9am-945am        </td> <td align="center">   Logistic regression and classification (MHJ)                   </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   Logistic Regression and classification (MHJ)                   </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   Start with Neural networks (MHJ)                               </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">                                                                  </td> <td align="center">   (BS,KBH, MHJ)                   </td> </tr>
+</tbody>
+</table>
+
+</div>
+
+<h3 id="___sec9">Week 2, January 28-31 </h3>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">    Day     </th> <th align="center">             </th> <th align="center">                       Lecture Topics and lecturer                        </th> <th align="center">   Projects and exercises   </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   Monday 28       </td> <td align="center">   9am-945am        </td> <td align="center">   Neural networks (MHJ)                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   Neural networks and back propagation algorithm (MHJ)                          </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   Neural networks and back propagation algorithm, setting up your code (MHJ)    </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">   Python installations and setups                                               </td> <td align="center">   Exercise set 1 (BS,KBH, MHJ)    </td> </tr>
+<tr><td align="center">   Tuesday 29      </td> <td align="center">   9am-945am        </td> <td align="center">   Developing a neural network code (MHJ)                                        </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   (MHJ)                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   (MHJ)                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">                                                                                 </td> <td align="center">   (BS,KBH, MHJ)                   </td> </tr>
+<tr><td align="center">   Wednesday 30    </td> <td align="center">   9am-945am        </td> <td align="center">   (MHJ)                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   (MHJ)                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   (MHJ)                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">                                                                                 </td> <td align="center">   (BS,KBH, MHJ)                   </td> </tr>
+<tr><td align="center">   Thursday 31     </td> <td align="center">   9am-945am        </td> <td align="center">   (MHJ)                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   10am-1045am      </td> <td align="center">   (MHJ)                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1045am-1115am    </td> <td align="center">   Break                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   1115am-12pm      </td> <td align="center">   (MHJ)                                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   12pm-2pm         </td> <td align="center">   Lunch +own activities                                                         </td> <td align="center">                                   </td> </tr>
+<tr><td align="center">                   </td> <td align="center">   2pm-6pm          </td> <td align="center">                                                                                 </td> <td align="center">   (BS,KBH, MHJ)                   </td> </tr>
+</tbody>
+</table>
+
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec10">Teaching and projects </h2>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The course will be taught as an intensive  course of duration of two weeks, with a
+total time of 30 h of lectures, 40 h of exercises and  a final assignment of 2 weeks of work.
+
+<p>
+The final assignment will be graded
+with marks A, B, C, D, E and failed.
+</div>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>The organization of a typical course day is as follows:</b>
+<p>
+<table border="1">
+<thead>
+<tr><th align="center">  Time  </th> <th align="center">                                    Activity                                    </th> </tr>
+</thead>
+<tbody>
+<tr><td align="center">   9am12pm     </td> <td align="center">   Lectures, project relevant information and directed exercises                       </td> </tr>
+<tr><td align="center">   12pm-2pm    </td> <td align="center">   Lunch and own activities                                                            </td> </tr>
+<tr><td align="center">   2pm-6pm     </td> <td align="center">   Computational projects, exercises  and hands-on sessions                            </td> </tr>
+<tr><td align="center">   6pm-7pm     </td> <td align="center">   Wrap-up of the day and eventual student presentations and/or further discussions    </td> </tr>
+</tbody>
+</table>
+
+</div>
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width: 1170,  // original: 960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>

@@ -91,7 +91,7 @@ The following topics will be covered
 !split
 ===== Extremely useful tools, strongly recommended =====
 
-!bblock and discussed at the lab sessions
+!bblock Discussed at the lab sessions
   * GIT for version control
   * ipython/jupyter notebook
   * Anaconda and other Python environments
@@ -110,8 +110,11 @@ The acronyms are
 * KBH: Kristine B. Hein
 * MHJ: Morten Hjorth-Jensen
 
+!eblock
 
 === Week 1, January 21-26 ===
+
+!bblock
 
 |--------------------------------------------------------------------------|
 | Day   |  | Lecture Topics and lecturer |   Projects and exercises        |
@@ -121,59 +124,61 @@ The acronyms are
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| Getting started with Linear Regression (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Python installations and setups | Exercise set 1 (BS,KBH, MHJ)|
+|        | 2pm-6pm   | Python installations and setups, anaconda and more | Exercise set 1 (BS,KBH, MHJ)|
 |--------------------------------------------------------------------------|
-| Tuesday 22 | 9am-945am |  (MHJ) |                 |
-|        | 10am-1045am| (MHJ) |         |
+| Tuesday 22 | 9am-945am | Linear Regression  (MHJ) |                 |
+|        | 10am-1045am| Linear Regression, Lasso and Ridge (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  (MHJ) |  |
+|        |  1115am-12pm| Linear Regression, Lasso and Ridge (MHJ) |  |
+|        | 12pm-2pm  | Lunch +own activities |                             |
+|        | 2pm-6pm   | Brief intro to _scikit-learn_ | Exercise set 2 (BS,KBH, MHJ) |
+|--------------------------------------------------------------------------|
+| Wednesday 23 | 9am-945am | Summary of linear regression (MHJ) |                 |
+|        | 10am-1045am| Statistical analysis of data, bias and variance(MHJ) |         |
+|        |  1045am-1115am | Break |   |
+|        |  1115am-12pm| Statistical analysis of data, bias and variance (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   |  | (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Wednesday 23 | 9am-945am |  (MHJ) |                 |
-|        | 10am-1045am| (MHJ) |         |
+| Thursday 24 | 9am-945am | Statistical analysis, cross-validation and Bootstrap (MHJ) |                 |
+|        | 10am-1045am| Statistical analysis, crosss-validation and Bootstrap (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  (MHJ) |  |
+|        |  1115am-12pm| Optimization and gradient descent (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   |  | (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Thursday 24 | 9am-945am |  (MHJ) |                 |
-|        | 10am-1045am| (MHJ) |         |
+| Friday 25 | 9am-945am | Optimization and Gradient descent (MHJ) |                 |
+|        | 10am-1045am| Optimization and gradient descent(MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  (MHJ) |  |
+|        |  1115am-12pm| Logistic regression and classification (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   |  | (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Friday 25 | 9am-945am |  (MHJ) |                 |
-|        | 10am-1045am| (MHJ) |         |
+| Saturday 26 | 9am-945am | Logistic regression and classification (MHJ) |                 |
+|        | 10am-1045am| Logistic Regression and classification (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   |  | (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-| Saturday 26 | 9am-945am |  (MHJ) |                 |
-|        | 10am-1045am| (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  (MHJ) |  |
+|        |  1115am-12pm| Start with Neural networks (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   |  | (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 
-
+!eblock
 
 === Week 2, January 28-31 ===
+
+!bblock 
 
 |--------------------------------------------------------------------------|
 | Day   |  | Lecture Topics and lecturer |   Projects and exercises        |
 |--------------------------------------------------------------------------|
-| Monday 28 | 9am-945am | Introduction and welcome (MHJ) |                 |
-|        | 10am-1045am| Review of Python and Linear Algebra (MHJ) |         |
+| Monday 28 | 9am-945am | Neural networks (MHJ) |                 |
+|        | 10am-1045am| Neural networks and back propagation algorithm (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| Getting started with Linear Regression (MHJ) |  |
+|        |  1115am-12pm| Neural networks and back propagation algorithm, setting up your code (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   | Python installations and setups | Exercise set 1 (BS,KBH, MHJ)|
 |--------------------------------------------------------------------------|
-| Tuesday 29 | 9am-945am |  (MHJ) |                 |
+| Tuesday 29 | 9am-945am | Developing a neural network code (MHJ) |                 |
 |        | 10am-1045am| (MHJ) |         |
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm|  (MHJ) |  |
@@ -195,6 +200,7 @@ The acronyms are
 |        | 2pm-6pm   |  | (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 
+!eblock
 
 !split
 ===== Teaching and projects =====
@@ -205,10 +211,10 @@ total time of 30 h of lectures, 40 h of exercises and  a final assignment of 2 w
 
 The final assignment will be graded
 with marks A, B, C, D, E and failed.
+!eblock
 
 
-
-The organization of a typical course day is as follows:
+!bblock The organization of a typical course day is as follows:
 
 |------------------------------------------------------------------------|
 |  Time  |  Activity                                                     |
