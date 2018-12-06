@@ -138,28 +138,28 @@ The acronyms are
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| Statistical analysis of data, bias and variance (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   |  | (BS,KBH, MHJ) |
+|        | 2pm-6pm   | More _scikit-learn_ functionality  | Exercise set 3 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 | Thursday 24 | 9am-945am | Statistical analysis, cross-validation and Bootstrap (MHJ) |                 |
-|        | 10am-1045am| Statistical analysis, crosss-validation and Bootstrap (MHJ) |         |
+|        | 10am-1045am| Statistical analysis, cross-validation and Bootstrap (MHJ) |         |
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| Optimization and gradient descent (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   |  | (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Statistics tools | Exercise set 4 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 | Friday 25 | 9am-945am | Optimization and Gradient descent (MHJ) |                 |
 |        | 10am-1045am| Optimization and gradient descent(MHJ) |         |
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| Logistic regression and classification (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   |  | (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Gradient descent coding | Project 1 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 | Saturday 26 | 9am-945am | Logistic regression and classification (MHJ) |                 |
 |        | 10am-1045am| Logistic Regression and classification (MHJ) |         |
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| Start with Neural networks (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   |  | (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Getting familiar with Tensorflow and Keras | Project 1 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 
 !eblock
@@ -176,28 +176,28 @@ The acronyms are
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| Neural networks and back propagation algorithm, setting up your code (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Python installations and setups | Exercise set 1 (BS,KBH, MHJ)|
+|        | 2pm-6pm   | Tensorflow and Keras examples  | Project 1 (BS,KBH, MHJ)|
 |--------------------------------------------------------------------------|
 | Tuesday 29 | 9am-945am | Developing a neural network code (MHJ) |                 |
-|        | 10am-1045am| (MHJ) |         |
+|        | 10am-1045am| Convolutional Neural Network and Nuclear Physics experiment(MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  (MHJ) |  |
+|        |  1115am-12pm| Convolutional Neural Networks (CNN) and NP experiments (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   |  | (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Tensorflow/Keras and CNNs  | Project 2 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Wednesday 30 | 9am-945am |  (MHJ) |                 |
-|        | 10am-1045am| (MHJ) |         |
+| Wednesday 30 | 9am-945am | Support Vector Machines (MHJ) |                 |
+|        | 10am-1045am| Support Vector Machines(MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  (MHJ) |  |
+|        |  1115am-12pm| Support Vectort Machines and Decision trees (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   |  | (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Hints for project 2  | Project 2 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Thursday 31 | 9am-945am |  (MHJ) |                 |
-|        | 10am-1045am| (MHJ) |         |
+| Thursday 31 | 9am-945am | Decision Trees and Bagging (MHJ) |                 |
+|        | 10am-1045am| Bagging, Ensembles  and Random Forests (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  (MHJ) |  |
+|        |  1115am-12pm| Summary of course and perspectives (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   |  | (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Finalize project 2 | Project 2 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 
 !eblock
@@ -207,7 +207,7 @@ The acronyms are
 !bblock
 
 The course will be taught as an intensive  course of duration of two weeks, with a
-total time of 30 h of lectures, 40 h of exercises and  a final assignment of 2 weeks of work.
+total time of 30 h of lectures, 40 h of exercises and  2 projects that will be graded and form the final assessment. Each project counts 50% of the final grade. They have to be finalized three weeks after the course ended. 
 
 The final assignment will be graded
 with marks A, B, C, D, E and failed.
