@@ -30,7 +30,7 @@ o "Bendik Samseth":"https://www.mn.uio.no/fysikk/english/?vrtx=person-view&uid=b
 ===== Lectures and ComputerLab =====
 
 !bblock
-* Time: January 21 to February 1, 2019. 
+* Time: January 21-31, 2019. 
 * Place: GANIL, Caen
 !eblock
 
@@ -119,10 +119,10 @@ The acronyms are
 |--------------------------------------------------------------------------|
 | Day   |  | Lecture Topics and lecturer |   Projects and exercises        |
 |--------------------------------------------------------------------------|
-| Monday 21 | 9am-945am | Introduction and welcome (MHJ) |                 |
-|        | 10am-1045am| Review of Python and Linear Algebra (MHJ) |         |
+| Monday 21 | 9am-945am | "Introduction and welcome":" " (MHJ) |                 |
+|        | 10am-1045am| "Review of Python and Linear Algebra":" " (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| Getting started with Linear Regression (MHJ) |  |
+|        |  1115am-12pm| "Getting started with Linear Regression":" " (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   | Python installations and setups, anaconda and more | Exercise set 1 (BS,KBH, MHJ)|
 |--------------------------------------------------------------------------|
