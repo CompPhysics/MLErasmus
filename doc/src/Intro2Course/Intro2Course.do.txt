@@ -4,14 +4,6 @@ DATE: today
 
 
 
-!split
-===== Suggested Literature =====
-
-!bblock
-Possible textbooks
-* HTF: "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570"
-* AG: "Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly":"http://shop.oreilly.com/product/0636920052289.do"
-!eblock
 
 !split
 ===== Teachers  =====
@@ -228,6 +220,14 @@ with marks A, B, C, D, E and failed. The grades will be available not later than
 !eblock
 
 
+!split
+===== Suggested Literature =====
+
+!bblock
+Possible textbooks
+* HTF: "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570"
+* AG: "Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly":"http://shop.oreilly.com/product/0636920052289.do"
+!eblock
 
 
 

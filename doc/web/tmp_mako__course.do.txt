@@ -40,6 +40,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Intro2Course/pdf/Intro2Course-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Intro2Course/html/Intro2Course.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Intro2Course/html/Intro2Course-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Intro2Course/html/Intro2Course-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Intro2Course/ipynb/Intro2Course.ipynb"
@@ -54,6 +55,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/pdf/Introduction-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/ipynb/Introduction.ipynb"
@@ -68,6 +70,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/pdf/How2ReadData-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/ipynb/How2ReadData.ipynb"
@@ -82,6 +85,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/pdf/Linalg-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/html/Linalg.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/html/Linalg-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/html/Linalg-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/ipynb/Linalg.ipynb"
@@ -96,6 +100,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/pdf/Statistics-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/ipynb/Statistics.ipynb"
@@ -110,6 +115,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/pdf/Regression-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/ipynb/Regression.ipynb"
@@ -124,6 +130,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/pdf/Splines-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/ipynb/Splines.ipynb"
@@ -138,6 +145,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/pdf/LogReg-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/ipynb/LogReg.ipynb"
@@ -152,6 +160,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/pdf/NeuralNet-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/ipynb/NeuralNet.ipynb"
@@ -166,6 +175,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/pdf/DimRed-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/html/DimRed.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/html/DimRed-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/html/DimRed-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/ipynb/DimRed.ipynb"
@@ -180,6 +190,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/pdf/DecisionTrees-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/ipynb/DecisionTrees.ipynb"
@@ -194,6 +205,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/svm/pdf/svm-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/svm/ipynb/svm.ipynb"
@@ -208,6 +220,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/pdf/odenn-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/ipynb/odenn.ipynb"
@@ -222,6 +235,7 @@ formulas in HTML or ipython notebook files.
      * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/pdf/Bayesian-minted.pdf"
  * HTML:
    * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/html/Bayesian.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/html/Bayesian-reveal.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/html/Bayesian-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/ipynb/Bayesian.ipynb"
