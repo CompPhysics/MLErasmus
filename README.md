@@ -8,9 +8,8 @@
 The following topics will be covered
 - Basic concepts, expectation values, variance, covariance, correlation functions and errors;
 - Simpler models, binomial distribution, the Poisson distribution, simple and multivariate normal distributions;
-- Central elements of Bayesian statistics and modeling;
 - Central elements from linear algebra
-- Cubic splines and gradient methods for data optimization
+- Gradient methods for data optimization
 - Monte Carlo methods, Markov chains, Metropolis-Hastings algorithm, ergodicity;
 - Linear methods for regression and classification;
 - Estimation of errors using blocking, bootstrapping and jackknife methods;
@@ -20,12 +19,11 @@ The following topics will be covered
 ### Machine learning
 
 The following topics will be covered
-- Gaussian and Dirichlet processes;
+- Linear regression and logistic regression
 - Boltzmann machines;
 - Neural networks;
-- Decisions trees and nearest neighbor algorithms
+- Decisions trees and random forests
 - Support vector machines
-- Genetic algorithms.
 
 All the above topics will be supported by examples, hands-on exercises and project work.
 
@@ -38,7 +36,7 @@ the theory and methods. Some of the projects can be coordinated with the high-pe
 ## Practicalities
 
 1. Lectures are in the morning, from 9am-12pm.
-2. Three hours of laboratory sessions for work on computational projects, from 2pm to 5pm;
+2. Four hours of laboratory sessions for work on computational projects, from 2pm to 6pm;
 3. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail;
 
 
