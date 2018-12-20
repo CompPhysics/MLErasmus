@@ -29,7 +29,7 @@ All the above topics will be supported by examples, hands-on exercises and proje
 
 Computational aspects play a central role and the students are
 expected to work on numerical examples and projects which illustrate
-the theory and methods. Some of the projects can be coordinated with the high-performance programming course (course code to be added). 
+the theory and methods. 
 
 
 
