@@ -37,7 +37,7 @@ the theory and methods.
 
 1. Lectures are in the morning, from 9am-12pm.
 2. Four hours of laboratory sessions for work on computational projects, from 2pm to 6pm;
-3. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail;
+3. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than March 1, hopefully the grades will be available before that.
 
 
 ## Possible textbooks
