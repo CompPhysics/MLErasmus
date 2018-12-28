@@ -43,8 +43,8 @@ the theory and methods.
 ## Possible textbooks
 
 _Recommended textbooks_:
-- Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer
-- Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly
+- Micheal Nilsen's free textbook on Neural Networks and Deep learning is highly recommended, see http://neuralnetworksanddeeplearning.com/
+- Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly. This is really a hands-on book and gives an excellent overview of many of the most central algorithms and methods. 
 
 _General learning book on statistical analysis_:
 - Christian Robert and George Casella, Monte Carlo Statistical Methods, Springer
