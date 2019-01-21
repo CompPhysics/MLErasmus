@@ -430,7 +430,6 @@ print (error(y))
 !ec
 
 Similarly, using _R_, we can perform similar studies. The following _R_ code illustrates this.
-(more details on _R_ will be inserted later).
 
 ===== Non-Linear Least squares in R  =====
 !bblock
@@ -457,13 +456,11 @@ text(0, 0.5, paste("y =x^ (", power, " +/- ", power.se, ")", sep = ""), pos = 4)
 !ec
 !eblock
 
-In our lectures on regression analysis (and other ones as well), we will discuss in more details various _R_ functionalities. 
 
-
-Another useful Python package is
+Another extremely (highly recommended) useful Python package is
 "pandas":"https://pandas.pydata.org/", which is an open source library
 providing high-performance, easy-to-use data structures and data
-analysis tools for Python. The following simple example shows how we can, in an easy way make tables of our data. Here we define a data set which includes names, city of residence and age, and displays the data in an easy to read way. We will see repeated use of _pandas_, in particular in connection with classification of data. 
+analysis tools for Python. The two essential features are _Series_ and _DataFrame_. The following simple example shows how we can, in an easy way make tables of our data. Here we define a data set which includes names, city of residence and age, and displays the data in an easy to read way. We will see repeated use of _pandas_, in particular in connection with classification of data. 
 
 !bc pycod 
 import pandas as pd

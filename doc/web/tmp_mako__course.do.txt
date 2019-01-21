@@ -254,6 +254,20 @@ formulas in HTML or ipython notebook files.
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/ComputationalPhysics/doc/pub/learningcpp/html/learningcpp-bs.html"
 
 
+!split
+===== Projects and Exercises =====
+
+=== First exercise set ===
+ * LaTeX and PDF:
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/\ 
+hw1/pdf/hw1.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw\ 
+1/pdf/hw1.pdf"
+ * HTML:
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw\ 
+1/html/hw1.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysi\ 
+cs.github.io/MLErasmus/doc/Projects/2019/hw1/html/hw1-bs.html"
 
 
 
@@ -334,7 +348,7 @@ All the above topics will be supported by examples, hands-on exercises and proje
 * "Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly":"http://shop.oreilly.com/product/0636920052289.do"
 
 
-===== "Other textbooks":"https://github.com/CompPhysics/MachineLearning/tree/master/doc/Textbooks" =====
+===== "Other textbooks":"https://github.com/CompPhysics/MLErasmus/tree/master/doc/Textbooks" =====
 
 
 _General learning book on statistical analysis_:

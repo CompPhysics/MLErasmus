@@ -2882,7 +2882,7 @@ flexible statistical methods have higher variance.
 
 
 !split
-===== The one-dimensional Ising model, project 2 =====
+===== The one-dimensional Ising model =====
 
 The one-dimensional Ising model with nearest neighbor interaction, no external field and a constant coupling constant $J$ is given by
 

@@ -89,21 +89,20 @@ computing facilities and learn to handle large scientific projects. A
 good scientific and ethical conduct is emphasized throughout the
 course. More specifically, you will
 
-o learn about basic data analysis, Bayesian statistics, Monte Carlo methods, data optimization and machine learning;
+o learn about basic data analysis, Monte Carlo methods, data optimization and machine learning;
 o be capable of extending the acquired knowledge to other systems and cases;
 o Have an understanding of central algorithms used in data analysis and machine learning;
-o Gain knowledge of central aspects of Monte Carlo methods, Markov chains, Gibbs samplers and their possible applications, from numerical integration to simulation of stock markets;
+o Gain knowledge of central aspects of Monte Carlo methods, Markov chains and their possible applications, from numerical integration to simulation of stock markets;
 o Understand methods for regression and classification;
-o Learn about neural network, genetic algorithms and Boltzmann machines;
+o Learn about neural network and many of their variants;
 o Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++, in addition to a basic knowledge of linear algebra (typically taught during the first one or two years of undergraduate studies).
 
 There are several topics we will cover here, spanning from a
 statistical data analysis and its basic concepts such expectation
-values, variance, covariance, correlation functions and errors, via
-well-known probability distribution functions like uniform
+values, variance, covariance, correlation functions and errors, such as 
+well-known probability distribution functions like the uniform
 distribution, the binomial distribution, the Poisson distribution and
-simple and multivariate normal distributions to central elements of
-Bayesian statistics and modeling. We will also remind the reader about
+simple and multivariate normal distributions. We will also remind the reader about
 central elements from linear algebra and standard methods based on
 linear algebra used to fit functions such Cubic splines and gradient
 methods for data optimization and the Singular-value decomposition and
@@ -164,8 +163,7 @@ machine learning algorithms
 
 o Linear regression and its variants, in essence polynomial regression
 o Decision tree algorithms, from simpler to more complex ones
-o Nearest neighbors models
-o Bayesian statistics and regression
+o Logistic regression
 o Support vector machines and finally various variants of
 o Artifical neural networks and deep learning
 o Networks for unsupervised learning using for example reduced Boltzmann machines.
@@ -201,7 +199,7 @@ Fortran).  Although a project like "Numba":"https://numba.pydata.org/"
 holds great promise for speeding up the unrolling of lengthy loops, C+
 and Fortran are presently still the performance winners. Numba gives
 you potentially the power to speed up your applications with high
-performance functions written directly in Python. In particular,
+performance functions written directly in Python as also Numpy gives you the possibility to link C/C++ or Fortran code with Python. In particular,
 array-oriented and math-heavy Python code can achieve similar
 performance to C, C++ and Fortran. However, even with these speed-ups,
 for codes involving heavy Markov Chain Monte Carlo analyses and
