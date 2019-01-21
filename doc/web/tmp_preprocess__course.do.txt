@@ -86,20 +86,16 @@ ${text_types(ch)}
 
 === First exercise set ===
  * LaTeX and PDF:
-     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/\
-hw1/pdf/hw1.tex"
-     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw\
-1/pdf/hw1.pdf"
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw1/pdf/hw1.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw1/pdf/hw1.pdf"
  * HTML:
-   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw\
-1/html/hw1.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysi\
-cs.github.io/MLErasmus/doc/Projects/2019/hw1/html/hw1-bs.html"
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw1/html/hw1.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw1/html/hw1-bs.html"
 
 
 
-
-=== Course content ===
+!split
+===== Course content =====
 
 Probability theory and statistical methods play a central role in science. Nowadays we are
 surrounded by huge amounts of data. For example, there are about one trillion web pages; more than one
