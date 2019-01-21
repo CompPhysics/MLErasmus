@@ -194,6 +194,7 @@ Make then a simple program which simulates a random walk and then plots the firs
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 position <span style="color: #666666">=</span> <span style="color: #666666">0</span>  
 steps <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+walk <span style="color: #666666">=</span> []
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(steps):     
     step <span style="color: #666666">=</span> <span style="color: #666666">1</span> <span style="color: #008000; font-weight: bold">if</span> random<span style="color: #666666">.</span>randint(<span style="color: #666666">0</span>,<span style="color: #666666">1</span>) <span style="color: #008000; font-weight: bold">else</span> <span style="color: #666666">-1</span>
     position<span style="color: #666666">+=</span> step
