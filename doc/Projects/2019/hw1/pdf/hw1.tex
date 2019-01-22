@@ -21,6 +21,7 @@ final,                   % draft: marks overfull hboxes, figures with paths
 \usepackage[pdftex]{graphicx}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
+\usepackage{fancyvrb}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -47,29 +48,6 @@ final,                   % draft: marks overfull hboxes, figures with paths
 %\hyperbaseurl{}   % hyperlinks are relative to this root
 
 \setcounter{tocdepth}{2}  % levels in table of contents
-
-% --- fancyhdr package for fancy headers ---
-\usepackage{fancyhdr}
-\fancyhf{} % sets both header and footer to nothing
-\renewcommand{\headrulewidth}{0pt}
-\fancyfoot[LE,RO]{\thepage}
-% Ensure copyright on titlepage (article style) and chapter pages (book style)
-\fancypagestyle{plain}{
-  \fancyhf{}
-  \fancyfoot[C]{{\footnotesize \copyright\ 1999-2019, "Data Analysis and Machine Learning FYS-STK3155/FYS4155":"http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html". Released under CC Attribution-NonCommercial 4.0 license}}
-%  \renewcommand{\footrulewidth}{0mm}
-  \renewcommand{\headrulewidth}{0mm}
-}
-% Ensure copyright on titlepages with \thispagestyle{empty}
-\fancypagestyle{empty}{
-  \fancyhf{}
-  \fancyfoot[C]{{\footnotesize \copyright\ 1999-2019, "Data Analysis and Machine Learning FYS-STK3155/FYS4155":"http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html". Released under CC Attribution-NonCommercial 4.0 license}}
-  \renewcommand{\footrulewidth}{0mm}
-  \renewcommand{\headrulewidth}{0mm}
-}
-
-\pagestyle{fancy}
-
 
 % prevent orhpans and widows
 \clubpenalty = 10000
@@ -113,19 +91,18 @@ Homework 1
 % ----------------- author(s) -------------------------
 
 \begin{center}
-{\bf \href{{http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html}}{Data Analysis and Machine Learning FYS-STK3155/FYS4155}}
+{\bf Data Analysis and Machine Learning${}^{}$} \\ [0mm]
 \end{center}
 
-    \begin{center}
+\begin{center}
 % List of all institutions:
-\centerline{{\small Department of Physics, University of Oslo, Norway}}
 \end{center}
     
 % ----------------- end author(s) -------------------------
 
 % --- begin date ---
 \begin{center}
-Jan 21, 2019
+Jan 22, 2019
 \end{center}
 % --- end date ---
 
@@ -314,6 +291,202 @@ with
 \sigma^2 = \frac{1}{N-p-1}\sum_{i=1}^{N} (y_i-\tilde{y}_i)^2,
 \]
 where we have assumed that we fit a function of degree $p-1$ (for example a polynomial in $x$). 
+
+\subsection*{Solution to exercise 3}
+
+
+\begin{print}
+import numpy as np
+import matplotlib.pyplot as plt
+
+n = 100 # data points
+xmax = 1
+error = 0.1
+
+# The following simple Python instructions define our x and y values (with 100 data points)
+x = np.random.rand(n,xmax)
+y = 5*x*x+error*np.random.randn(n,xmax) # y = 5x^2 + noise
+
+#for xi, yi in zip(x, y):
+#    print(xi, yi)
+\end{print}
+
+The above defines a set of equations
+
+$\hat{y} = \hat{X}\hat{\beta} + \hat{\epsilon}$
+
+where the elements of $\hat{y}$ are given by $y_i = 5x_i + \epsilon_i$. Afterwards, $\hat{y}$ is turned into a $100\times1$ matrix so that \texttt{np.linalg} can accept it as input.
+
+We define the matrix 
+\hat{X}=\begin{bmatrix} 
+1 & x_0 & x_0^2 \\
+1 & x_1 & x_1^2 \\
+\vdots & \vdots & \vdots \\
+1 & x_{99} & x_{99}^2
+\end{bmatrix}
+with $x_0$, $x_1$, $\dots x_{99}$ given by \texttt{x = np.random.rand(100,1)}. $\hat{X}$ is then given by:
+
+
+\begin{print}
+X = np.c_[np.ones((n,1)), x, x*x] # column wise array concatenation
+print(X)
+\end{print}
+
+For an explanation of \Verb!np.c_! see \href{{https://stackoverflow.com/questions/39136730/confused-about-numpy-c-document-and-sample-code}}{\nolinkurl{https://stackoverflow.com/questions/39136730/confused-about-numpy-c-document-and-sample-code}}.
+
+The solution for the parameters $\hat{\beta}$ is given by
+
+$\hat{\beta} = \left(\hat{X}^T\hat{X}\right)^{-1}\hat{X}^T\hat{y}$
+
+or
+
+
+\begin{print}
+beta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
+print("y = " + str(beta[2,0]) + "*x^2 + " + str(beta[1,0]) + "*x + " + str(beta[0,0]))
+\end{print}
+
+Now we plot the resulting function over the data points to visualise how good the fit looks (two points would be enough for a line, but it won't cut it for a quadratic fit):
+
+
+\begin{print}
+nfit = 100
+xplot = np.arange(nfit)*xmax / (nfit - 1) # nfit points, evenly distributed
+#print(xplot)
+#print(xplot**2)
+\end{print}
+
+Then define a new matrix $\hat{X}_{\mathrm{plot}}$ for the evenly distributed values we want to use for plotting:
+
+
+\begin{print}
+Xplot = np.c_[np.ones((nfit,1)), xplot, xplot**2] # concatenate columns (as above)
+\end{print}
+
+Finally, calculate the fitted values $\hat{y}_{\mathrm{predict}}$ using that matrix and the fitted parameters $\hat{\beta}$:
+
+
+\begin{print}
+ypredict = Xplot.dot(beta)
+\end{print}
+
+We can plot and compare with the true quadratic function $y_{\mathrm{true}} = 5x^2$:
+
+
+\begin{print}
+ytrue = 5*xplot*xplot
+
+plt.plot(x, y ,'ro')
+plt.plot(xplot, ytrue, label="$y_{\mathrm{true}}$")
+plt.plot(xplot, ypredict, label="$y_{\mathrm{predict}}$")
+plt.xlabel(r'$x$')
+plt.ylabel(r'$y$')
+plt.title(r'Quadratic Regression')
+plt.legend()
+plt.show()
+\end{print}
+
+We see that this produces a decent enough fit.
+
+We use thereafter \textbf{scikit-learn}.
+
+
+\begin{print}
+from sklearn.linear_model import LinearRegression
+
+clf2 = LinearRegression()
+clf2.fit(X, y)
+ysklearn = clf2.predict(Xplot)
+
+print("ypredict = " + str(clf2.coef_[0, 2]) + "*x^2 + " + str(clf2.coef_[0, 1]) + "*x + " + str(clf2.coef_[0, 0]))
+print("ysklearn = " + str(beta[2,0]) + "*x^2 + " + str(beta[1,0]) + "*x + " + str(beta[0,0]))
+# note that the indices are reversed in the scikit-learn approach compared to what we did before:
+# the shape is (1, n) instead of (n, 1)
+
+plt.plot(x, y ,'ro')
+plt.plot(xplot, ytrue, label="$y_{\mathrm{true}}$")
+plt.plot(xplot, ypredict, label="$y_{\mathrm{predict}}$")
+plt.plot(xplot, ysklearn, label="$y_{\mathrm{sklearn}}$")
+plt.xlabel(r'$x$')
+plt.ylabel(r'$y$')
+plt.title(r'Quadratic Regression')
+plt.legend()
+plt.show()
+\end{print}
+
+Plotting the absolute relative error for the two predictions:
+
+
+\begin{print}
+err_predict = abs(ypredict[:, 0] - ytrue)/abs(ytrue) # the predicted y's have shape (n, 1)
+err_sklearn = abs(ysklearn[:, 0] - ytrue)/abs(ytrue)
+
+plt.plot(xplot, err_predict, label="$\epsilon_{\mathrm{predict}}$")
+plt.plot(xplot, err_sklearn, label="$\epsilon_{\mathrm{sklearn}}$")
+plt.xlabel(r'$x$')
+plt.ylabel(r'$\epsilon_{\mathrm{rel}}$')
+plt.axis([0, xmax, 0, 2])
+plt.title(r'Absolute relative error')
+plt.legend()
+plt.show()
+\end{print}
+
+It is indeed hard to see any difference between the two approaches:
+
+
+\begin{print}
+plt.plot(xplot, abs(err_predict), label="$\epsilon_{\mathrm{predict}}$")
+plt.plot(xplot, abs(err_sklearn), label="$\epsilon_{\mathrm{sklearn}}$")
+plt.xlabel(r'$x$')
+plt.ylabel(r'$\epsilon_{\mathrm{rel}}$')
+plt.axis([0, xmax, 0, 0.02])
+plt.title(r'Absolute relative error')
+plt.legend()
+plt.show()
+\end{print}
+
+The mean squared error is the expected value of the quadratic error:
+
+$MSE\left(\hat{y}, \hat{\bar{y}}\right) = \frac{1}{n}\sum\limits_{i=1}^{n-1}\left(y_i - \bar{y}_i\right)^2$
+
+
+\begin{print}
+from sklearn.metrics import mean_squared_error
+
+# Note that the y values are not sorted, but ypredict and ysklearn are
+# (we used Xplot to find these, not X)
+# Thus, done with plotting, let us instead make new predictions based on X
+
+ypredict2 = X.dot(beta)
+ysklearn2 = clf2.predict(X)
+
+# Then we find the MSE:
+
+print("Mean squared error (ypredict):", mean_squared_error(y, ypredict2))
+print("Mean squared error (ysklearn):", mean_squared_error(y, ysklearn2))
+\end{print}
+
+The $R^2$ score function is defined as
+
+$R^2\left(\hat{y}, \hat{\bar{y}}\right) = 1 - \frac{\sum\limits_{i=0}^{n-1}\left(y_i - \bar{y}_i\right)}{\sum\limits_{i=0}^{n-1}\left(y_i - \bar{y}\right)}$
+
+where 
+
+\begin{itemize}
+\item $\bar{y}$ is the mean value of $\hat{y}$
+
+\item $\bar{y}_i$ is the $i$th predicted value, and
+
+\item $y_i$ is the corresponding true value
+\end{itemize}
+
+\noindent
+\begin{print}
+from sklearn.metrics import r2_score
+
+print("R^2 score (ypredict):", r2_score(y, ypredict2))
+print("R^2 score (ysklearn):", r2_score(y, ysklearn2))
+\end{print}
 
 
 % ------------------- end of main content ---------------

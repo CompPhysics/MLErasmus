@@ -49,7 +49,8 @@ div { text-align: justify; text-justify: inter-word; }
                'regression',
                2,
                None,
-               '___sec5')]}
+               '___sec5'),
+              ('Solution to exercise 3', 2, None, '___sec6')]}
 end of tocinfo -->
 
 <body>
@@ -78,19 +79,18 @@ MathJax.Hub.Config({
 <center><h1>Homework 1</h1></center>  <!-- document title -->
 
 <p>
-<!-- author(s): <a href="http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html" target="_blank">Data Analysis and Machine Learning FYS-STK3155/FYS4155</a> -->
+<!-- author(s): Data Analysis and Machine Learning -->
 
 <center>
-<b><a href="http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html" target="_blank">Data Analysis and Machine Learning FYS-STK3155/FYS4155</a></b> 
+<b>Data Analysis and Machine Learning</b> 
 </center>
 
 <p>
-<!-- institution -->
+<!-- institution(s) -->
 
-<center><b>Department of Physics, University of Oslo, Norway</b></center>
 <br>
 <p>
-<center><h4>Jan 21, 2019</h4></center> <!-- date -->
+<center><h4>Jan 22, 2019</h4></center> <!-- date -->
 <br>
 
 <h2 id="___sec0">Exercise 1  </h2>
@@ -280,14 +280,229 @@ $$
 \sigma^2 = \frac{1}{N-p-1}\sum_{i=1}^{N} (y_i-\tilde{y}_i)^2,
 $$
 
-where we have assumed that we fit a function of degree \( p-1 \) (for example a polynomial in \( x \)). 
+where we have assumed that we fit a function of degree \( p-1 \) (for example a polynomial in \( x \)).
+
+<h2 id="___sec6">Solution to exercise 3 </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+
+n <span style="color: #666666">=</span> <span style="color: #666666">100</span> <span style="color: #408080; font-style: italic"># data points</span>
+xmax <span style="color: #666666">=</span> <span style="color: #666666">1</span>
+error <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+
+<span style="color: #408080; font-style: italic"># The following simple Python instructions define our x and y values (with 100 data points)</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n,xmax)
+y <span style="color: #666666">=</span> <span style="color: #666666">5*</span>x<span style="color: #666666">*</span>x<span style="color: #666666">+</span>error<span style="color: #666666">*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(n,xmax) <span style="color: #408080; font-style: italic"># y = 5x^2 + noise</span>
+
+<span style="color: #408080; font-style: italic">#for xi, yi in zip(x, y):</span>
+<span style="color: #408080; font-style: italic">#    print(xi, yi)</span>
+</pre></div>
+<p>
+The above defines a set of equations
+
+<p>
+\( \hat{y} = \hat{X}\hat{\beta} + \hat{\epsilon} \)
+
+<p>
+where the elements of \( \hat{y} \) are given by \( y_i = 5x_i + \epsilon_i \). Afterwards, \( \hat{y} \) is turned into a \( 100\times1 \) matrix so that <code>np.linalg</code> can accept it as input.
+
+<p>
+We define the matrix 
+$$
+\hat{X}=\begin{bmatrix} 
+1 & x_0 & x_0^2 \\
+1 & x_1 & x_1^2 \\
+\vdots & \vdots & \vdots \\
+1 & x_{99} & x_{99}^2
+\end{bmatrix}
+$$
+
+with \( x_0 \), \( x_1 \), \( \dots x_{99} \) given by <code>x = np.random.rand(100,1)</code>. \( \hat{X} \) is then given by:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((n,<span style="color: #666666">1</span>)), x, x<span style="color: #666666">*</span>x] <span style="color: #408080; font-style: italic"># column wise array concatenation</span>
+<span style="color: #008000; font-weight: bold">print</span>(X)
+</pre></div>
+<p>
+For an explanation of <code>np.c_</code> see <a href="https://stackoverflow.com/questions/39136730/confused-about-numpy-c-document-and-sample-code" target="_blank"><tt>https://stackoverflow.com/questions/39136730/confused-about-numpy-c-document-and-sample-code</tt></a>.
+
+<p>
+The solution for the parameters \( \hat{\beta} \) is given by
+
+<p>
+\( \hat{\beta} = \left(\hat{X}^T\hat{X}\right)^{-1}\hat{X}^T\hat{y} \)
+
+<p>
+or
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>beta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>inv(X<span style="color: #666666">.</span>T<span style="color: #666666">.</span>dot(X))<span style="color: #666666">.</span>dot(X<span style="color: #666666">.</span>T)<span style="color: #666666">.</span>dot(y)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;y = &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(beta[<span style="color: #666666">2</span>,<span style="color: #666666">0</span>]) <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;*x^2 + &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(beta[<span style="color: #666666">1</span>,<span style="color: #666666">0</span>]) <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;*x + &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(beta[<span style="color: #666666">0</span>,<span style="color: #666666">0</span>]))
+</pre></div>
+<p>
+Now we plot the resulting function over the data points to visualise how good the fit looks (two points would be enough for a line, but it won't cut it for a quadratic fit):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>nfit <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+xplot <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(nfit)<span style="color: #666666">*</span>xmax <span style="color: #666666">/</span> (nfit <span style="color: #666666">-</span> <span style="color: #666666">1</span>) <span style="color: #408080; font-style: italic"># nfit points, evenly distributed</span>
+<span style="color: #408080; font-style: italic">#print(xplot)</span>
+<span style="color: #408080; font-style: italic">#print(xplot**2)</span>
+</pre></div>
+<p>
+Then define a new matrix \( \hat{X}_{\mathrm{plot}} \) for the evenly distributed values we want to use for plotting:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Xplot <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((nfit,<span style="color: #666666">1</span>)), xplot, xplot<span style="color: #666666">**2</span>] <span style="color: #408080; font-style: italic"># concatenate columns (as above)</span>
+</pre></div>
+<p>
+Finally, calculate the fitted values \( \hat{y}_{\mathrm{predict}} \) using that matrix and the fitted parameters \( \hat{\beta} \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>ypredict <span style="color: #666666">=</span> Xplot<span style="color: #666666">.</span>dot(beta)
+</pre></div>
+<p>
+We can plot and compare with the true quadratic function \( y_{\mathrm{true}} = 5x^2 \):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>ytrue <span style="color: #666666">=</span> <span style="color: #666666">5*</span>xplot<span style="color: #666666">*</span>xplot
+
+plt<span style="color: #666666">.</span>plot(x, y ,<span style="color: #BA2121">&#39;ro&#39;</span>)
+plt<span style="color: #666666">.</span>plot(xplot, ytrue, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$y_{\mathrm{true}}$&quot;</span>)
+plt<span style="color: #666666">.</span>plot(xplot, ypredict, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$y_{\mathrm{predict}}$&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">r&#39;$x$&#39;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">r&#39;$y$&#39;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">r&#39;Quadratic Regression&#39;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+We see that this produces a decent enough fit.
+
+<p>
+We use thereafter <b>scikit-learn</b>.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LinearRegression
+
+clf2 <span style="color: #666666">=</span> LinearRegression()
+clf2<span style="color: #666666">.</span>fit(X, y)
+ysklearn <span style="color: #666666">=</span> clf2<span style="color: #666666">.</span>predict(Xplot)
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;ypredict = &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(clf2<span style="color: #666666">.</span>coef_[<span style="color: #666666">0</span>, <span style="color: #666666">2</span>]) <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;*x^2 + &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(clf2<span style="color: #666666">.</span>coef_[<span style="color: #666666">0</span>, <span style="color: #666666">1</span>]) <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;*x + &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(clf2<span style="color: #666666">.</span>coef_[<span style="color: #666666">0</span>, <span style="color: #666666">0</span>]))
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;ysklearn = &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(beta[<span style="color: #666666">2</span>,<span style="color: #666666">0</span>]) <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;*x^2 + &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(beta[<span style="color: #666666">1</span>,<span style="color: #666666">0</span>]) <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;*x + &quot;</span> <span style="color: #666666">+</span> <span style="color: #008000">str</span>(beta[<span style="color: #666666">0</span>,<span style="color: #666666">0</span>]))
+<span style="color: #408080; font-style: italic"># note that the indices are reversed in the scikit-learn approach compared to what we did before:</span>
+<span style="color: #408080; font-style: italic"># the shape is (1, n) instead of (n, 1)</span>
+
+plt<span style="color: #666666">.</span>plot(x, y ,<span style="color: #BA2121">&#39;ro&#39;</span>)
+plt<span style="color: #666666">.</span>plot(xplot, ytrue, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$y_{\mathrm{true}}$&quot;</span>)
+plt<span style="color: #666666">.</span>plot(xplot, ypredict, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$y_{\mathrm{predict}}$&quot;</span>)
+plt<span style="color: #666666">.</span>plot(xplot, ysklearn, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$y_{\mathrm{sklearn}}$&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">r&#39;$x$&#39;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">r&#39;$y$&#39;</span>)
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">r&#39;Quadratic Regression&#39;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+Plotting the absolute relative error for the two predictions:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>err_predict <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(ypredict[:, <span style="color: #666666">0</span>] <span style="color: #666666">-</span> ytrue)<span style="color: #666666">/</span><span style="color: #008000">abs</span>(ytrue) <span style="color: #408080; font-style: italic"># the predicted y&#39;s have shape (n, 1)</span>
+err_sklearn <span style="color: #666666">=</span> <span style="color: #008000">abs</span>(ysklearn[:, <span style="color: #666666">0</span>] <span style="color: #666666">-</span> ytrue)<span style="color: #666666">/</span><span style="color: #008000">abs</span>(ytrue)
+
+plt<span style="color: #666666">.</span>plot(xplot, err_predict, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$\epsilon_{\mathrm{predict}}$&quot;</span>)
+plt<span style="color: #666666">.</span>plot(xplot, err_sklearn, label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$\epsilon_{\mathrm{sklearn}}$&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">r&#39;$x$&#39;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">r&#39;$\epsilon_{\mathrm{rel}}$&#39;</span>)
+plt<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>, xmax, <span style="color: #666666">0</span>, <span style="color: #666666">2</span>])
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">r&#39;Absolute relative error&#39;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+It is indeed hard to see any difference between the two approaches:
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>plt<span style="color: #666666">.</span>plot(xplot, <span style="color: #008000">abs</span>(err_predict), label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$\epsilon_{\mathrm{predict}}$&quot;</span>)
+plt<span style="color: #666666">.</span>plot(xplot, <span style="color: #008000">abs</span>(err_sklearn), label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;$\epsilon_{\mathrm{sklearn}}$&quot;</span>)
+plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">r&#39;$x$&#39;</span>)
+plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">r&#39;$\epsilon_{\mathrm{rel}}$&#39;</span>)
+plt<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>, xmax, <span style="color: #666666">0</span>, <span style="color: #666666">0.02</span>])
+plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">r&#39;Absolute relative error&#39;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
+<p>
+The mean squared error is the expected value of the quadratic error:
+
+<p>
+\( MSE\left(\hat{y}, \hat{\bar{y}}\right) = \frac{1}{n}\sum\limits_{i=1}^{n-1}\left(y_i - \bar{y}_i\right)^2 \)
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> mean_squared_error
+
+<span style="color: #408080; font-style: italic"># Note that the y values are not sorted, but ypredict and ysklearn are</span>
+<span style="color: #408080; font-style: italic"># (we used Xplot to find these, not X)</span>
+<span style="color: #408080; font-style: italic"># Thus, done with plotting, let us instead make new predictions based on X</span>
+
+ypredict2 <span style="color: #666666">=</span> X<span style="color: #666666">.</span>dot(beta)
+ysklearn2 <span style="color: #666666">=</span> clf2<span style="color: #666666">.</span>predict(X)
+
+<span style="color: #408080; font-style: italic"># Then we find the MSE:</span>
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Mean squared error (ypredict):&quot;</span>, mean_squared_error(y, ypredict2))
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;Mean squared error (ysklearn):&quot;</span>, mean_squared_error(y, ysklearn2))
+</pre></div>
+<p>
+The \( R^2 \) score function is defined as
+
+<p>
+\( R^2\left(\hat{y}, \hat{\bar{y}}\right) = 1 - \frac{\sum\limits_{i=0}^{n-1}\left(y_i - \bar{y}_i\right)}{\sum\limits_{i=0}^{n-1}\left(y_i - \bar{y}\right)} \)
+
+<p>
+where 
+
+<ul>
+<li> \( \bar{y} \) is the mean value of \( \hat{y} \)</li>
+<li> \( \bar{y}_i \) is the $i$th predicted value, and</li>
+<li> \( y_i \) is the corresponding true value</li>
+</ul>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> r2_score
+
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;R^2 score (ypredict):&quot;</span>, r2_score(y, ypredict2))
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&quot;R^2 score (ysklearn):&quot;</span>, r2_score(y, ysklearn2))
+</pre></div>
+<p>
 
 <!-- ------------------- end of main content --------------- -->
-
-
-<center style="font-size:80%">
-<!-- copyright --> &copy; 1999-2019, "Data Analysis and Machine Learning FYS-STK3155/FYS4155":"http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html". Released under CC Attribution-NonCommercial 4.0 license
-</center>
 
 
 </body>
