@@ -300,21 +300,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 n = 100 # data points
-xmax = 1
-error = 0.1
 
 # The following simple Python instructions define our x and y values (with 100 data points)
-x = np.random.rand(n,xmax)
-y = 5*x*x+error*np.random.randn(n,xmax) # y = 5x^2 + noise
+x = np.random.rand(n,1)
+y = 5*x*x+np.random.randn(n,1) # y = 5x^2 + random noise
 
-#for xi, yi in zip(x, y):
-#    print(xi, yi)
 \end{print}
 
 The above defines a set of equations
-
-$\hat{y} = \hat{X}\hat{\beta} + \hat{\epsilon}$
-
+\hat{y} = \hat{X}\hat{\beta} + \hat{\epsilon},
 where the elements of $\hat{y}$ are given by $y_i = 5x_i + \epsilon_i$. Afterwards, $\hat{y}$ is turned into a $100\times1$ matrix so that \texttt{np.linalg} can accept it as input.
 
 We define the matrix 
@@ -323,7 +317,7 @@ We define the matrix
 1 & x_1 & x_1^2 \\
 \vdots & \vdots & \vdots \\
 1 & x_{99} & x_{99}^2
-\end{bmatrix}
+\end{bmatrix},
 with $x_0$, $x_1$, $\dots x_{99}$ given by \texttt{x = np.random.rand(100,1)}. $\hat{X}$ is then given by:
 
 
@@ -335,9 +329,7 @@ print(X)
 For an explanation of \Verb!np.c_! see \href{{https://stackoverflow.com/questions/39136730/confused-about-numpy-c-document-and-sample-code}}{\nolinkurl{https://stackoverflow.com/questions/39136730/confused-about-numpy-c-document-and-sample-code}}.
 
 The solution for the parameters $\hat{\beta}$ is given by
-
-$\hat{\beta} = \left(\hat{X}^T\hat{X}\right)^{-1}\hat{X}^T\hat{y}$
-
+\hat{\beta} = \left(\hat{X}^T\hat{X}\right)^{-1}\hat{X}^T\hat{y},
 or
 
 
@@ -346,38 +338,37 @@ beta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
 print("y = " + str(beta[2,0]) + "*x^2 + " + str(beta[1,0]) + "*x + " + str(beta[0,0]))
 \end{print}
 
-Now we plot the resulting function over the data points to visualise how good the fit looks (two points would be enough for a line, but it won't cut it for a quadratic fit):
-
+Now we plot the resulting function over the data points to visualize
+how good the fit looks. Here we define new points that are evenly space using the numpy function \textbf{linspace}
 
 \begin{print}
 nfit = 100
-xplot = np.arange(nfit)*xmax / (nfit - 1) # nfit points, evenly distributed
-#print(xplot)
-#print(xplot**2)
+xplot = np.linspace(0.0,1.0, num=nfit)
 \end{print}
 
-Then define a new matrix $\hat{X}_{\mathrm{plot}}$ for the evenly distributed values we want to use for plotting:
+Then define a new matrix $\hat{X}_{\mathrm{plot}}$ for the evenly
+distributed values we want to use for plotting:
 
 
 \begin{print}
 Xplot = np.c_[np.ones((nfit,1)), xplot, xplot**2] # concatenate columns (as above)
 \end{print}
 
-Finally, calculate the fitted values $\hat{y}_{\mathrm{predict}}$ using that matrix and the fitted parameters $\hat{\beta}$:
+Finally, calculate the fitted values $\hat{y}_{\mathrm{predict}}$
+using that matrix and the fitted parameters $\hat{\beta}$:
 
 
 \begin{print}
 ypredict = Xplot.dot(beta)
 \end{print}
 
-We can plot and compare with the true quadratic function $y_{\mathrm{true}} = 5x^2$:
-
+We can plot and compare with the quadratic function $y_{\mathrm{true}} = 5x^2$ without noise as
 
 \begin{print}
 ytrue = 5*xplot*xplot
 
 plt.plot(x, y ,'ro')
-plt.plot(xplot, ytrue, label="$y_{\mathrm{true}}$")
+plt.plot(xplot, ytrue, label="$y_{\mathrm{Quadratic}}$")
 plt.plot(xplot, ypredict, label="$y_{\mathrm{predict}}$")
 plt.xlabel(r'$x$')
 plt.ylabel(r'$y$')
@@ -446,16 +437,14 @@ plt.show()
 \end{print}
 
 The mean squared error is the expected value of the quadratic error:
+MSE\left(\hat{y}, \hat{\bar{y}}\right) = \frac{1}{n}\sum\limits_{i=1}^{n-1}\left(y_i - \bar{y}_i\right)^2.
 
-$MSE\left(\hat{y}, \hat{\bar{y}}\right) = \frac{1}{n}\sum\limits_{i=1}^{n-1}\left(y_i - \bar{y}_i\right)^2$
-
-
+We import this as follows
 \begin{print}
 from sklearn.metrics import mean_squared_error
 
 # Note that the y values are not sorted, but ypredict and ysklearn are
 # (we used Xplot to find these, not X)
-# Thus, done with plotting, let us instead make new predictions based on X
 
 ypredict2 = X.dot(beta)
 ysklearn2 = clf2.predict(X)
