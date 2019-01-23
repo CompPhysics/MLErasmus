@@ -226,27 +226,28 @@ Automatically generated HTML file from DocOnce source
               ('Elaborating a little bit more', 2, None, '___sec98'),
               ('The bias', 2, None, '___sec99'),
               ('The variance', 2, None, '___sec100'),
-              ('Summing up', 2, None, '___sec101'),
-              ('The one-dimensional Ising model', 2, None, '___sec102'),
+              ('Example code for Bias-Variance tradeoff', 2, None, '___sec101'),
+              ('Summing up', 2, None, '___sec102'),
+              ('The one-dimensional Ising model', 2, None, '___sec103'),
               ('Reformulating the problem to suit regression',
                2,
                None,
-               '___sec103'),
-              ('Linear regression', 2, None, '___sec104'),
-              ('Ordinary least squares', 2, None, '___sec105'),
-              ('Singular Value decomposition', 2, None, '___sec106'),
-              ('Fitting with scikit-learn', 2, None, '___sec107'),
-              ('Ridge regression', 2, None, '___sec108'),
-              ('LASSO regression', 2, None, '___sec109'),
-              ('Performance of the different models', 2, None, '___sec110'),
+               '___sec104'),
+              ('Linear regression', 2, None, '___sec105'),
+              ('Ordinary least squares', 2, None, '___sec106'),
+              ('Singular Value decomposition', 2, None, '___sec107'),
+              ('Fitting with scikit-learn', 2, None, '___sec108'),
+              ('Ridge regression', 2, None, '___sec109'),
+              ('LASSO regression', 2, None, '___sec110'),
+              ('Performance of the different models', 2, None, '___sec111'),
               ('Performance as  function of the regularization parameter',
                2,
                None,
-               '___sec111'),
+               '___sec112'),
               ('Finding the optimal value of $\\lambda$',
                2,
                None,
-               '___sec112')]}
+               '___sec113')]}
 end of tocinfo -->
 
 <body>
@@ -385,18 +386,19 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._Regression-bs099.html#___sec98" style="font-size: 80%;">Elaborating a little bit more</a></li>
      <!-- navigation toc: --> <li><a href="._Regression-bs100.html#___sec99" style="font-size: 80%;">The bias</a></li>
      <!-- navigation toc: --> <li><a href="._Regression-bs101.html#___sec100" style="font-size: 80%;">The variance</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec101" style="font-size: 80%;">Summing up</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs103.html#___sec102" style="font-size: 80%;">The one-dimensional Ising model</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs104.html#___sec103" style="font-size: 80%;">Reformulating the problem to suit regression</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs105.html#___sec104" style="font-size: 80%;">Linear regression</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs106.html#___sec105" style="font-size: 80%;">Ordinary least squares</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs107.html#___sec106" style="font-size: 80%;">Singular Value decomposition</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs108.html#___sec107" style="font-size: 80%;">Fitting with scikit-learn</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs109.html#___sec108" style="font-size: 80%;">Ridge regression</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs110.html#___sec109" style="font-size: 80%;">LASSO regression</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs111.html#___sec110" style="font-size: 80%;">Performance of the different models</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs112.html#___sec111" style="font-size: 80%;">Performance as  function of the regularization parameter</a></li>
-     <!-- navigation toc: --> <li><a href="._Regression-bs113.html#___sec112" style="font-size: 80%;">Finding the optimal value of \( \lambda \)</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec101" style="font-size: 80%;">Example code for Bias-Variance tradeoff</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs103.html#___sec102" style="font-size: 80%;">Summing up</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs104.html#___sec103" style="font-size: 80%;">The one-dimensional Ising model</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs105.html#___sec104" style="font-size: 80%;">Reformulating the problem to suit regression</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs106.html#___sec105" style="font-size: 80%;">Linear regression</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs107.html#___sec106" style="font-size: 80%;">Ordinary least squares</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs108.html#___sec107" style="font-size: 80%;">Singular Value decomposition</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs109.html#___sec108" style="font-size: 80%;">Fitting with scikit-learn</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs110.html#___sec109" style="font-size: 80%;">Ridge regression</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs111.html#___sec110" style="font-size: 80%;">LASSO regression</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs112.html#___sec111" style="font-size: 80%;">Performance of the different models</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs113.html#___sec112" style="font-size: 80%;">Performance as  function of the regularization parameter</a></li>
+     <!-- navigation toc: --> <li><a href="._Regression-bs114.html#___sec113" style="font-size: 80%;">Finding the optimal value of \( \lambda \)</a></li>
 
         </ul>
       </li>
@@ -410,29 +412,67 @@ MathJax.Hub.Config({
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
 <a name="part0102"></a>
-<!-- !split  -->
+<!-- !split -->
 
-<h2 id="___sec101" class="anchor">Summing up </h2>
-
+<h2 id="___sec101" class="anchor">Example code for Bias-Variance tradeoff </h2>
 <p>
-The above equations tell us that in
-order to minimize the expected test error, we need to select a
-statistical learning method that simultaneously achieves low variance
-and low bias. Note that variance is inherently a nonnegative quantity,
-and squared bias is also nonnegative. Hence, we see that the expected
-test MSE can never lie below \( Var(\epsilon) \), the irreducible error.
 
-<p>
-What do we mean by the variance and bias of a statistical learning
-method? The variance refers to the amount by which our model would change if we
-estimated it using a different training data set. Since the training
-data are used to fit the statistical learning method, different
-training data sets  will result in a different estimate. But ideally the
-estimate for our model should not vary too much between training
-sets. However, if a method has high variance  then small changes in
-the training data can result in large changes in the model. In general, more
-flexible statistical methods have higher variance.
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LinearRegression, Ridge, Lasso
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> PolynomialFeatures
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.pipeline</span> <span style="color: #008000; font-weight: bold">import</span> make_pipeline
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.utils</span> <span style="color: #008000; font-weight: bold">import</span> resample
 
+np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">2018</span>)
+
+n <span style="color: #666666">=</span> <span style="color: #666666">500</span>
+n_boostraps <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+degree <span style="color: #666666">=</span> <span style="color: #666666">18</span>  <span style="color: #408080; font-style: italic"># A quite high value, just to show.</span>
+noise <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+
+<span style="color: #408080; font-style: italic"># Make data set.</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linspace(<span style="color: #666666">-1</span>, <span style="color: #666666">3</span>, n)<span style="color: #666666">.</span>reshape(<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>) <span style="color: #666666">+</span> <span style="color: #666666">1.5</span> <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>(x<span style="color: #666666">-2</span>)<span style="color: #666666">**2</span>) <span style="color: #666666">+</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>normal(<span style="color: #666666">0</span>, <span style="color: #666666">0.1</span>, x<span style="color: #666666">.</span>shape)
+
+<span style="color: #408080; font-style: italic"># Hold out some test data that is never used in training.</span>
+x_train, x_test, y_train, y_test <span style="color: #666666">=</span> train_test_split(x, y, test_size<span style="color: #666666">=0.2</span>)
+
+<span style="color: #408080; font-style: italic"># Combine x transformation and model into one operation.</span>
+<span style="color: #408080; font-style: italic"># Not neccesary, but convenient.</span>
+model <span style="color: #666666">=</span> make_pipeline(PolynomialFeatures(degree<span style="color: #666666">=</span>degree), LinearRegression(fit_intercept<span style="color: #666666">=</span><span style="color: #008000">False</span>))
+
+<span style="color: #408080; font-style: italic"># The following (m x n_bootstraps) matrix holds the column vectors y_pred</span>
+<span style="color: #408080; font-style: italic"># for each bootstrap iteration.</span>
+y_pred <span style="color: #666666">=</span> np<span style="color: #666666">.</span>empty((y_test<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>], n_boostraps))
+<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_boostraps):
+    x_, y_ <span style="color: #666666">=</span> resample(x_train, y_train)
+
+    <span style="color: #408080; font-style: italic"># Evaluate the new model on the same test data each time.</span>
+    y_pred[:, i] <span style="color: #666666">=</span> model<span style="color: #666666">.</span>fit(x_, y_)<span style="color: #666666">.</span>predict(x_test)<span style="color: #666666">.</span>ravel()
+
+<span style="color: #408080; font-style: italic"># Note: Expectations and variances taken w.r.t. different training</span>
+<span style="color: #408080; font-style: italic"># data sets, hence the axis=1. Subsequent means are taken across the test data</span>
+<span style="color: #408080; font-style: italic"># set in order to obtain a total value, but before this we have error/bias/variance</span>
+<span style="color: #408080; font-style: italic"># calculated per data point in the test set.</span>
+<span style="color: #408080; font-style: italic"># Note 2: The use of keepdims=True is important in the calculation of bias as this </span>
+<span style="color: #408080; font-style: italic"># maintains the column vector form. Dropping this yields very unexpected results.</span>
+error <span style="color: #666666">=</span> np<span style="color: #666666">.</span>mean( np<span style="color: #666666">.</span>mean((y_test <span style="color: #666666">-</span> y_pred)<span style="color: #666666">**2</span>, axis<span style="color: #666666">=1</span>, keepdims<span style="color: #666666">=</span><span style="color: #008000">True</span>) )
+bias <span style="color: #666666">=</span> np<span style="color: #666666">.</span>mean( (y_test <span style="color: #666666">-</span> np<span style="color: #666666">.</span>mean(y_pred, axis<span style="color: #666666">=1</span>, keepdims<span style="color: #666666">=</span><span style="color: #008000">True</span>))<span style="color: #666666">**2</span> )
+variance <span style="color: #666666">=</span> np<span style="color: #666666">.</span>mean( np<span style="color: #666666">.</span>var(y_pred, axis<span style="color: #666666">=1</span>, keepdims<span style="color: #666666">=</span><span style="color: #008000">True</span>) )
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Error:&#39;</span>, error)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Bias^2:&#39;</span>, bias)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;Var:&#39;</span>, variance)
+<span style="color: #008000; font-weight: bold">print</span>(<span style="color: #BA2121">&#39;{} &gt;= {} + {} = {}&#39;</span><span style="color: #666666">.</span>format(error, bias, variance, bias<span style="color: #666666">+</span>variance))
+
+plt<span style="color: #666666">.</span>plot(x[::<span style="color: #666666">5</span>, :], y[::<span style="color: #666666">5</span>, :], label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;f(x)&#39;</span>)
+plt<span style="color: #666666">.</span>scatter(x_test, y_test, label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Data points&#39;</span>)
+plt<span style="color: #666666">.</span>scatter(x_test, np<span style="color: #666666">.</span>mean(y_pred, axis<span style="color: #666666">=1</span>), label<span style="color: #666666">=</span><span style="color: #BA2121">&#39;Pred&#39;</span>)
+plt<span style="color: #666666">.</span>legend()
+plt<span style="color: #666666">.</span>show()
+</pre></div>
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
@@ -459,7 +499,7 @@ flexible statistical methods have higher variance.
   <li><a href="._Regression-bs110.html">111</a></li>
   <li><a href="._Regression-bs111.html">112</a></li>
   <li><a href="">...</a></li>
-  <li><a href="._Regression-bs113.html">114</a></li>
+  <li><a href="._Regression-bs114.html">115</a></li>
   <li><a href="._Regression-bs103.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
