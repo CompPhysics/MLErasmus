@@ -100,7 +100,17 @@ ${text_types(ch)}
    * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw2/html/hw2.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2019/hw2/html/hw2-bs.html"
 
-
+=== Project 1  ===
+ * LaTeX and PDF:
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/Project\
+1/pdf/Project1.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/Project1/\
+pdf/Project1.pdf"
+ * HTML:
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2019/Project1/\
+html/Project1.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.gith\
+ub.io/MLErasmus/doc/Projects/2019/Project1/html/Project1-bs.html"
 
 !split
 ===== Course content =====

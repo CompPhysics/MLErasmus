@@ -129,14 +129,14 @@ The acronyms are
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| "Statistical analysis of data, bias and variance":"https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html" (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | More _scikit-learn_ functionality  | Exercise set 3 (BS,KBH, MHJ) |
+|        | 2pm-6pm   | More _scikit-learn_ functionality  | Project 1 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 | Thursday 24 | 9am-945am | "Statistical analysis, cross-validation and Bootstrap":"https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html" (MHJ) |                 |
 |        | 10am-1045am| "Statistical analysis, cross-validation and Bootstrap":"https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| "Optimization and gradient descent":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html" (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Statistics tools | Exercise set 4 (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Statistics tools | Project 1 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 | Friday 25 | 9am-945am | "Optimization and Gradient descent":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html" (MHJ) |                 |
 |        | 10am-1045am| "Optimization and gradient descent":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html" (MHJ) |         |
