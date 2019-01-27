@@ -139,18 +139,18 @@ The acronyms are
 |        | 2pm-6pm   | Statistics tools | Project 1 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 | Friday 25 | 9am-945am | "Optimization and Gradient descent":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html" (MHJ) |                 |
-|        | 10am-1045am| "Optimization and gradient descent":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html" (MHJ) |         |
+|        | 10am-1045am| "Logistic Regression":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/LogReg.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Logistic regression and classification":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html" (MHJ) |  |
+|        |  1115am-12pm| "Logistic regression and classification and start neural networks":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html" (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   | Gradient descent coding | Project 1 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Saturday 26 | 9am-945am | "Logistic regression and classification":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html" (MHJ) |                 |
-|        | 10am-1045am| "Logistic Regression and classification":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html" (MHJ) |         |
+| Saturday 26 | 9am-945am | "Neural Networks":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/NeuralNet.html" (MHJ) |                 |
+|        | 10am-1045am| "Neural Networks and the back propagation algo":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Start with Neural networks":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
+|        |  1115am-12pm| "Neural Networks and the Back propagation algo":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Getting familiar with Tensorflow and Keras | Project 1 (BS,KBH, MHJ) |
+|        | 2pm-3pm   | Only discussion of project 1 | Project 1 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 
 !eblock
@@ -162,33 +162,33 @@ The acronyms are
 |--------------------------------------------------------------------------|
 | Day   |  | Lecture Topics and lecturer |   Projects and exercises        |
 |--------------------------------------------------------------------------|
-| Monday 28 | 9am-945am | "Neural networks":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |                 |
-|        | 10am-1045am| "Neural networks and back propagation algorithm":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |         |
+| Monday 28 | 9am-945am | "Neural networks, setting up code for back propagation":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |                 |
+|        | 10am-1045am| "Neural networks,examples":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Neural networks and back propagation algorithm, setting up your code":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
+|        |  1115am-12pm| "Neural networks, examples, setting up your code":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Tensorflow and Keras examples  | Project 1 (BS,KBH, MHJ)|
+|        | 2pm-6pm   | Introduction to Tensorflow and Keras examples  | Projects 1 and  2 (BS,KBH, MHJ)|
 |--------------------------------------------------------------------------|
-| Tuesday 29 | 9am-945am | "Developing a neural network code":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |                 |
+| Tuesday 29 | 9am-945am | "Convolutional Neural networks":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |                 |
 |        | 10am-1045am| "Convolutional Neural Network and Nuclear Physics experiment":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Convolutional Neural Networks (CNN) and NP experiments":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
+|        |  1115am-12pm| "Boltzmann machines and the the many-body problem":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Tensorflow/Keras and CNNs  | Project 2 (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Tensorflow/Keras and CNNs  | Projects 1 and  2 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Wednesday 30 | 9am-945am | "Support Vector Machines":"https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm.html" (MHJ) |                 |
-|        | 10am-1045am| "Support Vector Machines":"https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Support Vectort Machines and Decision trees":"https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Hints for project 2  | Project 2 (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-| Thursday 31 | 9am-945am | "Decision Trees and Bagging":"https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees.html" (MHJ) |                 |
+| Wednesday 30 | 9am-945am | "Decision Trees and Bagging":"https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees.html" (MHJ) |                 |
 |        | 10am-1045am| "Bagging, Ensembles  and Random Forests":"https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| Summary of course and perspectives (MHJ) |  |
+|        |  1115am-12pm|  | "Support Vector Machines":"https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm.html" (MHJ)  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Finalize project 2 | Project 2 (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Work on projects | Projects 1 and  2 (BS,KBH, MHJ) |
+|--------------------------------------------------------------------------|
+| Thursday 31 | 9am-945am | Solving differential equations with Neural Networks (KBH) |                 |
+|        | 10am-1045am| Work on Projects 1 and 2 |         |
+|        |  1045am-1115am | Break |   |
+|        |  1115am-12pm| Work on projects 1 and 2 |  |
+|        | 12pm-2pm  | Lunch +own activities |                             |
+|        | 2pm-6pm   | Work on projects | Projects 1 and  2 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
 
 !eblock
