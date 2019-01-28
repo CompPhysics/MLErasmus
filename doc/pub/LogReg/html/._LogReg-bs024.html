@@ -1,0 +1,457 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Data Analysis and Machine Learning: Logistic Regression">
+
+<title>Data Analysis and Machine Learning: Logistic Regression</title>
+
+<!-- Bootstrap style: bootstrap -->
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- not necessary
+<link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+-->
+
+<style type="text/css">
+
+/* Add scrollbar to dropdown menus in bootstrap navigation bar */
+.dropdown-menu {
+   height: auto;
+   max-height: 400px;
+   overflow-x: hidden;
+}
+
+/* Adds an invisible element before each target to offset for the navigation
+   bar */
+.anchor::before {
+  content:"";
+  display:block;
+  height:50px;      /* fixed header height for style bootstrap */
+  margin:-50px 0 0; /* negative fixed header height */
+}
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('Logistic Regression', 2, None, '___sec0'),
+              ('Optimization and Deep learning', 2, None, '___sec1'),
+              ('Basics', 2, None, '___sec2'),
+              ('Linear classifier', 2, None, '___sec3'),
+              ('Some selected properties', 2, None, '___sec4'),
+              ('The logistic function', 2, None, '___sec5'),
+              ('Two parameters', 2, None, '___sec6'),
+              ('Maximum likelihood', 2, None, '___sec7'),
+              ('The cost function rewritten', 2, None, '___sec8'),
+              ('Minimizing the cross entropy', 2, None, '___sec9'),
+              ('A more compact expression', 2, None, '___sec10'),
+              ('Extending to more predictors', 2, None, '___sec11'),
+              ('Including more classes', 2, None, '___sec12'),
+              ('The Softmax function', 2, None, '___sec13'),
+              ('A _scikit-learn_ example', 2, None, '___sec14'),
+              ('A simple classification problem', 2, None, '___sec15'),
+              ('The two-dimensional Ising model, Predicting phase transition '
+               'of the two-dimensional Ising model',
+               2,
+               None,
+               '___sec16'),
+              ('Reading in the data', 2, None, '___sec17'),
+              ('Logistic regression', 2, None, '___sec18'),
+              ('Exploring the logistic regression', 2, None, '___sec19'),
+              ('Accuracy of a classification model', 2, None, '___sec20'),
+              ('Analyzing the results', 2, None, '___sec21'),
+              ('Credit Card data set', 2, None, '___sec22'),
+              ('The Pulsar classification case', 2, None, '___sec23')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- Bootstrap navigation bar -->
+<div class="navbar navbar-default navbar-fixed-top">
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="LogReg-bs.html">Data Analysis and Machine Learning: Logistic Regression</a>
+  </div>
+
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+     <!-- navigation toc: --> <li><a href="._LogReg-bs001.html#___sec0" style="font-size: 80%;">Logistic Regression</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs002.html#___sec1" style="font-size: 80%;">Optimization and Deep learning</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs003.html#___sec2" style="font-size: 80%;">Basics</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs004.html#___sec3" style="font-size: 80%;">Linear classifier</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs005.html#___sec4" style="font-size: 80%;">Some selected properties</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs006.html#___sec5" style="font-size: 80%;">The logistic function</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs007.html#___sec6" style="font-size: 80%;">Two parameters</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs008.html#___sec7" style="font-size: 80%;">Maximum likelihood</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs009.html#___sec8" style="font-size: 80%;">The cost function rewritten</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs010.html#___sec9" style="font-size: 80%;">Minimizing the cross entropy</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs011.html#___sec10" style="font-size: 80%;">A more compact expression</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs012.html#___sec11" style="font-size: 80%;">Extending to more predictors</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs013.html#___sec12" style="font-size: 80%;">Including more classes</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs014.html#___sec13" style="font-size: 80%;">The Softmax function</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs015.html#___sec14" style="font-size: 80%;">A <b>scikit-learn</b> example</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs016.html#___sec15" style="font-size: 80%;">A simple classification problem</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs017.html#___sec16" style="font-size: 80%;">The two-dimensional Ising model, Predicting phase transition of the two-dimensional Ising model</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs018.html#___sec17" style="font-size: 80%;">Reading in the data</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs019.html#___sec18" style="font-size: 80%;">Logistic regression</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs020.html#___sec19" style="font-size: 80%;">Exploring the logistic regression</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs021.html#___sec20" style="font-size: 80%;">Accuracy of a classification model</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs022.html#___sec21" style="font-size: 80%;">Analyzing the results</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs023.html#___sec22" style="font-size: 80%;">Credit Card data set</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;">The Pulsar classification case</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+</div> <!-- end of navigation bar -->
+
+<div class="container">
+
+<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
+
+<a name="part0024"></a>
+<!-- !split -->
+
+<h2 id="___sec23" class="anchor">The Pulsar classification case </h2>
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>import numpy as np
+from sklearn import metrics
+from sklearn import linear_model
+import sklearn
+import random
+import time as tm
+import xlrd
+
+
+from sys import platform as sys_pf
+if sys_pf == &#39;darwin&#39;:
+    import matplotlib
+    matplotlib.use(&quot;TkAgg&quot;)
+from matplotlib import pyplot as plt
+
+
+def predict(x,beta):
+    &quot;&quot;&quot;
+    Function that predicts labels based on the beta parameters that has been
+    calculatted.
+    Inputs: datapoints and beta parameters
+    Output: predicted label
+    &quot;&quot;&quot;
+    ypred = x @ beta
+    ypred = 1 / (1 + np.exp(-ypred))
+    if np.isnan(np.sum(ypred)):
+        ypred_0 = np.zeros((ypred.shape))
+        return ypred_0
+    ypred[ypred &lt; 0.5] = 0
+    ypred[ypred &gt;= 0.5] = 1
+    return ypred
+
+
+def beta_update(lr,x,y,beta):
+    &quot;&quot;&quot;
+    Function to calculate the new beta parameters without regularization.
+    Inputs: data, labels, beta parameters
+    Output: updated beta
+    &quot;&quot;&quot;
+    output = 1 / (1 + np.exp(-(x @ beta)))
+    delta = x.T @ (output - y.reshape((len(y),1)))
+    new_beta = beta - lr * delta/len(y)
+    return new_beta
+
+def beta_update_l2(lr,x,y,beta,lamb):
+    &quot;&quot;&quot;
+    Function to calculate the new beta parameters with l1 regularization.
+    Inputs: data, labels, beta parameters, lambda
+    Output: updated beta
+    &quot;&quot;&quot;
+    output = 1 / (1 + np.exp(-(x @ beta)))
+    delta = x.T @ (output - y.reshape((len(y),1)))
+    new_beta = beta - lr * (delta/len(y) + lamb * beta)
+    return new_beta
+
+def confusion(targets, pred_targets):
+    &quot;&quot;&quot;
+    Calculates the onfusion matrix for the SVM.
+    Inputs: Predicted and correct labels that are going to be assessed.
+    Outputs: confusion matrix.
+    &quot;&quot;&quot;
+    #create confuison matrix
+    conf = np.zeros((2,2))
+
+
+    #Remove redundant dimensions
+    sq_targets = np.squeeze(targets).astype(int)
+    sq_pred_targets = np.squeeze(pred_targets).astype(int)
+
+
+    #for loop runs through the test input
+    for i in range(0,targets.shape[0]):
+
+
+        #Increments the values in the confusion matrix
+        #based on the results
+        conf[sq_targets[i]][sq_pred_targets[i]] = conf[sq_targets[i]][sq_pred_targets[i]] + 1
+
+
+    return conf
+
+#adjustable parameters
+trainp = 0.5 #percentage of the data to be used for training
+minibatch = 10 #minibatch size
+lr = 0.2 #learning rate
+lamb = [0.00001, 0.0001,0.001, 0.01, 1, 10,100] #value of lambda
+#lamb = [0.00001, 0.0001,0.001, 0.01, 1,10,100,1000,10000] #a larger lambda
+boot_runs = 100 #number of bootstrap runs
+
+#Get data
+data = np.genfromtxt(&#39;pulsar_stars.csv&#39;, delimiter=&#39;,&#39;,skip_header=1)
+target = data[:,8]
+
+
+#Subtract the mean for each inout
+data[:,:8] = data[:,:8] - np.mean(data[:,:8], axis=0, keepdims=True)
+
+#Divide the data by the max to reduce the size of the inputs
+#max_abs_data = np.std(data[:,:23],axis=0,keepdims=True)
+max_abs_data = np.max(data[:,:8], axis=0, keepdims=True)
+data = data[:,:8]/max_abs_data
+
+
+# Randomly order the data
+order = list(range(data.shape[0]))
+np.random.shuffle(order)
+data = data[order,:]
+target = target[order]
+
+#find total samples and calculate the number of training data
+sampn = len(target)
+trainn = int(sampn*trainp)
+
+
+#split the data into training and test sets
+xt = np.zeros((trainn,data.shape[1]+1))
+xt[:,0] = -1
+xt[:,1:] = data[:trainn,:]
+yt = target[:trainn]
+
+xte = np.zeros((sampn-trainn,data.shape[1]+1))
+xte[:,0] = -1
+xte[:,1:] = data[trainn:,:]
+yte = target[trainn:]
+
+
+
+#array to store the ac scores
+train_ac = np.zeros(len(lamb))
+test_ac = np.zeros(len(lamb))
+train_ac_l2 = np.zeros(len(lamb))
+test_ac_l2 = np.zeros(len(lamb))
+train_ac_sci = np.zeros(len(lamb))
+test_ac_sci = np.zeros(len(lamb))
+
+
+
+
+count = 0
+for l in lamb:
+    #array to store ac score in bootruns
+    b_train_ac = np.zeros(boot_runs)
+    b_test_ac = np.zeros(boot_runs)
+    b_train_ac_l2 = np.zeros(boot_runs)
+    b_test_ac_l2 = np.zeros(boot_runs)
+    b_train_ac_sci = np.zeros(boot_runs)
+    b_test_ac_sci = np.zeros(boot_runs)
+    for j in range(boot_runs):
+
+        #use scikit to take randoms samples with replacement
+        x_boot, y_boot = sklearn.utils.resample(xt,yt)
+
+        #initialize the beta parameters
+        beta = (2/np.sqrt(data.shape[1]+1)) * np.random.random_sample((data.shape[1]+1,1)) -1/np.sqrt(data.shape[1]+1)
+        beta_l2 = (2/np.sqrt(data.shape[1]+1)) * np.random.random_sample((data.shape[1]+1,1)) -1/np.sqrt(data.shape[1]+1)
+
+        #variable to store the best score
+        best_score = 0
+        best_score_l2 = 0
+        for k in range(0,50):
+
+            for i in range(0,trainn,minibatch):
+
+                #update beta parameters
+                beta = beta_update(lr,x_boot[i:i+minibatch,:],y_boot[i:i+minibatch],beta)
+                beta_l2 = beta_update_l2(lr,x_boot[i:i+minibatch,:],y_boot[i:i+minibatch],beta_l2,l)
+
+            #checks the score of the model and stores the best parameters
+            temp_pred = predict(x_boot,beta)
+            temp_score = np.sum(y_boot.reshape((trainn,1)) == temp_pred) / len(y_boot)
+            if temp_score &gt; best_score:
+                best_beta = beta
+                best_score = temp_score
+
+            temp_pred = predict(x_boot,beta_l2)
+            temp_score = np.sum(y_boot.reshape((trainn,1)) == temp_pred) / len(y_boot)
+            if temp_score &gt; best_score_l2:
+                best_beta_l2 = beta_l2
+                best_score_l2 = temp_score
+
+
+            #reshuffle the data so the model does not train the same way
+            order = list(range(np.shape(x_boot)[0]))
+            np.random.shuffle(order)
+            x_boot = x_boot[order,:]
+            y_boot = y_boot[order]
+
+        #predicts the labels using beta
+        ypred = predict(xte,best_beta)
+        ypred_train = predict(x_boot,best_beta)
+
+
+        #predicts the labels using beta_l2
+        ypred_l2 = predict(xte,best_beta_l2)
+        ypred_train_l2 = predict(x_boot,best_beta_l2)
+
+
+        #fiting a scikit model
+        scilearn = linear_model.LogisticRegression(penalty=&#39;l2&#39;,C=1/l).fit(x_boot, y_boot)
+
+
+        #calualte the score of the predicted labels
+        b_test_ac[j]= (np.sum(yte.reshape((sampn - trainn,1)) == ypred) / len(yte))*100
+        b_train_ac[j]= (np.sum(y_boot.reshape((trainn,1)) == ypred_train) / len(y_boot))*100
+
+
+        b_test_ac_l2[j]= (np.sum(yte.reshape((sampn - trainn,1)) == ypred_l2) / len(yte))*100
+        b_train_ac_l2[j] = (np.sum(y_boot.reshape((trainn,1)) == ypred_train_l2) / len(y_boot))*100
+
+
+        #calualte the score of the scikit models
+        b_test_ac_sci[j] = scilearn.score(xte,yte) * 100
+        b_train_ac_sci[j] = scilearn.score(x_boot,y_boot) * 100
+
+
+    #Stor the mean of the accuracy of each run in the bootstrap
+    train_ac[count] = np.mean(b_train_ac)
+    test_ac[count] = np.mean(b_test_ac)
+    train_ac_l2[count] = np.mean(b_train_ac_l2)
+    test_ac_l2[count] = np.mean(b_test_ac_l2)
+    train_ac_sci[count]= np.mean(b_train_ac_sci)
+    test_ac_sci[count] = np.mean(b_test_ac_sci)
+    
+    #print results
+    print(&quot;Created minibatch method:&quot;)
+    print(&quot;Train score: %.4f&quot; %train_ac[count])
+    print(&quot;Test score: %.4f&quot; %test_ac[count])
+    print(&quot;Test: Max score: %f Min score: %f\n&quot; %(np.max(b_test_ac),np.min(b_test_ac)))
+
+    print(&quot;Created minibatch with L2 regularization lambda = %.5f:&quot; %l)
+    print(&quot;Train score: %.4f&quot; %train_ac_l2[count])
+    print(&quot;Test score: %.4f&quot; %test_ac_l2[count])
+    print(&quot;Test: Max score: %f Min score: %f\n&quot; %(np.max(b_test_ac_l2),np.min(b_test_ac_l2)))
+
+    print(&quot;Scikit learn method lambda = %.5f:&quot; %l)
+    print(&quot;Train score: %.4f&quot; %train_ac_sci[count])
+    print(&quot;Test score: %.4f&quot; %test_ac_sci[count])
+    print(&quot;Test: Max score: %f Min score: %f\n&quot; %(np.max(b_test_ac_sci),np.min(b_test_ac_sci)))
+
+
+    print(&quot;--------------\n&quot;)
+
+
+
+    count += 1
+plt.figure(1)
+# Plot our performance on both the training and test data
+plt.semilogx(lamb, train_ac, &#39;b&#39;,label=&#39;Created method train&#39;)
+plt.semilogx(lamb, test_ac,&#39;--b&#39;,label=&#39;Created method test&#39;)
+plt.semilogx(lamb, train_ac_l2,&#39;r&#39;,label=&#39;Created L2 train&#39;,linewidth=1)
+plt.semilogx(lamb, test_ac_l2,&#39;--r&#39;,label=&#39;Created L2 test&#39;,linewidth=1)
+plt.semilogx(lamb, train_ac_sci, &#39;g&#39;,label=&#39;Scikit train&#39;)
+plt.semilogx(lamb, test_ac_sci, &#39;--g&#39;,label=&#39;Scikit test&#39;)
+
+
+
+plt.title(&quot;Accuracy scores for test and training data with different values for lambda&quot;, fontsize = 16)
+plt.legend(loc=&#39;lower left&#39;,fontsize=16)
+plt.xlim([min(lamb), max(lamb)])
+plt.xlabel(&#39;Lambda&#39;,fontsize=15)
+plt.ylabel(&#39;Accuracy score [%]&#39;,fontsize=15)
+plt.tick_params(labelsize=15)
+
+plt.show()
+</pre></div>
+<p>
+
+<p>
+<!-- navigation buttons at the bottom of the page -->
+<ul class="pagination">
+<li><a href="._LogReg-bs023.html">&laquo;</a></li>
+  <li><a href="._LogReg-bs000.html">1</a></li>
+  <li><a href="">...</a></li>
+  <li><a href="._LogReg-bs016.html">17</a></li>
+  <li><a href="._LogReg-bs017.html">18</a></li>
+  <li><a href="._LogReg-bs018.html">19</a></li>
+  <li><a href="._LogReg-bs019.html">20</a></li>
+  <li><a href="._LogReg-bs020.html">21</a></li>
+  <li><a href="._LogReg-bs021.html">22</a></li>
+  <li><a href="._LogReg-bs022.html">23</a></li>
+  <li><a href="._LogReg-bs023.html">24</a></li>
+  <li class="active"><a href="._LogReg-bs024.html">25</a></li>
+</ul>
+<!-- ------------------- end of main content --------------- -->
+
+</div>  <!-- end container -->
+<!-- include javascript, jQuery *first* -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+<!-- Bootstrap footer
+<footer>
+<a href="http://..."><img width="250" align=right src="http://..."></a>
+</footer>
+-->
+
+
+<center style="font-size:80%">
+<!-- copyright only on the titlepage -->
+</center>
+
+
+</body>
+</html>
+    
+
