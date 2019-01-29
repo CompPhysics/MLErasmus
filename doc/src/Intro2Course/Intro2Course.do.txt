@@ -169,7 +169,7 @@ The acronyms are
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   | Introduction to Tensorflow and Keras examples  | Projects 1 and  2 (BS,KBH, MHJ)|
 |--------------------------------------------------------------------------|
-| Tuesday 29 | 9am-945am | Solving differential equations with Neural Networks (KBH)  |                 |
+| Tuesday 29 | 9am-945am | "Solving differential equations with Neural Networks":"https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn.html" (KBH)  |                 |
 |        | 10am-1045am| "Boltzmann machines and the the many-body problem":"https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| "Boltzmann machines and the the many-body problem":"https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM.html" (MHJ) |  |
@@ -181,14 +181,11 @@ The acronyms are
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm|  | "Support Vector Machines":"https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm.html" (MHJ)  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Work on projects | Projects 1 and  2 (BS,KBH, MHJ) |
+|        | 2pm-6pm   | Continuation of SVM lectures and work on projects | Projects 1 and  2 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Thursday 31 | 9am-945am | Work on Projects 1 and 2 |                 |
-|        | 10am-1045am| Work on Projects 1 and 2 |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| Work on projects 1 and 2 |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Work on projects | Projects 1 and  2 (BS,KBH, MHJ) |
+| Thursday 31 | 930am-1230am | Work on Projects 1 and 2 |  (BS, KBH)               |
+|        | 1230pm-2pm  | Lunch +own activities |                             |
+|        | 2pm-6pm   | Work on projects | Projects 1 and  2 (BS,KBH) |
 |--------------------------------------------------------------------------|
 
 !eblock
