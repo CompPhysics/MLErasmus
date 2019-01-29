@@ -40,10 +40,6 @@ The original RBMs had just one visible layer and a hidden layer, but recently so
 Furthermore, they have been used to solve complicated quantum mechanical many-particle problems or classical statistical physics problems like the Ising and Potts classes of models. 
 
 
-!split
-===== An intermediate step, the Hopfield network and links to the Ising and Potts models =====
-
-More material on Hopfield networks will come here
 
 !split
 ===== A brief review on Markov Chains, Metropolis and Gibbs sampling =====
@@ -952,11 +948,6 @@ x^{(i+1)}= \left\{\begin{array}{cc} y_t & \mathrm{with\hspace{0.1cm}probability}
 \end{equation*}
 !et
 
-
-!split
-===== Gibbs sampling =====
-
-More text to come. 
 
 
 !split

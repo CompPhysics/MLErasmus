@@ -166,6 +166,21 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/ipynb/NeuralNet.ipynb"
 
 
+===== Boltzmann Machines =====
+
+
+
+ * LaTeX PDF:
+   * For printing:
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/BM/pdf/BM-minted.pdf"
+ * HTML:
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM-bs.html"
+ * Jupyter notebook:
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/BM/ipynb/BM.ipynb"
+
+
 ===== Reduction of dimensionality =====
 
 

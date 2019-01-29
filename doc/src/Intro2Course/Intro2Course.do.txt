@@ -165,14 +165,14 @@ The acronyms are
 | Monday 28 | 9am-945am | "Neural networks, setting up code for back propagation":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |                 |
 |        | 10am-1045am| "Neural networks,examples":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Neural networks, examples, setting up your code":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
+|        |  1115am-12pm| "Neural networks, examples and convolutional NN, setting up your code":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   | Introduction to Tensorflow and Keras examples  | Projects 1 and  2 (BS,KBH, MHJ)|
 |--------------------------------------------------------------------------|
-| Tuesday 29 | 9am-945am | "Convolutional Neural networks":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |                 |
-|        | 10am-1045am| "Convolutional Neural Network and Nuclear Physics experiment":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |         |
+| Tuesday 29 | 9am-945am | Solving differential equations with Neural Networks (KBH)  |                 |
+|        | 10am-1045am| "Boltzmann machines and the the many-body problem":"https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM.html" (MHJ) |         |
 |        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Boltzmann machines and the the many-body problem":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
+|        |  1115am-12pm| "Boltzmann machines and the the many-body problem":"https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM.html" (MHJ) |  |
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   | Tensorflow/Keras and CNNs  | Projects 1 and  2 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
@@ -183,7 +183,7 @@ The acronyms are
 |        | 12pm-2pm  | Lunch +own activities |                             |
 |        | 2pm-6pm   | Work on projects | Projects 1 and  2 (BS,KBH, MHJ) |
 |--------------------------------------------------------------------------|
-| Thursday 31 | 9am-945am | Solving differential equations with Neural Networks (KBH) |                 |
+| Thursday 31 | 9am-945am | Work on Projects 1 and 2 |                 |
 |        | 10am-1045am| Work on Projects 1 and 2 |         |
 |        |  1045am-1115am | Break |   |
 |        |  1115am-12pm| Work on projects 1 and 2 |  |
