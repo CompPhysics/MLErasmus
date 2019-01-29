@@ -1,0 +1,18 @@
+import numpy as np 
+import tensorflow as tf
+
+tf.set_random_seed(4155)
+
+# Just to reset the graph such that it is possible to rerun this
+# Jupyter cell without resetting the whole kernel.
+tf.reset_default_graph()
+
+Nx = 10
+x = np.linspace(0,1, Nx)
+
+x_tf = tf.convert_to_tensor(x.reshape(-1,1),dtype=tf.float64)
+
+num_iter = 10000
+
+num_hidden_neurons = [20,10]
+num_hidden_layers = len(num_hidden_neurons)
