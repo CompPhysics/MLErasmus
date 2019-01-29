@@ -43,49 +43,50 @@ Automatically generated HTML file from DocOnce source
 {'highest level': 2,
  'sections': [('Types of Machine Learning, a repetition', 2, None, '___sec0'),
               ('Why Boltzmann machines?', 2, None, '___sec1'),
-              ('A brief review on Markov Chains, Metropolis and Gibbs sampling',
+              ('An intermediate step, the Hopfield network and links to the '
+               'Ising and Potts models',
                2,
                None,
                '___sec2'),
-              ('Brownian motion and Markov processes', 2, None, '___sec3'),
+              ('A brief review on Markov Chains, Metropolis and Gibbs sampling',
+               2,
+               None,
+               '___sec3'),
+              ('Brownian motion and Markov processes', 2, None, '___sec4'),
               ('Brownian motion and Markov processes, Ergodicity and Detailed '
                'balance',
                2,
                None,
-               '___sec4'),
+               '___sec5'),
               ('Brownian motion and Markov processes, jargon',
                2,
                None,
-               '___sec5'),
+               '___sec6'),
               ('Brownian motion and Markov processes, sequence of ingredients',
                2,
                None,
-               '___sec6'),
+               '___sec7'),
               ('Applications: almost every field in science',
                2,
                None,
-               '___sec7'),
-              ('Markov processes', 2, None, '___sec8'),
+               '___sec8'),
               ('Markov processes', 2, None, '___sec9'),
-              ('Markov processes, the probabilities', 2, None, '___sec10'),
-              ('Markov processes', 2, None, '___sec11'),
-              ('An Illustrative Example', 2, None, '___sec12'),
+              ('Markov processes', 2, None, '___sec10'),
+              ('Markov processes, the probabilities', 2, None, '___sec11'),
+              ('Markov processes', 2, None, '___sec12'),
               ('An Illustrative Example', 2, None, '___sec13'),
-              ('An Illustrative Example, next step', 2, None, '___sec14'),
+              ('An Illustrative Example', 2, None, '___sec14'),
+              ('An Illustrative Example, next step', 2, None, '___sec15'),
               ('An Illustrative Example, the steady state',
                2,
                None,
-               '___sec15'),
-              ('An Illustrative Example, iterative steps', 2, None, '___sec16'),
+               '___sec16'),
+              ('An Illustrative Example, iterative steps', 2, None, '___sec17'),
               ('An Illustrative Example, what does it mean?',
                2,
                None,
-               '___sec17'),
-              ('An Illustrative Example, understanding the basics',
-               2,
-               None,
                '___sec18'),
-              ('The Metropolis Algorithm and Detailed Balance',
+              ('An Illustrative Example, understanding the basics',
                2,
                None,
                '___sec19'),
@@ -177,34 +178,53 @@ Automatically generated HTML file from DocOnce source
                2,
                None,
                '___sec41'),
-              ('Brief Summary', 2, None, '___sec42'),
-              ('Boltzmann Machines', 2, None, '___sec43'),
+              ('The Metropolis Algorithm and Detailed Balance',
+               2,
+               None,
+               '___sec42'),
+              ('Brief Summary', 2, None, '___sec43'),
+              ('Gibbs sampling', 2, None, '___sec44'),
+              ('Boltzmann Machines', 2, None, '___sec45'),
               ('Some similarities and differences from DNNs',
                2,
                None,
-               '___sec44'),
-              ('The structure of the RBM network', 2, None, '___sec45'),
-              ('The network', 2, None, '___sec46'),
-              ('Goals', 2, None, '___sec47'),
-              ('Joint distribution and the Energy function',
+               '___sec46'),
+              ('Boltzmann machines (BM)', 2, None, '___sec47'),
+              ('A standard BM setup', 2, None, '___sec48'),
+              ('The structure of the RBM network', 2, None, '___sec49'),
+              ('The network', 2, None, '___sec50'),
+              ('Goals', 2, None, '___sec51'),
+              ('Joint distribution', 2, None, '___sec52'),
+              ('Network Elements, the energy function', 2, None, '___sec53'),
+              ('Defining different types of RBMs', 2, None, '___sec54'),
+              ('More about RBMs', 2, None, '___sec55'),
+              ('Sampling: Metropolis sampling', 2, None, '___sec56'),
+              ('Grinding through the details', 2, None, '___sec57'),
+              ('Sampling: Gibbs sampling', 2, None, '___sec58'),
+              ('Gaussian RBM', 2, None, '___sec59'),
+              ('Cost function', 2, None, '___sec60'),
+              ('Optimization / Training', 2, None, '___sec61'),
+              ('More on RBMs', 2, None, '___sec62'),
+              ('Which sampling to use', 2, None, '___sec63'),
+              ('Kullback-Leibler relative entropy', 2, None, '___sec64'),
+              ('Optimizing the cost function', 2, None, '___sec65'),
+              ('Setting up for gradient descent calculations',
                2,
                None,
-               '___sec48'),
-              ('Network Elements', 2, None, '___sec49'),
-              ('Defining different types of RBMs', 2, None, '___sec50'),
-              ('More about RBMs', 2, None, '___sec51'),
-              ('Sampling: Metropolis sampling', 2, None, '___sec52'),
-              ('Sampling: Gibbs sampling', 2, None, '___sec53'),
-              ('Gaussian RBM', 2, None, '___sec54'),
-              ('Cost function', 2, None, '___sec55'),
-              ('Optimization / Training', 2, None, '___sec56'),
-              ('More on RBMs', 2, None, '___sec57'),
-              ('Which sampling to use', 2, None, '___sec58'),
+               '___sec66'),
+              ('More interpretations', 2, None, '___sec67'),
               ('Recent examples: RBMs for the quantum many body problem',
                2,
                None,
-               '___sec59'),
-              ('Choose the right RBM', 2, None, '___sec60')]}
+               '___sec68'),
+              ('Choose the right RBM', 2, None, '___sec69'),
+              ('Representing the wave function', 2, None, '___sec70'),
+              ('Choose the cost function', 2, None, '___sec71'),
+              ('Running the codes', 2, None, '___sec72'),
+              ('Energy as function of iterations, $N=2$ electrons',
+               2,
+               None,
+               '___sec73')]}
 end of tocinfo -->
 
 <body>
@@ -244,24 +264,24 @@ MathJax.Hub.Config({
         <ul class="dropdown-menu">
      <!-- navigation toc: --> <li><a href="._BM-bs001.html#___sec0" style="font-size: 80%;">Types of Machine Learning, a repetition</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs002.html#___sec1" style="font-size: 80%;">Why Boltzmann machines?</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs003.html#___sec2" style="font-size: 80%;">A brief review on Markov Chains, Metropolis and Gibbs sampling</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs004.html#___sec3" style="font-size: 80%;">Brownian motion and Markov processes</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs005.html#___sec4" style="font-size: 80%;">Brownian motion and Markov processes, Ergodicity and Detailed balance</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs006.html#___sec5" style="font-size: 80%;">Brownian motion and Markov processes, jargon</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs007.html#___sec6" style="font-size: 80%;">Brownian motion and Markov processes, sequence of ingredients</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs008.html#___sec7" style="font-size: 80%;">Applications: almost every field in science</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs009.html#___sec8" style="font-size: 80%;">Markov processes</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs003.html#___sec2" style="font-size: 80%;">An intermediate step, the Hopfield network and links to the Ising and Potts models</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs004.html#___sec3" style="font-size: 80%;">A brief review on Markov Chains, Metropolis and Gibbs sampling</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs005.html#___sec4" style="font-size: 80%;">Brownian motion and Markov processes</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs006.html#___sec5" style="font-size: 80%;">Brownian motion and Markov processes, Ergodicity and Detailed balance</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs007.html#___sec6" style="font-size: 80%;">Brownian motion and Markov processes, jargon</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs008.html#___sec7" style="font-size: 80%;">Brownian motion and Markov processes, sequence of ingredients</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs009.html#___sec8" style="font-size: 80%;">Applications: almost every field in science</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs010.html#___sec9" style="font-size: 80%;">Markov processes</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs011.html#___sec10" style="font-size: 80%;">Markov processes, the probabilities</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs012.html#___sec11" style="font-size: 80%;">Markov processes</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs013.html#___sec12" style="font-size: 80%;">An Illustrative Example</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs011.html#___sec10" style="font-size: 80%;">Markov processes</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs012.html#___sec11" style="font-size: 80%;">Markov processes, the probabilities</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs013.html#___sec12" style="font-size: 80%;">Markov processes</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs014.html#___sec13" style="font-size: 80%;">An Illustrative Example</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs015.html#___sec14" style="font-size: 80%;">An Illustrative Example, next step</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs016.html#___sec15" style="font-size: 80%;">An Illustrative Example, the steady state</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs017.html#___sec16" style="font-size: 80%;">An Illustrative Example, iterative steps</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs018.html#___sec17" style="font-size: 80%;">An Illustrative Example, what does it mean?</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs019.html#___sec18" style="font-size: 80%;">An Illustrative Example, understanding the basics</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs020.html#___sec19" style="font-size: 80%;">The Metropolis Algorithm and Detailed Balance</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs015.html#___sec14" style="font-size: 80%;">An Illustrative Example</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs016.html#___sec15" style="font-size: 80%;">An Illustrative Example, next step</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs017.html#___sec16" style="font-size: 80%;">An Illustrative Example, the steady state</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs018.html#___sec17" style="font-size: 80%;">An Illustrative Example, iterative steps</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs019.html#___sec18" style="font-size: 80%;">An Illustrative Example, what does it mean?</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs020.html#___sec19" style="font-size: 80%;">An Illustrative Example, understanding the basics</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs021.html#___sec20" style="font-size: 80%;">The Metropolis Algorithm and Detailed Balance</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs022.html#___sec21" style="font-size: 80%;">The Metropolis Algorithm and Detailed Balance</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs023.html#___sec22" style="font-size: 80%;">The Metropolis Algorithm and Detailed Balance</a></li>
@@ -284,25 +304,38 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._BM-bs040.html#___sec39" style="font-size: 80%;">The Metropolis Algorithm and Detailed Balance</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs041.html#___sec40" style="font-size: 80%;">The Metropolis Algorithm and Detailed Balance</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs042.html#___sec41" style="font-size: 80%;">The Metropolis Algorithm and Detailed Balance</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs043.html#___sec42" style="font-size: 80%;">Brief Summary</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs044.html#___sec43" style="font-size: 80%;">Boltzmann Machines</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs045.html#___sec44" style="font-size: 80%;">Some similarities and differences from DNNs</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs046.html#___sec45" style="font-size: 80%;">The structure of the RBM network</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs047.html#___sec46" style="font-size: 80%;">The network</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs048.html#___sec47" style="font-size: 80%;">Goals</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs049.html#___sec48" style="font-size: 80%;">Joint distribution and the Energy function</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs050.html#___sec49" style="font-size: 80%;">Network Elements</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs051.html#___sec50" style="font-size: 80%;">Defining different types of RBMs</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs052.html#___sec51" style="font-size: 80%;">More about RBMs</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs053.html#___sec52" style="font-size: 80%;">Sampling: Metropolis sampling</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs054.html#___sec53" style="font-size: 80%;">Sampling: Gibbs sampling</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs055.html#___sec54" style="font-size: 80%;">Gaussian RBM</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs056.html#___sec55" style="font-size: 80%;">Cost function</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs057.html#___sec56" style="font-size: 80%;">Optimization / Training</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs058.html#___sec57" style="font-size: 80%;">More on RBMs</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs059.html#___sec58" style="font-size: 80%;">Which sampling to use</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs060.html#___sec59" style="font-size: 80%;">Recent examples: RBMs for the quantum many body problem</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs061.html#___sec60" style="font-size: 80%;">Choose the right RBM</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs043.html#___sec42" style="font-size: 80%;">The Metropolis Algorithm and Detailed Balance</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs044.html#___sec43" style="font-size: 80%;">Brief Summary</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs045.html#___sec44" style="font-size: 80%;">Gibbs sampling</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs046.html#___sec45" style="font-size: 80%;">Boltzmann Machines</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs047.html#___sec46" style="font-size: 80%;">Some similarities and differences from DNNs</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs048.html#___sec47" style="font-size: 80%;">Boltzmann machines (BM)</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs049.html#___sec48" style="font-size: 80%;">A standard BM setup</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs050.html#___sec49" style="font-size: 80%;">The structure of the RBM network</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs051.html#___sec50" style="font-size: 80%;">The network</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs052.html#___sec51" style="font-size: 80%;">Goals</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs053.html#___sec52" style="font-size: 80%;">Joint distribution</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs054.html#___sec53" style="font-size: 80%;">Network Elements, the energy function</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs055.html#___sec54" style="font-size: 80%;">Defining different types of RBMs</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs056.html#___sec55" style="font-size: 80%;">More about RBMs</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs057.html#___sec56" style="font-size: 80%;">Sampling: Metropolis sampling</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs058.html#___sec57" style="font-size: 80%;">Grinding through the details</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs059.html#___sec58" style="font-size: 80%;">Sampling: Gibbs sampling</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs060.html#___sec59" style="font-size: 80%;">Gaussian RBM</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs061.html#___sec60" style="font-size: 80%;">Cost function</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs062.html#___sec61" style="font-size: 80%;">Optimization / Training</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs063.html#___sec62" style="font-size: 80%;">More on RBMs</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs064.html#___sec63" style="font-size: 80%;">Which sampling to use</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs065.html#___sec64" style="font-size: 80%;">Kullback-Leibler relative entropy</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs066.html#___sec65" style="font-size: 80%;">Optimizing the cost function</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs067.html#___sec66" style="font-size: 80%;">Setting up for gradient descent calculations</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs068.html#___sec67" style="font-size: 80%;">More interpretations</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs069.html#___sec68" style="font-size: 80%;">Recent examples: RBMs for the quantum many body problem</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs070.html#___sec69" style="font-size: 80%;">Choose the right RBM</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs071.html#___sec70" style="font-size: 80%;">Representing the wave function</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs072.html#___sec71" style="font-size: 80%;">Choose the cost function</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs073.html#___sec72" style="font-size: 80%;">Running the codes</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs074.html#___sec73" style="font-size: 80%;">Energy as function of iterations, \( N=2 \) electrons</a></li>
 
         </ul>
       </li>
@@ -360,7 +393,7 @@ MathJax.Hub.Config({
   <li><a href="._BM-bs008.html">9</a></li>
   <li><a href="._BM-bs009.html">10</a></li>
   <li><a href="">...</a></li>
-  <li><a href="._BM-bs061.html">62</a></li>
+  <li><a href="._BM-bs074.html">75</a></li>
   <li><a href="._BM-bs001.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

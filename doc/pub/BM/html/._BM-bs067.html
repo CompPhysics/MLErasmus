@@ -310,7 +310,7 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._BM-bs046.html#___sec45" style="font-size: 80%;">Boltzmann Machines</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs047.html#___sec46" style="font-size: 80%;">Some similarities and differences from DNNs</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs048.html#___sec47" style="font-size: 80%;">Boltzmann machines (BM)</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec48" style="font-size: 80%;">A standard BM setup</a></li>
+     <!-- navigation toc: --> <li><a href="._BM-bs049.html#___sec48" style="font-size: 80%;">A standard BM setup</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs050.html#___sec49" style="font-size: 80%;">The structure of the RBM network</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs051.html#___sec50" style="font-size: 80%;">The network</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs052.html#___sec51" style="font-size: 80%;">Goals</a></li>
@@ -328,7 +328,7 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._BM-bs064.html#___sec63" style="font-size: 80%;">Which sampling to use</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs065.html#___sec64" style="font-size: 80%;">Kullback-Leibler relative entropy</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs066.html#___sec65" style="font-size: 80%;">Optimizing the cost function</a></li>
-     <!-- navigation toc: --> <li><a href="._BM-bs067.html#___sec66" style="font-size: 80%;">Setting up for gradient descent calculations</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec66" style="font-size: 80%;">Setting up for gradient descent calculations</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs068.html#___sec67" style="font-size: 80%;">More interpretations</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs069.html#___sec68" style="font-size: 80%;">Recent examples: RBMs for the quantum many body problem</a></li>
      <!-- navigation toc: --> <li><a href="._BM-bs070.html#___sec69" style="font-size: 80%;">Choose the right RBM</a></li>
@@ -348,70 +348,62 @@ MathJax.Hub.Config({
 
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
-<a name="part0049"></a>
+<a name="part0067"></a>
 <!-- !split -->
 
-<h2 id="___sec48" class="anchor">A standard BM setup </h2>
+<h2 id="___sec66" class="anchor">Setting up for gradient descent calculations </h2>
 
 <p>
-<div class="panel panel-default">
-<div class="panel-body">
-<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
-A standard BM network is divided into a set of observable and visible units \( \hat{x} \) and a set of unknown hidden units/nodes \( \hat{h} \).
-</div>
-</div>
+Using the previous relationship we can express the gradient of the cost function as
 
-
-<p>
-<div class="panel panel-default">
-<div class="panel-body">
-<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
-Additionally there can be bias nodes for the hidden and visible layers. These biases are normally set to \( 1 \).
-</div>
-</div>
-
+$$
+\begin{align}
+	\frac{\partial \mathcal{C}_{LL}}{\partial \theta_i}
+	=& \langle \frac{ \partial E(\boldsymbol{x}; \theta_i) } { \partial \theta_i} \rangle_{data} + \frac{\partial \log Z(\theta_i)}{ \partial  \theta_i} 
+\tag{34}\\
+	=& \langle \frac{ \partial E(\boldsymbol{x}; \theta_i) } { \partial \theta_i} \rangle_{data} - \langle \frac{ \partial E(\boldsymbol{x}; \theta_i) } { \partial \theta_i} \rangle_{model} 
+\tag{35}\\
+	%=& \langle O_i(\boldsymbol{x}) \rangle_{data} - \langle O_i(\boldsymbol{x}) \rangle_{model}
+\tag{36}
+\end{align}
+$$
 
 <p>
-<div class="panel panel-default">
-<div class="panel-body">
-<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
-BMs are stackable, meaning they cwe can train a BM which serves as input to another BM. We can construct deep networks for learning complex PDFs. The layers can be trained one after another, a feature which makes them popular in deep learning
-</div>
-</div>
-
-
-<p>
-However, they are often hard to train. This leads to the introduction of so-called restricted BMs, or RBMS.
-Here we take away all lateral connections between nodes in the visible layer as well as connections between nodes in the hidden layer. The network is illustrated in the figure below.
+This expression shows that the gradient of the log-likelihood cost
+function is a <b>difference of moments</b>, with one calculated from
+the data and one calculated from the model. The data-dependent term is
+called the <b>positive phase</b> and the model-dependent term is
+called the <b>negative phase</b> of the gradient. We see now that
+minimizing the cost function results in lowering the energy of
+configurations \( \boldsymbol{x} \) near points in the training data and
+increasing the energy of configurations not observed in the training
+data. That means we increase the model's probability of configurations
+similar to those in the training data.
 
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
 <ul class="pagination">
-<li><a href="._BM-bs048.html">&laquo;</a></li>
+<li><a href="._BM-bs066.html">&laquo;</a></li>
   <li><a href="._BM-bs000.html">1</a></li>
   <li><a href="">...</a></li>
-  <li><a href="._BM-bs041.html">42</a></li>
-  <li><a href="._BM-bs042.html">43</a></li>
-  <li><a href="._BM-bs043.html">44</a></li>
-  <li><a href="._BM-bs044.html">45</a></li>
-  <li><a href="._BM-bs045.html">46</a></li>
-  <li><a href="._BM-bs046.html">47</a></li>
-  <li><a href="._BM-bs047.html">48</a></li>
-  <li><a href="._BM-bs048.html">49</a></li>
-  <li class="active"><a href="._BM-bs049.html">50</a></li>
-  <li><a href="._BM-bs050.html">51</a></li>
-  <li><a href="._BM-bs051.html">52</a></li>
-  <li><a href="._BM-bs052.html">53</a></li>
-  <li><a href="._BM-bs053.html">54</a></li>
-  <li><a href="._BM-bs054.html">55</a></li>
-  <li><a href="._BM-bs055.html">56</a></li>
-  <li><a href="._BM-bs056.html">57</a></li>
-  <li><a href="._BM-bs057.html">58</a></li>
-  <li><a href="._BM-bs058.html">59</a></li>
-  <li><a href="">...</a></li>
+  <li><a href="._BM-bs059.html">60</a></li>
+  <li><a href="._BM-bs060.html">61</a></li>
+  <li><a href="._BM-bs061.html">62</a></li>
+  <li><a href="._BM-bs062.html">63</a></li>
+  <li><a href="._BM-bs063.html">64</a></li>
+  <li><a href="._BM-bs064.html">65</a></li>
+  <li><a href="._BM-bs065.html">66</a></li>
+  <li><a href="._BM-bs066.html">67</a></li>
+  <li class="active"><a href="._BM-bs067.html">68</a></li>
+  <li><a href="._BM-bs068.html">69</a></li>
+  <li><a href="._BM-bs069.html">70</a></li>
+  <li><a href="._BM-bs070.html">71</a></li>
+  <li><a href="._BM-bs071.html">72</a></li>
+  <li><a href="._BM-bs072.html">73</a></li>
+  <li><a href="._BM-bs073.html">74</a></li>
   <li><a href="._BM-bs074.html">75</a></li>
-  <li><a href="._BM-bs050.html">&raquo;</a></li>
+  <li><a href="._BM-bs068.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
 

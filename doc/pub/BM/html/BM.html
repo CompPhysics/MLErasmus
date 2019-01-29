@@ -68,49 +68,50 @@ div { text-align: justify; text-justify: inter-word; }
 {'highest level': 2,
  'sections': [('Types of Machine Learning, a repetition', 2, None, '___sec0'),
               ('Why Boltzmann machines?', 2, None, '___sec1'),
-              ('A brief review on Markov Chains, Metropolis and Gibbs sampling',
+              ('An intermediate step, the Hopfield network and links to the '
+               'Ising and Potts models',
                2,
                None,
                '___sec2'),
-              ('Brownian motion and Markov processes', 2, None, '___sec3'),
+              ('A brief review on Markov Chains, Metropolis and Gibbs sampling',
+               2,
+               None,
+               '___sec3'),
+              ('Brownian motion and Markov processes', 2, None, '___sec4'),
               ('Brownian motion and Markov processes, Ergodicity and Detailed '
                'balance',
                2,
                None,
-               '___sec4'),
+               '___sec5'),
               ('Brownian motion and Markov processes, jargon',
                2,
                None,
-               '___sec5'),
+               '___sec6'),
               ('Brownian motion and Markov processes, sequence of ingredients',
                2,
                None,
-               '___sec6'),
+               '___sec7'),
               ('Applications: almost every field in science',
                2,
                None,
-               '___sec7'),
-              ('Markov processes', 2, None, '___sec8'),
+               '___sec8'),
               ('Markov processes', 2, None, '___sec9'),
-              ('Markov processes, the probabilities', 2, None, '___sec10'),
-              ('Markov processes', 2, None, '___sec11'),
-              ('An Illustrative Example', 2, None, '___sec12'),
+              ('Markov processes', 2, None, '___sec10'),
+              ('Markov processes, the probabilities', 2, None, '___sec11'),
+              ('Markov processes', 2, None, '___sec12'),
               ('An Illustrative Example', 2, None, '___sec13'),
-              ('An Illustrative Example, next step', 2, None, '___sec14'),
+              ('An Illustrative Example', 2, None, '___sec14'),
+              ('An Illustrative Example, next step', 2, None, '___sec15'),
               ('An Illustrative Example, the steady state',
                2,
                None,
-               '___sec15'),
-              ('An Illustrative Example, iterative steps', 2, None, '___sec16'),
+               '___sec16'),
+              ('An Illustrative Example, iterative steps', 2, None, '___sec17'),
               ('An Illustrative Example, what does it mean?',
                2,
                None,
-               '___sec17'),
-              ('An Illustrative Example, understanding the basics',
-               2,
-               None,
                '___sec18'),
-              ('The Metropolis Algorithm and Detailed Balance',
+              ('An Illustrative Example, understanding the basics',
                2,
                None,
                '___sec19'),
@@ -202,34 +203,53 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec41'),
-              ('Brief Summary', 2, None, '___sec42'),
-              ('Boltzmann Machines', 2, None, '___sec43'),
+              ('The Metropolis Algorithm and Detailed Balance',
+               2,
+               None,
+               '___sec42'),
+              ('Brief Summary', 2, None, '___sec43'),
+              ('Gibbs sampling', 2, None, '___sec44'),
+              ('Boltzmann Machines', 2, None, '___sec45'),
               ('Some similarities and differences from DNNs',
                2,
                None,
-               '___sec44'),
-              ('The structure of the RBM network', 2, None, '___sec45'),
-              ('The network', 2, None, '___sec46'),
-              ('Goals', 2, None, '___sec47'),
-              ('Joint distribution and the Energy function',
+               '___sec46'),
+              ('Boltzmann machines (BM)', 2, None, '___sec47'),
+              ('A standard BM setup', 2, None, '___sec48'),
+              ('The structure of the RBM network', 2, None, '___sec49'),
+              ('The network', 2, None, '___sec50'),
+              ('Goals', 2, None, '___sec51'),
+              ('Joint distribution', 2, None, '___sec52'),
+              ('Network Elements, the energy function', 2, None, '___sec53'),
+              ('Defining different types of RBMs', 2, None, '___sec54'),
+              ('More about RBMs', 2, None, '___sec55'),
+              ('Sampling: Metropolis sampling', 2, None, '___sec56'),
+              ('Grinding through the details', 2, None, '___sec57'),
+              ('Sampling: Gibbs sampling', 2, None, '___sec58'),
+              ('Gaussian RBM', 2, None, '___sec59'),
+              ('Cost function', 2, None, '___sec60'),
+              ('Optimization / Training', 2, None, '___sec61'),
+              ('More on RBMs', 2, None, '___sec62'),
+              ('Which sampling to use', 2, None, '___sec63'),
+              ('Kullback-Leibler relative entropy', 2, None, '___sec64'),
+              ('Optimizing the cost function', 2, None, '___sec65'),
+              ('Setting up for gradient descent calculations',
                2,
                None,
-               '___sec48'),
-              ('Network Elements', 2, None, '___sec49'),
-              ('Defining different types of RBMs', 2, None, '___sec50'),
-              ('More about RBMs', 2, None, '___sec51'),
-              ('Sampling: Metropolis sampling', 2, None, '___sec52'),
-              ('Sampling: Gibbs sampling', 2, None, '___sec53'),
-              ('Gaussian RBM', 2, None, '___sec54'),
-              ('Cost function', 2, None, '___sec55'),
-              ('Optimization / Training', 2, None, '___sec56'),
-              ('More on RBMs', 2, None, '___sec57'),
-              ('Which sampling to use', 2, None, '___sec58'),
+               '___sec66'),
+              ('More interpretations', 2, None, '___sec67'),
               ('Recent examples: RBMs for the quantum many body problem',
                2,
                None,
-               '___sec59'),
-              ('Choose the right RBM', 2, None, '___sec60')]}
+               '___sec68'),
+              ('Choose the right RBM', 2, None, '___sec69'),
+              ('Representing the wave function', 2, None, '___sec70'),
+              ('Choose the cost function', 2, None, '___sec71'),
+              ('Running the codes', 2, None, '___sec72'),
+              ('Energy as function of iterations, $N=2$ electrons',
+               2,
+               None,
+               '___sec73')]}
 end of tocinfo -->
 
 <body>
@@ -320,7 +340,15 @@ Furthermore, they have been used to solve complicated quantum mechanical many-pa
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec2">A brief review on Markov Chains, Metropolis and Gibbs sampling </h2>
+<h2 id="___sec2">An intermediate step, the Hopfield network and links to the Ising and Potts models </h2>
+
+<p>
+More material on Hopfield networks will come here later.
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec3">A brief review on Markov Chains, Metropolis and Gibbs sampling </h2>
 
 <ul>
 <li> We want to study a physical system which evolves towards equilibrium, from given  initial conditions.</li>
@@ -338,7 +366,7 @@ Furthermore, they have been used to solve complicated quantum mechanical many-pa
 <p>
 <!-- !split  -->
 
-<h2 id="___sec3">Brownian motion and Markov processes </h2>
+<h2 id="___sec4">Brownian motion and Markov processes </h2>
 A Markov process is a random walk with a selected probability for making a
 move. The new move is independent of the previous history of the system.
 
@@ -361,7 +389,7 @@ its most likely state at a given temperature of the surroundings.
 <p>
 <!-- !split  -->
 
-<h2 id="___sec4">Brownian motion and Markov processes, Ergodicity and Detailed balance </h2>
+<h2 id="___sec5">Brownian motion and Markov processes, Ergodicity and Detailed balance </h2>
 
 <p>
 To reach this distribution, the Markov process needs to obey two important conditions, that of
@@ -380,7 +408,7 @@ the interpretation of random walks and Markov processes.
 <p>
 <!-- !split  -->
 
-<h2 id="___sec5">Brownian motion and Markov processes, jargon </h2>
+<h2 id="___sec6">Brownian motion and Markov processes, jargon </h2>
 
 <p>
 In a random walk one defines a mathematical entity called a <b>walker</b>, 
@@ -403,7 +431,7 @@ This sequence of steps forms a <b>chain</b>.
 <p>
 <!-- !split  -->
 
-<h2 id="___sec6">Brownian motion and Markov processes, sequence of ingredients </h2>
+<h2 id="___sec7">Brownian motion and Markov processes, sequence of ingredients </h2>
 
 <ul>
 <li> We want to study a physical system which evolves towards equilibrium, from given  initial conditions.</li>
@@ -414,7 +442,7 @@ This sequence of steps forms a <b>chain</b>.
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec7">Applications: almost every field in science </h2>
+<h2 id="___sec8">Applications: almost every field in science </h2>
 
 <ul>
 <li> Financial engineering, see for example Patriarca <em>et al</em>, Physica <b>340</b>, <a href="http://www.sciencedirect.com/science/article/pii/S0378437104004327" target="_blank">page 334 (2004)</a>.</li>
@@ -438,7 +466,7 @@ The list of applications is endless.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec8">Markov processes </h2>
+<h2 id="___sec9">Markov processes </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -461,7 +489,7 @@ We can regard the discretized PDF as a vector.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec9">Markov processes </h2>
+<h2 id="___sec10">Markov processes </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -498,7 +526,7 @@ PDF with equal probability of jumping left or right.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec10">Markov processes, the probabilities </h2>
+<h2 id="___sec11">Markov processes, the probabilities </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -532,7 +560,7 @@ not necessarily equal zero.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec11">Markov processes </h2>
+<h2 id="___sec12">Markov processes </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -574,7 +602,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec12">An Illustrative Example </h2>
+<h2 id="___sec13">An Illustrative Example </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -609,7 +637,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec13">An Illustrative Example </h2>
+<h2 id="___sec14">An Illustrative Example </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -641,7 +669,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec14">An Illustrative Example, next step </h2>
+<h2 id="___sec15">An Illustrative Example, next step </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -672,7 +700,7 @@ Note that the vector \( \hat{w} \) is always normalized to \( 1 \).
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec15">An Illustrative Example, the steady state </h2>
+<h2 id="___sec16">An Illustrative Example, the steady state </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -718,7 +746,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec16">An Illustrative Example, iterative steps </h2>
+<h2 id="___sec17">An Illustrative Example, iterative steps </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -756,7 +784,7 @@ time steps. After  twelve iterations we have reached the exact value with six le
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec17">An Illustrative Example, what does it mean? </h2>
+<h2 id="___sec18">An Illustrative Example, what does it mean? </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -780,7 +808,7 @@ transition probability matrix.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec18">An Illustrative Example, understanding the basics </h2>
+<h2 id="___sec19">An Illustrative Example, understanding the basics </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -819,7 +847,7 @@ If we assume that \( \lambda_0 \) is the largest eigenvector we see that in the 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec19">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec20">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -864,7 +892,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec20">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec21">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -900,7 +928,7 @@ Here we have written the previous matrix \( W_{ij}=W(j\rightarrow i) \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec21">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec22">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -935,7 +963,7 @@ we have reached the most likely state of the system, the so-called steady state 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec22">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec23">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -954,7 +982,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec23">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec24">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -981,7 +1009,7 @@ The algorithm can then be expressed as
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec24">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec25">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1001,7 +1029,7 @@ to the probability of being in a state \( j \) and performing a transition to th
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec25">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec26">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1025,7 +1053,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec26">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec27">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1059,7 +1087,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec27">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec28">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1091,7 +1119,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec28">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec29">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1133,7 +1161,7 @@ which is nothing but the standard equation for a Markov chain when the steady st
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec29">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec30">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1169,7 +1197,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec30">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec31">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1189,7 +1217,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec31">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec32">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1224,7 +1252,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec32">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec33">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1261,7 +1289,7 @@ we never need to evaluate the partition function \( Z \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec33">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec34">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1291,7 +1319,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec34">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec35">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1316,7 +1344,7 @@ one place to another in space, we 'jump' from one microstate to another.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec35">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec36">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1349,7 +1377,7 @@ the transition probability \( T(i\rightarrow j) \) is symmetric, implying that \
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec36">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec37">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1376,7 +1404,7 @@ Our desired energy is \( E_0 \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec37">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec38">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1402,7 +1430,7 @@ we simulate long enough it should be included in our computation of an expectati
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec38">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec39">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1427,7 +1455,7 @@ to this constraint.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec39">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec40">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1451,7 +1479,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec40">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec41">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1479,7 +1507,7 @@ If the ratio is smaller than a given random number we accept the move to a highe
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec41">The Metropolis Algorithm and Detailed Balance  </h2>
+<h2 id="___sec42">The Metropolis Algorithm and Detailed Balance  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1501,7 +1529,7 @@ fewer accepted moves.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec42">Brief Summary </h2>
+<h2 id="___sec43">Brief Summary </h2>
 
 <p>
 The Monte Carlo approach, combined with the theory for Markov chains can be summarized as follows:
@@ -1533,7 +1561,15 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec43">Boltzmann Machines </h2>
+<h2 id="___sec44">Gibbs sampling </h2>
+
+<p>
+More text to come.
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec45">Boltzmann Machines </h2>
 
 <p>
 Why use a generative model rather than the more well known discriminative deep neural networks (DNN)? 
@@ -1552,7 +1588,7 @@ Why use a generative model rather than the more well known discriminative deep n
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec44">Some similarities and differences from DNNs </h2>
+<h2 id="___sec46">Some similarities and differences from DNNs </h2>
 
 <ol>
 <li> Both use gradient-descent based learning procedures for minimizing cost functions</li>
@@ -1565,7 +1601,72 @@ History: The RBM was developed by amongst others Geoffrey Hinton, called by some
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec45">The structure of the RBM network </h2>
+<h2 id="___sec47">Boltzmann machines (BM) </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+A BM is what we would call an undirected probabilistic graphical model
+with stochastic continuous or discrete units.
+</div>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+It is interpreted as a stochastic recurrent neural network where the
+state of each unit(neurons/nodes) depends on the units it is connected
+to. The weights in the network represent thus the strength of the
+interaction between various units/nodes.
+</div>
+
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+It turns into a Hopfield network if we choose deterministic rather
+than stochastic units. In contrast to a Hopfield network, a BM is a
+so-called generative model. It allows us to generate new samples from
+the learned distribution.
+</div>
+
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec48">A standard BM setup </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+A standard BM network is divided into a set of observable and visible units \( \hat{x} \) and a set of unknown hidden units/nodes \( \hat{h} \).
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+Additionally there can be bias nodes for the hidden and visible layers. These biases are normally set to \( 1 \).
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+BMs are stackable, meaning they cwe can train a BM which serves as input to another BM. We can construct deep networks for learning complex PDFs. The layers can be trained one after another, a feature which makes them popular in deep learning
+</div>
+
+
+<p>
+However, they are often hard to train. This leads to the introduction of so-called restricted BMs, or RBMS.
+Here we take away all lateral connections between nodes in the visible layer as well as connections between nodes in the hidden layer. The network is illustrated in the figure below.
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec49">The structure of the RBM network </h2>
 
 <p>
 <br /><br /><center><p><img src="figures/RBM.png" align="bottom" width=800></p></center><br /><br />
@@ -1573,7 +1674,7 @@ History: The RBM was developed by amongst others Geoffrey Hinton, called by some
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec46">The network </h2>
+<h2 id="___sec50">The network </h2>
 
 <p>
 <b>The network layers</b>:
@@ -1585,7 +1686,7 @@ History: The RBM was developed by amongst others Geoffrey Hinton, called by some
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec47">Goals </h2>
+<h2 id="___sec51">Goals </h2>
 
 <p>
 The goal of the hidden layer is to increase the model's expressive power. We encode complex interactions between visible variables by introducing additional, hidden variables that interact with visible degrees of freedom in a simple manner, yet still reproduce the complex correlations between visible degrees in the data once marginalized over (integrated out).
@@ -1609,7 +1710,7 @@ Examples of this trick being employed in physics:
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec48">Joint distribution and the Energy function </h2>
+<h2 id="___sec52">Joint distribution </h2>
 The restricted Boltzmann machine is described by a Bolztmann distribution
 $$
 \begin{align}
@@ -1631,7 +1732,7 @@ It is common to ignore \( T_0 \) by setting it to one.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec49">Network Elements </h2>
+<h2 id="___sec53">Network Elements, the energy function  </h2>
 
 <p>
 The function \( E(\mathbf{x},\mathbf{h}) \) gives the <b>energy</b> of a
@@ -1642,9 +1743,24 @@ function also depends on the parameters \( \mathbf{a} \), \( \mathbf{b} \) and
 adjusting the energy function to best fit our problem.
 
 <p>
+An expression for the energy function is
+$$
+E(\hat{x},\hat{h}) = -\sum_{ia}^{NA}b_i^a \alpha_i^a(x_i)-\sum_{jd}^{MD}c_j^d \beta_j^d(h_j)-\sum_{ijad}^{NAMD}b_i^a \alpha_i^a(x_i)c_j^d \beta_j^d(h_j)w_{ij}^{ad}.
+$$
+
+<p>
+Here \( \beta_j^d(h_j) \) and \( \alpha_i^a(x_j) \) are so-called transfer functions that map a given input value to a desired feature value. The labels \( a \) and \( d \) denote that there can be multiple transfer functions per variable. The first sum depends only on the visible units. The second on the hidden ones. <b>Note</b> that there is no connection between nodes in a layer.
+
+<p>
+The quantities \( b \) and \( c \) can be interpreted as the visible and hidden biases, respectively.
+
+<p>
+The connection between the nodes in the two layers is given by the weights \( w_{ij} \).
+
+<p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec50">Defining different types of RBMs </h2>
+<h2 id="___sec54">Defining different types of RBMs </h2>
 There are different variants of RBMs, and the differences lie in the types of visible and hidden units we choose as well as in the implementation of the energy function \( E(\mathbf{x},\mathbf{h}) \).
 
 <p>
@@ -1682,7 +1798,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec51">More about RBMs </h2>
+<h2 id="___sec55">More about RBMs </h2>
 
 <ol>
 <li> Useful when we model continuous data (i.e., we wish \( \mathbf{x} \) to be continuous)</li>
@@ -1700,7 +1816,7 @@ Other types of units include:
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec52">Sampling: Metropolis sampling </h2>
+<h2 id="___sec56">Sampling: Metropolis sampling </h2>
 In order to sample from the RBM probability distribution it is common to use Markov Chain Monte Carlo (MCMC) algorithms such as Metropolis-Hastings or Gibbs sampling.
 
 <p>
@@ -1725,7 +1841,15 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec53">Sampling: Gibbs sampling </h2>
+<h2 id="___sec57">Grinding through the details </h2>
+
+<p>
+More material to come here
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec58">Sampling: Gibbs sampling </h2>
 
 <p>
 In this method we sample from the joint probability \( P_{rbm} (\mathbf{x}, \mathbf{h}) \) by way of a two step sampling process. We alternately update the visible and hidden units.
@@ -1747,7 +1871,7 @@ where we recognize the logistic sigmoid function \( \sigma (x) = 1/(1+exp(-x)) \
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec54">Gaussian RBM </h2>
+<h2 id="___sec59">Gaussian RBM </h2>
 For the Gaussian-Binary RBM the conditional probabilities are
 $$
 \begin{align}
@@ -1763,7 +1887,7 @@ while the visible units now follow a normal distribution, we see the hidden unit
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec55">Cost function </h2>
+<h2 id="___sec60">Cost function </h2>
 
 <p>
 When working with a training dataset, the most common training approach is maximizing the log-likelihood of the training data. The log likelihood characterizes the log-probability of generating the observed data using our generative model. Using this method our cost function is chosen as the negative log-likelihood. The learning then consists of trying to find parameters that maximize the probability of the dataset, and is known as Maximum Likelihood Estimation (MLE).
@@ -1783,7 +1907,9 @@ Our cost function is the negative log-likelihood, \( \mathcal{C}(\{ \theta_i \})
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec56">Optimization / Training </h2>
+<h2 id="___sec61">Optimization / Training </h2>
+
+<p>
 The training procedure of choice often is Stochastic Gradient Descent (SGD). It consists of a series of iterations where we update the parameters according to the equation
 $$
 \begin{align}
@@ -1826,7 +1952,7 @@ $$
 <p>
 <!-- !split  -->
 
-<h2 id="___sec57">More on RBMs </h2>
+<h2 id="___sec62">More on RBMs </h2>
 
 <p>
 The data-dependent term in the gradient is known as the positive phase of the gradient, while the model-dependent term is known as the negative phase of the gradient. The aim of the training is to lower the energy of configurations that are near observed data points (increasing their probability), and raising the energy of configurations that are far from observed data points (decreasing their probability).
@@ -1850,7 +1976,7 @@ To get the expecation values with respect to the <em>data</em>, we set the visib
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec58">Which sampling to use </h2>
+<h2 id="___sec63">Which sampling to use </h2>
 
 <p>
 To get the expectation values with respect to the <em>model</em>, we use Gibbs sampling. We can either initialize the \( \boldsymbol{x} \) randomly or with a training sample. While we ideally want a large number of Gibbs iterations \( n\rightarrow n \), one might decide to truncate it earlier for efficiency. Doing this while having intialized \( \boldsymbol{x} \) with a training data vector is referred to as contrastive divergence (CD), because one is then closer to approximating the gradient of this function than the negative log-likelihood. The contrastive divergence function is the difference between two Kullback-Leibler divergences (also called relative entropy), which measure how one probability distribution diverges from a second, expected probability distribution (in this case the estimated one from the ground truth one).
@@ -1858,7 +1984,137 @@ To get the expectation values with respect to the <em>model</em>, we use Gibbs s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec59">Recent examples: RBMs for the quantum many body problem </h2>
+<h2 id="___sec64">Kullback-Leibler relative entropy </h2>
+
+<p>
+When the goal of the training is to approximate a probability
+distribution, as it is in generative modeling, another relevant
+measure is the <b>Kullback-Leibler divergence</b>, also known as the
+relative entropy or Shannon entropy. It is a non-symmetric measure of the
+dissimilarity between two probability density functions \( p \) and
+\( q \). If \( p \) is the unkown probability which we approximate with \( q \),
+we can measure the difference by
+$$
+\begin{align}
+	\text{KL}(p||q) = \int_{-\infty}^{\infty} p (\boldsymbol{x}) \log \frac{p(\boldsymbol{x})}{q(\boldsymbol{x})}  d\boldsymbol{x}.
+\label{_auto25}
+\end{align}
+$$
+
+<p>
+Thus, the Kullback-Leibler divergence between the distribution of the
+training data \( f(\boldsymbol{x}) \) and the model distribution \( p(\boldsymbol{x}|
+\boldsymbol{\theta}) \) is
+
+$$
+\begin{align}
+	\text{KL} (f(\boldsymbol{x})|| p(\boldsymbol{x}| \boldsymbol{\theta})) =& \int_{-\infty}^{\infty}
+	f (\boldsymbol{x}) \log \frac{f(\boldsymbol{x})}{p(\boldsymbol{x}| \boldsymbol{\theta})} d\boldsymbol{x} 
+\label{_auto26}\\
+	=& \int_{-\infty}^{\infty} f(\boldsymbol{x}) \log f(\boldsymbol{x}) d\boldsymbol{x} - \int_{-\infty}^{\infty} f(\boldsymbol{x}) \log
+	p(\boldsymbol{x}| \boldsymbol{\theta}) d\boldsymbol{x} 
+\label{_auto27}\\
+	%=& \mathbb{E}_{f(\boldsymbol{x})} (\log f(\boldsymbol{x})) - \mathbb{E}_{f(\boldsymbol{x})} (\log p(\boldsymbol{x}| \boldsymbol{\theta}))
+	=& \langle \log f(\boldsymbol{x}) \rangle_{f(\boldsymbol{x})} - \langle \log p(\boldsymbol{x}| \boldsymbol{\theta}) \rangle_{f(\boldsymbol{x})} 
+\label{_auto28}\\
+	=& \langle \log f(\boldsymbol{x}) \rangle_{data} + \langle E(\boldsymbol{x}) \rangle_{data} + \log Z 
+\label{_auto29}\\
+	=& \langle \log f(\boldsymbol{x}) \rangle_{data} + \mathcal{C}_{LL} .
+\label{_auto30}
+\end{align}
+$$
+
+<p>
+The first term is constant with respect to \( \boldsymbol{\theta} \) since \( f(\boldsymbol{x}) \) is independent of \( \boldsymbol{\theta} \). Thus the Kullback-Leibler Divergence is minimal when the second term is minimal. The second term is the log-likelihood cost function, hence minimizing the Kullback-Leibler divergence is equivalent to maximizing the log-likelihood.
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec65">Optimizing the cost function </h2>
+
+<p>
+To further understand generative models it is useful to study the
+gradient of the cost function which is needed in order to minimize it
+using methods like stochastic gradient descent.
+
+<p>
+The partition function is the generating function of
+expectation values, in particular there are mathematical relationships
+between expectation values and the log-partition function. In this
+case we have
+$$
+\begin{align}
+	\langle \frac{ \partial E(\boldsymbol{x}; \theta_i) } { \partial \theta_i} \rangle_{model}
+	= \int p(\boldsymbol{x}| \boldsymbol{\theta}) \frac{ \partial E(\boldsymbol{x}; \theta_i) } { \partial \theta_i} d\boldsymbol{x} 
+	= -\frac{\partial \log Z(\theta_i)}{ \partial  \theta_i} .
+\label{_auto31}
+\end{align}
+$$
+
+<p>
+Here \( \langle \cdot \rangle_{model} \) is the expectation value over the model probability distribution \( p(\boldsymbol{x}| \boldsymbol{\theta}) \).
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec66">Setting up for gradient descent calculations </h2>
+
+<p>
+Using the previous relationship we can express the gradient of the cost function as
+
+$$
+\begin{align}
+	\frac{\partial \mathcal{C}_{LL}}{\partial \theta_i}
+	=& \langle \frac{ \partial E(\boldsymbol{x}; \theta_i) } { \partial \theta_i} \rangle_{data} + \frac{\partial \log Z(\theta_i)}{ \partial  \theta_i} 
+\label{_auto32}\\
+	=& \langle \frac{ \partial E(\boldsymbol{x}; \theta_i) } { \partial \theta_i} \rangle_{data} - \langle \frac{ \partial E(\boldsymbol{x}; \theta_i) } { \partial \theta_i} \rangle_{model} 
+\label{_auto33}\\
+	%=& \langle O_i(\boldsymbol{x}) \rangle_{data} - \langle O_i(\boldsymbol{x}) \rangle_{model}
+\label{_auto34}
+\end{align}
+$$
+
+<p>
+This expression shows that the gradient of the log-likelihood cost
+function is a <b>difference of moments</b>, with one calculated from
+the data and one calculated from the model. The data-dependent term is
+called the <b>positive phase</b> and the model-dependent term is
+called the <b>negative phase</b> of the gradient. We see now that
+minimizing the cost function results in lowering the energy of
+configurations \( \boldsymbol{x} \) near points in the training data and
+increasing the energy of configurations not observed in the training
+data. That means we increase the model's probability of configurations
+similar to those in the training data.
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec67">More interpretations </h2>
+
+<p>
+The gradient of the cost function also demonstrates why gradients of
+unsupervised, generative models must be computed differently from for
+those of for example FNNs. While the data-dependent expectation value
+is easily calculated based on the samples \( \boldsymbol{x}_i \) in the training
+data, we must sample from the model in order to generate samples from
+which to caclulate the model-dependent term. We sample from the model
+by using MCMC-based methods. We can not sample from the model directly
+because the partition function \( Z \) is generally intractable.
+
+<p>
+As in supervised machine learning problems, the goal is also here to
+perform well on <b>unseen</b> data, that is to have good
+generalization from the training data. The distribution \( f(x) \) we
+approximate is not the <b>true</b> distribution we wish to estimate,
+it is limited to the training data. Hence, in unsupervised training as
+well it is important to prevent overfitting to the training data. Thus
+it is common to add regularizers to the cost function in the same
+manner as we discussed for say linear regression.
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec68">Recent examples: RBMs for the quantum many body problem </h2>
 
 <p>
 The idea of applying RBMs to quantum many body problems was presented by G. Carleo and M. Troyer, working with ETH Zurich and Microsoft Research.
@@ -1882,10 +2138,102 @@ Some of their motivation included
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec60">Choose the right RBM </h2>
+<h2 id="___sec69">Choose the right RBM </h2>
 
 <p>
 Carleo and Troyer applied the RBM to the quantum mechanical spin lattice systems of the Ising model and Heisenberg model, with encouraging results. Our goal is to test the method on systems of moving particles. For the spin lattice systems it was natural to use a binary-binary RBM, with the nodes taking values of 1 and -1. For moving particles, on the other hand, we want the visible nodes to be continuous, representing position coordinates. Thus, we start by choosing a Gaussian-binary RBM, where the visible nodes are continuous and hidden nodes take on values of 0 or 1. If eventually we would like the hidden nodes to be continuous as well the rectified linear units seem like the most relevant choice.
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec70">Representing the wave function </h2>
+The wavefunction should be a probability amplitude depending on \( \boldsymbol{x} \). The RBM model is given by the joint\
+ distribution of \( \boldsymbol{x} \) and \( \boldsymbol{h} \)
+$$
+\begin{align}
+        F_{rbm}(\mathbf{x},\mathbf{h}) = \frac{1}{Z} e^{-\frac{1}{T_0}E(\mathbf{x},\mathbf{h})}.
+\label{_auto35}
+\end{align}
+$$
+
+To find the marginal distribution of \( \boldsymbol{x} \) we set:
+$$
+\begin{align}
+        F_{rbm}(\mathbf{x}) &= \sum_\mathbf{h} F_{rbm}(\mathbf{x}, \mathbf{h}) 
+\label{_auto36}\\
+                                &= \frac{1}{Z}\sum_\mathbf{h} e^{-E(\mathbf{x}, \mathbf{h})}.
+\label{_auto37}
+\end{align}
+$$
+
+<p>
+Now this is what we use to represent the wave function, calling it a neural-network quantum state (NQS)
+$$
+\begin{align}
+        \Psi (\mathbf{X}) &= F_{rbm}(\mathbf{x}) 
+\label{_auto38}\\
+        &= \frac{1}{Z}\sum_{\boldsymbol{h}} e^{-E(\mathbf{x}, \mathbf{h})} 
+\label{_auto39}\\
+        &= \frac{1}{Z} \sum_{\{h_j\}} e^{-\sum_i^M \frac{(x_i - a_i)^2}{2\sigma^2} + \sum_j^N b_j h_j + \sum_\
+{i,j}^{M,N} \frac{x_i w_{ij} h_j}{\sigma^2}} 
+\label{_auto40}\\
+        &= \frac{1}{Z} e^{-\sum_i^M \frac{(x_i - a_i)^2}{2\sigma^2}} \prod_j^N (1 + e^{b_j + \sum_i^M \frac{x\
+_i w_{ij}}{\sigma^2}}). 
+\label{_auto41}\\
+\label{_auto42}
+\end{align}
+$$
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec71">Choose the cost function </h2>
+Now we don't necessarily have training data (unless we generate it by using some other method). However, what we do have is the variational principle which allows us to obtain the ground state wave function by minimizing the expectation value of the energy of a trial wavefunction (corresponding to the untrained NQS). Similarly to the traditional variational Monte Carlo method then, it is the local energy we wish to minimize. The gradient to use for the stochastic gradient descent procedure is
+$$
+\begin{align}
+	G_i = \frac{\partial \langle E_L \rangle}{\partial \theta_i}
+	= 2(\langle E_L \frac{1}{\Psi}\frac{\partial \Psi}{\partial \theta_i} \rangle - \langle E_L \rangle \langle \frac{1}{\Psi}\frac{\partial \Psi}{\partial \theta_i} \rangle ),
+\label{_auto43}
+\end{align}
+$$
+
+where the local energy is given by
+$$
+\begin{align}
+	E_L = \frac{1}{\Psi} \hat{\mathbf{H}} \Psi.
+\label{_auto44}
+\end{align}
+$$
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec72">Running the codes </h2>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+You can find the codes for the simple two-electron case at the Github repository <a href="https://github.com/mhjensenseminars/MachineLearningTalk/tree/master/doc/Programs/MLcpp/src" target="_blank"><tt>https://github.com/mhjensenseminars/MachineLearningTalk/tree/master/doc/Programs/MLcpp/src</tt></a>. Python codes to come, only c++ as of now.
+
+<p>
+The trial wave function is based on the product of a Slater determinant with Gaussian orbitals, a simple Jastrow factor \( \exp{(r_{ij})} \) and the reduced Boltzmann machines.
+
+<p>
+The Broyden-Fletcher-Goldfarb-Shanno algorithm was used to perform the minimization. We used \( 14 \) hidden nodes in the calculations below.
+
+
+</div>
+
+
+<p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec73">Energy as function of iterations, \( N=2 \) electrons  </h2>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+<br /><br /><center><p><img src="figures/figN2.png" align="bottom" width=700></p></center><br /><br />
+</div>
+
 
 <p>
 
