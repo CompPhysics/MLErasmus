@@ -149,105 +149,6 @@ plt.show()
 
 !ec
 
-!split
-===== Maxwell-Boltzmann velocity distribution =====
-
-!bc pycod
-# Program to test the Metropolis algorithm with one particle at given temp in
-# one dimension
-#!/usr/bin/env python
-import numpy as np
-import matplotlib.mlab as mlab
-import matplotlib.pyplot as plt
-import random
-from math import sqrt, exp, log
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
-# initialize the rng with a seed
-random.seed()
-# Hard coding of input parameters
-MCcycles = 100000
-Temperature = 2.0
-beta = 1./Temperature
-InitialVelocity = -2.0
-CurrentVelocity = InitialVelocity
-Energy = 0.5*InitialVelocity*InitialVelocity
-VelocityRange = 10*sqrt(Temperature)
-VelocityStep = 2*VelocityRange/10.
-AverageEnergy = Energy
-AverageEnergy2 = Energy*Energy
-VelocityValues = np.zeros(MCcycles)
-# The Monte Carlo sampling with Metropolis starts here
-for i in range (1, MCcycles, 1):
-    TrialVelocity = CurrentVelocity + (2.0*random.random() - 1.0)*VelocityStep
-    EnergyChange = 0.5*(TrialVelocity*TrialVelocity -CurrentVelocity*CurrentVelocity);
-    if random.random() <= exp(-beta*EnergyChange):
-        CurrentVelocity = TrialVelocity
-        Energy += EnergyChange
-        VelocityValues[i] = CurrentVelocity
-    AverageEnergy += Energy
-    AverageEnergy2 += Energy*Energy
-#Final averages
-AverageEnergy = AverageEnergy/MCcycles
-AverageEnergy2 = AverageEnergy2/MCcycles
-Variance = AverageEnergy2 - AverageEnergy*AverageEnergy
-print(AverageEnergy, Variance)
-n, bins, patches = plt.hist(VelocityValues, 400, facecolor='green')
-
-plt.xlabel('$v$')
-plt.ylabel('Velocity distribution P(v)')
-plt.title(r'Velocity histogram at $k_BT=2$')
-plt.axis([-5, 5, 0, 600])
-plt.grid(True)
-from collections import Counter
-
-#print (Counter(VelocityValues))
-
-print (VelocityValues[:20])
-VelocityValues=list(Counter(VelocityValues).keys())
-d=list(Counter(VelocityValues).values())
-
-VelocityValues=np.asarray(VelocityValues)[:, np.newaxis]
-d=np.asarray(d)
-print (VelocityValues.shape, d.shape)
-
-plt.scatter(VelocityValues, d)
-plt.show()
-
-#2nd Degree Polynomial
-poly_feat=PolynomialFeatures(degree=20, include_bias=False)
-X_poly=poly_feat.fit_transform(VelocityValues)
-lin_reg=LinearRegression()
-poly_fit=lin_reg.fit(X_poly,d)
-
-y_plot=poly_fit.predict(X_poly)
-plt.title("Polynomial Fit")
-plt.plot(VelocityValues, y_plot, color='black', label="Fit")
-plt.show()
-
-#Decision Trees
-
-from sklearn.tree import DecisionTreeRegressor
-regr_1=DecisionTreeRegressor(max_depth=2)
-regr_2=DecisionTreeRegressor(max_depth=5)
-regr_3=DecisionTreeRegressor(max_depth=7)
-regr_1.fit(VelocityValues, d)
-regr_2.fit(VelocityValues, d)
-regr_3.fit(VelocityValues, d)
-
-X_test = np.arange(0.0, MCcycles, 0.01)[:, np.newaxis]
-y_1=regr_1.predict(X_test)
-y_2=regr_2.predict(X_test)
-y_3=regr_3.predict(X_test)
-
-plt.title("Decision Tree")
-plt.plot(X_test, y_1, color="red", label="max_depth=2", linewidth=2)
-plt.plot(X_test, y_2, color="green", label="max_depth=5", linewidth=2)
-plt.plot(X_test, y_3, color="m", label="max_depth=7", linewidth=2)
-plt.show()
-
-!ec
-
 
 !split
 ===== Building a tree, regression =====
@@ -460,99 +361,6 @@ s = -\sum_{k=1}^K p_{mk}\log{p_{mk}}.
 !et 
 
 
-!split
-===== Entropy and the ID3 algorithm =====
-
-
-!split
-===== Writing your own code for a classification tree =====
-
-!bc pycod
-def entropy(target_col):
-    """
-    Calculate the entropy of a dataset.
-    The only parameter of this function is the target_col parameter which specifies the target column
-    """
-    elements,counts = np.unique(target_col,return_counts = True)
-    entropy = np.sum([(-counts[i]/np.sum(counts))*np.log2(counts[i]/np.sum(counts)) for i in range(len(elements))])
-    return entropy
-
-def InfoGain(data,split_attribute_name,target_name="class"):
-    """
-    Calculate the information gain of a dataset. This function takes three parameters:
-    1. data = The dataset for whose feature the IG should be calculated
-    2. split_attribute_name = the name of the feature for which the information gain should be calculated
-    3. target_name = the name of the target feature. The default for this example is "class"
-    """    
-    #Calculate the entropy of the total dataset
-    total_entropy = entropy(data[target_name])
-    
-    ##Calculate the entropy of the dataset
-    
-    #Calculate the values and the corresponding counts for the split attribute 
-    vals,counts= np.unique(data[split_attribute_name],return_counts=True)
-    
-    #Calculate the weighted entropy
-    Weighted_Entropy = np.sum([(counts[i]/np.sum(counts))*entropy(data.where(data[split_attribute_name]==vals[i]).dropna()[target_name]) for i in range(len(vals))])
-    
-    #Calculate the information gain
-    Information_Gain = total_entropy - Weighted_Entropy
-    return Information_Gain
-       
-
-def ID3(data,originaldata,features,target_attribute_name="class",parent_node_class = None):
-    #Define the stopping criteria --> If one of this is satisfied, we want to return a leaf node#
-    
-    #If all target_values have the same value, return this value
-    if len(np.unique(data[target_attribute_name])) <= 1:
-        return np.unique(data[target_attribute_name])[0]
-    
-    #If the dataset is empty, return the mode target feature value in the original dataset
-    elif len(data)==0:
-        return np.unique(originaldata[target_attribute_name])[np.argmax(np.unique(originaldata[target_attribute_name],return_counts=True)[1])]
-    
-    #If the feature space is empty, return the mode target feature value of the direct parent node --> Note that
-    #the direct parent node is that node which has called the current run of the ID3 algorithm and hence
-    #the mode target feature value is stored in the parent_node_class variable.
-    
-    elif len(features) ==0:
-        return parent_node_class
-    
-    #If none of the above holds true, grow the tree!
-    
-    else:
-        #Set the default value for this node --> The mode target feature value of the current node
-        parent_node_class = np.unique(data[target_attribute_name])[np.argmax(np.unique(data[target_attribute_name],return_counts=True)[1])]
-        
-        #Select the feature which best splits the dataset
-        item_values = [InfoGain(data,feature,target_attribute_name) for feature in features] #Return the information gain values for the features in the dataset
-        best_feature_index = np.argmax(item_values)
-        best_feature = features[best_feature_index]
-        
-        #Create the tree structure. The root gets the name of the feature (best_feature) with the maximum information
-        #gain in the first run
-        tree = {best_feature:{}}
-        
-        
-        #Remove the feature with the best inforamtion gain from the feature space
-        features = [i for i in features if i != best_feature]
-        
-        #Grow a branch under the root node for each possible value of the root node feature
-        
-        for value in np.unique(data[best_feature]):
-            value = value
-            #Split the dataset along the value of the feature with the largest information gain and therwith create sub_datasets
-            sub_data = data.where(data[best_feature] == value).dropna()
-            
-            #Call the ID3 algorithm for each of those sub_datasets with the new parameters --> Here the recursion comes in!
-            subtree = ID3(sub_data,dataset,features,target_attribute_name,parent_node_class)
-            
-            #Add the sub tree, grown from the sub_dataset to the tree under the root node
-            tree[best_feature][value] = subtree
-            
-        return(tree)    
-
-!ec
 
 !split
 =====  Back to moons again =====
@@ -742,31 +550,6 @@ plt.show()
 !ec
 
 
-!split
-===== Classification again: The zoo data =====
-!bc pycod 
-import pandas as pd
-import numpy as np
-from pprint import pprint
-from sklearn.tree import DecisionTreeClassifier
-
-#Import the dataset 
-dataset = pd.read_csv('data/zoo.csv')
-#We drop the animal names since this is not a good feature to split the data on
-#dataset=dataset.drop('animal_name',axis=1)
-#Split the data into a training and a testing set
-train_features = dataset.iloc[:80,:-1]
-test_features = dataset.iloc[80:,:-1]
-train_targets = dataset.iloc[:80,-1]
-test_targets = dataset.iloc[80:,-1]
-#Train the model
-tree = DecisionTreeClassifier(criterion = 'entropy').fit(train_features,train_targets)
-#Predict the classes of new, unseen data
-prediction = tree.predict(test_features)
-#Check the accuracy
-print("The prediction accuracy is: ",tree.score(test_features,test_targets)*100,"%")
-
-!ec
 
 !split
 ===== Pros and cons of trees, pros =====
@@ -1027,10 +810,4 @@ rnd_clf.fit(X_train, y_train)
 y_pred_rf = rnd_clf.predict(X_test)
 np.sum(y_pred == y_pred_rf) / len(y_pred) 
 !ec
-
-
-!split 
-===== Boosting and more =====
-More material to come here.
-
 

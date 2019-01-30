@@ -1094,27 +1094,3 @@ sol[’x’]
 sol[’primal objective’]
 !ec
 
-!split
-===== Back to the more realistic cases =====
-
-We are now ready to return to our setup of the optmization problem for a more realistic case. Introducint the _slack_ parameter $C$ we have
-!bt
-\[
-\frac{1}{2} \bm{\lambda}^T\begin{bmatrix} y_1y_1K(\bm{x}_1,\bm{x}_1) & y_1y_2K(\bm{x}_1,\bm{x}_2) & \dots & \dots & y_1y_nK(\bm{x}_1,\bm{x}_n) \\
-y_2y_1K(\bm{x}_2,\bm{x}_1) & y_2y_2K(\bm{x}_2,\bm{x}_2) & \dots & \dots & y_1y_nK(\bm{x}_2,\bm{x}_n) \\
-\dots & \dots & \dots & \dots & \dots \\
-\dots & \dots & \dots & \dots & \dots \\
-y_ny_1K(\bm{x}_n,\bm{x}_1) & y_ny_2K(\bm{x}_n\bm{x}_2) & \dots & \dots & y_ny_nK(\bm{x}_n,\bm{x}_n) \\
-\end{bmatrix}\bm{\lambda}-\mathbb{I}\bm{\lambda}, 
-\]
-!et
-subject to $\bm{y}^T\bm{\lambda}=0$. Here we defined the vectors $\bm{\lambda} =[\lambda_1,\lambda_2,\dots,\lambda_n]$ and 
-$\bm{y}=[y_1,y_2,\dots,y_n]$. 
-With  the slack constants this leads to the additional constraint $0\leq \lambda_i \leq C$.
-
-_code will be added_
-
-
-!split
-===== Multiclass problems and regression with SVMs =====
-This material will be added later.

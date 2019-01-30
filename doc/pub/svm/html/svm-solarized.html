@@ -6,6 +6,7 @@ Automatically generated HTML file from DocOnce source
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Data Analysis and Machine Learning: Support Vector Machines">
 
 <title>Data Analysis and Machine Learning: Support Vector Machines</title>
@@ -63,12 +64,7 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec21'),
               ('How do we solve these problems?', 2, None, '___sec22'),
-              ('A simple example', 2, None, '___sec23'),
-              ('Back to the more realistic cases', 2, None, '___sec24'),
-              ('Multiclass problems and regression with SVMs',
-               2,
-               None,
-               '___sec25')]}
+              ('A simple example', 2, None, '___sec23')]}
 end of tocinfo -->
 
 <body>
@@ -110,7 +106,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University</b></center>
 <br>
 <p>
-<center><h4>Dec 7, 2018</h4></center> <!-- date -->
+<center><h4>Jan 30, 2019</h4></center> <!-- date -->
 <br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -1222,39 +1218,12 @@ sol[<span style="color: #a61717; background-color: #e3d2d2">’</span>x<span sty
 sol[<span style="color: #a61717; background-color: #e3d2d2">’</span>primal objective<span style="color: #a61717; background-color: #e3d2d2">’</span>]
 </pre></div>
 <p>
-<!-- !split --><br><br><br><br><br><br><br><br><br><br>
-
-<h2 id="___sec24">Back to the more realistic cases </h2>
-
-<p>
-We are now ready to return to our setup of the optmization problem for a more realistic case. Introducint the <b>slack</b> parameter \( C \) we have
-$$
-\frac{1}{2} \boldsymbol{\lambda}^T\begin{bmatrix} y_1y_1K(\boldsymbol{x}_1,\boldsymbol{x}_1) & y_1y_2K(\boldsymbol{x}_1,\boldsymbol{x}_2) & \dots & \dots & y_1y_nK(\boldsymbol{x}_1,\boldsymbol{x}_n) \\
-y_2y_1K(\boldsymbol{x}_2,\boldsymbol{x}_1) & y_2y_2K(\boldsymbol{x}_2,\boldsymbol{x}_2) & \dots & \dots & y_1y_nK(\boldsymbol{x}_2,\boldsymbol{x}_n) \\
-\dots & \dots & \dots & \dots & \dots \\
-\dots & \dots & \dots & \dots & \dots \\
-y_ny_1K(\boldsymbol{x}_n,\boldsymbol{x}_1) & y_ny_2K(\boldsymbol{x}_n\boldsymbol{x}_2) & \dots & \dots & y_ny_nK(\boldsymbol{x}_n,\boldsymbol{x}_n) \\
-\end{bmatrix}\boldsymbol{\lambda}-\mathbb{I}\boldsymbol{\lambda}, 
-$$
-
-subject to \( \boldsymbol{y}^T\boldsymbol{\lambda}=0 \). Here we defined the vectors \( \boldsymbol{\lambda} =[\lambda_1,\lambda_2,\dots,\lambda_n] \) and 
-\( \boldsymbol{y}=[y_1,y_2,\dots,y_n] \). 
-With  the slack constants this leads to the additional constraint \( 0\leq \lambda_i \leq C \).
-
-<p>
-<b>code will be added</b>
-
-<p>
-<!-- !split --><br><br><br><br><br><br><br><br><br><br>
-
-<h2 id="___sec25">Multiclass problems and regression with SVMs </h2>
-This material will be added later.
 
 <!-- ------------------- end of main content --------------- -->
 
 
 <center style="font-size:80%">
-<!-- copyright --> &copy; 1999-2018, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
+<!-- copyright --> &copy; 1999-2019, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
 </center>
 
 
