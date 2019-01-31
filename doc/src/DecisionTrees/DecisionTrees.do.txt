@@ -213,6 +213,9 @@ so that we obtain the lowest MSE, that is
 which we want to minimize by considering all predictors $x_1,x_2,\dots,x_p$.
 We consider also all possible values of $s$ for each predictor. These values could be determined by randomly assigned numbers or by starting at the midpoint and then proceed till we find an optimal value.
 
+!split
+=====  Finding the optimal subdivision =====
+ 
 For any $j$ and $s$, we define the pair of
 half-planes where $\overline{y}_{R_1}$ is the mean response for the training
 observations in $R_1(j,s)$, and $\overline{y}_{R_2}$ is the mean response for the

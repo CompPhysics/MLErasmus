@@ -75,25 +75,26 @@ div { text-align: justify; text-justify: inter-word; }
                None,
                '___sec4'),
               ('Making a tree', 2, None, '___sec5'),
-              ('Pruning the tree', 2, None, '___sec6'),
-              ('Cost complexity pruning', 2, None, '___sec7'),
-              ('A schematic procedure', 2, None, '___sec8'),
-              ('A classification tree', 2, None, '___sec9'),
-              ('Growing a classification tree', 2, None, '___sec10'),
-              ('Classification tree, how to split nodes', 2, None, '___sec11'),
-              ('Back to moons again', 2, None, '___sec12'),
-              ('Playing around with regions', 2, None, '___sec13'),
-              ('Regression trees', 2, None, '___sec14'),
-              ('Final regressor code', 2, None, '___sec15'),
-              ('Pros and cons of trees, pros', 2, None, '___sec16'),
-              ('Disadvantages', 2, None, '___sec17'),
-              ('Bagging', 2, None, '___sec18'),
-              ('Simple example, head or tail', 2, None, '___sec19'),
-              ('Random forests', 2, None, '___sec20'),
-              ('A simple scikit-learn example', 2, None, '___sec21'),
-              ('Please, not the moons again!', 2, None, '___sec22'),
-              ('Bagging examples', 2, None, '___sec23'),
-              ('Then random forests', 2, None, '___sec24')]}
+              ('Finding the optimal subdivision', 2, None, '___sec6'),
+              ('Pruning the tree', 2, None, '___sec7'),
+              ('Cost complexity pruning', 2, None, '___sec8'),
+              ('A schematic procedure', 2, None, '___sec9'),
+              ('A classification tree', 2, None, '___sec10'),
+              ('Growing a classification tree', 2, None, '___sec11'),
+              ('Classification tree, how to split nodes', 2, None, '___sec12'),
+              ('Back to moons again', 2, None, '___sec13'),
+              ('Playing around with regions', 2, None, '___sec14'),
+              ('Regression trees', 2, None, '___sec15'),
+              ('Final regressor code', 2, None, '___sec16'),
+              ('Pros and cons of trees, pros', 2, None, '___sec17'),
+              ('Disadvantages', 2, None, '___sec18'),
+              ('Bagging', 2, None, '___sec19'),
+              ('Simple example, head or tail', 2, None, '___sec20'),
+              ('Random forests', 2, None, '___sec21'),
+              ('A simple scikit-learn example', 2, None, '___sec22'),
+              ('Please, not the moons again!', 2, None, '___sec23'),
+              ('Bagging examples', 2, None, '___sec24'),
+              ('Then random forests', 2, None, '___sec25')]}
 end of tocinfo -->
 
 <body>
@@ -135,7 +136,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University</b></center>
 <br>
 <p>
-<center><h4>Jan 30, 2019</h4></center> <!-- date -->
+<center><h4>Jan 31, 2019</h4></center> <!-- date -->
 <br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -362,6 +363,11 @@ which we want to minimize by considering all predictors \( x_1,x_2,\dots,x_p \).
 We consider also all possible values of \( s \) for each predictor. These values could be determined by randomly assigned numbers or by starting at the midpoint and then proceed till we find an optimal value.
 
 <p>
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+
+<h2 id="___sec6">Finding the optimal subdivision </h2>
+
+<p>
 For any \( j \) and \( s \), we define the pair of
 half-planes where \( \overline{y}_{R_1} \) is the mean response for the training
 observations in \( R_1(j,s) \), and \( \overline{y}_{R_2} \) is the mean response for the
@@ -386,7 +392,7 @@ region contains more than five observations.
 <p>
 <!-- !split  -->
 
-<h2 id="___sec6">Pruning the tree </h2>
+<h2 id="___sec7">Pruning the tree </h2>
 
 <p>
 The above procedure is rather straightforward, but leads often to
@@ -405,7 +411,7 @@ parameter \( \alpha \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec7">Cost complexity pruning </h2>
+<h2 id="___sec8">Cost complexity pruning </h2>
 For each value of \( \alpha \)  there corresponds a subtree \( T \in T_0 \) such that
 $$
 \sum_{m=1}^{\overline{T}}\sum_{i:x_i\in R_m}(y_i-\overline{y}_{R_m})^2+\alpha\overline{T},
@@ -436,7 +442,7 @@ subtree corresponding to \( \alpha \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec8">A schematic procedure </h2>
+<h2 id="___sec9">A schematic procedure </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -462,7 +468,7 @@ subtree corresponding to \( \alpha \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec9">A classification tree </h2>
+<h2 id="___sec10">A classification tree </h2>
 
 <p>
 A classification tree is very similar to a regression tree, except
@@ -481,7 +487,7 @@ fall into that region.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec10">Growing a classification tree </h2>
+<h2 id="___sec11">Growing a classification tree </h2>
 
 <p>
 The task of growing a
@@ -505,7 +511,7 @@ than is the classification error rate.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec11">Classification tree, how to split nodes </h2>
+<h2 id="___sec12">Classification tree, how to split nodes </h2>
 If our targets are the outcome of a classification process that takes for example 
 \( k=1,2,\dots,K \) values, the only thing we need to think of is to set up the splitting criteria for each node.
 
@@ -547,7 +553,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec12">Back to moons again </h2>
+<h2 id="___sec13">Back to moons again </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -619,7 +625,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec13">Playing around with regions </h2>
+<h2 id="___sec14">Playing around with regions </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -647,7 +653,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec14">Regression trees </h2>
+<h2 id="___sec15">Regression trees </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -669,7 +675,7 @@ tree_reg<span style="color: #666666">.</span>fit(X, y)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec15">Final regressor code </h2>
+<h2 id="___sec16">Final regressor code </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -747,7 +753,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec16">Pros and cons of trees, pros </h2>
+<h2 id="___sec17">Pros and cons of trees, pros </h2>
 
 <ul>
 <li> White box, easy to interpret model. Some people believe that decision trees more closely mirror human decision-making than do the regression and classification approaches discussed earlier (think of support vector machines)</li>
@@ -761,7 +767,7 @@ plt<span style="color: #666666">.</span>show()
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec17">Disadvantages </h2>
+<h2 id="___sec18">Disadvantages </h2>
 
 <ul>
 <li> Unfortunately, trees generally do not have the same level of predictive accuracy as some of the other regression and classification approaches</li>
@@ -778,7 +784,7 @@ However, by aggregating many decision trees, using methods like bagging, random 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec18">Bagging </h2>
+<h2 id="___sec19">Bagging </h2>
 
 <p>
 The <b>plain</b> decision trees suffer from high
@@ -821,7 +827,7 @@ predictor, averaged over all \( B \) trees.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec19">Simple example, head or tail </h2>
+<h2 id="___sec20">Simple example, head or tail </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -841,7 +847,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec20">Random forests </h2>
+<h2 id="___sec21">Random forests </h2>
 
 <p>
 Random forests provide an improvement over bagged trees by way of a
@@ -883,7 +889,7 @@ setting.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec21">A simple scikit-learn example </h2>
+<h2 id="___sec22">A simple scikit-learn example </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -901,7 +907,7 @@ accuracy <span style="color: #666666">=</span> cross_validate(Random_Forest_mode
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec22">Please, not the moons again! </h2>
+<h2 id="___sec23">Please, not the moons again! </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
@@ -959,7 +965,7 @@ voting_clf<span style="color: #666666">.</span>fit(X_train, y_train)
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec23">Bagging examples </h2>
+<h2 id="___sec24">Bagging examples </h2>
 
 <p>
 
@@ -1020,7 +1026,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec24">Then random forests </h2>
+<h2 id="___sec25">Then random forests </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
