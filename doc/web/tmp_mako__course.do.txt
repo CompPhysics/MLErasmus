@@ -241,21 +241,6 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/ipynb/odenn.ipynb"
 
 
-===== Elements of Bayesian theory =====
-
-
-
- * LaTeX PDF:
-   * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/pdf/Bayesian-minted.pdf"
- * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/html/Bayesian.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/html/Bayesian-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/html/Bayesian-bs.html"
- * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Bayesian/ipynb/Bayesian.ipynb"
-
-
 
 
 !split
