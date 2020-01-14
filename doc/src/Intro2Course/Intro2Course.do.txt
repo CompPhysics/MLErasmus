@@ -1,20 +1,17 @@
-TITLE: Applied Data Analysis and Machine Learning: Introduction to the course
+TITLE: Applied Data Analysis and Machine Learning: Introduction to the course, Logistics and Practicalities
 AUTHOR: Morten Hjorth-Jensen  {copyright, 1999-present|CC BY-NC} at Department of Physics, University of Oslo & Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University
 DATE: today
 
 
 
-
 !split
-===== Teachers  =====
+===== Overview of first week =====
 
 !bblock
-
-_Teachers :_
-o "Kristine B. Heine":"https://www.mn.uio.no/ifi/english/?vrtx=person-view&uid=krisbhei"
-o "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/"
-o "Bendik Samseth":"https://www.mn.uio.no/fysikk/english/?vrtx=person-view&uid=bendiksa"
-
+  * Thursday August 22: First lecture: Presentation of the course, aims and content
+  * Thursday: Second Lecture: Start with simple linear regression and repetition of linear algebra
+  * Friday August 23: Linear regression   
+  * Computer lab: Tuesday. First time: Tuesday August 27. 
 !eblock
 
 
@@ -22,15 +19,73 @@ o "Bendik Samseth":"https://www.mn.uio.no/fysikk/english/?vrtx=person-view&uid=b
 ===== Lectures and ComputerLab =====
 
 !bblock
-* Time: January 21-31, 2019. 
-* Place: GANIL, Caen
+  * Lectures: Thursday (2.15pm-4pm, this may change) and Friday (12.15pm-2pm).
+  * Weekly reading assignments needed to solve projects and exercises.
+  * Weekly exercises when not working on projects. You can hand in exercises if you want.
+  * First hour of each lab session may be used to discuss technicalities, address questions etc linked with projects and exercises.
+  * Detailed lecture notes, exercises, all programs presented, projects etc can be found at the homepage of the course.
+  * Computerlab: Tuesday (8am-4pm), VB IT-auditorium 3. Depending on how many enlist we may extend the lab sessions
+  * Weekly plans and all other information are on the official webpage.
+  * No final exam, three projects that are graded and have to be approved. 
 !eblock
 
-!bblock  Organization of the day
-o Lectures 9am-12pm 
-o Lunch 12pm-2pm
-o Computerlab 2pm-6pm
-!eblock 
+
+
+
+!split
+===== Course Format =====
+
+!bblock
+  * Three compulsory projects. Electronic reports only using "devilry":"https://devilry.ifi.uio.no/" to hand in projects and "Git":"https://github.com/" for repository and all your material.
+  * Evaluation and grading: The three projects are graded and each counts 1/3 of the final mark. No final written or oral exam.
+    o For the last project Each group/participant submits a proposal or works with suggested (by us) proposals for the project.
+    o If possible, we would like to organize the last project as a workshop where each group makes a poster and presents this to all other participants of the course
+    o Poster session where all participants can study and discuss the other proposals.
+    o Based on feedback etc, each group finalizes the report and submits for grading. 
+  * Python is the default programming language, but feel free to use C/C++ and/or Fortran or other programmin languages. All source codes discussed during the lectures can be found at the webpage and "github address":"https://github.com/CompPhysics/MachineLearning/tree/master/doc/Programs" of the course. 
+!eblock
+
+
+
+
+!split
+===== Teachers and ComputerLab =====
+
+!bblock
+
+_Teachers :_
+
+o "Hanna Svennevik":"https://www.researchgate.net/profile/Hanna_Svennevik"
+o "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/"
+o "Lucas Charpentier":"https://no.linkedin.com/in/lucas-charpentier-176206171"
+o "Stian Bilek":"https://www.researchgate.net/profile/Stian_Bilek"
+o "Øyvind Sigmundson Schøyen":"https://github.com/Schoyen"
+
+
+
+|------------------------------------------------------|
+|      day         |        Time |
+|----------------------------------------------------|
+| Group 1: Tuesday | 8am-10am |
+| Group 2: Tuesday | 10am-12pm |  
+| Group 3: Tuesday | 12pm-2pm   | 
+| Group 4: Tuesday | 2pm-4pm   | 
+|-------------------------------------------------|
+
+!eblock
+
+!split
+===== Deadlines for projects (tentative) =====
+
+!bblock
+
+o Project 1: September 30 (graded with feedback)
+o Project 2: November 13 (graded with feedback)
+o Project 3: December 15  (graded with feedback)
+
+Projects are handed in using devilry.ifi.uio.no. We use Github as repository for codes, benchmark calculations etc. Comments and feedback on projects only via devilry. 
+
+!eblock
 
 
 
@@ -38,15 +93,17 @@ o Computerlab 2pm-6pm
 ===== Learning outcomes =====
 
 !bblock
-The course introduces a variety of central algorithms and methods essential for studies of data analysis and machine learning. The course is project based and through the various projects, normally three, you will be exposed to fundamental research problems in these fields, with the aim to reproduce state of the art scientific results. You will learn to develop and structure large codes for studying these systems, get acquainted with computing facilities and learn to handle large scientific projects. A good scientific and ethical conduct is emphasized throughout the course. More specifically, after this course you will
 
-* Learn about basic data analysis, Monte Carlo methods, data optimization and machine learning;
-* Be capable of extending the acquired knowledge to other systems and cases;
-* Have an understanding of central algorithms used in machine learning;
-* Gain knowledge of central aspects of Monte Carlo methods, Markov chains, and their possible applications;
-* Understand linear methods for regression and classification;
-* Learn about neural network, genetic algorithms and Boltzmann machines;
-* Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++.
+* Learn about basic data analysis, statistical analysis, Bayesian statistics, Monte Carlo sampling, data optimization and machine learning
+* Be capable of extending the acquired knowledge to other systems and cases
+* Have an understanding of central algorithms used in data analysis and machine learning
+* Gain knowledge of central aspects of Monte Carlo methods, Markov chains, Gibbs samplers and their possible applications
+* Understand linear methods for regression and classification, from ordinary least squares, via Lasso and Ridge to Logistic regression
+* Learn about various neural networks and deep  learning methods for supervised and unsupervised learning
+* Learn about about decision trees and random forests
+* Learn about support vector machines and kernel transformations
+* Reduction of data sets, from PCA to clustering, supervised and unsupervided methods
+* Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++
 
 !eblock
 
@@ -54,16 +111,14 @@ The course introduces a variety of central algorithms and methods essential for 
 ===== Topics covered in this course: Statistical analysis and optimization of data =====
 
 !bblock 
-The following topics will be covered
-
-* Basic concepts in statistics, expectation values, variance, covariance, correlation functions and errors;
-* Simpler models, binomial distribution, the Poisson distribution, simple and multivariate normal distributions;
-* Central elements from linear algebra
+* Basic concepts, expectation values, variance, covariance, correlation functions and errors
+* Simpler models, binomial distribution, the Poisson distribution, simple and multivariate normal distributions
+* Central elements of Bayesian statistics and modeling
 * Gradient methods for data optimization
-* Monte Carlo methods, Markov chains, Metropolis-Hastings algorithm;
-* Linear methods for regression and classification;
-* Estimation of errors using cross-validation, blocking, bootstrapping and jackknife methods;
-* Principal Component Analysis and Clustering algorithms;
+* Monte Carlo methods, Markov chains, Metropolis-Hastings algorithm
+* Linear methods for regression and classification
+* Estimation of errors using cross-validation, blocking, bootstrapping and jackknife methods
+* Practical optimization using Singular-value decomposition and least squares for parameterizing data
 !eblock
 
 
@@ -71,159 +126,46 @@ The following topics will be covered
 ===== Topics covered in this course: Machine Learning =====
 
 !bblock 
-* Linear and non-linear regression 
-* Boltzmann machines;
-* Neural networks;
-* Decisions trees and random forests
+The following topics will be covered
+* Linear Regression and Logistic Regression
+* Neural networks and deep learning
+* Decisions trees and nearest neighbor algorithms
 * Support vector machines
-
+* Bayesian Neural Networks
+* Boltzmann Machines
+* Dimensionality reduction, from PCA to cluster models
 !eblock
+
 
 !split
 ===== Extremely useful tools, strongly recommended =====
 
-!bblock Discussed at the lab sessions
-  * GIT for version control
-  * ipython/jupyter notebook
-  * Anaconda and other Python environments
+!bblock and discussed at the lab sessions
+  * GIT for version control, highly recommended
+  * Devilry for handing in projects, next week
+  * Anaconda and other Python environments, see intro slides
 !eblock
+
 
 
 
 
 !split
-===== Course Content and detailed plan  =====
-!bblock
+===== Other courses on Data science and Machine Learning  at UiO =====
 
-Lectures are approximately 45 min each with a small break between each lecture. There is also a coffee break of 30 min in the morning sessions. It will most likely be scheduled around 1045am and is not marked in the program below. Lunch is from 12pm to 2pm. The lab sessions start at 2pm and end at 6pm.
-The acronyms are 
-* BS: Bendik Samseth
-* KBH: Kristine B. Hein
-* MHJ: Morten Hjorth-Jensen
+The link here URL:"https://www.mn.uio.no/english/research/about/centre-focus/innovation/data-science/studies/"  gives an excellent overview of courses on Machine learning at UiO.
 
-!eblock
-
-=== Week 1, January 21-26 ===
-
-!bblock
-
-|--------------------------------------------------------------------------|
-| Day   |  | Lecture Topics and lecturer |   Projects and exercises        |
-|--------------------------------------------------------------------------|
-| Monday 21 | 9am-945am | "Introduction and welcome":"https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction-bs.html" (MHJ) |                 |
-|        | 10am-1045am| "Review of Python and Linear Algebra":"https://compphysics.github.io/MLErasmus/doc/pub/Linalg/html/Linalg-bs.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Getting started with Linear Regression":"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Python installations and setups, anaconda and more | Exercise set 1 (BS,KBH, MHJ)|
-|--------------------------------------------------------------------------|
-| Tuesday 22 | 9am-945am | "Linear Regression":"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html"  (MHJ) |                 |
-|        | 10am-1045am| "Linear Regression, Lasso and Ridge":"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Linear Regression, Lasso and Ridge":"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Brief intro to _scikit-learn_ | Exercise set 2 (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-| Wednesday 23 | 9am-945am | "Summary of linear regression":"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html" (MHJ) |                 |
-|        | 10am-1045am| "Statistical analysis of data, bias and variance":"https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Statistical analysis of data, bias and variance":"https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | More _scikit-learn_ functionality  | Project 1 (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-| Thursday 24 | 9am-945am | "Statistical analysis, cross-validation and Bootstrap":"https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html" (MHJ) |                 |
-|        | 10am-1045am| "Statistical analysis, cross-validation and Bootstrap":"https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Optimization and gradient descent":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Statistics tools | Project 1 (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-| Friday 25 | 9am-945am | "Optimization and Gradient descent":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html" (MHJ) |                 |
-|        | 10am-1045am| "Logistic Regression":"https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/LogReg.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Logistic regression and classification and start neural networks":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Gradient descent coding | Project 1 (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-| Saturday 26 | 9am-945am | "Neural Networks":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/NeuralNet.html" (MHJ) |                 |
-|        | 10am-1045am| "Neural Networks and the back propagation algo":"https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Neural Networks and the Back propagation algo":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-3pm   | Only discussion of project 1 | Project 1 (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-
-!eblock
-
-=== Week 2, January 28-31 ===
-
-!bblock 
-
-|--------------------------------------------------------------------------|
-| Day   |  | Lecture Topics and lecturer |   Projects and exercises        |
-|--------------------------------------------------------------------------|
-| Monday 28 | 9am-945am | "Neural networks, setting up code for back propagation":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |                 |
-|        | 10am-1045am| "Neural networks,examples":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Neural networks, examples and convolutional NN, setting up your code":"https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Introduction to Tensorflow and Keras examples  | Projects 1 and  2 (BS,KBH, MHJ)|
-|--------------------------------------------------------------------------|
-| Tuesday 29 | 9am-945am | "Solving differential equations with Neural Networks":"https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn.html" (KBH)  |                 |
-|        | 10am-1045am| "Boltzmann machines and the the many-body problem":"https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm| "Boltzmann machines and the the many-body problem":"https://compphysics.github.io/MLErasmus/doc/pub/BM/html/BM.html" (MHJ) |  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Tensorflow/Keras and CNNs  | Projects 1 and  2 (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-| Wednesday 30 | 9am-945am | "Decision Trees and Bagging":"https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees.html" (MHJ) |                 |
-|        | 10am-1045am| "Bagging, Ensembles  and Random Forests":"https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees.html" (MHJ) |         |
-|        |  1045am-1115am | Break |   |
-|        |  1115am-12pm|  | "Support Vector Machines":"https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm.html" (MHJ)  |
-|        | 12pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Continuation of SVM lectures and work on projects | Projects 1 and  2 (BS,KBH, MHJ) |
-|--------------------------------------------------------------------------|
-| Thursday 31 | 930am-1230am | Work on Projects 1 and 2 |  (BS, KBH)               |
-|        | 1230pm-2pm  | Lunch +own activities |                             |
-|        | 2pm-6pm   | Work on projects | Projects 1 and  2 (BS,KBH) |
-|--------------------------------------------------------------------------|
-
-!eblock
-
-!split
-===== Teaching and projects =====
-!bblock
-
-The course will be taught as an intensive  course of duration of two weeks, with a
-total time of 30 h of lectures, 40 h of exercises and  2 projects that will be graded and form the final assessment. Each project counts 50% of the final grade. They have to be finalized two weeks after the course ended. 
-
-The final assignment will be graded
-with marks A, B, C, D, E and failed. The grades will be available not later than March 1.
-!eblock
-
-
-!bblock The organization of a typical course day is as follows:
-
-|------------------------------------------------------------------------|
-|  Time  |  Activity                                                     |
-|------------------------------------------------------------------------|
-| 9am12pm| Lectures, project relevant information and directed exercises|
-| 12pm-2pm| Lunch and own activities                                      |
-| 2pm-6pm |  Computational projects, exercises  and hands-on sessions    |
-| 6pm-7pm |  Wrap-up of the day and eventual student presentations and/or further discussions      |
-|------------------------------------------------------------------------| 
-
-!eblock
-
-
-!split
-===== Suggested Literature =====
-
-!bblock
-Possible textbooks
-* HTF: "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570"
-* AG: "Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly":"http://shop.oreilly.com/product/0636920052289.do"
-!eblock
+o "STK2100 Machine learning and statistical methods for prediction and classification":"http://www.uio.no/studier/emner/matnat/math/STK2100/index-eng.html". 
+o "IN3050 Introduction to Artificial Intelligence and Machine Learning":"https://www.uio.no/studier/emner/matnat/ifi/IN3050/index-eng.html". Introductory course in machine learning and AI with an algorithmic approach. 
+o "STK-INF3000/4000 Selected Topics in Data Science":"http://www.uio.no/studier/emner/matnat/math/STK-INF3000/index-eng.html". The course provides insight into selected contemporary relevant topics within Data Science. 
+o "IN4080 Natural Language Processing":"https://www.uio.no/studier/emner/matnat/ifi/IN4080/index.html". Probabilistic and machine learning techniques applied to natural language processing. 
+o "STK-IN4300 Statistical learning methods in Data Science":"https://www.uio.no/studier/emner/matnat/math/STK-IN4300/index-eng.html". An advanced introduction to statistical and machine learning. For students with a good mathematics and statistics background.
+o "INF4490 Biologically Inspired Computing":"http://www.uio.no/studier/emner/matnat/ifi/INF4490/". An introduction to self-adapting methods also called artificial intelligence or machine learning. 
+o "IN-STK5000  Adaptive Methods for Data-Based Decision Making":"https://www.uio.no/studier/emner/matnat/ifi/IN-STK5000/index-eng.html". Methods for adaptive collection and processing of data based on machine learning techniques. 
+o "IN5400/INF5860 Machine Learning for Image Analysis":"https://www.uio.no/studier/emner/matnat/ifi/IN5400/". An introduction to deep learning with particular emphasis on applications within Image analysis, but useful for other application areas too.
+o "TEK5040 Deep learning for autonomous systems":"https://www.uio.no/studier/emner/matnat/its/TEK5040/". The course addresses advanced algorithms and architectures for deep learning with neural networks. The course provides an introduction to how deep-learning techniques can be used in the construction of key parts of advanced autonomous systems that exist in physical environments and cyber environments.
+o "STK4051 Computational Statistics":"https://www.uio.no/studier/emner/matnat/math/STK4051/index-eng.html"
+o "STK4021 Applied Bayesian Analysis and Numerical Methods":"https://www.uio.no/studier/emner/matnat/math/STK4021/index-eng.html"
 
 
 

@@ -1,4 +1,4 @@
-TITLE: Project 2 on Machine Learning, deadline November 12
+TITLE: Project 2 on Machine Learning, deadline November 8
 AUTHOR: "Data Analysis and Machine Learning FYS-STK3155/FYS4155":"http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html" {copyright, 1999-present|CC BY-NC} at Department of Physics, University of Oslo, Norway
 DATE: today
 
@@ -6,246 +6,66 @@ DATE: today
 ===== Classification and Regression, from linear and logistic regression to neural networks  =====
 
 The main aim of this project is to study both classification and
-regression problems, starting with the regression algorithms studied
+regression problems, where we can reuse the regression algorithms studied
 in project 1. We will include logistic regresion for classification
 problems and write our own multilayer perceptron code for studying
 both regression and classification problems.  The codes developed in
 project 1, including bootstrap and/or cross-validation as well as the
-computation of the mean-squared error and the R2 score function can
-also be utilized (and included in logistic regression and the neural
-network codes) in the present analysis.
-
-We will use the so-called Ising model for  our training data and will
-focus on supervised training. We will follow closely the recent
-article of "Mehta et al, arXiv
-1803.08823":"https://arxiv.org/abs/1803.08823". This article stands
-out as an excellent review on machine learning (ML) algorithms.
-The added benefit is that each figure and
-model presented in "this article is accompanied by its jupyter
-notebook":"https://physics.bu.edu/~pankajm/MLnotebooks.html". This
-means that we can start using these and compare with our own results.
-They provide also the data set for the regression and classification
-analysis that we will explore.  In this sense, with their available
-notebooks, it makes life easier since we can compare our own codes
-with their codes.
+computation of the mean-squared error and/or the $R2$ or the accuracy score (classification problems) functions can
+also be utilized in the present analysis. 
 
 
+The data sets that we propose here are (the default sets)
+
+* Regression (fitting a continuous function). In this part you will need to bring up your results from project 1 and compare these with what you get from you Neural Network code to be developed here. The data sets could be
+  o Either the Franke function or the terrain data from project 1, or data sets your propose.
+* Classification. Here you will also need to develop a Logistic regression code that you will use to compare with the Neural Network code. The data set we propose are
+  o The credit card data set from "UCI":"https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients". This data set links to a "recent scientific article":"https://bradzzz.gitbooks.io/ga-seattle-dsi/content/dsi/dsi_05_classification_databases/2.1-lesson/assets/datasets/DefaultCreditCardClients_yeh_2009.pdf".  Furthermore, in the lecture slides on "Logistic Regression":"https://compphysics.github.io/MachineLearning/doc/pub/LogReg/html/LogReg.html", you will find an example code for the Credit Card data. You could use this code as an example on how to read the data and use _Scikit-Learn_ to run a classification problem.  
 
 
-With the abovementioned configurations we will determine, using first
-various regression methods, the value of the coupling constant for the
-energy of the one-dimensional Ising model. Thereafter, we will use the
-two-dimensional data, but now computed at different temperatures, in
-order to classify the phase of the Ising model. Below the critical
-temperature, the system will be in a so-called ferromagnetic
-phase. Close to the critical temperature, the final magnetization
-becomes smaller and smaller in absolute value while above the critical
-temperature, the net magnetization is zero.  This classification case,
-that is the two-dimensional Ising model, will be studied using
-logistic regression and deep neural networks.  The aim is to develop
-your own logistic regression code for the classification of the phases
-(this is a binary model) and your multilayer perceptron code for the
-classification and regression case. You can compare your own results with those obtained
-using _scikit-learn_ or _tensorflow_ or other Python packages such as _keras_ or other.
+However, if you would like to study other data sets, feel free to
+propose other sets. What we listed here are mere suggestions from our
+side. If you opt for another data set, consider using a set which
+has been studied in the scientific literature. This makes it easier
+for you to compare and analyze your results. It is also an essential
+elements of the scientific discussion.
+
+In particular, when developing your own Logistic Regression code for classification problems, the so-called Wisconsin Cancer data (which is a binary problem, benign or malignant tumors) may be studied. You find more information about this at the "Scikit-Learn site":"https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_breast_cancer.html" or at the "University of California at Irvine":"https://archive.ics.uci.edu/ml/datasets/breast+cancer+wisconsin+(original)". The "lecture slides on dimensionality reduction have several code examples on this data set":"https://compphysics.github.io/MachineLearning/doc/pub/DimRed/html/DimRed.html".
+
+=== Part a): Write your Logistic Regression code, first step ===
+
+If you opt for the credit card data, your first task is to familiarize yourself with the data set and the scientific article. 
+We recommend also that you study the code example in the "Logistic Regression":"https://compphysics.github.io/MachineLearning/doc/pub/LogReg/html/LogReg.html". 
+
+Write the part of the code which reads in the data and sets up the relevant data sets. 
+
+=== Part b): Write your Logistic Regression code, second step ===
+
+Now you should write your Logistic Regression code with the aim to
+reproduce the Logistic Regression analysis of the "scientific
+article":"https://bradzzz.gitbooks.io/ga-seattle-dsi/content/dsi/dsi_05_classification_databases/2.1-lesson/assets/datasets/DefaultCreditCardClients_yeh_2009.pdf".
+
+Define your cost function and the design matrix before you start writing your code.
+
+In order to find the optimal parameters of your logistic regressor you
+should include a gradient descent solver, as discussed in the
+"gradient descent
+lectures":"https://compphysics.github.io/MachineLearning/doc/pub/Splines/html/Splines-bs.html".
+Since we don't have so many data points, you may just code the
+standard gradient descent with a given learning rate, or even attempt
+to use the Newton-Raphson method.  Alternatively, it may be useful for
+the next part on neural networks to implement a stochastic gradient
+descent with and without mini-batches. Stochastic gradient with
+mini-batches may give the best results. You could finally compare your
+code with the output from _scikit-learn_'s toolbox for optimization
+methods applied to logistic regression.
 
 
-Feel free to use the notebooks to benchmark your code.  If you wish to
-write your own C++ or Fortran program for say a multilayer neural network
-model and a logistic regression model, please feel free to do so.  
-
-
-=== Part a): Producing the data for the one-dimensional Ising model ===
-
-
-
-The model we will employ in our studies is the so-called "Ising
-model":"https://en.wikipedia.org/wiki/Ising_model".  Together with
-models like the "Potts
-model":"https://en.wikipedia.org/wiki/Potts_model" and similar
-so-called lattice models, the Ising model has been widely studied in
-mathematics (in statistics in particular), physics, "life
-science":"https://journals.aps.org/pre/abstract/10.1103/PhysRevE.93.062402",
-chemistry and even in the "social sciences in order to model social
-behavior":"https://www.springer.com/gp/book/9781461420316". It is a
-simple binary value system where the variables of the model (spins often in
-physics) can take two values only, for example $\pm 1$ or $0$ and $1$.
-The system exhibits a phase transition in two or higher dimensions and
-the first person to find the analytical expressions for various
-expectation values was the Norwegian chemist "Lars
-Onsager":"https://en.wikipedia.org/wiki/Lars_Onsager" (Nobel prize in
-chemistry) after a tour de force mathematics exercise.
-
-In our discussions here we will stay with a physicist's approach and
-call the variables for spin. You could replace this with any other
-type of binary variables, ranging from a two political parties to blue
-and red spheres.  In its simplest form we define the energy of the
-system as
-
-!bt
-\begin{equation*}
-  E=-J\sum_{<kl>}^{N}s_ks_l,
-\end{equation*}
-!et
-with  $s_k=\pm 1$, $N$ is the total number of spins,
-$J$ is a coupling constant expressing the strength of the interaction
-between neighboring spins.
-
-The symbol $<kl>$ indicates that we sum over nearest
-neighbors only.
-Notice that for $J>0$ it is energetically favorable for neighboring spins
-to be aligned. This feature leads to, at low enough temperatures,
-a cooperative phenomenon called spontaneous magnetization. That is,
-through interactions between nearest neighbors, a given magnetic
-moment can influence the alignment of spins  that are separated
-from the given spin by a macroscopic distance. These long range correlations
-between spins are associated with a long-range order in which
-the lattice has a net magnetization in the absence of a magnetic field.
-
-
-
-We start by considering the one-dimensional Ising model with nearest neighbor interactions. This model does not exhibit any phase transition.
-
-Consider the 1D Ising model with nearest-neighbor interactions 
-
-!bt
-\begin{equation*}
-  E[\hat{s}]=-J\sum_{j=1}^{N}s_{j}s_{j+1},
-\end{equation*}
-!et
-
-on a chain of length $N$ with so-called periodic boundary conditions and $S_j=\pm 1$ Ising spin variables.
-In one dimension, this model has no phase transition at finite temperature.
-
-In the Python code below we generate, with a coupling coefficient set to $J=1$, a large number of spin configurations say $10000$ as shown in the code below.
-It means that our data will be a set of $i=1\ldots n$ points of the form
-$\{(E[\boldsymbol{s}^i],\boldsymbol{s}^i)\}$.
-Our task is to find the value of $J$ from the data set using linear regression.
-
-Here is the Python code you need to generate the training data, see
-also the "notebook of Mehta et
-al":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html".
-
-!bc pycod
-import numpy as np
-import scipy.sparse as sp
-np.random.seed(12)
-
-import warnings
-#Comment this to turn on warnings
-warnings.filterwarnings('ignore')
-
-### define Ising model aprams
-# system size
-L=40
-
-# create 10000 random Ising states
-states=np.random.choice([-1, 1], size=(10000,L))
-
-def ising_energies(states,L):
-    """
-    This function calculates the energies of the states in the nn Ising Hamiltonian
-    """
-    J=np.zeros((L,L),)
-    for i in range(L):
-        J[i,(i+1)%L]-=1.0
-    # compute energies
-    E = np.einsum('...i,ij,...j->...',states,J,states)
-
-    return E
-# calculate Ising energies
-energies=ising_energies(states,L)
-!ec
-
-We can now recast the problem as a linear regression model using our codes from project 1.
-The way we are going to build our model mimicks the way we could think of finding say the gravitional constant for the graviational force between two planets.
-In the absence of any prior knowledge, one sensible choice is the all-to-all Ising model
-
-!bt
-\[
-E_\mathrm{model}[\boldsymbol{s}^i] = - \sum_{j=1}^N \sum_{k=1}^N J_{j,k}s_{j}^is_{k}^i.
-\]
-!et
-
-Here $i$ represents a particular spin configuration (one of the possible $n$ configurations we generated with the code above).
-
-This model is uniquely defined by the non-local coupling strengths $J_{jk}$ which we want to learn.
-The model is linear in $\mathbf{J}$ which makes it possible to use linear regression.
-
-To apply linear regression, we recast this model in the form
-!bt
-\[
-E_\mathrm{model}^i \equiv \mathbf{X}^i \cdot \mathbf{J},
-\]
-!et
-
-where the vectors $\mathbf{X}^i$ represent all two-body interactions
-$\{s_{j}^is_{k}^i \}_{j,k=1}^N$, and the index $i$ runs over the
-samples in the data set.  To make the analogy complete, we can also
-represent the dot product by a single index $p = \{j,k\}$,
-i.e. $\mathbf{X}^i \cdot \mathbf{J}=X^i_pJ_p$.  Note that the
-regression model does not include the minus sign, so we expect to
-learn negative $J$'s.
-
-With these preliminaries, we are now ready to  reutilize our codes from project 1. 
-
-
-=== Part b): Estimating the coupling constant of the one-dimensional Ising model using linear regression ===
-
-We start with the one-dimensional Ising model and use the data we have
-generated with $J=1$ in the previous point. Use linear regression,
-Lasso and Ridge regression as done in project 1. You can compare your
-results with those of "Mehta
-et al.":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html".
-Make sure it is the 1D data which is used.
-
-Discuss the methods and how they perform in computing the coupling
-constant $J$ and include a bias-variance analysis using either
-cross-validation or bootstrap. Discuss also the mean squared error and
-the $R2$ score as measures to assess your model.
-
-Give a critical analysis of your results.
-
-
-=== Part c): Determine the phase of the two-dimensional Ising model  ===
-
-We switch now to binary classification methods and use logistic
-regression to define the phases of the Ising model. This means that we switch to the two-dimensional Ising model
-and use the data sets generated by "Mehta et al":"https://physics.bu.edu/~pankajm/ML-Review-Datasets/isingMC/"
-These energies and their corresponding spin orientation configurations 
-represent then your data.  We will use a fixed lattice of $L\times L =
-40 \times 40$ spins in two dimensions. The link above contains data for several temperatures.
-The theoretical critical temperature for a phase transition is $T_C\approx 2.269$ in units of energy.
-However, for a finite lattice the results representing the critical temperature are slightly higher ($T_C \approx 2.3$). 
-
-Our goal here, using logistic regression, is to train our model to
-predict the phase of a sample given the spin configuration, whether it
-represents a state above the critical temperature or below.  The
-configurations representing states below the critical temperature are
-called ordered states (the spins tend to point in one direction,
-resulting in a net magnetic moment) while those above the critical
-temperature are called disordered. Since a finite lattice like this
-does not exhibit a clear sign of a phase transition we will mainly
-stay with either orderer or disordered phases. You could include the
-critical phase if you want.
-
-
-Your aim here is thus to read in these data (use the examples from
-"Mehta et
-al":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVII-logreg_ising.html")
-and write your own code for doing logistic regression, see the lecture
-notes on "logistic
-regression":"https://compphysics.github.io/MachineLearning/doc/pub/LogReg/html/LogReg-bs.html".
-
-
-In this case, to evaluate the model, we will use the so-called accuracy score 
-instead of the bootstrap or cross-validation as done in the standard linear regression part discussed in b).  Examples of how to define the accuracy score can be found under the neural network slides, see for example the "slides here":"https://compphysics.github.io/MachineLearning/doc/pub/NeuralNet/html/._NeuralNet-bs047.html".
-
-To measure the performance of our network we evaluate how well it does
-it data it has never seen before, i.e. the test data.  We measure the
-performance of the network using the *accuracy* score.  The accuracy
-is as you would expect just the number of images correctly labeled
-divided by the total number of images. A perfect classifier will have
-an accuracy score of $1$.
+To measure the performance of our classification problem we use the
+so-called *accuracy* score.  The accuracy is as you would expect just
+the number of correctly guessed targets $t_i$ divided by the total
+number of targets. A perfect classifier will have an accuracy score of
+$1$.
 
 !bt  
 \[ 
@@ -254,51 +74,70 @@ an accuracy score of $1$.
 !et  
 
 where $I$ is the indicator function, $1$ if $t_i = y_i$ and $0$
-otherwise, where $t_i$ represents the target and $y_i$ the outputs.
+otherwise if we have a binary classifcation problem. Here $t_i$
+represents the target and $y_i$ the outputs of your Logistic
+Regression code.
 
 
-
-In order to find the optimal parameters of your logistic regressor you should
-include a gradient descent solver, as discussed in the "gradient
-descent
-lectures":"https://compphysics.github.io/MachineLearning/doc/pub/Splines/html/Splines-bs.html".
-Since we don't have so many data points, you may just code the
-standard gradient descent with a given learning rate, or even attempt
-to use the Newton-Raphson method.  Alternatively, it may be useful for
-the next part on neural networks to implement a stochastic gradient
-descent with and without mini-batches. Stochastic gradient with mini-batches may give the best results. You could finally compare your code with the output from _scikit-learn_'s toolbox for
-optimization methods applied to logistic regression.
+You can compare your own results with those obtained using
+_scikit-learn_.
 
 
-The notebook of "Mehta et al":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVII-logreg_ising.html" is highly recommended in order to benchmark your code and results.
+As stated in the introduction, it can also be useful to study other datasets. In particular, when developing your own	Logistic Regression code for classification problems, the so-called \
+Wisconsin Cancer data (which is a binary problem, benign or malignant tumors) may be studied. You find more \
+information about this at the "Scikit-Learn site":"https://scikit-learn.org/stable/modules/generated/sklearn\
+.datasets.load_breast_cancer.html" or at the "University	of California at Irvine":"https://archive.ics.uci.e\
+du/ml/datasets/breast+cancer+wisconsin+(original)". The	"lecture slides on dimensionality reduction have sev\
+eral code examples on this data set":"https://compphysics.github.io/MachineLearning/doc/pub/DimRed/html/DimR\
+ed.html".
 
-=== Part d): Regression analysis of the one-dimensional Ising model using neural networks  ===
+
+=== Part c): Writing your own Neural Network code  ===
 
 Your aim now, and this is the central part of this project, is to
-write to your own multilayer perceptron model implementing the back
+write to your own Feed Forward Neural Network  code implementing the back
 propagation algorithm discussed in the "lecture
 slides":"https://compphysics.github.io/MachineLearning/doc/pub/NeuralNet/html/NeuralNet-bs.html". We
-start with the regression case discussed in parts a) and b) but train
+start with the Logistic Regression  case and the data set discussed in parts a) and b) but train
 now the network to find the optimal weights and biases. You are free
 to use the codes in the above lecture slides as starting points.
 
-Train your network and compare the results with those from your linear regression code. 
-You can test your results against a similar code using _scikit_learn_ (see the examples in the above lecture notes) or _tensorflow/keras_. 
+Discuss again your choice of cost function.
+
+Train your network and compare the results with those from your Logistic  Regression code. 
+You should test your results against a similar code using _Scikit-Learn_ (see the examples in the above lecture notes) or _tensorflow/keras_. 
+
+Comment your results and give a critical discussion of the results
+obtained with the Logistic Regression code and your own Neural Network
+code.  Make an analysis of the regularization parameters and the learning rates employed to find the optimal accurary score.
+
+A useful reference on the back progagation algorithm is "Nielsen's
+book":"http://neuralnetworksanddeeplearning.com/". It is an excellent
+read.
 
 
-A useful reference on the back progagation algorithm is "Nielsen's book":"http://neuralnetworksanddeeplearning.com/". It is an excellent read.
+=== Part d): Regression analysis using neural networks  ===
 
-=== Part e): Classifying the Ising model phase using neural networks  ===
+Here we will change the cost function for our neural network code
+developed in part c) in order to perform a regression (fitting a
+function or some data set) analysis. As stated above, our default data
+sets could be either the Franke function or the terrain data from
+project 1.
 
-Finally, change now your cost function to the $log$ cross-entropy classification cost function for the case discussed in part c). Train your network again and
-compare the results with those from your logistic  regression code i c). 
-Here again you can compare your results with those of "Mehta et al":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CIX-DNN_ising_TFlow.html". There they used _tensorflow_ to classify the phases. 
+Compare you results from the neural network regression analysis (with a discussion of learning rates and regularization parameters)
+with those you obtained in project 1. Alternatively, if you opt for other data sets, you would need to run your standard ordinary least squares, Ridge and Lasso calculations using your codes from project 1.
+
+Again, we strongly recommend that you compare your own neural Network code and results against a similar code using _Scikit-Learn_ (see the examples in the above lecture notes) or _tensorflow/keras_. 
 
 
 
-=== Part f) Critical evaluation of the various algorithms ===
+=== Part e) Critical evaluation of the various algorithms ===
 
-After all these glorious calculations, you should now summarize the various algorithms and come with a critical evaluation of their pros and cons. Which algorithm works best for the regression case and which is best for the classification case. These codes will also be part of your final project 3, but now applied to other data sets.
+After all these glorious calculations, you should now summarize the
+various algorithms and come with a critical evaluation of their pros
+and cons. Which algorithm works best for the regression case and which
+is best for the classification case. These codes can also be part of
+your final project 3, but now applied to other data sets.
 
 
 
@@ -310,15 +149,6 @@ o  The text of Michael Nielsen is highly recommended, see "Nielsen's book":"http
 o  The textbook of "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570", chapters 3 and 7 are the most relevant ones for the analysis here. 
 
 o  "Mehta et al, arXiv 1803.08823":"https://arxiv.org/abs/1803.08823", *A high-bias, low-variance introduction to Machine Learning for physicists*, ArXiv:1803.08823.
-
-If you wish to read more about the Ising model and statistical physics here are three suggestions.
-
-o  "M. Plischke and B. Bergersen":"http://www.worldscientific.com/worldscibooks/10.1142/5660", *Equilibrium Statistical Physics*, World Scientific, see chapters 5 and 6.
-
-o  "D. P. Landau and K. Binder":"http://www.cambridge.org/no/academic/subjects/physics/computational-science-and-modelling/guide-monte-carlo-simulations-statistical-physics-4th-edition?format=HB", *A Guide to Monte Carlo Simulations in Statistical Physics*, Cambridge, see chapters 2,3 and 4.
-
-o  "M. E. J. Newman and T. Barkema":"https://global.oup.com/academic/product/monte-carlo-methods-in-statistical-physics-9780198517979?cc=no&lang=en&", *Monte Carlo Methods in Statistical Physics*, Oxford, see chapters 3 and 4.
-
 
 
 
@@ -414,4 +244,16 @@ of code developers and contributors keeps increasing.
 
   
 
+
+
+
+
+
+o For project 3, you should feel free to use your own codes from projects 1 and 2, eventually write your own for SVMs and/or Decision trees and random forests' or use the available functionality of _scikit-learn_, _tensorflow_, etc. 
+
+o The estimates you used and tested in projects 1 and 2 should also be included, that is the $R2$-score, _MSE_, cross-validation and/or bootstrap if these are relevant. 
+
+o If possible, you should link the data sets with exisiting research and analyses thereof. Scientific articles which have used Machine Learning algorithms to analyze the data are highly welcome. Perhaps you can improve previous analyses and even publish a new article? 
+
+o A critical assessment of the methods with ditto perspectives and recommendations is also something you need to include.
 

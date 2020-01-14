@@ -1,5 +1,5 @@
-TITLE: Homework 1
-AUTHOR: Data Analysis and Machine Learning 
+TITLE: Homework 1 Fall Semester 2019
+AUTHOR: "Data Analysis and Machine Learning FYS-STK3155/FYS4155":"http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html" {copyright, 1999-present|CC BY-NC} at Department of Physics, University of Oslo, Norway
 DATE:Today
 
 
@@ -17,7 +17,7 @@ visualizing your data. You can also use compiled languages like C++,
 Rust, Fortran etc if you prefer. The focus in these lectures will be
 on Python.
 
-If you have Python installed (we recommend Python3.6 or higher versions) and you feel
+If you have Python installed (we recommend Python3) and you feel
 pretty familiar with installing different packages, we recommend that
 you install the following Python packages via _pip_ as 
 
@@ -39,7 +39,7 @@ o brew install python3
 For Linux users, with its variety of distributions like for example the widely popular Ubuntu distribution,
 you can use _pip_ as well and simply install Python as 
 
-o sudo apt-get install python3  (or python for pyhton2.7)
+o sudo apt-get install python3  (or python for Python2.7)
 
 If you don't want to perform these operations separately and venture
 into the hassle of exploring how to set up dependencies and paths, we
@@ -63,56 +63,7 @@ license.
 
 We recommend using _Anaconda_.
 
-
-===== Exercise 2 =====
-
-You should install and explore
-o Numpy and Scipy
-o Matplotlib
-o Pandas
-o Jupyter notebook
-
-=== Simple Random walk ===
-Make then a simple program which simulates a random walk and then plots the first 100 values. The example here may help.
-!bc pycod
-import random
-import matplotlib.pyplot as plt
-position = 0  
-steps = 1000
-walk = []
-for i in range(steps):     
-    step = 1 if random.randint(0,1) else -1
-    position+= step
-    walk.append(position)
-
-plt.plot(walk[:100])
-plt.show()
-!ec
-
-=== Simple Linear algebra example ===
-Write a simple program which performs basic matrix-vector multiplications and finds also the inverse of a matrix. You could use the following example
-!bc pycod
-import numpy as np
-from numpy.linalg import inv
-x = np.array([[1., 2., 3.],[4.,5.,6.]])
-y = np.array([[6.,23,],[-1.,7.],[8.,9.]])
-print(x)
-print(y)
-z = x.dot(y)
-# equivalent to np.dot(x,y)
-print(z)
-print(np.dot(x,y))
-z = np.dot(x,np.ones(3))
-# or write it as 
-z = x @ np.ones(3)
-print(z)
-
-X = np.random.randn(5,5)
-mat = X.T.dot(X)
-print(inv(mat))
-print(mat.dot(inv(mat)))
-!ec
-===== Exercise 3  =====
+===== Exercise 2  =====
 
 We will generate our own dataset for a function $y(x)$ where $x \in [0,1]$ and defined by random numbers computed with the uniform distribution. The function $y$ is a quadratic polynomial in $x$ with added stochastic noise according to the normal distribution $\cal {N}(0,1)$.
 The following simple Python instructions define our $x$ and $y$ values (with 100 data points).
@@ -148,209 +99,59 @@ Discuss the meaning of these results. Try also to vary the coefficient in front 
 
 
 
-===== Exercise 4, variance of the parameters $\beta$ in linear regression  =====
+===== Exercise 3, mean values and variances in linear regression  =====
 
-Show that the variance of the parameters $\beta$ in the linear regression method (chapter 3, equation (3.8) of "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570") is given as 
 
+This exercise deals with various mean values ad variances in  linear regression method (here it may be useful to look up chapter 3, equation (3.8) of "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570").
+
+The assumption we have made is 
+that there exists a function $f(\bm{x})$ and  a normal distributed error $\bm{\varepsilon}\sim \mathcal{N}(0, \sigma^2)$
+which describes our data
 !bt
 \[
-\mathrm{Var}(\hat{\beta}) = \left(\hat{X}^T\hat{X}\right)^{-1}\sigma^2,
+\bm{y} = f(\bm{x})+\bm{\varepsilon}
 \]
 !et
-with 
+
+We then approximate this function with our model from the solution of the linear regression equations (ordinary least squares OLS), that is our
+function $f$ is approximated by $\bm{\tilde{y}}$ where we minimized  $(\bm{y}-\bm{\tilde{y}})^2$, with
 !bt
 \[
-\sigma^2 = \frac{1}{N-p-1}\sum_{i=1}^{N} (y_i-\tilde{y}_i)^2,
+\bm{\tilde{y}} = \bm{X}\bm{\beta}.
 \]
 !et
-where we have assumed that we fit a function of degree $p-1$ (for example a polynomial in $x$). 
-
-===== Solution to exercise 3 =====
+The matrix $\bm{X}$ is the so-called design matrix. 
 
 
-!bc pycod
-import numpy as np
-import matplotlib.pyplot as plt
-
-n = 100 # data points
-
-# The following simple Python instructions define our x and y values (with 100 data points)
-x = np.random.rand(n,1)
-y = 5*x*x+np.random.randn(n,1) # y = 5x^2 + random noise
-
-!ec
-
-The above defines a set of equations
-!bt 
-\hat{y} = \hat{X}\hat{\beta} + \hat{\epsilon},
-!et
-where the elements of $\hat{y}$ are given by $y_i = 5x_i + \epsilon_i$. Afterwards, $\hat{y}$ is turned into a $100\times1$ matrix so that `np.linalg` can accept it as input.
-
-We define the matrix 
-!bt 
-\hat{X}=\begin{bmatrix} 
-1 & x_0 & x_0^2 \\
-1 & x_1 & x_1^2 \\
-\vdots & \vdots & \vdots \\
-1 & x_{99} & x_{99}^2
-\end{bmatrix},
-!et
-with $x_0$, $x_1$, $\dots x_{99}$ given by `x = np.random.rand(100,1)`. $\hat{X}$ is then given by:
-
-
-!bc pycod
-X = np.c_[np.ones((n,1)), x, x*x] # column wise array concatenation
-print(X)
-!ec
-
-For an explanation of `np.c_` see URL:"https://stackoverflow.com/questions/39136730/confused-about-numpy-c-document-and-sample-code".
-
-The solution for the parameters $\hat{\beta}$ is given by
+Show that  the expectation value of $\bm{y}$ for a given element $i$ 
 !bt
-\hat{\beta} = \left(\hat{X}^T\hat{X}\right)^{-1}\hat{X}^T\hat{y},
+\begin{align*} 
+\mathbb{E}(y_i) & =\mathbf{X}_{i, \ast} \, \beta, 
+\end{align*} 
 !et
-or
-
-
-!bc pycod
-beta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(y)
-print("y = " + str(beta[2,0]) + "*x^2 + " + str(beta[1,0]) + "*x + " + str(beta[0,0]))
-!ec
-
-Now we plot the resulting function over the data points to visualize
-how good the fit looks. Here we define new points that are evenly space using the numpy function _linspace_
-
-!bc pycod
-nfit = 100
-xplot = np.linspace(0.0,1.0, num=nfit)
-!ec
-
-Then define a new matrix $\hat{X}_{\mathrm{plot}}$ for the evenly
-distributed values we want to use for plotting:
-
-
-!bc pycod
-Xplot = np.c_[np.ones((nfit,1)), xplot, xplot**2] # concatenate columns (as above)
-!ec
-
-Finally, calculate the fitted values $\hat{y}_{\mathrm{predict}}$
-using that matrix and the fitted parameters $\hat{\beta}$:
-
-
-!bc pycod
-ypredict = Xplot.dot(beta)
-!ec
-
-We can plot and compare with the quadratic function $y_{\mathrm{true}} = 5x^2$ without noise as
-
-!bc pycod
-ytrue = 5*xplot*xplot
-
-plt.plot(x, y ,'ro')
-plt.plot(xplot, ytrue, label="$y_{\mathrm{Quadratic}}$")
-plt.plot(xplot, ypredict, label="$y_{\mathrm{predict}}$")
-plt.xlabel(r'$x$')
-plt.ylabel(r'$y$')
-plt.title(r'Quadratic Regression')
-plt.legend()
-plt.show()
-!ec
-
-We see that this produces a decent enough fit.
-
-We use thereafter _scikit-learn_.
-
-
-!bc pycod
-from sklearn.linear_model import LinearRegression
-
-clf2 = LinearRegression()
-clf2.fit(X, y)
-ysklearn = clf2.predict(Xplot)
-
-print("ypredict = " + str(clf2.coef_[0, 2]) + "*x^2 + " + str(clf2.coef_[0, 1]) + "*x + " + str(clf2.coef_[0, 0]))
-print("ysklearn = " + str(beta[2,0]) + "*x^2 + " + str(beta[1,0]) + "*x + " + str(beta[0,0]))
-# note that the indices are reversed in the scikit-learn approach compared to what we did before:
-# the shape is (1, n) instead of (n, 1)
-
-plt.plot(x, y ,'ro')
-plt.plot(xplot, ytrue, label="$y_{\mathrm{true}}$")
-plt.plot(xplot, ypredict, label="$y_{\mathrm{predict}}$")
-plt.plot(xplot, ysklearn, label="$y_{\mathrm{sklearn}}$")
-plt.xlabel(r'$x$')
-plt.ylabel(r'$y$')
-plt.title(r'Quadratic Regression')
-plt.legend()
-plt.show()
-!ec
-
-Plotting the absolute relative error for the two predictions:
-
-
-!bc pycod
-err_predict = abs(ypredict[:, 0] - ytrue)/abs(ytrue) # the predicted y's have shape (n, 1)
-err_sklearn = abs(ysklearn[:, 0] - ytrue)/abs(ytrue)
-
-plt.plot(xplot, err_predict, label="$\epsilon_{\mathrm{predict}}$")
-plt.plot(xplot, err_sklearn, label="$\epsilon_{\mathrm{sklearn}}$")
-plt.xlabel(r'$x$')
-plt.ylabel(r'$\epsilon_{\mathrm{rel}}$')
-plt.axis([0, xmax, 0, 2])
-plt.title(r'Absolute relative error')
-plt.legend()
-plt.show()
-!ec
-
-It is indeed hard to see any difference between the two approaches:
-
-
-!bc pycod
-plt.plot(xplot, abs(err_predict), label="$\epsilon_{\mathrm{predict}}$")
-plt.plot(xplot, abs(err_sklearn), label="$\epsilon_{\mathrm{sklearn}}$")
-plt.xlabel(r'$x$')
-plt.ylabel(r'$\epsilon_{\mathrm{rel}}$')
-plt.axis([0, xmax, 0, 0.02])
-plt.title(r'Absolute relative error')
-plt.legend()
-plt.show()
-!ec
-
-The mean squared error is the expected value of the quadratic error:
+and that
+its variance is 
 !bt
-MSE\left(\hat{y}, \hat{\bar{y}}\right) = \frac{1}{n}\sum\limits_{i=1}^{n-1}\left(y_i - \bar{y}_i\right)^2.
+\begin{align*} \mbox{Var}(y_i) & = \sigma^2.  
+\end{align*}
+!et
+Hence, $y_i \sim \mathcal{N}( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
+mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$.
+
+
+With the OLS expressions for the parameters $\bm{\beta}$ show that
+!bt
+\[
+\mathbb{E}(\bm{\beta}) = \bm{\beta}.
+\]
+!et
+This means that the estimator of the regression parameters is unbiased.
+
+Show finally that the variance of $\bm{\beta}$ is
+!bt
+\begin{eqnarray*}
+\mbox{Var}(\bm{\beta}) & = & \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
+\end{eqnarray*}
 !et
 
-We import this as follows
-!bc pycod
-from sklearn.metrics import mean_squared_error
-
-# Note that the y values are not sorted, but ypredict and ysklearn are
-# (we used Xplot to find these, not X)
-
-ypredict2 = X.dot(beta)
-ysklearn2 = clf2.predict(X)
-
-# Then we find the MSE:
-
-print("Mean squared error (ypredict):", mean_squared_error(y, ypredict2))
-print("Mean squared error (ysklearn):", mean_squared_error(y, ysklearn2))
-!ec
-
-The $R^2$ score function is defined as
-
-$R^2\left(\hat{y}, \hat{\bar{y}}\right) = 1 - \frac{\sum\limits_{i=0}^{n-1}\left(y_i - \bar{y}_i\right)}{\sum\limits_{i=0}^{n-1}\left(y_i - \bar{y}\right)}$
-
-where 
-
-* $\bar{y}$ is the mean value of $\hat{y}$
-* $\bar{y}_i$ is the $i$th predicted value, and
-* $y_i$ is the corresponding true value
-
-
-!bc pycod
-from sklearn.metrics import r2_score
-
-print("R^2 score (ypredict):", r2_score(y, ypredict2))
-print("R^2 score (ysklearn):", r2_score(y, ysklearn2))
-!ec
 
