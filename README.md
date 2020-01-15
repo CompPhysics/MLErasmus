@@ -11,14 +11,14 @@ which is exactly what machine learning aims at providing.
 
 This course aims at giving you insights and knowledge about  many of the central algorithms used in Data Analysis and Machine Learning.  The course is project based and through  various numerical projects, normally three, you will be exposed to fundamental research problems in these fields, with the aim to reproduce state of the art scientific results. Both supervised and unsupervised methods will be covered. You will learn to develop and structure large codes for studying different  systems where Machine Learning is applied to, get acquainted with computing facilities and learn to handle large scientific projects. A good scientific and ethical conduct is emphasized throughout the course. More specifically, after this course you will
 
-- Learn about basic data analysis, statistical analysis, Bayesian statistics, Monte Carlo sampling, data optimization and machine learning;
+- Learn about basic data analysis, data optimization and machine learning;
 - Be capable of extending the acquired knowledge to other systems and cases;
 - Have an understanding of central algorithms used in data analysis and machine learning;
 - Understand linear methods for regression and classification, from ordinary least squares, via Lasso and Ridge to Logistic regression;
 - Learn about various neural networks and deep  learning methods for supervised and unsupervised learning;
-- Learn about about decision trees and random forests
+- Learn about about decision trees, random forests and boosting
 - Learn about support vector machines and kernel transformations
-- Reduction of data sets, from PCA to clustering, supervised and unsupervised methods
+- Reduction of data sets
 - Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++.  
 
 ## The course has two central parts
@@ -45,7 +45,7 @@ The following topics will be covered
 - Neural networks and deep learning;
 - Decisions trees, random forests, boosting and bagging
 - Support vector machines
-- Dimensionality reduction, from PCA to cluster models
+- Dimensionality reduction, mainly Principal Component Analysis
 
 Hands-on demonstrations, exercises and projects aim at deepining your understanding of these topics.
 
@@ -70,6 +70,8 @@ is recommended.
 4. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than March 1, hopefully the grades will be available before that.
 
 
+## Lecture material
+_The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you direct access to the learning material with lectures slides and jupyter notebooks. Videos of the lectures will be added. 
 
 ## Possible textbooks
 
@@ -96,7 +98,7 @@ _General Machine Learning Books_:
 - _Monday Laboratory 2pm-6pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (SB, LC and HS)
 - _Tuesday Lecture 10am-2pm_: Linear Regression and Logistic Regression (MHJ)
 - _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS)
-- _Wednesday Lecture 10am-12pm_: Logistic Regression and Optmization (MHJ)
+- _Wednesday Lecture 10am-12pm_: Logistic Regression and Optimization (MHJ)
 - _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
 - _Thursday Lecture 10am-12pm_: Optimization and Neural Networks (MHJ)
 - _Thursday Laboratory 2pm-6pm_: Computational Exercises and installing TensorFlow (SB, LC and HS)
@@ -104,7 +106,7 @@ _General Machine Learning Books_:
 - _Friday Laboratory 2pm-6pm_: Using TensorFlow and Computational Exercises (SB, LC and HS)
 
 ### Week 5, January 27-31, 2020
-- _Monday Lecture 10am-12pm_:  Neural Networks (MHJ)
+- _Monday Lecture 10am-12pm_:  Neural Networks and PCA (MHJ)
 - _Monday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
 - _Tuesday Lecture 10am-2pm_:  Decision Trees, Random Forests and Boosting (MHJ)
 - _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS)
