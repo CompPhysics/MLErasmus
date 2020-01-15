@@ -99,37 +99,12 @@ computing facilities and learn to handle large scientific projects. A
 good scientific and ethical conduct is emphasized throughout the
 course. More specifically, you will
 
-o Learn about basic data analysis, Bayesian statistics, Monte Carlo methods, data optimization and machine learning;
+o Learn about basic data analysis, data optimization and machine learning;
 o Be capable of extending the acquired knowledge to other systems and cases;
 o Have an understanding of central algorithms used in data analysis and machine learning;
-o Gain knowledge of central aspects of Monte Carlo methods, Markov chains, Gibbs samplers and their possible applications, from numerical integration to simulation of stock markets;
 o Understand methods for regression and classification;
-o Learn about neural network, genetic algorithms and Boltzmann machines;
+o Learn about neural network, decision trees and support vector machines
 o Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++, in addition to a basic knowledge of linear algebra (typically taught during the first one or two years of undergraduate studies).
-
-There are several topics we will cover here, spanning from 
-statistical data analysis and its basic concepts such as expectation
-values, variance, covariance, correlation functions and errors, via
-well-known probability distribution functions like the uniform
-distribution, the binomial distribution, the Poisson distribution and
-simple and multivariate normal distributions to central elements of
-Bayesian statistics and modeling. We will also remind the reader about
-central elements from linear algebra and standard methods based on
-linear algebra used to optimize (minimize) functions (the family of gradient descent methods)
-and the Singular-value decomposition and
-least square methods for parameterizing data.
-
-We will also cover Monte Carlo methods, Markov chains, well-known
-algorithms for sampling stochastic events like the Metropolis-Hastings
-and Gibbs sampling methods. An important aspect of all our
-calculations is a proper estimation of errors. Here we will also
-discuss famous resampling techniques like the blocking, the bootstrapping
-and the jackknife methods and the infamous bias-variance tradeoff. 
-
-The second part of the material covers several algorithms used in
-machine learning.
-
-
 
 
 
@@ -178,7 +153,6 @@ machine learning algorithms
 
 o Linear regression and its variants
 o Decision tree algorithms, from single trees to random forests
-o Bayesian statistics and regression
 o Support vector machines and finally various variants of
 o Artifical neural networks and deep learning, including convolutional neural networks and Bayesian neural networks
 o Networks for unsupervised learning using for example reduced Boltzmann machines.
