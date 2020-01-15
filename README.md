@@ -21,14 +21,6 @@ This course aims at giving you insights and knowledge about  many of the central
 - Reduction of data sets, from PCA to clustering, supervised and unsupervised methods
 - Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++.  
 
-## Prerequisites
-
-Basic knowledge in programming and mathematics, with an emphasis on
-linear algebra. Knowledge of Python or/and C++ as programming
-languages is strongly recommended and experience with Jupiter notebook
-is recommended.
-
-
 ## The course has two central parts
 
 1. Statistical analysis and optimization of data
@@ -41,9 +33,7 @@ These topics will be scattered thorughout the course and may not  necessarily be
 The following topics will be covered
 - Basic concepts, expectation values, variance, covariance, correlation functions and errors;
 - Simpler models, binomial distribution, the Poisson distribution, simple and multivariate normal distributions;
-- Central elements of Bayesian statistics and modeling;
 - Gradient methods for data optimization
-- Monte Carlo methods, Markov chains, Metropolis-Hastings algorithm;
 - Linear methods for regression and classification;
 - Estimation of errors using cross-validation, blocking, bootstrapping and jackknife methods;
 - Practical optimization using Singular-value decomposition and least squares for parameterizing data.
@@ -57,18 +47,71 @@ The following topics will be covered
 - Support vector machines
 - Dimensionality reduction, from PCA to cluster models
 
-Hands-one demonstrations, exercises and projects aim at deepining your understanding of these topics.
+Hands-on demonstrations, exercises and projects aim at deepining your understanding of these topics.
 
 Computational aspects play a central role and you are
 expected to work on numerical examples and projects which illustrate
 the theory and methods. We recommend strongly to form small project groups of 2-3 participants. 
 
 
+## Prerequisites
+
+Basic knowledge in programming and mathematics, with an emphasis on
+linear algebra. Knowledge of Python or/and C++ as programming
+languages is strongly recommended and experience with Jupiter notebook
+is recommended.
+
+
 ## Practicalities
 
-1. Lectures are in the morning, from 9am-12pm.
+1. Lectures are in the morning, from 10am-12pm.
 2. Four hours of laboratory sessions for work on computational projects, from 2pm to 6pm;
 3. Lectures and lab sessions will all be at GANIL, starting January 20 at 9am. 
 4. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than March 1, hopefully the grades will be available before that.
 
+
+
+## Possible textbooks
+
+_Recommended textbooks_:
+- Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer
+- Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly
+
+_General learning book on statistical analysis_:
+- Christian Robert and George Casella, Monte Carlo Statistical Methods, Springer
+- Peter Hoff, A first course in Bayesian statistical models, Springer
+
+_General Machine Learning Books_:
+- Kevin Murphy, Machine Learning: A Probabilistic Perspective, MIT Press
+- Christopher M. Bishop, Pattern Recognition and Machine Learning, Springer
+- David J.C. MacKay, Information Theory, Inference, and Learning Algorithms, Cambridge University Press
+- David Barber, Bayesian Reasoning and Machine Learning, Cambridge University Press 
+
+
+##  Teaching schedule, topics and teachers
+### Teachers: Stian Bilek (SB), Lucas Charpentier (LC), Morten Hjorth-Jensen (MHJ), and Hanna Svennevik (HS)
+
+###  Week 4, January 20-24, 2020
+- _Monday Lecture 10am-12pm_: Introduction to Machine Learning and linear regression (MHJ)
+- _Monday Laboratory 2pm-6pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (SB, LC and HS)
+- _Tuesday Lecture 10am-2pm_: Linear Regression and Logistic Regression (MHJ)
+- _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS)
+- _Wednesday Lecture 10am-12pm_: Logistic Regression and Optmization (MHJ)
+- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
+- _Thursday Lecture 10am-12pm_: Optimization and Neural Networks (MHJ)
+- _Thursday Laboratory 2pm-6pm_: Computational Exercises and installing TensorFlow (SB, LC and HS)
+- _Friday Lecture 10am-12pm_:  Neural Networks (MHJ)
+- _Friday Laboratory 2pm-6pm_: Using TensorFlow and Computational Exercises (SB, LC and HS)
+
+### Week 5, January 27-31, 2020
+- _Monday Lecture 10am-12pm_:  Neural Networks (MHJ)
+- _Monday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
+- _Tuesday Lecture 10am-2pm_:  Decision Trees, Random Forests and Boosting (MHJ)
+- _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS)
+- _Wednesday Lecture 10am-12pm_: Decision Trees, Random Forests and Boosting (MHJ)
+- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
+- _Thursday Lecture 10am-12pm_:  Support Vector Machines (MHJ)
+- _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
+- _Friday Lecture 10am-12pm_:  Support Vector Machines and Summary of course (MHJ)
+- _Friday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
 
