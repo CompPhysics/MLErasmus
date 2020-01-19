@@ -93,7 +93,11 @@ div { text-align: justify; text-justify: inter-word; }
               ('Organizing our data', 3, None, '___sec18'),
               ('Seeing the wood for the trees', 3, None, '___sec19'),
               ('And what about using neural networks?', 3, None, '___sec20'),
-              ('A first summary', 2, None, '___sec21')]}
+              ('More on flexibility with pandas and xarray',
+               3,
+               None,
+               '___sec21'),
+              ('A first summary', 2, None, '___sec22')]}
 end of tocinfo -->
 
 <body>
@@ -1556,7 +1560,139 @@ ax.set_xlabel(<span style="color: #CD5555">&quot;$\lambda$&quot;</span>)
 plt.show()
 </pre></div>
 
-<h2 id="___sec21">A first summary </h2>
+<h3 id="___sec21">More on flexibility with pandas and xarray </h3>
+
+<p>
+Let us study the \( Q \) values associated with the removal of one or two nucleons from
+a nucleus. These are conventionally defined in terms of the one-nucleon and two-nucleon
+separation energies. With the functionality in <b>pandas</b>, two to three lines of code will allow us to plot the separation energies.
+The neutron separation energy is defined as 
+
+$$
+S_n= -Q_n= BE(N,Z)-BE(N-1,Z),
+$$
+
+and the proton separation energy reads
+$$
+S_p= -Q_p= BE(N,Z)-BE(N,Z-1).
+$$
+
+The two-neutron separation energy is defined as
+$$
+S_{2n}= -Q_{2n}= BE(N,Z)-BE(N-2,Z),
+$$
+
+and  the two-proton separation energy is given by
+$$
+S_{2p}= -Q_{2p}= BE(N,Z)-BE(N,Z-2).
+$$
+
+<p>
+Using say the neutron separation energies (alternatively the proton separation energies)
+$$
+S_n= -Q_n= BE(N,Z)-BE(N-1,Z),
+$$
+
+we can define the so-called energy gap for neutrons (or protons) as 
+$$
+\Delta S_n= BE(N,Z)-BE(N-1,Z)-\left(BE(N+1,Z)-BE(N,Z)\right),
+$$
+
+or 
+$$
+\Delta S_n= 2BE(N,Z)-BE(N-1,Z)-BE(N+1,Z).
+$$
+
+This quantity can in turn be used to determine which nuclei could be interpreted as  magic or not. 
+For protons we would have 
+$$
+\Delta S_p= 2BE(N,Z)-BE(N,Z-1)-BE(N,Z+1).
+$$
+
+<p>
+To calculate say the neutron separation we need to multiply our masses with the nucleon number \( A \) (why?).
+Thereafter we pick the oxygen isotopes and simply compute the separation energies with  two lines of code (note that most of the code here is a repeat of what you have seen before). 
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%"><span></span><span style="color: #228B22"># Common imports</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">pylab</span> <span style="color: #8B008B; font-weight: bold">import</span> plt, mpl
+plt.style.use(<span style="color: #CD5555">&#39;seaborn&#39;</span>)
+mpl.rcParams[<span style="color: #CD5555">&#39;font.family&#39;</span>] = <span style="color: #CD5555">&#39;serif&#39;</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">MakePlot</span>(x,y, styles, labels, axlabels):
+    plt.figure(figsize=(<span style="color: #B452CD">10</span>,<span style="color: #B452CD">6</span>))
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(x)):
+        plt.plot(x[i], y[i], styles[i], label = labels[i])
+        plt.xlabel(axlabels[<span style="color: #B452CD">0</span>])
+        plt.ylabel(axlabels[<span style="color: #B452CD">1</span>])
+    plt.legend(loc=<span style="color: #B452CD">0</span>)
+
+
+
+<span style="color: #228B22"># Where to save the figures and data files</span>
+PROJECT_ROOT_DIR = <span style="color: #CD5555">&quot;Results&quot;</span>
+FIGURE_ID = <span style="color: #CD5555">&quot;Results/FigureFiles&quot;</span>
+DATA_ID = <span style="color: #CD5555">&quot;DataFiles/&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #8B008B">not</span> os.path.exists(PROJECT_ROOT_DIR):
+    os.mkdir(PROJECT_ROOT_DIR)
+
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #8B008B">not</span> os.path.exists(FIGURE_ID):
+    os.makedirs(FIGURE_ID)
+
+<span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #8B008B">not</span> os.path.exists(DATA_ID):
+    os.makedirs(DATA_ID)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">image_path</span>(fig_id):
+    <span style="color: #8B008B; font-weight: bold">return</span> os.path.join(FIGURE_ID, fig_id)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">data_path</span>(dat_id):
+    <span style="color: #8B008B; font-weight: bold">return</span> os.path.join(DATA_ID, dat_id)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">save_fig</span>(fig_id):
+    plt.savefig(image_path(fig_id) + <span style="color: #CD5555">&quot;.png&quot;</span>, format=<span style="color: #CD5555">&#39;png&#39;</span>)
+
+infile = <span style="color: #658b00">open</span>(data_path(<span style="color: #CD5555">&quot;MassEval2016.dat&quot;</span>),<span style="color: #CD5555">&#39;r&#39;</span>)
+
+
+<span style="color: #228B22"># Read the experimental data with Pandas</span>
+Masses = pd.read_fwf(infile, usecols=(<span style="color: #B452CD">2</span>,<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>,<span style="color: #B452CD">6</span>,<span style="color: #B452CD">11</span>),
+              names=(<span style="color: #CD5555">&#39;N&#39;</span>, <span style="color: #CD5555">&#39;Z&#39;</span>, <span style="color: #CD5555">&#39;A&#39;</span>, <span style="color: #CD5555">&#39;Element&#39;</span>, <span style="color: #CD5555">&#39;Ebinding&#39;</span>),
+              widths=(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">3</span>,<span style="color: #B452CD">5</span>,<span style="color: #B452CD">5</span>,<span style="color: #B452CD">5</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">13</span>,<span style="color: #B452CD">11</span>,<span style="color: #B452CD">11</span>,<span style="color: #B452CD">9</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>,<span style="color: #B452CD">11</span>,<span style="color: #B452CD">9</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">3</span>,<span style="color: #B452CD">1</span>,<span style="color: #B452CD">12</span>,<span style="color: #B452CD">11</span>,<span style="color: #B452CD">1</span>),
+              header=<span style="color: #B452CD">39</span>,
+              index_col=<span style="color: #658b00">False</span>)
+
+<span style="color: #228B22"># Extrapolated values are indicated by &#39;#&#39; in place of the decimal place, so</span>
+<span style="color: #228B22"># the Ebinding column won&#39;t be numeric. Coerce to float and drop these entries.</span>
+Masses[<span style="color: #CD5555">&#39;Ebinding&#39;</span>] = pd.to_numeric(Masses[<span style="color: #CD5555">&#39;Ebinding&#39;</span>], errors=<span style="color: #CD5555">&#39;coerce&#39;</span>)
+Masses = Masses.dropna()
+<span style="color: #228B22"># Convert from keV to MeV.</span>
+Masses[<span style="color: #CD5555">&#39;Ebinding&#39;</span>] /= <span style="color: #B452CD">1000</span>
+A = Masses[<span style="color: #CD5555">&#39;A&#39;</span>]
+Z = Masses[<span style="color: #CD5555">&#39;Z&#39;</span>]
+N = Masses[<span style="color: #CD5555">&#39;N&#39;</span>]
+Element = Masses[<span style="color: #CD5555">&#39;Element&#39;</span>]
+Energies = Masses[<span style="color: #CD5555">&#39;Ebinding&#39;</span>]*A
+
+df = pd.DataFrame({<span style="color: #CD5555">&#39;A&#39;</span>:A,<span style="color: #CD5555">&#39;Z&#39;</span>:Z, <span style="color: #CD5555">&#39;N&#39;</span>:N,<span style="color: #CD5555">&#39;Element&#39;</span>:Element,<span style="color: #CD5555">&#39;Energies&#39;</span>:Energies})
+<span style="color: #228B22"># Her we pick the oyxgen isotopes</span>
+Nucleus = df.loc[<span style="color: #8B008B; font-weight: bold">lambda</span> df: df.Z==<span style="color: #B452CD">8</span>, :]
+<span style="color: #228B22"># drop cases with no number</span>
+Nucleus = Nucleus.dropna()
+<span style="color: #228B22"># Here we do the magic and obtain the neutron separation energies, one line of code!!</span>
+Nucleus[<span style="color: #CD5555">&#39;NeutronSeparationEnergies&#39;</span>] = Nucleus[<span style="color: #CD5555">&#39;Energies&#39;</span>].diff(+<span style="color: #B452CD">1</span>)
+<span style="color: #8B008B; font-weight: bold">print</span>(Nucleus)
+MakePlot([Nucleus.A], [Nucleus.NeutronSeparationEnergies], [<span style="color: #CD5555">&#39;b&#39;</span>], [<span style="color: #CD5555">&#39;Neutron Separation Energy&#39;</span>], [<span style="color: #CD5555">&#39;$A$&#39;</span>,<span style="color: #CD5555">&#39;$S_n$&#39;</span>])
+save_fig(<span style="color: #CD5555">&#39;Nucleus&#39;</span>)
+plt.show()
+</pre></div>
+
+<h2 id="___sec22">A first summary </h2>
 
 <p>
 The aim behind these introductory words was to present to you various

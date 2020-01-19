@@ -1324,6 +1324,146 @@ plt.show()
 !ec
 
 
+=== More on flexibility with pandas and xarray ===
+
+Let us study the $Q$ values associated with the removal of one or two nucleons from
+a nucleus. These are conventionally defined in terms of the one-nucleon and two-nucleon
+separation energies. With the functionality in _pandas_, two to three lines of code will allow us to plot the separation energies.
+The neutron separation energy is defined as 
+
+!bt
+\[
+S_n= -Q_n= BE(N,Z)-BE(N-1,Z),
+\]
+!et
+and the proton separation energy reads
+!bt
+\[
+S_p= -Q_p= BE(N,Z)-BE(N,Z-1).
+\]
+!et
+The two-neutron separation energy is defined as
+!bt
+\[
+S_{2n}= -Q_{2n}= BE(N,Z)-BE(N-2,Z),
+\]
+!et
+and  the two-proton separation energy is given by
+!bt
+\[
+S_{2p}= -Q_{2p}= BE(N,Z)-BE(N,Z-2).
+\]
+!et
+
+Using say the neutron separation energies (alternatively the proton separation energies)
+!bt
+\[
+S_n= -Q_n= BE(N,Z)-BE(N-1,Z),
+\]
+!et
+we can define the so-called energy gap for neutrons (or protons) as 
+!bt
+\[
+\Delta S_n= BE(N,Z)-BE(N-1,Z)-\left(BE(N+1,Z)-BE(N,Z)\right),
+\]
+!et
+or 
+!bt
+\[
+\Delta S_n= 2BE(N,Z)-BE(N-1,Z)-BE(N+1,Z).
+\]
+!et
+This quantity can in turn be used to determine which nuclei could be interpreted as  magic or not. 
+For protons we would have 
+!bt
+\[
+\Delta S_p= 2BE(N,Z)-BE(N,Z-1)-BE(N,Z+1).
+\]
+!et
+
+To calculate say the neutron separation we need to multiply our masses with the nucleon number $A$ (why?).
+Thereafter we pick the oxygen isotopes and simply compute the separation energies with  two lines of code (note that most of the code here is a repeat of what you have seen before). 
+!bc pycod
+# Common imports
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import os
+from pylab import plt, mpl
+plt.style.use('seaborn')
+mpl.rcParams['font.family'] = 'serif'
+
+def MakePlot(x,y, styles, labels, axlabels):
+    plt.figure(figsize=(10,6))
+    for i in range(len(x)):
+        plt.plot(x[i], y[i], styles[i], label = labels[i])
+        plt.xlabel(axlabels[0])
+        plt.ylabel(axlabels[1])
+    plt.legend(loc=0)
+
+
+
+# Where to save the figures and data files
+PROJECT_ROOT_DIR = "Results"
+FIGURE_ID = "Results/FigureFiles"
+DATA_ID = "DataFiles/"
+
+if not os.path.exists(PROJECT_ROOT_DIR):
+    os.mkdir(PROJECT_ROOT_DIR)
+
+if not os.path.exists(FIGURE_ID):
+    os.makedirs(FIGURE_ID)
+
+if not os.path.exists(DATA_ID):
+    os.makedirs(DATA_ID)
+
+def image_path(fig_id):
+    return os.path.join(FIGURE_ID, fig_id)
+
+def data_path(dat_id):
+    return os.path.join(DATA_ID, dat_id)
+
+def save_fig(fig_id):
+    plt.savefig(image_path(fig_id) + ".png", format='png')
+
+infile = open(data_path("MassEval2016.dat"),'r')
+
+
+# Read the experimental data with Pandas
+Masses = pd.read_fwf(infile, usecols=(2,3,4,6,11),
+              names=('N', 'Z', 'A', 'Element', 'Ebinding'),
+              widths=(1,3,5,5,5,1,3,4,1,13,11,11,9,1,2,11,9,1,3,1,12,11,1),
+              header=39,
+              index_col=False)
+
+# Extrapolated values are indicated by '#' in place of the decimal place, so
+# the Ebinding column won't be numeric. Coerce to float and drop these entries.
+Masses['Ebinding'] = pd.to_numeric(Masses['Ebinding'], errors='coerce')
+Masses = Masses.dropna()
+# Convert from keV to MeV.
+Masses['Ebinding'] /= 1000
+A = Masses['A']
+Z = Masses['Z']
+N = Masses['N']
+Element = Masses['Element']
+Energies = Masses['Ebinding']*A
+
+df = pd.DataFrame({'A':A,'Z':Z, 'N':N,'Element':Element,'Energies':Energies})
+# Her we pick the oyxgen isotopes
+Nucleus = df.loc[lambda df: df.Z==8, :]
+# drop cases with no number
+Nucleus = Nucleus.dropna()
+# Here we do the magic and obtain the neutron separation energies, one line of code!!
+Nucleus['NeutronSeparationEnergies'] = Nucleus['Energies'].diff(+1)
+print(Nucleus)
+MakePlot([Nucleus.A], [Nucleus.NeutronSeparationEnergies], ['b'], ['Neutron Separation Energy'], ['$A$','$S_n$'])
+save_fig('Nucleus')
+plt.show()
+
+!ec
+
+
+
 
 
 
@@ -1339,6 +1479,13 @@ Furthermore,
 _Scikit-Learn_ allows us with few lines of code to implement popular
 Machine Learning algorithms for supervised learning. Later we will meet _Tensorflow_, a powerful library for deep learning. 
 Now it is time to dive more into the details of various methods. We will start with linear regression and try to take a deeper look at what it entails.
+
+
+
+
+
+
+
 
 
 
