@@ -1,36 +1,82 @@
-TITLE: Homework 2
-AUTHOR: "Data Analysis and Machine Learning FYS-STK3155/FYS4155":"http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html" {copyright, 1999-present|CC BY-NC} at Department of Physics, University of Oslo, Norway
+TITLE: First day: Homework 1
+AUTHOR: Data Analysis and Machine Learning
 DATE:Today
 
+===== Day one exercises =====
 
-===== Exercise 4  =====
 
-This exercise is a continuation of exercise 2 from homework 1. We will
-use the same function to generate our data set, still staying with a
-simple function $y(x)$ which we want to fit using linear regression,
-but now extending the analysis to include the Ridge and the Lasso
-regression methods. You can use the code under the Regression as an example on how to use the Ridge and the Lasso methods, see the "regression slides":"https://compphysics.github.io/MachineLearning/doc/pub/Regression/html/Regression-bs.html"). 
+=== Exercise 1  ===
 
-We will thus again generate our own dataset for a function $y(x)$ where 
-$x \in [0,1]$ and defined by random numbers computed with the uniform
-distribution. The function $y$ is a quadratic polynomial in $x$ with
-added stochastic noise according to the normal distribution $\cal{N}(0,1)$.
+The first exercise here is of a mere technical art. We want you to have 
+* git as a version control software and to establish a user account on a provider like GitHub. Other providers like GitLab etc are equally fine. 
+* Install various Python packages
 
+We will make extensive use of Python as programming language and its
+myriad of available libraries.  You will find
+IPython/Jupyter notebooks invaluable in your work.  You can run _R_
+codes in the Jupyter/IPython notebooks, with the immediate benefit of
+visualizing your data. You can also use compiled languages like C++,
+Rust, Fortran etc if you prefer. The focus in these lectures will be
+on Python.
+
+If you have Python installed (we recommend Python3) and you feel
+pretty familiar with installing different packages, we recommend that
+you install the following Python packages via _pip_ as 
+
+o pip install numpy scipy matplotlib ipython scikit-learn sympy pandas pillow 
+
+For _Tensorflow_, we recommend following the instructions in the text of 
+"Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly":"http://shop.oreilly.com/product/0636920052289.do"
+
+We will come back to _tensorflow_ later. 
+
+For Python3, replace _pip_ with _pip3_.
+
+For OSX users we recommend, after having installed Xcode, to
+install _brew_. Brew allows for a seamless installation of additional
+software via for example 
+
+o brew install python3
+
+For Linux users, with its variety of distributions like for example the widely popular Ubuntu distribution,
+you can use _pip_ as well and simply install Python as 
+
+o sudo apt-get install python3  (or python for Python2.7)
+
+If you don't want to perform these operations separately and venture
+into the hassle of exploring how to set up dependencies and paths, we
+recommend two widely used distrubutions which set up all relevant
+dependencies for Python, namely 
+
+* "Anaconda":"https://docs.anaconda.com/", 
+
+which is an open source
+distribution of the Python and R programming languages for large-scale
+data processing, predictive analytics, and scientific computing, that
+aims to simplify package management and deployment. Package versions
+are managed by the package management system _conda_. 
+
+* "Enthought canopy":"https://www.enthought.com/product/canopy/" 
+
+is a Python
+distribution for scientific and analytic computing distribution and
+analysis environment, available for free and under a commercial
+license.
+
+We recommend using _Anaconda_.
+
+=== Exercise 2  ===
+
+We will generate our own dataset for a function $y(x)$ where $x \in [0,1]$ and defined by random numbers computed with the uniform distribution. The function $y$ is a quadratic polynomial in $x$ with added stochastic noise according to the normal distribution $\cal {N}(0,1)$.
 The following simple Python instructions define our $x$ and $y$ values (with 100 data points).
 !bc pycod
 x = np.random.rand(100,1)
 y = 5*x*x+0.1*np.random.randn(100,1)
 !ec
 
-o Write your own code for the Ridge method (see chapter 3.4 of Hastie *et al.*, equations (3.43) and (3.44)) and compute the parametrization for different values of $\lambda$. Compare and analyze your results with those from exercise 2. Study the dependence on $\lambda$ while also varying the strength of the noise in your expression for $y(x)$. 
-
-o Repeat the above but using the functionality of _Scikit-Learn_. Compare your code with the results from _Scikit-Learn_. Remember to run with the same random numbers for generating $x$ and $y$. 
-
-o Our next step is to study the variance of the parameters $\beta_1$ and $\beta_2$ (assuming that we are parameterizing our function with a second-order polynomial). We will use standard linear regression and the Ridge regression.  You can now opt for either writing your own function or using _Scikit-Learn_ to find the parameters $\beta$. From your results calculate the variance of these paramaters (recall that this is equal to the diagonal elements of the matrix $(\hat{X}^T\hat{X})+\lambda\hat{I})^{-1}$). Discuss the results of these variances as functions of $\lambda$. In particular, try to link your discussion with the discussion in Hastie *et al.* and their figure 3.11.
-
-o Repeat the previous step but add now the Lasso method, see equation (3.53) of Hastie *et al.*. Discuss your results and compare with standard regression and the Ridge regression results. You can write your own code or use the functionality of _scikit-learn_.  We recommend the latter since we have not yet discussed how to solve the Lasso equations numerically.
-
-o Finally, using _Scikit-Learn_ or your own code, compute also the mean square error, a risk metric corresponding to the expected value of the squared (quadratic) error defined as
+o Write your own code (following the examples under the "regression slides":"https://compphysics.github.io/MachineLearning/doc/pub/Regression/html/Regression-bs.html") for computing the parametrization of the data set fitting a second-order polynomial. 
+o Use thereafter _scikit-learn_ (see again the examples in the regression slides) and compare with your own code.   
+o Using scikit-learn, compute also the mean square error, a risk metric corresponding to the expected value of the squared (quadratic) error defined as
 !bt 
 \[ MSE(\hat{y},\hat{\tilde{y}}) = \frac{1}{n}
 \sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2, 
@@ -49,66 +95,75 @@ where we have defined the mean value  of $\hat{y}$ as
 \bar{y} =  \frac{1}{n} \sum_{i=0}^{n - 1} y_i.
 \]
 !et
-Discuss these quantities as functions of the variable $\lambda$ in the Ridge and Lasso regression methods. 
+You can use the functionality included in scikit-learn. If you feel for it, you can use your own program and define functions which compute the above two functions. 
+Discuss the meaning of these results. Try also to vary the coefficient in front of the added stochastic noise term and discuss the quality of the fits.
 
-===== Exercise 5  =====
 
-The theory behind this exercise will be covered during the lectures of week 36. It requires reading chapter three of Hastie et al, in particular the derivations preceeding equation (3.49) as the well as the material in the Regression slides that deal with the singular value decomposition. 
 
-Using the singular value decomposition, show that the variance of the direction vector 
-$\hat{z}_i=\hat{X}\hat{v}_i=\hat{u}_1d_1$   is equal to (equation (3.49) of Hastie *et al.*)
+
+=== Exercise 3, mean values and variances in linear regression  ===
+
+
+This exercise deals with various mean values ad variances in  linear regression method (here it may be useful to look up chapter 3, equation (3.8) of "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570").
+
+The assumption we have made is 
+that there exists a function $f(\bm{x})$ and  a normal distributed error $\bm{\varepsilon}\sim \mathcal{N}(0, \sigma^2)$
+which describes our data
 !bt
 \[
-\mathrm{Var}(\hat{z}_i)=\frac{d_i^2}{N},
+\bm{y} = f(\bm{x})+\bm{\varepsilon}
 \]
 !et
-where $d_i$ are the singular values of the matrix $\hat{X}$. In Hastie *et al*, the matrix elements of $X$ are centered. The consequence is that the mean values of for example $\hat{u}_i$ are zero. 
 
-Give an interpretation of these results, in particular in connection with the variance of the coefficients you obtained in the previous exercise.   
-
-
-===== Solution to the last exercise =====
-
-A possible way to show why $\left \langle \hat u_i \right \rangle = 0$
-given that the columns of $\hat X$ is centered is by considering
-$\left \langle \hat X \hat v_i \right \rangle$:
-
-!bt 
-
-\begin{align*} \left \langle \hat X \hat v_i \right \rangle &= \frac{1}{N}\sum_j ( \hat X \hat v_i )_j \\ &= \frac{1}{N}\sum_j \sum_k x_{jk}\hat v_i(k)\\ &= \frac{1}{N}\sum_k \hat v_i(k) \sum_j x_{jk} \\ &= \sum_k \hat v_i(k)\left( \frac{1}{N}\sum_j x_{jk} \right) \\ &= \sum_k \hat v_i(k) \left \langle \hat x_k \right \rangle
-\end{align*}
-!et
-
-where $x_{jk}$ being the element of $\hat X$ at row $j$ and column
-$k$, $( \hat X \hat v_i )_j $ the $j$-th element of the vector $\hat X
-\hat v_i $, $\hat x_k$ being the $k$-th column vector of $\hat X$, and
-$\hat v_i(k)$ the $k$-th element of the vector $\hat v_i$.
-
-
-
-Since the columns of $\hat X$ are assumed to be centered, $\left
-\langle \hat x_k \right \rangle = 0$ for all $k$. This gives that
-$\left \langle \hat X \hat v_i \right \rangle = 0$.
-
-
-
-But $\left \langle \hat X \hat v_i \right \rangle = \left \langle \hat
-u_i d_i \right \rangle = d_i \left \langle \hat u_i \right \rangle $.
-
-Since $ \left \langle \hat X \hat v_i \right \rangle = 0$, then $d_i
-\left \langle \hat u_i \right \rangle = 0$ also. Assuming that $d_i
-\neq 0$ (otherwise the variance in the exercise would just be zero),
-gives that $\left \langle \hat u_i \right \rangle = 0$.
-
-
-
-Regarding $\hat V$ and using the similar approach as above by
-computing $\left \langle \hat X^T \hat u_i \right \rangle = d_i \left
-\langle \hat v_i \right \rangle$, we have
-
+We then approximate this function with our model from the solution of the linear regression equations (ordinary least squares OLS), that is our
+function $f$ is approximated by $\bm{\tilde{y}}$ where we minimized  $(\bm{y}-\bm{\tilde{y}})^2$, with
 !bt
 \[
-\begin{align*} \left \langle \hat X^T \hat u_i \right \rangle &= \frac{1}{N}\sum_j ( \hat X^T \hat u_i )_j \\ &= \frac{1}{N}\sum_j \sum_k x_{kj} \hat u_i(k)\\  &= \frac{1}{N}\sum_k \hat u_i(k) \sum_j x_{kj} \\ &= \frac{1}{N}\sum_k \hat u_i(k) \sum_j x_{kj} \\  &= \sum_k \hat u_i(k) \left( \frac{1}{N} \sum_j x_{kj} \right)\\ 
+\bm{\tilde{y}} = \bm{X}\bm{\beta}.
+\]
+!et
+The matrix $\bm{X}$ is the so-called design matrix. 
+
+
+Show that  the expectation value of $\bm{y}$ for a given element $i$ 
+!bt
+\begin{align*} 
+\mathbb{E}(y_i) & =\mathbf{X}_{i, \ast} \, \beta, 
+\end{align*} 
+!et
+and that
+its variance is 
+!bt
+\begin{align*} \mbox{Var}(y_i) & = \sigma^2.  
 \end{align*}
 !et
+Hence, $y_i \sim \mathcal{N}( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
+mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$.
+
+
+With the OLS expressions for the parameters $\bm{\beta}$ show that
+!bt
+\[
+\mathbb{E}(\bm{\beta}) = \bm{\beta}.
+\]
+!et
+This means that the estimator of the regression parameters is unbiased.
+
+Show finally that the variance of $\bm{\beta}$ is
+!bt
+\begin{eqnarray*}
+\mbox{Var}(\bm{\beta}) & = & \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
+\end{eqnarray*}
+!et
+
+=== Exercise 4  ===
+
+Finally, try now to write your own code (you can use the example the nuclear masses in the lecture slides on Regression and Getting started, see URL:"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html" and URL:"https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-bs.html") that reads in the nuclear masses and
+compute the proton separation energies, the two-neutron and two-proton separation energies and finally the shell gaps for selected nuclei.
+
+Finally, try to compute the $Q$-values for $\beta-$ decay for selected nuclei.
+
+We will use this code later as a starting point for our discussions on linear regression. 
+
+
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 JAN 2020 10:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  19 JAN 2020 10:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -428,24 +428,9 @@ Package hyperref Info: Option `breaklinks' set `true' on input line 46.
 Package hyperref Info: Option `colorlinks' set `true' on input line 46.
 Package hyperref Info: Option `pdfmenubar' set `true' on input line 46.
 Package hyperref Info: Option `pdftoolbar' set `true' on input line 46.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip55
-\f@ncyO@elh=\skip56
-\f@ncyO@erh=\skip57
-\f@ncyO@olh=\skip58
-\f@ncyO@orh=\skip59
-\f@ncyO@elf=\skip60
-\f@ncyO@erf=\skip61
-\f@ncyO@olf=\skip62
-\f@ncyO@orf=\skip63
-)
-
-Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is use
-less on input line 55.
-
 \@indexfile=\write4
 \openout4 = `hw1.idx'.
+
 
 Writing index file hw1.idx
 (/usr/local/texlive/2015/texmf-dist/tex/latex/idxlayout/idxlayout.sty
@@ -469,8 +454,8 @@ Package: multicol 2015/03/31 v1.8m multicolumn formatting (FMi)
 \page@free=\dimen129
 \premulticols=\dimen130
 \postmulticols=\dimen131
-\multicolsep=\skip64
-\multicolbaselineskip=\skip65
+\multicolsep=\skip55
+\multicolbaselineskip=\skip56
 \partial@page=\box34
 \last@line=\box35
 \maxbalancingoverflow=\dimen132
@@ -505,10 +490,10 @@ Package: multicol 2015/03/31 v1.8m multicolumn formatting (FMi)
 \mc@col@check@num=\count132
 )
 \c@idxcols=\count133
-\indexcolsep=\skip66
-\indexrule=\skip67
-\ila@indentunit=\skip68
-\ila@initsep=\skip69
+\indexcolsep=\skip57
+\indexrule=\skip58
+\ila@indentunit=\skip59
+\ila@initsep=\skip60
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
@@ -523,39 +508,39 @@ Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ms/everysel.sty
 Package: everysel 2011/10/28 v1.2 EverySelectfont Package (MS)
 )
-\CenteringLeftskip=\skip70
-\RaggedLeftLeftskip=\skip71
-\RaggedRightLeftskip=\skip72
-\CenteringRightskip=\skip73
-\RaggedLeftRightskip=\skip74
-\RaggedRightRightskip=\skip75
-\CenteringParfillskip=\skip76
-\RaggedLeftParfillskip=\skip77
-\RaggedRightParfillskip=\skip78
-\JustifyingParfillskip=\skip79
-\CenteringParindent=\skip80
-\RaggedLeftParindent=\skip81
-\RaggedRightParindent=\skip82
-\JustifyingParindent=\skip83
-)
-No file hw1.aux.
+\CenteringLeftskip=\skip61
+\RaggedLeftLeftskip=\skip62
+\RaggedRightLeftskip=\skip63
+\CenteringRightskip=\skip64
+\RaggedLeftRightskip=\skip65
+\RaggedRightRightskip=\skip66
+\CenteringParfillskip=\skip67
+\RaggedLeftParfillskip=\skip68
+\RaggedRightParfillskip=\skip69
+\JustifyingParfillskip=\skip70
+\CenteringParindent=\skip71
+\RaggedLeftParindent=\skip72
+\RaggedRightParindent=\skip73
+\JustifyingParindent=\skip74
+) (./hw1.aux)
 \openout1 = `hw1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 90.
-LaTeX Font Info:    ... okay on input line 90.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 90.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 67.
+LaTeX Font Info:    ... okay on input line 67.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 67.
+
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
@@ -573,7 +558,7 @@ File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 \makeMPintoPDFobject=\count139
 \everyMPtoPDFconversion=\toks31
 )
-LaTeX Info: Redefining \microtypecontext on input line 90.
+LaTeX Info: Redefining \microtypecontext on input line 67.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -606,7 +591,7 @@ e
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 \AtBeginShipoutBox=\box60
-Package hyperref Info: Link coloring ON on input line 90.
+Package hyperref Info: Link coloring ON on input line 67.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -616,63 +601,45 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count140
 )
-LaTeX Info: Redefining \ref on input line 90.
-LaTeX Info: Redefining \pageref on input line 90.
-LaTeX Info: Redefining \nameref on input line 90.
+LaTeX Info: Redefining \ref on input line 67.
+LaTeX Info: Redefining \pageref on input line 67.
+LaTeX Info: Redefining \nameref on input line 67.
+
+(./hw1.out) (./hw1.out)
 \@outlinefile=\write5
 \openout5 = `hw1.out'.
 
-
-ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 90.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 141.
-
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmr.fd
-File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 141
-.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 141.
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-32.def
-File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-)
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <8> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 185.
- [1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 217.
-
+ ABD: EverySelectfont initializing macros
+LaTeX Info: Redefining \selectfont on input line 67.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 93.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 217.
-
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 93.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 217
-.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 93.
+
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 93.
+
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 217.
+(Font)              <10> on input line 93.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 217.
+(Font)              <7> on input line 93.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 217.
-LaTeX Font Info:    Try loading font information for U+msa on input line 217.
+(Font)              <5> on input line 93.
+LaTeX Font Info:    Try loading font information for U+msa on input line 93.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -680,7 +647,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 (/usr/local/texlive/2015/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 217.
+LaTeX Font Info:    Try loading font information for U+msb on input line 93.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -688,7 +655,21 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 (/usr/local/texlive/2015/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 219.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 117.
+
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/lm/omslmr.fd
+File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 117.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+) [1
+
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 195.
 
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/lm/t1lmtt.fd
@@ -699,23 +680,23 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
  [2]
-Overfull \hbox (61.3238pt too wide) in paragraph at lines 293--295
+Overfull \hbox (61.3238pt too wide) in paragraph at lines 269--271
 [][]$\T1/lmtt/m/n/10 https : / / compphysics . github . io / MLErasmus / doc / 
 pub / Regression / html / Regression-[]bs .
  []
 
 
-Overfull \hbox (15.43219pt too wide) in paragraph at lines 293--295
+Overfull \hbox (15.43219pt too wide) in paragraph at lines 269--271
 \T1/lmtt/m/n/10 html$[][] \T1/lmr/m/n/10 (-20) and [][]$\T1/lmtt/m/n/10 https :
  / / compphysics . github . io / MLErasmus / doc / pub / How2ReadData /
  []
 
 [3]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 305.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 281.
  [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 305.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 281.
  (./hw1.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 305.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 281.
 
 
  *File List*
@@ -791,7 +772,6 @@ hyperref.cfg    2002/06/06 v1.2 hyperref configuration of TeXLive
      url.sty    2013/09/16  ver 3.4  Verb mode for urls, etc.
  hpdftex.def    2012/11/06 v6.83m Hyperref driver for pdfTeX
 rerunfilecheck.sty    2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
-fancyhdr.sty    
 idxlayout.sty    2012/03/30 v0.4d Configurable index layout
 etoolbox.sty    2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
 multicol.sty    2015/03/31 v1.8m multicolumn formatting (FMi)
@@ -808,38 +788,34 @@ epstopdf-sys.cfg    2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
  ucsencs.def    2011/01/21 Fixes to fontencodings LGR, T3
  nameref.sty    2012/10/27 v2.43 Cross-referencing by name of section
 gettitlestring.sty    2010/12/03 v1.4 Cleanup title references (HO)
-  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
- omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
-  uni-32.def    2013/05/13 UCS: Unicode data U+2000..U+20FF
+     hw1.out
+     hw1.out
   ot1lmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
   omllmm.fd    2009/10/30 v1.6 Font defs for Latin Modern
+ omslmsy.fd    2009/10/30 v1.6 Font defs for Latin Modern
  omxlmex.fd    2009/10/30 v1.6 Font defs for Latin Modern
     umsa.fd    2013/01/14 v3.01 AMS symbols A
   mt-msa.cfg    2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
     umsb.fd    2013/01/14 v3.01 AMS symbols B
   mt-msb.cfg    2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+  omslmr.fd    2009/10/30 v1.6 Font defs for Latin Modern
+  uni-32.def    2013/05/13 UCS: Unicode data U+2000..U+20FF
   t1lmtt.fd    2009/10/30 v1.6 Font defs for Latin Modern
  ***********
 
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 305.
-
-Package rerunfilecheck Warning: File `hw1.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `hw1.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 305.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 281.
+Package rerunfilecheck Info: File `hw1.out' has not changed.
+(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 281.
  ) 
 Here is how much of TeX's memory you used:
- 10333 strings out of 493089
- 154024 string characters out of 6134842
- 291908 words of memory out of 5000000
- 13539 multiletter control sequences out of 15000+600000
- 55029 words of font info for 79 fonts, out of 8000000 for 9000
+ 10196 strings out of 493089
+ 152502 string characters out of 6134842
+ 288667 words of memory out of 5000000
+ 13411 multiletter control sequences out of 15000+600000
+ 48392 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,14n,43p,996b,462s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 41i,9n,35p,996b,388s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/
 texlive/2015/texmf-dist/fonts/enc/dvips/lm/lm-mathex.enc}{/usr/local/texlive/20
 15/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2015/texmf-d
@@ -853,16 +829,14 @@ cal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texliv
 e/2015/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2015/texm
 f-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/public/lm/lmr7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/publ
-ic/lm/lmr8.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmr9.p
-fb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy7.pfb></usr/local/texliv
-e/2015/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/local/texlive/2015/texm
-f-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2015/texmf-dist/fon
-ts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on hw1.pdf (4 pages, 240447 bytes).
+ic/lm/lmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmsy
+7.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></us
+r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+
+Output written on hw1.pdf (4 pages, 180913 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
+ 112 PDF objects out of 1000 (max. 8388607)
+ 92 compressed objects within 1 object stream
  16 named destinations out of 1000 (max. 500000)
- 16897 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 12801 words of extra memory for PDF output out of 14400 (max. 10000000)
 
