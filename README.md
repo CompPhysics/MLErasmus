@@ -95,6 +95,7 @@ _General Machine Learning Books_:
 
 ###  Week 4, January 20-24, 2020
 - _Monday Lecture 10am-12pm_: Introduction to Machine Learning and linear regression (MHJ)
+- _Video_:  https://folk.uio.no/mhjensen/MLErasmus/LectureJan20.mp4
 - _Monday Laboratory 2pm-6pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (SB, LC and HS)
 - _Tuesday Lecture 10am-2pm_: Linear Regression and Logistic Regression (MHJ)
 - _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS)
