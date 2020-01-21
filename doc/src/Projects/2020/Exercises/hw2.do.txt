@@ -1,82 +1,39 @@
-TITLE: First day: Homework 1
+TITLE: First day: Homework 2
 AUTHOR: Data Analysis and Machine Learning
 DATE:Today
 
-===== Day one exercises =====
+===== Day two exercises =====
 
 
 === Exercise 1  ===
 
-The first exercise here is of a mere technical art. We want you to have 
-* git as a version control software and to establish a user account on a provider like GitHub. Other providers like GitLab etc are equally fine. 
-* Install various Python packages
 
-We will make extensive use of Python as programming language and its
-myriad of available libraries.  You will find
-IPython/Jupyter notebooks invaluable in your work.  You can run _R_
-codes in the Jupyter/IPython notebooks, with the immediate benefit of
-visualizing your data. You can also use compiled languages like C++,
-Rust, Fortran etc if you prefer. The focus in these lectures will be
-on Python.
+This exercise is a continuation of exercise 2 from homework 1. We will
+use the same function to generate our data set, still staying with a
+simple function $y(x)$ which we want to fit using linear regression,
+but now extending the analysis to include the Ridge and the Lasso
+regression methods. You can use the code under the Regression as an example on how to use the Ridge and the Lasso methods, see the "regression slides":"https://compphysics.github.io/MachineLearning/doc/pub/Regression/html/Regression-bs.html"). 
 
-If you have Python installed (we recommend Python3) and you feel
-pretty familiar with installing different packages, we recommend that
-you install the following Python packages via _pip_ as 
+We will thus again generate our own dataset for a function $y(x)$ where 
+$x \in [0,1]$ and defined by random numbers computed with the uniform
+distribution. The function $y$ is a quadratic polynomial in $x$ with
+added stochastic noise according to the normal distribution $\cal{N}(0,1)$.
 
-o pip install numpy scipy matplotlib ipython scikit-learn sympy pandas pillow 
-
-For _Tensorflow_, we recommend following the instructions in the text of 
-"Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly":"http://shop.oreilly.com/product/0636920052289.do"
-
-We will come back to _tensorflow_ later. 
-
-For Python3, replace _pip_ with _pip3_.
-
-For OSX users we recommend, after having installed Xcode, to
-install _brew_. Brew allows for a seamless installation of additional
-software via for example 
-
-o brew install python3
-
-For Linux users, with its variety of distributions like for example the widely popular Ubuntu distribution,
-you can use _pip_ as well and simply install Python as 
-
-o sudo apt-get install python3  (or python for Python2.7)
-
-If you don't want to perform these operations separately and venture
-into the hassle of exploring how to set up dependencies and paths, we
-recommend two widely used distrubutions which set up all relevant
-dependencies for Python, namely 
-
-* "Anaconda":"https://docs.anaconda.com/", 
-
-which is an open source
-distribution of the Python and R programming languages for large-scale
-data processing, predictive analytics, and scientific computing, that
-aims to simplify package management and deployment. Package versions
-are managed by the package management system _conda_. 
-
-* "Enthought canopy":"https://www.enthought.com/product/canopy/" 
-
-is a Python
-distribution for scientific and analytic computing distribution and
-analysis environment, available for free and under a commercial
-license.
-
-We recommend using _Anaconda_.
-
-=== Exercise 2  ===
-
-We will generate our own dataset for a function $y(x)$ where $x \in [0,1]$ and defined by random numbers computed with the uniform distribution. The function $y$ is a quadratic polynomial in $x$ with added stochastic noise according to the normal distribution $\cal {N}(0,1)$.
 The following simple Python instructions define our $x$ and $y$ values (with 100 data points).
 !bc pycod
 x = np.random.rand(100,1)
 y = 5*x*x+0.1*np.random.randn(100,1)
 !ec
 
-o Write your own code (following the examples under the "regression slides":"https://compphysics.github.io/MachineLearning/doc/pub/Regression/html/Regression-bs.html") for computing the parametrization of the data set fitting a second-order polynomial. 
-o Use thereafter _scikit-learn_ (see again the examples in the regression slides) and compare with your own code.   
-o Using scikit-learn, compute also the mean square error, a risk metric corresponding to the expected value of the squared (quadratic) error defined as
+o (1a) Write your own code for the Ridge method (see chapter 3.4 of Hastie *et al.*, equations (3.43) and (3.44)) and compute the parametrization for different values of $\lambda$. Compare and analyze your results with those from exercise 2. Study the dependence on $\lambda$ while also varying the strength of the noise in your expression for $y(x)$. 
+
+o (1b) Repeat the above but using the functionality of _Scikit-Learn_. Compare your code with the results from _Scikit-Learn_. Remember to run with the same random numbers for generating $x$ and $y$. 
+
+o (1c) Our next step is to study the variance of the parameters $\beta_1$ and $\beta_2$ (assuming that we are parameterizing our function with a second-order polynomial). We will use standard linear regression and the Ridge regression.  You can now opt for either writing your own function or using _Scikit-Learn_ to find the parameters $\beta$. From your results calculate the variance of these paramaters (recall that this is equal to the diagonal elements of the matrix $(\hat{X}^T\hat{X})+\lambda\hat{I})^{-1}$). Discuss the results of these variances as functions of $\lambda$. In particular, try to link your discussion with the discussion in Hastie *et al.* and their figure 3.11.
+
+o (1d) Repeat the previous step but add now the Lasso method, see equation (3.53) of Hastie *et al.*. Discuss your results and compare with standard regression and the Ridge regression results. You can write your own code or use the functionality of _scikit-learn_.  We recommend the latter since we have not yet discussed how to solve the Lasso equations numerically.
+
+o (1e) Finally, using _Scikit-Learn_ or your own code, compute also the mean square error, a risk metric corresponding to the expected value of the squared (quadratic) error defined as
 !bt 
 \[ MSE(\hat{y},\hat{\tilde{y}}) = \frac{1}{n}
 \sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2, 
@@ -95,75 +52,81 @@ where we have defined the mean value  of $\hat{y}$ as
 \bar{y} =  \frac{1}{n} \sum_{i=0}^{n - 1} y_i.
 \]
 !et
-You can use the functionality included in scikit-learn. If you feel for it, you can use your own program and define functions which compute the above two functions. 
-Discuss the meaning of these results. Try also to vary the coefficient in front of the added stochastic noise term and discuss the quality of the fits.
+Discuss these quantities as functions of the variable $\lambda$ in the Ridge and Lasso regression methods. 
+
+===== Exercise 2  =====
 
 
+A much used approach before starting to train the data is  to preprocess our
+data. Normally the data may need a rescaling and/or may be sensitive
+to extreme values. Scaling the data renders our inputs much more
+suitable for the algorithms we want to employ.
+
+_Scikit-Learn_ has several functions which allow us to rescale the
+data, normally resulting in much better results in terms of various
+accuracy scores.  The _StandardScaler_ function in _Scikit-Learn_
+ensures that for each feature/predictor we study the mean value is
+zero and the variance is one (every column in the design/feature
+matrix).  This scaling has the drawback that it does not ensure that
+we have a particular maximum or minimum in our data set. Another
+function included in _Scikit-Learn_ is the _MinMaxScaler_ which
+ensures that all features are exactly between $0$ and $1$. The
 
 
-=== Exercise 3, mean values and variances in linear regression  ===
+The _Normalizer_ scales each data
+point such that the feature vector has a euclidean length of one. In other words, it
+projects a data point on the circle (or sphere in the case of higher dimensions) with a
+radius of 1. This means every data point is scaled by a different number (by the
+inverse of it’s length).
+This normalization is often used when only the direction (or angle) of the data matters,
+not the length of the feature vector.
+
+The _RobustScaler_ works similarly to the StandardScaler in that it
+ensures statistical properties for each feature that guarantee that
+they are on the same scale. However, the RobustScaler uses the median
+and quartiles, instead of mean and variance. This makes the
+RobustScaler ignore data points that are very different from the rest
+(like measurement errors). These odd data points are also called
+outliers, and might often lead to trouble for other scaling
+techniques.
 
 
-This exercise deals with various mean values ad variances in  linear regression method (here it may be useful to look up chapter 3, equation (3.8) of "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570").
-
-The assumption we have made is 
-that there exists a function $f(\bm{x})$ and  a normal distributed error $\bm{\varepsilon}\sim \mathcal{N}(0, \sigma^2)$
-which describes our data
-!bt
-\[
-\bm{y} = f(\bm{x})+\bm{\varepsilon}
-\]
-!et
-
-We then approximate this function with our model from the solution of the linear regression equations (ordinary least squares OLS), that is our
-function $f$ is approximated by $\bm{\tilde{y}}$ where we minimized  $(\bm{y}-\bm{\tilde{y}})^2$, with
-!bt
-\[
-\bm{\tilde{y}} = \bm{X}\bm{\beta}.
-\]
-!et
-The matrix $\bm{X}$ is the so-called design matrix. 
+It also common to split the data in a _training_ set and a _testing_ set. A typical split is to use $80\%$ of the data for training and the rest
+for testing. This can be done as follows with our design matrix $\bm{X}$ and data $\bm{y}$ (remember to import _scikit-learn_)
+!bc pycod
+# split in training and test data
+X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.2)
+!ec
+Then we can use the stadndard scale to scale our data as
+!bc pycod
+scaler = StandardScaler()
+scaler.fit(X_train)
+X_train_scaled = scaler.transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+!ec
 
 
-Show that  the expectation value of $\bm{y}$ for a given element $i$ 
-!bt
-\begin{align*} 
-\mathbb{E}(y_i) & =\mathbf{X}_{i, \ast} \, \beta, 
-\end{align*} 
-!et
-and that
-its variance is 
-!bt
-\begin{align*} \mbox{Var}(y_i) & = \sigma^2.  
-\end{align*}
-!et
-Hence, $y_i \sim \mathcal{N}( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
-mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$.
+In this exercise we want you to to compute the MSE for the training
+data and the test data as function of the complexity of a polynomial,
+that is the degree of a given polynomial. We want you also to compute the $R2$ score as function of the complexity of the model for both training data and test data.  You should also run the calculation with and without scaling. 
+
+One of 
+the aims is to reproduce Figure 2.11 of "Hastie et al":"https://github.com/CompPhysics/MLErasmus/blob/master/doc/Textbooks/elementsstat.pdf".
+We will also use Ridge and Lasso regression. 
 
 
-With the OLS expressions for the parameters $\bm{\beta}$ show that
-!bt
-\[
-\mathbb{E}(\bm{\beta}) = \bm{\beta}.
-\]
-!et
-This means that the estimator of the regression parameters is unbiased.
+Our data is defined by $x\in [-3,3]$ with a total of for example $100$ data points.
+!bc pycod
+np.random.seed()
+n = 100
+maxdegree = 14
+# Make data set.
+x = np.linspace(-3, 3, n).reshape(-1, 1)
+y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
+!ec
+where $y$ is the function we want to fit with a given polynomial.
 
-Show finally that the variance of $\bm{\beta}$ is
-!bt
-\begin{eqnarray*}
-\mbox{Var}(\bm{\beta}) & = & \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
-\end{eqnarray*}
-!et
-
-=== Exercise 4  ===
-
-Finally, try now to write your own code (you can use the example the nuclear masses in the lecture slides on Regression and Getting started, see URL:"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html" and URL:"https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-bs.html") that reads in the nuclear masses and
-compute the proton separation energies, the two-neutron and two-proton separation energies and finally the shell gaps for selected nuclei.
-
-Finally, try to compute the $Q$-values for $\beta-$ decay for selected nuclei.
-
-We will use this code later as a starting point for our discussions on linear regression. 
-
-
-
+o (2a) Write a first code which sets up a design matrix $X$ defined by a fifth-order polynomial.  Scale your data and split it in training and test data. 
+o (2b) Perform an ordinary least squares and compute the means squared error and the $R2$ factor for the training data and the test data, with and without scaling.
+o (2c) Add now a model which allows you to make polynomials up to degree $15$.  Perform a standard OLS fitting of the training data and compute the MSE and $R2$ for the training and test data and plot both test and training data MSE and $R2$ as functions of the polynomial degree. Compare what you see with Figure 2.11 of Hastie et al. Comment your results. For which polynomial degree do you find an optimal MSE (smallest value)?
+o (2d) Repeat part (2c) but now using Ridge regressions with various hyperparameters $\lambda$. Make the same plots for the optimal $\lambda$ value for each polynomial degree. Compare these results with those from the standard OLS approach.
