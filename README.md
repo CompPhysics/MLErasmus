@@ -102,9 +102,9 @@ _General Machine Learning Books_:
 - _Video_:  https://folk.uio.no/mhjensen/MLErasmus/LectureTue21.mp4
 - _Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotesMonday20Tuesday21.pdf
 - _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS), exercise set 2
-- _Wednesday Lecture 10am-12pm_: Logistic Regression and Optimization (MHJ)
+- _Wednesday Lecture 10am-12pm_: Regression and Bias-Variance Tradeoff (MHJ)
 - _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
-- _Thursday Lecture 10am-12pm_: Optimization and Neural Networks (MHJ)
+- _Thursday Lecture 10am-12pm_: Logistic Regression and Optimization and Neural Networks (MHJ)
 - _Thursday Laboratory 2pm-6pm_: Computational Exercises and installing TensorFlow (SB, LC and HS)
 - _Friday Lecture 10am-12pm_:  Neural Networks (MHJ)
 - _Friday Laboratory 2pm-6pm_: Using TensorFlow and Computational Exercises (SB, LC and HS)
