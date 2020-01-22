@@ -1,45 +1,147 @@
-TITLE: First day: Homework 3
-AUTHOR: Data Analysis and Machine Learning
-DATE:Today
+%%
+%% Automatically generated file from DocOnce source
+%% (https://github.com/hplgit/doconce/)
+%%
+%%
 
-===== Day three and four exercises =====
+
+%-------------------- begin preamble ----------------------
+
+\documentclass[%
+oneside,                 % oneside: electronic viewing, twoside: printing
+final,                   % draft: marks overfull hboxes, figures with paths
+10pt]{article}
+
+\listfiles               %  print all files needed to compile this document
+
+\usepackage{relsize,makeidx,color,setspace,amsmath,amsfonts,amssymb}
+\usepackage[table]{xcolor}
+\usepackage{bm,ltablex,microtype}
+
+\usepackage[pdftex]{graphicx}
+
+\usepackage{fancyvrb} % packages needed for verbatim environments
+
+\usepackage[T1]{fontenc}
+%\usepackage[latin1]{inputenc}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+
+\usepackage{lmodern}         % Latin Modern fonts derived from Computer Modern
+
+% Hyperlinks in PDF:
+\definecolor{linkcolor}{rgb}{0,0,0.4}
+\usepackage{hyperref}
+\hypersetup{
+    breaklinks=true,
+    colorlinks=true,
+    linkcolor=linkcolor,
+    urlcolor=linkcolor,
+    citecolor=black,
+    filecolor=black,
+    %filecolor=blue,
+    pdfmenubar=true,
+    pdftoolbar=true,
+    bookmarksdepth=3   % Uncomment (and tweak) for PDF bookmarks with more levels than the TOC
+    }
+%\hyperbaseurl{}   % hyperlinks are relative to this root
+
+\setcounter{tocdepth}{2}  % levels in table of contents
+
+% prevent orhpans and widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% --- end of standard preamble for documents ---
+
+
+% insert custom LaTeX commands...
+
+\raggedbottom
+\makeindex
+\usepackage[totoc]{idxlayout}   % for index in the toc
+\usepackage[nottoc]{tocbibind}  % for references/bibliography in the toc
+
+%-------------------- end preamble ----------------------
+
+\begin{document}
+
+% matching end for #ifdef PREAMBLE
+
+\newcommand{\exercisesection}[1]{\subsection*{#1}}
+
+
+% ------------------- main content ----------------------
+
+
+
+% ----------------- title -------------------------
+
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bf
+\begin{spacing}{1.25}
+First day: Homework 3
+\end{spacing}
+}
+\end{center}
+
+% ----------------- author(s) -------------------------
+
+\begin{center}
+{\bf Data Analysis and Machine Learning${}^{}$} \\ [0mm]
+\end{center}
+
+\begin{center}
+% List of all institutions:
+\end{center}
+    
+% ----------------- end author(s) -------------------------
+
+% --- begin date ---
+\begin{center}
+Jan 21, 2020
+\end{center}
+% --- end date ---
+
+\vspace{1cm}
+
+
+\subsection*{Day three and four exercises}
 
 The exercises here are somewhat longer and we expect to use at least two days on them.
 
-=== Exercise 1, Bias-Variance tradeoff and Bootstrap  ===
-
+\paragraph{Exercise 1, Bias-Variance tradeoff and Bootstrap.}
 This exercise is a continuation of exercise 2 from the second homework set.
 In that exercise we computed the MSE and $R2$-score for the training
 data and the test data as functions of the complexity of a polynomial,
 that is the degree of a given polynomial.
 
 One of the aims of that exercise was 
-to reproduce Figure 2.11 of "Hastie et al":"https://github.com/CompPhysics/MLErasmus/blob/master/doc/Textbooks/elementsstat.pdf".
+to reproduce Figure 2.11 of \href{{https://github.com/CompPhysics/MLErasmus/blob/master/doc/Textbooks/elementsstat.pdf}}{Hastie et al}.
 
 Our data is defined by $x\in [-3,3]$ with a total of for example $100$ data points.
-!bc pycod
+\begin{verbatim}
 np.random.seed()
 n = 100
 maxdegree = 14
 # Make data set.
 x = np.linspace(-3, 3, n).reshape(-1, 1)
 y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
-!ec
+\end{verbatim}
 where $y$ is the function we want to fit with a given polynomial.
 
-=== Part (1a) Proving the bias-variance tradeoff ===
-
+\paragraph{Part (1a) Proving the bias-variance tradeoff.}
 Consider a
 dataset $\mathcal{L}$ consisting of the data
 $\mathbf{X}_\mathcal{L}=\{(y_j, \boldsymbol{x}_j), j=0\ldots n-1\}$.
 
 Let us assume that the true data is generated from a noisy model
 
-!bt
 \[
 \bm{y}=f(\boldsymbol{x}) + \bm{\epsilon}.
 \]
-!et
 
 Here $\epsilon$ is normally distributed with mean zero and standard
 deviation $\sigma^2$.
@@ -52,47 +154,41 @@ that is $\bm{\tilde{y}}=\bm{X}\bm{\beta}$.
 The parameters $\bm{\beta}$ are in turn found by optimizing the means
 squared error via the so-called cost function
 
-!bt
 \[
 C(\bm{X},\bm{\beta}) =\frac{1}{n}\sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2=\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right].
 \]
-!et
 
 Show that you can rewrite  this as
-!bt
 \[
 \mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right]=\frac{1}{n}\sum_i(f_i-\mathbb{E}\left[\bm{\tilde{y}}\right])^2+\frac{1}{n}\sum_i(\tilde{y}_i-\mathbb{E}\left[\bm{\tilde{y}}\right])^2+\sigma^2.
 \]
-!et
 
 Explain what the terms mean, which one is the bias and which one is
 the variance and discuss their interpretations.
 
 
-=== Part (1b) Adding Bootstrap and Bias-Variance Tradeoff ===
-
-Add now bootstrapping as discussed in the "Regression lectures":"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression.html" (scroll down to the bias-variance code).
+\paragraph{Part (1b) Adding Bootstrap and Bias-Variance Tradeoff.}
+Add now bootstrapping as discussed in the \href{{https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression.html}}{Regression lectures} (scroll down to the bias-variance code).
 Add also the expressions for the bias and the variance as discussed above.
 
 Discuss the bias and variance tradeoff as function
 of your model complexity (the degree of the polynomial) and the number
 of data points, and possibly also your training and test data.
 
-Try to make a figure similar to Fig. 2.11 of Hastie et al. You should include an analysis of the bias and variance for the test results. Figure 2.11 displays only the test and training MSEs while indicating regions of low/high bias and variance. You will most likely not get an
+Try to make a figure similar to Fig.~2.11 of Hastie et al.~You should include an analysis of the bias and variance for the test results. Figure 2.11 displays only the test and training MSEs while indicating regions of low/high bias and variance. You will most likely not get an
 equally smooth curve! Note also that when you calculate the bias, in all applications you don't know the function values $f_i$. You would hence replace them with the actual data points $y_i$.
 
 
 
-=== Exercise 2, Linear Regression for  a two-dimensional function  ===
-
+\paragraph{Exercise 2, Linear Regression for  a two-dimensional function.}
 This is a longer  exercise and the aim is to study in more detail various
 regression methods, including the Ordinary Least Squares (OLS) method,
 Ridge regression and finally Lasso regression.
 The methods are in turn combined with resampling techniques.
 
 We will study how to fit polynomials to a specific
-two-dimensional function called "Franke's
-function":"http://www.dtic.mil/dtic/tr/fulltext/u2/a081688.pdf".  This
+two-dimensional function called \href{{http://www.dtic.mil/dtic/tr/fulltext/u2/a081688.pdf}}{Franke's
+function}.  This
 is a function which has been widely used when testing various
 interpolation and fitting algorithms. Furthermore, after having
 established the model and the method, we will employ resamling
@@ -102,12 +198,10 @@ so-called Bias-Variance trade off.
 
 
 The Franke function, which is a weighted sum of four exponentials  reads as follows
-!bt
 \begin{align*}
 f(x,y) &= \frac{3}{4}\exp{\left(-\frac{(9x-2)^2}{4} - \frac{(9y-2)^2}{4}\right)}+\frac{3}{4}\exp{\left(-\frac{(9x+1)^2}{49}- \frac{(9y+1)}{10}\right)} \\
 &+\frac{1}{2}\exp{\left(-\frac{(9x-7)^2}{4} - \frac{(9y-3)^2}{4}\right)} -\frac{1}{5}\exp{\left(-(9x-4)^2 - (9y-7)^2\right) }.
 \end{align*}
-!et
 
 The function will be defined for $x,y\in [0,1]$.  Our first step will
 be to perform an OLS regression analysis of this function, trying out
@@ -130,7 +224,7 @@ which polynomial fits the data best.
 
 
 The Python fucntion for the Franke function is included here (it performs also a three-dimensional plot of it)
-!bc pycod
+\begin{verbatim}
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from matplotlib import cm
@@ -171,11 +265,10 @@ fig.colorbar(surf, shrink=0.5, aspect=5)
 
 plt.show()
 
-!ec
+\end{verbatim}
 
 
-=== (2a) Ordinary Least Square on the Franke function  with resampling ===
-
+\paragraph{(2a) Ordinary Least Square on the Franke function  with resampling.}
 We will generate our own dataset for a function
 $\mathrm{FrankeFunction}(x,y)$ with $x,y \in [0,1]$. The function
 $f(x,y)$ is the Franke function. You should explore also the addition
@@ -183,40 +276,34 @@ an added stochastic noise to this function using the normal
 distribution $\cal{N}(0,1)$.
 
 Write your own code (using either a matrix inversion or a singular
-value decomposition from e.g., _numpy_ ) or use your code from
+value decomposition from e.g., \textbf{numpy} ) or use your code from
 homeworks 1 and 2 and perform a standard least square regression
-analysis using polynomials in $x$ and $y$ up to fifth order. You can use _scikit-learn_ as well.
+analysis using polynomials in $x$ and $y$ up to fifth order. You can use \textbf{scikit-learn} as well.
 
 
 Evaluate the Mean Squared error (MSE)
 
-!bt 
 \[ MSE(\hat{y},\hat{\tilde{y}}) = \frac{1}{n}
 \sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2, 
 \] 
-!et 
 
 and the $R^2$ score function.  If $\tilde{\hat{y}}_i$ is the predicted
 value of the $i-th$ sample and $y_i$ is the corresponding true value,
 then the score $R^2$ is defined as
 
-!bt
 \[
 R^2(\hat{y}, \tilde{\hat{y}}) = 1 - \frac{\sum_{i=0}^{n - 1} (y_i - \tilde{y}_i)^2}{\sum_{i=0}^{n - 1} (y_i - \bar{y})^2},
 \]
-!et
 
 where we have defined the mean value  of $\hat{y}$ as
 
-!bt
 \[
 \bar{y} =  \frac{1}{n} \sum_{i=0}^{n - 1} y_i.
 \]
-!et
 
 
 To set up the design matrix, the following code can be used
-!bc pycod
+\begin{verbatim}
 def FrankeFunction(x,y):
 	term1 = 0.75*np.exp(-(0.25*(9*x-2)**2) - 0.25*((9*y-2)**2))
 	term2 = 0.75*np.exp(-((9*x+1)**2)/49.0 - 0.1*(9*y+1))
@@ -249,15 +336,13 @@ x = np.sort(np.random.uniform(0, 1, N))
 y = np.sort(np.random.uniform(0, 1, N))
 z = FrankeFunction(x, y)
 X = create_X(x, y, n=n)    
-!ec
+\end{verbatim}
 
 
-=== Part (2b) Resampling techniques, adding more complexity ===
-
-
+\paragraph{Part (2b) Resampling techniques, adding more complexity.}
 Perform a resampling of the data where you split the data in training
 data and test data. Here you can write your own function or use the
-function for splitting training data provided by _Scikit-Learn_.
+function for splitting training data provided by \textbf{Scikit-Learn}.
 This function is called $train\_test\_split$.   You should also renormalize your data.
 
 It is normal in essentially all Machine Learning studies to split the
@@ -272,8 +357,7 @@ and evaluate again the MSE function resulting
 from the test data. 
 
 
-=== Part (2c): Bias-variance tradeoff ===
-
+\paragraph{Part (2c): Bias-variance tradeoff.}
 With a code which does OLS and includes bootstrap
 we will now discuss the bias-variance tradeoff in the context of
 continuous predictions such as regression. However, many of the
@@ -284,10 +368,9 @@ Use the code from exercise 1 above and implement the bootstrap
 resampling and perform a bias-variance tradeoff analysis like you did
 in exercise 1.
 
-=== Part (2d): Ridge Regression on the Franke function  with resampling ===
-
+\paragraph{Part (2d): Ridge Regression on the Franke function  with resampling.}
 Write your own code for the Ridge method, either using matrix
-inversion or the singular value decomposition ir use _scikit-learn_ 
+inversion or the singular value decomposition ir use \textbf{scikit-learn} 
 Perform the same analysis as in the
 previous three steps (for the same polynomials and include resampling
 techniques) but now for different values of $\lambda$. Compare and
@@ -297,11 +380,10 @@ dependence on $\lambda$.
 Study also the bias-variance tradeoff as function of various values of
 the parameter $\lambda$. Comment your results. 
 
-=== Part (2e): Lasso Regression on the Franke function  with resampling ===
-
+\paragraph{Part (2e): Lasso Regression on the Franke function  with resampling.}
 This part is essentially a repeat of the previous ones, but now
 with Lasso regression. Write either your own code or
-use the functionalities of _Scikit-Learn_ (recommended). 
+use the functionalities of \textbf{Scikit-Learn} (recommended). 
 Give a
 critical discussion of the three methods and a judgement of which
 model fits the data best.
@@ -309,4 +391,9 @@ model fits the data best.
 
 
 
+
+
+% ------------------- end of main content ---------------
+
+\end{document}
 
