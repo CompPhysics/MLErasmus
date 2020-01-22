@@ -88,7 +88,7 @@ ${text_types(ch)}
 !split
 ===== Projects and Exercises =====
 
-=== First exercise set ===
+=== First exercise set (Day 1) ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw1/pdf/hw1.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw1/pdf/hw1.pdf"
@@ -96,13 +96,24 @@ ${text_types(ch)}
    * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw1/html/hw1.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw1/html/hw1-bs.html"
 
-=== Second exercise set ===
+=== Second exercise set (Day 2) ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw2/pdf/hw2.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw2/pdf/hw2.pdf"
  * HTML:
    * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw2/html/hw2.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw2/html/hw2-bs.html"
+
+
+=== Third  exercise set (Day 3 and 4)  ===
+ * LaTeX and PDF:
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw3/pdf/hw3.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw3/pdf/hw3.pdf"
+ * HTML:
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw3/html/hw3.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw3/html/hw3-bs.html"
+
+
 
 === Project 1, deadline February 20  ===
  * LaTeX and PDF:
