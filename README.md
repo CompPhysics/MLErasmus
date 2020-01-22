@@ -96,28 +96,30 @@ _General Machine Learning Books_:
 ###  Week 4, January 20-24, 2020
 - _Monday Lecture 10am-12pm_: Introduction to Machine Learning and linear regression (MHJ)
 - _Video_:  https://folk.uio.no/mhjensen/MLErasmus/LectureJan20.mp4
-- _Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotesMonday20Tuesday21.pdf
+- _Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Monday Laboratory 2pm-6pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (SB, LC and HS)
 - _Tuesday Lecture 10am-2pm_: Linear Regression and Logistic Regression (MHJ)
 - _Video_:  https://folk.uio.no/mhjensen/MLErasmus/LectureTue21.mp4
-- _Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotesMonday20Tuesday21.pdf
+- _Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS), exercise set 2
 - _Wednesday Lecture 10am-12pm_: Regression and Bias-Variance Tradeoff (MHJ)
-- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
-- _Thursday Lecture 10am-12pm_: Logistic Regression and Optimization and Neural Networks (MHJ)
-- _Thursday Laboratory 2pm-6pm_: Computational Exercises and installing TensorFlow (SB, LC and HS)
+- _Video_:  https://folk.uio.no/mhjensen/MLErasmus/LectureWedn22.mp4
+- _Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
+- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), exercise sets 2 and 3
+- _Thursday Lecture 10am-12pm_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ)
+- _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), exercise sets 2 and 3
 - _Friday Lecture 10am-12pm_:  Neural Networks (MHJ)
-- _Friday Laboratory 2pm-6pm_: Using TensorFlow and Computational Exercises (SB, LC and HS)
+- _Friday Laboratory 2pm-6pm_: Using and installing TensorFlow and Computational Exercises (SB, LC and HS), exercise sets 2 and 3 and first project
 
 ### Week 5, January 27-31, 2020
 - _Monday Lecture 10am-12pm_:  Neural Networks and PCA (MHJ)
-- _Monday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
+- _Monday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS) and work on project 1
 - _Tuesday Lecture 10am-2pm_:  Decision Trees, Random Forests and Boosting (MHJ)
-- _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS)
-- _Wednesday Lecture 10am-12pm_: Decision Trees, Random Forests and Boosting (MHJ)
-- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
+- _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS) and work on project 1
+- _Wednesday Lecture 10am-12pm_: Decision Trees, Random Forests and Boosting (MHJ), presentation of project 2
+- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
 - _Thursday Lecture 10am-12pm_:  Support Vector Machines (MHJ)
-- _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
+- _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
 - _Friday Lecture 10am-12pm_:  Support Vector Machines and Summary of course (MHJ)
-- _Friday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS)
+- _Friday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
 
