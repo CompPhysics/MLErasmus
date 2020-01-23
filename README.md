@@ -107,8 +107,11 @@ _General Machine Learning Books_:
 - _Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), exercise sets 2 and 3
 - _Thursday Lecture 10am-12pm_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ)
+- _Video_:  https://folk.uio.no/mhjensen/MLErasmus/FirstLectureThurs23.mp4
+- _Video_:  https://folk.uio.no/mhjensen/MLErasmus/SecondLectureThurs23.mp4
+- _Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), exercise sets 2 and 3
-- _Friday Lecture 10am-12pm_:  Neural Networks (MHJ)
+- _Friday Lecture 10am-12pm_:  Logistic Regression and begin Neural Networks (MHJ)
 - _Friday Laboratory 2pm-6pm_: Using and installing TensorFlow and Computational Exercises (SB, LC and HS), exercise sets 2 and 3 and first project
 
 ### Week 5, January 27-31, 2020
