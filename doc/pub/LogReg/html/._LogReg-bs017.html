@@ -61,8 +61,14 @@ Automatically generated HTML file from DocOnce source
               ('Including more classes', 2, None, '___sec13'),
               ('More classes', 2, None, '___sec14'),
               ('A simple classification problem', 2, None, '___sec15'),
-              ('The Credit Card example', 2, None, '___sec16'),
-              ('How to read the Credit Card data', 2, None, '___sec17')]}
+              ('Preprocessing our data', 2, None, '___sec16'),
+              ('More preprocessing', 2, None, '___sec17'),
+              ('Simple preprocessing examples, breast cancer data and '
+               'classification',
+               2,
+               None,
+               '___sec18'),
+              ('Covariance and Correlation', 2, None, '___sec19')]}
 end of tocinfo -->
 
 <body>
@@ -116,8 +122,10 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._LogReg-bs014.html#___sec13" style="font-size: 80%;">Including more classes</a></li>
      <!-- navigation toc: --> <li><a href="._LogReg-bs015.html#___sec14" style="font-size: 80%;">More classes</a></li>
      <!-- navigation toc: --> <li><a href="._LogReg-bs016.html#___sec15" style="font-size: 80%;">A simple classification problem</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">The Credit Card example</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs018.html#___sec17" style="font-size: 80%;">How to read the Credit Card data</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">Preprocessing our data</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs018.html#___sec17" style="font-size: 80%;">More preprocessing</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs019.html#___sec18" style="font-size: 80%;">Simple preprocessing examples, breast cancer data and classification</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs020.html#___sec19" style="font-size: 80%;">Covariance and Correlation</a></li>
 
         </ul>
       </li>
@@ -133,21 +141,30 @@ MathJax.Hub.Config({
 <a name="part0017"></a>
 <!-- !split -->
 
-<h2 id="___sec16" class="anchor">The Credit Card example </h2>
-Here we use the the <a href="https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients" target="_self">credit card data</a>. 
-The data are from an extensive database from Taiwan and include more than ten predictors.
+<h2 id="___sec16" class="anchor">Preprocessing our data  </h2>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
 
 <p>
-For categorical data -Scikit-Learn- provides a so-called <b>one-hot encoder</b>.
-This is called one-hot
-encoding, because only one attribute will be equal to 1 (hot), while the others will be 0 (cold).
-<b>Scikit-Learn</b> provides a OneHotEncoder encoder to convert integer categorical values into one-hot
-<p>
+We discuss here how to preprocess our
+data. Till now and in connection with our previous examples we have
+not met so many cases where we are too sensitive to the scaling of our
+data. Normally the data may need a rescaling and/or may be sensitive
+to extreme values. Scaling the data renders our inputs much more
+suitable for the algorithms we want to employ.
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> OneHotEncoder
-encoder <span style="color: #666666">=</span> OneHotEncoder()
-</pre></div>
+<p>
+<b>Scikit-Learn</b> has several functions which allow us to rescale the
+data, normally resulting in much better results in terms of various
+accuracy scores.  The <b>StandardScaler</b> function in <b>Scikit-Learn</b>
+ensures that for each feature/predictor we study the mean value is
+zero and the variance is one (every column in the design/feature
+matrix).  This scaling has the drawback that it does not ensure that
+we have a particular maximum or minimum in our data set. Another
+function included in <b>Scikit-Learn</b> is the <b>MinMaxScaler</b> which
+ensures that all features are exactly between \( 0 \) and \( 1 \). The
+
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
@@ -165,6 +182,8 @@ encoder <span style="color: #666666">=</span> OneHotEncoder()
   <li><a href="._LogReg-bs016.html">17</a></li>
   <li class="active"><a href="._LogReg-bs017.html">18</a></li>
   <li><a href="._LogReg-bs018.html">19</a></li>
+  <li><a href="._LogReg-bs019.html">20</a></li>
+  <li><a href="._LogReg-bs020.html">21</a></li>
   <li><a href="._LogReg-bs018.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->
