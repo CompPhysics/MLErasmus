@@ -69,17 +69,6 @@ ${text_types(ch)}
 
 
 !split
-===== Python and Scikit Learn, a short guide  =====
- * HTML format only:
-   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/ComputationalPhysics/doc/pub/learningpython/html/learningpython-bs.html"
-
-!split
-===== Teach yourself C++ =====
- * HTML format only:
-   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/ComputationalPhysics/doc/pub/learningcpp/html/learningcpp-bs.html"
-
-
-!split
 ===== Projects and Exercises =====
 
 === First exercise set (Day 1) ===
