@@ -105,7 +105,7 @@ final,                   % draft: marks overfull hboxes, figures with paths
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-Project 2 on Machine Learning, deadline November 12
+Project 1 on Machine Learning, deadline February 20, 2020
 \end{spacing}
 }
 \end{center}
@@ -125,7 +125,7 @@ Project 2 on Machine Learning, deadline November 12
 
 % --- begin date ---
 \begin{center}
-Jan 25, 2020
+Jan 26, 2020
 \end{center}
 % --- end date ---
 
@@ -245,7 +245,7 @@ Here is the Python code you need to generate the training data, see
 also the \href{{https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html}}{notebook of Mehta et
 al}.
 
-\begin{verbatim}
+\begin{print}
 import numpy as np
 import scipy.sparse as sp
 np.random.seed(12)
@@ -274,7 +274,7 @@ def ising_energies(states,L):
     return E
 # calculate Ising energies
 energies=ising_energies(states,L)
-\end{verbatim}
+\end{print}
 
 We can now recast the problem as a linear regression model using our codes from homework set 3 (exercise 2 in particular).
 The way we are going to build our model mimicks the way we could think of finding say the gravitional constant for the graviational force between two planets.
@@ -306,8 +306,12 @@ learn negative $J$'s.
 
 \paragraph{Part b): Estimating the coupling constant of the one-dimensional Ising model using linear regression.}
 We start with the one-dimensional Ising model and use the data we have
-generated with $J=1$ in the previous point. Use linear regression,
-Lasso and Ridge regression as done in homework 3. You can compare your
+generated with $J=1$ in the previous point.
+
+\textbf{Use linear regression,
+Lasso and Ridge regression as done in homework 3}.
+Make an analysis of the guessed coupling constant as function of the hyperparameters $\lambda$. 
+You can compare your
 results with those of \href{{https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html}}{Mehta
 et al.}.
 Make sure it is the 1D data which is used.
@@ -345,16 +349,15 @@ critical phase if you want.
 Your aim here is thus to read in these data (use the examples from
 \href{{https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVII-logreg_ising.html}}{Mehta et
 al})
-and write your own code for doing logistic regression, see the lecture
+and use for example the functionality in \textbf{Scikit-Learn} to implement  logistic regression, see the lecture
 notes on \href{{https://compphysics.github.io/MachineLearning/doc/pub/LogReg/html/LogReg-bs.html}}{logistic
 regression}.
 
 
-In this case, to evaluate the model, we will use the so-called accuracy score 
-instead of the bootstrap or cross-validation as done in the standard linear regression part discussed in b).  Examples of how to define the accuracy score can be found under the neural network slides, see for example the \href{{https://compphysics.github.io/MachineLearning/doc/pub/NeuralNet/html/._NeuralNet-bs047.html}}{slides here}.
+In this case, to evaluate the model, we will use the so-called accuracy score.   Examples of how to define the accuracy score can be found under the neural network slides. You should also use logistic regression with and without cross-validation.
 
 To measure the performance of our network we evaluate how well it does
-it data it has never seen before, i.e.~the test data.  We measure the
+on data it has never seen before, i.e.~the test data.  We measure the
 performance of the network using the \emph{accuracy} score.  The accuracy
 is as you would expect just the number of images correctly labeled
 divided by the total number of images. A perfect classifier will have
@@ -366,9 +369,6 @@ an accuracy score of $1$.
 
 where $I$ is the indicator function, $1$ if $t_i = y_i$ and $0$
 otherwise, where $t_i$ represents the target and $y_i$ the outputs.
-
-We recommend using  \textbf{scikit-learn}'s toolbox for
-optimization methods applied to logistic regression.
 
 
 The notebook of \href{{https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVII-logreg_ising.html}}{Mehta et al} is highly recommended in order to benchmark your code and results.
@@ -448,7 +448,7 @@ project.
 The preferred format for the report is a PDF file. You can also use DOC or postscript formats or as an ipython notebook file.  As programming language we prefer that you choose between C/C++, Fortran2008 or Python. The following prescription should be followed when preparing the report:
 
 \begin{itemize}
-  \item Send us \textbf{only} the report file!  For the source code file(s) you have developed please provide us with your link to your github domain.  The report file should include all of your discussions and a list of the codes you have developed.  
+  \item Send us \textbf{only} the report file!  For the source code file(s) you have developed please provide us with your link to you\rr github domain.  The report file should include all of your discussions and a list of the codes you have developed.  
 
   \item item In your git repository, please include a folder which contains selected results and a folder with your codes.
 \end{itemize}

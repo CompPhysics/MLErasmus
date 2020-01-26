@@ -7,9 +7,9 @@ Automatically generated HTML file from DocOnce source
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Project 2 on Machine Learning, deadline November 12">
+<meta name="description" content="Project 1 on Machine Learning, deadline February 20, 2020">
 
-<title>Project 2 on Machine Learning, deadline November 12</title>
+<title>Project 1 on Machine Learning, deadline February 20, 2020</title>
 
 <!-- Bootstrap style: bootstrap -->
 <link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
@@ -111,7 +111,7 @@ MathJax.Hub.Config({
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <a class="navbar-brand" href="Project1-bs.html">Project 2 on Machine Learning, deadline November 12</a>
+    <a class="navbar-brand" href="Project1-bs.html">Project 1 on Machine Learning, deadline February 20, 2020</a>
   </div>
 
   <div class="navbar-collapse collapse navbar-responsive-collapse">
@@ -148,7 +148,7 @@ MathJax.Hub.Config({
 
 
 <div class="jumbotron">
-<center><h1>Project 2 on Machine Learning, deadline November 12</h1></center>  <!-- document title -->
+<center><h1>Project 1 on Machine Learning, deadline February 20, 2020</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): <a href="http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html" target="_self">Data Analysis and Machine Learning FYS-STK3155/FYS4155</a> -->
@@ -163,7 +163,7 @@ MathJax.Hub.Config({
 <center><b>Department of Physics, University of Oslo, Norway</b></center>
 <br>
 <p>
-<center><h4>Jan 25, 2020</h4></center> <!-- date -->
+<center><h4>Jan 26, 2020</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -360,8 +360,13 @@ learn negative \( J \)'s.
 
 <p>
 We start with the one-dimensional Ising model and use the data we have
-generated with \( J=1 \) in the previous point. Use linear regression,
-Lasso and Ridge regression as done in homework 3. You can compare your
+generated with \( J=1 \) in the previous point.
+
+<p>
+<b>Use linear regression,
+Lasso and Ridge regression as done in homework 3</b>.
+Make an analysis of the guessed coupling constant as function of the hyperparameters \( \lambda \). 
+You can compare your
 results with those of <a href="https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html" target="_self">Mehta
 et al.</a>.
 Make sure it is the 1D data which is used.
@@ -403,17 +408,16 @@ critical phase if you want.
 Your aim here is thus to read in these data (use the examples from
 <a href="https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVII-logreg_ising.html" target="_self">Mehta et
 al</a>)
-and write your own code for doing logistic regression, see the lecture
+and use for example the functionality in <b>Scikit-Learn</b> to implement  logistic regression, see the lecture
 notes on <a href="https://compphysics.github.io/MachineLearning/doc/pub/LogReg/html/LogReg-bs.html" target="_self">logistic
 regression</a>.
 
 <p>
-In this case, to evaluate the model, we will use the so-called accuracy score 
-instead of the bootstrap or cross-validation as done in the standard linear regression part discussed in b).  Examples of how to define the accuracy score can be found under the neural network slides, see for example the <a href="https://compphysics.github.io/MachineLearning/doc/pub/NeuralNet/html/._NeuralNet-bs047.html" target="_self">slides here</a>.
+In this case, to evaluate the model, we will use the so-called accuracy score.   Examples of how to define the accuracy score can be found under the neural network slides. You should also use logistic regression with and without cross-validation.
 
 <p>
 To measure the performance of our network we evaluate how well it does
-it data it has never seen before, i.e. the test data.  We measure the
+on data it has never seen before, i.e. the test data.  We measure the
 performance of the network using the <em>accuracy</em> score.  The accuracy
 is as you would expect just the number of images correctly labeled
 divided by the total number of images. A perfect classifier will have
@@ -426,10 +430,6 @@ $$
 <p>
 where \( I \) is the indicator function, \( 1 \) if \( t_i = y_i \) and \( 0 \)
 otherwise, where \( t_i \) represents the target and \( y_i \) the outputs.
-
-<p>
-We recommend using  <b>scikit-learn</b>'s toolbox for
-optimization methods applied to logistic regression.
 
 <p>
 The notebook of <a href="https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVII-logreg_ising.html" target="_self">Mehta et al</a> is highly recommended in order to benchmark your code and results.
