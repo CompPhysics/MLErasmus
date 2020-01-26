@@ -7,13 +7,10 @@ DATE: today
 
 The main aim of this project is to study both classification and
 regression problems, starting with the regression algorithms studied
-in project 1. We will include logistic regresion for classification
-problems and write our own multilayer perceptron code for studying
-both regression and classification problems.  The codes developed in
-project 1, including bootstrap and/or cross-validation as well as the
-computation of the mean-squared error and the R2 score function can
-also be utilized (and included in logistic regression and the neural
-network codes) in the present analysis.
+in homework set 3 (exercise 2 in particular).
+We will include logistic regresion for classification
+problems and neural network with _tensorflow_ (feel free however to write your own code) for studying
+both regression and classification problems.
 
 We will use the so-called Ising model for  our training data and will
 focus on supervised training. We will follow closely the recent
@@ -29,6 +26,7 @@ analysis that we will explore.  In this sense, with their available
 notebooks, it makes life easier since we can compare our own codes
 with their codes.
 
+You can also look up the "Regression slides for a discussion of the Ising model":"https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression.html" (scroll down to the end).
 
 
 
@@ -42,16 +40,16 @@ phase. Close to the critical temperature, the final magnetization
 becomes smaller and smaller in absolute value while above the critical
 temperature, the net magnetization is zero.  This classification case,
 that is the two-dimensional Ising model, will be studied using
-logistic regression and deep neural networks.  The aim is to develop
-your own logistic regression code for the classification of the phases
+logistic regression and deep neural networks.
+We will mainly use _scikit-learn_ or _tensorflow_ or other Python packages such as _keras_ or other.
+If you feel for it, 
+you can also develop your  own logistic regression code for the classification of the phases
 (this is a binary model) and your multilayer perceptron code for the
-classification and regression case. You can compare your own results with those obtained
-using _scikit-learn_ or _tensorflow_ or other Python packages such as _keras_ or other.
+classification and regression case. This is however not required.
 
 
-Feel free to use the notebooks to benchmark your code.  If you wish to
-write your own C++ or Fortran program for say a multilayer neural network
-model and a logistic regression model, please feel free to do so.  
+
+Feel free to use the notebooks to benchmark your code.  
 
 
 === Part a): Producing the data for the one-dimensional Ising model ===
@@ -156,7 +154,7 @@ def ising_energies(states,L):
 energies=ising_energies(states,L)
 !ec
 
-We can now recast the problem as a linear regression model using our codes from project 1.
+We can now recast the problem as a linear regression model using our codes from homework set 3 (exercise 2 in particular).
 The way we are going to build our model mimicks the way we could think of finding say the gravitional constant for the graviational force between two planets.
 In the absence of any prior knowledge, one sensible choice is the all-to-all Ising model
 
@@ -186,21 +184,20 @@ i.e. $\mathbf{X}^i \cdot \mathbf{J}=X^i_pJ_p$.  Note that the
 regression model does not include the minus sign, so we expect to
 learn negative $J$'s.
 
-With these preliminaries, we are now ready to  reutilize our codes from project 1. 
 
 
 === Part b): Estimating the coupling constant of the one-dimensional Ising model using linear regression ===
 
 We start with the one-dimensional Ising model and use the data we have
 generated with $J=1$ in the previous point. Use linear regression,
-Lasso and Ridge regression as done in project 1. You can compare your
+Lasso and Ridge regression as done in homework 3. You can compare your
 results with those of "Mehta
 et al.":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html".
 Make sure it is the 1D data which is used.
 
 Discuss the methods and how they perform in computing the coupling
-constant $J$ and include a bias-variance analysis using either
-cross-validation or bootstrap. Discuss also the mean squared error and
+constant $J$ and include a bias-variance analysis using the bootstrap resampling method.
+Discuss also the mean squared error and
 the $R2$ score as measures to assess your model.
 
 Give a critical analysis of your results.
@@ -256,17 +253,7 @@ an accuracy score of $1$.
 where $I$ is the indicator function, $1$ if $t_i = y_i$ and $0$
 otherwise, where $t_i$ represents the target and $y_i$ the outputs.
 
-
-
-In order to find the optimal parameters of your logistic regressor you should
-include a gradient descent solver, as discussed in the "gradient
-descent
-lectures":"https://compphysics.github.io/MachineLearning/doc/pub/Splines/html/Splines-bs.html".
-Since we don't have so many data points, you may just code the
-standard gradient descent with a given learning rate, or even attempt
-to use the Newton-Raphson method.  Alternatively, it may be useful for
-the next part on neural networks to implement a stochastic gradient
-descent with and without mini-batches. Stochastic gradient with mini-batches may give the best results. You could finally compare your code with the output from _scikit-learn_'s toolbox for
+We recommend using  _scikit-learn_'s toolbox for
 optimization methods applied to logistic regression.
 
 
@@ -274,16 +261,10 @@ The notebook of "Mehta et al":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML
 
 === Part d): Regression analysis of the one-dimensional Ising model using neural networks  ===
 
-Your aim now, and this is the central part of this project, is to
-write to your own multilayer perceptron model implementing the back
-propagation algorithm discussed in the "lecture
-slides":"https://compphysics.github.io/MachineLearning/doc/pub/NeuralNet/html/NeuralNet-bs.html". We
-start with the regression case discussed in parts a) and b) but train
-now the network to find the optimal weights and biases. You are free
-to use the codes in the above lecture slides as starting points.
+Your aim now is to use either _scikit-learn_ or _tensorflow_ in order to set up a neural network to find the optimal weights and biases. 
 
 Train your network and compare the results with those from your linear regression code. 
-You can test your results against a similar code using _scikit_learn_ (see the examples in the above lecture notes) or _tensorflow/keras_. 
+You can test your results against a similar code using _scikit-learn_ or _tensorflow/keras_. 
 
 
 A useful reference on the back progagation algorithm is "Nielsen's book":"http://neuralnetworksanddeeplearning.com/". It is an excellent read.
@@ -291,14 +272,14 @@ A useful reference on the back progagation algorithm is "Nielsen's book":"http:/
 === Part e): Classifying the Ising model phase using neural networks  ===
 
 Finally, change now your cost function to the $log$ cross-entropy classification cost function for the case discussed in part c). Train your network again and
-compare the results with those from your logistic  regression code i c). 
+compare the results with those from your logistic  regression code in c). 
 Here again you can compare your results with those of "Mehta et al":"https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CIX-DNN_ising_TFlow.html". There they used _tensorflow_ to classify the phases. 
 
 
 
 === Part f) Critical evaluation of the various algorithms ===
 
-After all these glorious calculations, you should now summarize the various algorithms and come with a critical evaluation of their pros and cons. Which algorithm works best for the regression case and which is best for the classification case. These codes will also be part of your final project 3, but now applied to other data sets.
+After all these glorious calculations, you should now summarize the various algorithms and come with a critical evaluation of their pros and cons. Which algorithm works best for the regression case and which is best for the classification case. These codes will also be part of your final project 2, but now applied to other data sets.
 
 
 
@@ -354,16 +335,9 @@ project.
 
 The preferred format for the report is a PDF file. You can also use DOC or postscript formats or as an ipython notebook file.  As programming language we prefer that you choose between C/C++, Fortran2008 or Python. The following prescription should be followed when preparing the report:
 
-  * Use Devilry to hand in your projects, log in  at  URL:"http://devilry.ifi.uio.no" with your normal UiO username and password and choose either 'fysstk3155' or 'fysstk4155'. There you can load up the files within the deadline.
+  * Send us _only_ the report file!  For the source code file(s) you have developed please provide us with your link to you\rr github domain.  The report file should include all of your discussions and a list of the codes you have developed.  
 
-  * Upload _only_ the report file!  For the source code file(s) you have developed please provide us with your link to your github domain.  The report file should include all of your discussions and a list of the codes you have developed.  Do not include library files which are available at the course homepage, unless you have made specific changes to them.
-
-  * In your git repository, please include a folder which contains selected results. These can be in the form of output from your code for a selected set of runs and input parameters.
-
-  * In this and all later projects, you should include tests (for example unit tests) of your code(s).
-
-  * Comments  from us on your projects, approval or not, corrections to be made  etc can be found under your Devilry domain and are only visible to you and the teachers of the course.
-
+  * item In your git repository, please include a folder which contains selected results and a folder with your codes.
 
 
 Finally, 
