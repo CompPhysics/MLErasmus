@@ -115,13 +115,15 @@ _General Machine Learning Books_:
 
 
 ### Week 5, January 27-31, 2020
-- _Monday Lecture 10am-12pm_:  Neural Networks and PCA (MHJ)
+- _Monday Lecture 10am-12pm_:  Neural Networks  (MHJ)
+- _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureJan27.mp4
+- _Handwritten Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Monday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS) and work on project 1
-- _Tuesday Lecture 10am-2pm_:  Decision Trees, Random Forests and Boosting (MHJ)
+- _Tuesday Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ)
 - _Tuesday Laboratory 10am-2pm:_ Computational Exercises (SB, LC and HS) and work on project 1
 - _Wednesday Lecture 10am-12pm_: Decision Trees, Random Forests and Boosting (MHJ), presentation of project 2
 - _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
-- _Thursday Lecture 10am-12pm_:  Support Vector Machines (MHJ)
+- _Thursday Lecture 10am-12pm_:  Decision trees, Random Forests and Boosting (MHJ)
 - _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
 - _Friday Lecture 10am-12pm_:  Support Vector Machines and Summary of course (MHJ)
 - _Friday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
