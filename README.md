@@ -124,7 +124,7 @@ _General Machine Learning Books_:
 - _Handwritten Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Tuesday Laboratory 2pm-6pm:_ Computational Exercises (SB, LC and HS) and work on project 1
 - _Wednesday Lecture 10am-12pm_: Decision Trees, Random Forests and Boosting (MHJ), presentation of project 2
-- _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureWedn28.mp4
+- _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureWedn29.mp4
 - _Handwritten Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
 - _Thursday Lecture 10am-12pm_:  Decision trees, Random Forests and Boosting (MHJ)
