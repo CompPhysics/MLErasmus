@@ -131,6 +131,6 @@ _General Machine Learning Books_:
 - _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureThurs30.mp4
 - _Handwritten Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
-- _Friday Lecture 10am-12pm_:  Support Vector Machines and Summary of course (MHJ)
+- _Friday Lecture 10am-12pm_:  Bossting and XGBoost and Summary of course (MHJ)
 - _Friday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
 
