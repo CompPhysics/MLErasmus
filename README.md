@@ -111,26 +111,23 @@ _General Machine Learning Books_:
 - _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureFri24.mp4
 - _Friday Laboratory 2pm-6pm_: Using and installing TensorFlow and Computational Exercises (SB, LC and HS), exercise sets 2 and 3 and first project
 
-- _Handwritten Notes First week_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
-
 
 ### Week 5, January 27-31, 2020
 - _Monday Lecture 10am-12pm_:  Neural Networks  (MHJ)
 - _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureJan27.mp4
-- _Handwritten Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Monday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS) and work on project 1
 - _Tuesday Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ)
 - _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureTue28.mp4
-- _Handwritten Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 - _Tuesday Laboratory 2pm-6pm:_ Computational Exercises (SB, LC and HS) and work on project 1
-- _Wednesday Lecture 10am-12pm_: Decision Trees, Random Forests and Boosting (MHJ), presentation of project 2
+- _Wednesday Lecture 10am-12pm_: Decision Trees, Random Forests and Boosting (MHJ)
 - _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureWedn29.mp4
-- _Handwritten Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
-- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
+- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1
 - _Thursday Lecture 10am-12pm_:  Decision trees, Random Forests and Boosting (MHJ)
 - _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureThurs30.mp4
-- _Handwritten Notes_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
-- _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
-- _Friday Lecture 10am-12pm_:  Bossting and XGBoost and Summary of course (MHJ)
-- _Friday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1 and 2
+- _Thursday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on project 1
+- _Friday Lecture 10am-12pm_:  Bossting and XGBoost and Summary of course (MHJ), presentation of project 2
+- _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureFri31.mp4
+- _Friday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS), work on projects 1 and 2
+
+- _Handwritten Notes First and Second weeks_:  https://folk.uio.no/mhjensen/MLErasmus/HandwrittenNotes.pdf
 
