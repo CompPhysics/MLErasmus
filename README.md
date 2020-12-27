@@ -64,9 +64,9 @@ is recommended.
 
 ## Practicalities
 
-1. Lectures are in the morning, from 10am-12pm.
+1. Lectures are in the morning, from 9am-1130am.
 2. Four hours of laboratory sessions for work on computational projects, from 2pm to 6pm;
-3. Lectures and lab sessions will all be at GANIL, starting January 20 at 9am. 
+3. Lectures and lab sessions will all be at GANIL, starting January 18 at 9am. 
 4. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than March 1, hopefully the grades will be available before that.
 
 
@@ -93,7 +93,7 @@ _General Machine Learning Books_:
 ##  Teaching schedule, topics and teachers
 ### Teachers: Stian Bilek (SB), Lucas Charpentier (LC), Morten Hjorth-Jensen (MHJ), and Hanna Svennevik (HS)
 
-###  Week 4, January 20-24, 2020
+###  Week 4, January 18-22, 2020
 - _Monday Lecture 10am-12pm_: Introduction to Machine Learning and linear regression (MHJ)
 - _Video_:  https://folk.uio.no/mhjensen/MLErasmus/LectureJan20.mp4
 - _Monday Laboratory 2pm-6pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (SB, LC and HS)
@@ -112,7 +112,7 @@ _General Machine Learning Books_:
 - _Friday Laboratory 2pm-6pm_: Using and installing TensorFlow and Computational Exercises (SB, LC and HS), exercise sets 2 and 3 and first project
 
 
-### Week 5, January 27-31, 2020
+### Week 5, January 25-29, 2020
 - _Monday Lecture 10am-12pm_:  Neural Networks  (MHJ)
 - _Video_: https://folk.uio.no/mhjensen/MLErasmus/LectureJan27.mp4
 - _Monday Laboratory 2pm-6pm_: Computational Exercises (SB, LC and HS) and work on project 1
