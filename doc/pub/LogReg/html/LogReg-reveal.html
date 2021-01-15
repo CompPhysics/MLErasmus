@@ -148,12 +148,12 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>Jan 28, 2019</h4></center> <!-- date -->
+<center><h4>Jan 23, 2020</h4></center> <!-- date -->
 <br>
 <p>
 
 <center style="font-size:80%">
-<!-- copyright --> &copy; 1999-2019, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
+<!-- copyright --> &copy; 1999-2020, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
 </center>
 </section>
 
@@ -167,11 +167,12 @@ coefficients of a functional fit (say a polynomial) in order to be
 able to predict the response of a continuous variable on some unseen
 data. The fit to the continuous variable \( y_i \) is based on some
 independent variables \( \hat{x}_i \). Linear regression resulted in
-analytical expressions (in terms of matrices to invert) for several
-quantities, ranging from the variance and thereby the confidence
-intervals of the parameters \( \hat{\beta} \) to the mean squared
-error. If we can invert the product of the design matrices, linear
-regression gives then a simple recipe for fitting our data.
+analytical expressions for standard ordinary Least Squares or Ridge
+regression (in terms of matrices to invert) for several quantities,
+ranging from the variance and thereby the confidence intervals of the
+parameters \( \hat{\beta} \) to the mean squared error. If we can invert
+the product of the design matrices, linear regression gives then a
+simple recipe for fitting our data.
 
 <p>
 Classification problems, however, are concerned with outcomes taking
@@ -197,13 +198,18 @@ failure etc.
 <h2 id="___sec1">Optimization and Deep learning </h2>
 
 <p>
-Logistic regression will also serve as our stepping stone towards neural
-network algorithms and supervised deep learning. For logistic
+Logistic regression will also serve as our stepping stone towards
+neural network algorithms and supervised deep learning. For logistic
 learning, the minimization of the cost function leads to a non-linear
-equation in the parameters \( \hat{\beta} \). The optmization of the problem calls therefore for minimization algorithms. This forms the bottle neck of all machine learning algorithms, namely how to find reliable minima of a multi-variable function. This leads us to the family of gradient descent methods. The latter are the working horses of basically all modern machine learning algorithms.
+equation in the parameters \( \hat{\beta} \). The optimization of the
+problem calls therefore for minimization algorithms. This forms the
+bottle neck of all machine learning algorithms, namely how to find
+reliable minima of a multi-variable function. This leads us to the
+family of gradient descent methods. The latter are the working horses
+of basically all modern machine learning algorithms.
 
 <p>
-We note also that many of the topics discussed here 
+We note also that many of the topics discussed here on logistic 
 regression are also commonly used in modern supervised Deep Learning
 models, as we will see later.
 </section>
@@ -225,7 +231,11 @@ primary goal is to identify the classes to which new unseen samples
 belong.
 
 <p>
-Let us specialize to the case of two classes only, with outputs \( y_i=0 \) and \( y_i=1 \). Our outcomes could represent the status of a credit card user who could default or not on her/his credit card debt. That is
+Let us specialize to the case of two classes only, with outputs
+\( y_i=0 \) and \( y_i=1 \). Our outcomes could represent the status of a
+credit card user that could default or not on her/his credit card
+debt. That is
+
 <p>&nbsp;<br>
 $$
 y_i = \begin{bmatrix} 0 & \mathrm{no}\\  1 & \mathrm{yes} \end{bmatrix}.
@@ -238,7 +248,10 @@ $$
 <h2 id="___sec3">Linear classifier </h2>
 
 <p>
-Before moving to the logistic model, let us try to use our linear regression model to classify these two outcomes. We could for example fit a linear model to the default case if \( y_i > 0.5 \) and the no default case \( y_i \leq 0.5 \).
+Before moving to the logistic model, let us try to use our linear
+regression model to classify these two outcomes. We could for example
+fit a linear model to the default case if \( y_i > 0.5 \) and the no
+default case \( y_i \leq 0.5 \).
 
 <p>
 We would then have our 
@@ -261,10 +274,12 @@ where \( \hat{y} \) is a vector representing the possible outcomes, \( \hat{X} \
 <h2 id="___sec4">Some selected properties </h2>
 
 <p>
-The main problem with our  function is that it 
-takes values on the entire real axis. In the case of
-logistic regression, however, the labels \( y_i \) are discrete
-variables.
+The main problem with our function is that it takes values on the
+entire real axis. In the case of logistic regression, however, the
+labels \( y_i \) are discrete variables. A typical example is the credit
+card data discussed below here, where we can set the state of
+defaulting the debt to \( y_i=1 \) and not to \( y_i=0 \) for one the persons
+in the data set (see the full example below).
 
 <p>
 One simple way to get a discrete output is to have sign
@@ -274,14 +289,6 @@ We will encounter this model in our first demonstration of neural networks. Hist
 literature. This model is extremely simple. However, in many cases it is more
 favorable to use a ``soft" classifier that outputs
 the probability of a given category. This leads us to the logistic function.
-
-<p>
-The code for plotting the perceptron can be seen here. This si nothing but the standard <a href="https://en.wikipedia.org/wiki/Heaviside_step_function" target="_blank">Heaviside step function</a>.
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>
-</pre></div>
 </section>
 
 
@@ -306,17 +313,78 @@ $$
 <p>&nbsp;<br>
 
 Note that \( 1-p(t)= p(-t) \).
-The following code plots the logistic function.
+</section>
+
+
+<section>
+<h2 id="___sec6">Examples of likelihood functions used in logistic regression and nueral networks </h2>
+
+<p>
+The following code plots the logistic function, the step function and other functions we will encounter from here and on.
+
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #CD5555">&quot;&quot;&quot;The sigmoid function (or the logistic curve) is a</span>
+<span style="color: #CD5555">function that takes any real number, z, and outputs a number (0,1).</span>
+<span style="color: #CD5555">It is useful in neural networks for assigning weights on a relative scale.</span>
+<span style="color: #CD5555">The value z is the weighted sum of parameters involved in the learning algorithm.&quot;&quot;&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">mt</span>
+
+z = numpy.arange(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>, .<span style="color: #B452CD">1</span>)
+sigma_fn = numpy.vectorize(<span style="color: #8B008B; font-weight: bold">lambda</span> z: <span style="color: #B452CD">1</span>/(<span style="color: #B452CD">1</span>+numpy.exp(-z)))
+sigma = sigma_fn(z)
+
+fig = plt.figure()
+ax = fig.add_subplot(<span style="color: #B452CD">111</span>)
+ax.plot(z, sigma)
+ax.set_ylim([-<span style="color: #B452CD">0.1</span>, <span style="color: #B452CD">1.1</span>])
+ax.set_xlim([-<span style="color: #B452CD">5</span>,<span style="color: #B452CD">5</span>])
+ax.grid(<span style="color: #658b00">True</span>)
+ax.set_xlabel(<span style="color: #CD5555">&#39;z&#39;</span>)
+ax.set_title(<span style="color: #CD5555">&#39;sigmoid function&#39;</span>)
+
+plt.show()
+
+<span style="color: #CD5555">&quot;&quot;&quot;Step Function&quot;&quot;&quot;</span>
+z = numpy.arange(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>, .<span style="color: #B452CD">02</span>)
+step_fn = numpy.vectorize(<span style="color: #8B008B; font-weight: bold">lambda</span> z: <span style="color: #B452CD">1.0</span> <span style="color: #8B008B; font-weight: bold">if</span> z &gt;= <span style="color: #B452CD">0.0</span> <span style="color: #8B008B; font-weight: bold">else</span> <span style="color: #B452CD">0.0</span>)
+step = step_fn(z)
+
+fig = plt.figure()
+ax = fig.add_subplot(<span style="color: #B452CD">111</span>)
+ax.plot(z, step)
+ax.set_ylim([-<span style="color: #B452CD">0.5</span>, <span style="color: #B452CD">1.5</span>])
+ax.set_xlim([-<span style="color: #B452CD">5</span>,<span style="color: #B452CD">5</span>])
+ax.grid(<span style="color: #658b00">True</span>)
+ax.set_xlabel(<span style="color: #CD5555">&#39;z&#39;</span>)
+ax.set_title(<span style="color: #CD5555">&#39;step function&#39;</span>)
+
+plt.show()
+
+<span style="color: #CD5555">&quot;&quot;&quot;tanh Function&quot;&quot;&quot;</span>
+z = numpy.arange(-<span style="color: #B452CD">2</span>*mt.pi, <span style="color: #B452CD">2</span>*mt.pi, <span style="color: #B452CD">0.1</span>)
+t = numpy.tanh(z)
+
+fig = plt.figure()
+ax = fig.add_subplot(<span style="color: #B452CD">111</span>)
+ax.plot(z, t)
+ax.set_ylim([-<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">1.0</span>])
+ax.set_xlim([-<span style="color: #B452CD">2</span>*mt.pi,<span style="color: #B452CD">2</span>*mt.pi])
+ax.grid(<span style="color: #658b00">True</span>)
+ax.set_xlabel(<span style="color: #CD5555">&#39;z&#39;</span>)
+ax.set_title(<span style="color: #CD5555">&#39;tanh function&#39;</span>)
+
+plt.show()
 </pre></div>
 </section>
 
 
 <section>
-<h2 id="___sec6">Two parameters </h2>
+<h2 id="___sec7">Two parameters </h2>
 
 <p>
 We assume now that we have two classes with \( y_i \) either \( 0 \) or \( 1 \). Furthermore we assume also that we have only two parameters \( \beta \) in our fitting of the Sigmoid function, that is we define probabilities 
@@ -342,7 +410,7 @@ $$
 
 
 <section>
-<h2 id="___sec7">Maximum likelihood </h2>
+<h2 id="___sec8">Maximum likelihood </h2>
 
 <p>
 In order to define the total likelihood for all possible outcomes from a  
@@ -369,7 +437,7 @@ $$
 
 
 <section>
-<h2 id="___sec8">The cost function rewritten </h2>
+<h2 id="___sec9">The cost function rewritten </h2>
 
 <p>
 Reordering the logarithms, we can rewrite the <b>cost/loss</b> function as
@@ -394,7 +462,7 @@ in practice we often supplement the cross-entropy with additional regularization
 
 
 <section>
-<h2 id="___sec9">Minimizing the cross entropy </h2>
+<h2 id="___sec10">Minimizing the cross entropy </h2>
 
 <p>
 The cross entropy is a convex function of the weights \( \hat{\beta} \) and,
@@ -420,7 +488,7 @@ $$
 
 
 <section>
-<h2 id="___sec10">A more compact expression </h2>
+<h2 id="___sec11">A more compact expression </h2>
 
 <p>
 Let us now define a vector \( \hat{y} \) with \( n \) elements \( y_i \), an
@@ -447,7 +515,7 @@ $$
 
 
 <section>
-<h2 id="___sec11">Extending to more predictors </h2>
+<h2 id="___sec12">Extending to more predictors </h2>
 
 <p>
 Within a binary classification problem, we can easily expand our model to include multiple predictors. Our ratio between likelihoods is then with \( p \) predictors
@@ -467,11 +535,14 @@ $$
 
 
 <section>
-<h2 id="___sec12">Including more classes </h2>
+<h2 id="___sec13">Including more classes </h2>
 
 <p>
-Till now we have mainly focused on two classes, the so-called binary system. Suppose we wish to extend to \( K \) classes.
-Let us for the sake of simplicity assume we have only two predictors. We have then following model
+Till now we have mainly focused on two classes, the so-called binary
+system. Suppose we wish to extend to \( K \) classes.  Let us for the sake
+of simplicity assume we have only two predictors. We have then
+following model
+
 <p>&nbsp;<br>
 $$
 \log{\frac{p(C=1\vert x)}{p(K\vert x)}} = \beta_{10}+\beta_{11}x_1,
@@ -491,25 +562,29 @@ $$
 $$
 <p>&nbsp;<br>
 
-and the model is specified in term of \( K-1 \) so-called log-odds or <b>logit</b> transformations.
+<p>
+and the model is specified in term of \( K-1 \) so-called log-odds or
+<b>logit</b> transformations.
 </section>
 
 
 <section>
-<h2 id="___sec13">The Softmax function </h2>
+<h2 id="___sec14">More classes </h2>
 
 <p>
-In our discussion of neural networks we will encounter the above again in terms of the so-called <b>Softmax</b> function.
+In our discussion of neural networks we will encounter the above again
+in terms of a slightly modified function, the so-called <b>Softmax</b> function.
 
 <p>
 The softmax function is used in various multiclass classification
 methods, such as multinomial logistic regression (also known as
-softmax regression), multiclass linear discriminant
-analysis, naive Bayes classifiers, and artificial neural networks.
-Specifically, in multinomial logistic regression and linear
-discriminant analysis, the input to the function is the result of \( K \)
-distinct linear functions, and the predicted probability for the \( k \)-th
-class given a sample vector \( \hat{x} \) and a weighting vector \( \hat{\beta} \) is (with two predictors):
+softmax regression), multiclass linear discriminant analysis, naive
+Bayes classifiers, and artificial neural networks.  Specifically, in
+multinomial logistic regression and linear discriminant analysis, the
+input to the function is the result of \( K \) distinct linear functions,
+and the predicted probability for the \( k \)-th class given a sample
+vector \( \hat{x} \) and a weighting vector \( \hat{\beta} \) is (with two
+predictors):
 
 <p>&nbsp;<br>
 $$
@@ -524,39 +599,16 @@ p(C=K\vert \mathbf {x} )=\frac{1}{1+\sum_{l=1}^{K-1}\exp{(\beta_{l0}+\beta_{l1}x
 $$
 <p>&nbsp;<br>
 
-and they sum to one. Our earlier discussions were all specialized to the case with two classes only. It is easy to see from the above that what we derived earlier is compatible with these equations.
+<p>
+and they sum to one. Our earlier discussions were all specialized to
+the case with two classes only. It is easy to see from the above that
+what we derived earlier is compatible with these equations.
 
 <p>
-To find the optimal parameters we would typically use a gradient descent method.
-Newton's method and gradient descent methods are discussed in the material on <a href="https://compphysics.github.io/MachineLearning/doc/pub/Splines/html/Splines-bs.html" target="_blank">optimization methods</a>.
-</section>
-
-
-<section>
-<h2 id="___sec14">A <b>scikit-learn</b> example </h2>
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn</span> <span style="color: #8B008B; font-weight: bold">import</span> datasets
-iris = datasets.load_iris()
-<span style="color: #658b00">list</span>(iris.keys())
-[<span style="color: #CD5555">&#39;data&#39;</span>, <span style="color: #CD5555">&#39;target_names&#39;</span>, <span style="color: #CD5555">&#39;feature_names&#39;</span>, <span style="color: #CD5555">&#39;target&#39;</span>, <span style="color: #CD5555">&#39;DESCR&#39;</span>]
-X = iris[<span style="color: #CD5555">&quot;data&quot;</span>][:, <span style="color: #B452CD">3</span>:] <span style="color: #228B22"># petal width</span>
-y = (iris[<span style="color: #CD5555">&quot;target&quot;</span>] == <span style="color: #B452CD">2</span>).astype(np.int) <span style="color: #228B22"># 1 if Iris-Virginica, else 0</span>
-
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LogisticRegression
-log_reg = LogisticRegression()
-log_reg.fit(X, y)
-
-X_new = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">3</span>, <span style="color: #B452CD">1000</span>).reshape(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
-y_proba = log_reg.predict_proba(X_new)
-plt.plot(X_new, y_proba[:, <span style="color: #B452CD">1</span>], <span style="color: #CD5555">&quot;g-&quot;</span>, label=<span style="color: #CD5555">&quot;Iris-Virginica&quot;</span>)
-plt.plot(X_new, y_proba[:, <span style="color: #B452CD">0</span>], <span style="color: #CD5555">&quot;b--&quot;</span>, label=<span style="color: #CD5555">&quot;Not Iris-Virginica&quot;</span>)
-plt.show()
-</pre></div>
+To find the optimal parameters we would typically use a gradient
+descent method.  Newton's method and gradient descent methods are
+discussed in the material on <a href="https://compphysics.github.io/MachineLearning/doc/pub/Splines/html/Splines-bs.html" target="_blank">optimization
+methods</a>.
 </section>
 
 
@@ -577,11 +629,7 @@ plt.show()
 
 
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">visualize</span>(X, y, clf):
-    <span style="color: #228B22"># plt.scatter(X[:, 0], X[:, 1], s=40, c=y, cmap=plt.cm.Spectral)</span>
-    <span style="color: #228B22"># plt.show()</span>
     plot_decision_boundary(<span style="color: #8B008B; font-weight: bold">lambda</span> x: clf.predict(x), X, y)
-    plt.title(<span style="color: #CD5555">&quot;Logistic Regression&quot;</span>)
-
 
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">plot_decision_boundary</span>(pred_func, X, y):
     <span style="color: #228B22"># Set min and max values and give it some padding</span>
@@ -611,7 +659,6 @@ plt.show()
     clf = classify(X, y)
     visualize(X, y, clf)
 
-
 <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #00688B">__name__</span> == <span style="color: #CD5555">&quot;__main__&quot;</span>:
     main()
 </pre></div>
@@ -619,924 +666,174 @@ plt.show()
 
 
 <section>
-<h2 id="___sec16">The two-dimensional Ising model, Predicting phase transition of the two-dimensional Ising model </h2>
+<h2 id="___sec16">Preprocessing our data  </h2>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+We discuss here how to preprocess our
+data. Till now and in connection with our previous examples we have
+not met so many cases where we are too sensitive to the scaling of our
+data. Normally the data may need a rescaling and/or may be sensitive
+to extreme values. Scaling the data renders our inputs much more
+suitable for the algorithms we want to employ.
 
 <p>
-The Hamiltonian of the two-dimensional Ising model without an external field for a constant coupling constant \( J \) is given by
-<p>&nbsp;<br>
-$$
-\begin{align}
-    H = -J \sum_{\langle ij\rangle} S_i S_j,
-\tag{2}
-\end{align}
-$$
-<p>&nbsp;<br>
+<b>Scikit-Learn</b> has several functions which allow us to rescale the
+data, normally resulting in much better results in terms of various
+accuracy scores.  The <b>StandardScaler</b> function in <b>Scikit-Learn</b>
+ensures that for each feature/predictor we study the mean value is
+zero and the variance is one (every column in the design/feature
+matrix).  This scaling has the drawback that it does not ensure that
+we have a particular maximum or minimum in our data set. Another
+function included in <b>Scikit-Learn</b> is the <b>MinMaxScaler</b> which
+ensures that all features are exactly between \( 0 \) and \( 1 \). The
+</section>
 
-where \( S_i \in \{-1, 1\} \) and \( \langle ij \rangle \) signifies that we only iterate over the nearest neighbors in the lattice. We will be looking at a system of \( L = 40 \) spins in each dimension, i.e., \( L^2 = 1600 \) spins in total. Opposed to the one-dimensional Ising model we will get a phase transition from an <b>ordered</b> phase to a <b>disordered</b> phase at the critical temperature
 
-<p>&nbsp;<br>
-$$
-\begin{align}
-    \frac{T_c}{J} = \frac{2}{\log\left(1 + \sqrt{2}\right)} \approx 2.26,
-\tag{3}
-\end{align}
-$$
-<p>&nbsp;<br>
-
-as shown by Lars Onsager.
+<section>
+<h2 id="___sec17">More preprocessing </h2>
 
 <p>
-Here we use <b>logistic regression</b> to predict when a phase transition
-occurs. The data we will look at is a set of spin configurations,
-i.e., individual lattices with spins, labeled <b>ordered</b> <code>1</code> or
-<b>disordered</b> <code>0</code>. Our job is to build a model which will take in a
-spin configuration and predict whether or not the spin configuration
-constitutes an ordered or a disordered phase. To achieve this we will
-represent the lattices as flattened arrays with \( 1600 \) elements
-instead of a matrix of \( 40 \times 40 \) elements. As an extra test of
-the performance of the algorithms we will divide the dataset into
-three pieces. We will do a conventional train-test-split on a
-combination of totally ordered and totally disordered phases. The
-remaining "critical-like" states will be used as test data which we
-hope the model will be able to make good extrapolated predictions on.
+The <b>Normalizer</b> scales each data
+point such that the feature vector has a euclidean length of one. In other words, it
+projects a data point on the circle (or sphere in the case of higher dimensions) with a
+radius of 1. This means every data point is scaled by a different number (by the
+inverse of it&#8217;s length).
+This normalization is often used when only the direction (or angle) of the data matters,
+not the length of the feature vector.
+
+<p>
+The <b>RobustScaler</b> works similarly to the StandardScaler in that it
+ensures statistical properties for each feature that guarantee that
+they are on the same scale. However, the RobustScaler uses the median
+and quartiles, instead of mean and variance. This makes the
+RobustScaler ignore data points that are very different from the rest
+(like measurement errors). These odd data points are also called
+outliers, and might often lead to trouble for other scaling
+techniques.
+
+
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec18">Simple preprocessing examples, breast cancer data and classification </h2>
+
+<p>
+We show here how we can use a simple regression case on the breast
+cancer data using logistic regression  as algorithm for
+classification.
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pickle</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">glob</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span>  train_test_split 
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_breast_cancer
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LogisticRegression
+cancer = load_breast_cancer()
+
+<span style="color: #228B22"># Set up training data</span>
+X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,random_state=<span style="color: #B452CD">0</span>)
+logreg = LogisticRegression()
+logreg.fit(X_train, y_train)
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;Test set accuracy: {:.2f}&quot;</span>.format(logreg.score(X_test,y_test)))
+
+<span style="color: #228B22"># Scale data</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> StandardScaler
+scaler = StandardScaler()
+scaler.fit(X_train)
+X_train_scaled = scaler.transform(X_train)
+X_test_scaled = scaler.transform(X_test)
+logreg.fit(X_train_scaled, y_train)
+<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;Test set accuracy scaled data: {:.2f}&quot;</span>.format(logreg.score(X_test_scaled,y_test)))
+</pre></div>
+</section>
+
+
+<section>
+<h2 id="___sec19">Covariance and Correlation </h2>
+
+<p>
+In addition to the plot of the features, we study now also the covariance (and the correlation matrix).
+We use also <b>Pandas</b> to compute the correlation matrix.
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span>  train_test_split 
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_breast_cancer
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LogisticRegression
+cancer = load_breast_cancer()
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #228B22"># Making a data frame</span>
+cancerpd = pd.DataFrame(cancer.data, columns=cancer.feature_names)
+
+fig, axes = plt.subplots(<span style="color: #B452CD">15</span>,<span style="color: #B452CD">2</span>,figsize=(<span style="color: #B452CD">10</span>,<span style="color: #B452CD">20</span>))
+malignant = cancer.data[cancer.target == <span style="color: #B452CD">0</span>]
+benign = cancer.data[cancer.target == <span style="color: #B452CD">1</span>]
+ax = axes.ravel()
+
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">30</span>):
+    _, bins = np.histogram(cancer.data[:,i], bins =<span style="color: #B452CD">50</span>)
+    ax[i].hist(malignant[:,i], bins = bins, alpha = <span style="color: #B452CD">0.5</span>)
+    ax[i].hist(benign[:,i], bins = bins, alpha = <span style="color: #B452CD">0.5</span>)
+    ax[i].set_title(cancer.feature_names[i])
+    ax[i].set_yticks(())
+ax[<span style="color: #B452CD">0</span>].set_xlabel(<span style="color: #CD5555">&quot;Feature magnitude&quot;</span>)
+ax[<span style="color: #B452CD">0</span>].set_ylabel(<span style="color: #CD5555">&quot;Frequency&quot;</span>)
+ax[<span style="color: #B452CD">0</span>].legend([<span style="color: #CD5555">&quot;Malignant&quot;</span>, <span style="color: #CD5555">&quot;Benign&quot;</span>], loc =<span style="color: #CD5555">&quot;best&quot;</span>)
+fig.tight_layout()
+plt.show()
+
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">skms</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">skl</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">sklearn.metrics</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">skm</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tqdm</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">copy</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">IPython.display</span> <span style="color: #8B008B; font-weight: bold">import</span> display
-
-%matplotlib inline
-
-sns.set(color_codes=<span style="color: #658b00">True</span>)
-</pre></div>
-</section>
-
-
-<section>
-<h2 id="___sec17">Reading in the data </h2>
-
-<p>
-Using the data from <a href="https://physics.bu.edu/~pankajm/ML-Review-Datasets/isingMC/" target="_blank">Mehta et al.</a> (specifically the two datasets named <code>Ising2DFM_reSample_L40_T=All.pkl</code> and <code>Ising2DFM_reSample_L40_T=All_labels.pkl</code>) we have to unpack the data into numpy arrays.
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>filenames = glob.glob(os.path.join(<span style="color: #CD5555">&quot;..&quot;</span>, <span style="color: #CD5555">&quot;dat&quot;</span>, <span style="color: #CD5555">&quot;*&quot;</span>))
-label_filename = <span style="color: #658b00">list</span>(<span style="color: #658b00">filter</span>(<span style="color: #8B008B; font-weight: bold">lambda</span> x: <span style="color: #CD5555">&quot;label&quot;</span> <span style="color: #8B008B">in</span> x, filenames))[<span style="color: #B452CD">0</span>]
-dat_filename = <span style="color: #658b00">list</span>(<span style="color: #658b00">filter</span>(<span style="color: #8B008B; font-weight: bold">lambda</span> x: <span style="color: #CD5555">&quot;label&quot;</span> <span style="color: #8B008B">not</span> <span style="color: #8B008B">in</span> x, filenames))[<span style="color: #B452CD">0</span>]
-
-<span style="color: #228B22"># Read in the labels</span>
-<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(label_filename, <span style="color: #CD5555">&quot;rb&quot;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
-    labels = pickle.load(f)
-
-<span style="color: #228B22"># Read in the corresponding configurations</span>
-<span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(dat_filename, <span style="color: #CD5555">&quot;rb&quot;</span>) <span style="color: #8B008B; font-weight: bold">as</span> f:
-    data = np.unpackbits(pickle.load(f)).reshape(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1600</span>).astype(<span style="color: #CD5555">&quot;int&quot;</span>)
-
-<span style="color: #228B22"># Set spin-down to -1</span>
-data[data == <span style="color: #B452CD">0</span>] = -<span style="color: #B452CD">1</span>
-</pre></div>
-<p>
-This dataset consists of \( 10000 \) samples, i.e., \( 10000 \) spin
-configurations with \( 40 \times 40 \) spins each, for \( 16 \) temperatures
-between \( 0.25 \) to \( 4.0 \). Next we create a train/test-split and keep
-the data in the critical phase as a separate dataset for
-extrapolation-testing.
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># Set up slices of the dataset</span>
-ordered = <span style="color: #658b00">slice</span>(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">70000</span>)
-critical = <span style="color: #658b00">slice</span>(<span style="color: #B452CD">70000</span>, <span style="color: #B452CD">100000</span>)
-disordered = <span style="color: #658b00">slice</span>(<span style="color: #B452CD">100000</span>, <span style="color: #B452CD">160000</span>)
-
-X_train, X_test, y_train, y_test = skms.train_test_split(
-    np.concatenate((data[ordered], data[disordered])),
-    np.concatenate((labels[ordered], labels[disordered])),
-    test_size=<span style="color: #B452CD">0.95</span>
-)
-</pre></div>
-</section>
-
-
-<section>
-<h2 id="___sec18">Logistic regression </h2>
-
-<p>
-Logistic regression is a linear model for classification. Recalling
-the cost function for ordinary least squares with both L2 (ridge) and
-L1 (LASSO) penalties we will see that the logistic cost function is
-very similar. In OLS we wish to predict a continuous variable
-\( \hat{y} \) using
-<p>&nbsp;<br>
-$$
-\begin{align}
-    \hat{y} = X\omega,
-\tag{4}
-\end{align}
-$$
-<p>&nbsp;<br>
-
-<p>
-where \( X \in \mathbb{R}^{n \times p} \) is the input data and \( \omega^{p
-\times d} \) are the weights of the regression. In a classification
-setting (binary classification in our situation) we are interested in
-a positive or negative answer. We can thus define either answer to be
-above or below some threshold. But, in order to limit the size of the
-answer and also to get a probability interpretation on how sure we are
-for either answer we can compute the sigmoid function of OLS. That is,
-
-<p>&nbsp;<br>
-$$
-\begin{align}
-    f(X\omega) = \frac{1}{1 + \exp(-X\omega)}.
-\tag{5}
-\end{align}
-$$
-<p>&nbsp;<br>
-
-We are thus interested in minizming the following cost function
-<p>&nbsp;<br>
-$$
-\begin{align}
-    C(X, \omega) = \sum_{i = 1}^n \left\{
-        - y_i\log\left( f(x_i^T\omega) \right)
-        - (1 - y_i)\log\left[1 - f(x_i^T\omega)\right]
-    \right\},
-\tag{6}
-\end{align}
-$$
-<p>&nbsp;<br>
-
-<p>
-where we will restrict ourselves to a value for \( f(z) \) as the sigmoid
-described above. We can also tack on a L2 (Ridge) or L1 (LASSO)
-penalization to this cost function in the same manner we did for
-linear regression.
-</section>
-
-
-<section>
-<h2 id="___sec19">Exploring the logistic regression </h2>
-
-<p>
-The penalization factor \( \lambda \) is inverted in the case of the
-logistic regression model we use. We will explore several values of
-\( \lambda \) using both L1 and L2 penalization. We do this using a grid
-search over different parameters and run a 3-fold cross validation for
-each configuration. In other words, we fit a model 3 times for each
-configuration of the hyper parameters.
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>lambdas = np.logspace(-<span style="color: #B452CD">7</span>, -<span style="color: #B452CD">1</span>, <span style="color: #B452CD">7</span>)
-
-param_grid = {
-    <span style="color: #CD5555">&quot;C&quot;</span>: <span style="color: #658b00">list</span>(<span style="color: #B452CD">1.0</span>/lambdas),
-    <span style="color: #CD5555">&quot;penalty&quot;</span>: [<span style="color: #CD5555">&quot;l1&quot;</span>, <span style="color: #CD5555">&quot;l2&quot;</span>]
-}
-clf = skms.GridSearchCV(
-    skl.LogisticRegression(),
-    param_grid=param_grid,
-    n_jobs=-<span style="color: #B452CD">1</span>,
-    return_train_score=<span style="color: #658b00">True</span>
-)
-t0 = time.time()
-clf.fit(X_train, y_train)
-t1 = time.time()
-
-<span style="color: #8B008B; font-weight: bold">print</span> (
-    <span style="color: #CD5555">&quot;Time spent fitting GridSearchCV(LogisticRegression): {0:.3f} sec&quot;</span>.format(
-        t1 - t0
-    )
-)
-</pre></div>
-<p>
-We can see that logistic regression is quite slow and using the grid
-search and cross validation results in quite a heavy
-computation. Below we show the results of the different
-configurations.
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>logreg_df = pd.DataFrame(clf.cv_results_)
-
-display(logreg_df)
-</pre></div>
-</section>
-
-
-<section>
-<h2 id="___sec20">Accuracy of a classification model </h2>
-
-<p>
-To determine how well a classification model is performing we count
-the number of correctly labeled classes and divide by the number of
-classes in total. The accuracy is thus given by
-
-<p>&nbsp;<br>
-$$
-\begin{align}
-    a(y, \hat{y}) = \frac{1}{n}\sum_{i = 1}^{n} I(y_i = \hat{y}_i),
-\tag{7}
-\end{align}
-$$
-<p>&nbsp;<br>
-
-<p>
-where \( I(y_i = \hat{y}_i) \) is the indicator function given by
-
-<p>&nbsp;<br>
-$$
-\begin{align}
-    I(x = y) = \begin{array}{cc}
-    1 & x = y, \\
-    0 & x \neq y.
-    \end{array}
-\tag{8}
-\end{align}$$
-<p>&nbsp;<br>
-
-<p>
-This is the accuracy provided by Scikit-learn when using <b>sklearn.metrics.accuracyscore</b>.
-
-<p>
-Below we compute the accuracy of the best fit model on the training data (which should give a good accuracy), the test data (which has not been shown to the model) and the critical data (completely new data that needs to be extrapolated).
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>train_accuracy = skm.accuracy_score(y_train, clf.predict(X_train))
-test_accuracy = skm.accuracy_score(y_test, clf.predict(X_test))
-critical_accuracy = skm.accuracy_score(labels[critical], clf.predict(data[critical]))
-
-<span style="color: #8B008B; font-weight: bold">print</span> (<span style="color: #CD5555">&quot;Accuracy on train data: {0}&quot;</span>.format(train_accuracy))
-<span style="color: #8B008B; font-weight: bold">print</span> (<span style="color: #CD5555">&quot;Accuracy on test data: {0}&quot;</span>.format(test_accuracy))
-<span style="color: #8B008B; font-weight: bold">print</span> (<span style="color: #CD5555">&quot;Accuracy on critical data: {0}&quot;</span>.format(critical_accuracy))
-</pre></div>
-<p>
-We can see that we get quite good accuracy on the training data, but gradually worsening accuracy on the test and critical data.
-</section>
-
-
-<section>
-<h2 id="___sec21">Analyzing the results </h2>
-
-<p>
-Below we show a different metric for determining the quality of our
-model, namely the <b>reciever operating characteristic</b> (ROC). The ROC
-curve tells us how well the model correctly classifies the different
-labels. We plot the <b>true positive rate</b> (the rate of predicted
-positive classes that are positive) versus the <b>false positive rate</b>
-(the rate of predicted positive classes that are negative). The ROC
-curve is built by computing the true positive rate and the false
-positive rate for varying <b>thresholds</b>, i.e, which probability we
-should acredit a certain class.
-
-<p>
-By computing the <b>area under the curve</b> (AUC) of the ROC curve we get an estimate of how well our model is performing. Pure guessing will get an AUC of \( 0.5 \). A perfect score will get an AUC of \( 1.0 \).
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>fig = plt.figure(figsize=(<span style="color: #B452CD">20</span>, <span style="color: #B452CD">14</span>))
-
-<span style="color: #8B008B; font-weight: bold">for</span> (_X, _y), label <span style="color: #8B008B">in</span> <span style="color: #658b00">zip</span>(
-    [
-        (X_train, y_train),
-        (X_test, y_test),
-        (data[critical], labels[critical])
-    ],
-    [<span style="color: #CD5555">&quot;Train&quot;</span>, <span style="color: #CD5555">&quot;Test&quot;</span>, <span style="color: #CD5555">&quot;Critical&quot;</span>]
-):
-    proba = clf.predict_proba(_X)
-    fpr, tpr, _ = skm.roc_curve(_y, proba[:, <span style="color: #B452CD">1</span>])
-    roc_auc = skm.auc(fpr, tpr)
-
-    <span style="color: #8B008B; font-weight: bold">print</span> (<span style="color: #CD5555">&quot;LogisticRegression AUC ({0}): {1}&quot;</span>.format(label, roc_auc))
-
-    plt.plot(fpr, tpr, label=<span style="color: #CD5555">&quot;{0} (AUC = {1})&quot;</span>.format(label, roc_auc), linewidth=<span style="color: #B452CD">4.0</span>)
-
-plt.plot([<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>], [<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>], <span style="color: #CD5555">&quot;--&quot;</span>, label=<span style="color: #CD5555">&quot;Guessing (AUC = 0.5)&quot;</span>, linewidth=<span style="color: #B452CD">4.0</span>)
-
-plt.title(<span style="color: #CD5555">r&quot;The ROC curve for LogisticRegression&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-plt.xlabel(<span style="color: #CD5555">r&quot;False positive rate&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-plt.ylabel(<span style="color: #CD5555">r&quot;True positive rate&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-plt.axis([-<span style="color: #B452CD">0.01</span>, <span style="color: #B452CD">1.01</span>, -<span style="color: #B452CD">0.01</span>, <span style="color: #B452CD">1.01</span>])
-plt.xticks(fontsize=<span style="color: #B452CD">18</span>)
-plt.yticks(fontsize=<span style="color: #B452CD">18</span>)
-plt.legend(loc=<span style="color: #CD5555">&quot;best&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
+correlation_matrix = cancerpd.corr().round(<span style="color: #B452CD">1</span>)
+<span style="color: #228B22"># use the heatmap function from seaborn to plot the correlation matrix</span>
+<span style="color: #228B22"># annot = True to print the values inside the square</span>
+sns.heatmap(data=correlation_matrix, annot=<span style="color: #658b00">True</span>)
 plt.show()
+
+<span style="color: #228B22">#print eigvalues of correlation matrix</span>
+EigValues, EigVectors = np.linalg.eig(correlation_matrix)
+<span style="color: #8B008B; font-weight: bold">print</span>(EigValues)
 </pre></div>
 <p>
-We can see that this plot of the ROC looks very strange. This tells us
-that logistic regression is quite inept at predicting the Ising model
-transition and is therefore highly non-linear. The ROC curve for the
-training data looks quite good, but as the testing data is so far off
-we see that we are dealing with an overfit model.
-</section>
+In the above example we note two things. In the first plot we display
+the overlap of benign and malignant tumors as functions of the various
+features in the Wisconsing breast cancer data set. We see that for
+some of the features we can distinguish clearly the benign and
+malignant cases while for other features we cannot. This can point to
+us which features may be of greater interest when we wish to classify
+a benign or not benign tumour.
 
+<p>
+In the second figure we have computed the so-called correlation
+matrix, which in our case with thirty features becomes a \( 30\times 30 \)
+matrix.
 
-<section>
-<h2 id="___sec22">Credit Card data set </h2>
-
+<p>
+We constructed this matrix using <b>pandas</b> via the statements
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.models</span> <span style="color: #8B008B; font-weight: bold">import</span> Sequential
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.layers</span> <span style="color: #8B008B; font-weight: bold">import</span> Dense
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.utils</span> <span style="color: #8B008B; font-weight: bold">import</span> to_categorical
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> StandardScaler, OneHotEncoder
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.metrics</span> <span style="color: #8B008B; font-weight: bold">import</span> confusion_matrix, accuracy_score, roc_auc_score
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>cancerpd = pd.DataFrame(cancer.data, columns=cancer.feature_names)
 </pre></div>
 <p>
-The following runs the data preparation that is used for all models.
-
-<p>
-We scale all features by SciKit-learn's standard scaler. The standard
-scalars subtracts the mean, so that the means of the standardized
-variables equal zero. Furthermore the standard scaler divides the
-features by their respective variances, meaning that the variances of the
-standardized features equals one.
-
+and then
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># Trying to set the seed</span>
-np.random.seed(<span style="color: #B452CD">0</span>)
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">random</span>
-random.seed(<span style="color: #B452CD">0</span>)
-
-<span style="color: #228B22"># Reading file into data frame</span>
-cwd = os.getcwd()
-filename = cwd + <span style="color: #CD5555">&#39;/default of credit card clients.xls&#39;</span>
-nanDict = {}
-df = pd.read_excel(filename, header=<span style="color: #B452CD">1</span>, skiprows=<span style="color: #B452CD">0</span>, index_col=<span style="color: #B452CD">0</span>, na_values=nanDict)
-
-df.rename(index=<span style="color: #658b00">str</span>, columns={<span style="color: #CD5555">&quot;default payment next month&quot;</span>: <span style="color: #CD5555">&quot;defaultPaymentNextMonth&quot;</span>}, inplace=<span style="color: #658b00">True</span>)
-
-<span style="color: #228B22"># Features and targets </span>
-X = df.loc[:, df.columns != <span style="color: #CD5555">&#39;defaultPaymentNextMonth&#39;</span>].values
-y = df.loc[:, df.columns == <span style="color: #CD5555">&#39;defaultPaymentNextMonth&#39;</span>].values
-
-<span style="color: #228B22"># Categorical variables to one-hot&#39;s</span>
-onehotencoder = OneHotEncoder(categorical_features = [<span style="color: #B452CD">3</span>])
-X = onehotencoder.fit_transform(X).toarray()
-X = X[:, <span style="color: #B452CD">1</span>:] 
-
-<span style="color: #228B22"># Train-test split</span>
-trainingShare = <span style="color: #B452CD">0.5</span> 
-seed  = <span style="color: #B452CD">1</span>
-XTrain, XTest, yTrain, yTest=train_test_split(X, y, train_size=trainingShare, \
-                                              test_size = <span style="color: #B452CD">1</span>-trainingShare,
-                                             random_state=seed)
-
-<span style="color: #228B22"># Input Scaling</span>
-sc = StandardScaler()
-XTrain = sc.fit_transform(XTrain)
-XTest = sc.transform(XTest)
-
-<span style="color: #228B22"># One-hot&#39;s of the target vector</span>
-Y_train_onehot, Y_test_onehot = to_categorical(yTrain), to_categorical(yTest)
-
-<span style="color: #228B22"># Remove instances with zeros only for past bill statements or paid amounts</span>
-
-df = df.drop(df[(df.BILL_AMT1 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT2 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT3 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT4 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT5 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT6 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT1 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT2 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT3 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT4 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT5 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT6 == <span style="color: #B452CD">0</span>)].index)
-
-df = df.drop(df[(df.BILL_AMT1 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT2 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT3 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT4 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT5 == <span style="color: #B452CD">0</span>) &amp;
-                (df.BILL_AMT6 == <span style="color: #B452CD">0</span>)].index)
-
-df = df.drop(df[(df.PAY_AMT1 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT2 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT3 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT4 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT5 == <span style="color: #B452CD">0</span>) &amp;
-                (df.PAY_AMT6 == <span style="color: #B452CD">0</span>)].index)
-
-<span style="color: #228B22"># Descriptive information</span>
-<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;Number of empty elements in data: &#39;</span>, df.isnull().values.any())
-<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;Observations: &#39;</span>, df.shape[<span style="color: #B452CD">0</span>])
-<span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&#39;Percentage defaults: &#39;</span>, df[<span style="color: #CD5555">&#39;defaultPaymentNextMonth&#39;</span>].astype(<span style="color: #658b00">bool</span>).sum(axis=<span style="color: #B452CD">0</span>)/df.shape[<span style="color: #B452CD">0</span>]*<span style="color: #B452CD">100</span>)
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>correlation_matrix = cancerpd.corr().round(<span style="color: #B452CD">1</span>)
 </pre></div>
 <p>
-This is not the same number of observations as in Yeh and Lien
-(2009). Yeh and Lien (2009) have 25 000 observations. However, we have
-the same number of observations as in Pyzhov and Pyzhov (2017), which
-is said to use the same dataset as Yeh and Lien (2009).
-
-<p>
-The percentage of individuals with default is the same as in the Yeh and Lien (2009).
-
-<p>
-Will will essentially deal with two classes.
-For two classen and two paramaters we have
-<p>&nbsp;<br>
-$$
-\begin{align*}
-p(y_i=1|x_i,\hat{\beta}) &= \frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}},\nonumber\\
-p(y_i=0|x_i,\hat{\beta}) &= 1 - p(y_i=1|x_i,\hat{\beta}),
-\end{align*}
-$$
-<p>&nbsp;<br>
-
-The solution is found by maximizing the likelihhod function
-<p>&nbsp;<br>
-$$
-\begin{align*}
-P(\mathcal{D}|\hat{\beta})& = \prod_{i=1}^n \left[p(y_i=1|x_i,\hat{\beta})\right]^{y_i}\left[1-p(y_i=1|x_i,\hat{\beta}))\right]^{1-y_i}\nonumber \\
-\end{align*}
-$$
-<p>&nbsp;<br>
-
-We will use the cross-entropy as objective function. The cross-entropy is the negative log of the likelihood function
-
-<p>&nbsp;<br>
-$$
-\mathcal{C}(\hat{\beta})=-\sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
-$$
-<p>&nbsp;<br>
-
-The minus sign in the cross-entropy is in order to make this a convex function so that we get a minimization problem.
-
-<p>
-To find the minimum of the above function, we differentiate it and set the result to zero
-
-<p>&nbsp;<br>
-$$
-\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \beta_0} = -\sum_{i=1}^n  \left(y_i -\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right),
-$$
-<p>&nbsp;<br>
-
-<p>&nbsp;<br>
-$$
-\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \beta_1} = -\sum_{i=1}^n  \left(y_ix_i -x_i\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right). 
-$$
-<p>&nbsp;<br>
-
-<p>
-The above can be rewritten as
-<p>&nbsp;<br>
-$$
-\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \hat{\beta}} = -\hat{X}^T\left(\hat{y}-\hat{p}\right).
-$$
-<p>&nbsp;<br>
-
-<p>
-We see that there is no explicit expression for the parameters, like
-we have in e.g. OLS. Hence iterative methods must be applied, and we
-will apply the gradient descent method which basically says for some
-variabe \( \theta \), we update it with
-
-<p>&nbsp;<br>
-$$
-\hat{\theta} = \hat{\theta} - \eta \nabla \hat{\theta}.
-$$
-<p>&nbsp;<br>
-
-<p>
-The second term in the above equation is the gradient. In our case the
-gradient for the regression parameters are given by the linear algebra
-equation above
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LogisticRegression
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> GridSearchCV
-
-lmbdas=np.logspace(-<span style="color: #B452CD">5</span>,<span style="color: #B452CD">7</span>,<span style="color: #B452CD">13</span>)
-parameters = [{<span style="color: #CD5555">&#39;C&#39;</span>: <span style="color: #B452CD">1.</span>/lmbdas}]
-scoring = [<span style="color: #CD5555">&#39;accuracy&#39;</span>, <span style="color: #CD5555">&#39;roc_auc&#39;</span>]
-logReg = LogisticRegression()
-gridSearch = GridSearchCV(logReg, parameters, cv=<span style="color: #B452CD">5</span>, scoring=scoring, refit=<span style="color: #CD5555">&#39;roc_auc&#39;</span>) 
-<span style="color: #228B22"># &quot;refit&quot; gives the metric used deciding best model. </span>
-<span style="color: #228B22"># See more http://scikit-learn.org/stable/auto_examples/model_selection/plot_multi_metric_evaluation.html</span>
-gridSearch.fit(XTrain, yTrain.ravel())
-</pre></div>
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">gridSearchSummary</span>(method, scoring):
-    <span style="color: #CD5555">&quot;&quot;&quot;Prints best parameters from Grid search</span>
-<span style="color: #CD5555">    and AUC with standard deviation for all </span>
-<span style="color: #CD5555">    parameter combos &quot;&quot;&quot;</span>
-    
-    method = <span style="color: #658b00">eval</span>(method)
-    <span style="color: #8B008B; font-weight: bold">if</span> scoring == <span style="color: #CD5555">&#39;accuracy&#39;</span>:
-        mean = <span style="color: #CD5555">&#39;mean_test_score&#39;</span>
-        sd = <span style="color: #CD5555">&#39;std_test_score&#39;</span>
-    <span style="color: #8B008B; font-weight: bold">elif</span> scoring == <span style="color: #CD5555">&#39;auc&#39;</span>:
-        mean = <span style="color: #CD5555">&#39;mean_test_roc_auc&#39;</span>
-        sd = <span style="color: #CD5555">&#39;std_test_roc_auc&#39;</span>
-    <span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;Best: %f using %s&quot;</span> % (method.best_score_, method.best_params_))
-    means = method.cv_results_[mean]
-    stds = method.cv_results_[sd]
-    params = method.cv_results_[<span style="color: #CD5555">&#39;params&#39;</span>]
-    <span style="color: #8B008B; font-weight: bold">for</span> mean, stdev, param <span style="color: #8B008B">in</span> <span style="color: #658b00">zip</span>(means, stds, params):
-        <span style="color: #8B008B; font-weight: bold">print</span>(<span style="color: #CD5555">&quot;%f (%f) with: %r&quot;</span> % (mean, stdev, param))
-
-gridSearchSummary(<span style="color: #CD5555">&#39;gridSearch&#39;</span>, <span style="color: #CD5555">&#39;auc&#39;</span>)
-</pre></div>
-<p>
-We create a function for printing the accuracy of the results and the so-called confusion matrices.
-<p>
-
-<!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>def createConfusionMatrix(method, printOut=True):
-    &quot;&quot;&quot;
-    Computes and prints confusion matrices, accuracy scores,
-    and AUC for test and training sets 
-    &quot;&quot;&quot;
-    confusionArray = np.zeros(6, dtype=object)
-    method = eval(method)
-    
-    # Train
-    yPredTrain = method.predict(XTrain)
-    yPredTrain = (yPredTrain &gt; 0.5)
-    cm = confusion_matrix(
-        yTrain, yPredTrain) 
-    cm = np.around(cm/cm.sum(axis=1)[:,None], 2)
-    confusionArray[0] = cm
-    
-    accScore = accuracy_score(yTrain, yPredTrain)
-    confusionArray[1] = accScore
-    
-    AUC = roc_auc_score(yTrain, yPredTrain)
-    confusionArray[2] = AUC
-    
-    if printOut:
-        print(&#39;\n###################  Training  ###############&#39;)
-        print(&#39;\nTraining Confusion matrix: \n&#39;, cm)
-        print(&#39;\nTraining Accuracy score: \n&#39;, accScore)
-        print(&#39;\nTrain AUC: \n&#39;, AUC)
-    
-    # Test
-    yPred = method.predict(XTest)
-    yPred = (yPred &gt; 0.5)
-    cm = confusion_matrix(
-        yTest, yPred) 
-    cm = np.around(cm/cm.sum(axis=1)[:,None], 2)
-    confusionArray[3] = cm
-    
-    accScore = accuracy_score(yTest, yPred)
-    confusionArray[4] = accScore
-    
-    AUC = roc_auc_score(yTest, yPred)
-    confusionArray[5] = AUC
-    
-    if printOut:
-        print(&#39;\n###################  Testing  ###############&#39;)
-        print(&#39;\nTest Confusion matrix: \n&#39;, cm)
-        print(&#39;\nTest Accuracy score: \n&#39;, accScore)
-        print(&#39;\nTestAUC: \n&#39;, AUC)    
-    
-    return confusionArray
-
-
-confusionArrayLogreg = createConfusionMatrix(&#39;gridSearch&#39;, printOut=False)
-</pre></div>
-<p>
-
-<!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>import matplotlib.pyplot as plt
-import seaborn
-import scikitplot as skplt
-
-seaborn.set(style=&quot;white&quot;, context=&quot;notebook&quot;, font_scale=1.5, 
-            rc={&quot;axes.grid&quot;: True, &quot;legend.frameon&quot;: False,
-&quot;lines.markeredgewidth&quot;: 1.4, &quot;lines.markersize&quot;: 10})
-seaborn.set_context(&quot;notebook&quot;, font_scale=1.5, rc={&quot;lines.linewidth&quot;: 4.5})
-
-yPred = gridSearch.predict_proba(XTest) 
-print(yTest.ravel().shape, yPred.shape)
-skplt.metrics.plot_cumulative_gain(yTest.ravel(), yPred)
-
-defaults = sum(yTest == 1)
-total = len(yTest)
-defaultRate = defaults/total
-def bestCurve(defaults, total, defaultRate):
-    x = np.linspace(0, 1, total)
-    
-    y1 = np.linspace(0, 1, defaults)
-    y2 = np.ones(total-defaults)
-    y3 = np.concatenate([y1,y2])
-    return x, y3
-
-x, best = bestCurve(defaults=defaults, total=total, defaultRate=defaultRate)    
-plt.plot(x, best)    
-
-plt.show()
-</pre></div>
-</section>
-
-
-<section>
-<h2 id="___sec23">The Pulsar classification case </h2>
-<p>
-
-<!-- code=text typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span>import numpy as np
-from sklearn import metrics
-from sklearn import linear_model
-import sklearn
-import random
-import time as tm
-import xlrd
-
-
-from sys import platform as sys_pf
-if sys_pf == &#39;darwin&#39;:
-    import matplotlib
-    matplotlib.use(&quot;TkAgg&quot;)
-from matplotlib import pyplot as plt
-
-
-def predict(x,beta):
-    &quot;&quot;&quot;
-    Function that predicts labels based on the beta parameters that has been
-    calculatted.
-    Inputs: datapoints and beta parameters
-    Output: predicted label
-    &quot;&quot;&quot;
-    ypred = x @ beta
-    ypred = 1 / (1 + np.exp(-ypred))
-    if np.isnan(np.sum(ypred)):
-        ypred_0 = np.zeros((ypred.shape))
-        return ypred_0
-    ypred[ypred &lt; 0.5] = 0
-    ypred[ypred &gt;= 0.5] = 1
-    return ypred
-
-
-def beta_update(lr,x,y,beta):
-    &quot;&quot;&quot;
-    Function to calculate the new beta parameters without regularization.
-    Inputs: data, labels, beta parameters
-    Output: updated beta
-    &quot;&quot;&quot;
-    output = 1 / (1 + np.exp(-(x @ beta)))
-    delta = x.T @ (output - y.reshape((len(y),1)))
-    new_beta = beta - lr * delta/len(y)
-    return new_beta
-
-def beta_update_l2(lr,x,y,beta,lamb):
-    &quot;&quot;&quot;
-    Function to calculate the new beta parameters with l1 regularization.
-    Inputs: data, labels, beta parameters, lambda
-    Output: updated beta
-    &quot;&quot;&quot;
-    output = 1 / (1 + np.exp(-(x @ beta)))
-    delta = x.T @ (output - y.reshape((len(y),1)))
-    new_beta = beta - lr * (delta/len(y) + lamb * beta)
-    return new_beta
-
-def confusion(targets, pred_targets):
-    &quot;&quot;&quot;
-    Calculates the onfusion matrix for the SVM.
-    Inputs: Predicted and correct labels that are going to be assessed.
-    Outputs: confusion matrix.
-    &quot;&quot;&quot;
-    #create confuison matrix
-    conf = np.zeros((2,2))
-
-
-    #Remove redundant dimensions
-    sq_targets = np.squeeze(targets).astype(int)
-    sq_pred_targets = np.squeeze(pred_targets).astype(int)
-
-
-    #for loop runs through the test input
-    for i in range(0,targets.shape[0]):
-
-
-        #Increments the values in the confusion matrix
-        #based on the results
-        conf[sq_targets[i]][sq_pred_targets[i]] = conf[sq_targets[i]][sq_pred_targets[i]] + 1
-
-
-    return conf
-
-#adjustable parameters
-trainp = 0.5 #percentage of the data to be used for training
-minibatch = 10 #minibatch size
-lr = 0.2 #learning rate
-lamb = [0.00001, 0.0001,0.001, 0.01, 1, 10,100] #value of lambda
-#lamb = [0.00001, 0.0001,0.001, 0.01, 1,10,100,1000,10000] #a larger lambda
-boot_runs = 100 #number of bootstrap runs
-
-#Get data
-data = np.genfromtxt(&#39;pulsar_stars.csv&#39;, delimiter=&#39;,&#39;,skip_header=1)
-target = data[:,8]
-
-
-#Subtract the mean for each inout
-data[:,:8] = data[:,:8] - np.mean(data[:,:8], axis=0, keepdims=True)
-
-#Divide the data by the max to reduce the size of the inputs
-#max_abs_data = np.std(data[:,:23],axis=0,keepdims=True)
-max_abs_data = np.max(data[:,:8], axis=0, keepdims=True)
-data = data[:,:8]/max_abs_data
-
-
-# Randomly order the data
-order = list(range(data.shape[0]))
-np.random.shuffle(order)
-data = data[order,:]
-target = target[order]
-
-#find total samples and calculate the number of training data
-sampn = len(target)
-trainn = int(sampn*trainp)
-
-
-#split the data into training and test sets
-xt = np.zeros((trainn,data.shape[1]+1))
-xt[:,0] = -1
-xt[:,1:] = data[:trainn,:]
-yt = target[:trainn]
-
-xte = np.zeros((sampn-trainn,data.shape[1]+1))
-xte[:,0] = -1
-xte[:,1:] = data[trainn:,:]
-yte = target[trainn:]
-
-
-
-#array to store the ac scores
-train_ac = np.zeros(len(lamb))
-test_ac = np.zeros(len(lamb))
-train_ac_l2 = np.zeros(len(lamb))
-test_ac_l2 = np.zeros(len(lamb))
-train_ac_sci = np.zeros(len(lamb))
-test_ac_sci = np.zeros(len(lamb))
-
-
-
-
-count = 0
-for l in lamb:
-    #array to store ac score in bootruns
-    b_train_ac = np.zeros(boot_runs)
-    b_test_ac = np.zeros(boot_runs)
-    b_train_ac_l2 = np.zeros(boot_runs)
-    b_test_ac_l2 = np.zeros(boot_runs)
-    b_train_ac_sci = np.zeros(boot_runs)
-    b_test_ac_sci = np.zeros(boot_runs)
-    for j in range(boot_runs):
-
-        #use scikit to take randoms samples with replacement
-        x_boot, y_boot = sklearn.utils.resample(xt,yt)
-
-        #initialize the beta parameters
-        beta = (2/np.sqrt(data.shape[1]+1)) * np.random.random_sample((data.shape[1]+1,1)) -1/np.sqrt(data.shape[1]+1)
-        beta_l2 = (2/np.sqrt(data.shape[1]+1)) * np.random.random_sample((data.shape[1]+1,1)) -1/np.sqrt(data.shape[1]+1)
-
-        #variable to store the best score
-        best_score = 0
-        best_score_l2 = 0
-        for k in range(0,50):
-
-            for i in range(0,trainn,minibatch):
-
-                #update beta parameters
-                beta = beta_update(lr,x_boot[i:i+minibatch,:],y_boot[i:i+minibatch],beta)
-                beta_l2 = beta_update_l2(lr,x_boot[i:i+minibatch,:],y_boot[i:i+minibatch],beta_l2,l)
-
-            #checks the score of the model and stores the best parameters
-            temp_pred = predict(x_boot,beta)
-            temp_score = np.sum(y_boot.reshape((trainn,1)) == temp_pred) / len(y_boot)
-            if temp_score &gt; best_score:
-                best_beta = beta
-                best_score = temp_score
-
-            temp_pred = predict(x_boot,beta_l2)
-            temp_score = np.sum(y_boot.reshape((trainn,1)) == temp_pred) / len(y_boot)
-            if temp_score &gt; best_score_l2:
-                best_beta_l2 = beta_l2
-                best_score_l2 = temp_score
-
-
-            #reshuffle the data so the model does not train the same way
-            order = list(range(np.shape(x_boot)[0]))
-            np.random.shuffle(order)
-            x_boot = x_boot[order,:]
-            y_boot = y_boot[order]
-
-        #predicts the labels using beta
-        ypred = predict(xte,best_beta)
-        ypred_train = predict(x_boot,best_beta)
-
-
-        #predicts the labels using beta_l2
-        ypred_l2 = predict(xte,best_beta_l2)
-        ypred_train_l2 = predict(x_boot,best_beta_l2)
-
-
-        #fiting a scikit model
-        scilearn = linear_model.LogisticRegression(penalty=&#39;l2&#39;,C=1/l).fit(x_boot, y_boot)
-
-
-        #calualte the score of the predicted labels
-        b_test_ac[j]= (np.sum(yte.reshape((sampn - trainn,1)) == ypred) / len(yte))*100
-        b_train_ac[j]= (np.sum(y_boot.reshape((trainn,1)) == ypred_train) / len(y_boot))*100
-
-
-        b_test_ac_l2[j]= (np.sum(yte.reshape((sampn - trainn,1)) == ypred_l2) / len(yte))*100
-        b_train_ac_l2[j] = (np.sum(y_boot.reshape((trainn,1)) == ypred_train_l2) / len(y_boot))*100
-
-
-        #calualte the score of the scikit models
-        b_test_ac_sci[j] = scilearn.score(xte,yte) * 100
-        b_train_ac_sci[j] = scilearn.score(x_boot,y_boot) * 100
-
-
-    #Stor the mean of the accuracy of each run in the bootstrap
-    train_ac[count] = np.mean(b_train_ac)
-    test_ac[count] = np.mean(b_test_ac)
-    train_ac_l2[count] = np.mean(b_train_ac_l2)
-    test_ac_l2[count] = np.mean(b_test_ac_l2)
-    train_ac_sci[count]= np.mean(b_train_ac_sci)
-    test_ac_sci[count] = np.mean(b_test_ac_sci)
-    
-    #print results
-    print(&quot;Created minibatch method:&quot;)
-    print(&quot;Train score: %.4f&quot; %train_ac[count])
-    print(&quot;Test score: %.4f&quot; %test_ac[count])
-    print(&quot;Test: Max score: %f Min score: %f\n&quot; %(np.max(b_test_ac),np.min(b_test_ac)))
-
-    print(&quot;Created minibatch with L2 regularization lambda = %.5f:&quot; %l)
-    print(&quot;Train score: %.4f&quot; %train_ac_l2[count])
-    print(&quot;Test score: %.4f&quot; %test_ac_l2[count])
-    print(&quot;Test: Max score: %f Min score: %f\n&quot; %(np.max(b_test_ac_l2),np.min(b_test_ac_l2)))
-
-    print(&quot;Scikit learn method lambda = %.5f:&quot; %l)
-    print(&quot;Train score: %.4f&quot; %train_ac_sci[count])
-    print(&quot;Test score: %.4f&quot; %test_ac_sci[count])
-    print(&quot;Test: Max score: %f Min score: %f\n&quot; %(np.max(b_test_ac_sci),np.min(b_test_ac_sci)))
-
-
-    print(&quot;--------------\n&quot;)
-
-
-
-    count += 1
-plt.figure(1)
-# Plot our performance on both the training and test data
-plt.semilogx(lamb, train_ac, &#39;b&#39;,label=&#39;Created method train&#39;)
-plt.semilogx(lamb, test_ac,&#39;--b&#39;,label=&#39;Created method test&#39;)
-plt.semilogx(lamb, train_ac_l2,&#39;r&#39;,label=&#39;Created L2 train&#39;,linewidth=1)
-plt.semilogx(lamb, test_ac_l2,&#39;--r&#39;,label=&#39;Created L2 test&#39;,linewidth=1)
-plt.semilogx(lamb, train_ac_sci, &#39;g&#39;,label=&#39;Scikit train&#39;)
-plt.semilogx(lamb, test_ac_sci, &#39;--g&#39;,label=&#39;Scikit test&#39;)
-
-
-
-plt.title(&quot;Accuracy scores for test and training data with different values for lambda&quot;, fontsize = 16)
-plt.legend(loc=&#39;lower left&#39;,fontsize=16)
-plt.xlim([min(lamb), max(lamb)])
-plt.xlabel(&#39;Lambda&#39;,fontsize=15)
-plt.ylabel(&#39;Accuracy score [%]&#39;,fontsize=15)
-plt.tick_params(labelsize=15)
-
-plt.show()
-</pre></div>
+Diagonalizing this matrix we can in turn say something about which
+features are of relevance and which are not. But before we proceed we
+need to define covariance and correlation matrices. This leads us to
+the classical Principal Component Analysis (PCA) theorem with
+applications.  This topic is covered in the PCA slides.
 </section>
 
 

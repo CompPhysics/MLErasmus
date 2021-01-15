@@ -47,28 +47,28 @@ Automatically generated HTML file from DocOnce source
               ('Linear classifier', 2, None, '___sec3'),
               ('Some selected properties', 2, None, '___sec4'),
               ('The logistic function', 2, None, '___sec5'),
-              ('Two parameters', 2, None, '___sec6'),
-              ('Maximum likelihood', 2, None, '___sec7'),
-              ('The cost function rewritten', 2, None, '___sec8'),
-              ('Minimizing the cross entropy', 2, None, '___sec9'),
-              ('A more compact expression', 2, None, '___sec10'),
-              ('Extending to more predictors', 2, None, '___sec11'),
-              ('Including more classes', 2, None, '___sec12'),
-              ('The Softmax function', 2, None, '___sec13'),
-              ('A _scikit-learn_ example', 2, None, '___sec14'),
-              ('A simple classification problem', 2, None, '___sec15'),
-              ('The two-dimensional Ising model, Predicting phase transition '
-               'of the two-dimensional Ising model',
+              ('Examples of likelihood functions used in logistic regression '
+               'and nueral networks',
                2,
                None,
-               '___sec16'),
-              ('Reading in the data', 2, None, '___sec17'),
-              ('Logistic regression', 2, None, '___sec18'),
-              ('Exploring the logistic regression', 2, None, '___sec19'),
-              ('Accuracy of a classification model', 2, None, '___sec20'),
-              ('Analyzing the results', 2, None, '___sec21'),
-              ('Credit Card data set', 2, None, '___sec22'),
-              ('The Pulsar classification case', 2, None, '___sec23')]}
+               '___sec6'),
+              ('Two parameters', 2, None, '___sec7'),
+              ('Maximum likelihood', 2, None, '___sec8'),
+              ('The cost function rewritten', 2, None, '___sec9'),
+              ('Minimizing the cross entropy', 2, None, '___sec10'),
+              ('A more compact expression', 2, None, '___sec11'),
+              ('Extending to more predictors', 2, None, '___sec12'),
+              ('Including more classes', 2, None, '___sec13'),
+              ('More classes', 2, None, '___sec14'),
+              ('A simple classification problem', 2, None, '___sec15'),
+              ('Preprocessing our data', 2, None, '___sec16'),
+              ('More preprocessing', 2, None, '___sec17'),
+              ('Simple preprocessing examples, breast cancer data and '
+               'classification',
+               2,
+               None,
+               '___sec18'),
+              ('Covariance and Correlation', 2, None, '___sec19')]}
 end of tocinfo -->
 
 <body>
@@ -112,24 +112,20 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="._LogReg-bs004.html#___sec3" style="font-size: 80%;">Linear classifier</a></li>
      <!-- navigation toc: --> <li><a href="._LogReg-bs005.html#___sec4" style="font-size: 80%;">Some selected properties</a></li>
      <!-- navigation toc: --> <li><a href="._LogReg-bs006.html#___sec5" style="font-size: 80%;">The logistic function</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs007.html#___sec6" style="font-size: 80%;">Two parameters</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs008.html#___sec7" style="font-size: 80%;">Maximum likelihood</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs009.html#___sec8" style="font-size: 80%;">The cost function rewritten</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs010.html#___sec9" style="font-size: 80%;">Minimizing the cross entropy</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs011.html#___sec10" style="font-size: 80%;">A more compact expression</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs012.html#___sec11" style="font-size: 80%;">Extending to more predictors</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs013.html#___sec12" style="font-size: 80%;">Including more classes</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs014.html#___sec13" style="font-size: 80%;">The Softmax function</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs015.html#___sec14" style="font-size: 80%;">A <b>scikit-learn</b> example</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs007.html#___sec6" style="font-size: 80%;">Examples of likelihood functions used in logistic regression and nueral networks</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs008.html#___sec7" style="font-size: 80%;">Two parameters</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs009.html#___sec8" style="font-size: 80%;">Maximum likelihood</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs010.html#___sec9" style="font-size: 80%;">The cost function rewritten</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs011.html#___sec10" style="font-size: 80%;">Minimizing the cross entropy</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs012.html#___sec11" style="font-size: 80%;">A more compact expression</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs013.html#___sec12" style="font-size: 80%;">Extending to more predictors</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs014.html#___sec13" style="font-size: 80%;">Including more classes</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs015.html#___sec14" style="font-size: 80%;">More classes</a></li>
      <!-- navigation toc: --> <li><a href="._LogReg-bs016.html#___sec15" style="font-size: 80%;">A simple classification problem</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">The two-dimensional Ising model, Predicting phase transition of the two-dimensional Ising model</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs018.html#___sec17" style="font-size: 80%;">Reading in the data</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs019.html#___sec18" style="font-size: 80%;">Logistic regression</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs020.html#___sec19" style="font-size: 80%;">Exploring the logistic regression</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs021.html#___sec20" style="font-size: 80%;">Accuracy of a classification model</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs022.html#___sec21" style="font-size: 80%;">Analyzing the results</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs023.html#___sec22" style="font-size: 80%;">Credit Card data set</a></li>
-     <!-- navigation toc: --> <li><a href="._LogReg-bs024.html#___sec23" style="font-size: 80%;">The Pulsar classification case</a></li>
+     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;">Preprocessing our data</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs018.html#___sec17" style="font-size: 80%;">More preprocessing</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs019.html#___sec18" style="font-size: 80%;">Simple preprocessing examples, breast cancer data and classification</a></li>
+     <!-- navigation toc: --> <li><a href="._LogReg-bs020.html#___sec19" style="font-size: 80%;">Covariance and Correlation</a></li>
 
         </ul>
       </li>
@@ -143,67 +139,32 @@ MathJax.Hub.Config({
 <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p> <!-- add vertical space -->
 
 <a name="part0017"></a>
-<!-- !split  -->
+<!-- !split -->
 
-<h2 id="___sec16" class="anchor">The two-dimensional Ising model, Predicting phase transition of the two-dimensional Ising model </h2>
-
-<p>
-The Hamiltonian of the two-dimensional Ising model without an external field for a constant coupling constant \( J \) is given by
-$$
-\begin{align}
-    H = -J \sum_{\langle ij\rangle} S_i S_j,
-\tag{2}
-\end{align}
-$$
-
-where \( S_i \in \{-1, 1\} \) and \( \langle ij \rangle \) signifies that we only iterate over the nearest neighbors in the lattice. We will be looking at a system of \( L = 40 \) spins in each dimension, i.e., \( L^2 = 1600 \) spins in total. Opposed to the one-dimensional Ising model we will get a phase transition from an <b>ordered</b> phase to a <b>disordered</b> phase at the critical temperature
-
-$$
-\begin{align}
-    \frac{T_c}{J} = \frac{2}{\log\left(1 + \sqrt{2}\right)} \approx 2.26,
-\tag{3}
-\end{align}
-$$
-
-as shown by Lars Onsager.
+<h2 id="___sec16" class="anchor">Preprocessing our data  </h2>
+<div class="panel panel-default">
+<div class="panel-body">
+<p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
 
 <p>
-Here we use <b>logistic regression</b> to predict when a phase transition
-occurs. The data we will look at is a set of spin configurations,
-i.e., individual lattices with spins, labeled <b>ordered</b> <code>1</code> or
-<b>disordered</b> <code>0</code>. Our job is to build a model which will take in a
-spin configuration and predict whether or not the spin configuration
-constitutes an ordered or a disordered phase. To achieve this we will
-represent the lattices as flattened arrays with \( 1600 \) elements
-instead of a matrix of \( 40 \times 40 \) elements. As an extra test of
-the performance of the algorithms we will divide the dataset into
-three pieces. We will do a conventional train-test-split on a
-combination of totally ordered and totally disordered phases. The
-remaining "critical-like" states will be used as test data which we
-hope the model will be able to make good extrapolated predictions on.
+We discuss here how to preprocess our
+data. Till now and in connection with our previous examples we have
+not met so many cases where we are too sensitive to the scaling of our
+data. Normally the data may need a rescaling and/or may be sensitive
+to extreme values. Scaling the data renders our inputs much more
+suitable for the algorithms we want to employ.
 
 <p>
+<b>Scikit-Learn</b> has several functions which allow us to rescale the
+data, normally resulting in much better results in terms of various
+accuracy scores.  The <b>StandardScaler</b> function in <b>Scikit-Learn</b>
+ensures that for each feature/predictor we study the mean value is
+zero and the variance is one (every column in the design/feature
+matrix).  This scaling has the drawback that it does not ensure that
+we have a particular maximum or minimum in our data set. Another
+function included in <b>Scikit-Learn</b> is the <b>MinMaxScaler</b> which
+ensures that all features are exactly between \( 0 \) and \( 1 \). The
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pickle</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">glob</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">skms</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">skl</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">skm</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">tqdm</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">copy</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">time</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">IPython.display</span> <span style="color: #008000; font-weight: bold">import</span> display
-
-<span style="color: #666666">%</span>matplotlib inline
-
-sns<span style="color: #666666">.</span>set(color_codes<span style="color: #666666">=</span><span style="color: #008000">True</span>)
-</pre></div>
 <p>
 <p>
 <!-- navigation buttons at the bottom of the page -->
@@ -223,10 +184,6 @@ sns<span style="color: #666666">.</span>set(color_codes<span style="color: #6666
   <li><a href="._LogReg-bs018.html">19</a></li>
   <li><a href="._LogReg-bs019.html">20</a></li>
   <li><a href="._LogReg-bs020.html">21</a></li>
-  <li><a href="._LogReg-bs021.html">22</a></li>
-  <li><a href="._LogReg-bs022.html">23</a></li>
-  <li><a href="._LogReg-bs023.html">24</a></li>
-  <li><a href="._LogReg-bs024.html">25</a></li>
   <li><a href="._LogReg-bs018.html">&raquo;</a></li>
 </ul>
 <!-- ------------------- end of main content --------------- -->

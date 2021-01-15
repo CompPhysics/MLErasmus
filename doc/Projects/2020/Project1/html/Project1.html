@@ -1,0 +1,531 @@
+<!--
+Automatically generated HTML file from DocOnce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Project 1 on Machine Learning, deadline February 20, 2020">
+
+<title>Project 1 on Machine Learning, deadline February 20, 2020</title>
+
+
+<style type="text/css">
+/* bloodish style */
+
+body {
+  font-family: Helvetica, Verdana, Arial, Sans-serif;
+  color: #404040;
+  background: #ffffff;
+}
+h1 { font-size: 1.8em;  color: #8A0808; }
+h2 { font-size: 1.6em;  color: #8A0808; }
+h3 { font-size: 1.4em;  color: #8A0808; }
+h4 { color: #8A0808; }
+a { color: #8A0808; text-decoration:none; }
+tt { font-family: "Courier New", Courier; }
+/* pre style removed because it will interfer with pygments */
+p { text-indent: 0px; }
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+p.caption { width: 80%; font-style: normal; text-align: left; }
+hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [('Classification and Regression, from linear and logistic '
+               'regression to neural networks',
+               2,
+               None,
+               '___sec0'),
+              ('Part a): Producing the data for the one-dimensional Ising '
+               'model',
+               3,
+               None,
+               '___sec1'),
+              ('Part b): Estimating the coupling constant of the '
+               'one-dimensional Ising model using linear regression',
+               3,
+               None,
+               '___sec2'),
+              ('Part c): Determine the phase of the two-dimensional Ising '
+               'model',
+               3,
+               None,
+               '___sec3'),
+              ('Part d): Regression analysis of the one-dimensional Ising '
+               'model using neural networks',
+               3,
+               None,
+               '___sec4'),
+              ('Part e): Classifying the Ising model phase using neural '
+               'networks',
+               3,
+               None,
+               '___sec5'),
+              ('Part f) Critical evaluation of the various algorithms',
+               3,
+               None,
+               '___sec6'),
+              ('Background literature', 2, None, '___sec7'),
+              ('Introduction to numerical projects', 2, None, '___sec8'),
+              ('Format for electronic delivery of report and programs',
+               2,
+               None,
+               '___sec9'),
+              ('Software and needed installations', 2, None, '___sec10')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "AMS"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript" async
+ src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<!-- ------------------- main content ---------------------- -->
+
+
+
+<center><h1>Project 1 on Machine Learning, deadline February 20, 2020</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): <a href="http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html" target="_blank">Data Analysis and Machine Learning FYS-STK3155/FYS4155</a> -->
+
+<center>
+<b><a href="http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html" target="_blank">Data Analysis and Machine Learning FYS-STK3155/FYS4155</a></b> 
+</center>
+
+<p>
+<!-- institution -->
+
+<center><b>Department of Physics, University of Oslo, Norway</b></center>
+<br>
+<p>
+<center><h4>Jan 26, 2020</h4></center> <!-- date -->
+<br>
+
+<h2 id="___sec0">Classification and Regression, from linear and logistic regression to neural networks  </h2>
+
+<p>
+The main aim of this project is to study both classification and
+regression problems, starting with the regression algorithms studied
+in homework set 3 (exercise 2 in particular).
+We will include logistic regresion for classification
+problems and neural network with <b>tensorflow</b> (feel free however to write your own code) for studying
+both regression and classification problems.
+
+<p>
+We will use the so-called Ising model for  our training data and will
+focus on supervised training. We will follow closely the recent
+article of <a href="https://arxiv.org/abs/1803.08823" target="_blank">Mehta et al, arXiv
+1803.08823</a>. This article stands
+out as an excellent review on machine learning (ML) algorithms.
+The added benefit is that each figure and
+model presented in <a href="https://physics.bu.edu/~pankajm/MLnotebooks.html" target="_blank">this article is accompanied by its jupyter
+notebook</a>. This
+means that we can start using these and compare with our own results.
+They provide also the data set for the regression and classification
+analysis that we will explore.  In this sense, with their available
+notebooks, it makes life easier since we can compare our own codes
+with their codes.
+
+<p>
+You can also look up the <a href="https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression.html" target="_blank">Regression slides for a discussion of the Ising model</a> (scroll down to the end).
+
+<p>
+With the abovementioned configurations we will determine, using first
+various regression methods, the value of the coupling constant for the
+energy of the one-dimensional Ising model. Thereafter, we will use the
+two-dimensional data, but now computed at different temperatures, in
+order to classify the phase of the Ising model. Below the critical
+temperature, the system will be in a so-called ferromagnetic
+phase. Close to the critical temperature, the final magnetization
+becomes smaller and smaller in absolute value while above the critical
+temperature, the net magnetization is zero.  This classification case,
+that is the two-dimensional Ising model, will be studied using
+logistic regression and deep neural networks.
+We will mainly use <b>scikit-learn</b> or <b>tensorflow</b> or other Python packages such as <b>keras</b> or other.
+If you feel for it, 
+you can also develop your  own logistic regression code for the classification of the phases
+(this is a binary model) and your multilayer perceptron code for the
+classification and regression case. This is however not required.
+
+<p>
+Feel free to use the notebooks to benchmark your code.
+
+<h3 id="___sec1">Part a): Producing the data for the one-dimensional Ising model </h3>
+
+<p>
+The model we will employ in our studies is the so-called <a href="https://en.wikipedia.org/wiki/Ising_model" target="_blank">Ising
+model</a>.  Together with
+models like the <a href="https://en.wikipedia.org/wiki/Potts_model" target="_blank">Potts
+model</a> and similar
+so-called lattice models, the Ising model has been widely studied in
+mathematics (in statistics in particular), physics, <a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.93.062402" target="_blank">life
+science</a>,
+chemistry and even in the <a href="https://www.springer.com/gp/book/9781461420316" target="_blank">social sciences in order to model social
+behavior</a>. It is a
+simple binary value system where the variables of the model (spins often in
+physics) can take two values only, for example \( \pm 1 \) or \( 0 \) and \( 1 \).
+The system exhibits a phase transition in two or higher dimensions and
+the first person to find the analytical expressions for various
+expectation values was the Norwegian chemist <a href="https://en.wikipedia.org/wiki/Lars_Onsager" target="_blank">Lars
+Onsager</a> (Nobel prize in
+chemistry) after a tour de force mathematics exercise.
+
+<p>
+In our discussions here we will stay with a physicist's approach and
+call the variables for spin. You could replace this with any other
+type of binary variables, ranging from a two political parties to blue
+and red spheres.  In its simplest form we define the energy of the
+system as
+
+$$
+\begin{equation*}
+  E=-J\sum_{< kl>}^{N}s_ks_l,
+\end{equation*}
+$$
+
+with  \( s_k=\pm 1 \), \( N \) is the total number of spins,
+\( J \) is a coupling constant expressing the strength of the interaction
+between neighboring spins.
+
+<p>
+The symbol \( < kl> \) indicates that we sum over nearest
+neighbors only.
+Notice that for \( J>0 \) it is energetically favorable for neighboring spins
+to be aligned. This feature leads to, at low enough temperatures,
+a cooperative phenomenon called spontaneous magnetization. That is,
+through interactions between nearest neighbors, a given magnetic
+moment can influence the alignment of spins  that are separated
+from the given spin by a macroscopic distance. These long range correlations
+between spins are associated with a long-range order in which
+the lattice has a net magnetization in the absence of a magnetic field.
+
+<p>
+We start by considering the one-dimensional Ising model with nearest neighbor interactions. This model does not exhibit any phase transition.
+
+<p>
+Consider the 1D Ising model with nearest-neighbor interactions 
+
+$$
+\begin{equation*}
+  E[\hat{s}]=-J\sum_{j=1}^{N}s_{j}s_{j+1},
+\end{equation*}
+$$
+
+<p>
+on a chain of length \( N \) with so-called periodic boundary conditions and \( S_j=\pm 1 \) Ising spin variables.
+In one dimension, this model has no phase transition at finite temperature.
+
+<p>
+In the Python code below we generate, with a coupling coefficient set to \( J=1 \), a large number of spin configurations say \( 10000 \) as shown in the code below.
+It means that our data will be a set of \( i=1\ldots n \) points of the form
+\( \{(E[\boldsymbol{s}^i],\boldsymbol{s}^i)\} \).
+Our task is to find the value of \( J \) from the data set using linear regression.
+
+<p>
+Here is the Python code you need to generate the training data, see
+also the <a href="https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html" target="_blank">notebook of Mehta et
+al</a>.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scipy.sparse</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sp</span>
+np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">12</span>)
+
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">warnings</span>
+<span style="color: #408080; font-style: italic">#Comment this to turn on warnings</span>
+warnings<span style="color: #666666">.</span>filterwarnings(<span style="color: #BA2121">&#39;ignore&#39;</span>)
+
+<span style="color: #408080; font-style: italic">### define Ising model aprams</span>
+<span style="color: #408080; font-style: italic"># system size</span>
+L<span style="color: #666666">=40</span>
+
+<span style="color: #408080; font-style: italic"># create 10000 random Ising states</span>
+states<span style="color: #666666">=</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>choice([<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>], size<span style="color: #666666">=</span>(<span style="color: #666666">10000</span>,L))
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ising_energies</span>(states,L):
+    <span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;</span>
+<span style="color: #BA2121; font-style: italic">    This function calculates the energies of the states in the nn Ising Hamiltonian</span>
+<span style="color: #BA2121; font-style: italic">    &quot;&quot;&quot;</span>
+    J<span style="color: #666666">=</span>np<span style="color: #666666">.</span>zeros((L,L),)
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(L):
+        J[i,(i<span style="color: #666666">+1</span>)<span style="color: #666666">%</span>L]<span style="color: #666666">-=1.0</span>
+    <span style="color: #408080; font-style: italic"># compute energies</span>
+    E <span style="color: #666666">=</span> np<span style="color: #666666">.</span>einsum(<span style="color: #BA2121">&#39;...i,ij,...j-&gt;...&#39;</span>,states,J,states)
+
+    <span style="color: #008000; font-weight: bold">return</span> E
+<span style="color: #408080; font-style: italic"># calculate Ising energies</span>
+energies<span style="color: #666666">=</span>ising_energies(states,L)
+</pre></div>
+<p>
+We can now recast the problem as a linear regression model using our codes from homework set 3 (exercise 2 in particular).
+The way we are going to build our model mimicks the way we could think of finding say the gravitional constant for the graviational force between two planets.
+In the absence of any prior knowledge, one sensible choice is the all-to-all Ising model
+
+$$
+E_\mathrm{model}[\boldsymbol{s}^i] = - \sum_{j=1}^N \sum_{k=1}^N J_{j,k}s_{j}^is_{k}^i.
+$$
+
+<p>
+Here \( i \) represents a particular spin configuration (one of the possible \( n \) configurations we generated with the code above).
+
+<p>
+This model is uniquely defined by the non-local coupling strengths \( J_{jk} \) which we want to learn.
+The model is linear in \( \mathbf{J} \) which makes it possible to use linear regression.
+
+<p>
+To apply linear regression, we recast this model in the form
+$$
+E_\mathrm{model}^i \equiv \mathbf{X}^i \cdot \mathbf{J},
+$$
+
+<p>
+where the vectors \( \mathbf{X}^i \) represent all two-body interactions
+\( \{s_{j}^is_{k}^i \}_{j,k=1}^N \), and the index \( i \) runs over the
+samples in the data set.  To make the analogy complete, we can also
+represent the dot product by a single index \( p = \{j,k\} \),
+i.e. \( \mathbf{X}^i \cdot \mathbf{J}=X^i_pJ_p \).  Note that the
+regression model does not include the minus sign, so we expect to
+learn negative \( J \)'s.
+
+<h3 id="___sec2">Part b): Estimating the coupling constant of the one-dimensional Ising model using linear regression </h3>
+
+<p>
+We start with the one-dimensional Ising model and use the data we have
+generated with \( J=1 \) in the previous point.
+
+<p>
+<b>Use linear regression,
+Lasso and Ridge regression as done in homework 3</b>.
+Make an analysis of the guessed coupling constant as function of the hyperparameters \( \lambda \). 
+You can compare your
+results with those of <a href="https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVI-linreg_ising.html" target="_blank">Mehta
+et al.</a>.
+Make sure it is the 1D data which is used.
+
+<p>
+Discuss the methods and how they perform in computing the coupling
+constant \( J \) and include a bias-variance analysis using the bootstrap resampling method.
+Discuss also the mean squared error and
+the \( R2 \) score as measures to assess your model.
+
+<p>
+Give a critical analysis of your results.
+
+<h3 id="___sec3">Part c): Determine the phase of the two-dimensional Ising model  </h3>
+
+<p>
+We switch now to binary classification methods and use logistic
+regression to define the phases of the Ising model. This means that we switch to the two-dimensional Ising model
+and use the data sets generated by <a href="https://physics.bu.edu/~pankajm/ML-Review-Datasets/isingMC/" target="_blank">Mehta et al</a>
+These energies and their corresponding spin orientation configurations 
+represent then your data.  We will use a fixed lattice of \( L\times L =
+40 \times 40 \) spins in two dimensions. The link above contains data for several temperatures.
+The theoretical critical temperature for a phase transition is \( T_C\approx 2.269 \) in units of energy.
+However, for a finite lattice the results representing the critical temperature are slightly higher (\( T_C \approx 2.3 \)).
+
+<p>
+Our goal here, using logistic regression, is to train our model to
+predict the phase of a sample given the spin configuration, whether it
+represents a state above the critical temperature or below.  The
+configurations representing states below the critical temperature are
+called ordered states (the spins tend to point in one direction,
+resulting in a net magnetic moment) while those above the critical
+temperature are called disordered. Since a finite lattice like this
+does not exhibit a clear sign of a phase transition we will mainly
+stay with either orderer or disordered phases. You could include the
+critical phase if you want.
+
+<p>
+Your aim here is thus to read in these data (use the examples from
+<a href="https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVII-logreg_ising.html" target="_blank">Mehta et
+al</a>)
+and use for example the functionality in <b>Scikit-Learn</b> to implement  logistic regression, see the lecture
+notes on <a href="https://compphysics.github.io/MachineLearning/doc/pub/LogReg/html/LogReg-bs.html" target="_blank">logistic
+regression</a>.
+
+<p>
+In this case, to evaluate the model, we will use the so-called accuracy score.   Examples of how to define the accuracy score can be found under the neural network slides. You should also use logistic regression with and without cross-validation.
+
+<p>
+To measure the performance of our network we evaluate how well it does
+on data it has never seen before, i.e. the test data.  We measure the
+performance of the network using the <em>accuracy</em> score.  The accuracy
+is as you would expect just the number of images correctly labeled
+divided by the total number of images. A perfect classifier will have
+an accuracy score of \( 1 \).
+
+$$ 
+\text{Accuracy} = \frac{\sum_{i=1}^n I(t_i = y_i)}{n} ,
+$$
+
+<p>
+where \( I \) is the indicator function, \( 1 \) if \( t_i = y_i \) and \( 0 \)
+otherwise, where \( t_i \) represents the target and \( y_i \) the outputs.
+
+<p>
+The notebook of <a href="https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CVII-logreg_ising.html" target="_blank">Mehta et al</a> is highly recommended in order to benchmark your code and results.
+
+<h3 id="___sec4">Part d): Regression analysis of the one-dimensional Ising model using neural networks  </h3>
+
+<p>
+Your aim now is to use either <b>scikit-learn</b> or <b>tensorflow</b> in order to set up a neural network to find the optimal weights and biases.
+
+<p>
+Train your network and compare the results with those from your linear regression code. 
+You can test your results against a similar code using <b>scikit-learn</b> or <b>tensorflow/keras</b>.
+
+<p>
+A useful reference on the back progagation algorithm is <a href="http://neuralnetworksanddeeplearning.com/" target="_blank">Nielsen's book</a>. It is an excellent read.
+
+<h3 id="___sec5">Part e): Classifying the Ising model phase using neural networks  </h3>
+
+<p>
+Finally, change now your cost function to the \( log \) cross-entropy classification cost function for the case discussed in part c). Train your network again and
+compare the results with those from your logistic  regression code in c). 
+Here again you can compare your results with those of <a href="https://physics.bu.edu/~pankajm/ML-Notebooks/HTML/NB_CIX-DNN_ising_TFlow.html" target="_blank">Mehta et al</a>. There they used <b>tensorflow</b> to classify the phases.
+
+<h3 id="___sec6">Part f) Critical evaluation of the various algorithms </h3>
+
+<p>
+After all these glorious calculations, you should now summarize the various algorithms and come with a critical evaluation of their pros and cons. Which algorithm works best for the regression case and which is best for the classification case. These codes will also be part of your final project 2, but now applied to other data sets.
+
+<h2 id="___sec7">Background literature </h2>
+
+<ol>
+<li> The text of Michael Nielsen is highly recommended, see <a href="http://neuralnetworksanddeeplearning.com/" target="_blank">Nielsen's book</a>. It is an excellent read.</li>
+<li> The textbook of <a href="https://www.springer.com/gp/book/9780387848570" target="_blank">Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer</a>, chapters 3 and 7 are the most relevant ones for the analysis here.</li> 
+<li> <a href="https://arxiv.org/abs/1803.08823" target="_blank">Mehta et al, arXiv 1803.08823</a>, <em>A high-bias, low-variance introduction to Machine Learning for physicists</em>, ArXiv:1803.08823.</li>
+</ol>
+
+If you wish to read more about the Ising model and statistical physics here are three suggestions.
+
+<ol>
+<li> <a href="http://www.worldscientific.com/worldscibooks/10.1142/5660" target="_blank">M. Plischke and B. Bergersen</a>, <em>Equilibrium Statistical Physics</em>, World Scientific, see chapters 5 and 6.</li>
+<li> <a href="http://www.cambridge.org/no/academic/subjects/physics/computational-science-and-modelling/guide-monte-carlo-simulations-statistical-physics-4th-edition?format=HB" target="_blank">D. P. Landau and K. Binder</a>, <em>A Guide to Monte Carlo Simulations in Statistical Physics</em>, Cambridge, see chapters 2,3 and 4.</li>
+<li> <a href="https://global.oup.com/academic/product/monte-carlo-methods-in-statistical-physics-9780198517979?cc=no&lang=en&" target="_blank">M. E. J. Newman and T. Barkema</a>, <em>Monte Carlo Methods in Statistical Physics</em>, Oxford, see chapters 3 and 4.</li>
+</ol>
+
+<h2 id="___sec8">Introduction to numerical projects </h2>
+
+<p>
+Here follows a brief recipe and recommendation on how to write a report for each
+project.
+
+<ul>
+  <li> Give a short description of the nature of the problem and the eventual  numerical methods you have used.</li>
+  <li> Describe the algorithm you have used and/or developed. Here you may find it convenient to use pseudocoding. In many cases you can describe the algorithm in the program itself.</li>
+  <li> Include the source code of your program. Comment your program properly.</li>
+  <li> If possible, try to find analytic solutions, or known limits in order to test your program when developing the code.</li>
+  <li> Include your results either in figure form or in a table. Remember to        label your results. All tables and figures should have relevant captions        and labels on the axes.</li>
+  <li> Try to evaluate the reliabilty and numerical stability/precision of your results. If possible, include a qualitative and/or quantitative discussion of the numerical stability, eventual loss of precision etc.</li>
+  <li> Try to give an interpretation of you results in your answers to  the problems.</li>
+  <li> Critique: if possible include your comments and reflections about the  exercise, whether you felt you learnt something, ideas for improvements and  other thoughts you've made when solving the exercise. We wish to keep this course at the interactive level and your comments can help us improve it.</li>
+  <li> Try to establish a practice where you log your work at the  computerlab. You may find such a logbook very handy at later stages in your work, especially when you don't properly remember  what a previous test version  of your program did. Here you could also record  the time spent on solving the exercise, various algorithms you may have tested or other topics which you feel worthy of mentioning.</li>
+</ul>
+
+<h2 id="___sec9">Format for electronic delivery of report and programs </h2>
+
+<p>
+The preferred format for the report is a PDF file. You can also use DOC or postscript formats or as an ipython notebook file.  As programming language we prefer that you choose between C/C++, Fortran2008 or Python. The following prescription should be followed when preparing the report:
+
+<ul>
+  <li> Send us <b>only</b> the report file!  For the source code file(s) you have developed please provide us with your link to you\rr github domain.  The report file should include all of your discussions and a list of the codes you have developed.</li>  
+  <li> item In your git repository, please include a folder which contains selected results and a folder with your codes.</li>
+</ul>
+
+Finally, 
+we encourage you to collaborate. Optimal working groups consist of 
+2-3 students. You can then hand in a common report.
+
+<h2 id="___sec10">Software and needed installations </h2>
+
+<p>
+If you have Python installed (we recommend Python3) and you feel pretty familiar with installing different packages, 
+we recommend that you install the following Python packages via <b>pip</b> as
+
+<ol>
+<li> pip install numpy scipy matplotlib ipython scikit-learn tensorflow sympy pandas pillow</li>
+</ol>
+
+For Python3, replace <b>pip</b> with <b>pip3</b>.
+
+<p>
+See below for a discussion of <b>tensorflow</b> and <b>scikit-learn</b>.
+
+<p>
+For OSX users we recommend also, after having installed Xcode, to install <b>brew</b>. Brew allows 
+for a seamless installation of additional software via for example
+
+<ol>
+<li> brew install python3</li>
+</ol>
+
+For Linux users, with its variety of distributions like for example the widely popular Ubuntu distribution
+you can use <b>pip</b> as well and simply install Python as 
+
+<ol>
+<li> sudo apt-get install python3  (or python for python2.7)</li>
+</ol>
+
+etc etc.
+
+<p>
+If you don't want to install various Python packages with their dependencies separately, we recommend two widely used distrubutions which set up  all relevant dependencies for Python, namely
+
+<ol>
+<li> <a href="https://docs.anaconda.com/" target="_blank">Anaconda</a> Anaconda is an open source distribution of the Python and R programming languages for large-scale data processing, predictive analytics, and scientific computing, that aims to simplify package management and deployment. Package versions are managed by the package management system <b>conda</b></li>
+<li> <a href="https://www.enthought.com/product/canopy/" target="_blank">Enthought canopy</a>  is a Python distribution for scientific and analytic computing distribution and analysis environment, available for free and under a commercial license.</li>
+</ol>
+
+Popular software packages written in Python for ML are
+
+<ul>
+<li> <a href="http://scikit-learn.org/stable/" target="_blank">Scikit-learn</a>,</li> 
+<li> <a href="https://www.tensorflow.org/" target="_blank">Tensorflow</a>,</li>
+<li> <a href="http://pytorch.org/" target="_blank">PyTorch</a> and</li> 
+<li> <a href="https://keras.io/" target="_blank">Keras</a>.</li>
+</ul>
+
+These are all freely available at their respective GitHub sites. They 
+encompass communities of developers in the thousands or more. And the number
+of code developers and contributors keeps increasing.
+
+<p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+<center style="font-size:80%">
+<!-- copyright --> &copy; 1999-2020, "Data Analysis and Machine Learning FYS-STK3155/FYS4155":"http://www.uio.no/studier/emner/matnat/fys/FYS3155/index-eng.html". Released under CC Attribution-NonCommercial 4.0 license
+</center>
+
+
+</body>
+</html>
+    
+
