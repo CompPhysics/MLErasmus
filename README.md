@@ -200,31 +200,34 @@ Here we list several useful Python libraries we strongly recommend (if you use a
 
 ## Textbooks
 
-_Recommended textbooks_:
-- Christopher M. Bishop, Pattern Recognition and Machine Learning, Springer, https://www.springer.com/gp/book/9780387310732. This is the main textbook and this course covers chapters 1-7, 11 and 12. 
-- Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer, https://www.springer.com/gp/book/9780387848570. This is a well-known text and serves as additional text.
-- Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly, https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/. This text is very useful since it contains many code examples.
+| | |
+|-|-|
+|_Recommended textbooks_:| |
+| | - Christopher M. Bishop, Pattern Recognition and Machine Learning, Springer, https://www.springer.com/gp/book/9780387310732. This is the main textbook and this course covers chapters 1-7, 11 and 12. |
+| | - Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer, https://www.springer.com/gp/book/9780387848570. This is a well-known text and serves as additional text.|
+| | - Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly, https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/. This text is very useful since it contains many code examples.|
 
-The books by Bishop and Hastie et al. can be downloaded for free if you access the university library via an IP number of your home university.
+| The books by Bishop and Hastie et al. can be downloaded for free if you access the university library via an IP number of your home university.| |
 
+---
 
-
-_General learning book on statistical analysis_:
-- Christian Robert and George Casella, Monte Carlo Statistical Methods, Springer
-- Peter Hoff, A first course in Bayesian statistical models, Springer
-
-_General Machine Learning Books_:
-- Kevin Murphy, Machine Learning: A Probabilistic Perspective, MIT Press
-- David J.C. MacKay, Information Theory, Inference, and Learning Algorithms, Cambridge University Press
-- David Barber, Bayesian Reasoning and Machine Learning, Cambridge University Press 
 
 
 | | |
 |-|-|
-|`NOTE` | This is something I want you to notice. It has a lot of text, and I want that text to wrap within a cell to the right of the `NOTE`, instead of under it.|
+| _General learning book on statistical analysis_: | |
+| | - Christian Robert and George Casella, Monte Carlo Statistical Methods, Springer|
 
 ---
 
+| | |
+|-|-|
+| _General Machine Learning Books_: | |
+ | | - Kevin Murphy, Machine Learning: A Probabilistic Perspective, MIT Press |
+| | - David J.C. MacKay, Information Theory, Inference, and Learning Algorithms, Cambridge University Press |
+| | - David Barber, Bayesian Reasoning and Machine Learning, Cambridge University Press  |
+
+---
 
 
 
