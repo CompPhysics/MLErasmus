@@ -104,33 +104,34 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 
 | | |
 |-|-|
-| Week 3, January 18-22, 2021 | |
-| | - _Monday Lecture 9am-1130am_: Introduction to Machine Learning and linear regression (MHJ) |
-| | - _Monday Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (PDBS and KW) |
-| | - _Tuesday Lecture 9am-1130am_: Linear Regression and Logistic Regression (MHJ) |
+| Week 3 | January 18-22, 2021 | 
+| Monday | - _Lecture 9am-1130am_: Introduction to Machine Learning and linear regression (MHJ) |
+| Recommended readings |  Before the course starts: Bishop Sections 1.1, 1.2 and 1.3 | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  da 1 | 
+| | - _Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (PDBS and KW) |
+| Tuesday | - _Lecture 9am-1130am_: Linear Regression and Logistic Regression (MHJ) |
 | | - _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW), exercise set 2 |
-| | - _Wednesday Lecture 9am-1130am_: Regression and Bias-Variance Tradeoff (MHJ) |
-| | - _Wednesday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
-| | - _Thursday Lecture 9am-1130am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ) |
-| | - _Thursday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
-| | - _Friday Lecture 9am-1130am_:  Logistic Regression and begin Neural Networks (MHJ) |
-| | - _Friday Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW), exercise sets 2 and 3 and first project |
+| Wednesday | - _Lecture 9am-1130am_: Regression and Bias-Variance Tradeoff (MHJ) |
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
+| Thursday | - _Lecture 9am-1130am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ) |
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
+| Friday | - _Lecture 9am-1130am_:  Logistic Regression and begin Neural Networks (MHJ) |
+| | - _Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW), exercise sets 2 and 3 and first project |
 
 ---
 
 | | |
 |-|-|
-| Week 4, January 25-29, 2021 | |
-| | - _Monday Lecture 9am-1130am_:  Neural Networks  (MHJ)
-| | - _Monday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW) and work on project 1
-| | - _Tuesday Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ)
-| | - _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1
-| | - _Wednesday Lecture 9am-1130am_: Decision Trees, Random Forests and Boosting (MHJ)
-| | - _Wednesday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
-| | - _Thursday Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ)
-| | - _Thursday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
-| | - _Friday Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2
-| | - _Friday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2
+| Week 4 | January 25-29, 2021 |
+| | - _Lecture 9am-1130am_:  Neural Networks  (MHJ)
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW) and work on project 1
+| Tuesday | - _Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ)
+| | - _Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1
+| Wednesday | - _Lecture 9am-1130am_: Decision Trees, Random Forests and Boosting (MHJ)
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
+| Thursday | - _Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ)
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
+| Friday | - _Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2
 
 ---
 
