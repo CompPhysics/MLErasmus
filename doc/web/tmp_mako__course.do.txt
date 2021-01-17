@@ -35,13 +35,13 @@ formulas in HTML or ipython notebook files.
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/pdf/introduction.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/pdf/Introduction.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/html/introduction.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/html/introduction-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/html/introduction-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/ipynb/introduction.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/ipynb/Introduction.ipynb"
 
 
 ===== Day 1: Linear Regression =====
