@@ -106,15 +106,24 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 |-|-|
 | Week 3 | January 18-22, 2021 | 
 | Monday | - _Lecture 9am-1130am_: Introduction to Machine Learning and linear regression (MHJ) |
-| Recommended readings |  Before the course starts: Bishop Sections 1.1, 1.2 and 1.3 | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  da 1 | 
-| | - _Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (PDBS and KW) |
+| Recommended readings |  Before the course starts: Bishop Sections 1.1, 1.2 and 1.3 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 1 | 
+| | - _Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and exercise 1 (PDBS and KW) |
 | Tuesday | - _Lecture 9am-1130am_: Linear Regression and Logistic Regression (MHJ) |
+| Recommended readings |  Bishop Sections 3.1 and Hastie et al chapter 3 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 2 | 
 | | - _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW), exercise set 2 |
 | Wednesday | - _Lecture 9am-1130am_: Regression and Bias-Variance Tradeoff (MHJ) |
+| Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 3 | 
 | | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
 | Thursday | - _Lecture 9am-1130am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ) |
+| Recommended readings | Bishop Sections 4.1-4.3, Hastie et al Chapter 4 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 4 | 
 | | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
 | Friday | - _Lecture 9am-1130am_:  Logistic Regression and begin Neural Networks (MHJ) |
+| Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 5 | 
 | | - _Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW), exercise sets 2 and 3 and first project |
 
 ---
@@ -122,16 +131,26 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | | |
 |-|-|
 | Week 4 | January 25-29, 2021 |
-| | - _Lecture 9am-1130am_:  Neural Networks  (MHJ)
-| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW) and work on project 1
-| Tuesday | - _Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ)
-| | - _Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1
-| Wednesday | - _Lecture 9am-1130am_: Decision Trees, Random Forests and Boosting (MHJ)
-| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
-| Thursday | - _Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ)
-| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
-| Friday | - _Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2
-| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2
+| Monday | - _Lecture 9am-1130am_:  Neural Networks  (MHJ) |
+| Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 6 | 
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW) and work on project 1 |
+| Tuesday | - _Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ) |
+| Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 7 | 
+| | - _Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1 |
+| Wednesday | - _Lecture 9am-1130am_: Decision Trees, Random Forests and Boosting (MHJ) |
+| Recommended readings |  Hastie et al chapter 9.3 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 8 | 
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1 |
+| Thursday | - _Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ) |
+| Recommended readings |  Hastie et al chapter 10 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 9 | 
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1 |
+| Friday | - _Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2 |
+| Recommended readings |  Hastie et al chapter 10 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 10 | 
+| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2 |
 
 ---
 
