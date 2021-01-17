@@ -99,34 +99,40 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 
 
 ##  Teaching schedule, topics and teachers
+
 ### Teachers: Morten Hjorth-Jensen (MHJ), Per-Dimitri B. Sønderland (PDBS), and Kristian Wold (KW)
 
-###  Week 4, January 18-22, 2021
-- _Monday Lecture 9am-1130am_: Introduction to Machine Learning and linear regression (MHJ)
-- _Monday Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (PDBS and KW)
-- _Tuesday Lecture 9am-1130am_: Linear Regression and Logistic Regression (MHJ)
-- _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW), exercise set 2
-- _Wednesday Lecture 9am-1130am_: Regression and Bias-Variance Tradeoff (MHJ)
-- _Wednesday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3
-- _Thursday Lecture 9am-1130am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ)
-- _Thursday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3
-- _Friday Lecture 9am-1130am_:  Logistic Regression and begin Neural Networks (MHJ)
-- _Friday Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW), exercise sets 2 and 3 and first project
+| | |
+|-|-|
+| Week 3, January 18-22, 2021 | |
+| | - _Monday Lecture 9am-1130am_: Introduction to Machine Learning and linear regression (MHJ) |
+| | - _Monday Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (PDBS and KW) |
+| | - _Tuesday Lecture 9am-1130am_: Linear Regression and Logistic Regression (MHJ) |
+| | - _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW), exercise set 2 |
+| | - _Wednesday Lecture 9am-1130am_: Regression and Bias-Variance Tradeoff (MHJ) |
+| | - _Wednesday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
+| | - _Thursday Lecture 9am-1130am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ) |
+| | - _Thursday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
+| | - _Friday Lecture 9am-1130am_:  Logistic Regression and begin Neural Networks (MHJ) |
+| | - _Friday Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW), exercise sets 2 and 3 and first project |
 
+---
 
-### Week 5, January 25-29, 2021
-- _Monday Lecture 9am-1130am_:  Neural Networks  (MHJ)
-- _Monday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW) and work on project 1
-- _Tuesday Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ)
-- _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1
-- _Wednesday Lecture 9am-1130am_: Decision Trees, Random Forests and Boosting (MHJ)
-- _Wednesday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
-- _Thursday Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ)
-- _Thursday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
-- _Friday Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2
-- _Friday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2
+| | |
+|-|-|
+| Week 4, January 25-29, 2021 | |
+| | - _Monday Lecture 9am-1130am_:  Neural Networks  (MHJ)
+| | - _Monday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW) and work on project 1
+| | - _Tuesday Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ)
+| | - _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1
+| | - _Wednesday Lecture 9am-1130am_: Decision Trees, Random Forests and Boosting (MHJ)
+| | - _Wednesday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
+| | - _Thursday Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ)
+| | - _Thursday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
+| | - _Friday Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2
+| | - _Friday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2
 
-
+---
 
 ## Required Technologies
 
@@ -207,10 +213,9 @@ Here we list several useful Python libraries we strongly recommend (if you use a
 | | - Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer, https://www.springer.com/gp/book/9780387848570. This is a well-known text and serves as additional text.|
 | | - Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly, https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/. This text is very useful since it contains many code examples.|
 
-| The books by Bishop and Hastie et al. can be downloaded for free if you access the university library via an IP number of your home university.| |
-
 ---
 
+The books by Bishop and Hastie et al. can be downloaded for free if you access the university library via an IP number of your home university.
 
 
 | | |
