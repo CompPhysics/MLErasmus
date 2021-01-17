@@ -1,4 +1,4 @@
-TITLE: Data Analysis and Machine Learning: Linear Regression
+TITLE: Data Analysis and Machine Learning: Day 1 and Day 2, Linear Regression
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
 DATE: today
 
@@ -579,8 +579,8 @@ plt.show()
 !split
 ===== Adding error analysis and training set up =====
 
-We can easily test our fit by computing the $R2$ score that we discussed in connection with the functionality of _Scikit_Learn_ in the introductory slides.
-Since we are not using _Scikit-Learn here we can define our own $R2$ function as
+We can easily test our fit by computing the $R2$ score that we discussed in connection with the functionality of _Scikit-Learn_ in the introductory slides.
+Since we are not using _Scikit-Learn_ here we can define our own $R2$ function as
 !bc pycod 
 def R2(y_data, y_model):
     return 1 - np.sum((y_data - y_model) ** 2) / np.sum((y_data - np.mean(y_data)) ** 2)
