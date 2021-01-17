@@ -1,13 +1,5 @@
-# Strange way of testing for vortex...
-# #ifdef NON_VORTEX
-TITLE: Overview of course material: Computational Physics
-
-TOC: off
-# #else
 TITLE: Overview of course material: Data Analysis and Machine Learning
 AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Department of Physics and Facility for Rare Ion Beams, Michigan State University, USA &  Department of Physics, University of Oslo, Norway
-# #endif
-
 
 <%
 pub_url = 'https://compphysics.github.io/MLErasmus/doc/pub'
@@ -35,7 +27,7 @@ chapters = {
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "${pub_url}/${name}/pdf/${name}-minted.pdf"
+     * "Standard one-page format": "${pub_url}/${name}/pdf/${name}.pdf"
  * HTML:
    * "Plain html": "${pub_url}/${name}/html/${name}.html"
    * "Reveal format": "${pub_url}/${name}/html/${name}-reveal.html"

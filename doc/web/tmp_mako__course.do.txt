@@ -1,7 +1,5 @@
-# Strange way of testing for vortex...
 TITLE: Overview of course material: Data Analysis and Machine Learning
-AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University, USA &  Department of Physics, University of Oslo, Norway
-
+AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Department of Physics and Facility for Rare Ion Beams, Michigan State University, USA &  Department of Physics, University of Oslo, Norway
 
 
 
@@ -31,184 +29,169 @@ formulas in HTML or ipython notebook files.
 
 
 
-===== Introduction to Data Analysis and Machine Learning =====
+===== Day 1: Introduction to Data Analysis and Machine Learning =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/pdf/Introduction-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/pdf/introduction.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/html/Introduction-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/html/introduction.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/html/introduction-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/html/introduction-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/ipynb/Introduction.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/introduction/ipynb/introduction.ipynb"
 
 
-===== Getting started with Machine Learning =====
+===== Day 1: Linear Regression =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/pdf/How2ReadData-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day1/pdf/day1.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/html/How2ReadData-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day1/html/day1.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day1/html/day1-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day1/html/day1-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/How2ReadData/ipynb/How2ReadData.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day1/ipynb/day1.ipynb"
 
 
-===== Review of central linear algebra elements =====
+===== Day 2: Linear Regression and Logistic Regression =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/pdf/Linalg-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day2/pdf/day2.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/html/Linalg.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/html/Linalg-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/html/Linalg-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Linalg/ipynb/Linalg.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day2/ipynb/day2.ipynb"
 
 
-===== Monte Carlo methods and elements of probability theory =====
+===== Day 3: Regression and Bias-Variance Tradeoff =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/pdf/Statistics-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day3/pdf/day3.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/html/Statistics-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day3/html/day3.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day3/html/day3-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day3/html/day3-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Statistics/ipynb/Statistics.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day3/ipynb/day3.ipynb"
 
 
-===== Regression Methods =====
+===== Day 4: Bias-Variance tradeoff, Logistic Regression and Optimization =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/pdf/Regression-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day4/pdf/day4.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day4/html/day4.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day4/html/day4-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day4/html/day4-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Regression/ipynb/Regression.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day4/ipynb/day4.ipynb"
 
 
-===== Gradient methods =====
+===== Day 5: Logistic Regression and begin Neural Networks =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/pdf/Splines-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day5/pdf/day5.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/html/Splines-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day5/html/day5.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day5/html/day5-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day5/html/day5-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Splines/ipynb/Splines.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day5/ipynb/day5.ipynb"
 
 
-===== Logistic Regression =====
+===== Day 6: Neural Networks and Deep Learning =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/pdf/LogReg-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day6/pdf/day6.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/html/LogReg-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day6/html/day6.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day6/html/day6-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day6/html/day6-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/LogReg/ipynb/LogReg.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day6/ipynb/day6.ipynb"
 
 
-===== Neural Networks =====
+===== Day 7: Neural Networks, back propagation and examples of classification and regression problems =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/pdf/NeuralNet-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day7/pdf/day7.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/html/NeuralNet-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day7/html/day7.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day7/html/day7-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day7/html/day7-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/NeuralNet/ipynb/NeuralNet.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day7/ipynb/day7.ipynb"
 
 
-===== Reduction of dimensionality =====
+===== Day 8: Deep Learning, Covoluntional and Recurrence Neural Networks =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/pdf/DimRed-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day8/pdf/day8.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/html/DimRed.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/html/DimRed-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/html/DimRed-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day8/html/day8.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day8/html/day8-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day8/html/day8-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/DimRed/ipynb/DimRed.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day8/ipynb/day8.ipynb"
 
 
-===== Decision trees, from simple to random ones =====
+===== Day 9: Decision trees, Random Forests and Boosting =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/pdf/DecisionTrees-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day9/pdf/day9.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/html/DecisionTrees-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day9/html/day9.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day9/html/day9-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day9/html/day9-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/DecisionTrees/ipynb/DecisionTrees.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day9/ipynb/day9.ipynb"
 
 
-===== Support Vector Machines =====
+===== Day 10:  Boosting and XGBoost and Summary of course  =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/svm/pdf/svm-minted.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day10/pdf/day10.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/svm/html/svm-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day10/html/day10.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day10/html/day10-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day10/html/day10-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/svm/ipynb/svm.ipynb"
-
-
-===== Solving ordinary and partial differential equations with Neural Networks =====
-
-
-
- * LaTeX PDF:
-   * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/pdf/odenn-minted.pdf"
- * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/html/odenn-bs.html"
- * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/odenn/ipynb/odenn.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day10/ipynb/day10.ipynb"
 
 
 
@@ -218,45 +201,45 @@ formulas in HTML or ipython notebook files.
 
 === First exercise set (Day 1) ===
  * LaTeX and PDF:
-     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw1/pdf/hw1.tex"
-     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw1/pdf/hw1.pdf"
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/pdf/hw1.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/pdf/hw1.pdf"
  * HTML:
-   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw1/html/hw1.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw1/html/hw1-bs.html"
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/html/hw1.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/html/hw1-bs.html"
 
 === Second exercise set (Day 2) ===
  * LaTeX and PDF:
-     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw2/pdf/hw2.tex"
-     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw2/pdf/hw2.pdf"
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/pdf/hw2.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/pdf/hw2.pdf"
  * HTML:
-   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw2/html/hw2.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw2/html/hw2-bs.html"
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/html/hw2.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/html/hw2-bs.html"
 
 
 === Third  exercise set (Day 3 and 4)  ===
  * LaTeX and PDF:
-     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw3/pdf/hw3.tex"
-     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw3/pdf/hw3.pdf"
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/pdf/hw3.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/pdf/hw3.pdf"
  * HTML:
-   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw3/html/hw3.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2020/hw3/html/hw3-bs.html"
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/html/hw3.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/html/hw3-bs.html"
 
 
 
 === Project 1, deadline February 20  ===
  * LaTeX and PDF:
-     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/Project1/pdf/Project1.tex"
-     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/Project1/pdf/Project1.pdf"
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/pdf/Project1.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/pdf/Project1.pdf"
  * HTML:
-   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/Project1/html/Project1.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2020/Project1/html/Project1-bs.html"
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/html/Project1.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/html/Project1-bs.html"
 
 
 === Project 2, deadline February 20  ===
  * LaTeX and PDF:
-     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/Project2/pdf/Project2.tex"
-     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/Project2/pdf/Project2.pdf"
+     * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project2/pdf/Project2.tex"
+     * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project2/pdf/Project2.pdf"
  * HTML:
-   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2020/Project2/html/Project2.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2020/Project2/html/Project2-bs.html"
+   * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project2/html/Project2.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project2/html/Project2-bs.html"
 
