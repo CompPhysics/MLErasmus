@@ -1,30 +1,48 @@
-## Introduction
+# Machine Learning and Data Analysis for Nuclear Physics, European ERASMUS+ Master of Science program
 
-Probability theory and statistical methods play a central role in science. Nowadays we are
-surrounded by huge amounts of data. For example, there are about one trillion web pages; more than one
-hour of video is uploaded to YouTube every second, amounting to years of content every
-day; the genomes of 1000s of people, each of which has a length of more than a billion  base pairs, have
-been sequenced by various labs and so on. This deluge of data calls for automated methods of data analysis,
-which is exactly what machine learning aims at providing. 
+## Why a course on Machine Learning for Nuclear Physics?
 
-## Learning outcomes
+Probability theory and statistical methods play a central role in
+science. Nowadays we are surrounded by huge amounts of data. For
+example, there are about one trillion web pages; more than one hour of
+video is uploaded to YouTube every second, amounting to 10 years of
+content every day; the genomes of 1000s of people, each of which has a
+length of more than a billion base pairs, have been sequenced by
+various labs and so on. This deluge of data calls for automated
+methods of data analysis, which is exactly what machine learning
+provides. The purpose of thiscourse is to provide an
+introduction to the core concepts and tools of machine learning in a
+manner easily understood and intuitive to physicists and nuclear
+physicists in particular. We will start with some of the basic methods
+from supervised learning and statistical data analysis, such as
+various regression methods before we move into deep learning methods
+for both supervised and unsupervised learning, with an emphasis on the
+analysis of nuclear physics experiments and theoretical nuclear
+physics. The students will work on hands-on daily examples as well as
+projects than can result in final credits. Exercises and projects will
+be provided and the aim is to give the participants an overview on how
+machine learning can be used to analyze and study nuclear physics
+problems (experiment and theory). The major scope is to give the
+participants a deeper understanding on what Machine learning and Data
+Analysis are and how they can be used to analyze data from nuclear
+physics experiments and perform theoretical calculations of nuclear
+many-body systems.
 
-This course aims at giving you insights and knowledge about  many of the central algorithms used in Data Analysis and Machine Learning.  The course is project based and through  various numerical projects, normally three, you will be exposed to fundamental research problems in these fields, with the aim to reproduce state of the art scientific results. Both supervised and unsupervised methods will be covered. The emphasis is on a frequentist approach, although we will try to link it with a Bayesian approach as well. You will learn to develop and structure large codes for studying different cases where Machine Learning is applied to, get acquainted with computing facilities and learn to handle large scientific projects. A good scientific and ethical conduct is emphasized throughout the course. More specifically, after this course you will
 
-- Learn about basic data analysis, statistical analysis, Bayesian statistics, Monte Carlo sampling, data optimization and machine learning;
-- Be capable of extending the acquired knowledge to other systems and cases;
-- Have an understanding of central algorithms used in data analysis and machine learning;
-- Understand linear methods for regression and classification, from ordinary least squares, via Lasso and Ridge to Logistic regression;
-- Learn about neural networks and deep  learning methods for supervised and unsupervised learning. Emphasis on feed forward neural networks, convolutional and recurrent neural networks; 
-- Learn about about decision trees, random forests, bagging and boosting methods;
-- Learn about support vector machines and kernel transformations;
-- Reduction of data sets, from PCA to clustering;
-- Autoencoders and Reinforcement Learning;
-- Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++ and/or Fortran (Fortran2003 or later).  
 
-## Prerequisites
+The goals of this course on Machine Learning and Data Analysis are to give the participants a deeper understanding and critical view of several widely popular Machine Learning algorithms, covering both supervised and unsupervised learning. The learning outcomes involve an understanding of the following central methods:
 
-Basic knowledge in programming and mathematics, with an emphasis on linear algebra. Knowledge of Python or/and C++ as programming languages is strongly recommended and experience with Jupiter notebook is recommended. Required courses are the equivalents to the University of Oslo mathematics courses MAT1100, MAT1110, MAT1120 and at least one of the corresponding computing and programming courses INF1000/INF1110 or MAT-INF1100/MAT-INF1100L/BIOS1100/KJM-INF1100. Most universities offer nowadays a basic programming course (often compulsory) where Python is the recurring programming language.
+- Basic concepts of machine learning and data analysis and statistical concepts like expectation values, variance, covariance, correlation functions and errors;
+- Estimation of errors using cross-validation, blocking, bootstrapping and jackknife methods;
+- Optimization of functions
+- Linear Regression and Logistic Regression;
+- Dimensionality reductions, from PCA to clustering
+- Neural networks and deep learning;
+- Convolutional Neural Networks
+- Recurrent Neureal Networks and Autoencoders
+- Decisions trees and random forests
+- Support vector machines and kernel transformations
+
 
 
 ## The course has two central parts
@@ -41,7 +59,6 @@ The following topics will be covered
 - Simpler models, binomial distribution, the Poisson distribution, simple and multivariate normal distributions;
 - Central elements of Bayesian statistics and modeling;
 - Gradient methods for data optimization, 
-- Monte Carlo methods, Markov chains, Gibbs sampling and Metropolis-Hastings sampling;
 - Estimation of errors and resampling techniques such as the cross-validation, blocking, bootstrapping and jackknife methods;
 - Principal Component Analysis (PCA) and its mathematical foundation
 
@@ -52,8 +69,6 @@ The following topics will be covered:
 - Neural networks and deep learning, including convolutional and recurrent neural networks
 - Decisions trees, Random Forests, Bagging and Boosting
 - Support vector machines
-- Bayesian linear and logistic regression
-- Boltzmann Machines
 - Unsupervised learning Dimensionality reduction, from PCA to cluster models
 
 Hands-on demonstrations, exercises and projects aim at deepening your understanding of these topics.
@@ -74,9 +89,9 @@ is recommended.
 ## Practicalities
 
 1. Lectures are in the morning, from 9am-1130am.
-2. Four hours of laboratory sessions for work on computational projects, from 2pm to 6pm;
+2. Three hours of laboratory sessions for work on computational projects, from 2pm to 5pm;
 3. Lectures and lab sessions will all be at GANIL, starting January 18 at 9am. 
-4. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than March 1, hopefully the grades will be available before that.
+4. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will be graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than March 1, hopefully the grades will be available before that.
 
 
 ## Lecture material
@@ -86,30 +101,30 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 ##  Teaching schedule, topics and teachers
 ### Teachers: Morten Hjorth-Jensen (MHJ), Per-Dimitri B. Sønderland (PDBS), and Kristian Wold (KW)
 
-###  Week 4, January 18-22, 2020
-- _Monday Lecture 9am-1130mam_: Introduction to Machine Learning and linear regression (MHJ)
-- _Monday Laboratory 2pm-6pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (PDBS and KW)
-- _Tuesday Lecture 10am-2pm_: Linear Regression and Logistic Regression (MHJ)
-- _Tuesday Laboratory 10am-2pm:_ Computational Exercises (PDBS and KW), exercise set 2
-- _Wednesday Lecture 9am-1130mam_: Regression and Bias-Variance Tradeoff (MHJ)
-- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3
-- _Thursday Lecture 9am-1130mam_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ)
-- _Thursday Laboratory 2pm-6pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3
-- _Friday Lecture 9am-1130mam_:  Logistic Regression and begin Neural Networks (MHJ)
-- _Friday Laboratory 2pm-6pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW), exercise sets 2 and 3 and first project
+###  Week 4, January 18-22, 2021
+- _Monday Lecture 9am-1130am_: Introduction to Machine Learning and linear regression (MHJ)
+- _Monday Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and Computational Exercises (PDBS and KW)
+- _Tuesday Lecture 9am-1130am_: Linear Regression and Logistic Regression (MHJ)
+- _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW), exercise set 2
+- _Wednesday Lecture 9am-1130am_: Regression and Bias-Variance Tradeoff (MHJ)
+- _Wednesday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3
+- _Thursday Lecture 9am-1130am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ)
+- _Thursday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3
+- _Friday Lecture 9am-1130am_:  Logistic Regression and begin Neural Networks (MHJ)
+- _Friday Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW), exercise sets 2 and 3 and first project
 
 
-### Week 5, January 25-29, 2020
-- _Monday Lecture 9am-1130mam_:  Neural Networks  (MHJ)
-- _Monday Laboratory 2pm-6pm_: Computational Exercises (PDBS and KW) and work on project 1
+### Week 5, January 25-29, 2021
+- _Monday Lecture 9am-1130am_:  Neural Networks  (MHJ)
+- _Monday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW) and work on project 1
 - _Tuesday Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ)
-- _Tuesday Laboratory 2pm-6pm:_ Computational Exercises (PDBS and KW) and work on project 1
-- _Wednesday Lecture 9am-1130mam_: Decision Trees, Random Forests and Boosting (MHJ)
-- _Wednesday Laboratory 2pm-6pm_: Computational Exercises (PDBS and KW), work on project 1
-- _Thursday Lecture 9am-1130mam_:  Decision trees, Random Forests and Boosting (MHJ)
-- _Thursday Laboratory 2pm-6pm_: Computational Exercises (PDBS and KW), work on project 1
-- _Friday Lecture 9am-1130mam_:  Bossting and XGBoost and Summary of course (MHJ), presentation of project 2
-- _Friday Laboratory 2pm-6pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2
+- _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1
+- _Wednesday Lecture 9am-1130am_: Decision Trees, Random Forests and Boosting (MHJ)
+- _Wednesday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
+- _Thursday Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ)
+- _Thursday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1
+- _Friday Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2
+- _Friday Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2
 
 
 
@@ -202,4 +217,19 @@ _General Machine Learning Books_:
 - Kevin Murphy, Machine Learning: A Probabilistic Perspective, MIT Press
 - David J.C. MacKay, Information Theory, Inference, and Learning Algorithms, Cambridge University Press
 - David Barber, Bayesian Reasoning and Machine Learning, Cambridge University Press 
+
+
+| | |
+|-|-|
+|`NOTE` | This is something I want you to notice. It has a lot of text, and I want that text to wrap within a cell to the right of the `NOTE`, instead of under it.|
+
+---
+
+
+
+
+
+
+
+
 
