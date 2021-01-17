@@ -104,7 +104,7 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 
 | | |
 |-|-|
-| Week 3 | January 18-22, 2021 | 
+| First Week  | January 18-22, 2021 | 
 | Monday | - _Lecture 9am-1130am_: Introduction to Machine Learning and linear regression (MHJ) |
 | Recommended readings |  Before the course starts: Bishop Sections 1.1, 1.2 and 1.3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 1 | 
@@ -130,7 +130,7 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 
 | | |
 |-|-|
-| Week 4 | January 25-29, 2021 |
+| Second Week | January 25-29, 2021 |
 | Monday | - _Lecture 9am-1130am_:  Neural Networks  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 6 | 
