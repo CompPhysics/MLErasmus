@@ -42,8 +42,8 @@ Fitting a continuous function with linear parameterization in terms of the param
 ===== Additional Reading  =====
 
 For more discussions of Ridge and Lasso regression, "Wessel van Wieringen's":"https://arxiv.org/abs/1509.09169" article is highly recommended.
-Similarly, "Mehta et al's article":"https://arxiv.org/abs/1803.08823" is also recommended. The textbook by "Hastie, Tibshirani, and Friedman on The Elements of Statistical Learning Data Mining":"https://link.springer.com/book/10.1007/978-0-387-84858-7" is highly recommended.  
-
+Similarly, "Mehta et al's article":"https://arxiv.org/abs/1803.08823" is also recommended. The textbook by "Hastie, Tibshirani, and Friedman on The Elements of Statistical Learning Data Mining":"https://link.springer.com/book/10.1007/978-0-387-84858-7", chapter 3 is highly recommended.  
+Also "Bishop's text":""https://www.springer.com/gp/book/9780387310732", chapter 3 is an excellent read.
 
 !split
 ===== Regression Analysis, Definitions and Aims  =====
@@ -86,6 +86,10 @@ the *linear regression model* where $\bm{\beta} = [\beta_0, \ldots,
 \beta_{p-1}]^{T}$ are the *regression parameters*. 
 
 Linear regression gives us a set of analytical equations for the parameters $\beta_j$.
+
+_Note_: The optimal values of the parameters $\bm{\beta}$ are obtained by minimizing a chosen _cost/risk/loss_ function. We will label these
+as $\bm{\hat{\beta}}$ or as $\bm{\beta}^{\mathrm{opt}}$. 
+
 
 !eblock
 
