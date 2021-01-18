@@ -148,7 +148,7 @@ print(MSE(y_test,ypredict))
 ===== Exercise: making your own data and exploring scikit-learn =====
 
 
-We will generate our own dataset for a function $y(x)$ where $x \in [0,1]$ and defined by random numbers computed with the uniform distribution. The function $y$ is a quadratic polynomial in $x$ with added stochastic noise according to the normal distribution $\cal {N}(0,1)$.
+We will generate our own dataset for a function $y(x)$ where $x \in [0,1]$ and defined by random numbers computed with the uniform distribution. The function $y$ is a quadratic polynomial in $x$ with added stochastic noise according to the normal distribution $N(0,1)$.
 The following simple Python instructions define our $x$ and $y$ values (with 100 data points).
 !bc pycod
 x = np.random.rand(100,1)
@@ -159,15 +159,15 @@ o Write your own code (following the examples under the "regression slides":"htt
 o Use thereafter _scikit-learn_ (see again the examples in the regression slides) and compare with your own code.   
 o Using scikit-learn, compute also the mean square error, a risk metric corresponding to the expected value of the squared (quadratic) error defined as
 !bt 
-\[ MSE(\hat{y},\hat{\tilde{y}}) = \frac{1}{n}
+\[ MSE(\bm{y},\bm{\tilde{y}}) = \frac{1}{n}
 \sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2, 
 \] 
 !et 
 and the $R^2$ score function.
-If $\tilde{\hat{y}}_i$ is the predicted value of the $i-th$ sample and $y_i$ is the corresponding true value, then the score $R^2$ is defined as
+If $\tilde{y}_i$ is the predicted value of the $i-th$ sample and $y_i$ is the corresponding true value, then the score $R^2$ is defined as
 !bt
 \[
-R^2(\hat{y}, \tilde{\hat{y}}) = 1 - \frac{\sum_{i=0}^{n - 1} (y_i - \tilde{y}_i)^2}{\sum_{i=0}^{n - 1} (y_i - \bar{y})^2},
+R^2(\bm{y}, \tilde{\bm{y}}) = 1 - \frac{\sum_{i=0}^{n - 1} (y_i - \tilde{y}_i)^2}{\sum_{i=0}^{n - 1} (y_i - \bar{y})^2},
 \]
 !et
 where we have defined the mean value  of $\hat{y}$ as
@@ -245,13 +245,13 @@ We then approximate this function with our model from the solution of the linear
 function $f$ is approximated by $\bm{\tilde{y}}$ where we minimized  $(\bm{y}-\bm{\tilde{y}})^2$, with
 !bt
 \[
-\bm{\tilde{y}} = \bm{X}\bm{\beta}.
+f(\bm{x})\approx \bm{\tilde{y}} = \bm{X}\bm{\beta}.
 \]
 !et
 The matrix $\bm{X}$ is the so-called design matrix. 
 
 !bsubex
-Show that  the expectation value of $\bm{y}$ for a given element $i$ 
+Show that  the expected value of $\bm{y}$ for a given element $i$ 
 !bt
 \begin{align*} 
 \mathbb{E}(y_i) & =\mathbf{X}_{i, \ast} \, \beta, 
@@ -266,7 +266,7 @@ its variance is
 Hence, $y_i \sim \mathcal{N}( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
 mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$.
 !bsol
-We can calculate the expectation value of $\bm{y}$ for a given element $i$ 
+We can calculate the expected value of $\bm{y}$ for a given element $i$ 
 !bt
 \begin{align*} 
 \mathbb{E}(y_i) & =
@@ -297,16 +297,16 @@ mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$ (not be confused with the 
 !esubex
 
 !bsubex
-With the OLS expressions for the parameters $\bm{\beta}$ show that
+With the OLS expressions for the optimal parameters $\bm{\beta}^{\mathrm{opt}}$ show that
 !bt
 \[
-\mathbb{E}(\bm{\beta}) = \bm{\beta}.
+\mathbb{E}(\bm{\beta}^{\mathrm{opt}}) = \bm{\beta}.
 \]
 !et
 !bsol
 !bt
 \[
-\mathbb{E}(\bm{\beta}) = \mathbb{E}[ (\mathbf{X}^{\top} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbb{E}[ \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1} \mathbf{X}^{T}\mathbf{X}\bm{\beta}=\bm{\beta}.
+\mathbb{E}(\bm{\beta}^{\mathrm{opt}}) = \mathbb{E}[ (\mathbf{X}^{\top} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbb{E}[ \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1} \mathbf{X}^{T}\mathbf{X}\bm{\beta}=\bm{\beta}.
 \]
 !et
 This means that the estimator of the regression parameters is unbiased.
@@ -317,14 +317,14 @@ This means that the estimator of the regression parameters is unbiased.
 Show finally that the variance of $\bm{\beta}$ is
 !bt
 \begin{eqnarray*}
-\mbox{Var}(\bm{\beta}) & = & \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
+\mbox{Var}(\bm{\beta}^{\mathrm{opt}}) & = & \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
 \end{eqnarray*}
 !et
 !bsol
 The variance of $\bm{\beta}$ is
 !bt
 \begin{eqnarray*}
-\mbox{Var}(\bm{\beta}) & = & \mathbb{E} \{ [\bm{\beta} - \mathbb{E}(\bm{\beta})] [\bm{\beta} - \mathbb{E}(\bm{\beta})]^{T} \}
+\mbox{Var}(\bm{\beta}^{\mathrm{opt}}) & = & \mathbb{E} \{ [\bm{\beta} - \mathbb{E}(\bm{\beta})] [\bm{\beta} - \mathbb{E}(\bm{\beta})]^{T} \}
 \\
 & = & \mathbb{E} \{ [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y} - \bm{\beta}] \, [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y} - \bm{\beta}]^{T} \}
 \\
