@@ -109,7 +109,7 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | Recommended readings |  Before the course starts: Bishop Sections 1.1, 1.2 and 1.3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 1 |
 | | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan18.mp4?vrtx=view-as-webpage |
-| | Handwrittemn notes at  |
+| | Handwrittemn notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan18.pdf  |
 | | - _Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and exercise 1 (PDBS and KW) |
 | Tuesday | - _Lecture 9am-1130am_: Linear Regression and Logistic Regression (MHJ) |
 | Recommended readings |  Bishop Sections 3.1 and Hastie et al chapter 3 |
