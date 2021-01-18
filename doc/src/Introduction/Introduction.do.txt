@@ -1416,7 +1416,7 @@ If $\tilde{\bm{y}}_i$ is the predicted value of the $i-th$ sample and $y_i$ is t
 R^2(\bm{y}, \tilde{\bm{y}}) = 1 - \frac{\sum_{i=0}^{n - 1} (y_i - \tilde{y}_i)^2}{\sum_{i=0}^{n - 1} (y_i - \bar{y})^2},
 \]
 !et
-where we have defined the mean value  of $\hat{y}$ as
+where we have defined the mean value  of $\bm{y}$ as
 !bt
 \[
 \bar{y} =  \frac{1}{n} \sum_{i=0}^{n - 1} y_i.
