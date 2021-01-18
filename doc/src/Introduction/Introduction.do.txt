@@ -479,7 +479,7 @@ print(x)
 or simply write them as double precision numbers (Python uses 64 bits as default for floating point type variables), that is
 !bc pycod
 import numpy as np
-x = np.log(np.array([4.0, 7.0, 8.0])
+x = np.log(np.array([4.0, 7.0, 8.0]))
 print(x)
 !ec
 To check the number of bytes (remember that one byte contains eight bits for double precision variables), you can use simple use the _itemsize_ functionality (the array $x$ is actually an object which inherits the functionalities defined in Numpy) as 
@@ -759,12 +759,14 @@ label{eq:variance_linear_combination}
 !et
 And in the special case when the stochastic variables are
 uncorrelated, the off-diagonal elements of the covariance are as we
-know zero, resulting in:
+know zero, resulting in
+
 !bt
 \[
-\mathrm{var}(U) = \sum_i a_i^2 \mathrm{cov}(X_i, X_i) = \sum_i a_i^2 \mathrm{var}(X_i)
+\mathrm{var}(U)=\sum_i a_i^2\mathrm{cov}(X_i, X_i) = \sum_i a_i^2 \mathrm{var}(X_i),
 \]
 !et
+and
 !bt
 \[
 \mathrm{var}(\sum_i a_i X_i) = \sum_i a_i^2 \mathrm{var}(X_i)
