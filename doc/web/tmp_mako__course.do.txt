@@ -44,7 +44,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/ipynb/Introduction.ipynb"
 
 
-===== Day 1: Linear Regression =====
+===== Day 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression =====
 
 
 
@@ -59,22 +59,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day1/ipynb/day1.ipynb"
 
 
-===== Day 2: Linear Regression and Logistic Regression =====
-
-
-
- * LaTeX PDF:
-   * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day2/pdf/day2.pdf"
- * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2-bs.html"
- * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day2/ipynb/day2.ipynb"
-
-
-===== Day 3: Regression and Bias-Variance Tradeoff =====
+===== Day 3: Linear Regression and Bias-Variance Tradeoff =====
 
 
 
@@ -89,7 +74,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day3/ipynb/day3.ipynb"
 
 
-===== Day 4: Bias-Variance tradeoff, Logistic Regression and Optimization =====
+===== Day 4: Logistic Regression and Optimization =====
 
 
 
@@ -199,7 +184,7 @@ formulas in HTML or ipython notebook files.
 !split
 ===== Projects and Exercises =====
 
-=== First exercise set (Day 1) ===
+=== First exercise set (Day 1 and Day 2) ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/pdf/hw1.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/pdf/hw1.pdf"
@@ -207,7 +192,7 @@ formulas in HTML or ipython notebook files.
    * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/html/hw1.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/html/hw1-bs.html"
 
-=== Second exercise set (Day 2) ===
+=== Second exercise set (Day 3) ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/pdf/hw2.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/pdf/hw2.pdf"
@@ -216,7 +201,7 @@ formulas in HTML or ipython notebook files.
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/html/hw2-bs.html"
 
 
-=== Third  exercise set (Day 3 and 4)  ===
+=== Third  exercise set (Day 4 and 5)  ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/pdf/hw3.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/pdf/hw3.pdf"

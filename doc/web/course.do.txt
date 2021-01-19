@@ -3,7 +3,7 @@ AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Depart
 
 <%
 pub_url = 'https://compphysics.github.io/MLErasmus/doc/pub'
-published = ['Introduction', 'day1', 'day2', 'day3', 'day4',  'day5', 'day6', 'day7', 'day8', 'day9', 'day10', ]
+published = ['Introduction', 'day1', 'day3', 'day4',  'day5', 'day6', 'day7', 'day8', 'day9', 'day10', ]
 chapters = {
  'Introduction': 'Day 1: Introduction to Data Analysis and Machine Learning',
  'day1': 'Day 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression', 
