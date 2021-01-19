@@ -115,6 +115,8 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | Tuesday | - _Lecture 9am-1130am_: Linear Regression, from ordinary least squares to Lasso and Ridge (MHJ) |
 | Recommended readings |  Bishop Sections 3.1 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 2 | 
+| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan19.mp4?vrtx=view-as-webpage |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan19.pdf  |
 | | - _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW), exercise set 2 |
 | Wednesday | - _Lecture 9am-1130am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
 | Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
