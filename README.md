@@ -112,11 +112,11 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan18.pdf  |
 | | - _Laboratory 2pm-5pm_: Getting familiar with Git, GitHub, installing Python packages and exercise 1 (PDBS and KW) |
 | | Video on using Git and GitHub https://mediaspace.msu.edu/media/t/1_8mgx3cyf |
-| Tuesday | - _Lecture 9am-1130am_: Linear Regression and Logistic Regression (MHJ) |
+| Tuesday | - _Lecture 9am-1130am_: Linear Regression, from ordinary least squares to Lasso and Ridge (MHJ) |
 | Recommended readings |  Bishop Sections 3.1 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 2 | 
 | | - _Tuesday Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW), exercise set 2 |
-| Wednesday | - _Lecture 9am-1130am_: Regression and Bias-Variance Tradeoff (MHJ) |
+| Wednesday | - _Lecture 9am-1130am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
 | Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 3 | 
 | | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
