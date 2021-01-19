@@ -43,7 +43,7 @@ Fitting a continuous function with linear parameterization in terms of the param
 
 For more discussions of Ridge and Lasso regression, "Wessel van Wieringen's":"https://arxiv.org/abs/1509.09169" article is highly recommended.
 Similarly, "Mehta et al's article":"https://arxiv.org/abs/1803.08823" is also recommended. The textbook by "Hastie, Tibshirani, and Friedman on The Elements of Statistical Learning Data Mining":"https://link.springer.com/book/10.1007/978-0-387-84858-7", chapter 3 is highly recommended.  
-Also "Bishop's text":""https://www.springer.com/gp/book/9780387310732", chapter 3 is an excellent read.
+Also "Bishop's text":"https://www.springer.com/gp/book/9780387310732", chapter 3 is an excellent read.
 
 !split
 ===== Regression Analysis, Definitions and Aims  =====
@@ -1183,7 +1183,7 @@ visualization.
 
 !split
 ===== Preprocessing our data  =====
-!bblock
+
 
 Before we proceed however, we will discuss how to preprocess our
 data. Till now and in connection with our previous examples we have
@@ -1223,7 +1223,7 @@ RobustScaler ignore data points that are very different from the rest
 outliers, and might often lead to trouble for other scaling
 techniques.
 
-!eblock
+
 
 !split
 ===== Simple preprocessing examples, Franke function and regression =====
