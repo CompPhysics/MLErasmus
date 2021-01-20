@@ -150,19 +150,21 @@ MathJax.Hub.Config({
 <p>&nbsp;<br>
 <center><h4>Jan 20, 2021</h4></center> <!-- date -->
 <br>
+<p>
 
+<center style="font-size:80%">
+<!-- copyright --> &copy; 1999-2021, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
+</center>
+</section>
+
+
+<section>
 <h2 id="___sec0">Plans for Day 3 </h2>
 
 <ul>
 <p><li> Statistics, probability theory and resampling methods</li>
 <p><li> Shrinkage methods: Ridge and Lasso Regression</li>
 </ul>
-<p>
-
-
-<center style="font-size:80%">
-<!-- copyright --> &copy; 1999-2021, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
-</center>
 </section>
 
 
@@ -1529,114 +1531,11 @@ $$
 
 <p>
 with \( t \) a finite positive number.
-
-<p>
-We see that Ridge regression is nothing but the standard
-OLS with a modified diagonal term added to \( \boldsymbol{X}^T\boldsymbol{X} \). The
-consequences, in particular for our discussion of the bias-variance tradeoff 
-are rather interesting.
-
-<p>
-Furthermore, if we use the result above in terms of the SVD decomposition (our analysis was done for the OLS method), we had
-<p>&nbsp;<br>
-$$
-(\boldsymbol{X}\boldsymbol{X}^T)\boldsymbol{U} = \boldsymbol{U}\boldsymbol{D}.
-$$
-<p>&nbsp;<br>
-
-<p>
-We can  analyse the OLS solutions in terms of the eigenvectors (the columns) of the right singular value matrix \( \boldsymbol{U} \) as
-<p>&nbsp;<br>
-$$
-\boldsymbol{X}\boldsymbol{\beta} = \boldsymbol{X}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T \right)^{-1}\boldsymbol{X}^T\boldsymbol{y}=\boldsymbol{U\Sigma V^T}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T \right)^{-1}(\boldsymbol{U\Sigma V^T})^T\boldsymbol{y}=\boldsymbol{U}\boldsymbol{U}^T\boldsymbol{y}
-$$
-<p>&nbsp;<br>
-
-<p>
-For Ridge regression this becomes
-
-<p>&nbsp;<br>
-$$
-\boldsymbol{X}\boldsymbol{\beta}^{\mathrm{Ridge}} = \boldsymbol{U\Sigma V^T}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T+\lambda\boldsymbol{I} \right)^{-1}(\boldsymbol{U\Sigma V^T})^T\boldsymbol{y}=\sum_{j=0}^{p-1}\boldsymbol{u}_j\boldsymbol{u}_j^T\frac{\sigma_j^2}{\sigma_j^2+\lambda}\boldsymbol{y},
-$$
-<p>&nbsp;<br>
-
-<p>
-with the vectors \( \boldsymbol{u}_j \) being the columns of \( \boldsymbol{U} \).
 </section>
 
 
 <section>
-<h2 id="___sec33">Interpreting the Ridge results </h2>
-
-<p>
-Since \( \lambda \geq 0 \), it means that compared to OLS, we have
-
-<p>&nbsp;<br>
-$$
-\frac{\sigma_j^2}{\sigma_j^2+\lambda} \leq 1. 
-$$
-<p>&nbsp;<br>
-
-<p>
-Ridge regression finds the coordinates of \( \boldsymbol{y} \) with respect to the
-orthonormal basis \( \boldsymbol{U} \), it then shrinks the coordinates by
-\( \frac{\sigma_j^2}{\sigma_j^2+\lambda} \). Recall that the SVD has
-eigenvalues ordered in a descending way, that is \( \sigma_i \geq
-\sigma_{i+1} \).
-
-<p>
-For small eigenvalues \( \sigma_i \) it means that their contributions become less important, a fact which can be used to reduce the number of degrees of freedom.
-Actually, calculating the variance of \( \boldsymbol{X}\boldsymbol{v}_j \) shows that this quantity is equal to \( \sigma_j^2/n \).
-With a parameter \( \lambda \) we can thus shrink the role of specific parameters.
-</section>
-
-
-<section>
-<h2 id="___sec34">More interpretations </h2>
-
-<p>
-For the sake of simplicity, let us assume that the design matrix is orthonormal, that is
-
-<p>&nbsp;<br>
-$$
-\boldsymbol{X}^T\boldsymbol{X}=(\boldsymbol{X}^T\boldsymbol{X})^{-1} =\boldsymbol{I}. 
-$$
-<p>&nbsp;<br>
-
-<p>
-In this case the standard OLS results in 
-<p>&nbsp;<br>
-$$
-\boldsymbol{\beta}^{\mathrm{OLS}} = \boldsymbol{X}^T\boldsymbol{y}=\sum_{i=0}^{p-1}\boldsymbol{u}_j\boldsymbol{u}_j^T\boldsymbol{y},
-$$
-<p>&nbsp;<br>
-
-<p>
-and
-
-<p>&nbsp;<br>
-$$
-\boldsymbol{\beta}^{\mathrm{Ridge}} = \left(\boldsymbol{I}+\lambda\boldsymbol{I}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y}=\left(1+\lambda\right)^{-1}\boldsymbol{\beta}^{\mathrm{OLS}},
-$$
-<p>&nbsp;<br>
-
-<p>
-that is the Ridge estimator scales the OLS estimator by the inverse of a factor \( 1+\lambda \), and
-the Ridge estimator converges to zero when the hyperparameter goes to
-infinity.
-
-<p>
-We will come back to more interpreations after we have gone through some of the statistical analysis part.
-
-<p>
-For more discussions of Ridge and Lasso regression, <a href="https://arxiv.org/abs/1509.09169" target="_blank">Wessel van Wieringen's</a> article is highly recommended.
-Similarly, <a href="https://arxiv.org/abs/1803.08823" target="_blank">Mehta et al's article</a> is also recommended.
-</section>
-
-
-<section>
-<h2 id="___sec35">A better understanding of regularization </h2>
+<h2 id="___sec33">A better understanding of regularization </h2>
 
 <p>
 The parameter \( \lambda \) that we have introduced in the Ridge (and
@@ -1655,7 +1554,7 @@ affected by changing the parameter \( \lambda \).
 
 
 <section>
-<h2 id="___sec36">Decomposing the OLS and Ridge expressions </h2>
+<h2 id="___sec34">Decomposing the OLS and Ridge expressions </h2>
 
 <p>
 We have our design matrix
@@ -1680,7 +1579,7 @@ Below we discuss some of the mathematics of the SVD decompostion.
 
 
 <section>
-<h2 id="___sec37">The singular value decomposition  </h2>
+<h2 id="___sec35">The singular value decomposition  </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1712,7 +1611,7 @@ inversion algorithm. Thereafter we dive into the math of the SVD.
 
 
 <section>
-<h2 id="___sec38">Linear Regression Problems </h2>
+<h2 id="___sec36">Linear Regression Problems </h2>
 
 <p>
 One of the typical problems we encounter with linear regression, in particular 
@@ -1767,7 +1666,7 @@ This is equivalent to saying that the matrix \( \boldsymbol{X} \) has at least a
 
 
 <section>
-<h2 id="___sec39">Fixing the singularity </h2>
+<h2 id="___sec37">Fixing the singularity </h2>
 
 <p>
 If our design matrix \( \boldsymbol{X} \) which enters the linear regression problem
@@ -1799,7 +1698,7 @@ where \( \boldsymbol{I} \) is the identity matrix.  When we discuss <b>Ridge</b>
 
 
 <section>
-<h2 id="___sec40">Basic math of the SVD </h2>
+<h2 id="___sec38">Basic math of the SVD </h2>
 
 <p>
 From standard linear algebra we know that a square matrix \( \boldsymbol{X} \) can be diagonalized if and only it is 
@@ -1846,7 +1745,7 @@ is not diagonalizable, it is a so-called <a href="https://en.wikipedia.org/wiki/
 
 
 <section>
-<h2 id="___sec41">The SVD, a Fantastic Algorithm </h2>
+<h2 id="___sec39">The SVD, a Fantastic Algorithm </h2>
 
 <p>
 However, and this is the strength of the SVD algorithm, any general
@@ -1902,7 +1801,7 @@ The columns of \( \boldsymbol{U} \) are called the left singular vectors while t
 
 
 <section>
-<h2 id="___sec42">Economy-size SVD </h2>
+<h2 id="___sec40">Economy-size SVD </h2>
 
 <p>
 If we assume that \( n > p \), then our matrix \( \boldsymbol{U} \) has dimension \( n
@@ -1927,7 +1826,7 @@ In general the economy-size SVD leads to less FLOPS and still conserving the des
 
 
 <section>
-<h2 id="___sec43">Codes for the SVD </h2>
+<h2 id="___sec41">Codes for the SVD </h2>
 
 <p>
 
@@ -1978,7 +1877,7 @@ in the program terminating due to a singular matrix.
 
 
 <section>
-<h2 id="___sec44">Mathematical Properties </h2>
+<h2 id="___sec42">Mathematical Properties </h2>
 
 <p>
 There are several interesting mathematical properties which will be
@@ -2040,7 +1939,7 @@ $$
 
 
 <section>
-<h2 id="___sec45">OLS and Ridge in terms of an SVD Decomposition </h2>
+<h2 id="___sec43">OLS and Ridge in terms of an SVD Decomposition </h2>
 
 <p>
 We have then
@@ -2064,6 +1963,109 @@ Note that the summation runs up tp \( p \) only and not \( n \).
 <p>
 Here we have that \( {\bf X} = {\bf U}{\bf \Sigma}{\bf V}^T \), with \( \Sigma \) being an \( n\times p \) matrix and
 \( {\bf V} \) being a \( p\times p \) matrix. We also have assumed here that $ n > p$.
+</section>
+
+
+<section>
+<h2 id="___sec44">Ridge and SVD </h2>
+We see that Ridge regression is nothing but the standard
+OLS with a modified diagonal term added to \( \boldsymbol{X}^T\boldsymbol{X} \). The
+consequences, in particular for our discussion of the bias-variance tradeoff 
+are rather interesting.
+
+<p>
+Furthermore, if we use the result below in terms of the SVD decomposition, we have
+<p>&nbsp;<br>
+$$
+(\boldsymbol{X}\boldsymbol{X}^T)\boldsymbol{U} = \boldsymbol{U}\boldsymbol{D}.
+$$
+<p>&nbsp;<br>
+
+<p>
+We can  analyse the OLS solutions in terms of the eigenvectors (the columns) of the right singular value matrix \( \boldsymbol{U} \) as
+<p>&nbsp;<br>
+$$
+\boldsymbol{X}\boldsymbol{\beta} = \boldsymbol{X}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T \right)^{-1}\boldsymbol{X}^T\boldsymbol{y}=\boldsymbol{U\Sigma V^T}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T \right)^{-1}(\boldsymbol{U\Sigma V^T})^T\boldsymbol{y}=\boldsymbol{U}\boldsymbol{U}^T\boldsymbol{y}
+$$
+<p>&nbsp;<br>
+
+<p>
+For Ridge regression this becomes
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{X}\boldsymbol{\beta}^{\mathrm{Ridge}} = \boldsymbol{U\Sigma V^T}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T+\lambda\boldsymbol{I} \right)^{-1}(\boldsymbol{U\Sigma V^T})^T\boldsymbol{y}=\sum_{j=0}^{p-1}\boldsymbol{u}_j\boldsymbol{u}_j^T\frac{\sigma_j^2}{\sigma_j^2+\lambda}\boldsymbol{y},
+$$
+<p>&nbsp;<br>
+
+<p>
+with the vectors \( \boldsymbol{u}_j \) being the columns of \( \boldsymbol{U} \).
+</section>
+
+
+<section>
+<h2 id="___sec45">Interpreting the Ridge results </h2>
+
+<p>
+Since \( \lambda \geq 0 \), it means that compared to OLS, we have
+
+<p>&nbsp;<br>
+$$
+\frac{\sigma_j^2}{\sigma_j^2+\lambda} \leq 1. 
+$$
+<p>&nbsp;<br>
+
+<p>
+Ridge regression finds the coordinates of \( \boldsymbol{y} \) with respect to the
+orthonormal basis \( \boldsymbol{U} \), it then shrinks the coordinates by
+\( \frac{\sigma_j^2}{\sigma_j^2+\lambda} \). Recall that the SVD has
+eigenvalues ordered in a descending way, that is \( \sigma_i \geq
+\sigma_{i+1} \).
+
+<p>
+For small eigenvalues \( \sigma_i \) it means that their contributions become less important, a fact which can be used to reduce the number of degrees of freedom.
+Actually, calculating the variance of \( \boldsymbol{X}\boldsymbol{v}_j \) shows that this quantity is equal to \( \sigma_j^2/n \).
+With a parameter \( \lambda \) we can thus shrink the role of specific parameters.
+</section>
+
+
+<section>
+<h2 id="___sec46">More interpretations </h2>
+
+<p>
+For the sake of simplicity, let us assume that the design matrix is orthonormal, that is
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{X}^T\boldsymbol{X}=(\boldsymbol{X}^T\boldsymbol{X})^{-1} =\boldsymbol{I}. 
+$$
+<p>&nbsp;<br>
+
+<p>
+In this case the standard OLS results in 
+<p>&nbsp;<br>
+$$
+\boldsymbol{\beta}^{\mathrm{OLS}} = \boldsymbol{X}^T\boldsymbol{y}=\sum_{i=0}^{p-1}\boldsymbol{u}_j\boldsymbol{u}_j^T\boldsymbol{y},
+$$
+<p>&nbsp;<br>
+
+<p>
+and
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{\beta}^{\mathrm{Ridge}} = \left(\boldsymbol{I}+\lambda\boldsymbol{I}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y}=\left(1+\lambda\right)^{-1}\boldsymbol{\beta}^{\mathrm{OLS}},
+$$
+<p>&nbsp;<br>
+
+<p>
+that is the Ridge estimator scales the OLS estimator by the inverse of a factor \( 1+\lambda \), and
+the Ridge estimator converges to zero when the hyperparameter goes to
+infinity.
+
+<p>
+For more discussions of Ridge and Lasso regression, <a href="https://arxiv.org/abs/1509.09169" target="_blank">Wessel van Wieringen's</a> article is highly recommended.
+Similarly, <a href="https://arxiv.org/abs/1803.08823" target="_blank">Mehta et al's article</a> is also recommended.
 </section>
 
 
