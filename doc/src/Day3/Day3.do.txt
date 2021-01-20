@@ -1,594 +1,1067 @@
-TITLE: Data Analysis and Machine Learning: From Decision Trees to Forests and all that
+TITLE: Data Analysis and Machine Learning: Day 3, Ridge and Lasso Regression and Resampling Methods
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
 DATE: today
 
 
-!split
-===== Decision trees, overarching aims  =====
+===== Plans for Day 3 =====
 
-
-We start here with the most basic algorithm, the so-called decision
-tree. With this basic algorithm we can in turn build more complex
-networks, spanning from homogeneous and heterogenous forests (bagging,
-random forests and more) to one of the most popular supervised
-algorithms nowadays, the extreme gradient boosting, or just
-XGBoost. But let us start with the simplest possible ingredient.
-
-Decision trees are supervised learning algorithms used for both,
-classification and regression tasks.
-
-
-The main idea of decision trees
-is to find those descriptive features which contain the most
-_information_ regarding the target feature and then split the dataset
-along the values of these features such that the target feature values
-for the resulting underlying datasets are as pure as possible.
-
-The descriptive features which reproduce best the target/output features are normally  said
-to be the most informative ones. The process of finding the _most
-informative_ feature is done until we accomplish a stopping criteria
-where we then finally end up in so called _leaf nodes_. 
-
-!split
-===== Decision trees, Naming Conventions  =====
-
-
-A decision tree is typically divided into a _root node_, the _interior nodes_,
-and the final _leaf nodes_ or just _leaves_. These entities are then connected by so-called _branches_.
-
-The leaf nodes
-contain the predictions we will make for new query instances presented
-to our trained model. This is possible since the model has 
-learned the underlying structure of the training data and hence can,
-given some assumptions, make predictions about the target feature value
-(class) of unseen query instances.
-
-!split
-===== A typical Decision Tree with its pertinent Jargon, Classification Problem =====
-
-FIGURE: [DataFiles/cancer.png, width=600 frac=0.8]
-
-This tree was produced using the Wisconsin cancer data (discussed here as well, see code examples below) using _Scikit-Learn_'s decision tree classifier. Here we have used the so-called _gini_ index (see below) to split the various branches.
-
+* Statistics, probability theory and resampling methods
+* Shrinkage methods: Ridge and Lasso Regression
 
 
 !split
-===== General Features =====
+===== Why resampling methods =====
 
-The overarching approach to decision trees is a top-down approach.
+Before we proceed, we need to rethink what we have been doing. In our
+eager to fit the data, we have omitted several important elements in
+our regression analysis. In what follows we will
+o look at statistical properties, including a discussion of mean values, variance and the so-called bias-variance tradeoff
+o introduce resampling techniques like cross-validation, bootstrapping and jackknife and more
 
-* A leaf provides the classification of a given instance.
-* A node specifies a test of some attribute of the instance.
-* A branch corresponds to a possible values of an attribute.
-* An instance is classified by starting at the root node of the tree, testing the attribute specified by this node, then moving down the tree branch corresponding to the value of the attribute in the given example.
-
-
-This process is then repeated for the subtree rooted at the new
-node.
-
-
-!split
-===== How do we set it up? =====
-
-
-In simplified terms, the process of training a decision tree and
-predicting the target features of query instances is as follows:
-
-o Present a dataset containing of a number of training instances characterized by a number of descriptive features and a target feature
-
-o Train the decision tree model by continuously splitting the target feature along the values of the descriptive features using a measure of information gain during the training process
-
-o Grow the tree until we accomplish a stopping criteria create leaf nodes which represent the *predictions* we want to make for new query instances
-
-o Show query instances to the tree and run down the tree until we arrive at leaf nodes
-
-Then we are essentially done!
+This will allow us to link the standard linear algebra methods we have discussed above to a statistical interpretation of the methods. 
 
 
 
 
 
 !split
-===== Decision trees and Regression  =====
-!bc pycod
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
+===== Resampling methods =====
+!bblock
+Resampling methods are an indispensable tool in modern
+statistics. They involve repeatedly drawing samples from a training
+set and refitting a model of interest on each sample in order to
+obtain additional information about the fitted model. For example, in
+order to estimate the variability of a linear regression fit, we can
+repeatedly draw different samples from the training data, fit a linear
+regression to each new sample, and then examine the extent to which
+the resulting fits differ. Such an approach may allow us to obtain
+information that would not be available from fitting the model only
+once using the original training sample.
 
-steps=250
+Two resampling methods are often used in Machine Learning analyses,
+o The _bootstrap method_
+o and _Cross-Validation_
 
-distance=0
-x=0
-distance_list=[]
-steps_list=[]
-while x<steps:
-    distance+=np.random.randint(-1,2)
-    distance_list.append(distance)
-    x+=1
-    steps_list.append(x)
-plt.plot(steps_list,distance_list, color='green', label="Random Walk Data")
-
-steps_list=np.asarray(steps_list)
-distance_list=np.asarray(distance_list)
-
-X=steps_list[:,np.newaxis]
-
-#Polynomial fits
-
-#Degree 2
-poly_features=PolynomialFeatures(degree=2, include_bias=False)
-X_poly=poly_features.fit_transform(X)
-
-lin_reg=LinearRegression()
-poly_fit=lin_reg.fit(X_poly,distance_list)
-b=lin_reg.coef_
-c=lin_reg.intercept_
-print ("2nd degree coefficients:")
-print ("zero power: ",c)
-print ("first power: ", b[0])
-print ("second power: ",b[1])
-
-z = np.arange(0, steps, .01)
-z_mod=b[1]*z**2+b[0]*z+c
-
-fit_mod=b[1]*X**2+b[0]*X+c
-plt.plot(z, z_mod, color='r', label="2nd Degree Fit")
-plt.title("Polynomial Regression")
-
-plt.xlabel("Steps")
-plt.ylabel("Distance")
-
-#Degree 10
-poly_features10=PolynomialFeatures(degree=10, include_bias=False)
-X_poly10=poly_features10.fit_transform(X)
-
-poly_fit10=lin_reg.fit(X_poly10,distance_list)
-
-y_plot=poly_fit10.predict(X_poly10)
-plt.plot(X, y_plot, color='black', label="10th Degree Fit")
-
-plt.legend()
-plt.show()
+In addition there are several other methods such as the Jackknife and the Blocking methods. We will discuss in particular
+cross-validation and the bootstrap method. 
 
 
-#Decision Tree Regression
-from sklearn.tree import DecisionTreeRegressor
-regr_1=DecisionTreeRegressor(max_depth=2)
-regr_2=DecisionTreeRegressor(max_depth=5)
-regr_3=DecisionTreeRegressor(max_depth=7)
-regr_1.fit(X, distance_list)
-regr_2.fit(X, distance_list)
-regr_3.fit(X, distance_list)
-
-X_test = np.arange(0.0, steps, 0.01)[:, np.newaxis]
-y_1 = regr_1.predict(X_test)
-y_2 = regr_2.predict(X_test)
-y_3=regr_3.predict(X_test)
-
-# Plot the results
-plt.figure()
-plt.scatter(X, distance_list, s=2.5, c="black", label="data")
-plt.plot(X_test, y_1, color="red",
-         label="max_depth=2", linewidth=2)
-plt.plot(X_test, y_2, color="green", label="max_depth=5", linewidth=2)
-plt.plot(X_test, y_3, color="m", label="max_depth=7", linewidth=2)
-
-plt.xlabel("Data")
-plt.ylabel("Darget")
-plt.title("Decision Tree Regression")
-plt.legend()
-plt.show()
-
-!ec
-
-
-
-!split
-===== Building a tree, regression =====
-
-There are mainly two steps
-o We split the predictor space (the set of possible values $x_1,x_2,\dots, x_p$) into $J$ distinct and non-non-overlapping regions, $R_1,R_2,\dots,R_J$.  
-o For every observation that falls into the region $R_j$ , we make the same prediction, which is simply the mean of the response values for the training observations in $R_j$.
-
-How do we construct the regions $R_1,\dots,R_J$?  In theory, the
-regions could have any shape. However, we choose to divide the
-predictor space into high-dimensional rectangles, or boxes, for
-simplicity and for ease of interpretation of the resulting predictive
-model. The goal is to find boxes $R_1,\dots,R_J$ that minimize the
-MSE, given by
-
-!bt
-\[
-\sum_{j=1}^J\sum_{i\in R_j}(y_i-\overline{y}_{R_j})^2,
-\]
-!et
-
-where $\overline{y}_{R_j}$  is the mean response for the training observations 
-within box $j$. 
-
-!split
-===== A top-down approach, recursive binary splitting =====
-
-Unfortunately, it is computationally infeasible to consider every
-possible partition of the feature space into $J$ boxes.  The common
-strategy is to take a top-down approach
-
-The approach is top-down because it begins at the top of the tree (all
-observations belong to a single region) and then successively splits
-the predictor space; each split is indicated via two new branches
-further down on the tree. It is greedy because at each step of the
-tree-building process, the best split is made at that particular step,
-rather than looking ahead and picking a split that will lead to a
-better tree in some future step.
-
-!split
-===== Making a tree =====
-
-In order to implement the recursive binary splitting we start by selecting
-the predictor $x_j$ and a cutpoint $s$ that splits the predictor space into two regions $R_1$ and $R_2$
-!bt
-\[
-\left\{X\vert x_j < s\right\},
-\]
-!et
-and
-!bt
-\[
-\left\{X\vert x_j \geq s\right\},
-\]
-!et
-so that we obtain the lowest MSE, that is
-!bt
-\[
-\sum_{i:x_i\in R_j}(y_i-\overline{y}_{R_1})^2+\sum_{i:x_i\in R_2}(y_i-\overline{y}_{R_2})^2,
-\]
-!et
-
-which we want to minimize by considering all predictors
-$x_1,x_2,\dots,x_p$.  We consider also all possible values of $s$ for
-each predictor. These values could be determined by randomly assigned
-numbers or by starting at the midpoint and then proceed till we find
-an optimal value.
-
-For any $j$ and $s$, we define the pair of half-planes where
-$\overline{y}_{R_1}$ is the mean response for the training
-observations in $R_1(j,s)$, and $\overline{y}_{R_2}$ is the mean
-response for the training observations in $R_2(j,s)$.
-
-Finding the values of $j$ and $s$ that minimize the above equation can be
-done quite quickly, especially when the number of features $p$ is not
-too large.
-
-Next, we repeat the process, looking
-for the best predictor and best cutpoint in order to split the data
-further so as to minimize the MSE within each of the resulting
-regions. However, this time, instead of splitting the entire predictor
-space, we split one of the two previously identified regions. We now
-have three regions. Again, we look to split one of these three regions
-further, so as to minimize the MSE. The process continues until a
-stopping criterion is reached; for instance, we may continue until no
-region contains more than five observations.
-
-!split 
-===== Pruning the tree =====
-
-The above procedure is rather straightforward, but leads often to
-overfitting and unnecessarily large and complicated trees. The basic
-idea is to grow a large tree $T_0$ and then prune it back in order to
-obtain a subtree. A smaller tree with fewer splits (fewer regions) can
-lead to smaller variance and better interpretation at the cost of a
-little more bias.
-
-The so-called Cost complexity pruning algorithm gives us a
-way to do just this. Rather than considering every possible subtree,
-we consider a sequence of trees indexed by a nonnegative tuning
-parameter $\alpha$.
-
-!split
-===== Cost complexity pruning =====
-For each value of $\alpha$  there corresponds a subtree $T \in T_0$ such that
-!bt
-\[
-\sum_{m=1}^{\overline{T}}\sum_{i:x_i\in R_m}(y_i-\overline{y}_{R_m})^2+\alpha\overline{T},
-\]
-!et
-is as small as possible. Here $\overline{T}$ is 
-the number of terminal nodes of the tree $T$ , $R_m$ is the
-rectangle (i.e. the subset of predictor space)  corresponding to the $m$-th terminal node.
-
-The tuning parameter $\alpha$ controls a trade-off between the subtree’s
-com- plexity and its fit to the training data. When $\alpha = 0$, then the
-subtree $T$ will simply equal $T_0$, 
-because then the above equation just measures the
-training error. 
-However, as $\alpha$ increases, there is a price to pay for
-having a tree with many terminal nodes. The above equation will
-tend to be minimized for a smaller subtree. 
-
-
-It turns out that as we increase $\alpha$ from zero
-branches get pruned from the tree in a nested and predictable fashion,
-so obtaining the whole sequence of subtrees as a function of $\alpha$ is
-easy. We can select a value of $\alpha$ using a validation set or using
-cross-validation. We then return to the full data set and obtain the
-subtree corresponding to $\alpha$. 
-
-
-!split
-===== Schematic Regression Procedure =====
-
-!bblock Building a Regression Tree
-o Use recursive binary splitting to grow a large tree on the training data, stopping only when each terminal node has fewer than some minimum number of observations.
-o Apply cost complexity pruning to the large tree in order to obtain a sequence of best subtrees, as a function of $\alpha$.
-o Use for example $K$-fold cross-validation to choose $\alpha$. Divide the training observations into $K$ folds. For each $k=1,2,\dots,K$ we: 
-  * repeat steps 1 and 2 on all but the $k$-th fold of the training data. 
-  * Then we valuate the mean squared prediction error on the data in the left-out $k$-th fold, as a function of $\alpha$.
-  * Finally  we average the results for each value of $\alpha$, and pick $\alpha$ to minimize the average error.
-o Return the subtree from Step 2 that corresponds to the chosen value of $\alpha$. 
 !eblock
 
 
 !split
-===== A Classification Tree =====
+===== Resampling approaches can be computationally expensive =====
+!bblock
 
-A classification tree is very similar to a regression tree, except
-that it is used to predict a qualitative response rather than a
-quantitative one. Recall that for a regression tree, the predicted
-response for an observation is given by the mean response of the
-training observations that belong to the same terminal node. In
-contrast, for a classification tree, we predict that each observation
-belongs to the most commonly occurring class of training observations
-in the region to which it belongs. In interpreting the results of a
-classification tree, we are often interested not only in the class
-prediction corresponding to a particular terminal node region, but
-also in the class proportions among the training observations that
-fall into that region.  
+Resampling approaches can be computationally expensive, because they
+involve fitting the same statistical method multiple times using
+different subsets of the training data. However, due to recent
+advances in computing power, the computational requirements of
+resampling methods generally are not prohibitive. In this chapter, we
+discuss two of the most commonly used resampling methods,
+cross-validation and the bootstrap. Both methods are important tools
+in the practical application of many statistical learning
+procedures. For example, cross-validation can be used to estimate the
+test error associated with a given statistical learning method in
+order to evaluate its performance, or to select the appropriate level
+of flexibility. The process of evaluating a model’s performance is
+known as model assessment, whereas the process of selecting the proper
+level of flexibility for a model is known as model selection. The
+bootstrap is widely used.
 
-!split
-===== Growing a classification tree =====
-
-The task of growing a
-classification tree is quite similar to the task of growing a
-regression tree. Just as in the regression setting, we use recursive
-binary splitting to grow a classification tree. However, in the
-classification setting, the MSE cannot be used as a criterion for making
-the binary splits.  A natural alternative to MSE is the _classification
-error rate_. Since we plan to assign an observation in a given region
-to the most commonly occurring error rate class of training
-observations in that region, the classification error rate is simply
-the fraction of the training observations in that region that do not
-belong to the most common class. 
-
-When building a classification tree, either the Gini index or the
-entropy are typically used to evaluate the quality of a particular
-split, since these two approaches are more sensitive to node purity
-than is the classification error rate. 
-
+!eblock
 
 !split
-===== Classification tree, how to split nodes =====
+===== Why resampling methods ? ===== 
+!bblock Statistical analysis
+    
+* Our simulations can be treated as *computer experiments*. This is particularly the case for Monte Carlo methods
+* The results can be analysed with the same statistical tools as we would use analysing experimental data.
+* As in all experiments, we are looking for expectation values and an estimate of how accurate they are, i.e., possible sources for errors.
 
-If our targets are the outcome of a classification process that takes
-for example $k=1,2,\dots,K$ values, the only thing we need to think of
-is to set up the splitting criteria for each node.
 
-We define a PDF $p_{mk}$ that represents the number of observations of
-a class $k$ in a region $R_m$ with $N_m$ observations. We represent
-this likelihood function in terms of the proportion $I(y_i=k)$ of
-observations of this class in the region $R_m$ as
+!eblock    
 
+!split
+=====  Statistical analysis ===== 
+!bblock 
+
+* As in other experiments, many numerical  experiments have two classes of errors:
+  * Statistical errors
+  * Systematical errors
+* Statistical errors can be estimated using standard tools from statistics
+* Systematical errors are method specific and must be treated differently from case to case. 
+!eblock    
+
+
+
+
+!split 
+===== Linking the regression analysis with a statistical interpretation =====
+
+
+The
+advantage of doing linear regression is that we actually end up with
+analytical expressions for several statistical quantities.  
+Standard least squares and Ridge regression  allow us to
+derive quantities like the variance and other expectation values in a
+rather straightforward way.
+
+
+It is assumed that $\varepsilon_i
+\sim \mathcal{N}(0, \sigma^2)$ and the $\varepsilon_{i}$ are
+independent, i.e.: 
 !bt
-\[
-p_{mk} = \frac{1}{N_m}\sum_{x_i\in R_m}I(y_i=k).
-\]
-!et 
+\begin{align*} 
+\mbox{Cov}(\varepsilon_{i_1},
+\varepsilon_{i_2}) & = \left\{ \begin{array}{lcc} \sigma^2 & \mbox{if}
+& i_1 = i_2, \\ 0 & \mbox{if} & i_1 \not= i_2.  \end{array} \right.
+\end{align*} 
+!et
+The randomness of $\varepsilon_i$ implies that
+$\mathbf{y}_i$ is also a random variable. In particular,
+$\mathbf{y}_i$ is normally distributed, because $\varepsilon_i \sim
+\mathcal{N}(0, \sigma^2)$ and $\mathbf{X}_{i,\ast} \, \bm{\beta}$ is a
+non-random scalar. To specify the parameters of the distribution of
+$\mathbf{y}_i$ we need to calculate its first two moments. 
 
-We let $p_{mk}$ represent the majority class of observations in region
-$m$. The three most common ways of splitting a node are given by
-
-* Misclassification error 
-!bt
-\[
-p_{mk} = \frac{1}{N_m}\sum_{x_i\in R_m}I(y_i\ne k) = 1-p_{mk}.
-\]
-!et 
-* Gini index $g$
-!bt
-\[
-g = \sum_{k=1}^K p_{mk}(1-p_{mk}).
-\]
-!et 
-* Information entropy or just entropy $s$
-!bt
-\[
-s = -\sum_{k=1}^K p_{mk}\log{p_{mk}}.
-\]
-!et 
+Recall that $\bm{X}$ is a matrix of dimensionality $n\times p$. The
+notation above $\mathbf{X}_{i,\ast}$ means that we are looking at the
+row number $i$ and perform a sum over all values $p$.
 
 
 !split
-===== Visualizing the Tree, Classification =====
+===== Assumptions made =====
+
+The assumption we have made here can be summarized as (and this is going to be useful when we discuss the bias-variance trade off)
+that there exists a function $f(\bm{x})$ and  a normal distributed error $\bm{\varepsilon}\sim \mathcal{N}(0, \sigma^2)$
+which describe our data
+!bt
+\[
+\bm{y} = f(\bm{x})+\bm{\varepsilon}
+\]
+!et
+
+We approximate this function with our model from the solution of the linear regression equations, that is our
+function $f$ is approximated by $\bm{\tilde{y}}$ where we want to minimize $(\bm{y}-\bm{\tilde{y}})^2$, our MSE, with
+!bt
+\[
+\bm{\tilde{y}} = \bm{X}\bm{\beta}.
+\]
+!et
+
+!split
+===== Expectation value and variance =====
+
+We can calculate the expectation value of $\bm{y}$ for a given element $i$ 
+!bt
+\begin{align*} 
+\mathbb{E}(y_i) & =
+\mathbb{E}(\mathbf{X}_{i, \ast} \, \bm{\beta}) + \mathbb{E}(\varepsilon_i)
+\, \, \, = \, \, \, \mathbf{X}_{i, \ast} \, \beta, 
+\end{align*} 
+!et
+while
+its variance is 
+!bt
+\begin{align*} \mbox{Var}(y_i) & = \mathbb{E} \{ [y_i
+- \mathbb{E}(y_i)]^2 \} \, \, \, = \, \, \, \mathbb{E} ( y_i^2 ) -
+[\mathbb{E}(y_i)]^2  \\  & = \mathbb{E} [ ( \mathbf{X}_{i, \ast} \,
+\beta + \varepsilon_i )^2] - ( \mathbf{X}_{i, \ast} \, \bm{\beta})^2 \\ &
+= \mathbb{E} [ ( \mathbf{X}_{i, \ast} \, \bm{\beta})^2 + 2 \varepsilon_i
+\mathbf{X}_{i, \ast} \, \bm{\beta} + \varepsilon_i^2 ] - ( \mathbf{X}_{i,
+\ast} \, \beta)^2 \\  & = ( \mathbf{X}_{i, \ast} \, \bm{\beta})^2 + 2
+\mathbb{E}(\varepsilon_i) \mathbf{X}_{i, \ast} \, \bm{\beta} +
+\mathbb{E}(\varepsilon_i^2 ) - ( \mathbf{X}_{i, \ast} \, \bm{\beta})^2 
+\\ & = \mathbb{E}(\varepsilon_i^2 ) \, \, \, = \, \, \,
+\mbox{Var}(\varepsilon_i) \, \, \, = \, \, \, \sigma^2.  
+\end{align*}
+!et
+Hence, $y_i \sim \mathcal{N}( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
+mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$ (not be confused with the singular values of the SVD). 
+
+!split
+===== Expectation value and variance for $\bm{\beta}$ =====
+
+With the OLS expressions for the parameters $\bm{\beta}$ we can evaluate the expectation value
+!bt
+\[
+\mathbb{E}(\bm{\beta}) = \mathbb{E}[ (\mathbf{X}^{\top} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbb{E}[ \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1} \mathbf{X}^{T}\mathbf{X}\bm{\beta}=\bm{\beta}.
+\]
+!et
+This means that the estimator of the regression parameters is unbiased.
+
+We can also calculate the variance
+
+The variance of $\bm{\beta}$ is
+!bt
+\begin{eqnarray*}
+\mbox{Var}(\bm{\beta}) & = & \mathbb{E} \{ [\bm{\beta} - \mathbb{E}(\bm{\beta})] [\bm{\beta} - \mathbb{E}(\bm{\beta})]^{T} \}
+\\
+& = & \mathbb{E} \{ [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y} - \bm{\beta}] \, [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y} - \bm{\beta}]^{T} \}
+\\
+% & = & \mathbb{E} \{ [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y}] \, [(\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y}]^{T} \} - \bm{\beta} \, \bm{\beta}^{T}
+% \\
+% & = & \mathbb{E} \{ (\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \mathbf{Y} \, \mathbf{Y}^{T} \, \mathbf{X} \, (\mathbf{X}^{T} \mathbf{X})^{-1}  \} - \bm{\beta} \, \bm{\beta}^{T}
+% \\
+& = & (\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \, \mathbb{E} \{ \mathbf{Y} \, \mathbf{Y}^{T} \} \, \mathbf{X} \, (\mathbf{X}^{T} \mathbf{X})^{-1} - \bm{\beta} \, \bm{\beta}^{T}
+\\
+& = & (\mathbf{X}^{T} \mathbf{X})^{-1} \, \mathbf{X}^{T} \, \{ \mathbf{X} \, \bm{\beta} \, \bm{\beta}^{T} \,  \mathbf{X}^{T} + \sigma^2 \} \, \mathbf{X} \, (\mathbf{X}^{T} \mathbf{X})^{-1} - \bm{\beta} \, \bm{\beta}^{T}
+% \\
+% & = & (\mathbf{X}^T \mathbf{X})^{-1} \, \mathbf{X}^T \, \mathbf{X} \, \bm{\beta} \, \bm{\beta}^T \,  \mathbf{X}^T \, \mathbf{X} \, (\mathbf{X}^T % \mathbf{X})^{-1}
+% \\
+% & & + \, \, \sigma^2 \, (\mathbf{X}^T \mathbf{X})^{-1} \, \mathbf{X}^T  \, \mathbf{X} \, (\mathbf{X}^T \mathbf{X})^{-1} - \bm{\beta} \bm{\beta}^T
+\\
+& = & \bm{\beta} \, \bm{\beta}^{T}  + \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1} - \bm{\beta} \, \bm{\beta}^{T}
+\, \, \, = \, \, \, \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1},
+\end{eqnarray*}
+!et
+
+where we have used  that $\mathbb{E} (\mathbf{Y} \mathbf{Y}^{T}) =
+\mathbf{X} \, \bm{\beta} \, \bm{\beta}^{T} \, \mathbf{X}^{T} +
+\sigma^2 \, \mathbf{I}_{nn}$. From $\mbox{Var}(\bm{\beta}) = \sigma^2
+\, (\mathbf{X}^{T} \mathbf{X})^{-1}$, one obtains an estimate of the
+variance of the estimate of the $j$-th regression coefficient:
+$\bm{\sigma}^2 (\bm{\beta}_j ) = \bm{\sigma}^2 \sqrt{
+[(\mathbf{X}^{T} \mathbf{X})^{-1}]_{jj} }$. This may be used to
+construct a confidence interval for the estimates.
+
+
+In a similar way, we can obtain analytical expressions for say the
+expectation values of the parameters $\bm{\beta}$ and their variance
+when we employ Ridge regression, allowing us again to define a confidence interval. 
+
+It is rather straightforward to show that
+!bt
+\[
+\mathbb{E} \big[ \bm{\beta}^{\mathrm{Ridge}} \big]=(\mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I}_{pp})^{-1} (\mathbf{X}^{\top} \mathbf{X})\bm{\beta}^{\mathrm{OLS}}.
+\]
+!et
+We see clearly that 
+$\mathbb{E} \big[ \bm{\beta}^{\mathrm{Ridge}} \big] \not= \bm{\beta}^{\mathrm{OLS}}$ for any $\lambda > 0$. We say then that the ridge estimator is biased.
+
+We can also compute the variance as 
+
+!bt
+\[
+\mbox{Var}[\bm{\beta}^{\mathrm{Ridge}}]=\sigma^2[  \mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I} ]^{-1}  \mathbf{X}^{T} \mathbf{X} \{ [  \mathbf{X}^{\top} \mathbf{X} + \lambda \mathbf{I} ]^{-1}\}^{T},
+\]
+!et
+and it is easy to see that if the parameter $\lambda$ goes to infinity then the variance of Ridge parameters $\bm{\beta}$ goes to zero. 
+
+With this, we can compute the difference 
+
+!bt
+\[
+\mbox{Var}[\bm{\beta}^{\mathrm{OLS}}]-\mbox{Var}(\bm{\beta}^{\mathrm{Ridge}})=\sigma^2 [  \mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I} ]^{-1}[ 2\lambda\mathbf{I} + \lambda^2 (\mathbf{X}^{T} \mathbf{X})^{-1} ] \{ [  \mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I} ]^{-1}\}^{T}.
+\]
+!et
+The difference is non-negative definite since each component of the
+matrix product is non-negative definite. 
+This means the variance we obtain with the standard OLS will always for $\lambda > 0$ be larger than the variance of $\bm{\beta}$ obtained with the Ridge estimator. This has interesting consequences when we discuss the so-called bias-variance trade-off below. 
+
+
+!split
+===== Resampling methods =====
+
+With all these analytical equations for both the OLS and Ridge
+regression, we will now outline how to assess a given model. This will
+lead us to a discussion of the so-called bias-variance tradeoff (see
+below) and so-called resampling methods.
+
+One of the quantities we have discussed as a way to measure errors is
+the mean-squared error (MSE), mainly used for fitting of continuous
+functions. Another choice is the absolute error.
+
+In the discussions below we will focus on the MSE and in particular since we will split the data into test and training data,
+we discuss the
+o prediction error or simply the _test error_ $\mathrm{Err_{Test}}$, where we have a fixed training set and the test error is the MSE arising from the data reserved for testing. We discuss also the 
+o training error $\mathrm{Err_{Train}}$, which is the average loss over the training data.
+
+As our model becomes more and more complex, more of the training data tends to  used. The training may thence adapt to more complicated structures in the data. This may lead to a decrease in the bias (see below for code example) and a slight increase of the variance for the test error.
+For a certain level of complexity the test error will reach minimum, before starting to increase again. The
+training error reaches a saturation.
+
+
+
+
+!split
+===== Resampling methods: Jackknife and Bootstrap =====
+
+Two famous
+resampling methods are the _independent bootstrap_ and _the jackknife_. 
+
+The jackknife is a special case of the independent bootstrap. Still, the jackknife was made
+popular prior to the independent bootstrap. And as the popularity of
+the independent bootstrap soared, new variants, such as _the dependent bootstrap_.
+
+The Jackknife and independent bootstrap work for
+independent, identically distributed random variables.
+If these conditions are not
+satisfied, the methods will fail.  Yet, it should be said that if the data are
+independent, identically distributed, and we only want to estimate the
+variance of $\overline{X}$ (which often is the case), then there is no
+need for bootstrapping. 
+
+!split
+===== Resampling methods: Jackknife =====
+
+The Jackknife works by making many replicas of the estimator $\widehat{\theta}$. 
+The jackknife is a resampling method where we systematically leave out one observation from the vector of observed values $\bm{x} = (x_1,x_2,\cdots,X_n)$. 
+Let $\bm{x}_i$ denote the vector
+!bt
+\[
+\bm{x}_i = (x_1,x_2,\cdots,x_{i-1},x_{i+1},\cdots,x_n),
+\]
+!et
+
+which equals the vector $\bm{x}$ with the exception that observation
+number $i$ is left out. Using this notation, define
+$\widehat{\theta}_i$ to be the estimator
+$\widehat{\theta}$ computed using $\vec{X}_i$. 
+
+
+!split
+=====  Jackknife code example =====
 !bc pycod
-import os
-from sklearn.datasets import load_breast_cancer
-from sklearn.tree import DecisionTreeClassifier
+from numpy import *
+from numpy.random import randint, randn
+from time import time
+
+def jackknife(data, stat):
+    n = len(data);t = zeros(n); inds = arange(n); t0 = time()
+    ## 'jackknifing' by leaving out an observation for each i                                                                                                                      
+    for i in range(n):
+        t[i] = stat(delete(data,i) )
+
+    # analysis                                                                                                                                                                     
+    print("Runtime: %g sec" % (time()-t0)); print("Jackknife Statistics :")
+    print("original           bias      std. error")
+    print("%8g %14g %15g" % (stat(data),(n-1)*mean(t)/n, (n*var(t))**.5))
+
+    return t
+
+
+# Returns mean of data samples                                                                                                                                                     
+def stat(data):
+    return mean(data)
+
+
+mu, sigma = 100, 15
+datapoints = 10000
+x = mu + sigma*random.randn(datapoints)
+# jackknife returns the data sample                                                                                                                                                
+t = jackknife(x, stat)
+
+!ec
+
+
+!split
+===== Resampling methods: Bootstrap =====
+!bblock
+Bootstrapping is a nonparametric approach to statistical inference
+that substitutes computation for more traditional distributional
+assumptions and asymptotic results. Bootstrapping offers a number of
+advantages: 
+o The bootstrap is quite general, although there are some cases in which it fails.  
+o Because it does not require distributional assumptions (such as normally distributed errors), the bootstrap can provide more accurate inferences when the data are not well behaved or when the sample size is small.  
+o It is possible to apply the bootstrap to statistics with sampling distributions that are difficult to derive, even asymptotically. 
+o It is relatively simple to apply the bootstrap to complex data-collection plans (such as stratified and clustered samples).
+!eblock
+
+
+!split
+===== Resampling methods: Bootstrap background =====
+
+Since $\widehat{\theta} = \widehat{\theta}(\bm{X})$ is a function of random variables,
+$\widehat{\theta}$ itself must be a random variable. Thus it has
+a pdf, call this function $p(\bm{t})$. The aim of the bootstrap is to
+estimate $p(\bm{t})$ by the relative frequency of
+$\widehat{\theta}$. You can think of this as using a histogram
+in the place of $p(\bm{t})$. If the relative frequency closely
+resembles $p(\vec{t})$, then using numerics, it is straight forward to
+estimate all the interesting parameters of $p(\bm{t})$ using point
+estimators.  
+
+
+!split
+===== Resampling methods: More Bootstrap background =====
+
+In the case that $\widehat{\theta}$ has
+more than one component, and the components are independent, we use the
+same estimator on each component separately.  If the probability
+density function of $X_i$, $p(x)$, had been known, then it would have
+been straight forward to do this by: 
+o Drawing lots of numbers from $p(x)$, suppose we call one such set of numbers $(X_1^*, X_2^*, \cdots, X_n^*)$. 
+o Then using these numbers, we could compute a replica of $\widehat{\theta}$ called $\widehat{\theta}^*$. 
+
+By repeated use of (1) and (2), many
+estimates of $\widehat{\theta}$ could have been obtained. The
+idea is to use the relative frequency of $\widehat{\theta}^*$
+(think of a histogram) as an estimate of $p(\bm{t})$.
+
+!split
+===== Resampling methods: Bootstrap approach =====
+
+But
+unless there is enough information available about the process that
+generated $X_1,X_2,\cdots,X_n$, $p(x)$ is in general
+unknown. Therefore, "Efron in 1979":"https://projecteuclid.org/euclid.aos/1176344552"  asked the
+question: What if we replace $p(x)$ by the relative frequency
+of the observation $X_i$; if we draw observations in accordance with
+the relative frequency of the observations, will we obtain the same
+result in some asymptotic sense? The answer is yes.
+
+
+Instead of generating the histogram for the relative
+frequency of the observation $X_i$, just draw the values
+$(X_1^*,X_2^*,\cdots,X_n^*)$ with replacement from the vector
+$\bm{X}$. 
+
+!split
+===== Resampling methods: Bootstrap steps =====
+
+The independent bootstrap works like this: 
+
+o Draw with replacement $n$ numbers for the observed variables $\bm{x} = (x_1,x_2,\cdots,x_n)$. 
+o Define a vector $\bm{x}^*$ containing the values which were drawn from $\bm{x}$. 
+o Using the vector $\bm{x}^*$ compute $\widehat{\theta}^*$ by evaluating $\widehat \theta$ under the observations $\bm{x}^*$. 
+o Repeat this process $k$ times. 
+
+When you are done, you can draw a histogram of the relative frequency
+of $\widehat \theta^*$. This is your estimate of the probability
+distribution $p(t)$. Using this probability distribution you can
+estimate any statistics thereof. In principle you never draw the
+histogram of the relative frequency of $\widehat{\theta}^*$. Instead
+you use the estimators corresponding to the statistic of interest. For
+example, if you are interested in estimating the variance of $\widehat
+\theta$, apply the etsimator $\widehat \sigma^2$ to the values
+$\widehat \theta ^*$.
+
+
+!split
+===== Code example for the Bootstrap method =====
+
+The following code starts with a Gaussian distribution with mean value
+$\mu =100$ and variance $\sigma=15$. We use this to generate the data
+used in the bootstrap analysis. The bootstrap analysis returns a data
+set after a given number of bootstrap operations (as many as we have
+data points). This data set consists of estimated mean values for each
+bootstrap operation. The histogram generated by the bootstrap method
+shows that the distribution for these mean values is also a Gaussian,
+centered around the mean value $\mu=100$ but with standard deviation
+$\sigma/\sqrt{n}$, where $n$ is the number of bootstrap samples (in
+this case the same as the number of original data points). The value
+of the standard deviation is what we expect from the central limit
+theorem.
+
+
+!bc pycod
+from numpy import *
+from numpy.random import randint, randn
+from time import time
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
+
+# Returns mean of bootstrap samples                                                                                                                                                
+def stat(data):
+    return mean(data)
+
+# Bootstrap algorithm
+def bootstrap(data, statistic, R):
+    t = zeros(R); n = len(data); inds = arange(n); t0 = time()
+    # non-parametric bootstrap         
+    for i in range(R):
+        t[i] = statistic(data[randint(0,n,n)])
+
+    # analysis    
+    print("Runtime: %g sec" % (time()-t0)); print("Bootstrap Statistics :")
+    print("original           bias      std. error")
+    print("%8g %8g %14g %15g" % (statistic(data), std(data),mean(t),std(t)))
+    return t
+
+
+mu, sigma = 100, 15
+datapoints = 10000
+x = mu + sigma*random.randn(datapoints)
+# bootstrap returns the data sample                                    
+t = bootstrap(x, stat, datapoints)
+# the histogram of the bootstrapped  data                                                                                                    
+n, binsboot, patches = plt.hist(t, 50, normed=1, facecolor='red', alpha=0.75)
+
+# add a 'best fit' line  
+y = mlab.normpdf( binsboot, mean(t), std(t))
+lt = plt.plot(binsboot, y, 'r--', linewidth=1)
+plt.xlabel('Smarts')
+plt.ylabel('Probability')
+plt.axis([99.5, 100.6, 0, 3.0])
+plt.grid(True)
+
+plt.show()
+
+!ec
+
+
+!split 
+===== Various steps in cross-validation =====
+
+When the repetitive splitting of the data set is done randomly,
+samples may accidently end up in a fast majority of the splits in
+either training or test set. Such samples may have an unbalanced
+influence on either model building or prediction evaluation. To avoid
+this $k$-fold cross-validation structures the data splitting. The
+samples are divided into $k$ more or less equally sized exhaustive and
+mutually exclusive subsets. In turn (at each split) one of these
+subsets plays the role of the test set while the union of the
+remaining subsets constitutes the training set. Such a splitting
+warrants a balanced representation of each sample in both training and
+test set over the splits. Still the division into the $k$ subsets
+involves a degree of randomness. This may be fully excluded when
+choosing $k=n$. This particular case is referred to as leave-one-out
+cross-validation (LOOCV). 
+
+!split 
+===== How to set up the cross-validation for Ridge and/or Lasso =====
+
+* Define a range of interest for the penalty parameter.
+
+* Divide the data set into training and test set comprising samples $\{1, \ldots, n\} \setminus i$ and $\{ i \}$, respectively.
+
+* Fit the linear regression model by means of ridge estimation  for each $\lambda$ in the grid using the training set, and the corresponding estimate of the error variance $\bm{\sigma}_{-i}^2(\lambda)$, as
+!bt
+\begin{align*}
+\bm{\beta}_{-i}(\lambda) & =  ( \bm{X}_{-i, \ast}^{T}
+\bm{X}_{-i, \ast} + \lambda \bm{I}_{pp})^{-1}
+\bm{X}_{-i, \ast}^{T} \bm{y}_{-i}
+\end{align*}
+!et 
+
+* Evaluate the prediction performance of these models on the test set by $\log\{L[y_i, \bm{X}_{i, \ast}; \bm{\beta}_{-i}(\lambda), \bm{\sigma}_{-i}^2(\lambda)]\}$. Or, by the prediction error $|y_i - \bm{X}_{i, \ast} \bm{\beta}_{-i}(\lambda)|$, the relative error, the error squared or the R2 score function.
+
+* Repeat the first three steps  such that each sample plays the role of the test set once.
+
+* Average the prediction performances of the test sets at each grid point of the penalty bias/parameter. It is an estimate of the prediction performance of the model corresponding to this value of the penalty parameter on novel data. It is defined as
+!bt
+\begin{align*}
+\frac{1}{n} \sum_{i = 1}^n \log\{L[y_i, \mathbf{X}_{i, \ast}; \bm{\beta}_{-i}(\lambda), \bm{\sigma}_{-i}^2(\lambda)]\}.
+\end{align*}
+!et
+
+!split
+===== Cross-validation in brief =====
+
+For the various values of $k$
+
+o shuffle the dataset randomly.
+o Split the dataset into $k$ groups.
+o For each unique group:
+ o Decide which group to use as set for test data
+ o Take the remaining groups as a training data set
+ o Fit a model on the training set and evaluate it on the test set
+ o Retain the evaluation score and discard the model
+o Summarize the model using the sample of model evaluation scores
+
+
+
+!split
+===== Code Example for Cross-validation and $k$-fold Cross-validation =====
+
+The code here uses Ridge regression with cross-validation (CV)  resampling and $k$-fold CV in order to fit a specific polynomial. 
+!bc pycod
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.model_selection import KFold
+from sklearn.linear_model import Ridge
+from sklearn.model_selection import cross_val_score
+from sklearn.preprocessing import PolynomialFeatures
+
+# A seed just to ensure that the random numbers are the same for every run.
+# Useful for eventual debugging.
+np.random.seed(3155)
+
+# Generate the data.
+nsamples = 100
+x = np.random.randn(nsamples)
+y = 3*x**2 + np.random.randn(nsamples)
+
+## Cross-validation on Ridge regression using KFold only
+
+# Decide degree on polynomial to fit
+poly = PolynomialFeatures(degree = 6)
+
+# Decide which values of lambda to use
+nlambdas = 500
+lambdas = np.logspace(-3, 5, nlambdas)
+
+# Initialize a KFold instance
+k = 5
+kfold = KFold(n_splits = k)
+
+# Perform the cross-validation to estimate MSE
+scores_KFold = np.zeros((nlambdas, k))
+
+i = 0
+for lmb in lambdas:
+    ridge = Ridge(alpha = lmb)
+    j = 0
+    for train_inds, test_inds in kfold.split(x):
+        xtrain = x[train_inds]
+        ytrain = y[train_inds]
+
+        xtest = x[test_inds]
+        ytest = y[test_inds]
+
+        Xtrain = poly.fit_transform(xtrain[:, np.newaxis])
+        ridge.fit(Xtrain, ytrain[:, np.newaxis])
+
+        Xtest = poly.fit_transform(xtest[:, np.newaxis])
+        ypred = ridge.predict(Xtest)
+
+        scores_KFold[i,j] = np.sum((ypred - ytest[:, np.newaxis])**2)/np.size(ypred)
+
+        j += 1
+    i += 1
+
+
+estimated_mse_KFold = np.mean(scores_KFold, axis = 1)
+
+## Cross-validation using cross_val_score from sklearn along with KFold
+
+# kfold is an instance initialized above as:
+# kfold = KFold(n_splits = k)
+
+estimated_mse_sklearn = np.zeros(nlambdas)
+i = 0
+for lmb in lambdas:
+    ridge = Ridge(alpha = lmb)
+
+    X = poly.fit_transform(x[:, np.newaxis])
+    estimated_mse_folds = cross_val_score(ridge, X, y[:, np.newaxis], scoring='neg_mean_squared_error', cv=kfold)
+
+    # cross_val_score return an array containing the estimated negative mse for every fold.
+    # we have to the the mean of every array in order to get an estimate of the mse of the model
+    estimated_mse_sklearn[i] = np.mean(-estimated_mse_folds)
+
+    i += 1
+
+## Plot and compare the slightly different ways to perform cross-validation
+
+plt.figure()
+
+plt.plot(np.log10(lambdas), estimated_mse_sklearn, label = 'cross_val_score')
+plt.plot(np.log10(lambdas), estimated_mse_KFold, 'r--', label = 'KFold')
+
+plt.xlabel('log10(lambda)')
+plt.ylabel('mse')
+
+plt.legend()
+
+plt.show()
+
+!ec
+
+
+!split
+===== The bias-variance tradeoff =====
+
+
+We will discuss the bias-variance tradeoff in the context of
+continuous predictions such as regression. However, many of the
+intuitions and ideas discussed here also carry over to classification
+tasks. Consider a dataset $\mathcal{L}$ consisting of the data
+$\mathbf{X}_\mathcal{L}=\{(y_j, \boldsymbol{x}_j), j=0\ldots n-1\}$. 
+
+Let us assume that the true data is generated from a noisy model
+
+!bt
+\[
+\bm{y}=f(\boldsymbol{x}) + \bm{\epsilon}
+\]
+!et
+
+where $\epsilon$ is normally distributed with mean zero and standard deviation $\sigma^2$.
+
+In our derivation of the ordinary least squares method we defined then
+an approximation to the function $f$ in terms of the parameters
+$\bm{\beta}$ and the design matrix $\bm{X}$ which embody our model,
+that is $\bm{\tilde{y}}=\bm{X}\bm{\beta}$. 
+
+Thereafter we found the parameters $\bm{\beta}$ by optimizing the means squared error via the so-called cost function
+!bt
+\[
+C(\bm{X},\bm{\beta}) =\frac{1}{n}\sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2=\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right].
+\]
+!et
+
+We can rewrite this as 
+!bt
+\[
+\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right]=\frac{1}{n}\sum_i(f_i-\mathbb{E}\left[\bm{\tilde{y}}\right])^2+\frac{1}{n}\sum_i(\tilde{y}_i-\mathbb{E}\left[\bm{\tilde{y}}\right])^2+\sigma^2.
+\]
+!et
+
+The three terms represent the square of the bias of the learning
+method, which can be thought of as the error caused by the simplifying
+assumptions built into the method. The second term represents the
+variance of the chosen model and finally the last terms is variance of
+the error $\bm{\epsilon}$.
+
+To derive this equation, we need to recall that the variance of $\bm{y}$ and $\bm{\epsilon}$ are both equal to $\sigma^2$. The mean value of $\bm{\epsilon}$ is by definition equal to zero. Furthermore, the function $f$ is not a stochastics variable, idem for $\bm{\tilde{y}}$.
+We use a more compact notation in terms of the expectation value 
+!bt
+\[
+\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right]=\mathbb{E}\left[(\bm{f}+\bm{\epsilon}-\bm{\tilde{y}})^2\right],
+\]
+!et
+and adding and subtracting $\mathbb{E}\left[\bm{\tilde{y}}\right]$ we get
+!bt
+\[
+\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right]=\mathbb{E}\left[(\bm{f}+\bm{\epsilon}-\bm{\tilde{y}}+\mathbb{E}\left[\bm{\tilde{y}}\right]-\mathbb{E}\left[\bm{\tilde{y}}\right])^2\right],
+\]
+!et
+which, using the abovementioned expectation values can be rewritten as 
+!bt
+\[
+\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right]=\mathbb{E}\left[(\bm{y}-\mathbb{E}\left[\bm{\tilde{y}}\right])^2\right]+\mathrm{Var}\left[\bm{\tilde{y}}\right]+\sigma^2,
+\]
+!et
+that is the rewriting in terms of the so-called bias, the variance of the model $\bm{\tilde{y}}$ and the variance of $\bm{\epsilon}$.
+
+
+
+
+
+!split
+===== Example code for Bias-Variance tradeoff =====
+!bc pycod
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.preprocessing import PolynomialFeatures
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
-from sklearn.tree import export_graphviz
+from sklearn.pipeline import make_pipeline
+from sklearn.utils import resample
 
-from IPython.display import Image 
-from pydot import graph_from_dot_data
-import pandas as pd
-import numpy as np
+np.random.seed(2018)
 
+n = 500
+n_boostraps = 100
+degree = 18  # A quite high value, just to show.
+noise = 0.1
 
-cancer = load_breast_cancer()
-X = pd.DataFrame(cancer.data, columns=cancer.feature_names)
-print(X)
-y = pd.Categorical.from_codes(cancer.target, cancer.target_names)
-y = pd.get_dummies(y)
-print(y)
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
-tree_clf = DecisionTreeClassifier(max_depth=5)
-tree_clf.fit(X_train, y_train)
+# Make data set.
+x = np.linspace(-1, 3, n).reshape(-1, 1)
+y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2) + np.random.normal(0, 0.1, x.shape)
 
-export_graphviz(
-    tree_clf,
-    out_file="DataFiles/cancer.dot",
-    feature_names=cancer.feature_names,
-    class_names=cancer.target_names,
-    rounded=True,
-    filled=True
-)
-cmd = 'dot -Tpng DataFiles/cancer.dot -o DataFiles/cancer.png'
-os.system(cmd)
+# Hold out some test data that is never used in training.
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
+# Combine x transformation and model into one operation.
+# Not neccesary, but convenient.
+model = make_pipeline(PolynomialFeatures(degree=degree), LinearRegression(fit_intercept=False))
+
+# The following (m x n_bootstraps) matrix holds the column vectors y_pred
+# for each bootstrap iteration.
+y_pred = np.empty((y_test.shape[0], n_boostraps))
+for i in range(n_boostraps):
+    x_, y_ = resample(x_train, y_train)
+
+    # Evaluate the new model on the same test data each time.
+    y_pred[:, i] = model.fit(x_, y_).predict(x_test).ravel()
+
+# Note: Expectations and variances taken w.r.t. different training
+# data sets, hence the axis=1. Subsequent means are taken across the test data
+# set in order to obtain a total value, but before this we have error/bias/variance
+# calculated per data point in the test set.
+# Note 2: The use of keepdims=True is important in the calculation of bias as this 
+# maintains the column vector form. Dropping this yields very unexpected results.
+error = np.mean( np.mean((y_test - y_pred)**2, axis=1, keepdims=True) )
+bias = np.mean( (y_test - np.mean(y_pred, axis=1, keepdims=True))**2 )
+variance = np.mean( np.var(y_pred, axis=1, keepdims=True) )
+print('Error:', error)
+print('Bias^2:', bias)
+print('Var:', variance)
+print('{} >= {} + {} = {}'.format(error, bias, variance, bias+variance))
+
+plt.plot(x[::5, :], y[::5, :], label='f(x)')
+plt.scatter(x_test, y_test, label='Data points')
+plt.scatter(x_test, np.mean(y_pred, axis=1), label='Pred')
+plt.legend()
+plt.show()
+
 !ec
 
+
 !split
-===== Visualizing the Tree, The Moons  =====
+===== Understanding what happens =====
+!bc pycod
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import make_pipeline
+from sklearn.utils import resample
+
+np.random.seed(2018)
+
+n = 40
+n_boostraps = 100
+maxdegree = 14
+
+
+# Make data set.
+x = np.linspace(-3, 3, n).reshape(-1, 1)
+y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
+error = np.zeros(maxdegree)
+bias = np.zeros(maxdegree)
+variance = np.zeros(maxdegree)
+polydegree = np.zeros(maxdegree)
+x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
+for degree in range(maxdegree):
+    model = make_pipeline(PolynomialFeatures(degree=degree), LinearRegression(fit_intercept=False))
+    y_pred = np.empty((y_test.shape[0], n_boostraps))
+    for i in range(n_boostraps):
+        x_, y_ = resample(x_train, y_train)
+        y_pred[:, i] = model.fit(x_, y_).predict(x_test).ravel()
+
+    polydegree[degree] = degree
+    error[degree] = np.mean( np.mean((y_test - y_pred)**2, axis=1, keepdims=True) )
+    bias[degree] = np.mean( (y_test - np.mean(y_pred, axis=1, keepdims=True))**2 )
+    variance[degree] = np.mean( np.var(y_pred, axis=1, keepdims=True) )
+    print('Polynomial degree:', degree)
+    print('Error:', error[degree])
+    print('Bias^2:', bias[degree])
+    print('Var:', variance[degree])
+    print('{} >= {} + {} = {}'.format(error[degree], bias[degree], variance[degree], bias[degree]+variance[degree]))
+
+plt.plot(polydegree, error, label='Error')
+plt.plot(polydegree, bias, label='bias')
+plt.plot(polydegree, variance, label='Variance')
+plt.legend()
+plt.show()
+
+
+
+
+!ec
+
+!split 
+===== Summing up ===== 
+
+
+
+
+The bias-variance tradeoff summarizes the fundamental tension in
+machine learning, particularly supervised learning, between the
+complexity of a model and the amount of training data needed to train
+it.  Since data is often limited, in practice it is often useful to
+use a less-complex model with higher bias, that is  a model whose asymptotic
+performance is worse than another model because it is easier to
+train and less sensitive to sampling noise arising from having a
+finite-sized training dataset (smaller variance). 
+
+
+
+The above equations tell us that in
+order to minimize the expected test error, we need to select a
+statistical learning method that simultaneously achieves low variance
+and low bias. Note that variance is inherently a nonnegative quantity,
+and squared bias is also nonnegative. Hence, we see that the expected
+test MSE can never lie below $Var(\epsilon)$, the irreducible error.
+
+
+What do we mean by the variance and bias of a statistical learning
+method? The variance refers to the amount by which our model would change if we
+estimated it using a different training data set. Since the training
+data are used to fit the statistical learning method, different
+training data sets  will result in a different estimate. But ideally the
+estimate for our model should not vary too much between training
+sets. However, if a method has high variance  then small changes in
+the training data can result in large changes in the model. In general, more
+flexible statistical methods have higher variance.
+
+
+You may also find this recent "article":"https://www.pnas.org/content/116/32/15849" of interest.
+
+!split
+===== Another Example from Scikit-Learn's Repository =====
+!bc pycod
+"""
+============================
+Underfitting vs. Overfitting
+============================
+
+This example demonstrates the problems of underfitting and overfitting and
+how we can use linear regression with polynomial features to approximate
+nonlinear functions. The plot shows the function that we want to approximate,
+which is a part of the cosine function. In addition, the samples from the
+real function and the approximations of different models are displayed. The
+models have polynomial features of different degrees. We can see that a
+linear function (polynomial with degree 1) is not sufficient to fit the
+training samples. This is called **underfitting**. A polynomial of degree 4
+approximates the true function almost perfectly. However, for higher degrees
+the model will **overfit** the training data, i.e. it learns the noise of the
+training data.
+We evaluate quantitatively **overfitting** / **underfitting** by using
+cross-validation. We calculate the mean squared error (MSE) on the validation
+set, the higher, the less likely the model generalizes correctly from the
+training data.
+"""
+
+print(__doc__)
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import PolynomialFeatures
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import cross_val_score
+
+
+def true_fun(X):
+    return np.cos(1.5 * np.pi * X)
+
+np.random.seed(0)
+
+n_samples = 30
+degrees = [1, 4, 15]
+
+X = np.sort(np.random.rand(n_samples))
+y = true_fun(X) + np.random.randn(n_samples) * 0.1
+
+plt.figure(figsize=(14, 5))
+for i in range(len(degrees)):
+    ax = plt.subplot(1, len(degrees), i + 1)
+    plt.setp(ax, xticks=(), yticks=())
+
+    polynomial_features = PolynomialFeatures(degree=degrees[i],
+                                             include_bias=False)
+    linear_regression = LinearRegression()
+    pipeline = Pipeline([("polynomial_features", polynomial_features),
+                         ("linear_regression", linear_regression)])
+    pipeline.fit(X[:, np.newaxis], y)
+
+    # Evaluate the models using crossvalidation
+    scores = cross_val_score(pipeline, X[:, np.newaxis], y,
+                             scoring="neg_mean_squared_error", cv=10)
+
+    X_test = np.linspace(0, 1, 100)
+    plt.plot(X_test, pipeline.predict(X_test[:, np.newaxis]), label="Model")
+    plt.plot(X_test, true_fun(X_test), label="True function")
+    plt.scatter(X, y, edgecolor='b', s=20, label="Samples")
+    plt.xlabel("x")
+    plt.ylabel("y")
+    plt.xlim((0, 1))
+    plt.ylim((-2, 2))
+    plt.legend(loc="best")
+    plt.title("Degree {}\nMSE = {:.2e}(+/- {:.2e})".format(
+        degrees[i], -scores.mean(), scores.std()))
+plt.show()
+!ec
+
+
+!split
+===== More examples on bootstrap and cross-validation and errors =====
+
 !bc pycod
 # Common imports
-import numpy as np
-from sklearn.model_selection import  train_test_split 
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import make_moons
-from sklearn.tree import export_graphviz
-from pydot import graph_from_dot_data
-import pandas as pd
 import os
-
-np.random.seed(42)
-X, y = make_moons(n_samples=100, noise=0.25, random_state=53)
-X_train, X_test, y_train, y_test = train_test_split(X,y,random_state=0)
-tree_clf = DecisionTreeClassifier(max_depth=5)
-tree_clf.fit(X_train, y_train)
-
-export_graphviz(
-    tree_clf,
-    out_file="DataFiles/moons.dot",
-    rounded=True,
-    filled=True
-)
-cmd = 'dot -Tpng DataFiles/moons.dot -o DataFiles/moons.png'
-os.system(cmd)
-!ec
-
-
-!split
-===== Algorithms for Setting up Decision Trees =====
-
-Two algorithms stand out in the set up of decision trees:
-o The CART (Classification And Regression Tree) algorithm for both classification and regression
-o The ID3 algorithm based on the computation of the information gain for classification
-
-We discuss both algorithms with applications here. The popular library
-_Scikit-Learn_ uses the CART algorithm. For classification problems
-you can use either the _gini_ index or the _entropy_ to split a tree
-in two branches.
-
-!split
-===== The CART algorithm for Classification =====
-
-For classification, the CART algorithm splits the data set in two subsets using a single feature $k$ and a threshold $t_k$.
-This could be for example a threshold set by a number below a certain circumference of a malign tumor.
-
-How do we find these two quantities?
-We search for the pair $(k,t_k)$ that produces the purest subset using for example the _gini_ factor $G$.
-The cost function it tries to minimize is then
-!bt
-\[
-C(k,t_k) = \frac{m_{\mathrm{left}}}{m}G_{\mathrm{left}}+ \frac{m_{\mathrm{right}}}{m}G_{\mathrm{right}},
-\]
-!et
-where $G_{\mathrm{left/right}}$ measures the impurity of the left/right subset  and $m_{\mathrm{left/right}}$
- is the number of instances in the left/right subset
-
-Once it has successfully split the training set in two, it splits the subsets using the same logic, then the subsubsets
-and so on, recursively. It stops recursing once it reaches the maximum depth (defined by the
-$max\_depth$ hyperparameter), or if it cannot find a split that will reduce impurity. A few other
-hyperparameters control additional stopping conditions such as the $min\_samples\_split$,
-$min\_samples\_leaf$, $min\_weight\_fraction\_leaf$, and $max\_leaf\_nodes$.
-
-!split
-===== The CART algorithm for Regression =====
-
-The CART algorithm for regression works is similar to the one for classification except that instead of trying to split the
-training set in a way that minimizes say the _gini_ or _entropy_ impurity, it now tries to split the training set in a way that minimizes our well-known mean-squared error (MSE). The cost function is now
-!bt
-\[
-C(k,t_k) = \frac{m_{\mathrm{left}}}{m}\mathrm{MSE}_{\mathrm{left}}+ \frac{m_{\mathrm{right}}}{m}\mathrm{MSE}_{\mathrm{right}}.
-\]
-!et
-Here the MSE for a specific node is defined as
-!bt
-\[
-\mathrm{MSE}_{\mathrm{node}}=\frac{1}{m_\mathrm{node}}\sum_{i\in \mathrm{node}}(\overline{y}_{\mathrm{node}}-y_i)^2,
-\]
-!et
-with
-!bt
-\[
-\overline{y}_{\mathrm{node}}=\frac{1}{m_\mathrm{node}}\sum_{i\in \mathrm{node}}y_i,
-\]
-!et
-the mean value of all observations in a specific node.
-
-Without any regularization, the regression task for decision trees, 
-just like for classification tasks, is  prone to overfitting.
-
-
-!split
-===== Computing the Gini index =====
-
-The example we will look at is a classical one in many Machine
-Learning applications. Based on various meteorological features, we
-have several so-called attributes which decide whether we at the end
-will do some outdoor activity like skiing, going for a bike ride etc
-etc.  The table here contains the feautures _outlook_, _temperature_,
-_humidity_ and _wind_.  The target or output is whether we ride
-(True=1) or whether we do something else that day (False=0). The
-attributes for each feature are then sunny, overcast and rain for the
-outlook, hot, cold and mild for temperature, high and normal for
-humidity and weak and strong for wind.
-
-The table here summarizes the various attributes and
-|-------------------------------------------|
-|Day| Outlook |Temperature | Humidity | Wind | Ride|
-|-------------------------------------------|
-|1 | Sunny | Hot | High | Weak | 0 |
-|2 | Sunny | Hot | High | Strong | 1 |
-|3 | Overcast | Hot | High | Weak | 1 |
-|4 | Rain | Mild | High | Weak | 1 |
-|5 | Rain | Cool | Normal | Weak | 1 |
-|6 | Rain | Cool | Normal | Strong | 0 |
-|7 | Overcast | Cool | Normal | Strong | 1 |
-|8 | Sunny | Mild | High | Weak | 0 |
-|9 | Sunny | Cool | Normal | Weak | 1 |
-|10 | Rain | Mild | Normal | Weak | 1 |
-|11 | Sunny | Mild | Normal | Strong | 1 |
-|12 | Overcast | Mild | High | Strong | 1 |
-|13 | Overcast | Hot | Normal | Weak | 1 |
-|14 | Rain | Mild | High | Strong | 0 |
-|-------------------------------------------|
-
-
-!split
-===== Simple Python Code to read in Data and perform Classification =====
-
-!bc pycod
-# Common imports
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
 from sklearn.model_selection import train_test_split
-from sklearn.tree import export_graphviz
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.compose import ColumnTransformer
-from IPython.display import Image 
-from pydot import graph_from_dot_data
+from sklearn.utils import resample
+from sklearn.metrics import mean_squared_error
+# Where to save the figures and data files
+PROJECT_ROOT_DIR = "Results"
+FIGURE_ID = "Results/FigureFiles"
+DATA_ID = "DataFiles/"
+
+if not os.path.exists(PROJECT_ROOT_DIR):
+    os.mkdir(PROJECT_ROOT_DIR)
+
+if not os.path.exists(FIGURE_ID):
+    os.makedirs(FIGURE_ID)
+
+if not os.path.exists(DATA_ID):
+    os.makedirs(DATA_ID)
+
+def image_path(fig_id):
+    return os.path.join(FIGURE_ID, fig_id)
+
+def data_path(dat_id):
+    return os.path.join(DATA_ID, dat_id)
+
+def save_fig(fig_id):
+    plt.savefig(image_path(fig_id) + ".png", format='png')
+
+infile = open(data_path("EoS.csv"),'r')
+
+# Read the EoS data as  csv file and organize the data into two arrays with density and energies
+EoS = pd.read_csv(infile, names=('Density', 'Energy'))
+EoS['Energy'] = pd.to_numeric(EoS['Energy'], errors='coerce')
+EoS = EoS.dropna()
+Energies = EoS['Energy']
+Density = EoS['Density']
+#  The design matrix now as function of various polytrops
+
+Maxpolydegree = 30
+X = np.zeros((len(Density),Maxpolydegree))
+X[:,0] = 1.0
+testerror = np.zeros(Maxpolydegree)
+trainingerror = np.zeros(Maxpolydegree)
+polynomial = np.zeros(Maxpolydegree)
+
+trials = 100
+for polydegree in range(1, Maxpolydegree):
+    polynomial[polydegree] = polydegree
+    for degree in range(polydegree):
+        X[:,degree] = Density**(degree/3.0)
+
+# loop over trials in order to estimate the expectation value of the MSE
+    testerror[polydegree] = 0.0
+    trainingerror[polydegree] = 0.0
+    for samples in range(trials):
+        x_train, x_test, y_train, y_test = train_test_split(X, Energies, test_size=0.2)
+        model = LinearRegression(fit_intercept=True).fit(x_train, y_train)
+        ypred = model.predict(x_train)
+        ytilde = model.predict(x_test)
+        testerror[polydegree] += mean_squared_error(y_test, ytilde)
+        trainingerror[polydegree] += mean_squared_error(y_train, ypred) 
+
+    testerror[polydegree] /= trials
+    trainingerror[polydegree] /= trials
+    print("Degree of polynomial: %3d"% polynomial[polydegree])
+    print("Mean squared error on training data: %.8f" % trainingerror[polydegree])
+    print("Mean squared error on test data: %.8f" % testerror[polydegree])
+
+plt.plot(polynomial, np.log10(trainingerror), label='Training Error')
+plt.plot(polynomial, np.log10(testerror), label='Test Error')
+plt.xlabel('Polynomial degree')
+plt.ylabel('log10[MSE]')
+plt.legend()
+plt.show()
+
+!ec
+
+
+!split 
+=====  The same example but now with cross-validation =====
+
+!bc pycod
+# Common imports
 import os
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.linear_model import LinearRegression, Ridge, Lasso
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import KFold
+from sklearn.model_selection import cross_val_score
+
 
 # Where to save the figures and data files
 PROJECT_ROOT_DIR = "Results"
@@ -613,1160 +1086,964 @@ def data_path(dat_id):
 def save_fig(fig_id):
     plt.savefig(image_path(fig_id) + ".png", format='png')
 
-infile = open(data_path("rideclass.csv"),'r')
+infile = open(data_path("EoS.csv"),'r')
 
-# Read the experimental data with Pandas
-from IPython.display import display
-ridedata = pd.read_csv(infile,names = ('Outlook','Temperature','Humidity','Wind','Ride'))
-ridedata = pd.DataFrame(ridedata)
+# Read the EoS data as  csv file and organize the data into two arrays with density and energies
+EoS = pd.read_csv(infile, names=('Density', 'Energy'))
+EoS['Energy'] = pd.to_numeric(EoS['Energy'], errors='coerce')
+EoS = EoS.dropna()
+Energies = EoS['Energy']
+Density = EoS['Density']
+#  The design matrix now as function of various polytrops
 
-# Features and targets
-X = ridedata.loc[:, ridedata.columns != 'Ride'].values
-y = ridedata.loc[:, ridedata.columns == 'Ride'].values
+Maxpolydegree = 30
+X = np.zeros((len(Density),Maxpolydegree))
+X[:,0] = 1.0
+estimated_mse_sklearn = np.zeros(Maxpolydegree)
+polynomial = np.zeros(Maxpolydegree)
+k =5
+kfold = KFold(n_splits = k)
 
-# Create the encoder.
-encoder = OneHotEncoder(handle_unknown="ignore")
-# Assume for simplicity all features are categorical.
-encoder.fit(X)    
-# Apply the encoder.
-X = encoder.transform(X)
-print(X)
-# Then do a Classification tree
-tree_clf = DecisionTreeClassifier(max_depth=2)
-tree_clf.fit(X, y)
-print("Train set accuracy with Decision Tree: {:.2f}".format(tree_clf.score(X,y)))
-#transfer to a decision tree graph
-export_graphviz(
-    tree_clf,
-    out_file="DataFiles/ride.dot",
-    rounded=True,
-    filled=True
-)
-cmd = 'dot -Tpng DataFiles/cancer.dot -o DataFiles/cancer.png'
-os.system(cmd)
+for polydegree in range(1, Maxpolydegree):
+    polynomial[polydegree] = polydegree
+    for degree in range(polydegree):
+        X[:,degree] = Density**(degree/3.0)
+        OLS = LinearRegression()
+# loop over trials in order to estimate the expectation value of the MSE
+    estimated_mse_folds = cross_val_score(OLS, X, Energies, scoring='neg_mean_squared_error', cv=kfold)
+#[:, np.newaxis]
+    estimated_mse_sklearn[polydegree] = np.mean(-estimated_mse_folds)
 
-
-!ec
-
-!split
-===== Computing the Gini Factor  =====
-
-The above functions (gini, entropy and misclassification error) are
-important components of the so-called CART algorithm. We will discuss
-this algorithm below after we have discussed the information gain
-algorithm ID3.
-
-In the example here we have converted all our attributes into numerical values $0,1,2$ etc.
-
-!bc pycod
-# Split a dataset based on an attribute and an attribute value
-def test_split(index, value, dataset):
-	left, right = list(), list()
-	for row in dataset:
-		if row[index] < value:
-			left.append(row)
-		else:
-			right.append(row)
-	return left, right
- 
-# Calculate the Gini index for a split dataset
-def gini_index(groups, classes):
-	# count all samples at split point
-	n_instances = float(sum([len(group) for group in groups]))
-	# sum weighted Gini index for each group
-	gini = 0.0
-	for group in groups:
-		size = float(len(group))
-		# avoid divide by zero
-		if size == 0:
-			continue
-		score = 0.0
-		# score the group based on the score for each class
-		for class_val in classes:
-			p = [row[-1] for row in group].count(class_val) / size
-			score += p * p
-		# weight the group score by its relative size
-		gini += (1.0 - score) * (size / n_instances)
-	return gini
-
-# Select the best split point for a dataset
-def get_split(dataset):
-	class_values = list(set(row[-1] for row in dataset))
-	b_index, b_value, b_score, b_groups = 999, 999, 999, None
-	for index in range(len(dataset[0])-1):
-		for row in dataset:
-			groups = test_split(index, row[index], dataset)
-			gini = gini_index(groups, class_values)
-			print('X%d < %.3f Gini=%.3f' % ((index+1), row[index], gini))
-			if gini < b_score:
-				b_index, b_value, b_score, b_groups = index, row[index], gini, groups
-	return {'index':b_index, 'value':b_value, 'groups':b_groups}
- 
-dataset = [[0,0,0,0,0],
-            [0,0,0,1,1],
-            [1,0,0,0,1],
-            [2,1,0,0,1],
-            [2,2,1,0,1],
-            [2,2,1,1,0],
-            [1,2,1,1,1],
-            [0,1,0,0,0],
-            [0,2,1,0,1],
-            [2,1,1,0,1],
-            [0,1,1,1,1],
-            [1,1,0,1,1],
-            [1,0,1,0,1],
-            [2,1,0,1,0]]
-
-split = get_split(dataset)
-print('Split: [X%d < %.3f]' % ((split['index']+1), split['value']))
-!ec
-
-!split
-===== Entropy and the ID3 algorithm =====
-
-ID3, learns decision trees by constructing
-them topdown, beginning with the question _which attribute should be tested at the root of the tree_?
-
-o Each instance attribute is evaluated using a statistical test to determine how well it alone classifies the training examples.
-o The best attribute is selected and used as the test at the root node of the tree.
-o A descendant of the root node is then created for each possible value of this attribute.
-o Training examples are sorted to the appropriate descendant node.
-o The entire process is then repeated using the training examples associated with each descendant node to select the best attribute to test at that point in the tree.
-o This forms a greedy search for an acceptable decision tree, in which the algorithm never backtracks to reconsider earlier choices. 
-
-The ID3 algorithm selects, which attribute to test at each node in the
-tree.
-
-We would like to select the attribute that is most useful for classifying
-examples.
-
-What is a good quantitative measure of the worth of an attribute?
-
-Information gain measures how well a given attribute separates the
-training examples according to their target classification.
-
-The ID3 algorithm uses this information gain measure to select among the candidate
-attributes at each step while growing the tree.
-
-
-!split
-=====  Cancer Data again now with Decision Trees and other Methods =====
-!bc pycod
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.model_selection import  train_test_split 
-from sklearn.datasets import load_breast_cancer
-from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
-
-# Load the data
-cancer = load_breast_cancer()
-
-X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,random_state=0)
-print(X_train.shape)
-print(X_test.shape)
-# Logistic Regression
-logreg = LogisticRegression(solver='lbfgs')
-logreg.fit(X_train, y_train)
-print("Test set accuracy with Logistic Regression: {:.2f}".format(logreg.score(X_test,y_test)))
-# Support vector machine
-svm = SVC(gamma='auto', C=100)
-svm.fit(X_train, y_train)
-print("Test set accuracy with SVM: {:.2f}".format(svm.score(X_test,y_test)))
-# Decision Trees
-deep_tree_clf = DecisionTreeClassifier(max_depth=None)
-deep_tree_clf.fit(X_train, y_train)
-print("Test set accuracy with Decision Trees: {:.2f}".format(deep_tree_clf.score(X_test,y_test)))
-#now scale the data
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-# Logistic Regression
-logreg.fit(X_train_scaled, y_train)
-print("Test set accuracy Logistic Regression with scaled data: {:.2f}".format(logreg.score(X_test_scaled,y_test)))
-# Support Vector Machine
-svm.fit(X_train_scaled, y_train)
-print("Test set accuracy SVM with scaled data: {:.2f}".format(logreg.score(X_test_scaled,y_test)))
-# Decision Trees
-deep_tree_clf.fit(X_train_scaled, y_train)
-print("Test set accuracy with Decision Trees and scaled data: {:.2f}".format(deep_tree_clf.score(X_test_scaled,y_test)))
-
-!ec
-
-
-
-!split
-===== Pros and cons of trees, pros =====
-
-* White box, easy to interpret model. Some people believe that decision trees more closely mirror human decision-making than do the regression and classification approaches discussed earlier (think of support vector machines)
-* Trees are very easy to explain to people. In fact, they are even easier to explain than linear regression!
-* No feature normalization needed
-* Tree models can handle both continuous and categorical data (Classification and Regression Trees)
-* Can model nonlinear relationships
-* Can model interactions between the different descriptive features
-* Trees can be displayed graphically, and are easily interpreted even by a non-expert (especially if they are small)
-
-
-!split
-===== Disadvantages =====
-
-* Unfortunately, trees generally do not have the same level of predictive accuracy as some of the other regression and classification approaches
-* If continuous features are used the tree may become quite large and hence less interpretable
-* Decision trees are prone to overfit the training data and hence do not well generalize the data if no stopping criteria or improvements like pruning, boosting or bagging are implemented
-* Small changes in the data may lead to a completely different tree. This issue can be addressed by using ensemble methods like bagging, boosting or random forests
-* Unbalanced datasets where some target feature values occur much more frequently than others may lead to biased trees since the frequently occurring feature values are preferred over the less frequently occurring ones. 
-* If the number of features is relatively large (high dimensional) and the number of instances is relatively low, the tree might overfit the data
-* Features with many levels may be preferred over features with less levels since for them it is *more easy* to split the dataset such that the sub datasets only contain pure target feature values. This issue can be addressed by preferring for instance the information gain ratio as splitting criteria over information gain
-
-However, by aggregating many decision trees, using methods like
-bagging, random forests, and boosting, the predictive performance of
-trees can be substantially improved.
-
-
-!split
-===== Ensemble Methods: From a Single Tree to Many Trees and Extreme Boosting, Meet the Jungle of Methods =====
-
-As stated above and seen in many of the examples discussed here about
-a single decision tree, we often end up overfitting our training
-data. This normally means that we have a high variance. Can we reduce
-the variance of a statistical learning method?
-
-This leads us to a set of different methods that can combine different
-machine learning algorithms or just use one of them to construct
-forests and jungles of trees, homogeneous ones or heterogenous
-ones. These methods are recognized by different names which we will
-try to explain here. These are
-
-o Voting classifiers
-o Bagging and Pasting
-o Random forests
-o Boosting methods, from adaptive to Extreme Gradient Boosting (XGBoost)
-
-We discuss these methods here.
-
-
-!split
-===== An Overview of Ensemble Methods  =====
-
-FIGURE: [DataFiles/ensembleoverview.png, width=600 frac=0.8]
-
-
-
-!split
-===== Bagging =====
-
-The _plain_ decision trees suffer from high
-variance. This means that if we split the training data into two parts
-at random, and fit a decision tree to both halves, the results that we
-get could be quite different. In contrast, a procedure with low
-variance will yield similar results if applied repeatedly to distinct
-data sets; linear regression tends to have low variance, if the ratio
-of $n$ to $p$ is moderately large. 
-
-_Bootstrap aggregation_, or just _bagging_, is a
-general-purpose procedure for reducing the variance of a statistical
-learning method. 
-
-
-!split
-===== More bagging =====
-
-Bagging typically results in improved accuracy
-over prediction using a single tree. Unfortunately, however, it can be
-difficult to interpret the resulting model. Recall that one of the
-advantages of decision trees is the attractive and easily interpreted
-diagram that results.
-
-However, when we bag a large number of trees, it is no longer
-possible to represent the resulting statistical learning procedure
-using a single tree, and it is no longer clear which variables are
-most important to the procedure. Thus, bagging improves prediction
-accuracy at the expense of interpretability.  Although the collection
-of bagged trees is much more difficult to interpret than a single
-tree, one can obtain an overall summary of the importance of each
-predictor using the MSE (for bagging regression trees) or the Gini
-index (for bagging classification trees). In the case of bagging
-regression trees, we can record the total amount that the MSE is
-decreased due to splits over a given predictor, averaged over all $B$ possible
-trees. A large value indicates an important predictor. Similarly, in
-the context of bagging classification trees, we can add up the total
-amount that the Gini index  is decreased by splits over a given
-predictor, averaged over all $B$ trees.
-
-
-!split
-=====  Making your own Bootstrap: Changing the Level of the Decision Tree =====
-
-Let us bring up our good old boostrap example from the linear regression lectures. We change the linerar regression algorithm with
-a decision tree wth different depths and perform a bootstrap aggregate (in this case we perform as many bootstraps as data points $n$).
-!bc pycod
-
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import make_pipeline
-from sklearn.utils import resample
-from sklearn.tree import DecisionTreeRegressor
-
-n = 100
-n_boostraps = 100
-maxdepth = 8
-
-# Make data set.
-x = np.linspace(-3, 3, n).reshape(-1, 1)
-y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
-error = np.zeros(maxdepth)
-bias = np.zeros(maxdepth)
-variance = np.zeros(maxdepth)
-polydegree = np.zeros(maxdepth)
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
-
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-# we produce a simple tree first as benchmark
-simpletree = DecisionTreeRegressor(max_depth=3) 
-simpletree.fit(X_train_scaled, y_train)
-simpleprediction = simpletree.predict(X_test_scaled)
-for degree in range(1,maxdepth):
-    model = DecisionTreeRegressor(max_depth=degree) 
-    y_pred = np.empty((y_test.shape[0], n_boostraps))
-    for i in range(n_boostraps):
-        x_, y_ = resample(X_train_scaled, y_train)
-        model.fit(x_, y_)
-        y_pred[:, i] = model.predict(X_test_scaled)#.ravel()
-
-    polydegree[degree] = degree
-    error[degree] = np.mean( np.mean((y_test - y_pred)**2, axis=1, keepdims=True) )
-    bias[degree] = np.mean( (y_test - np.mean(y_pred, axis=1, keepdims=True))**2 )
-    variance[degree] = np.mean( np.var(y_pred, axis=1, keepdims=True) )
-    print('Polynomial degree:', degree)
-    print('Error:', error[degree])
-    print('Bias^2:', bias[degree])
-    print('Var:', variance[degree])
-    print('{} >= {} + {} = {}'.format(error[degree], bias[degree], variance[degree], bias[degree]+variance[degree]))
-
-mse_simpletree = np.mean(np.mean((y_test - simpleprediction)**2))
-print(mse_simpletree)
-plt.xlim(1,maxdepth)
-plt.plot(polydegree, error, label='MSE')
-plt.plot(polydegree, bias, label='bias')
-plt.plot(polydegree, variance, label='Variance')
+plt.plot(polynomial, np.log10(estimated_mse_sklearn), label='Test Error')
+plt.xlabel('Polynomial degree')
+plt.ylabel('log10[MSE]')
 plt.legend()
-save_fig("baggingboot")
 plt.show()
 
 !ec
 
-
-
-
 !split
-===== Random forests =====
-
-Random forests provide an improvement over bagged trees by way of a
-small tweak that decorrelates the trees. 
-
-As in bagging, we build a
-number of decision trees on bootstrapped training samples. But when
-building these decision trees, each time a split in a tree is
-considered, a random sample of $m$ predictors is chosen as split
-candidates from the full set of $p$ predictors. The split is allowed to
-use only one of those $m$ predictors. 
-
-A fresh sample of $m$ predictors is
-taken at each split, and typically we choose 
-
-!bt
-\[
-m\approx \sqrt{p}.
-\]
-!et
-
-In building a random forest, at
-each split in the tree, the algorithm is not even allowed to consider
-a majority of the available predictors. 
-
-The reason for this is rather clever. Suppose that there is one very
-strong predictor in the data set, along with a number of other
-moderately strong predictors. Then in the collection of bagged
-variable importance random forest trees, most or all of the trees will
-use this strong predictor in the top split. Consequently, all of the
-bagged trees will look quite similar to each other. Hence the
-predictions from the bagged trees will be highly correlated.
-Unfortunately, averaging many highly correlated quantities does not
-lead to as large of a reduction in variance as averaging many
-uncorrelated quantities. In particular, this means that bagging will
-not lead to a substantial reduction in variance over a single tree in
-this setting.
-
-
-!split
-===== Random Forest Algorithm =====
-The algorithm described here can be applied to both classification and regression problems.
-
-We will grow of forest of say $B$ trees.
-o For $b=1:B$
-  * Draw a bootstrap sample of from the training data organized in our $\bm{X}$ matrix.
-  * We grow then a random forest tree $T_b$ based on the bootstrapped data by repeating the steps outlined till we reach the maximum node size is reached
-    o we select $m \le p$ variables at random from the $p$ predictors/features
-    o pick the best split point among the $m$ features using either the CART algorithm or the ID3 for classification and create a new node
-    o split the node into daughter nodes
-o Output then the ensemble of trees $\{T_b\}_1^{B}$ and make predictions for either a regression type of problem or a classification type of problem. 
-
-
-
-!split
-===== Random Forests Compared with other Methods on the Cancer Data =====
+=====  Cross-validation with Ridge =====
 !bc pycod 
-import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.model_selection import  train_test_split 
-from sklearn.datasets import load_breast_cancer
-from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
+import matplotlib.pyplot as plt
+from sklearn.model_selection import KFold
+from sklearn.linear_model import Ridge
+from sklearn.model_selection import cross_val_score
+from sklearn.preprocessing import PolynomialFeatures
 
-# Load the data
-cancer = load_breast_cancer()
+# A seed just to ensure that the random numbers are the same for every run.
+np.random.seed(3155)
+# Generate the data.
+n = 100
+x = np.linspace(-3, 3, n).reshape(-1, 1)
+y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
+# Decide degree on polynomial to fit
+poly = PolynomialFeatures(degree = 10)
 
-X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,random_state=0)
-print(X_train.shape)
-print(X_test.shape)
-# Logistic Regression
-logreg = LogisticRegression(solver='lbfgs')
-logreg.fit(X_train, y_train)
-print("Test set accuracy with Logistic Regression: {:.2f}".format(logreg.score(X_test,y_test)))
-# Support vector machine
-svm = SVC(gamma='auto', C=100)
-svm.fit(X_train, y_train)
-print("Test set accuracy with SVM: {:.2f}".format(svm.score(X_test,y_test)))
-# Decision Trees
-deep_tree_clf = DecisionTreeClassifier(max_depth=None)
-deep_tree_clf.fit(X_train, y_train)
-print("Test set accuracy with Decision Trees: {:.2f}".format(deep_tree_clf.score(X_test,y_test)))
-#now scale the data
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-# Logistic Regression
-logreg.fit(X_train_scaled, y_train)
-print("Test set accuracy Logistic Regression with scaled data: {:.2f}".format(logreg.score(X_test_scaled,y_test)))
-# Support Vector Machine
-svm.fit(X_train_scaled, y_train)
-print("Test set accuracy SVM with scaled data: {:.2f}".format(logreg.score(X_test_scaled,y_test)))
-# Decision Trees
-deep_tree_clf.fit(X_train_scaled, y_train)
-print("Test set accuracy with Decision Trees and scaled data: {:.2f}".format(deep_tree_clf.score(X_test_scaled,y_test)))
-
-
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import cross_validate
-# Data set not specificied
-#Instantiate the model with 500 trees and entropy as splitting criteria
-Random_Forest_model = RandomForestClassifier(n_estimators=500,criterion="entropy")
-Random_Forest_model.fit(X_train_scaled, y_train)
-#Cross validation
-accuracy = cross_validate(Random_Forest_model,X_test_scaled,y_test,cv=10)['test_score']
-print(accuracy)
-print("Test set accuracy with Random Forests and scaled data: {:.2f}".format(Random_Forest_model.score(X_test_scaled,y_test)))
-
-
-import scikitplot as skplt
-y_pred = Random_Forest_model.predict(X_test_scaled)
-skplt.metrics.plot_confusion_matrix(y_test, y_pred, normalize=True)
+# Decide which values of lambda to use
+nlambdas = 500
+lambdas = np.logspace(-3, 5, nlambdas)
+# Initialize a KFold instance
+k = 5
+kfold = KFold(n_splits = k)
+estimated_mse_sklearn = np.zeros(nlambdas)
+i = 0
+for lmb in lambdas:
+    ridge = Ridge(alpha = lmb)
+    estimated_mse_folds = cross_val_score(ridge, x, y, scoring='neg_mean_squared_error', cv=kfold)
+    estimated_mse_sklearn[i] = np.mean(-estimated_mse_folds)
+    i += 1
+plt.figure()
+plt.plot(np.log10(lambdas), estimated_mse_sklearn, label = 'cross_val_score')
+plt.xlabel('log10(lambda)')
+plt.ylabel('MSE')
+plt.legend()
 plt.show()
-y_probas = Random_Forest_model.predict_proba(X_test_scaled)
-skplt.metrics.plot_roc(y_test, y_probas)
-plt.show()
-skplt.metrics.plot_cumulative_gain(y_test, y_probas)
-plt.show()
+
 
 !ec
 
 
+
+
 !split
-===== Compare  Bagging on Trees with Random Forests  =====
+===== The singular value decomposition  =====
+
+!bblock
+
+The examples we have looked at so far are cases where we normally can
+invert the matrix $\bm{X}^T\bm{X}$. Using a polynomial expansion as we
+did both for the masses and the fitting of the equation of state,
+leads to row vectors of the design matrix which are essentially
+orthogonal due to the polynomial character of our model. Obtaining the inverse of the design matrix is then often done via a so-called LU, QR or Cholesky decomposition. 
+
+
+
+This may
+however not the be case in general and a standard matrix inversion
+algorithm based on say LU, QR or Cholesky decomposition may lead to singularities. We will see examples of this below.
+
+There is however a way to partially circumvent this problem and also gain some insights about the ordinary least squares approach, and later shrinkage methods like Ridge and Lasso regressions. 
+
+This is given by the _Singular Value Decomposition_ algorithm, perhaps
+the most powerful linear algebra algorithm.  Let us look at a
+different example where we may have problems with the standard matrix
+inversion algorithm. Thereafter we dive into the math of the SVD.
+
+!eblock
+
+
+
+!split
+===== Linear Regression Problems =====
+
+One of the typical problems we encounter with linear regression, in particular 
+when the matrix $\bm{X}$ (our so-called design matrix) is high-dimensional, 
+are problems with near singular or singular matrices. The column vectors of $\bm{X}$ 
+may be linearly dependent, normally referred to as super-collinearity.  
+This means that the matrix may be rank deficient and it is basically impossible to 
+to model the data using linear regression. As an example, consider the matrix
+!bt
+\begin{align*}
+\mathbf{X} & =  \left[
+\begin{array}{rrr}
+1 & -1 & 2
+\\
+1 & 0 & 1
+\\
+1 & 2  & -1
+\\
+1 & 1  & 0
+\end{array} \right]
+\end{align*}
+!et
+
+The columns of $\bm{X}$ are linearly dependent. We see this easily since the 
+the first column is the row-wise sum of the other two columns. The rank (more correct,
+the column rank) of a matrix is the dimension of the space spanned by the
+column vectors. Hence, the rank of $\mathbf{X}$ is equal to the number
+of linearly independent columns. In this particular case the matrix has rank 2.
+
+Super-collinearity of an $(n \times p)$-dimensional design matrix $\mathbf{X}$ implies
+that the inverse of the matrix $\bm{X}^T\bm{X}$ (the matrix we need to invert to solve the linear regression equations) is non-invertible. If we have a square matrix that does not have an inverse, we say this matrix singular. The example here demonstrates this
+!bt
+\begin{align*}
+\bm{X} & =  \left[
+\begin{array}{rr}
+1 & -1
+\\
+1 & -1
+\end{array} \right].
+\end{align*}
+!et
+We see easily that  $\mbox{det}(\bm{X}) = x_{11} x_{22} - x_{12} x_{21} = 1 \times (-1) - 1 \times (-1) = 0$. Hence, $\mathbf{X}$ is singular and its inverse is undefined.
+This is equivalent to saying that the matrix $\bm{X}$ has at least an eigenvalue which is zero.
+
+
+!split
+===== Fixing the singularity =====
+
+If our design matrix $\bm{X}$ which enters the linear regression problem
+!bt
+\begin{align}
+\bm{\beta} & =  (\bm{X}^{T} \bm{X})^{-1} \bm{X}^{T} \bm{y},
+\end{align}
+!et
+has linearly dependent column vectors, we will not be able to compute the inverse
+of $\bm{X}^T\bm{X}$ and we cannot find the parameters (estimators) $\beta_i$. 
+The estimators are only well-defined if $(\bm{X}^{T}\bm{X})^{-1}$ exits. 
+This is more likely to happen when the matrix $\bm{X}$ is high-dimensional. In this case it is likely to encounter a situation where 
+the regression parameters $\beta_i$ cannot be estimated.
+
+A cheap  *ad hoc* approach is  simply to add a small diagonal component to the matrix to invert, that is we change
+!bt
+\[
+\bm{X}^{T} \bm{X} \rightarrow \bm{X}^{T} \bm{X}+\lambda \bm{I},
+\]
+!et 
+where $\bm{I}$ is the identity matrix.  When we discuss _Ridge_ regression this is actually what we end up evaluating. The parameter $\lambda$ is called a hyperparameter. More about this later. 
+
+
+
+!split
+===== Basic math of the SVD =====
+
+
+From standard linear algebra we know that a square matrix $\bm{X}$ can be diagonalized if and only it is 
+a so-called "normal matrix":"https://en.wikipedia.org/wiki/Normal_matrix", that is if $\bm{X}\in {\mathbb{R}}^{n\times n}$
+we have $\bm{X}\bm{X}^T=\bm{X}^T\bm{X}$ or if $\bm{X}\in {\mathbb{C}}^{n\times n}$ we have $\bm{X}\bm{X}^{\dagger}=\bm{X}^{\dagger}\bm{X}$.
+The matrix has then a set of eigenpairs 
+
+!bt
+\[
+(\lambda_1,\bm{u}_1),\dots, (\lambda_n,\bm{u}_n),
+!et
+and the eigenvalues are given by the diagonal matrix
+!bt
+\[
+\bm{\Sigma}=\mathrm{Diag}(\lambda_1, \dots,\lambda_n).
+\]
+!et
+The matrix $\bm{X}$ can be written in terms of an orthogonal/unitary transformation $\bm{U}$
+!bt
+\[
+\bm{X} = \bm{U}\bm{\Sigma}\bm{V}^T,
+\]
+!et
+with $\bm{U}\bm{U}^T=\bm{I}$ or $\bm{U}\bm{U}^{\dagger}=\bm{I}$.
+
+Not all square matrices are diagonalizable. A matrix like the one discussed above
+!bt
+\[
+\bm{X} = \begin{bmatrix} 
+1&  -1 \\
+1& -1\\
+\end{bmatrix} 
+\]
+!et
+is not diagonalizable, it is a so-called "defective matrix":"https://en.wikipedia.org/wiki/Defective_matrix". It is easy to see that the condition
+$\bm{X}\bm{X}^T=\bm{X}^T\bm{X}$ is not fulfilled. 
+
+
+!split
+===== The SVD, a Fantastic Algorithm =====
+
+
+However, and this is the strength of the SVD algorithm, any general
+matrix $\bm{X}$ can be decomposed in terms of a diagonal matrix and
+two orthogonal/unitary matrices.  The "Singular Value Decompostion
+(SVD) theorem":"https://en.wikipedia.org/wiki/Singular_value_decomposition"
+states that a general $m\times n$ matrix $\bm{X}$ can be written in
+terms of a diagonal matrix $\bm{\Sigma}$ of dimensionality $m\times n$
+and two orthognal matrices $\bm{U}$ and $\bm{V}$, where the first has
+dimensionality $m \times m$ and the last dimensionality $n\times n$.
+We have then
+
+!bt
+\[ 
+\bm{X} = \bm{U}\bm{\Sigma}\bm{V}^T 
+\] 
+!et 
+
+As an example, the above defective matrix can be decomposed as
+
+!bt
+\[
+\bm{X} = \frac{1}{\sqrt{2}}\begin{bmatrix}  1&  1 \\ 1& -1\\ \end{bmatrix} \begin{bmatrix}  2&  0 \\ 0& 0\\ \end{bmatrix}    \frac{1}{\sqrt{2}}\begin{bmatrix}  1&  -1 \\ 1& 1\\ \end{bmatrix}=\bm{U}\bm{\Sigma}\bm{V}^T, 
+\]
+!et
+
+with eigenvalues $\sigma_1=2$ and $\sigma_2=0$. 
+The SVD exits always! 
+
+The SVD
+decomposition (singular values) gives eigenvalues 
+$\sigma_i\geq\sigma_{i+1}$ for all $i$ and for dimensions larger than $i=p$, the
+eigenvalues (singular values) are zero.
+
+In the general case, where our design matrix $\bm{X}$ has dimension
+$n\times p$, the matrix is thus decomposed into an $n\times n$
+orthogonal matrix $\bm{U}$, a $p\times p$ orthogonal matrix $\bm{V}$
+and a diagonal matrix $\bm{\Sigma}$ with $r=\mathrm{min}(n,p)$
+singular values $\sigma_i\geq 0$ on the main diagonal and zeros filling
+the rest of the matrix.  There are at most $p$ singular values
+assuming that $n > p$. In our regression examples for the nuclear
+masses and the equation of state this is indeed the case, while for
+the Ising model we have $p > n$. These are often cases that lead to
+near singular or singular matrices.
+
+The columns of $\bm{U}$ are called the left singular vectors while the columns of $\bm{V}$ are the right singular vectors.
+
+!split
+===== Economy-size SVD =====
+
+If we assume that $n > p$, then our matrix $\bm{U}$ has dimension $n
+\times n$. The last $n-p$ columns of $\bm{U}$ become however
+irrelevant in our calculations since they are multiplied with the
+zeros in $\bm{\Sigma}$.
+
+The economy-size decomposition removes extra rows or columns of zeros
+from the diagonal matrix of singular values, $\bm{\Sigma}$, along with the columns
+in either $\bm{U}$ or $\bm{V}$ that multiply those zeros in the expression. 
+Removing these zeros and columns can improve execution time
+and reduce storage requirements without compromising the accuracy of
+the decomposition.
+
+If $n > p$, we keep only the first $p$ columns of $\bm{U}$ and $\bm{\Sigma}$ has dimension $p\times p$. 
+If $p > n$, then only the first $n$ columns of $\bm{V}$ are computed and $\bm{\Sigma}$ has dimension $n\times n$.
+The $n=p$ case is obvious, we retain the full SVD. 
+In general the economy-size SVD leads to less FLOPS and still conserving the desired accuracy.
+
+!split
+=====  Codes for the SVD =====
+
 !bc pycod
-bag_clf = BaggingClassifier(
-    DecisionTreeClassifier(splitter="random", max_leaf_nodes=16, random_state=42),
-    n_estimators=500, max_samples=1.0, bootstrap=True, n_jobs=-1, random_state=42)
+import numpy as np
+# SVD inversion
+def SVDinv(A):
+    ''' Takes as input a numpy matrix A and returns inv(A) based on singular value decomposition (SVD).
+    SVD is numerically more stable than the inversion algorithms provided by
+    numpy and scipy.linalg at the cost of being slower.
+    '''
+    U, s, VT = np.linalg.svd(A)
+#    print('test U')
+#    print( (np.transpose(U) @ U - U @np.transpose(U)))
+#    print('test VT')
+#    print( (np.transpose(VT) @ VT - VT @np.transpose(VT)))
+    print(U)
+    print(s)
+    print(VT)
+
+    D = np.zeros((len(U),len(VT)))
+    for i in range(0,len(VT)):
+        D[i,i]=s[i]
+    UT = np.transpose(U); V = np.transpose(VT); invD = np.linalg.inv(D)
+    return np.matmul(V,np.matmul(invD,UT))
+
+
+X = np.array([ [1.0, -1.0, 2.0], [1.0, 0.0, 1.0], [1.0, 2.0, -1.0], [1.0, 1.0, 0.0] ])
+print(X)
+A = np.transpose(X) @ X
+print(A)
+# Brute force inversion of super-collinear matrix
+#B = np.linalg.inv(A)
+#print(B)
+C = SVDinv(A)
+print(C)
+
 !ec
 
-
-
-!bc pycod
-bag_clf.fit(X_train, y_train)
-y_pred = bag_clf.predict(X_test)
-from sklearn.ensemble import RandomForestClassifier
-rnd_clf = RandomForestClassifier(n_estimators=500, max_leaf_nodes=16, n_jobs=-1, random_state=42)
-rnd_clf.fit(X_train, y_train)
-y_pred_rf = rnd_clf.predict(X_test)
-np.sum(y_pred == y_pred_rf) / len(y_pred) 
-!ec
-
-
+The matrix $\bm{X}$ has columns that are linearly dependent. The first
+column is the row-wise sum of the other two columns. The rank of a
+matrix (the column rank) is the dimension of space spanned by the
+column vectors. The rank of the matrix is the number of linearly
+independent columns, in this case just $2$. We see this from the
+singular values when running the above code. Running the standard
+inversion algorithm for matrix inversion with $\bm{X}^T\bm{X}$ results
+in the program terminating due to a singular matrix.
 
 
 
 !split
-===== Boosting, a Bird's Eye View =====
+===== Mathematical Properties =====
 
-The basic idea is to combine weak classifiers in order to create a good
-classifier. With a weak classifier we often intend a classifier which
-produces results which are only slightly better than we would get by
-random guesses.
+There are several interesting mathematical properties which will be
+relevant when we are going to discuss the differences between say
+ordinary least squares (OLS) and _Ridge_ regression.
 
-This is done by applying in an iterative way a weak (or a standard
-classifier like decision trees) to modify the data. In each iteration
-we emphasize those observations which are misclassified by weighting
-them with a factor.
+We have from OLS that the parameters of the linear approximation are given by
+!bt
+\[
+\bm{\tilde{y}} = \bm{X}\bm{\beta} = \bm{X}\left(\bm{X}^T\bm{X}\right)^{-1}\bm{X}^T\bm{y}. 
+\]
+!et
+
+The matrix to invert can be rewritten in terms of our SVD decomposition as
+
+!bt
+\[
+\bm{X}^T\bm{X} = \bm{V}\bm{\Sigma}^T\bm{U}^T\bm{U}\bm{\Sigma}\bm{V}^T.
+\]
+!et
+Using the orthogonality properties of $\bm{U}$ we have
+
+!bt
+\[
+\bm{X}^T\bm{X} = \bm{V}\bm{\Sigma}^T\bm{\Sigma}\bm{V}^T =  \bm{V}\bm{D}\bm{V}^T,
+\]
+!et
+with $\bm{D}$ being a diagonal matrix with values along the diagonal given by the singular values squared. 
+
+This means that
+!bt
+\[
+(\bm{X}^T\bm{X})\bm{V} = \bm{V}\bm{D},
+\]
+!et
+that is the eigenvectors of $(\bm{X}^T\bm{X})$ are given by the columns of the right singular matrix of $\bm{X}$ and the eigenvalues are the squared singular values.  It is easy to show (show this) that
+!bt
+\[
+(\bm{X}\bm{X}^T)\bm{U} = \bm{U}\bm{D},
+\]
+!et
+that is, the eigenvectors of $(\bm{X}\bm{X})^T$ are the columns of the left singular matrix and the eigenvalues are the same. 
+
+Going back to our OLS equation we have
+!bt
+\[
+\bm{X}\bm{\beta} = \bm{X}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}\bm{X}^T\bm{y}=\bm{U\Sigma V^T}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}(\bm{U\Sigma V^T})^T\bm{y}=\bm{U}\bm{U}^T\bm{y}.
+\]
+!et
+We will come back to this expression when we discuss Ridge regression. 
+
+
+$$ \tilde{y}^{OLS}={\bf X}\hat{\beta}^{OLS}=\sum_{j=1}^p {\bf u}_j{\bf u}_j^T{\bf y}$$ and for Ridge we have 
+
+$$ \tilde{y}^{Ridge}={\bf X}\hat{\beta}^{Ridge}=\sum_{j=1}^p {\bf u}_j\frac{\sigma_j^2}{\sigma_j^2+\lambda}{\bf u}_j^T{\bf y}$$ . 
+
+It is indeed the economy-sized SVD, note the summation runs up tp $$p$$ only and not $$n$$. 
+
+Here we have that $${\bf X} = {\bf U}{\bf \Sigma}{\bf V}^T$$, with $$\Sigma$$ being an $$ n\times p$$ matrix and $${\bf V}$$ being a $$ p\times p$$ matrix. We also have assumed here that $$ n > p$$. 
+
 
 
 !split
-===== What is boosting? Additive Modelling/Iterative Fitting =====
+===== Friday September 12  =====
 
-Boosting is a way of fitting an additive expansion in a set of
-elementary basis functions like for example some simple polynomials.
-Assume for example that we have a function
-!bt
-\[
-f_M(x) = \sum_{i=1}^M \beta_m b(x;\gamma_m),
-\]
-!et
+"Video of Lecture":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h20/forelesningsvideoer/LectureSeptember11.mp4?vrtx=view-as-webpage" and "handwritten notes":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/HandWrittenNotes/NotesSeptember11.pdf"
 
-where $\beta_m$ are the expansion parameters to be determined in a
-minimization process and $b(x;\gamma_m)$ are some simple functions of
-the multivariable parameter $x$ which is characterized by the
-parameters $\gamma_m$.
-
-As an example, consider the Sigmoid function we used in logistic
-regression. In that case, we can translate the function
-$b(x;\gamma_m)$ into the Sigmoid function
-
-
-!bt
-\[
-\sigma(t) = \frac{1}{1+\exp{(-t)}},
-\]
-!et
-
-where $t=\gamma_0+\gamma_1 x$ and the parameters $\gamma_0$ and
-$\gamma_1$ were determined by the Logistic Regression fitting
-algorithm.
-
-As another example, consider the cost function we defined for linear regression
-!bt
-\[
-C(\bm{y},\bm{f}) = \frac{1}{n} \sum_{i=0}^{n-1}(y_i-f(x_i))^2.
-\]
-!et
-
-In this case the function $f(x)$ was replaced by the design matrix
-$\bm{X}$ and the unknown linear regression parameters $\bm{\beta}$,
-that is $\bm{f}=\bm{X}\bm{\beta}$. In linear regression we can 
-simply invert a matrix and obtain the parameters $\beta$ by
-
-!bt
-\[
-\bm{\beta}=\left(\bm{X}^T\bm{X}\right)^{-1}\bm{X}^T\bm{y}.
-\]
-!et
-
-In iterative fitting or additive modeling, we minimize the cost function with respect to the parameters $\beta_m$ and $\gamma_m$.
+More material will be added here, see handwritten notes also.
 
 
 !split
-===== Iterative Fitting, Regression and Squared-error Cost Function =====
+===== Ridge and LASSO Regression =====
 
-The way we proceed is as follows (here we specialize to the squared-error cost function)
+Let us remind ourselves about the expression for the standard Mean Squared Error (MSE) which we used to define our cost function and the equations for the ordinary least squares (OLS) method, that is 
+our optimization problem is
+!bt
+\[
+{\displaystyle \min_{\bm{\beta}\in {\mathbb{R}}^{p}}}\frac{1}{n}\left\{\left(\bm{y}-\bm{X}\bm{\beta}\right)^T\left(\bm{y}-\bm{X}\bm{\beta}\right)\right\}.
+\]
+!et
+or we can state it as
+!bt
+\[
+{\displaystyle \min_{\bm{\beta}\in
+{\mathbb{R}}^{p}}}\frac{1}{n}\sum_{i=0}^{n-1}\left(y_i-\tilde{y}_i\right)^2=\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2,
+\]
+!et
+where we have used the definition of  a norm-2 vector, that is
+!bt
+\[
+\vert\vert \bm{x}\vert\vert_2 = \sqrt{\sum_i x_i^2}. 
+\]
+!et
 
-o Establish a cost function, here ${\cal C}(\bm{y},\bm{f}) = \frac{1}{n} \sum_{i=0}^{n-1}(y_i-f_M(x_i))^2$ with $f_M(x) = \sum_{i=1}^M \beta_m b(x;\gamma_m)$.
-o Initialize with a guess $f_0(x)$. It could be one or even zero or some random numbers.
-o For $m=1:M$
-  o minimize $\sum_{i=0}^{n-1}(y_i-f_{m-1}(x_i)-\beta b(x;\gamma))^2$ wrt $\gamma$ and $\beta$
-  o This gives the optimal values $\beta_m$ and $\gamma_m$
-  o Determine then the new values $f_m(x)=f_{m-1}(x) +\beta_m b(x;\gamma_m)$
+By minimizing the above equation with respect to the parameters
+$\bm{\beta}$ we could then obtain an analytical expression for the
+parameters $\bm{\beta}$.  We can add a regularization parameter $\lambda$ by
+defining a new cost function to be optimized, that is
 
-We could use any of the algorithms we have discussed till now. If we
-use trees, $\gamma$ parameterizes the split variables and split points
-at the internal nodes, and the predictions at the terminal nodes.
+!bt
+\[
+{\displaystyle \min_{\bm{\beta}\in
+{\mathbb{R}}^{p}}}\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_2^2
+\]
+!et
+
+which leads to the Ridge regression minimization problem where we
+require that $\vert\vert \bm{\beta}\vert\vert_2^2\le t$, where $t$ is
+a finite number larger than zero. By defining
+
+!bt
+\[
+C(\bm{X},\bm{\beta})=\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_1,
+\]
+!et
+
+we have a new optimization equation
+!bt
+\[
+{\displaystyle \min_{\bm{\beta}\in
+{\mathbb{R}}^{p}}}\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_1
+\]
+!et
+which leads to Lasso regression. Lasso stands for least absolute shrinkage and selection operator. 
+
+Here we have defined the norm-1 as 
+!bt
+\[
+\vert\vert \bm{x}\vert\vert_1 = \sum_i \vert x_i\vert. 
+\]
+!et
 
 
 !split
-===== Squared-Error Example and Iterative Fitting =====
+===== More on Ridge Regression =====
 
-To better understand what happens, let us develop the steps for the iterative fitting using the above squared error function.
-
-For simplicity we assume also that our functions $b(x;\gamma)=1+\gamma x$. 
-
-This means that for every iteration $m$, we need to optimize
+Using the matrix-vector expression for Ridge regression,
 
 !bt
 \[
-(\beta_m,\gamma_m) = \mathrm{argmin}_{\beta,\gamma}\hspace{0.1cm} \sum_{i=0}^{n-1}(y_i-f_{m-1}(x_i)-\beta b(x;\gamma))^2=\sum_{i=0}^{n-1}(y_i-f_{m-1}(x_i)-\beta(1+\gamma x_i))^2.
+C(\bm{X},\bm{\beta})=\frac{1}{n}\left\{(\bm{y}-\bm{X}\bm{\beta})^T(\bm{y}-\bm{X}\bm{\beta})\right\}+\lambda\bm{\beta}^T\bm{\beta},
 \]
 !et
 
-We start our iteration by simply setting $f_0(x)=0$. 
-Taking the derivatives  with respect to $\beta$ and $\gamma$ we obtain
+by taking the derivatives with respect to $\bm{\beta}$ we obtain then
+a slightly modified matrix inversion problem which for finite values
+of $\lambda$ does not suffer from singularity problems. We obtain
+
 !bt
 \[
-\frac{\partial {\cal C}}{\partial \beta} = -2\sum_{i}(1+\gamma x_i)(y_i-\beta(1+\gamma x_i))=0,
+\bm{\beta}^{\mathrm{Ridge}} = \left(\bm{X}^T\bm{X}+\lambda\bm{I}\right)^{-1}\bm{X}^T\bm{y},
 \]
 !et
+
+with $\bm{I}$ being a $p\times p$ identity matrix with the constraint that
+
+!bt
+\[
+\sum_{i=0}^{p-1} \beta_i^2 \leq t,
+\]
+!et
+
+with $t$ a finite positive number. 
+
+We see that Ridge regression is nothing but the standard
+OLS with a modified diagonal term added to $\bm{X}^T\bm{X}$. The
+consequences, in particular for our discussion of the bias-variance tradeoff 
+are rather interesting.
+
+Furthermore, if we use the result above in terms of the SVD decomposition (our analysis was done for the OLS method), we had
+!bt
+\[
+(\bm{X}\bm{X}^T)\bm{U} = \bm{U}\bm{D}.
+\]
+!et
+
+We can  analyse the OLS solutions in terms of the eigenvectors (the columns) of the right singular value matrix $\bm{U}$ as
+!bt
+\[
+\bm{X}\bm{\beta} = \bm{X}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}\bm{X}^T\bm{y}=\bm{U\Sigma V^T}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}(\bm{U\Sigma V^T})^T\bm{y}=\bm{U}\bm{U}^T\bm{y}
+\]
+!et
+
+
+For Ridge regression this becomes
+
+!bt
+\[
+\bm{X}\bm{\beta}^{\mathrm{Ridge}} = \bm{U\Sigma V^T}\left(\bm{V}\bm{D}\bm{V}^T+\lambda\bm{I} \right)^{-1}(\bm{U\Sigma V^T})^T\bm{y}=\sum_{j=0}^{p-1}\bm{u}_j\bm{u}_j^T\frac{\sigma_j^2}{\sigma_j^2+\lambda}\bm{y},
+\]
+!et
+
+with the vectors $\bm{u}_j$ being the columns of $\bm{U}$. 
+
+!split
+===== Interpreting the Ridge results =====
+
+Since $\lambda \geq 0$, it means that compared to OLS, we have 
+
+!bt
+\[
+\frac{\sigma_j^2}{\sigma_j^2+\lambda} \leq 1. 
+\]
+!et
+
+Ridge regression finds the coordinates of $\bm{y}$ with respect to the
+orthonormal basis $\bm{U}$, it then shrinks the coordinates by
+$\frac{\sigma_j^2}{\sigma_j^2+\lambda}$. Recall that the SVD has
+eigenvalues ordered in a descending way, that is $\sigma_i \geq
+\sigma_{i+1}$.
+
+For small eigenvalues $\sigma_i$ it means that their contributions become less important, a fact which can be used to reduce the number of degrees of freedom.
+Actually, calculating the variance of $\bm{X}\bm{v}_j$ shows that this quantity is equal to $\sigma_j^2/n$.
+With a parameter $\lambda$ we can thus shrink the role of specific parameters.  
+
+
+!split
+===== More interpretations =====
+
+For the sake of simplicity, let us assume that the design matrix is orthonormal, that is 
+
+!bt
+\[
+\bm{X}^T\bm{X}=(\bm{X}^T\bm{X})^{-1} =\bm{I}. 
+\]
+!et
+
+In this case the standard OLS results in 
+!bt
+\[
+\bm{\beta}^{\mathrm{OLS}} = \bm{X}^T\bm{y}=\sum_{i=0}^{p-1}\bm{u}_j\bm{u}_j^T\bm{y},
+\]
+!et
+
 and
+
 !bt
 \[
-\frac{\partial {\cal C}}{\partial \gamma} =-2\sum_{i}\beta x_i(y_i-\beta(1+\gamma x_i))=0.
-\]
-!et
-We can then rewrite these equations as (defining $\bm{w}=\bm{e}+\gamma \bm{x})$ with $\bm{e}$ being the unit vector)
-!bt
-\[
-\gamma \bm{w}^T(\bm{y}-\beta\gamma \bm{w})=0,
-\]
-!et
-which gives us $\beta = \bm{w}^T\bm{y}/(\bm{w}^T\bm{w})$. Similarly we have 
-!bt
-\[
-\beta\gamma \bm{x}^T(\bm{y}-\beta(1+\gamma \bm{x}))=0,
+\bm{\beta}^{\mathrm{Ridge}} = \left(\bm{I}+\lambda\bm{I}\right)^{-1}\bm{X}^T\bm{y}=\left(1+\lambda\right)^{-1}\bm{\beta}^{\mathrm{OLS}},
 \]
 !et
 
-which leads to $\gamma =(\bm{x}^T\bm{y}-\beta\bm{x}^T\bm{e})/(\beta\bm{x}^T\bm{x})$.  Inserting
-for $\beta$ gives us an equation for $\gamma$. This is a non-linear equation in the unknown $\gamma$ and has to be solved numerically. 
+that is the Ridge estimator scales the OLS estimator by the inverse of a factor $1+\lambda$, and
+the Ridge estimator converges to zero when the hyperparameter goes to
+infinity.
 
-The solution to these two equations gives us in turn $\beta_1$ and $\gamma_1$ leading to the new expression for $f_1(x)$ as
-$f_1(x) = \beta_1(1+\gamma_1x)$. Doing this $M$ times results in our final estimate for the function $f$. 
+We will come back to more interpreations after we have gone through some of the statistical analysis part. 
+
+For more discussions of Ridge and Lasso regression, "Wessel van Wieringen's":"https://arxiv.org/abs/1509.09169" article is highly recommended.
+Similarly, "Mehta et al's article":"https://arxiv.org/abs/1803.08823" is also recommended.
+
+
+!split 
+===== A better understanding of regularization =====
+
+The parameter $\lambda$ that we have introduced in the Ridge (and
+Lasso as well) regression is often called a regularization parameter
+or shrinkage parameter. It is common to call it a hyperparameter. What does it mean mathemtically?
+
+Here we will first look at how to analyze the difference between the
+standard OLS equations and the Ridge expressions in terms of a linear
+algebra analysis using the SVD algorithm. Thereafter, we will link
+(see the material on the bias-variance tradeoff below) these
+observation to the statisical analysis of the results. In particular
+we consider how the variance of the parameters $\bm{\beta}$ is
+affected by changing the parameter $\lambda$.
+
+!split
+===== Decomposing the OLS and Ridge expressions =====
+
+We have our design matrix
+ $\bm{X}\in {\mathbb{R}}^{n\times p}$. With the SVD we decompose it as 
+
+!bt 
+\[
+\bm{X} = \bm{U\Sigma V^T},
+\]
+!et
+
+with $\bm{U}\in {\mathbb{R}}^{n\times n}$, $\bm{\Sigma}\in {\mathbb{R}}^{n\times p}$
+and $\bm{V}\in {\mathbb{R}}^{p\times p}$.
+
+The matrices $\bm{U}$ and $\bm{V}$ are unitary/orthonormal matrices, that is in case the matrices are real we have $\bm{U}^T\bm{U}=\bm{U}\bm{U}^T=\bm{I}$ and $\bm{V}^T\bm{V}=\bm{V}\bm{V}^T=\bm{I}$.
 
 
 
 !split
-===== Iterative Fitting, Classification and AdaBoost =====
+===== Introducing the Covariance and Correlation functions  =====
 
-Let us consider a binary classification problem with two outcomes $y_i \in \{-1,1\}$ and $i=0,1,2,\dots,n-1$ as our set of
-observations. We define a classification function $G(x)$ which produces a prediction taking one or the other of the two values 
-$\{-1,1\}$.
+Before we discuss the link between for example Ridge regression and the singular value decomposition, we need to remind ourselves about
+the definition of the covariance and the correlation function. These are quantities 
 
-The error rate of the training sample is then
-
+Suppose we have defined two vectors
+$\hat{x}$ and $\hat{y}$ with $n$ elements each. The covariance matrix $\bm{C}$ is defined as 
 !bt
 \[
-\mathrm{\overline{err}}=\frac{1}{n} \sum_{i=0}^{n-1} I(y_i\ne G(x_i)). 
+\bm{C}[\bm{x},\bm{y}] = \begin{bmatrix} \mathrm{cov}[\bm{x},\bm{x}] & \mathrm{cov}[\bm{x},\bm{y}] \\
+                              \mathrm{cov}[\bm{y},\bm{x}] & \mathrm{cov}[\bm{y},\bm{y}] \\
+             \end{bmatrix},
+\]
+!et
+where for example
+!bt
+\[
+\mathrm{cov}[\bm{x},\bm{y}] =\frac{1}{n} \sum_{i=0}^{n-1}(x_i- \overline{x})(y_i- \overline{y}).
+\]
+!et
+With this definition and recalling that the variance is defined as
+!bt
+\[
+\mathrm{var}[\bm{x}]=\frac{1}{n} \sum_{i=0}^{n-1}(x_i- \overline{x})^2,
+\]
+!et
+we can rewrite the covariance matrix as 
+!bt
+\[
+\bm{C}[\bm{x},\bm{y}] = \begin{bmatrix} \mathrm{var}[\bm{x}] & \mathrm{cov}[\bm{x},\bm{y}] \\
+                              \mathrm{cov}[\bm{x},\bm{y}] & \mathrm{var}[\bm{y}] \\
+             \end{bmatrix}.
 \]
 !et
 
-The iterative procedure starts with defining a weak classifier whose
-error rate is barely better than random guessing.  The iterative
-procedure in boosting is to sequentially apply a  weak
-classification algorithm to repeatedly modified versions of the data
-producing a sequence of weak classifiers $G_m(x)$.
+The covariance takes values between zero and infinity and may thus
+lead to problems with loss of numerical precision for particularly
+large values. It is common to scale the covariance matrix by
+introducing instead the correlation matrix defined via the so-called
+correlation function
 
-Here we will express our  function $f(x)$ in terms of $G(x)$. That is
 !bt
 \[
-f_M(x) = \sum_{i=1}^M \beta_m b(x;\gamma_m),
-\]
-!et
-will be a function of 
-!bt
-\[
-G_M(x) = \mathrm{sign} \sum_{i=1}^M \alpha_m G_m(x).
+\mathrm{corr}[\bm{x},\bm{y}]=\frac{\mathrm{cov}[\bm{x},\bm{y}]}{\sqrt{\mathrm{var}[\bm{x}] \mathrm{var}[\bm{y}]}}.
 \]
 !et
 
+The correlation function is then given by values $\mathrm{corr}[\bm{x},\bm{y}]
+\in [-1,1]$. This avoids eventual problems with too large values. We
+can then define the correlation matrix for the two vectors $\bm{x}$
+and $\bm{y}$ as
+
+!bt
+\[
+\bm{K}[\bm{x},\bm{y}] = \begin{bmatrix} 1 & \mathrm{corr}[\bm{x},\bm{y}] \\
+                              \mathrm{corr}[\bm{y},\bm{x}] & 1 \\
+             \end{bmatrix},
+\]
+!et
+
+In the above example this is the function we constructed using _pandas_.
+
+!split
+===== Correlation Function and Design/Feature Matrix =====
+
+In our derivation of the various regression algorithms like _Ordinary Least Squares_ or _Ridge regression_
+we defined the design/feature matrix $\bm{X}$ as
+
+!bt
+\[
+\bm{X}=\begin{bmatrix}
+x_{0,0} & x_{0,1} & x_{0,2}& \dots & \dots x_{0,p-1}\\
+x_{1,0} & x_{1,1} & x_{1,2}& \dots & \dots x_{1,p-1}\\
+x_{2,0} & x_{2,1} & x_{2,2}& \dots & \dots x_{2,p-1}\\
+\dots & \dots & \dots & \dots \dots & \dots \\
+x_{n-2,0} & x_{n-2,1} & x_{n-2,2}& \dots & \dots x_{n-2,p-1}\\
+x_{n-1,0} & x_{n-1,1} & x_{n-1,2}& \dots & \dots x_{n-1,p-1}\\
+\end{bmatrix},
+\]
+!et
+with $\bm{X}\in {\mathbb{R}}^{n\times p}$, with the predictors/features $p$  refering to the column numbers and the
+entries $n$ being the row elements.
+We can rewrite the design/feature matrix in terms of its column vectors as
+!bt
+\[
+\bm{X}=\begin{bmatrix} \bm{x}_0 & \bm{x}_1 & \bm{x}_2 & \dots & \dots & \bm{x}_{p-1}\end{bmatrix},
+\]
+!et
+with a given vector
+!bt
+\[
+\bm{x}_i^T = \begin{bmatrix}x_{0,i} & x_{1,i} & x_{2,i}& \dots & \dots x_{n-1,i}\end{bmatrix}.
+\]
+!et
+
+With these definitions, we can now rewrite our $2\times 2$
+correaltion/covariance matrix in terms of a moe general design/feature
+matrix $\bm{X}\in {\mathbb{R}}^{n\times p}$. This leads to a $p\times p$
+covariance matrix for the vectors $\bm{x}_i$ with $i=0,1,\dots,p-1$
+
+!bt
+\[
+\bm{C}[\bm{x}] = \begin{bmatrix}
+\mathrm{var}[\bm{x}_0] & \mathrm{cov}[\bm{x}_0,\bm{x}_1]  & \mathrm{cov}[\bm{x}_0,\bm{x}_2] & \dots & \dots & \mathrm{cov}[\bm{x}_0,\bm{x}_{p-1}]\\
+\mathrm{cov}[\bm{x}_1,\bm{x}_0] & \mathrm{var}[\bm{x}_1]  & \mathrm{cov}[\bm{x}_1,\bm{x}_2] & \dots & \dots & \mathrm{cov}[\bm{x}_1,\bm{x}_{p-1}]\\
+\mathrm{cov}[\bm{x}_2,\bm{x}_0]   & \mathrm{cov}[\bm{x}_2,\bm{x}_1] & \mathrm{var}[\bm{x}_2] & \dots & \dots & \mathrm{cov}[\bm{x}_2,\bm{x}_{p-1}]\\
+\dots & \dots & \dots & \dots & \dots & \dots \\
+\dots & \dots & \dots & \dots & \dots & \dots \\
+\mathrm{cov}[\bm{x}_{p-1},\bm{x}_0]   & \mathrm{cov}[\bm{x}_{p-1},\bm{x}_1] & \mathrm{cov}[\bm{x}_{p-1},\bm{x}_{2}]  & \dots & \dots  & \mathrm{var}[\bm{x}_{p-1}]\\
+\end{bmatrix},
+\]
+!et
+and the correlation matrix
+!bt
+\[
+\bm{K}[\bm{x}] = \begin{bmatrix}
+1 & \mathrm{corr}[\bm{x}_0,\bm{x}_1]  & \mathrm{corr}[\bm{x}_0,\bm{x}_2] & \dots & \dots & \mathrm{corr}[\bm{x}_0,\bm{x}_{p-1}]\\
+\mathrm{corr}[\bm{x}_1,\bm{x}_0] & 1  & \mathrm{corr}[\bm{x}_1,\bm{x}_2] & \dots & \dots & \mathrm{corr}[\bm{x}_1,\bm{x}_{p-1}]\\
+\mathrm{corr}[\bm{x}_2,\bm{x}_0]   & \mathrm{corr}[\bm{x}_2,\bm{x}_1] & 1 & \dots & \dots & \mathrm{corr}[\bm{x}_2,\bm{x}_{p-1}]\\
+\dots & \dots & \dots & \dots & \dots & \dots \\
+\dots & \dots & \dots & \dots & \dots & \dots \\
+\mathrm{corr}[\bm{x}_{p-1},\bm{x}_0]   & \mathrm{corr}[\bm{x}_{p-1},\bm{x}_1] & \mathrm{corr}[\bm{x}_{p-1},\bm{x}_{2}]  & \dots & \dots  & 1\\
+\end{bmatrix},
+\]
+!et
 
 
 !split
-===== Adaptive Boosting, AdaBoost =====
+===== Covariance Matrix Examples =====
 
-In our iterative procedure we define thus
-!bt
-\[
-f_m(x) = f_{m-1}(x)+\beta_mG_m(x).
-\]
-!et
 
-The simplest possible cost function which leads (also simple from a computational point of view) to the AdaBoost algorithm is the
-exponential cost/loss function defined as
-!bt
-\[
-C(\bm{y},\bm{f}) = \sum_{i=0}^{n-1}\exp{(-y_i(f_{m-1}(x_i)+\beta G(x_i))}.
-\]
-!et
+The Numpy function _np.cov_ calculates the covariance elements using
+the factor $1/(n-1)$ instead of $1/n$ since it assumes we do not have
+the exact mean values.  The following simple function uses the
+_np.vstack_ function which takes each vector of dimension $1\times n$
+and produces a $2\times n$ matrix $\bm{W}$
 
-We optimize $\beta$ and $G$ for each value of $m=1:M$ as we did in the regression case.
-This is normally done in two steps. Let us however first rewrite the cost function as 
 
 !bt
 \[
-C(\bm{y},\bm{f}) = \sum_{i=0}^{n-1}w_i^{m}\exp{(-y_i\beta G(x_i))},
-\]
-!et
-where we have defined $w_i^m= \exp{(-y_if_{m-1}(x_i))}$.
-
-!split
-===== Building up AdaBoost =====
-
-First, for any $\beta > 0$, we optimize $G$ by setting
-!bt
-\[
-G_m(x) = \mathrm{sign} \sum_{i=0}^{n-1} w_i^m I(y_i \ne G_(x_i)),
-\]
-!et
-which is the classifier that minimizes the weighted error rate in predicting $y$.
-
-We can do this by rewriting
-!bt
-\[
-\exp{-(\beta)}\sum_{y_i=G(x_i)}w_i^m+\exp{(\beta)}\sum_{y_i\ne G(x_i)}w_i^m,
-\]
-!et
-which can be rewritten as
-!bt
-\[
-(\exp{(\beta)}-\exp{-(\beta)})\sum_{i=0}^{n-1}w_i^mI(y_i\ne G(x_i))+\exp{(-\beta)}\sum_{i=0}^{n-1}w_i^m=0,
-\]
-!et
-which leads to
-!bt
-\[
-\beta_m = \frac{1}{2}\log{\frac{1-\mathrm{\overline{err}}}{\mathrm{\overline{err}}}},
-\]
-!et
-where we have redefined the error as 
-!bt
-\[
-\mathrm{\overline{err}}_m=\frac{1}{n}\frac{\sum_{i=0}^{n-1}w_i^mI(y_i\ne G(x_i)}{\sum_{i=0}^{n-1}w_i^m},
-\]
-!et
-which leads to an update of
-!bt
-\[
-f_m(x) = f_{m-1}(x) +\beta_m G_m(x).
-\]
-!et
-This leads to the new weights
-!bt
-\[
-w_i^{m+1} = w_i^m \exp{(-y_i\beta_m G_m(x_i))}
+\bm{W} = \begin{bmatrix} x_0 & y_0 \\
+                          x_1 & y_1 \\
+                          x_2 & y_2\\
+                          \dots & \dots \\
+                          x_{n-2} & y_{n-2}\\
+                          x_{n-1} & y_{n-1} & 
+             \end{bmatrix},
 \]
 !et
 
-
-!split
-===== Adaptive boosting: AdaBoost, Basic Algorithm =====
-
-The algorithm here is rather straightforward. Assume that our weak
-classifier is a decision tree and we consider a binary set of outputs
-with $y_i \in \{-1,1\}$ and $i=0,1,2,\dots,n-1$ as our set of
-observations. Our design matrix is given in terms of the
-feature/predictor vectors
-$\bm{X}=[\bm{x}_0\bm{x}_1\dots\bm{x}_{p-1}]$. Finally, we define also a
-classifier determined by our data via a function $G(x)$. This function tells us how well we are able to classify our outputs/targets $\bm{y}$. 
-
-We have already defined the misclassification error $\mathrm{err}$ as
-!bt
-\[
-\mathrm{err}=\frac{1}{n}\sum_{i=0}^{n-1}I(y_i\ne G(x_i)),
-\]
-!et
-where the function $I()$ is one if we misclassify and zero if we classify correctly. 
-
-!split
-===== Basic Steps of AdaBoost =====
-
-With the above definitions we are now ready to set up the algorithm for AdaBoost.
-The basic idea is to set up weights which will be used to scale the correctly classified and the misclassified cases.
-o We start by initializing all weights to $w_i = 1/n$, with $i=0,1,2,\dots n-1$. It is easy to see that we must have $\sum_{i=0}^{n-1}w_i = 1$.
-o We rewrite the misclassification error as 
-!bt
-\[
-\mathrm{\overline{err}}_m=\frac{\sum_{i=0}^{n-1}w_i^m I(y_i\ne G(x_i))}{\sum_{i=0}^{n-1}w_i},
-\]
-!et
-o Then we start looping over all attempts at classifying, namely we start an iterative process for $m=1:M$, where $M$ is the final number of classifications. Our given classifier could for example be a plain decision tree.
-  o Fit then a given classifier to the training set using the weights $w_i$.
-  o Compute then $\mathrm{err}$ and figure out which events are classified properly and which are classified wrongly.
-  o Define a quantity $\alpha_{m} = \log{(1-\mathrm{\overline{err}}_m)/\mathrm{\overline{err}}_m}$
-  o Set the new weights to $w_i = w_i\times \exp{(\alpha_m I(y_i\ne G(x_i)}$.
-o Compute the new classifier $G(x)= \sum_{i=0}^{n-1}\alpha_m I(y_i\ne G(x_i)$.
-
-For the iterations with $m \le 2$ the weights are modified
-individually at each steps. The observations which were misclassified
-at iteration $m-1$ have a weight which is larger than those which were
-classified properly. As this proceeds, the observations which were
-difficult to classifiy correctly are given a larger influence. Each
-new classification step $m$ is then forced to concentrate on those
-observations that are missed in the previous iterations.
-
-
-
-!split
-===== AdaBoost Examples =====
-
-Using _Scikit-Learn_ it is easy to apply the adaptive boosting algorithm, as done here.
+which in turn is converted into into the $2\times 2$ covariance matrix
+$\bm{C}$ via the Numpy function _np.cov()_. We note that we can also calculate
+the mean value of each set of samples $\bm{x}$ etc using the Numpy
+function _np.mean(x)_. We can also extract the eigenvalues of the
+covariance matrix through the _np.linalg.eig()_ function.
 
 !bc pycod
-from sklearn.ensemble import AdaBoostClassifier
-
-ada_clf = AdaBoostClassifier(
-    DecisionTreeClassifier(max_depth=1), n_estimators=200,
-    algorithm="SAMME.R", learning_rate=0.5, random_state=42)
-ada_clf.fit(X_train, y_train)
-
-from sklearn.ensemble import AdaBoostClassifier
-
-ada_clf = AdaBoostClassifier(
-    DecisionTreeClassifier(max_depth=1), n_estimators=200,
-    algorithm="SAMME.R", learning_rate=0.5, random_state=42)
-ada_clf.fit(X_train_scaled, y_train)
-y_pred = ada_clf.predict(X_test_scaled)
-skplt.metrics.plot_confusion_matrix(y_test, y_pred, normalize=True)
-plt.show()
-y_probas = ada_clf.predict_proba(X_test_scaled)
-skplt.metrics.plot_roc(y_test, y_probas)
-plt.show()
-skplt.metrics.plot_cumulative_gain(y_test, y_probas)
-plt.show()
-!ec
-
-
-!split
-===== AdaBoost for Regression =====
-
-Here we present "Drucker's AdaBoost":"https://pdfs.semanticscholar.org/8d49/e2dedb817f2c3330e74b63c5fc86d2399ce3.pdf" tailored for regression.
-
-In bagging, each training example is equally likely to be
-picked. In boosting, the probability of a particular
-example being in the training set of a particular machine
-depends on the performance of the prior machines on
-that example. The following is a modification of
-Adaboost by Drucker.
-
-Start by selecting a set of training data $n$ and assign to each entry a weight $w_i=1$ for $i=1,2,\dots,n$. As we have done earlier, we could pick say $80\%$ of the data set for training. The algorithm runs as follows:
-o We define the probability that the  training sample $i$ is in the set by $p_i = w_i/\sum_iw_i$. We pick $n$ samples (with replacement) to form our training set. We pick a number uniformly in the range $[0,\sum_iw_i]$.
-o We choose then a regression machine (for example plain linear regression or a simple decision tree). A given regression machine makes then a hypothesis.
-o Using every member of the training set with the chosen regression machine we obtain then a prediction $\tilde{y}_i$.
-o We calculate then the loss function $L_i$ for each training sample. We can use various types of loss function as long as we have a value
-$L_i\in [0,1]$. 
-
-!split
-===== Gradient boosting: Basics with Steepest Descent =====
-
-Gradient boosting is again a similar technique to Adaptive boosting,
-it combines so-called weak classifiers or regressors into a strong
-method via a series of iterations.
-
-In order to understand the method, let us illustrate its basics by
-bringing back the essential steps in linear regression, where our cost
-function was the least squares function.
-
-!split
-===== The Squared-Error again! Steepest Descent =====
-
-We start again with our cost function ${\cal C}(\bm{y}m\bm{f})=\sum_{i=0}^{n-1}{\cal L}(y_i, f(x_i))$ where we want to minimize
-This means that for every iteration, we need to optimize
-
-!bt
-\[
-(\hat{\bm{f}}) = \mathrm{argmin}_{\bm{f}}\hspace{0.1cm} \sum_{i=0}^{n-1}(y_i-f(x_i))^2.
-\]
-!et
-
-We define a real function $h_m(x)$ that defines our final function $f_M(x)$ as
-!bt
-\[
-f_M(x) = \sum_{m=0}^M h_m(x).
-\]
-!et
-
-In the steepest decent approach we approximate $h_m(x) = -\rho_m g_m(x)$, where $\rho_m$ is a scalar and $g_m(x)$ the gradient defined as
-!bt
-\[
-g_m(x_i) = \left[ \frac{\partial {\cal L}(y_i, f(x_i))}{\partial f(x_i)}\right]_{f(x_i)=f_{m-1}(x_i)}.
-\]
-!et
-
-With the new gradient we can update $f_m(x) = f_{m-1}(x) -\rho_m g_m(x)$. Using the above squared-error function we see that
-the gradient is $g_m(x_i) = -2(y_i-f(x_i))$.
-
-Choosing $f_0(x)=0$ we obtain $g_m(x) = -2y_i$ and inserting this into the minimization problem for the cost function we have
-!bt
-\[
-(\rho_1) = \mathrm{argmin}_{\rho}\hspace{0.1cm} \sum_{i=0}^{n-1}(y_i+2\rho y_i)^2.
-\]
-!et
-
-!split
-===== Steepest Descent Example =====
-
-Optimizing with respect to $\rho$ we obtain (taking the derivative) that $\rho_1 = -1/2$. We have then that
-!bt
-\[
-f_1(x) = f_{0}(x) -\rho_1 g_1(x)=-y_i.
-\]
-!et
-We can then proceed and compute
-!bt
-\[
-g_2(x_i) = \left[ \frac{\partial {\cal L}(y_i, f(x_i))}{\partial f(x_i)}\right]_{f(x_i)=f_{1}(x_i)=y_i}=-4y_i,
-\]
-!et
-and find a new value for $\rho_2=-1/2$ and continue till we have reached $m=M$. We can modify the steepest descent method, or steepest boosting, by introducing what is called _gradient boosting_. 
-
-!split
-===== Gradient Boosting, algorithm =====
-
-Suppose we have a cost function $C(f)=\sum_{i=0}^{n-1}L(y_i, f(x_i))$ where $y_i$ is our target and $f(x_i)$ the function which is meant to model $y_i$. The above cost function could be our standard  squared-error  function
-!bt
-\[
-C(\bm{y},\bm{f})=\sum_{i=0}^{n-1}(y_i-f(x_i))^2.
-\]
-!et
-
-The way we proceed in an iterative fashion is to
-o Initialize our estimate $f_0(x)$.
-o For $m=1:M$, we
-  o compute the negative gradient vector $\bm{u}_m = -\partial C(\bm{y},\bm{f})/\partial \bm{f}(x)$ at $f(x) = f_{m-1}(x)$;
-  o fit the so-called base-learner to the negative gradient $h_m(u_m,x)$;
-  o update the estimate $f_m(x) = f_{m-1}(x)+\nu h_m(u_m,x)$;
-o The final estimate is then $f_M(x) = \sum_{m=1}^M\nu h_m(u_m,x)$.
-
-!split
-===== Gradient Boosting, Examples of Regression =====
-!bc pycod
-import matplotlib.pyplot as plt
+# Importing various packages
 import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.preprocessing import StandardScaler
-import scikitplot as skplt
-from sklearn.metrics import mean_squared_error
-
 n = 100
-maxdegree = 6
-
-# Make data set.
-x = np.linspace(-3, 3, n).reshape(-1, 1)
-y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
-
-error = np.zeros(maxdegree)
-bias = np.zeros(maxdegree)
-variance = np.zeros(maxdegree)
-polydegree = np.zeros(maxdegree)
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-for degree in range(1,maxdegree):
-    model = GradientBoostingRegressor(max_depth=degree, n_estimators=100, learning_rate=1.0)  
-    model.fit(X_train_scaled,y_train)
-    y_pred = model.predict(X_test_scaled)
-    polydegree[degree] = degree
-    error[degree] = np.mean( np.mean((y_test - y_pred)**2) )
-    bias[degree] = np.mean( (y_test - np.mean(y_pred))**2 )
-    variance[degree] = np.mean( np.var(y_pred) )
-    print('Max depth:', degree)
-    print('Error:', error[degree])
-    print('Bias^2:', bias[degree])
-    print('Var:', variance[degree])
-    print('{} >= {} + {} = {}'.format(error[degree], bias[degree], variance[degree], bias[degree]+variance[degree]))
-
-plt.xlim(1,maxdegree-1)
-plt.plot(polydegree, error, label='Error')
-plt.plot(polydegree, bias, label='bias')
-plt.plot(polydegree, variance, label='Variance')
-plt.legend()
-save_fig("gdregression")
-plt.show()
+x = np.random.normal(size=n)
+print(np.mean(x))
+y = 4+3*x+np.random.normal(size=n)
+print(np.mean(y))
+W = np.vstack((x, y))
+C = np.cov(W)
+print(C)
 !ec
 
-
 !split
-===== Gradient Boosting, Classification Example =====
-!bc pycod
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.model_selection import  train_test_split 
-from sklearn.datasets import load_breast_cancer
-import scikitplot as skplt
-from sklearn.ensemble import GradientBoostingClassifier
-from sklearn.model_selection import cross_validate
+===== Correlation Matrix  =====
 
-# Load the data
-cancer = load_breast_cancer()
-
-X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,random_state=0)
-print(X_train.shape)
-print(X_test.shape)
-#now scale the data
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-gd_clf = GradientBoostingClassifier(max_depth=3, n_estimators=100, learning_rate=1.0)  
-gd_clf.fit(X_train_scaled, y_train)
-#Cross validation
-accuracy = cross_validate(gd_clf,X_test_scaled,y_test,cv=10)['test_score']
-print(accuracy)
-print("Test set accuracy with Random Forests and scaled data: {:.2f}".format(gd_clf.score(X_test_scaled,y_test)))
-
-import scikitplot as skplt
-y_pred = gd_clf.predict(X_test_scaled)
-skplt.metrics.plot_confusion_matrix(y_test, y_pred, normalize=True)
-save_fig("gdclassiffierconfusion")
-plt.show()
-y_probas = gd_clf.predict_proba(X_test_scaled)
-skplt.metrics.plot_roc(y_test, y_probas)
-save_fig("gdclassiffierroc")
-plt.show()
-skplt.metrics.plot_cumulative_gain(y_test, y_probas)
-save_fig("gdclassiffiercgain")
-plt.show()
-!ec
-
-
-!split
-===== XGBoost: Extreme Gradient Boosting =====
-
-
-"XGBoost":"https://github.com/dmlc/xgboost" or Extreme Gradient
-Boosting, is an optimized distributed gradient boosting library
-designed to be highly efficient, flexible and portable. It implements
-machine learning algorithms under the Gradient Boosting
-framework. XGBoost provides a parallel tree boosting that solve many
-data science problems in a fast and accurate way. See the "article by Chen and Guestrin":"https://arxiv.org/abs/1603.02754".
-
-The authors design and build a highly scalable end-to-end tree
-boosting system. It has  a theoretically justified weighted quantile
-sketch for efficient proposal calculation. It introduces a novel sparsity-aware algorithm for parallel tree learning and an effective cache-aware block structure for out-of-core tree learning.
-
-It is now the algorithm which wins essentially all ML competitions!!!
-
-!split
-===== Regression Case =====
+The previous example can be converted into the correlation matrix by
+simply scaling the matrix elements with the variances.  We should also
+subtract the mean values for each column. This leads to the following
+code which sets up the correlations matrix for the previous example in
+a more brute force way. Here we scale the mean values for each column of the design matrix, calculate the relevant mean values and variances and then finally set up the $2\times 2$ correlation matrix (since we have only two vectors). 
 
 !bc pycod
-import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.model_selection import train_test_split
-import xgboost as xgb
-from sklearn.preprocessing import StandardScaler
-import scikitplot as skplt
-from sklearn.metrics import mean_squared_error
-
 n = 100
-maxdegree = 6
-
-# Make data set.
-x = np.linspace(-3, 3, n).reshape(-1, 1)
-y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
-
-error = np.zeros(maxdegree)
-bias = np.zeros(maxdegree)
-variance = np.zeros(maxdegree)
-polydegree = np.zeros(maxdegree)
-X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-for degree in range(maxdegree):
-    model =  xgb.XGBRegressor(objective ='reg:squarederror', colsaobjective ='reg:squarederror', colsample_bytree = 0.3, learning_rate = 0.1,max_depth = degree, alpha = 10, n_estimators = 200)
-
-    model.fit(X_train_scaled,y_train)
-    y_pred = model.predict(X_test_scaled)
-    polydegree[degree] = degree
-    error[degree] = np.mean( np.mean((y_test - y_pred)**2) )
-    bias[degree] = np.mean( (y_test - np.mean(y_pred))**2 )
-    variance[degree] = np.mean( np.var(y_pred) )
-    print('Max depth:', degree)
-    print('Error:', error[degree])
-    print('Bias^2:', bias[degree])
-    print('Var:', variance[degree])
-    print('{} >= {} + {} = {}'.format(error[degree], bias[degree], variance[degree], bias[degree]+variance[degree]))
-
-plt.xlim(1,maxdegree-1)
-plt.plot(polydegree, error, label='Error')
-plt.plot(polydegree, bias, label='bias')
-plt.plot(polydegree, variance, label='Variance')
-plt.legend()
-plt.show()
-
+# define two vectors                                                                                           
+x = np.random.random(size=n)
+y = 4+3*x+np.random.normal(size=n)
+#scaling the x and y vectors                                                                                   
+x = x - np.mean(x)
+y = y - np.mean(y)
+variance_x = np.sum(x@x)/n
+variance_y = np.sum(y@y)/n
+print(variance_x)
+print(variance_y)
+cov_xy = np.sum(x@y)/n
+cov_xx = np.sum(x@x)/n
+cov_yy = np.sum(y@y)/n
+C = np.zeros((2,2))
+C[0,0]= cov_xx/variance_x
+C[1,1]= cov_yy/variance_y
+C[0,1]= cov_xy/np.sqrt(variance_y*variance_x)
+C[1,0]= C[0,1]
+print(C)
 !ec
+
+We see that the matrix elements along the diagonal are one as they
+should be and that the matrix is symmetric. Furthermore, diagonalizing
+this matrix we easily see that it is a positive definite matrix.
+
+The above procedure with _numpy_ can be made more compact if we use _pandas_.
 
 !split
-===== Xgboost on the Cancer Data =====
+===== Correlation Matrix with Pandas =====
 
-As you will see from the confusion matrix below, XGBoots does an excellent job on the Wisconsin cancer data and outperforms essentially all agorithms we have discussed till now. 
+We whow here how we can set up the correlation matrix using _pandas_, as done in this simple code
 !bc pycod
-
-import matplotlib.pyplot as plt
 import numpy as np
-from sklearn.model_selection import  train_test_split 
-from sklearn.datasets import load_breast_cancer
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import cross_validate
-import scikitplot as skplt
-import xgboost as xgb
-# Load the data
-cancer = load_breast_cancer()
-
-X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,random_state=0)
-print(X_train.shape)
-print(X_test.shape)
-#now scale the data
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-
-xg_clf = xgb.XGBClassifier()
-xg_clf.fit(X_train_scaled,y_train)
-
-y_test = xg_clf.predict(X_test_scaled)
-
-print("Test set accuracy with Random Forests and scaled data: {:.2f}".format(xg_clf.score(X_test_scaled,y_test)))
-
-import scikitplot as skplt
-y_pred = xg_clf.predict(X_test_scaled)
-skplt.metrics.plot_confusion_matrix(y_test, y_pred, normalize=True)
-save_fig("xdclassiffierconfusion")
-plt.show()
-y_probas = xg_clf.predict_proba(X_test_scaled)
-skplt.metrics.plot_roc(y_test, y_probas)
-save_fig("xdclassiffierroc")
-plt.show()
-skplt.metrics.plot_cumulative_gain(y_test, y_probas)
-save_fig("gdclassiffiercgain")
-plt.show()
-
-
-xgb.plot_tree(xg_clf,num_trees=0)
-plt.rcParams['figure.figsize'] = [50, 10]
-save_fig("xgtree")
-plt.show()
-
-xgb.plot_importance(xg_clf)
-plt.rcParams['figure.figsize'] = [5, 5]
-save_fig("xgparams")
-plt.show()
-
+import pandas as pd
+n = 10
+x = np.random.normal(size=n)
+x = x - np.mean(x)
+y = 4+3*x+np.random.normal(size=n)
+y = y - np.mean(y)
+X = (np.vstack((x, y))).T
+print(X)
+Xpd = pd.DataFrame(X)
+print(Xpd)
+correlation_matrix = Xpd.corr()
+print(correlation_matrix)
 !ec
+
+
+We expand this model to the Franke function discussed above.
+
+!split
+===== Correlation Matrix with Pandas and the Franke function =====
+
+!bc pycod
+# Common imports
+import numpy as np
+import pandas as pd
+
+
+def FrankeFunction(x,y):
+	term1 = 0.75*np.exp(-(0.25*(9*x-2)**2) - 0.25*((9*y-2)**2))
+	term2 = 0.75*np.exp(-((9*x+1)**2)/49.0 - 0.1*(9*y+1))
+	term3 = 0.5*np.exp(-(9*x-7)**2/4.0 - 0.25*((9*y-3)**2))
+	term4 = -0.2*np.exp(-(9*x-4)**2 - (9*y-7)**2)
+	return term1 + term2 + term3 + term4
+
+
+def create_X(x, y, n ):
+	if len(x.shape) > 1:
+		x = np.ravel(x)
+		y = np.ravel(y)
+
+	N = len(x)
+	l = int((n+1)*(n+2)/2)		# Number of elements in beta
+	X = np.ones((N,l))
+
+	for i in range(1,n+1):
+		q = int((i)*(i+1)/2)
+		for k in range(i+1):
+			X[:,q+k] = (x**(i-k))*(y**k)
+
+	return X
+
+
+# Making meshgrid of datapoints and compute Franke's function
+n = 4
+N = 100
+x = np.sort(np.random.uniform(0, 1, N))
+y = np.sort(np.random.uniform(0, 1, N))
+z = FrankeFunction(x, y)
+X = create_X(x, y, n=n)    
+
+Xpd = pd.DataFrame(X)
+# subtract the mean values and set up the covariance matrix
+Xpd = Xpd - Xpd.mean()
+covariance_matrix = Xpd.cov()
+print(covariance_matrix)
+!ec
+
+We note here that the covariance is zero for the first rows and
+columns since all matrix elements in the design matrix were set to one
+(we are fitting the function in terms of a polynomial of degree $n$).
+
+This means that the variance for these elements will be zero and will
+cause problems when we set up the correlation matrix.  We can simply
+drop these elements and construct a correlation
+matrix without these elements. 
+
+
+!split
+===== Rewriting the Covariance and/or Correlation Matrix =====
+
+We can rewrite the covariance matrix in a more compact form in terms of the design/feature matrix $\bm{X}$ as 
+!bt
+\[
+\bm{C}[\bm{x}] = \frac{1}{n}\bm{X}^T\bm{X}= \mathbb{E}[\bm{X}^T\bm{X}].
+\]
+!et
+
+To see this let us simply look at a design matrix $\bm{X}\in {\mathbb{R}}^{2\times 2}$
+!bt
+\[
+\bm{X}=\begin{bmatrix}
+x_{00} & x_{01}\\
+x_{10} & x_{11}\\
+\end{bmatrix}=\begin{bmatrix}
+\bm{x}_{0} & \bm{x}_{1}\\
+\end{bmatrix}.
+\]
+!et
+
+If we then compute the expectation value
+!bt
+\[
+\mathbb{E}[\bm{X}^T\bm{X}] = \frac{1}{n}\bm{X}^T\bm{X}=\begin{bmatrix}
+x_{00}^2+x_{01}^2 & x_{00}x_{10}+x_{01}x_{11}\\
+x_{10}x_{00}+x_{11}x_{01} & x_{10}^2+x_{11}^2\\
+\end{bmatrix},
+\]
+!et
+which is just 
+!bt
+\[
+\bm{C}[\bm{x}_0,\bm{x}_1] = \bm{C}[\bm{x}]=\begin{bmatrix} \mathrm{var}[\bm{x}_0] & \mathrm{cov}[\bm{x}_0,\bm{x}_1] \\
+                              \mathrm{cov}[\bm{x}_1,\bm{x}_0] & \mathrm{var}[\bm{x}_1] \\
+             \end{bmatrix},
+\]
+!et
+where we wrote $$\bm{C}[\bm{x}_0,\bm{x}_1] = \bm{C}[\bm{x}]$$ to indicate that this the covariance of the vectors $\bm{x}$ of the design/feature matrix $\bm{X}$.
+
+It is easy to generalize this to a matrix $\bm{X}\in {\mathbb{R}}^{n\times p}$.
+
+
