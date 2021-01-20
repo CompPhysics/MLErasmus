@@ -520,32 +520,6 @@ involves a degree of randomness. This may be fully excluded when
 choosing $k=n$. This particular case is referred to as leave-one-out
 cross-validation (LOOCV). 
 
-!split 
-===== How to set up the cross-validation for Ridge and/or Lasso =====
-
-* Define a range of interest for the penalty parameter.
-
-* Divide the data set into training and test set comprising samples $\{1, \ldots, n\} \setminus i$ and $\{ i \}$, respectively.
-
-* Fit the linear regression model by means of ridge estimation  for each $\lambda$ in the grid using the training set, and the corresponding estimate of the error variance $\bm{\sigma}_{-i}^2(\lambda)$, as
-!bt
-\begin{align*}
-\bm{\beta}_{-i}(\lambda) & =  ( \bm{X}_{-i, \ast}^{T}
-\bm{X}_{-i, \ast} + \lambda \bm{I}_{pp})^{-1}
-\bm{X}_{-i, \ast}^{T} \bm{y}_{-i}
-\end{align*}
-!et 
-
-* Evaluate the prediction performance of these models on the test set by $\log\{L[y_i, \bm{X}_{i, \ast}; \bm{\beta}_{-i}(\lambda), \bm{\sigma}_{-i}^2(\lambda)]\}$. Or, by the prediction error $|y_i - \bm{X}_{i, \ast} \bm{\beta}_{-i}(\lambda)|$, the relative error, the error squared or the R2 score function.
-
-* Repeat the first three steps  such that each sample plays the role of the test set once.
-
-* Average the prediction performances of the test sets at each grid point of the penalty bias/parameter. It is an estimate of the prediction performance of the model corresponding to this value of the penalty parameter on novel data. It is defined as
-!bt
-\begin{align*}
-\frac{1}{n} \sum_{i = 1}^n \log\{L[y_i, \mathbf{X}_{i, \ast}; \bm{\beta}_{-i}(\lambda), \bm{\sigma}_{-i}^2(\lambda)]\}.
-\end{align*}
-!et
 
 !split
 ===== Cross-validation in brief =====
@@ -1166,6 +1140,221 @@ plt.show()
 
 
 
+!split
+===== Ridge and LASSO Regression =====
+
+Let us remind ourselves about the expression for the standard Mean Squared Error (MSE) which we used to define our cost function and the equations for the ordinary least squares (OLS) method, that is 
+our optimization problem is
+!bt
+\[
+{\displaystyle \min_{\bm{\beta}\in {\mathbb{R}}^{p}}}\frac{1}{n}\left\{\left(\bm{y}-\bm{X}\bm{\beta}\right)^T\left(\bm{y}-\bm{X}\bm{\beta}\right)\right\}.
+\]
+!et
+or we can state it as
+!bt
+\[
+{\displaystyle \min_{\bm{\beta}\in
+{\mathbb{R}}^{p}}}\frac{1}{n}\sum_{i=0}^{n-1}\left(y_i-\tilde{y}_i\right)^2=\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2,
+\]
+!et
+where we have used the definition of  a norm-2 vector, that is
+!bt
+\[
+\vert\vert \bm{x}\vert\vert_2 = \sqrt{\sum_i x_i^2}. 
+\]
+!et
+
+By minimizing the above equation with respect to the parameters
+$\bm{\beta}$ we could then obtain an analytical expression for the
+parameters $\bm{\beta}$.  We can add a regularization parameter $\lambda$ by
+defining a new cost function to be optimized, that is
+
+!bt
+\[
+{\displaystyle \min_{\bm{\beta}\in
+{\mathbb{R}}^{p}}}\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_2^2
+\]
+!et
+
+which leads to the Ridge regression minimization problem where we
+require that $\vert\vert \bm{\beta}\vert\vert_2^2\le t$, where $t$ is
+a finite number larger than zero. By defining
+
+!bt
+\[
+C(\bm{X},\bm{\beta})=\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_1,
+\]
+!et
+
+we have a new optimization equation
+!bt
+\[
+{\displaystyle \min_{\bm{\beta}\in
+{\mathbb{R}}^{p}}}\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_1
+\]
+!et
+which leads to Lasso regression. Lasso stands for least absolute shrinkage and selection operator. 
+
+Here we have defined the norm-1 as 
+!bt
+\[
+\vert\vert \bm{x}\vert\vert_1 = \sum_i \vert x_i\vert. 
+\]
+!et
+
+
+!split
+===== More on Ridge Regression =====
+
+Using the matrix-vector expression for Ridge regression,
+
+!bt
+\[
+C(\bm{X},\bm{\beta})=\frac{1}{n}\left\{(\bm{y}-\bm{X}\bm{\beta})^T(\bm{y}-\bm{X}\bm{\beta})\right\}+\lambda\bm{\beta}^T\bm{\beta},
+\]
+!et
+
+by taking the derivatives with respect to $\bm{\beta}$ we obtain then
+a slightly modified matrix inversion problem which for finite values
+of $\lambda$ does not suffer from singularity problems. We obtain
+
+!bt
+\[
+\bm{\beta}^{\mathrm{Ridge}} = \left(\bm{X}^T\bm{X}+\lambda\bm{I}\right)^{-1}\bm{X}^T\bm{y},
+\]
+!et
+
+with $\bm{I}$ being a $p\times p$ identity matrix with the constraint that
+
+!bt
+\[
+\sum_{i=0}^{p-1} \beta_i^2 \leq t,
+\]
+!et
+
+with $t$ a finite positive number. 
+
+We see that Ridge regression is nothing but the standard
+OLS with a modified diagonal term added to $\bm{X}^T\bm{X}$. The
+consequences, in particular for our discussion of the bias-variance tradeoff 
+are rather interesting.
+
+Furthermore, if we use the result above in terms of the SVD decomposition (our analysis was done for the OLS method), we had
+!bt
+\[
+(\bm{X}\bm{X}^T)\bm{U} = \bm{U}\bm{D}.
+\]
+!et
+
+We can  analyse the OLS solutions in terms of the eigenvectors (the columns) of the right singular value matrix $\bm{U}$ as
+!bt
+\[
+\bm{X}\bm{\beta} = \bm{X}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}\bm{X}^T\bm{y}=\bm{U\Sigma V^T}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}(\bm{U\Sigma V^T})^T\bm{y}=\bm{U}\bm{U}^T\bm{y}
+\]
+!et
+
+
+For Ridge regression this becomes
+
+!bt
+\[
+\bm{X}\bm{\beta}^{\mathrm{Ridge}} = \bm{U\Sigma V^T}\left(\bm{V}\bm{D}\bm{V}^T+\lambda\bm{I} \right)^{-1}(\bm{U\Sigma V^T})^T\bm{y}=\sum_{j=0}^{p-1}\bm{u}_j\bm{u}_j^T\frac{\sigma_j^2}{\sigma_j^2+\lambda}\bm{y},
+\]
+!et
+
+with the vectors $\bm{u}_j$ being the columns of $\bm{U}$. 
+
+!split
+===== Interpreting the Ridge results =====
+
+Since $\lambda \geq 0$, it means that compared to OLS, we have 
+
+!bt
+\[
+\frac{\sigma_j^2}{\sigma_j^2+\lambda} \leq 1. 
+\]
+!et
+
+Ridge regression finds the coordinates of $\bm{y}$ with respect to the
+orthonormal basis $\bm{U}$, it then shrinks the coordinates by
+$\frac{\sigma_j^2}{\sigma_j^2+\lambda}$. Recall that the SVD has
+eigenvalues ordered in a descending way, that is $\sigma_i \geq
+\sigma_{i+1}$.
+
+For small eigenvalues $\sigma_i$ it means that their contributions become less important, a fact which can be used to reduce the number of degrees of freedom.
+Actually, calculating the variance of $\bm{X}\bm{v}_j$ shows that this quantity is equal to $\sigma_j^2/n$.
+With a parameter $\lambda$ we can thus shrink the role of specific parameters.  
+
+
+!split
+===== More interpretations =====
+
+For the sake of simplicity, let us assume that the design matrix is orthonormal, that is 
+
+!bt
+\[
+\bm{X}^T\bm{X}=(\bm{X}^T\bm{X})^{-1} =\bm{I}. 
+\]
+!et
+
+In this case the standard OLS results in 
+!bt
+\[
+\bm{\beta}^{\mathrm{OLS}} = \bm{X}^T\bm{y}=\sum_{i=0}^{p-1}\bm{u}_j\bm{u}_j^T\bm{y},
+\]
+!et
+
+and
+
+!bt
+\[
+\bm{\beta}^{\mathrm{Ridge}} = \left(\bm{I}+\lambda\bm{I}\right)^{-1}\bm{X}^T\bm{y}=\left(1+\lambda\right)^{-1}\bm{\beta}^{\mathrm{OLS}},
+\]
+!et
+
+that is the Ridge estimator scales the OLS estimator by the inverse of a factor $1+\lambda$, and
+the Ridge estimator converges to zero when the hyperparameter goes to
+infinity.
+
+We will come back to more interpreations after we have gone through some of the statistical analysis part. 
+
+For more discussions of Ridge and Lasso regression, "Wessel van Wieringen's":"https://arxiv.org/abs/1509.09169" article is highly recommended.
+Similarly, "Mehta et al's article":"https://arxiv.org/abs/1803.08823" is also recommended.
+
+
+!split 
+===== A better understanding of regularization =====
+
+The parameter $\lambda$ that we have introduced in the Ridge (and
+Lasso as well) regression is often called a regularization parameter
+or shrinkage parameter. It is common to call it a hyperparameter. What does it mean mathemtically?
+
+Here we will first look at how to analyze the difference between the
+standard OLS equations and the Ridge expressions in terms of a linear
+algebra analysis using the SVD algorithm. Thereafter, we will link
+(see the material on the bias-variance tradeoff below) these
+observation to the statisical analysis of the results. In particular
+we consider how the variance of the parameters $\bm{\beta}$ is
+affected by changing the parameter $\lambda$.
+
+!split
+===== Decomposing the OLS and Ridge expressions =====
+
+We have our design matrix
+ $\bm{X}\in {\mathbb{R}}^{n\times p}$. With the SVD we decompose it as 
+
+!bt 
+\[
+\bm{X} = \bm{U\Sigma V^T},
+\]
+!et
+
+with $\bm{U}\in {\mathbb{R}}^{n\times n}$, $\bm{\Sigma}\in {\mathbb{R}}^{n\times p}$
+and $\bm{V}\in {\mathbb{R}}^{p\times p}$.
+
+The matrices $\bm{U}$ and $\bm{V}$ are unitary/orthonormal matrices, that is in case the matrices are real we have $\bm{U}^T\bm{U}=\bm{U}\bm{U}^T=\bm{I}$ and $\bm{V}^T\bm{V}=\bm{V}\bm{V}^T=\bm{I}$.
+
+Below we discuss some of the mathematics of the SVD decompostion.
 
 !split
 ===== The singular value decomposition  =====
@@ -1475,232 +1664,30 @@ Going back to our OLS equation we have
 \bm{X}\bm{\beta} = \bm{X}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}\bm{X}^T\bm{y}=\bm{U\Sigma V^T}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}(\bm{U\Sigma V^T})^T\bm{y}=\bm{U}\bm{U}^T\bm{y}.
 \]
 !et
-We will come back to this expression when we discuss Ridge regression. 
-
-
-$$ \tilde{y}^{OLS}={\bf X}\hat{\beta}^{OLS}=\sum_{j=1}^p {\bf u}_j{\bf u}_j^T{\bf y}$$ and for Ridge we have 
-
-$$ \tilde{y}^{Ridge}={\bf X}\hat{\beta}^{Ridge}=\sum_{j=1}^p {\bf u}_j\frac{\sigma_j^2}{\sigma_j^2+\lambda}{\bf u}_j^T{\bf y}$$ . 
-
-It is indeed the economy-sized SVD, note the summation runs up tp $$p$$ only and not $$n$$. 
-
-Here we have that $${\bf X} = {\bf U}{\bf \Sigma}{\bf V}^T$$, with $$\Sigma$$ being an $$ n\times p$$ matrix and $${\bf V}$$ being a $$ p\times p$$ matrix. We also have assumed here that $$ n > p$$. 
-
-
 
 !split
-===== Ridge and LASSO Regression =====
+===== OLS and Ridge in terms of an SVD Decomposition =====
 
-Let us remind ourselves about the expression for the standard Mean Squared Error (MSE) which we used to define our cost function and the equations for the ordinary least squares (OLS) method, that is 
-our optimization problem is
+We have then
 !bt
 \[
-{\displaystyle \min_{\bm{\beta}\in {\mathbb{R}}^{p}}}\frac{1}{n}\left\{\left(\bm{y}-\bm{X}\bm{\beta}\right)^T\left(\bm{y}-\bm{X}\bm{\beta}\right)\right\}.
+\tilde{y}^{OLS}={\bf X}\hat{\beta}^{OLS}=\sum_{j=1}^p {\bf u}_j{\bf u}_j^T{\bf y},
 \]
 !et
-or we can state it as
+for ordinary least squares (OLS) 
+and for Ridge we have
 !bt
 \[
-{\displaystyle \min_{\bm{\beta}\in
-{\mathbb{R}}^{p}}}\frac{1}{n}\sum_{i=0}^{n-1}\left(y_i-\tilde{y}_i\right)^2=\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2,
-\]
-!et
-where we have used the definition of  a norm-2 vector, that is
-!bt
-\[
-\vert\vert \bm{x}\vert\vert_2 = \sqrt{\sum_i x_i^2}. 
+\tilde{y}^{Ridge}={\bf X}\hat{\beta}^{Ridge}=\sum_{j=1}^p {\bf u}_j\frac{\sigma_j^2}{\sigma_j^2+\lambda}{\bf u}_j^T{\bf y}.
 \]
 !et
 
-By minimizing the above equation with respect to the parameters
-$\bm{\beta}$ we could then obtain an analytical expression for the
-parameters $\bm{\beta}$.  We can add a regularization parameter $\lambda$ by
-defining a new cost function to be optimized, that is
+Note that the summation runs up tp $p$ only and not $n$.
 
-!bt
-\[
-{\displaystyle \min_{\bm{\beta}\in
-{\mathbb{R}}^{p}}}\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_2^2
-\]
-!et
-
-which leads to the Ridge regression minimization problem where we
-require that $\vert\vert \bm{\beta}\vert\vert_2^2\le t$, where $t$ is
-a finite number larger than zero. By defining
-
-!bt
-\[
-C(\bm{X},\bm{\beta})=\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_1,
-\]
-!et
-
-we have a new optimization equation
-!bt
-\[
-{\displaystyle \min_{\bm{\beta}\in
-{\mathbb{R}}^{p}}}\frac{1}{n}\vert\vert \bm{y}-\bm{X}\bm{\beta}\vert\vert_2^2+\lambda\vert\vert \bm{\beta}\vert\vert_1
-\]
-!et
-which leads to Lasso regression. Lasso stands for least absolute shrinkage and selection operator. 
-
-Here we have defined the norm-1 as 
-!bt
-\[
-\vert\vert \bm{x}\vert\vert_1 = \sum_i \vert x_i\vert. 
-\]
-!et
+Here we have that ${\bf X} = {\bf U}{\bf \Sigma}{\bf V}^T$, with $\Sigma$ being an $n\times p$ matrix and
+${\bf V}$ being a $p\times p$ matrix. We also have assumed here that $ n > p$.
 
 
-!split
-===== More on Ridge Regression =====
-
-Using the matrix-vector expression for Ridge regression,
-
-!bt
-\[
-C(\bm{X},\bm{\beta})=\frac{1}{n}\left\{(\bm{y}-\bm{X}\bm{\beta})^T(\bm{y}-\bm{X}\bm{\beta})\right\}+\lambda\bm{\beta}^T\bm{\beta},
-\]
-!et
-
-by taking the derivatives with respect to $\bm{\beta}$ we obtain then
-a slightly modified matrix inversion problem which for finite values
-of $\lambda$ does not suffer from singularity problems. We obtain
-
-!bt
-\[
-\bm{\beta}^{\mathrm{Ridge}} = \left(\bm{X}^T\bm{X}+\lambda\bm{I}\right)^{-1}\bm{X}^T\bm{y},
-\]
-!et
-
-with $\bm{I}$ being a $p\times p$ identity matrix with the constraint that
-
-!bt
-\[
-\sum_{i=0}^{p-1} \beta_i^2 \leq t,
-\]
-!et
-
-with $t$ a finite positive number. 
-
-We see that Ridge regression is nothing but the standard
-OLS with a modified diagonal term added to $\bm{X}^T\bm{X}$. The
-consequences, in particular for our discussion of the bias-variance tradeoff 
-are rather interesting.
-
-Furthermore, if we use the result above in terms of the SVD decomposition (our analysis was done for the OLS method), we had
-!bt
-\[
-(\bm{X}\bm{X}^T)\bm{U} = \bm{U}\bm{D}.
-\]
-!et
-
-We can  analyse the OLS solutions in terms of the eigenvectors (the columns) of the right singular value matrix $\bm{U}$ as
-!bt
-\[
-\bm{X}\bm{\beta} = \bm{X}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}\bm{X}^T\bm{y}=\bm{U\Sigma V^T}\left(\bm{V}\bm{D}\bm{V}^T \right)^{-1}(\bm{U\Sigma V^T})^T\bm{y}=\bm{U}\bm{U}^T\bm{y}
-\]
-!et
-
-
-For Ridge regression this becomes
-
-!bt
-\[
-\bm{X}\bm{\beta}^{\mathrm{Ridge}} = \bm{U\Sigma V^T}\left(\bm{V}\bm{D}\bm{V}^T+\lambda\bm{I} \right)^{-1}(\bm{U\Sigma V^T})^T\bm{y}=\sum_{j=0}^{p-1}\bm{u}_j\bm{u}_j^T\frac{\sigma_j^2}{\sigma_j^2+\lambda}\bm{y},
-\]
-!et
-
-with the vectors $\bm{u}_j$ being the columns of $\bm{U}$. 
-
-!split
-===== Interpreting the Ridge results =====
-
-Since $\lambda \geq 0$, it means that compared to OLS, we have 
-
-!bt
-\[
-\frac{\sigma_j^2}{\sigma_j^2+\lambda} \leq 1. 
-\]
-!et
-
-Ridge regression finds the coordinates of $\bm{y}$ with respect to the
-orthonormal basis $\bm{U}$, it then shrinks the coordinates by
-$\frac{\sigma_j^2}{\sigma_j^2+\lambda}$. Recall that the SVD has
-eigenvalues ordered in a descending way, that is $\sigma_i \geq
-\sigma_{i+1}$.
-
-For small eigenvalues $\sigma_i$ it means that their contributions become less important, a fact which can be used to reduce the number of degrees of freedom.
-Actually, calculating the variance of $\bm{X}\bm{v}_j$ shows that this quantity is equal to $\sigma_j^2/n$.
-With a parameter $\lambda$ we can thus shrink the role of specific parameters.  
-
-
-!split
-===== More interpretations =====
-
-For the sake of simplicity, let us assume that the design matrix is orthonormal, that is 
-
-!bt
-\[
-\bm{X}^T\bm{X}=(\bm{X}^T\bm{X})^{-1} =\bm{I}. 
-\]
-!et
-
-In this case the standard OLS results in 
-!bt
-\[
-\bm{\beta}^{\mathrm{OLS}} = \bm{X}^T\bm{y}=\sum_{i=0}^{p-1}\bm{u}_j\bm{u}_j^T\bm{y},
-\]
-!et
-
-and
-
-!bt
-\[
-\bm{\beta}^{\mathrm{Ridge}} = \left(\bm{I}+\lambda\bm{I}\right)^{-1}\bm{X}^T\bm{y}=\left(1+\lambda\right)^{-1}\bm{\beta}^{\mathrm{OLS}},
-\]
-!et
-
-that is the Ridge estimator scales the OLS estimator by the inverse of a factor $1+\lambda$, and
-the Ridge estimator converges to zero when the hyperparameter goes to
-infinity.
-
-We will come back to more interpreations after we have gone through some of the statistical analysis part. 
-
-For more discussions of Ridge and Lasso regression, "Wessel van Wieringen's":"https://arxiv.org/abs/1509.09169" article is highly recommended.
-Similarly, "Mehta et al's article":"https://arxiv.org/abs/1803.08823" is also recommended.
-
-
-!split 
-===== A better understanding of regularization =====
-
-The parameter $\lambda$ that we have introduced in the Ridge (and
-Lasso as well) regression is often called a regularization parameter
-or shrinkage parameter. It is common to call it a hyperparameter. What does it mean mathemtically?
-
-Here we will first look at how to analyze the difference between the
-standard OLS equations and the Ridge expressions in terms of a linear
-algebra analysis using the SVD algorithm. Thereafter, we will link
-(see the material on the bias-variance tradeoff below) these
-observation to the statisical analysis of the results. In particular
-we consider how the variance of the parameters $\bm{\beta}$ is
-affected by changing the parameter $\lambda$.
-
-!split
-===== Decomposing the OLS and Ridge expressions =====
-
-We have our design matrix
- $\bm{X}\in {\mathbb{R}}^{n\times p}$. With the SVD we decompose it as 
-
-!bt 
-\[
-\bm{X} = \bm{U\Sigma V^T},
-\]
-!et
-
-with $\bm{U}\in {\mathbb{R}}^{n\times n}$, $\bm{\Sigma}\in {\mathbb{R}}^{n\times p}$
-and $\bm{V}\in {\mathbb{R}}^{p\times p}$.
-
-The matrices $\bm{U}$ and $\bm{V}$ are unitary/orthonormal matrices, that is in case the matrices are real we have $\bm{U}^T\bm{U}=\bm{U}\bm{U}^T=\bm{I}$ and $\bm{V}^T\bm{V}=\bm{V}\bm{V}^T=\bm{I}$.
 
 
 

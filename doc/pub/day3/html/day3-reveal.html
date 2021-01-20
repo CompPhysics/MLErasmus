@@ -779,41 +779,7 @@ cross-validation (LOOCV).
 
 
 <section>
-<h2 id="___sec21">How to set up the cross-validation for Ridge and/or Lasso </h2>
-
-<ul>
-<p><li> Define a range of interest for the penalty parameter.</li>
-<p><li> Divide the data set into training and test set comprising samples \( \{1, \ldots, n\} \setminus i \) and \( \{ i \} \), respectively.</li>
-<p><li> Fit the linear regression model by means of ridge estimation  for each \( \lambda \) in the grid using the training set, and the corresponding estimate of the error variance \( \boldsymbol{\sigma}_{-i}^2(\lambda) \), as</li>
-</ul>
-<p>&nbsp;<br>
-$$
-\begin{align*}
-\boldsymbol{\beta}_{-i}(\lambda) & =  ( \boldsymbol{X}_{-i, \ast}^{T}
-\boldsymbol{X}_{-i, \ast} + \lambda \boldsymbol{I}_{pp})^{-1}
-\boldsymbol{X}_{-i, \ast}^{T} \boldsymbol{y}_{-i}
-\end{align*}
-$$
-<p>&nbsp;<br>
-
-
-<ul>
-<p><li> Evaluate the prediction performance of these models on the test set by \( \log\{L[y_i, \boldsymbol{X}_{i, \ast}; \boldsymbol{\beta}_{-i}(\lambda), \boldsymbol{\sigma}_{-i}^2(\lambda)]\} \). Or, by the prediction error \( |y_i - \boldsymbol{X}_{i, \ast} \boldsymbol{\beta}_{-i}(\lambda)| \), the relative error, the error squared or the R2 score function.</li>
-<p><li> Repeat the first three steps  such that each sample plays the role of the test set once.</li>
-<p><li> Average the prediction performances of the test sets at each grid point of the penalty bias/parameter. It is an estimate of the prediction performance of the model corresponding to this value of the penalty parameter on novel data. It is defined as</li>
-</ul>
-<p>&nbsp;<br>
-$$
-\begin{align*}
-\frac{1}{n} \sum_{i = 1}^n \log\{L[y_i, \mathbf{X}_{i, \ast}; \boldsymbol{\beta}_{-i}(\lambda), \boldsymbol{\sigma}_{-i}^2(\lambda)]\}.
-\end{align*}
-$$
-<p>&nbsp;<br>
-</section>
-
-
-<section>
-<h2 id="___sec22">Cross-validation in brief </h2>
+<h2 id="___sec21">Cross-validation in brief </h2>
 
 <p>
 For the various values of \( k \)
@@ -835,7 +801,7 @@ For the various values of \( k \)
 
 
 <section>
-<h2 id="___sec23">Code Example for Cross-validation and \( k \)-fold Cross-validation </h2>
+<h2 id="___sec22">Code Example for Cross-validation and \( k \)-fold Cross-validation </h2>
 
 <p>
 The code here uses Ridge regression with cross-validation (CV)  resampling and \( k \)-fold CV in order to fit a specific polynomial. 
@@ -936,7 +902,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec24">The bias-variance tradeoff </h2>
+<h2 id="___sec23">The bias-variance tradeoff </h2>
 
 <p>
 We will discuss the bias-variance tradeoff in the context of
@@ -1014,7 +980,7 @@ that is the rewriting in terms of the so-called bias, the variance of the model 
 
 
 <section>
-<h2 id="___sec25">Example code for Bias-Variance tradeoff </h2>
+<h2 id="___sec24">Example code for Bias-Variance tradeoff </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1077,7 +1043,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec26">Understanding what happens </h2>
+<h2 id="___sec25">Understanding what happens </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1132,7 +1098,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec27">Summing up </h2>
+<h2 id="___sec26">Summing up </h2>
 
 <p>
 The bias-variance tradeoff summarizes the fundamental tension in
@@ -1169,7 +1135,7 @@ You may also find this recent <a href="https://www.pnas.org/content/116/32/15849
 
 
 <section>
-<h2 id="___sec28">Another Example from Scikit-Learn's Repository </h2>
+<h2 id="___sec27">Another Example from Scikit-Learn's Repository </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1249,7 +1215,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec29">More examples on bootstrap and cross-validation and errors </h2>
+<h2 id="___sec28">More examples on bootstrap and cross-validation and errors </h2>
 
 <p>
 
@@ -1337,7 +1303,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec30">The same example but now with cross-validation </h2>
+<h2 id="___sec29">The same example but now with cross-validation </h2>
 
 <p>
 
@@ -1414,7 +1380,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec31">Cross-validation with Ridge </h2>
+<h2 id="___sec30">Cross-validation with Ridge </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -1458,399 +1424,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec32">The singular value decomposition  </h2>
-
-<p>
-<div class="alert alert-block alert-block alert-text-normal">
-<b></b>
-<p>
-The examples we have looked at so far are cases where we normally can
-invert the matrix \( \boldsymbol{X}^T\boldsymbol{X} \). Using a polynomial expansion as we
-did both for the masses and the fitting of the equation of state,
-leads to row vectors of the design matrix which are essentially
-orthogonal due to the polynomial character of our model. Obtaining the inverse of the design matrix is then often done via a so-called LU, QR or Cholesky decomposition.
-
-<p>
-This may
-however not the be case in general and a standard matrix inversion
-algorithm based on say LU, QR or Cholesky decomposition may lead to singularities. We will see examples of this below.
-
-<p>
-There is however a way to partially circumvent this problem and also gain some insights about the ordinary least squares approach, and later shrinkage methods like Ridge and Lasso regressions.
-
-<p>
-This is given by the <b>Singular Value Decomposition</b> algorithm, perhaps
-the most powerful linear algebra algorithm.  Let us look at a
-different example where we may have problems with the standard matrix
-inversion algorithm. Thereafter we dive into the math of the SVD.
-
-
-</div>
-</section>
-
-
-<section>
-<h2 id="___sec33">Linear Regression Problems </h2>
-
-<p>
-One of the typical problems we encounter with linear regression, in particular 
-when the matrix \( \boldsymbol{X} \) (our so-called design matrix) is high-dimensional, 
-are problems with near singular or singular matrices. The column vectors of \( \boldsymbol{X} \) 
-may be linearly dependent, normally referred to as super-collinearity.  
-This means that the matrix may be rank deficient and it is basically impossible to 
-to model the data using linear regression. As an example, consider the matrix
-<p>&nbsp;<br>
-$$
-\begin{align*}
-\mathbf{X} & =  \left[
-\begin{array}{rrr}
-1 & -1 & 2
-\\
-1 & 0 & 1
-\\
-1 & 2  & -1
-\\
-1 & 1  & 0
-\end{array} \right]
-\end{align*}
-$$
-<p>&nbsp;<br>
-
-<p>
-The columns of \( \boldsymbol{X} \) are linearly dependent. We see this easily since the 
-the first column is the row-wise sum of the other two columns. The rank (more correct,
-the column rank) of a matrix is the dimension of the space spanned by the
-column vectors. Hence, the rank of \( \mathbf{X} \) is equal to the number
-of linearly independent columns. In this particular case the matrix has rank 2.
-
-<p>
-Super-collinearity of an \( (n \times p) \)-dimensional design matrix \( \mathbf{X} \) implies
-that the inverse of the matrix \( \boldsymbol{X}^T\boldsymbol{X} \) (the matrix we need to invert to solve the linear regression equations) is non-invertible. If we have a square matrix that does not have an inverse, we say this matrix singular. The example here demonstrates this
-<p>&nbsp;<br>
-$$
-\begin{align*}
-\boldsymbol{X} & =  \left[
-\begin{array}{rr}
-1 & -1
-\\
-1 & -1
-\end{array} \right].
-\end{align*}
-$$
-<p>&nbsp;<br>
-
-We see easily that  \( \mbox{det}(\boldsymbol{X}) = x_{11} x_{22} - x_{12} x_{21} = 1 \times (-1) - 1 \times (-1) = 0 \). Hence, \( \mathbf{X} \) is singular and its inverse is undefined.
-This is equivalent to saying that the matrix \( \boldsymbol{X} \) has at least an eigenvalue which is zero.
-</section>
-
-
-<section>
-<h2 id="___sec34">Fixing the singularity </h2>
-
-<p>
-If our design matrix \( \boldsymbol{X} \) which enters the linear regression problem
-<p>&nbsp;<br>
-$$
-\begin{align}
-\boldsymbol{\beta} & =  (\boldsymbol{X}^{T} \boldsymbol{X})^{-1} \boldsymbol{X}^{T} \boldsymbol{y},
-\tag{1}
-\end{align}
-$$
-<p>&nbsp;<br>
-
-has linearly dependent column vectors, we will not be able to compute the inverse
-of \( \boldsymbol{X}^T\boldsymbol{X} \) and we cannot find the parameters (estimators) \( \beta_i \). 
-The estimators are only well-defined if \( (\boldsymbol{X}^{T}\boldsymbol{X})^{-1} \) exits. 
-This is more likely to happen when the matrix \( \boldsymbol{X} \) is high-dimensional. In this case it is likely to encounter a situation where 
-the regression parameters \( \beta_i \) cannot be estimated.
-
-<p>
-A cheap  <em>ad hoc</em> approach is  simply to add a small diagonal component to the matrix to invert, that is we change
-<p>&nbsp;<br>
-$$
-\boldsymbol{X}^{T} \boldsymbol{X} \rightarrow \boldsymbol{X}^{T} \boldsymbol{X}+\lambda \boldsymbol{I},
-$$
-<p>&nbsp;<br>
-
-where \( \boldsymbol{I} \) is the identity matrix.  When we discuss <b>Ridge</b> regression this is actually what we end up evaluating. The parameter \( \lambda \) is called a hyperparameter. More about this later.
-</section>
-
-
-<section>
-<h2 id="___sec35">Basic math of the SVD </h2>
-
-<p>
-From standard linear algebra we know that a square matrix \( \boldsymbol{X} \) can be diagonalized if and only it is 
-a so-called <a href="https://en.wikipedia.org/wiki/Normal_matrix" target="_blank">normal matrix</a>, that is if \( \boldsymbol{X}\in {\mathbb{R}}^{n\times n} \)
-we have \( \boldsymbol{X}\boldsymbol{X}^T=\boldsymbol{X}^T\boldsymbol{X} \) or if \( \boldsymbol{X}\in {\mathbb{C}}^{n\times n} \) we have \( \boldsymbol{X}\boldsymbol{X}^{\dagger}=\boldsymbol{X}^{\dagger}\boldsymbol{X} \).
-The matrix has then a set of eigenpairs
-
-<p>&nbsp;<br>
-$$
-(\lambda_1,\boldsymbol{u}_1),\dots, (\lambda_n,\boldsymbol{u}_n),
-$$
-<p>&nbsp;<br>
-
-and the eigenvalues are given by the diagonal matrix
-<p>&nbsp;<br>
-$$
-\boldsymbol{\Sigma}=\mathrm{Diag}(\lambda_1, \dots,\lambda_n).
-$$
-<p>&nbsp;<br>
-
-The matrix \( \boldsymbol{X} \) can be written in terms of an orthogonal/unitary transformation \( \boldsymbol{U} \)
-<p>&nbsp;<br>
-$$
-\boldsymbol{X} = \boldsymbol{U}\boldsymbol{\Sigma}\boldsymbol{V}^T,
-$$
-<p>&nbsp;<br>
-
-with \( \boldsymbol{U}\boldsymbol{U}^T=\boldsymbol{I} \) or \( \boldsymbol{U}\boldsymbol{U}^{\dagger}=\boldsymbol{I} \).
-
-<p>
-Not all square matrices are diagonalizable. A matrix like the one discussed above
-<p>&nbsp;<br>
-$$
-\boldsymbol{X} = \begin{bmatrix} 
-1&  -1 \\
-1& -1\\
-\end{bmatrix} 
-$$
-<p>&nbsp;<br>
-
-is not diagonalizable, it is a so-called <a href="https://en.wikipedia.org/wiki/Defective_matrix" target="_blank">defective matrix</a>. It is easy to see that the condition
-\( \boldsymbol{X}\boldsymbol{X}^T=\boldsymbol{X}^T\boldsymbol{X} \) is not fulfilled.
-</section>
-
-
-<section>
-<h2 id="___sec36">The SVD, a Fantastic Algorithm </h2>
-
-<p>
-However, and this is the strength of the SVD algorithm, any general
-matrix \( \boldsymbol{X} \) can be decomposed in terms of a diagonal matrix and
-two orthogonal/unitary matrices.  The <a href="https://en.wikipedia.org/wiki/Singular_value_decomposition" target="_blank">Singular Value Decompostion
-(SVD) theorem</a>
-states that a general \( m\times n \) matrix \( \boldsymbol{X} \) can be written in
-terms of a diagonal matrix \( \boldsymbol{\Sigma} \) of dimensionality \( m\times n \)
-and two orthognal matrices \( \boldsymbol{U} \) and \( \boldsymbol{V} \), where the first has
-dimensionality \( m \times m \) and the last dimensionality \( n\times n \).
-We have then
-
-<p>&nbsp;<br>
-$$ 
-\boldsymbol{X} = \boldsymbol{U}\boldsymbol{\Sigma}\boldsymbol{V}^T 
-$$
-<p>&nbsp;<br>
-
-<p>
-As an example, the above defective matrix can be decomposed as
-
-<p>&nbsp;<br>
-$$
-\boldsymbol{X} = \frac{1}{\sqrt{2}}\begin{bmatrix}  1&  1 \\ 1& -1\\ \end{bmatrix} \begin{bmatrix}  2&  0 \\ 0& 0\\ \end{bmatrix}    \frac{1}{\sqrt{2}}\begin{bmatrix}  1&  -1 \\ 1& 1\\ \end{bmatrix}=\boldsymbol{U}\boldsymbol{\Sigma}\boldsymbol{V}^T, 
-$$
-<p>&nbsp;<br>
-
-<p>
-with eigenvalues \( \sigma_1=2 \) and \( \sigma_2=0 \). 
-The SVD exits always!
-
-<p>
-The SVD
-decomposition (singular values) gives eigenvalues 
-\( \sigma_i\geq\sigma_{i+1} \) for all \( i \) and for dimensions larger than \( i=p \), the
-eigenvalues (singular values) are zero.
-
-<p>
-In the general case, where our design matrix \( \boldsymbol{X} \) has dimension
-\( n\times p \), the matrix is thus decomposed into an \( n\times n \)
-orthogonal matrix \( \boldsymbol{U} \), a \( p\times p \) orthogonal matrix \( \boldsymbol{V} \)
-and a diagonal matrix \( \boldsymbol{\Sigma} \) with \( r=\mathrm{min}(n,p) \)
-singular values \( \sigma_i\geq 0 \) on the main diagonal and zeros filling
-the rest of the matrix.  There are at most \( p \) singular values
-assuming that \( n > p \). In our regression examples for the nuclear
-masses and the equation of state this is indeed the case, while for
-the Ising model we have \( p > n \). These are often cases that lead to
-near singular or singular matrices.
-
-<p>
-The columns of \( \boldsymbol{U} \) are called the left singular vectors while the columns of \( \boldsymbol{V} \) are the right singular vectors.
-</section>
-
-
-<section>
-<h2 id="___sec37">Economy-size SVD </h2>
-
-<p>
-If we assume that \( n > p \), then our matrix \( \boldsymbol{U} \) has dimension \( n
-\times n \). The last \( n-p \) columns of \( \boldsymbol{U} \) become however
-irrelevant in our calculations since they are multiplied with the
-zeros in \( \boldsymbol{\Sigma} \).
-
-<p>
-The economy-size decomposition removes extra rows or columns of zeros
-from the diagonal matrix of singular values, \( \boldsymbol{\Sigma} \), along with the columns
-in either \( \boldsymbol{U} \) or \( \boldsymbol{V} \) that multiply those zeros in the expression. 
-Removing these zeros and columns can improve execution time
-and reduce storage requirements without compromising the accuracy of
-the decomposition.
-
-<p>
-If \( n > p \), we keep only the first \( p \) columns of \( \boldsymbol{U} \) and \( \boldsymbol{\Sigma} \) has dimension \( p\times p \). 
-If \( p > n \), then only the first \( n \) columns of \( \boldsymbol{V} \) are computed and \( \boldsymbol{\Sigma} \) has dimension \( n\times n \).
-The \( n=p \) case is obvious, we retain the full SVD. 
-In general the economy-size SVD leads to less FLOPS and still conserving the desired accuracy.
-</section>
-
-
-<section>
-<h2 id="___sec38">Codes for the SVD </h2>
-
-<p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-<span style="color: #228B22"># SVD inversion</span>
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">SVDinv</span>(A):
-    <span style="color: #CD5555">&#39;&#39;&#39; Takes as input a numpy matrix A and returns inv(A) based on singular value decomposition (SVD).</span>
-<span style="color: #CD5555">    SVD is numerically more stable than the inversion algorithms provided by</span>
-<span style="color: #CD5555">    numpy and scipy.linalg at the cost of being slower.</span>
-<span style="color: #CD5555">    &#39;&#39;&#39;</span>
-    U, s, VT = np.linalg.svd(A)
-<span style="color: #228B22">#    print(&#39;test U&#39;)</span>
-<span style="color: #228B22">#    print( (np.transpose(U) @ U - U @np.transpose(U)))</span>
-<span style="color: #228B22">#    print(&#39;test VT&#39;)</span>
-<span style="color: #228B22">#    print( (np.transpose(VT) @ VT - VT @np.transpose(VT)))</span>
-    <span style="color: #658b00">print</span>(U)
-    <span style="color: #658b00">print</span>(s)
-    <span style="color: #658b00">print</span>(VT)
-
-    D = np.zeros((<span style="color: #658b00">len</span>(U),<span style="color: #658b00">len</span>(VT)))
-    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>,<span style="color: #658b00">len</span>(VT)):
-        D[i,i]=s[i]
-    UT = np.transpose(U); V = np.transpose(VT); invD = np.linalg.inv(D)
-    <span style="color: #8B008B; font-weight: bold">return</span> np.matmul(V,np.matmul(invD,UT))
-
-
-X = np.array([ [<span style="color: #B452CD">1.0</span>, -<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">2.0</span>], [<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">0.0</span>, <span style="color: #B452CD">1.0</span>], [<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">2.0</span>, -<span style="color: #B452CD">1.0</span>], [<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">0.0</span>] ])
-<span style="color: #658b00">print</span>(X)
-A = np.transpose(X) @ X
-<span style="color: #658b00">print</span>(A)
-<span style="color: #228B22"># Brute force inversion of super-collinear matrix</span>
-<span style="color: #228B22">#B = np.linalg.inv(A)</span>
-<span style="color: #228B22">#print(B)</span>
-C = SVDinv(A)
-<span style="color: #658b00">print</span>(C)
-</pre></div>
-<p>
-The matrix \( \boldsymbol{X} \) has columns that are linearly dependent. The first
-column is the row-wise sum of the other two columns. The rank of a
-matrix (the column rank) is the dimension of space spanned by the
-column vectors. The rank of the matrix is the number of linearly
-independent columns, in this case just \( 2 \). We see this from the
-singular values when running the above code. Running the standard
-inversion algorithm for matrix inversion with \( \boldsymbol{X}^T\boldsymbol{X} \) results
-in the program terminating due to a singular matrix.
-</section>
-
-
-<section>
-<h2 id="___sec39">Mathematical Properties </h2>
-
-<p>
-There are several interesting mathematical properties which will be
-relevant when we are going to discuss the differences between say
-ordinary least squares (OLS) and <b>Ridge</b> regression.
-
-<p>
-We have from OLS that the parameters of the linear approximation are given by
-<p>&nbsp;<br>
-$$
-\boldsymbol{\tilde{y}} = \boldsymbol{X}\boldsymbol{\beta} = \boldsymbol{X}\left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y}. 
-$$
-<p>&nbsp;<br>
-
-<p>
-The matrix to invert can be rewritten in terms of our SVD decomposition as
-
-<p>&nbsp;<br>
-$$
-\boldsymbol{X}^T\boldsymbol{X} = \boldsymbol{V}\boldsymbol{\Sigma}^T\boldsymbol{U}^T\boldsymbol{U}\boldsymbol{\Sigma}\boldsymbol{V}^T.
-$$
-<p>&nbsp;<br>
-
-Using the orthogonality properties of \( \boldsymbol{U} \) we have
-
-<p>&nbsp;<br>
-$$
-\boldsymbol{X}^T\boldsymbol{X} = \boldsymbol{V}\boldsymbol{\Sigma}^T\boldsymbol{\Sigma}\boldsymbol{V}^T =  \boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T,
-$$
-<p>&nbsp;<br>
-
-with \( \boldsymbol{D} \) being a diagonal matrix with values along the diagonal given by the singular values squared.
-
-<p>
-This means that
-<p>&nbsp;<br>
-$$
-(\boldsymbol{X}^T\boldsymbol{X})\boldsymbol{V} = \boldsymbol{V}\boldsymbol{D},
-$$
-<p>&nbsp;<br>
-
-that is the eigenvectors of \( (\boldsymbol{X}^T\boldsymbol{X}) \) are given by the columns of the right singular matrix of \( \boldsymbol{X} \) and the eigenvalues are the squared singular values.  It is easy to show (show this) that
-<p>&nbsp;<br>
-$$
-(\boldsymbol{X}\boldsymbol{X}^T)\boldsymbol{U} = \boldsymbol{U}\boldsymbol{D},
-$$
-<p>&nbsp;<br>
-
-that is, the eigenvectors of \( (\boldsymbol{X}\boldsymbol{X})^T \) are the columns of the left singular matrix and the eigenvalues are the same.
-
-<p>
-Going back to our OLS equation we have
-<p>&nbsp;<br>
-$$
-\boldsymbol{X}\boldsymbol{\beta} = \boldsymbol{X}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T \right)^{-1}\boldsymbol{X}^T\boldsymbol{y}=\boldsymbol{U\Sigma V^T}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T \right)^{-1}(\boldsymbol{U\Sigma V^T})^T\boldsymbol{y}=\boldsymbol{U}\boldsymbol{U}^T\boldsymbol{y}.
-$$
-<p>&nbsp;<br>
-
-We will come back to this expression when we discuss Ridge regression.
-
-<p>&nbsp;<br>
-$$ \tilde{y}^{OLS}={\bf X}\hat{\beta}^{OLS}=\sum_{j=1}^p {\bf u}_j{\bf u}_j^T{\bf y}$$
-<p>&nbsp;<br> and for Ridge we have&#160;
-
-<p>&nbsp;<br>
-$$ \tilde{y}^{Ridge}={\bf X}\hat{\beta}^{Ridge}=\sum_{j=1}^p {\bf u}_j\frac{\sigma_j^2}{\sigma_j^2+\lambda}{\bf u}_j^T{\bf y}$$
-<p>&nbsp;<br> .&#160;
-
-<p>
-It is indeed the economy-sized SVD, note the summation runs up tp <p>&nbsp;<br>
-$$p$$
-<p>&nbsp;<br> only and not <p>&nbsp;<br>
-$$n$$
-<p>&nbsp;<br>.&#160;
-
-<p>
-Here we have that <p>&nbsp;<br>
-$${\bf X} = {\bf U}{\bf \Sigma}{\bf V}^T$$
-<p>&nbsp;<br>, with <p>&nbsp;<br>
-$$\Sigma$$
-<p>&nbsp;<br> being an <p>&nbsp;<br>
-$$ n\times p$$
-<p>&nbsp;<br> matrix and <p>&nbsp;<br>
-$${\bf V}$$
-<p>&nbsp;<br> being a <p>&nbsp;<br>
-$$ p\times p$$
-<p>&nbsp;<br> matrix. We also have assumed here that <p>&nbsp;<br>
-$$ n > p$$
-<p>&nbsp;<br>.&#160;
-</section>
-
-
-<section>
-<h2 id="___sec40">Ridge and LASSO Regression </h2>
+<h2 id="___sec31">Ridge and LASSO Regression </h2>
 
 <p>
 Let us remind ourselves about the expression for the standard Mean Squared Error (MSE) which we used to define our cost function and the equations for the ordinary least squares (OLS) method, that is 
@@ -1922,7 +1496,7 @@ $$
 
 
 <section>
-<h2 id="___sec41">More on Ridge Regression </h2>
+<h2 id="___sec32">More on Ridge Regression </h2>
 
 <p>
 Using the matrix-vector expression for Ridge regression,
@@ -1993,7 +1567,7 @@ with the vectors \( \boldsymbol{u}_j \) being the columns of \( \boldsymbol{U} \
 
 
 <section>
-<h2 id="___sec42">Interpreting the Ridge results </h2>
+<h2 id="___sec33">Interpreting the Ridge results </h2>
 
 <p>
 Since \( \lambda \geq 0 \), it means that compared to OLS, we have
@@ -2019,7 +1593,7 @@ With a parameter \( \lambda \) we can thus shrink the role of specific parameter
 
 
 <section>
-<h2 id="___sec43">More interpretations </h2>
+<h2 id="___sec34">More interpretations </h2>
 
 <p>
 For the sake of simplicity, let us assume that the design matrix is orthonormal, that is
@@ -2062,7 +1636,7 @@ Similarly, <a href="https://arxiv.org/abs/1803.08823" target="_blank">Mehta et a
 
 
 <section>
-<h2 id="___sec44">A better understanding of regularization </h2>
+<h2 id="___sec35">A better understanding of regularization </h2>
 
 <p>
 The parameter \( \lambda \) that we have introduced in the Ridge (and
@@ -2081,7 +1655,7 @@ affected by changing the parameter \( \lambda \).
 
 
 <section>
-<h2 id="___sec45">Decomposing the OLS and Ridge expressions </h2>
+<h2 id="___sec36">Decomposing the OLS and Ridge expressions </h2>
 
 <p>
 We have our design matrix
@@ -2099,6 +1673,397 @@ and \( \boldsymbol{V}\in {\mathbb{R}}^{p\times p} \).
 
 <p>
 The matrices \( \boldsymbol{U} \) and \( \boldsymbol{V} \) are unitary/orthonormal matrices, that is in case the matrices are real we have \( \boldsymbol{U}^T\boldsymbol{U}=\boldsymbol{U}\boldsymbol{U}^T=\boldsymbol{I} \) and \( \boldsymbol{V}^T\boldsymbol{V}=\boldsymbol{V}\boldsymbol{V}^T=\boldsymbol{I} \).
+
+<p>
+Below we discuss some of the mathematics of the SVD decompostion.
+</section>
+
+
+<section>
+<h2 id="___sec37">The singular value decomposition  </h2>
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
+The examples we have looked at so far are cases where we normally can
+invert the matrix \( \boldsymbol{X}^T\boldsymbol{X} \). Using a polynomial expansion as we
+did both for the masses and the fitting of the equation of state,
+leads to row vectors of the design matrix which are essentially
+orthogonal due to the polynomial character of our model. Obtaining the inverse of the design matrix is then often done via a so-called LU, QR or Cholesky decomposition.
+
+<p>
+This may
+however not the be case in general and a standard matrix inversion
+algorithm based on say LU, QR or Cholesky decomposition may lead to singularities. We will see examples of this below.
+
+<p>
+There is however a way to partially circumvent this problem and also gain some insights about the ordinary least squares approach, and later shrinkage methods like Ridge and Lasso regressions.
+
+<p>
+This is given by the <b>Singular Value Decomposition</b> algorithm, perhaps
+the most powerful linear algebra algorithm.  Let us look at a
+different example where we may have problems with the standard matrix
+inversion algorithm. Thereafter we dive into the math of the SVD.
+
+
+</div>
+</section>
+
+
+<section>
+<h2 id="___sec38">Linear Regression Problems </h2>
+
+<p>
+One of the typical problems we encounter with linear regression, in particular 
+when the matrix \( \boldsymbol{X} \) (our so-called design matrix) is high-dimensional, 
+are problems with near singular or singular matrices. The column vectors of \( \boldsymbol{X} \) 
+may be linearly dependent, normally referred to as super-collinearity.  
+This means that the matrix may be rank deficient and it is basically impossible to 
+to model the data using linear regression. As an example, consider the matrix
+<p>&nbsp;<br>
+$$
+\begin{align*}
+\mathbf{X} & =  \left[
+\begin{array}{rrr}
+1 & -1 & 2
+\\
+1 & 0 & 1
+\\
+1 & 2  & -1
+\\
+1 & 1  & 0
+\end{array} \right]
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+<p>
+The columns of \( \boldsymbol{X} \) are linearly dependent. We see this easily since the 
+the first column is the row-wise sum of the other two columns. The rank (more correct,
+the column rank) of a matrix is the dimension of the space spanned by the
+column vectors. Hence, the rank of \( \mathbf{X} \) is equal to the number
+of linearly independent columns. In this particular case the matrix has rank 2.
+
+<p>
+Super-collinearity of an \( (n \times p) \)-dimensional design matrix \( \mathbf{X} \) implies
+that the inverse of the matrix \( \boldsymbol{X}^T\boldsymbol{X} \) (the matrix we need to invert to solve the linear regression equations) is non-invertible. If we have a square matrix that does not have an inverse, we say this matrix singular. The example here demonstrates this
+<p>&nbsp;<br>
+$$
+\begin{align*}
+\boldsymbol{X} & =  \left[
+\begin{array}{rr}
+1 & -1
+\\
+1 & -1
+\end{array} \right].
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+We see easily that  \( \mbox{det}(\boldsymbol{X}) = x_{11} x_{22} - x_{12} x_{21} = 1 \times (-1) - 1 \times (-1) = 0 \). Hence, \( \mathbf{X} \) is singular and its inverse is undefined.
+This is equivalent to saying that the matrix \( \boldsymbol{X} \) has at least an eigenvalue which is zero.
+</section>
+
+
+<section>
+<h2 id="___sec39">Fixing the singularity </h2>
+
+<p>
+If our design matrix \( \boldsymbol{X} \) which enters the linear regression problem
+<p>&nbsp;<br>
+$$
+\begin{align}
+\boldsymbol{\beta} & =  (\boldsymbol{X}^{T} \boldsymbol{X})^{-1} \boldsymbol{X}^{T} \boldsymbol{y},
+\tag{1}
+\end{align}
+$$
+<p>&nbsp;<br>
+
+has linearly dependent column vectors, we will not be able to compute the inverse
+of \( \boldsymbol{X}^T\boldsymbol{X} \) and we cannot find the parameters (estimators) \( \beta_i \). 
+The estimators are only well-defined if \( (\boldsymbol{X}^{T}\boldsymbol{X})^{-1} \) exits. 
+This is more likely to happen when the matrix \( \boldsymbol{X} \) is high-dimensional. In this case it is likely to encounter a situation where 
+the regression parameters \( \beta_i \) cannot be estimated.
+
+<p>
+A cheap  <em>ad hoc</em> approach is  simply to add a small diagonal component to the matrix to invert, that is we change
+<p>&nbsp;<br>
+$$
+\boldsymbol{X}^{T} \boldsymbol{X} \rightarrow \boldsymbol{X}^{T} \boldsymbol{X}+\lambda \boldsymbol{I},
+$$
+<p>&nbsp;<br>
+
+where \( \boldsymbol{I} \) is the identity matrix.  When we discuss <b>Ridge</b> regression this is actually what we end up evaluating. The parameter \( \lambda \) is called a hyperparameter. More about this later.
+</section>
+
+
+<section>
+<h2 id="___sec40">Basic math of the SVD </h2>
+
+<p>
+From standard linear algebra we know that a square matrix \( \boldsymbol{X} \) can be diagonalized if and only it is 
+a so-called <a href="https://en.wikipedia.org/wiki/Normal_matrix" target="_blank">normal matrix</a>, that is if \( \boldsymbol{X}\in {\mathbb{R}}^{n\times n} \)
+we have \( \boldsymbol{X}\boldsymbol{X}^T=\boldsymbol{X}^T\boldsymbol{X} \) or if \( \boldsymbol{X}\in {\mathbb{C}}^{n\times n} \) we have \( \boldsymbol{X}\boldsymbol{X}^{\dagger}=\boldsymbol{X}^{\dagger}\boldsymbol{X} \).
+The matrix has then a set of eigenpairs
+
+<p>&nbsp;<br>
+$$
+(\lambda_1,\boldsymbol{u}_1),\dots, (\lambda_n,\boldsymbol{u}_n),
+$$
+<p>&nbsp;<br>
+
+and the eigenvalues are given by the diagonal matrix
+<p>&nbsp;<br>
+$$
+\boldsymbol{\Sigma}=\mathrm{Diag}(\lambda_1, \dots,\lambda_n).
+$$
+<p>&nbsp;<br>
+
+The matrix \( \boldsymbol{X} \) can be written in terms of an orthogonal/unitary transformation \( \boldsymbol{U} \)
+<p>&nbsp;<br>
+$$
+\boldsymbol{X} = \boldsymbol{U}\boldsymbol{\Sigma}\boldsymbol{V}^T,
+$$
+<p>&nbsp;<br>
+
+with \( \boldsymbol{U}\boldsymbol{U}^T=\boldsymbol{I} \) or \( \boldsymbol{U}\boldsymbol{U}^{\dagger}=\boldsymbol{I} \).
+
+<p>
+Not all square matrices are diagonalizable. A matrix like the one discussed above
+<p>&nbsp;<br>
+$$
+\boldsymbol{X} = \begin{bmatrix} 
+1&  -1 \\
+1& -1\\
+\end{bmatrix} 
+$$
+<p>&nbsp;<br>
+
+is not diagonalizable, it is a so-called <a href="https://en.wikipedia.org/wiki/Defective_matrix" target="_blank">defective matrix</a>. It is easy to see that the condition
+\( \boldsymbol{X}\boldsymbol{X}^T=\boldsymbol{X}^T\boldsymbol{X} \) is not fulfilled.
+</section>
+
+
+<section>
+<h2 id="___sec41">The SVD, a Fantastic Algorithm </h2>
+
+<p>
+However, and this is the strength of the SVD algorithm, any general
+matrix \( \boldsymbol{X} \) can be decomposed in terms of a diagonal matrix and
+two orthogonal/unitary matrices.  The <a href="https://en.wikipedia.org/wiki/Singular_value_decomposition" target="_blank">Singular Value Decompostion
+(SVD) theorem</a>
+states that a general \( m\times n \) matrix \( \boldsymbol{X} \) can be written in
+terms of a diagonal matrix \( \boldsymbol{\Sigma} \) of dimensionality \( m\times n \)
+and two orthognal matrices \( \boldsymbol{U} \) and \( \boldsymbol{V} \), where the first has
+dimensionality \( m \times m \) and the last dimensionality \( n\times n \).
+We have then
+
+<p>&nbsp;<br>
+$$ 
+\boldsymbol{X} = \boldsymbol{U}\boldsymbol{\Sigma}\boldsymbol{V}^T 
+$$
+<p>&nbsp;<br>
+
+<p>
+As an example, the above defective matrix can be decomposed as
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{X} = \frac{1}{\sqrt{2}}\begin{bmatrix}  1&  1 \\ 1& -1\\ \end{bmatrix} \begin{bmatrix}  2&  0 \\ 0& 0\\ \end{bmatrix}    \frac{1}{\sqrt{2}}\begin{bmatrix}  1&  -1 \\ 1& 1\\ \end{bmatrix}=\boldsymbol{U}\boldsymbol{\Sigma}\boldsymbol{V}^T, 
+$$
+<p>&nbsp;<br>
+
+<p>
+with eigenvalues \( \sigma_1=2 \) and \( \sigma_2=0 \). 
+The SVD exits always!
+
+<p>
+The SVD
+decomposition (singular values) gives eigenvalues 
+\( \sigma_i\geq\sigma_{i+1} \) for all \( i \) and for dimensions larger than \( i=p \), the
+eigenvalues (singular values) are zero.
+
+<p>
+In the general case, where our design matrix \( \boldsymbol{X} \) has dimension
+\( n\times p \), the matrix is thus decomposed into an \( n\times n \)
+orthogonal matrix \( \boldsymbol{U} \), a \( p\times p \) orthogonal matrix \( \boldsymbol{V} \)
+and a diagonal matrix \( \boldsymbol{\Sigma} \) with \( r=\mathrm{min}(n,p) \)
+singular values \( \sigma_i\geq 0 \) on the main diagonal and zeros filling
+the rest of the matrix.  There are at most \( p \) singular values
+assuming that \( n > p \). In our regression examples for the nuclear
+masses and the equation of state this is indeed the case, while for
+the Ising model we have \( p > n \). These are often cases that lead to
+near singular or singular matrices.
+
+<p>
+The columns of \( \boldsymbol{U} \) are called the left singular vectors while the columns of \( \boldsymbol{V} \) are the right singular vectors.
+</section>
+
+
+<section>
+<h2 id="___sec42">Economy-size SVD </h2>
+
+<p>
+If we assume that \( n > p \), then our matrix \( \boldsymbol{U} \) has dimension \( n
+\times n \). The last \( n-p \) columns of \( \boldsymbol{U} \) become however
+irrelevant in our calculations since they are multiplied with the
+zeros in \( \boldsymbol{\Sigma} \).
+
+<p>
+The economy-size decomposition removes extra rows or columns of zeros
+from the diagonal matrix of singular values, \( \boldsymbol{\Sigma} \), along with the columns
+in either \( \boldsymbol{U} \) or \( \boldsymbol{V} \) that multiply those zeros in the expression. 
+Removing these zeros and columns can improve execution time
+and reduce storage requirements without compromising the accuracy of
+the decomposition.
+
+<p>
+If \( n > p \), we keep only the first \( p \) columns of \( \boldsymbol{U} \) and \( \boldsymbol{\Sigma} \) has dimension \( p\times p \). 
+If \( p > n \), then only the first \( n \) columns of \( \boldsymbol{V} \) are computed and \( \boldsymbol{\Sigma} \) has dimension \( n\times n \).
+The \( n=p \) case is obvious, we retain the full SVD. 
+In general the economy-size SVD leads to less FLOPS and still conserving the desired accuracy.
+</section>
+
+
+<section>
+<h2 id="___sec43">Codes for the SVD </h2>
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #228B22"># SVD inversion</span>
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">SVDinv</span>(A):
+    <span style="color: #CD5555">&#39;&#39;&#39; Takes as input a numpy matrix A and returns inv(A) based on singular value decomposition (SVD).</span>
+<span style="color: #CD5555">    SVD is numerically more stable than the inversion algorithms provided by</span>
+<span style="color: #CD5555">    numpy and scipy.linalg at the cost of being slower.</span>
+<span style="color: #CD5555">    &#39;&#39;&#39;</span>
+    U, s, VT = np.linalg.svd(A)
+<span style="color: #228B22">#    print(&#39;test U&#39;)</span>
+<span style="color: #228B22">#    print( (np.transpose(U) @ U - U @np.transpose(U)))</span>
+<span style="color: #228B22">#    print(&#39;test VT&#39;)</span>
+<span style="color: #228B22">#    print( (np.transpose(VT) @ VT - VT @np.transpose(VT)))</span>
+    <span style="color: #658b00">print</span>(U)
+    <span style="color: #658b00">print</span>(s)
+    <span style="color: #658b00">print</span>(VT)
+
+    D = np.zeros((<span style="color: #658b00">len</span>(U),<span style="color: #658b00">len</span>(VT)))
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>,<span style="color: #658b00">len</span>(VT)):
+        D[i,i]=s[i]
+    UT = np.transpose(U); V = np.transpose(VT); invD = np.linalg.inv(D)
+    <span style="color: #8B008B; font-weight: bold">return</span> np.matmul(V,np.matmul(invD,UT))
+
+
+X = np.array([ [<span style="color: #B452CD">1.0</span>, -<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">2.0</span>], [<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">0.0</span>, <span style="color: #B452CD">1.0</span>], [<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">2.0</span>, -<span style="color: #B452CD">1.0</span>], [<span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">1.0</span>, <span style="color: #B452CD">0.0</span>] ])
+<span style="color: #658b00">print</span>(X)
+A = np.transpose(X) @ X
+<span style="color: #658b00">print</span>(A)
+<span style="color: #228B22"># Brute force inversion of super-collinear matrix</span>
+<span style="color: #228B22">#B = np.linalg.inv(A)</span>
+<span style="color: #228B22">#print(B)</span>
+C = SVDinv(A)
+<span style="color: #658b00">print</span>(C)
+</pre></div>
+<p>
+The matrix \( \boldsymbol{X} \) has columns that are linearly dependent. The first
+column is the row-wise sum of the other two columns. The rank of a
+matrix (the column rank) is the dimension of space spanned by the
+column vectors. The rank of the matrix is the number of linearly
+independent columns, in this case just \( 2 \). We see this from the
+singular values when running the above code. Running the standard
+inversion algorithm for matrix inversion with \( \boldsymbol{X}^T\boldsymbol{X} \) results
+in the program terminating due to a singular matrix.
+</section>
+
+
+<section>
+<h2 id="___sec44">Mathematical Properties </h2>
+
+<p>
+There are several interesting mathematical properties which will be
+relevant when we are going to discuss the differences between say
+ordinary least squares (OLS) and <b>Ridge</b> regression.
+
+<p>
+We have from OLS that the parameters of the linear approximation are given by
+<p>&nbsp;<br>
+$$
+\boldsymbol{\tilde{y}} = \boldsymbol{X}\boldsymbol{\beta} = \boldsymbol{X}\left(\boldsymbol{X}^T\boldsymbol{X}\right)^{-1}\boldsymbol{X}^T\boldsymbol{y}. 
+$$
+<p>&nbsp;<br>
+
+<p>
+The matrix to invert can be rewritten in terms of our SVD decomposition as
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{X}^T\boldsymbol{X} = \boldsymbol{V}\boldsymbol{\Sigma}^T\boldsymbol{U}^T\boldsymbol{U}\boldsymbol{\Sigma}\boldsymbol{V}^T.
+$$
+<p>&nbsp;<br>
+
+Using the orthogonality properties of \( \boldsymbol{U} \) we have
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{X}^T\boldsymbol{X} = \boldsymbol{V}\boldsymbol{\Sigma}^T\boldsymbol{\Sigma}\boldsymbol{V}^T =  \boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T,
+$$
+<p>&nbsp;<br>
+
+with \( \boldsymbol{D} \) being a diagonal matrix with values along the diagonal given by the singular values squared.
+
+<p>
+This means that
+<p>&nbsp;<br>
+$$
+(\boldsymbol{X}^T\boldsymbol{X})\boldsymbol{V} = \boldsymbol{V}\boldsymbol{D},
+$$
+<p>&nbsp;<br>
+
+that is the eigenvectors of \( (\boldsymbol{X}^T\boldsymbol{X}) \) are given by the columns of the right singular matrix of \( \boldsymbol{X} \) and the eigenvalues are the squared singular values.  It is easy to show (show this) that
+<p>&nbsp;<br>
+$$
+(\boldsymbol{X}\boldsymbol{X}^T)\boldsymbol{U} = \boldsymbol{U}\boldsymbol{D},
+$$
+<p>&nbsp;<br>
+
+that is, the eigenvectors of \( (\boldsymbol{X}\boldsymbol{X})^T \) are the columns of the left singular matrix and the eigenvalues are the same.
+
+<p>
+Going back to our OLS equation we have
+<p>&nbsp;<br>
+$$
+\boldsymbol{X}\boldsymbol{\beta} = \boldsymbol{X}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T \right)^{-1}\boldsymbol{X}^T\boldsymbol{y}=\boldsymbol{U\Sigma V^T}\left(\boldsymbol{V}\boldsymbol{D}\boldsymbol{V}^T \right)^{-1}(\boldsymbol{U\Sigma V^T})^T\boldsymbol{y}=\boldsymbol{U}\boldsymbol{U}^T\boldsymbol{y}.
+$$
+<p>&nbsp;<br>
+</section>
+
+
+<section>
+<h2 id="___sec45">OLS and Ridge in terms of an SVD Decomposition </h2>
+
+<p>
+We have then
+<p>&nbsp;<br>
+$$
+\tilde{y}^{OLS}={\bf X}\hat{\beta}^{OLS}=\sum_{j=1}^p {\bf u}_j{\bf u}_j^T{\bf y},
+$$
+<p>&nbsp;<br>
+
+for ordinary least squares (OLS) 
+and for Ridge we have
+<p>&nbsp;<br>
+$$
+\tilde{y}^{Ridge}={\bf X}\hat{\beta}^{Ridge}=\sum_{j=1}^p {\bf u}_j\frac{\sigma_j^2}{\sigma_j^2+\lambda}{\bf u}_j^T{\bf y}.
+$$
+<p>&nbsp;<br>
+
+<p>
+Note that the summation runs up tp \( p \) only and not \( n \).
+
+<p>
+Here we have that \( {\bf X} = {\bf U}{\bf \Sigma}{\bf V}^T \), with \( \Sigma \) being an \( n\times p \) matrix and
+\( {\bf V} \) being a \( p\times p \) matrix. We also have assumed here that $ n > p$.
 </section>
 
 
