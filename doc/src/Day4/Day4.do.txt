@@ -492,11 +492,8 @@ what we derived earlier is compatible with these equations.
 
 To find the optimal parameters we would typically use a gradient
 descent method.  Newton's method and gradient descent methods are
-discussed in the material on "optimization
-methods":"https://compphysics.github.io/MachineLearning/doc/pub/Splines/html/Splines-bs.html".
-
-This will be discussed next week. Before we develop our own codes for logistic regression, we end this lecture by studying the functionality that _Scikit-learn_ offers. 
-
+discussed in the material on optimization
+methods below in these slides.
 
 
 
@@ -608,7 +605,7 @@ correlation_matrix = cancerpd.corr().round(1)
 Diagonalizing this matrix we can in turn say something about which
 features are of relevance and which are not. This leads  us to
 the classical Principal Component Analysis (PCA) theorem with
-applications. This will be discussed later this semester ("week 43":"https://compphysics.github.io/MachineLearning/doc/pub/week43/html/week43-bs.html").
+applications. 
 
 
 
