@@ -133,7 +133,7 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | Friday | - _Lecture 9am-1130am_:  Logistic Regression and begin Neural Networks (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 5 | 
-| | - _Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW), exercise sets 2 and 3 and first project |
+| | - _Laboratory 2pm-5pm_: Computational Exercises and project 1(PDBS and KW), exercise sets 2 and 3 and first project |
 
 ---
 
@@ -143,7 +143,7 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | Monday | - _Lecture 9am-1130am_:  Neural Networks  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 6 | 
-| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW) and work on project 1 |
+| | - _Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW) and work on project 1 |
 | Tuesday | - _Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and regression problems (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 7 | 
