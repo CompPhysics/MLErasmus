@@ -133,6 +133,8 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | Friday | - _Lecture 9am-1130am_:  Logistic Regression and begin Neural Networks (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 5 | 
+| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan22.mp4?vrtx=view-as-webpage |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan212.pdf  |
 | | - _Laboratory 2pm-5pm_: Computational Exercises and project 1(PDBS and KW), exercise sets 2 and 3 and first project |
 
 ---
