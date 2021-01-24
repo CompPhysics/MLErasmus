@@ -1,11 +1,11 @@
 <!--
 Automatically generated HTML file from DocOnce source
-(https://github.com/hplgit/doconce/)
+(https://github.com/doconce/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/doconce/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Overview of course material: Data Analysis and Machine Learning">
 
@@ -15,8 +15,8 @@ Automatically generated HTML file from DocOnce source
 <style type="text/css">
 /* blueish style */
 
-/* Color definitions:  http://www.december.com/html/spec/color0.html
-   CSS examples:       http://www.w3schools.com/css/css_examples.asp */
+/* Color definitions:  https://www.december.com/html/spec/color0.html
+   CSS examples:       https://www.w3schools.com/css/css_examples.asp */
 
 body {
   margin-top: 1.0em;
@@ -56,10 +56,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/doconce/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/doconce/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/doconce/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/doconce/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -72,49 +72,67 @@ div { text-align: justify; text-justify: inter-word; }
  'sections': [('Day 1: Introduction to Data Analysis and Machine Learning',
                2,
                None,
-               '___sec0'),
+               'day-1-introduction-to-data-analysis-and-machine-learning'),
               ('Day 2: Linear Regression, from ordinary Least Squares to Ridge '
                'and Lasso Regression',
                2,
                None,
-               '___sec1'),
+               'day-2-linear-regression-from-ordinary-least-squares-to-ridge-and-lasso-regression'),
               ('Day 3: Linear Regression and Bias-Variance Tradeoff',
                2,
                None,
-               '___sec2'),
+               'day-3-linear-regression-and-bias-variance-tradeoff'),
               ('Day 4: Logistic Regression and Optimization',
                2,
                None,
-               '___sec3'),
+               'day-4-logistic-regression-and-optimization'),
               ('Day 5: Logistic Regression and begin Neural Networks',
                2,
                None,
-               '___sec4'),
-              ('Day 6: Neural Networks and Deep Learning', 2, None, '___sec5'),
+               'day-5-logistic-regression-and-begin-neural-networks'),
+              ('Day 6: Neural Networks and Deep Learning',
+               2,
+               None,
+               'day-6-neural-networks-and-deep-learning'),
               ('Day 7: Neural Networks, back propagation and examples of '
                'classification and regression problems',
                2,
                None,
-               '___sec6'),
+               'day-7-neural-networks-back-propagation-and-examples-of-classification-and-regression-problems'),
               ('Day 8: Deep Learning, Covoluntional and Recurrence Neural '
                'Networks',
                2,
                None,
-               '___sec7'),
+               'day-8-deep-learning-covoluntional-and-recurrence-neural-networks'),
               ('Day 9: Decision trees, Random Forests and Boosting',
                2,
                None,
-               '___sec8'),
+               'day-9-decision-trees-random-forests-and-boosting'),
               ('Day 10:  Boosting and XGBoost and Summary of course',
                2,
                None,
-               '___sec9'),
-              ('Projects and Exercises', 2, None, '___sec10'),
-              ('First exercise set (Day 1 and Day 2)', 3, None, '___sec11'),
-              ('Second exercise set (Day 3)', 3, None, '___sec12'),
-              ('Third  exercise set (Day 4 and 5)', 3, None, '___sec13'),
-              ('Project 1, deadline February 20', 3, None, '___sec14'),
-              ('Project 2, deadline February 20', 3, None, '___sec15')]}
+               'day-10-boosting-and-xgboost-and-summary-of-course'),
+              ('Projects and Exercises', 2, None, 'projects-and-exercises'),
+              ('First exercise set (Day 1 and Day 2)',
+               3,
+               None,
+               'first-exercise-set-day-1-and-day-2'),
+              ('Second exercise set (Day 3)',
+               3,
+               None,
+               'second-exercise-set-day-3'),
+              ('Third  exercise set (Day 4 and 5)',
+               3,
+               None,
+               'third-exercise-set-day-4-and-5'),
+              ('Project 1, deadline February 20',
+               3,
+               None,
+               'project-1-deadline-february-20'),
+              ('Project 2, deadline February 20',
+               3,
+               None,
+               'project-2-deadline-february-20')]}
 end of tocinfo -->
 
 <body>
@@ -146,7 +164,7 @@ The teaching material is produced in various formats for printing and on-screen 
 <p>
 <!-- !split -->
 <div class="alert alert-block alert-warning alert-text-normal">
-<b>Warning.</b>
+<b>Warning</b>
 <p>
 The PDF files are based on LaTeX and have seldom technical
 failures that cannot be easily corrected.
@@ -160,7 +178,7 @@ formulas in HTML or ipython notebook files.
 </div>
 
 
-<h2 id="___sec0">Day 1: Introduction to Data Analysis and Machine Learning </h2>
+<h2 id="day-1-introduction-to-data-analysis-and-machine-learning">Day 1: Introduction to Data Analysis and Machine Learning </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -190,7 +208,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec1">Day 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression </h2>
+<h2 id="day-2-linear-regression-from-ordinary-least-squares-to-ridge-and-lasso-regression">Day 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -220,7 +238,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec2">Day 3: Linear Regression and Bias-Variance Tradeoff </h2>
+<h2 id="day-3-linear-regression-and-bias-variance-tradeoff">Day 3: Linear Regression and Bias-Variance Tradeoff </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -250,7 +268,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec3">Day 4: Logistic Regression and Optimization </h2>
+<h2 id="day-4-logistic-regression-and-optimization">Day 4: Logistic Regression and Optimization </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -280,7 +298,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec4">Day 5: Logistic Regression and begin Neural Networks </h2>
+<h2 id="day-5-logistic-regression-and-begin-neural-networks">Day 5: Logistic Regression and begin Neural Networks </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -310,7 +328,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec5">Day 6: Neural Networks and Deep Learning </h2>
+<h2 id="day-6-neural-networks-and-deep-learning">Day 6: Neural Networks and Deep Learning </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -340,7 +358,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec6">Day 7: Neural Networks, back propagation and examples of classification and regression problems </h2>
+<h2 id="day-7-neural-networks-back-propagation-and-examples-of-classification-and-regression-problems">Day 7: Neural Networks, back propagation and examples of classification and regression problems </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -370,7 +388,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec7">Day 8: Deep Learning, Covoluntional and Recurrence Neural Networks </h2>
+<h2 id="day-8-deep-learning-covoluntional-and-recurrence-neural-networks">Day 8: Deep Learning, Covoluntional and Recurrence Neural Networks </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -400,7 +418,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec8">Day 9: Decision trees, Random Forests and Boosting </h2>
+<h2 id="day-9-decision-trees-random-forests-and-boosting">Day 9: Decision trees, Random Forests and Boosting </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -430,7 +448,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h2 id="___sec9">Day 10:  Boosting and XGBoost and Summary of course  </h2>
+<h2 id="day-10-boosting-and-xgboost-and-summary-of-course">Day 10:  Boosting and XGBoost and Summary of course  </h2>
 
 <ul>
  <li> LaTeX PDF:</li>
@@ -462,9 +480,9 @@ formulas in HTML or ipython notebook files.
 
 <!-- !split -->
 
-<h2 id="___sec10">Projects and Exercises </h2>
+<h2 id="projects-and-exercises">Projects and Exercises </h2>
 
-<h3 id="___sec11">First exercise set (Day 1 and Day 2) </h3>
+<h3 id="first-exercise-set-day-1-and-day-2">First exercise set (Day 1 and Day 2) </h3>
 
 <ul>
  <li> LaTeX and PDF:</li>
@@ -483,7 +501,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h3 id="___sec12">Second exercise set (Day 3) </h3>
+<h3 id="second-exercise-set-day-3">Second exercise set (Day 3) </h3>
 
 <ul>
  <li> LaTeX and PDF:</li>
@@ -502,7 +520,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h3 id="___sec13">Third  exercise set (Day 4 and 5)  </h3>
+<h3 id="third-exercise-set-day-4-and-5">Third  exercise set (Day 4 and 5)  </h3>
 
 <ul>
  <li> LaTeX and PDF:</li>
@@ -521,7 +539,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h3 id="___sec14">Project 1, deadline February 20  </h3>
+<h3 id="project-1-deadline-february-20">Project 1, deadline February 20  </h3>
 
 <ul>
  <li> LaTeX and PDF:</li>
@@ -540,7 +558,7 @@ formulas in HTML or ipython notebook files.
 
 </ul>
 
-<h3 id="___sec15">Project 2, deadline February 20  </h3>
+<h3 id="project-2-deadline-february-20">Project 2, deadline February 20  </h3>
 
 <ul>
  <li> LaTeX and PDF:</li>
