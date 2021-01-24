@@ -1033,12 +1033,6 @@ Using the definition of convexity, try to show that a function satisfying the pr
 
 
 !split
-===== Friday September 25 =====
-
-"Video of Lecture":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h20/forelesningsvideoer/LectureSeptember25.mp4?vrtx=view-as-webpage" and "link to handwritten notes":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/HandWrittenNotes/NotesSeptember25.pdf".
-
-
-!split
 ===== Standard steepest descent =====
 
 
