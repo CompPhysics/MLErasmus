@@ -173,6 +173,19 @@ the test and training MSEs. The test MSE can be used to indicate
 possible regions of low/high bias and variance. You will most likely
 not get an equally smooth curve!
 
+Show that you can rewrite  this as
+\[
+\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right]=\frac{1}{n}\sum_i(f_i-\mathbb{E}\left[\bm{\tilde{y}}\right])^2+\frac{1}{n}\sum_i(\tilde{y}_i-\mathbb{E}\left[\bm{\tilde{y}}\right])^2+\sigma^2.
+\]
+
+Explain what the terms mean, which one is the bias and which one is
+the variance and discuss their interpretations.If you're not able to reproduce a similar plot as the one shown in
+Fig. 2.11 of Hastie, try either increasing complexity(the polynomial
+degree), increase the noise of the data $y$, or reduce the number of
+datapoints.
+
+
+
 With this result we move on to the bias-variance trade-off analysis.
 
 Consider a
@@ -217,28 +230,37 @@ the variance and discuss their interpretations.
 
 Perform then a bias-variance analysis of the Franke function by
 studying the MSE value as function of the complexity of your model.
+Plot the bias and variance trade-off, and evaluate how it depends on
+your model complexity, the number of data points, and possibly also
+the noise parameter.
 
-Discuss the bias and variance trade-off as function
-of your model complexity (the degree of the polynomial) and the number
-of data points, and possibly also your training and test data using the _bootstrap_ resampling method.
 
-Note also that when you calculate the bias, in all applications you don't know the function values $f_i$. You would hence replace them with the actual data points $y_i$.
+
+
+Note also that when you calculate the bias, in all applications you
+don't know the function values $f_i$. You would hence replace them
+with the actual data points $y_i$.
 
 
 === Part c) Cross-validation as resampling techniques, adding more complexity ===
 
 
 The aim here is to study  another widely popular
-resampling technique, the so-called cross-validation method.  Again,
-before you start with cross-validation approach, you should scale your
-data.
+resampling technique, the so-called cross-validation method.
 
-Implement the $k$-fold cross-validation algorithm 
+Before you start with the cross-validation approach, you should assess
+whether you should scale your data before the whole procedure, or
+during the procedure inbetween each split. This issue is relevant to
+the topic of "data leakage":"https://en.wikipedia.org/wiki/Leakage_(machine_learning)".
+
+Implement the $k$-fold cross-validation algorithm
 and evaluate again the MSE function resulting
-from the test folds. You can use the functionality of 
+from the test folds. You can use the functionality of
 _Scikit-Learn_ or even write your own code.
+Try $5-10$ folds, comment on your results.
 
-Compare the MSE you get from your cross-validation code with the one you got from your _bootstrap_ code. Comment your results. Try $5-10$ folds. 
+Compare the MSE you get from your cross-validation code with the one
+you got from your _bootstrap_ code. Comment your results.
 
 
 === Part d): Ridge Regression on the Franke function  with resampling ===
@@ -254,72 +276,78 @@ dependence on $\lambda$.
 Study also the bias-variance trade-off as function of various values of
 the parameter $\lambda$. For the bias-variance trade-off, use the _bootstrap_ resampling method. Comment your results. 
 
-=== Part e): Lasso Regression on the Franke function  with resampling ===
-
-This part is essentially a repeat of the previous two ones, but now
-with Lasso regression. We recommend that you use the 
-functions of _Scikit-Learn_.
-Give a
-critical discussion of the three methods and a judgement of which
-model fits the data best.  Perform here as well an analysis of the bias-variance trade-off using the _bootstrap_ resampling technique and an analysis of the mean squared error using cross-validation. 
-
-===  Part f): Introducing real data and preparing the data analysis  ===
+=== Part e): Introducing Real Data ===
 
 With our codes functioning and having been tested properly on a
-simpler function we are now ready to look at real data. We will
-essentially repeat in part g) what was done in parts a-e). However, we
-need first to download the data and prepare properly the inputs to our
-codes.  We are going to download digital terrain data from the website
-URL:"https://earthexplorer.usgs.gov/",
+simpler function we are now ready to look at real data.
+The data we are going to use is the
+"Boston Housing data set":"https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html".
 
-In order to obtain data for a specific region, you need to register as
-a user (free) at this website and then decide upon which area you want
-to fetch the digital terrain data from.  In order to be able to read
-the data properly, you need to specify that the format should be _SRTM
-Arc-Second Global_ and download the data as a _GeoTIF_ file.  The
-files are then stored in *tif* format which can be imported into a
-Python program using
-
+The dataset can be imported from scikit-learn as follows
 !bc pycod
-scipy.misc.imread
+    import pandas as pd
+    from sklearn.datasets import load_boston
+    boston_data = load_boston()
+    boston_df = pd.DataFrame(boston_data.data, columns=boston_data.feature_names)
+    boston_df['MEDV'] = boston_data.target
 !ec
 
-Here is a simple part of a Python code which reads and plots the data
-from such files
 
-!bc pycod
-import numpy as np
-from imageio import imread
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from matplotlib import cm
+The dataset contains $13$ features, and $1$ target named 'MEDV'.  The
+goal of this exercise is to perform polynomial regression, using both
+OLS and Ridge Regression in order to find the model that best predicts
+the 'MEDV' target value. As before we assess the quality of a model by
+using the MSE and the R2 score.
 
-# Load the terrain
-terrain1 = imread('SRTM_data_Norway_1.tif')
-# Show the terrain
-plt.figure()
-plt.title('Terrain over Norway 1')
-plt.imshow(terrain1, cmap='gray')
-plt.xlabel('X')
-plt.ylabel('Y')
-plt.show()
+You will have to use scikit-learn's functionality to create your
+design matrix
+!bc
+pycod poly = PolynomialFeatures(degree)
+X = poly.fit_transform(x)
 !ec
 
-If you should have problems in downloading the digital terrain data,
-we provide two examples under the data folder of project 1. One is
-from a region close to Stavanger in Norway and the other Møsvatn
-Austfjell, again in Norway.
-Feel free to produce your own terrain data.
+Note that previously we had a dependence on
+two original features $(x,y)$, this time around we have $13$ original
+features. Therefore, you will quickly run up the number of derived
+features as you increase complexity. This will sooner or later
+introduce you to an _underdetermined_ system of equations, where you
+have more derived features than you have data($p>n)$. How does Ridge
+regression, or the _pseudoinverse_ fit into this context?
+
+The goal of this exercise is as stated earlier: Find the best model.
+To achieve this goal, vary your $\lambda$ parameter, complexity, try
+different data-scaling methods, and even evaluate whether you need all
+13 features(Feature Selection). A good starting point for the latter
+is to look at linear correlations asdefined by the correlation matrix.
 
 
-Alternatively, if you would like to use another data set, feel free to do so. This could be data close to your reseach area or simply a data set you found interesting. See for example "kaggle.com":"https://www.kaggle.com/datasets" for examples.
+!bc pycod
+import seaborn as sns
+corr_matrix = boston_df.corr().round(3)
+sns.heatmap(data=corr_matrix, annot=True)
+!ec
 
-=== Part g) OLS, Ridge and Lasso regression with resampling ===
+You can try to remove features that have low correlation with the
+target, and evaluate to what degree it affects your metrics. You may
+also want to remove features that have high correlation with each
+other, this is up to you.  More on this here on
+"Multicollinearity":"https://en.wikipedia.org/wiki/Multicollinearity.
 
-Our final part deals with the parameterization of your digital terrain
-data (or your own data).  We will apply all three methods for linear regression, the same type (or higher order) of polynomial
-approximation and cross-validation as resampling technique to evaluate which
-model fits the data best.
+
+
+Lastly, employ cross-validation as in part c) to assess how well your
+model(s) generalizes.
+
+=== Part f): Presentation ===
+
+* Make a scatter plot with the true values against the predicted values of your best model(s) from e).
+* Make a linear regression of the type $y = \beta_0 + \beta_1 x$ and fit it to your scatter plot.
+* Include a line of the ideal model for comparison($y=x$).
+
+
+Feel free to use additional ways to plot and present your model.
+
+
 
 At the end, you should present a critical evaluation of your results
 and discuss the applicability of these regression methods to the type
@@ -412,3 +440,189 @@ of code developers and contributors keeps increasing.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+\paragraph{Part e): Introducing real data.}
+
+%\paragraph{Part f): Introducing real data and preparing the data analysis.}
+%With our codes functioning and having been tested properly on a
+%simpler function we are now ready to look at real data. We will
+%essentially repeat in part g) what was done in parts a-e). However, we
+%need first to download the data and prepare properly the inputs to our
+%codes.  We are going to download digital terrain data from the website
+%\href{{https://earthexplorer.usgs.gov/}}{\nolinkurl{https://earthexplorer.usgs.gov/}},
+
+%In order to obtain data for a specific region, you need to register as
+%a user (free) at this website and then decide upon which area you want
+%to fetch the digital terrain data from.  In order to be able to read
+%the data properly, you need to specify that the format should be \textbf{SRTM
+%Arc-Second Global} and download the data as a \textbf{GeoTIF} file.  The
+%files are then stored in \emph{tif} format which can be imported into a
+%Python program using
+
+%\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinest%retch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+%scipy.misc.imread
+%\end{minted}
+
+%Here is a simple part of a Python code which reads and plots the data
+%from such files
+
+%\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
+%import numpy as np
+%from imageio import imread
+%import matplotlib.pyplot as plt
+%from mpl_toolkits.mplot3d import Axes3D
+%from matplotlib import cm
+
+%# Load the terrain
+%terrain1 = imread('SRTM_data_Norway_1.tif')
+%# Show the terrain
+%plt.figure()
+%plt.title('Terrain over Norway 1')
+%plt.imshow(terrain1, cmap='gray')
+%plt.xlabel('X')
+%plt.ylabel('Y')
+%plt.show()
+%\end{minted}
+
+%If you should have problems in downloading the digital terrain data,
+%we provide two examples under the data folder of project 1. One is
+%from a region close to Stavanger in Norway and the other Møsvatn
+%Austfjell, again in Norway.
+%Feel free to produce your own terrain data.
+
+
+%Alternatively, if you would like to use another data set, feel free to do so. This could be data close to your reseach area or simply a data set you found interesting. See for example \href{{https://www.kaggle.com/datasets}}{kaggle.com} for examples.
+
+%\paragraph{Part g) OLS, Ridge and Lasso regression with resampling.}
+%Our final part deals with the parameterization of your digital terrain
+%data (or your own data).  We will apply all three methods for linear regression, the same type (or higher order) of polynomial
+%approximation and cross-validation as resampling technique to evaluate which
+%model fits the data best.
+
+%At the end, you should present a critical evaluation of your results
+%and discuss the applicability of these regression methods to the type
+%of data presented here (either the terrain data we propose or other data sets).
+
+
+
+
+\subsection*{Background literature}
+
+\begin{enumerate}
+\item For a discussion and derivation of the variances and mean squared errors using linear regression, see the \href{{https://arxiv.org/abs/1509.09169}}{Lecture notes on ridge regression by Wessel N. van Wieringen}
+
+\item The textbook of \href{{https://www.springer.com/gp/book/9780387848570}}{Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer}, chapters 3 and 7 are the most relevant ones for the analysis here.
+\end{enumerate}
+
+\noindent
+\subsection*{Introduction to numerical projects}
+
+Here follows a brief recipe and recommendation on how to write a report for each
+project.
+
+\begin{itemize}
+  \item Give a short description of the nature of the problem and the eventual  numerical methods you have used.
+
+  \item Describe the algorithm you have used and/or developed. Here you may find it convenient to use pseudocoding. In many cases you can describe the algorithm in the program itself.
+
+  \item Include the source code of your program. Comment your program properly.
+
+  \item If possible, try to find analytic solutions, or known limits in order to test your program when developing the code.
+
+  \item Include your results either in figure form or in a table. Remember to        label your results. All tables and figures should have relevant captions        and labels on the axes.
+
+  \item Try to evaluate the reliabilty and numerical stability/precision of your results. If possible, include a qualitative and/or quantitative discussion of the numerical stability, eventual loss of precision etc.
+
+  \item Try to give an interpretation of you results in your answers to  the problems.
+
+  \item Critique: if possible include your comments and reflections about the  exercise, whether you felt you learnt something, ideas for improvements and  other thoughts you've made when solving the exercise. We wish to keep this course at the interactive level and your comments can help us improve it.
+
+  \item Try to establish a practice where you log your work at the  computerlab. You may find such a logbook very handy at later stages in your work, especially when you don't properly remember  what a previous test version  of your program did. Here you could also record  the time spent on solving the exercise, various algorithms you may have tested or other topics which you feel worthy of mentioning.
+  \end{itemize}
+
+\noindent
+\subsection*{Format for electronic delivery of report and programs}
+
+The preferred format for the report is a PDF file. You can also use DOC or postscript formats or as an ipython notebook file.  As programming language we prefer that you choose between C/C++, Fortran2008 or Python. The following prescription should be followed when preparing the report:
+
+
+\begin{itemize}
+  \item Send us by email  \textbf{only} the report file or the link to your GitHub/GitLab or similar repos!  Mske sure it is public or if not, give us access. For the source code file(s) you have developed please provide us with your link to your GitHub/GitLab or similar  domain.  The report file should include all of your discussions and a list of the codes you have developed.
+
+  \item In your GitHub/GitLab or similar repository, please include a folder which contains selected results. These can be in the form of output from your code for a selected set of runs and input parameters.
+  \end{itemize}
+
+\noindent
+Finally,
+we encourage you to collaborate. Optimal working groups consist of
+2-3 students. You can then hand in a common report.
+
+
+
+\subsection*{Software and needed installations}
+
+If you have Python installed (we recommend Python3) and you feel pretty familiar with installing different packages,
+we recommend that you install the following Python packages via \textbf{pip} as
+\begin{enumerate}
+\item pip install numpy scipy matplotlib ipython scikit-learn tensorflow sympy pandas pillow
+\end{enumerate}
+
+\noindent
+For Python3, replace \textbf{pip} with \textbf{pip3}.
+
+See below for a discussion of \textbf{tensorflow} and \textbf{scikit-learn}.
+
+For OSX users we recommend also, after having installed Xcode, to install \textbf{brew}. Brew allows
+for a seamless installation of additional software via for example
+\begin{enumerate}
+\item brew install python3
+\end{enumerate}
+
+\noindent
+For Linux users, with its variety of distributions like for example the widely popular Ubuntu distribution
+you can use \textbf{pip} as well and simply install Python as
+\begin{enumerate}
+\item sudo apt-get install python3  (or python for python2.7)
+\end{enumerate}
+
+\noindent
+etc etc.
+
+If you don't want to install various Python packages with their dependencies separately, we recommend two widely used distrubutions which set up  all relevant dependencies for Python, namely
+\begin{enumerate}
+\item \href{{https://docs.anaconda.com/}}{Anaconda} Anaconda is an open source distribution of the Python and R programming languages for large-scale data processing, predictive analytics, and scientific computing, that aims to simplify package management and deployment. Package versions are managed by the package management system \textbf{conda}
+
+\item \href{{https://www.enthought.com/product/canopy/}}{Enthought canopy}  is a Python distribution for scientific and analytic computing distribution and analysis environment, available for free and under a commercial license.
+\end{enumerate}
+
+\noindent
+Popular software packages written in Python for ML are
+
+\begin{itemize}
+\item \href{{http://scikit-learn.org/stable/}}{Scikit-learn},
+
+\item \href{{https://www.tensorflow.org/}}{Tensorflow},
+
+\item \href{{http://pytorch.org/}}{PyTorch} and
+
+\item \href{{https://keras.io/}}{Keras}.
+\end{itemize}
+
+\noindent
+These are all freely available at their respective GitHub sites. They
+encompass communities of developers in the thousands or more. And the number
+of code developers and contributors keeps increasing.
+
+
+
+~
