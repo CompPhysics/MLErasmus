@@ -265,8 +265,9 @@ you got from your _bootstrap_ code. Comment your results.
 
 === Part d): Ridge Regression on the Franke function  with resampling ===
 
-We will now use Ridge regression. You can use the _Scikit-Learn_ functionality or write your own code.
-equations (3.43) and (3.44)).
+We will now use Ridge regression. You can use the _Scikit-Learn_
+functionality or write your own code.
+
 
 Perform the same bootstrap analysis as in the
 part b)  (for the same polynomials) and the cross-validation part in part c) but now for different values of $\lambda$. Compare and
