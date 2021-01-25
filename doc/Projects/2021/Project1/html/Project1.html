@@ -1,11 +1,11 @@
 <!--
 Automatically generated HTML file from DocOnce source
-(https://github.com/hplgit/doconce/)
+(https://github.com/doconce/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/doconce/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Project 1, deadline February 20, 2021">
 
@@ -43,45 +43,43 @@ div { text-align: justify; text-justify: inter-word; }
  'sections': [('Regression analysis and resampling methods',
                2,
                None,
-               '___sec0'),
+               'regression-analysis-and-resampling-methods'),
               ('Part a): Ordinary Least Square (OLS) on the Franke function',
                3,
                None,
-               '___sec1'),
+               'part-a-ordinary-least-square-ols-on-the-franke-function'),
               ('Part b): Bias-variance trade-off and resamplng techniques',
                3,
                None,
-               '___sec2'),
+               'part-b-bias-variance-trade-off-and-resamplng-techniques'),
               ('Part c) Cross-validation as resampling techniques, adding more '
                'complexity',
                3,
                None,
-               '___sec3'),
+               'part-c-cross-validation-as-resampling-techniques-adding-more-complexity'),
               ('Part d): Ridge Regression on the Franke function  with '
                'resampling',
                3,
                None,
-               '___sec4'),
-              ('Part e): Lasso Regression on the Franke function  with '
-               'resampling',
+               'part-d-ridge-regression-on-the-franke-function-with-resampling'),
+              ('Part e): Introducing Real Data',
                3,
                None,
-               '___sec5'),
-              ('Part f): Introducing real data and preparing the data analysis',
-               3,
+               'part-e-introducing-real-data'),
+              ('Part f): Presentation', 3, None, 'part-f-presentation'),
+              ('Background literature', 2, None, 'background-literature'),
+              ('Introduction to numerical projects',
+               2,
                None,
-               '___sec6'),
-              ('Part g) OLS, Ridge and Lasso regression with resampling',
-               3,
-               None,
-               '___sec7'),
-              ('Background literature', 2, None, '___sec8'),
-              ('Introduction to numerical projects', 2, None, '___sec9'),
+               'introduction-to-numerical-projects'),
               ('Format for electronic delivery of report and programs',
                2,
                None,
-               '___sec10'),
-              ('Software and needed installations', 2, None, '___sec11')]}
+               'format-for-electronic-delivery-of-report-and-programs'),
+              ('Software and needed installations',
+               2,
+               None,
+               'software-and-needed-installations')]}
 end of tocinfo -->
 
 <body>
@@ -121,10 +119,10 @@ MathJax.Hub.Config({
 
 <br>
 <p>
-<center><h4>Jan 22, 2021</h4></center> <!-- date -->
+<center><h4>Jan 25, 2021</h4></center> <!-- date -->
 <br>
 
-<h2 id="___sec0">Regression analysis and resampling methods  </h2>
+<h2 id="regression-analysis-and-resampling-methods">Regression analysis and resampling methods  </h2>
 
 <p>
 The main aim of this project is to study in more detail various
@@ -180,7 +178,7 @@ The Python code for the Franke function is included here (it performs also a thr
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib</span> <span style="color: #008000; font-weight: bold">import</span> cm
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.ticker</span> <span style="color: #008000; font-weight: bold">import</span> LinearLocator, FormatStrFormatter
@@ -221,7 +219,7 @@ fig<span style="color: #666666">.</span>colorbar(surf, shrink<span style="color:
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 
-<h3 id="___sec1">Part a): Ordinary Least Square (OLS) on the Franke function </h3>
+<h3 id="part-a-ordinary-least-square-ols-on-the-franke-function">Part a): Ordinary Least Square (OLS) on the Franke function </h3>
 
 <p>
 We will generate our own dataset for a function
@@ -276,7 +274,7 @@ is no explicit recipe for how much data should be included as training
 data and say test data.  An accepted rule of thumb is to use
 approximately \( 2/3 \) to \( 4/5 \) of the data as training data.
 
-<h3 id="___sec2">Part b): Bias-variance trade-off and resamplng techniques </h3>
+<h3 id="part-b-bias-variance-trade-off-and-resamplng-techniques">Part b): Bias-variance trade-off and resamplng techniques </h3>
 
 <p>
 Our aim here is to study the bias-variance trade-off by implementing the <b>bootstrap</b> resampling technique.
@@ -295,6 +293,19 @@ Tibshirani, and Friedman. Figure 2.11 of this reference displays only
 the test and training MSEs. The test MSE can be used to indicate
 possible regions of low/high bias and variance. You will most likely
 not get an equally smooth curve!
+
+<p>
+Show that you can rewrite  this as
+\[
+\mathbb{E}\left[(\boldsymbol{y}-\boldsymbol{\tilde{y}})^2\right]=\frac{1}{n}\sum_i(f_i-\mathbb{E}\left[\boldsymbol{\tilde{y}}\right])^2+\frac{1}{n}\sum_i(\tilde{y}_i-\mathbb{E}\left[\boldsymbol{\tilde{y}}\right])^2+\sigma^2.
+\]
+
+<p>
+Explain what the terms mean, which one is the bias and which one is
+the variance and discuss their interpretations.If you're not able to reproduce a similar plot as the one shown in
+Fig. 2.11 of Hastie, try either increasing complexity(the polynomial
+degree), increase the noise of the data \( y \), or reduce the number of
+datapoints.
 
 <p>
 With this result we move on to the bias-variance trade-off analysis.
@@ -344,33 +355,39 @@ the variance and discuss their interpretations.
 <p>
 Perform then a bias-variance analysis of the Franke function by
 studying the MSE value as function of the complexity of your model.
+Plot the bias and variance trade-off, and evaluate how it depends on
+your model complexity, the number of data points, and possibly also
+the noise parameter.
 
 <p>
-Discuss the bias and variance trade-off as function
-of your model complexity (the degree of the polynomial) and the number
-of data points, and possibly also your training and test data using the <b>bootstrap</b> resampling method.
+Note also that when you calculate the bias, in all applications you
+don't know the function values \( f_i \). You would hence replace them
+with the actual data points \( y_i \).
 
-<p>
-Note also that when you calculate the bias, in all applications you don't know the function values \( f_i \). You would hence replace them with the actual data points \( y_i \).
-
-<h3 id="___sec3">Part c) Cross-validation as resampling techniques, adding more complexity </h3>
+<h3 id="part-c-cross-validation-as-resampling-techniques-adding-more-complexity">Part c) Cross-validation as resampling techniques, adding more complexity </h3>
 
 <p>
 The aim here is to study  another widely popular
-resampling technique, the so-called cross-validation method.  Again,
-before you start with cross-validation approach, you should scale your
-data.
+resampling technique, the so-called cross-validation method.
 
 <p>
-Implement the \( k \)-fold cross-validation algorithm 
+Before you start with the cross-validation approach, you should assess
+whether you should scale your data before the whole procedure, or
+during the procedure inbetween each split. This issue is relevant to
+the topic of <a href="https://en.wikipedia.org/wiki/Leakage_(machine_learning)" target="_blank">data leakage</a>.
+
+<p>
+Implement the \( k \)-fold cross-validation algorithm
 and evaluate again the MSE function resulting
-from the test folds. You can use the functionality of 
+from the test folds. You can use the functionality of
 <b>Scikit-Learn</b> or even write your own code.
+Try \( 5-10 \) folds, comment on your results.
 
 <p>
-Compare the MSE you get from your cross-validation code with the one you got from your <b>bootstrap</b> code. Comment your results. Try \( 5-10 \) folds.
+Compare the MSE you get from your cross-validation code with the one
+you got from your <b>bootstrap</b> code. Comment your results.
 
-<h3 id="___sec4">Part d): Ridge Regression on the Franke function  with resampling </h3>
+<h3 id="part-d-ridge-regression-on-the-franke-function-with-resampling">Part d): Ridge Regression on the Franke function  with resampling </h3>
 
 <p>
 We will now use Ridge regression. You can use the <b>Scikit-Learn</b> functionality or write your own code.
@@ -386,94 +403,98 @@ dependence on \( \lambda \).
 Study also the bias-variance trade-off as function of various values of
 the parameter \( \lambda \). For the bias-variance trade-off, use the <b>bootstrap</b> resampling method. Comment your results.
 
-<h3 id="___sec5">Part e): Lasso Regression on the Franke function  with resampling </h3>
-
-<p>
-This part is essentially a repeat of the previous two ones, but now
-with Lasso regression. We recommend that you use the 
-functions of <b>Scikit-Learn</b>.
-Give a
-critical discussion of the three methods and a judgement of which
-model fits the data best.  Perform here as well an analysis of the bias-variance trade-off using the <b>bootstrap</b> resampling technique and an analysis of the mean squared error using cross-validation.
-
-<h3 id="___sec6">Part f): Introducing real data and preparing the data analysis  </h3>
+<h3 id="part-e-introducing-real-data">Part e): Introducing Real Data </h3>
 
 <p>
 With our codes functioning and having been tested properly on a
-simpler function we are now ready to look at real data. We will
-essentially repeat in part g) what was done in parts a-e). However, we
-need first to download the data and prepare properly the inputs to our
-codes.  We are going to download digital terrain data from the website
-<a href="https://earthexplorer.usgs.gov/" target="_blank"><tt>https://earthexplorer.usgs.gov/</tt></a>,
+simpler function we are now ready to look at real data.
+The data we are going to use is the
+<a href="https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html" target="_blank">Boston Housing data set</a>.
 
 <p>
-In order to obtain data for a specific region, you need to register as
-a user (free) at this website and then decide upon which area you want
-to fetch the digital terrain data from.  In order to be able to read
-the data properly, you need to specify that the format should be <b>SRTM
-Arc-Second Global</b> and download the data as a <b>GeoTIF</b> file.  The
-files are then stored in <em>tif</em> format which can be imported into a
-Python program using
+The dataset can be imported from scikit-learn as follows
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>    <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
+    <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.datasets</span> <span style="color: #008000; font-weight: bold">import</span> load_boston
+    boston_data <span style="color: #666666">=</span> load_boston()
+    boston_df <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(boston_data<span style="color: #666666">.</span>data, columns<span style="color: #666666">=</span>boston_data<span style="color: #666666">.</span>feature_names)
+    boston_df[<span style="color: #BA2121">&#39;MEDV&#39;</span>] <span style="color: #666666">=</span> boston_data<span style="color: #666666">.</span>target
+</pre></div>
+<p>
+The dataset contains \( 13 \) features, and \( 1 \) target named 'MEDV'.  The
+goal of this exercise is to perform polynomial regression, using both
+OLS and Ridge Regression in order to find the model that best predicts
+the 'MEDV' target value. As before we assess the quality of a model by
+using the MSE and the R2 score.
+
+<p>
+You will have to use scikit-learn's functionality to create your
+design matrix
+<p>
+
+<!-- code=text typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>pycod poly = PolynomialFeatures(degree)
+X = poly.fit_transform(x)
+</pre></div>
+<p>
+Note that previously we had a dependence on
+two original features \( (x,y) \), this time around we have \( 13 \) original
+features. Therefore, you will quickly run up the number of derived
+features as you increase complexity. This will sooner or later
+introduce you to an <b>underdetermined</b> system of equations, where you
+have more derived features than you have data(\( p>n) \). How does Ridge
+regression, or the <b>pseudoinverse</b> fit into this context?
+
+<p>
+The goal of this exercise is as stated earlier: Find the best model.
+To achieve this goal, vary your \( \lambda \) parameter, complexity, try
+different data-scaling methods, and even evaluate whether you need all
+13 features(Feature Selection). A good starting point for the latter
+is to look at linear correlations asdefined by the correlation matrix.
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>scipy<span style="color: #666666">.</span>misc<span style="color: #666666">.</span>imread
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
+corr_matrix <span style="color: #666666">=</span> boston_df<span style="color: #666666">.</span>corr()<span style="color: #666666">.</span>round(<span style="color: #666666">3</span>)
+sns<span style="color: #666666">.</span>heatmap(data<span style="color: #666666">=</span>corr_matrix, annot<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">True</span>)
 </pre></div>
 <p>
-Here is a simple part of a Python code which reads and plots the data
-from such files
+You can try to remove features that have low correlation with the
+target, and evaluate to what degree it affects your metrics. You may
+also want to remove features that have high correlation with each
+other, this is up to you.  More on this here on
+"Multicollinearity":"https://en.wikipedia.org/wiki/Multicollinearity.
 
 <p>
+Lastly, employ cross-validation as in part c) to assess how well your
+model(s) generalizes.
 
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">imageio</span> <span style="color: #008000; font-weight: bold">import</span> imread
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.mplot3d</span> <span style="color: #008000; font-weight: bold">import</span> Axes3D
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib</span> <span style="color: #008000; font-weight: bold">import</span> cm
+<h3 id="part-f-presentation">Part f): Presentation </h3>
 
-<span style="color: #408080; font-style: italic"># Load the terrain</span>
-terrain1 <span style="color: #666666">=</span> imread(<span style="color: #BA2121">&#39;SRTM_data_Norway_1.tif&#39;</span>)
-<span style="color: #408080; font-style: italic"># Show the terrain</span>
-plt<span style="color: #666666">.</span>figure()
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&#39;Terrain over Norway 1&#39;</span>)
-plt<span style="color: #666666">.</span>imshow(terrain1, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;gray&#39;</span>)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;X&#39;</span>)
-plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;Y&#39;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre></div>
-<p>
-If you should have problems in downloading the digital terrain data,
-we provide two examples under the data folder of project 1. One is
-from a region close to Stavanger in Norway and the other M&#248;svatn
-Austfjell, again in Norway.
-Feel free to produce your own terrain data.
+<ul>
+<li> Make a scatter plot with the true values against the predicted values of your best model(s) from e).</li>
+<li> Make a linear regression of the type \( y = \beta_0 + \beta_1 x \) and fit it to your scatter plot.</li>
+<li> Include a line of the ideal model for comparison(\( y=x \)).</li>
+</ul>
 
-<p>
-Alternatively, if you would like to use another data set, feel free to do so. This could be data close to your reseach area or simply a data set you found interesting. See for example <a href="https://www.kaggle.com/datasets" target="_blank">kaggle.com</a> for examples.
-
-<h3 id="___sec7">Part g) OLS, Ridge and Lasso regression with resampling </h3>
-
-<p>
-Our final part deals with the parameterization of your digital terrain
-data (or your own data).  We will apply all three methods for linear regression, the same type (or higher order) of polynomial
-approximation and cross-validation as resampling technique to evaluate which
-model fits the data best.
+Feel free to use additional ways to plot and present your model.
 
 <p>
 At the end, you should present a critical evaluation of your results
 and discuss the applicability of these regression methods to the type
 of data presented here (either the terrain data we propose or other data sets).
 
-<h2 id="___sec8">Background literature </h2>
+<h2 id="background-literature">Background literature </h2>
 
 <ol>
 <li> For a discussion and derivation of the variances and mean squared errors using linear regression, see the <a href="https://arxiv.org/abs/1509.09169" target="_blank">Lecture notes on ridge regression by Wessel N. van Wieringen</a></li>
 <li> The textbook of <a href="https://www.springer.com/gp/book/9780387848570" target="_blank">Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer</a>, chapters 3 and 7 are the most relevant ones for the analysis here.</li> 
 </ol>
 
-<h2 id="___sec9">Introduction to numerical projects </h2>
+<h2 id="introduction-to-numerical-projects">Introduction to numerical projects </h2>
 
 <p>
 Here follows a brief recipe and recommendation on how to write a report for each
@@ -491,7 +512,7 @@ project.
   <li> Try to establish a practice where you log your work at the  computerlab. You may find such a logbook very handy at later stages in your work, especially when you don't properly remember  what a previous test version  of your program did. Here you could also record  the time spent on solving the exercise, various algorithms you may have tested or other topics which you feel worthy of mentioning.</li>
 </ul>
 
-<h2 id="___sec10">Format for electronic delivery of report and programs </h2>
+<h2 id="format-for-electronic-delivery-of-report-and-programs">Format for electronic delivery of report and programs </h2>
 
 <p>
 The preferred format for the report is a PDF file. You can also use DOC or postscript formats or as an ipython notebook file.  As programming language we prefer that you choose between C/C++, Fortran2008 or Python. The following prescription should be followed when preparing the report:
@@ -505,7 +526,7 @@ Finally,
 we encourage you to collaborate. Optimal working groups consist of 
 2-3 students. You can then hand in a common report.
 
-<h2 id="___sec11">Software and needed installations </h2>
+<h2 id="software-and-needed-installations">Software and needed installations </h2>
 
 <p>
 If you have Python installed (we recommend Python3) and you feel pretty familiar with installing different packages, 
