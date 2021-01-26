@@ -148,14 +148,14 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan25.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan25.pdf  |
 | | - _Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW) and work on project 1 |
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/ExerciseSessionJan2.mp4?vrtx=view-as-webpage |
+| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/ExerciseSessionJan25.mp4?vrtx=view-as-webpage |
 | Tuesday | - _Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and CNNs (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan26.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan26.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 7 | 
 | | - _Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1 and discussion of TensorFlow |
-| Wednesday | - _Lecture 9am-1130am_: Decision Trees, Random Forests and Boosting (MHJ) |
+| Wednesday | - _Lecture 9am-1130am_: CNNs and Recurrent neural networks (MHJ) |
 | Recommended readings |  Hastie et al chapter 9.3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 8 | 
 | | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1 |
