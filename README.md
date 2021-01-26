@@ -148,6 +148,7 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan25.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan25.pdf  |
 | | - _Laboratory 2pm-5pm_: Using and installing TensorFlow and Computational Exercises (PDBS and KW) and work on project 1 |
+| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/ExerciseSessionJan2.mp4?vrtx=view-as-webpage |
 | Tuesday | - _Lecture 10am-2pm_:  Neural Networks, back propagation and examples of classification and CNNs (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan26.mp4?vrtx=view-as-webpage |
