@@ -155,7 +155,8 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan26.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 7 | 
 | | - _Laboratory 2pm-5pm:_ Computational Exercises (PDBS and KW) and work on project 1 and discussion of TensorFlow |
-| Wednesday | - _Lecture 9am-1130am_: CNNs and Recurrent neural networks (MHJ) |
+| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/ExerciseSessionJan26.mp4?vrtx=view-as-webpage |
+| Wednesday | - _Lecture 9am-1130am_: CNNs and Recurrent neural networks, start decision trees (MHJ) |
 | Recommended readings |  Hastie et al chapter 9.3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 8 | 
 | | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1 |
