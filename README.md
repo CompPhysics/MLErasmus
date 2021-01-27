@@ -158,6 +158,8 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/ExerciseSessionJan26.mp4?vrtx=view-as-webpage |
 | Wednesday | - _Lecture 9am-1130am_: CNNs and Recurrent neural networks, start decision trees (MHJ) |
 | Recommended readings |  Hastie et al chapter 9.3 |
+| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan27.mp4?vrtx=view-as-webpage |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan27.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 8 | 
 | | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1 |
 | Thursday | - _Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ) |
