@@ -161,7 +161,7 @@ MathJax.Hub.Config({
 
 <br>
 <p>
-<center><h4>Jan 25, 2021</h4></center> <!-- date -->
+<center><h4>Jan 27, 2021</h4></center> <!-- date -->
 <br>
 <p>
 </div> <!-- end jumbotron -->
@@ -170,8 +170,7 @@ MathJax.Hub.Config({
 
 <p>
 The main aim of this project is to study in more detail various
-regression methods, including the Ordinary Least Squares (OLS) method,
-Ridge regression and finally Lasso regression.
+regression methods, including the Ordinary Least Squares (OLS) method and Ridge regression.
 
 <p>
 The methods are in turn combined with resampling techniques like the bootstrap method and cross validation.
@@ -207,8 +206,8 @@ the example below just a set of fixed
 values for \( x \) and \( y \) with a given step
 size.  We will fit a
 function (for example a polynomial) of \( x \) and \( y \).  Thereafter we
-will repeat much of the same procedure using the Ridge and Lasso
-regression methods, introducing thus a dependence on the bias
+will repeat much of the same procedure using Ridge 
+regression, introducing thus a dependence on the bias
 (penalty) \( \lambda \).
 
 <p>
@@ -339,19 +338,6 @@ possible regions of low/high bias and variance. You will most likely
 not get an equally smooth curve!
 
 <p>
-Show that you can rewrite  this as
-\[
-\mathbb{E}\left[(\boldsymbol{y}-\boldsymbol{\tilde{y}})^2\right]=\frac{1}{n}\sum_i(f_i-\mathbb{E}\left[\boldsymbol{\tilde{y}}\right])^2+\frac{1}{n}\sum_i(\tilde{y}_i-\mathbb{E}\left[\boldsymbol{\tilde{y}}\right])^2+\sigma^2.
-\]
-
-<p>
-Explain what the terms mean, which one is the bias and which one is
-the variance and discuss their interpretations.If you're not able to reproduce a similar plot as the one shown in
-Fig. 2.11 of Hastie, try either increasing complexity(the polynomial
-degree), increase the noise of the data \( y \), or reduce the number of
-datapoints.
-
-<p>
 With this result we move on to the bias-variance trade-off analysis.
 
 <p>
@@ -478,9 +464,9 @@ You will have to use scikit-learn's functionality to create your
 design matrix
 <p>
 
-<!-- code=text typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>pycod poly = PolynomialFeatures(degree)
-X = poly.fit_transform(x)
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>poly <span style="color: #666666">=</span> PolynomialFeatures(degree)
+X <span style="color: #666666">=</span> poly<span style="color: #666666">.</span>fit_transform(x)
 </pre></div>
 <p>
 Note that previously we had a dependence on
