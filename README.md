@@ -165,6 +165,8 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | Thursday | - _Lecture 9am-1130am_:  Decision trees, Random Forests and Boosting (MHJ) |
 | Recommended readings |  Hastie et al chapter 10 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 9 | 
+| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan28.mp4?vrtx=view-as-webpage |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan28.pdf  |
 | | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on project 1 |
 | Friday | - _Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2 |
 | Recommended readings |  Hastie et al chapter 10 |
