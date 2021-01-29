@@ -171,6 +171,8 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 | Friday | - _Lecture 9am-1130am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2 |
 | Recommended readings |  Hastie et al chapter 10 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 10 | 
+| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan29.mp4?vrtx=view-as-webpage |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan29.pdf  |
 | | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), work on projects 1 and 2 |
 
 ---
