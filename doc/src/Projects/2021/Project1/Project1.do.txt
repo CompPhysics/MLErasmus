@@ -329,18 +329,15 @@ model(s) generalizes.
 
 === Part f): Presentation ===
 
-* Make a scatter plot with the true values against the predicted values of your best model(s) from e).
-* Make a linear regression of the type $y = \beta_0 + \beta_1 x$ and fit it to your scatter plot.
-* Include a line of the ideal model for comparison($y=x$).
 
-
-Feel free to use additional ways to plot and present your model.
-
+Plot your results from part e)(e.g. the test MSE or predictions vs. true).
 
 
 At the end, you should present a critical evaluation of your results
 and discuss the applicability of these regression methods to the type
-of data presented here (either the terrain data we propose or other data sets).
+of data presented here.​
+
+
 
 
 
