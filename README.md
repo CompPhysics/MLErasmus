@@ -105,65 +105,58 @@ _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you
 |-|-|
 | Monday October 11 | - _Lecture 845am-1045am_: Introduction to Machine Learning and linear regression (MHJ) |
 | Recommended readings |  Before the course starts: Bishop Sections 1.1, 1.2 and 1.3 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 1 |
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan18.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 1 |
+| | Video of Lecture at | 
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session1.pdf  |
 | | Video on using Git and GitHub https://mediaspace.msu.edu/media/t/1_8mgx3cyf |
-| Monday | - _Lecture 845am-1045am_: Linear Regression, from ordinary least squares to Lasso and Ridge (MHJ) |
+| Monday October 18 | - _Lecture 845am-1045am_: Linear Regression, from ordinary least squares to Lasso and Ridge (MHJ) |
 | Recommended readings |  Bishop Sections 3.1 and Hastie et al chapter 3 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 2 | 
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan19.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan19.pdf  |
-| | - _Monday Laboratory 2pm-6pm:_ Computational Exercises (PDBS and KW), exercise set 2 |
-| Wednesday | - _Lecture 845am-1045am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 2 | 
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session2.pdf  |
+| Monday October 25 | - _Lecture 845am-1045am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
 | Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 3 | 
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan20.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan20.pdf  |
-| | - _Laboratory 2pm-5pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
-| Thursday | - _Lecture 845am-1045am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ) |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 3 | 
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session3.pdf  |
+| Monday November 1 | - _Lecture 845am-1045am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ) |
 | Recommended readings | Bishop Sections 4.1-4.3, Hastie et al Chapter 4 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 4 | 
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan21.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan21.pdf  |
-| | - _Laboratory 2pm-6pm_: Computational Exercises (PDBS and KW), exercise sets 2 and 3 |
-| Friday | - _Lecture 845am-1045am_:  Logistic Regression and begin Neural Networks (MHJ) |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 | 
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session4.pdf  |
+| Monday November 8 | - _Lecture 845am-1045am_:  Logistic Regression and begin Neural Networks (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 5 | 
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan22.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan22.pdf  |
-| | - _Laboratory 2pm-6pm_: Computational Exercises and project 1(PDBS and KW), exercise sets 2 and 3 and first project |
-
----
-
-| | |
-|-|-|
-| Second Week | January 25-29, 2021 |
-| Monday | - _Lecture 845am-1045am_:  Neural Networks  (MHJ) |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 | 
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session5.pdf  |
+| | - _Laboratory and discussions till 6pm_: Computational Exercises and project 1(PDBS and KW),|
+| Monday November 15 | - _Lecture 845am-1045am_:  Neural Networks  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 6 | 
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan25.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan25.pdf  |
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/ExerciseSessionJan25.mp4?vrtx=view-as-webpage |
-| Monday | - _Lecture 845am-1045am_:  Neural Networks, back propagation and examples of classification and CNNs (MHJ) |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session6.pdf  |
+| | Video of Lecture athttps://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/ExerciseSessionJan25.mp4?vrtx=view-as-webpage |
+| Monday November 22 | - _Lecture 845am-1045am_:  Neural Networks, back propagation and examples of classification and CNNs |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan26.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan26.pdf  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 7 | 
-| Wednesday | - _Lecture 845am-1045am_: CNNs and Recurrent neural networks, start decision trees (MHJ) |
-| Recommended readings |  Hastie et al chapter 9.3 |
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan27.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan27.pdf  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 8 | 
-| Thursday | - _Lecture 845am-1045am_:  Decision trees, Random Forests and Boosting (MHJ) |
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session7.pdf  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 | 
+| Monday November 29 | - _Lecture 845am-1045am_: CNNs and Recurrent neural networks |
+| Recommended readings |   |
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session8.pdf  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session8.pdf  |
+| January 2022 | - _Lecture TBD:  Decision trees, Random Forests and Boosting (MHJ) |
 | Recommended readings |  Hastie et al chapter 10 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 9 | 
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan28.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/NotesJan28.pdf  |
-| Friday | - _Lecture 845am-1045am_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 | 
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session9.pdf  |
+| January 2022 | - _Lecture TBD_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2 |
 | Recommended readings |  Hastie et al chapter 10 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  day 10 | 
-| | Video at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/LectureJan29.mp4?vrtx=view-as-webpage |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  10 | 
+| | Video of Lecture at |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session10.pdf  |
 
 ---
 
