@@ -108,7 +108,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Monday October 11 | - _Lecture 845am-1045am_: Introduction to Machine Learning and linear regression (MHJ) |
 | Recommended readings |  Before the course starts: Bishop Sections 1.1, 1.2 and 1.3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 1 |
-| | Video of Lecture at | 
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/EramusplusLectureOctober11.mp4?vrtx=view-as-webpage | 
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session1.pdf  |
 | | Video on using Git and GitHub https://mediaspace.msu.edu/media/t/1_8mgx3cyf |
 | Monday October 18 | - _Lecture 845am-1045am_: Linear Regression, from ordinary least squares to Lasso and Ridge (MHJ) |
