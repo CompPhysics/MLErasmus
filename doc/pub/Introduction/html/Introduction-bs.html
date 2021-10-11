@@ -1,11 +1,11 @@
 <!--
 Automatically generated HTML file from DocOnce source
-(https://github.com/hplgit/doconce/)
+(https://github.com/doconce/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/doconce/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="description" content="Nuclear Talent course  on Machine Learning in Nuclear Experiment and Theory">
 
@@ -41,117 +41,213 @@ Automatically generated HTML file from DocOnce source
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [('Introduction', 2, None, '___sec0'),
-              ('Overview of these introductory notes', 2, None, '___sec1'),
-              ('Machine Learning, short overview', 2, None, '___sec2'),
+ 'sections': [('Introduction', 2, None, 'introduction'),
+              ('Overview of these introductory notes',
+               2,
+               None,
+               'overview-of-these-introductory-notes'),
+              ('Machine Learning, short overview',
+               2,
+               None,
+               'machine-learning-short-overview'),
               ('Machine Learning, a small (and probably biased) introduction',
                2,
                None,
-               '___sec3'),
-              ('Machine Learning, an extremely rich field', 2, None, '___sec4'),
-              ('A multidisciplinary approach', 2, None, '___sec5'),
-              ('Learning outcomes', 2, None, '___sec6'),
-              ('Types of Machine Learning', 2, None, '___sec7'),
-              ('Essential elements of ML', 2, None, '___sec8'),
-              ('An optimization/minimization problem', 2, None, '___sec9'),
-              ('A Frequentist approach to data analysis', 2, None, '___sec10'),
-              ('What is a good model?', 2, None, '___sec11'),
-              ('What is a good model? Can we define it?', 2, None, '___sec12'),
+               'machine-learning-a-small-and-probably-biased-introduction'),
+              ('Machine Learning, an extremely rich field',
+               2,
+               None,
+               'machine-learning-an-extremely-rich-field'),
+              ('A multidisciplinary approach',
+               2,
+               None,
+               'a-multidisciplinary-approach'),
+              ('Learning outcomes', 2, None, 'learning-outcomes'),
+              ('Types of Machine Learning',
+               2,
+               None,
+               'types-of-machine-learning'),
+              ('Essential elements of ML', 2, None, 'essential-elements-of-ml'),
+              ('An optimization/minimization problem',
+               2,
+               None,
+               'an-optimization-minimization-problem'),
+              ('A Frequentist approach to data analysis',
+               2,
+               None,
+               'a-frequentist-approach-to-data-analysis'),
+              ('What is a good model?', 2, None, 'what-is-a-good-model'),
+              ('What is a good model? Can we define it?',
+               2,
+               None,
+               'what-is-a-good-model-can-we-define-it'),
               ('Practicalities, choice of programming language and other '
                'computational issues',
                2,
                None,
-               '___sec13'),
-              ('Choice of Programming Language', 2, None, '___sec14'),
-              ('Software and needed installations', 2, None, '___sec15'),
-              ('Python installers', 2, None, '___sec16'),
-              ('Useful Python libraries', 2, None, '___sec17'),
-              ('More Practicalities, handling arrays', 2, None, '___sec18'),
+               'practicalities-choice-of-programming-language-and-other-computational-issues'),
+              ('Choice of Programming Language',
+               2,
+               None,
+               'choice-of-programming-language'),
+              ('Software and needed installations',
+               2,
+               None,
+               'software-and-needed-installations'),
+              ('Python installers', 2, None, 'python-installers'),
+              ('Useful Python libraries', 2, None, 'useful-python-libraries'),
+              ('More Practicalities, handling arrays',
+               2,
+               None,
+               'more-practicalities-handling-arrays'),
               ('Basic Matrix Features, Numpy examples and Important Matrix and '
                'vector handling packages',
                2,
                None,
-               '___sec19'),
-              ('Some famous Matrices', 2, None, '___sec20'),
-              ('More Basic Matrix Features', 2, None, '___sec21'),
-              ('Numpy and arrays', 2, None, '___sec22'),
-              ('More Examples', 2, None, '___sec23'),
-              ('Matrices in Python', 2, None, '___sec24'),
-              ('More Examples, Covariance matrix', 2, None, '___sec25'),
-              ('More on the Covariance Matrix', 2, None, '___sec26'),
-              ('Practicalities, Reminder on Statistics', 2, None, '___sec27'),
-              ('Brief Reminder on Statistical Analysis', 2, None, '___sec28'),
-              ('Statistics, moments', 2, None, '___sec29'),
-              ('Statistics, central moments', 2, None, '___sec30'),
-              ('Statistics, covariance', 2, None, '___sec31'),
-              ('Statistics, more covariance', 2, None, '___sec32'),
-              ('Statistics, independent variables', 2, None, '___sec33'),
-              ('Statistics, more variance', 2, None, '___sec34'),
-              ('Statistics and stochastic processes', 2, None, '___sec35'),
-              ('Statistics and sample variables', 2, None, '___sec36'),
+               'basic-matrix-features-numpy-examples-and-important-matrix-and-vector-handling-packages'),
+              ('Some famous Matrices', 2, None, 'some-famous-matrices'),
+              ('More Basic Matrix Features',
+               2,
+               None,
+               'more-basic-matrix-features'),
+              ('Numpy and arrays', 2, None, 'numpy-and-arrays'),
+              ('More Examples', 2, None, 'more-examples'),
+              ('Matrices in Python', 2, None, 'matrices-in-python'),
+              ('More Examples, Covariance matrix',
+               2,
+               None,
+               'more-examples-covariance-matrix'),
+              ('More on the Covariance Matrix',
+               2,
+               None,
+               'more-on-the-covariance-matrix'),
+              ('Practicalities, Reminder on Statistics',
+               2,
+               None,
+               'practicalities-reminder-on-statistics'),
+              ('Brief Reminder on Statistical Analysis',
+               2,
+               None,
+               'brief-reminder-on-statistical-analysis'),
+              ('Statistics, moments', 2, None, 'statistics-moments'),
+              ('Statistics, central moments',
+               2,
+               None,
+               'statistics-central-moments'),
+              ('Statistics, covariance', 2, None, 'statistics-covariance'),
+              ('Statistics, more covariance',
+               2,
+               None,
+               'statistics-more-covariance'),
+              ('Statistics, independent variables',
+               2,
+               None,
+               'statistics-independent-variables'),
+              ('Statistics, more variance',
+               2,
+               None,
+               'statistics-more-variance'),
+              ('Statistics and stochastic processes',
+               2,
+               None,
+               'statistics-and-stochastic-processes'),
+              ('Statistics and sample variables',
+               2,
+               None,
+               'statistics-and-sample-variables'),
               ('Statistics, sample variance and covariance',
                2,
                None,
-               '___sec37'),
-              ('Statistics, law of large numbers', 2, None, '___sec38'),
-              ('Statistics, more on sample error', 2, None, '___sec39'),
-              ('Statistics', 2, None, '___sec40'),
-              ('Statistics, central limit theorem', 2, None, '___sec41'),
-              ('Covariance example', 2, None, '___sec42'),
-              ('Covariance in numpy', 2, None, '___sec43'),
-              ('Practicalities, Useful Python Packages', 2, None, '___sec44'),
-              ('Meet the Pandas', 2, None, '___sec45'),
-              ('Data Frames in Pandas', 2, None, '___sec46'),
-              ('More  Pandas', 2, None, '___sec47'),
-              ('Pandas Series', 2, None, '___sec48'),
-              ('Our first Machine Learning Encounter', 2, None, '___sec49'),
-              ('Reading Data and Fitting', 2, None, '___sec50'),
+               'statistics-sample-variance-and-covariance'),
+              ('Statistics, law of large numbers',
+               2,
+               None,
+               'statistics-law-of-large-numbers'),
+              ('Statistics, more on sample error',
+               2,
+               None,
+               'statistics-more-on-sample-error'),
+              ('Statistics', 2, None, 'statistics'),
+              ('Statistics, central limit theorem',
+               2,
+               None,
+               'statistics-central-limit-theorem'),
+              ('Covariance example', 2, None, 'covariance-example'),
+              ('Covariance in numpy', 2, None, 'covariance-in-numpy'),
+              ('Practicalities, Useful Python Packages',
+               2,
+               None,
+               'practicalities-useful-python-packages'),
+              ('Meet the Pandas', 2, None, 'meet-the-pandas'),
+              ('Data Frames in Pandas', 2, None, 'data-frames-in-pandas'),
+              ('More  Pandas', 2, None, 'more-pandas'),
+              ('Pandas Series', 2, None, 'pandas-series'),
+              ('Our first Machine Learning Encounter',
+               2,
+               None,
+               'our-first-machine-learning-encounter'),
+              ('Reading Data and Fitting', 2, None, 'reading-data-and-fitting'),
               ('Simple linear regression model using _scikit-learn_',
                2,
                None,
-               '___sec51'),
+               'simple-linear-regression-model-using-_scikit-learn_'),
               ('Simple linear regression model using _scikit-learn_, Numpy '
                'functions',
                2,
                None,
-               '___sec52'),
+               'simple-linear-regression-model-using-_scikit-learn_-numpy-functions'),
               ('Simple linear regression model using _scikit-learn_, '
                'Matplotlib',
                2,
                None,
-               '___sec53'),
+               'simple-linear-regression-model-using-_scikit-learn_-matplotlib'),
               ('Simple linear regression model, what to expect',
                2,
                None,
-               '___sec54'),
+               'simple-linear-regression-model-what-to-expect'),
               ('Simple linear regression model, how to evaluate the model',
                2,
                None,
-               '___sec55'),
-              ('Our first Cost/Loss function encounter', 2, None, '___sec56'),
-              ('Our first Cost/Loss function encounter', 2, None, '___sec57'),
+               'simple-linear-regression-model-how-to-evaluate-the-model'),
+              ('Our first Cost/Loss function encounter',
+               2,
+               None,
+               'our-first-cost-loss-function-encounter'),
+              ('Our first Cost/Loss function encounter',
+               2,
+               None,
+               'our-first-cost-loss-function-encounter'),
               ('Our first Cost/Loss function encounter, how do we define them?',
                2,
                None,
-               '___sec58'),
-              ('_Scikit-Learn_ functionality', 2, None, '___sec59'),
-              ('Cubic Polynomial', 2, None, '___sec60'),
+               'our-first-cost-loss-function-encounter-how-do-we-define-them'),
+              ('_Scikit-Learn_ functionality',
+               2,
+               None,
+               '_scikit-learn_-functionality'),
+              ('Cubic Polynomial', 2, None, 'cubic-polynomial'),
               ('Getting more serious, fitting Nuclear Binding Energies',
                2,
                None,
-               '___sec61'),
+               'getting-more-serious-fitting-nuclear-binding-energies'),
               ('To our real data: nuclear binding energies. Brief reminder on '
                'masses and binding energies',
                2,
                None,
-               '___sec62'),
-              ('Organizing our data', 3, None, '___sec63'),
-              ('Seeing the wood for the trees', 3, None, '___sec64'),
-              ('And what about using neural networks?', 3, None, '___sec65'),
+               'to-our-real-data-nuclear-binding-energies-brief-reminder-on-masses-and-binding-energies'),
+              ('Organizing our data', 3, None, 'organizing-our-data'),
+              ('Seeing the wood for the trees',
+               3,
+               None,
+               'seeing-the-wood-for-the-trees'),
+              ('And what about using neural networks?',
+               3,
+               None,
+               'and-what-about-using-neural-networks'),
               ('More on flexibility with pandas and xarray',
                2,
                None,
-               '___sec66')]}
+               'more-on-flexibility-with-pandas-and-xarray')]}
 end of tocinfo -->
 
 <body>
@@ -189,73 +285,73 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#___sec0" style="font-size: 80%;"><b>Introduction</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec1" style="font-size: 80%;"><b>Overview of these introductory notes</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec2" style="font-size: 80%;"><b>Machine Learning, short overview</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec3" style="font-size: 80%;"><b>Machine Learning, a small (and probably biased) introduction</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec4" style="font-size: 80%;"><b>Machine Learning, an extremely rich field</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec5" style="font-size: 80%;"><b>A multidisciplinary approach</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec6" style="font-size: 80%;"><b>Learning outcomes</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec7" style="font-size: 80%;"><b>Types of Machine Learning</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec8" style="font-size: 80%;"><b>Essential elements of ML</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec9" style="font-size: 80%;"><b>An optimization/minimization problem</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec10" style="font-size: 80%;"><b>A Frequentist approach to data analysis</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec11" style="font-size: 80%;"><b>What is a good model?</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec12" style="font-size: 80%;"><b>What is a good model? Can we define it?</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec13" style="font-size: 80%;"><b>Practicalities, choice of programming language and other computational issues</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec14" style="font-size: 80%;"><b>Choice of Programming Language</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec15" style="font-size: 80%;"><b>Software and needed installations</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec16" style="font-size: 80%;"><b>Python installers</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec17" style="font-size: 80%;"><b>Useful Python libraries</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec18" style="font-size: 80%;"><b>More Practicalities, handling arrays</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec19" style="font-size: 80%;"><b>Basic Matrix Features, Numpy examples and Important Matrix and vector handling packages</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec20" style="font-size: 80%;"><b>Some famous Matrices</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec21" style="font-size: 80%;"><b>More Basic Matrix Features</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec22" style="font-size: 80%;"><b>Numpy and arrays</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec23" style="font-size: 80%;"><b>More Examples</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec24" style="font-size: 80%;"><b>Matrices in Python</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec25" style="font-size: 80%;"><b>More Examples, Covariance matrix</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec26" style="font-size: 80%;"><b>More on the Covariance Matrix</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec27" style="font-size: 80%;"><b>Practicalities, Reminder on Statistics</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec28" style="font-size: 80%;"><b>Brief Reminder on Statistical Analysis</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec29" style="font-size: 80%;"><b>Statistics, moments</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec30" style="font-size: 80%;"><b>Statistics, central moments</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec31" style="font-size: 80%;"><b>Statistics, covariance</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec32" style="font-size: 80%;"><b>Statistics, more covariance</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec33" style="font-size: 80%;"><b>Statistics, independent variables</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec34" style="font-size: 80%;"><b>Statistics, more variance</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec35" style="font-size: 80%;"><b>Statistics and stochastic processes</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec36" style="font-size: 80%;"><b>Statistics and sample variables</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec37" style="font-size: 80%;"><b>Statistics, sample variance and covariance</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec38" style="font-size: 80%;"><b>Statistics, law of large numbers</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec39" style="font-size: 80%;"><b>Statistics, more on sample error</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec40" style="font-size: 80%;"><b>Statistics</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec41" style="font-size: 80%;"><b>Statistics, central limit theorem</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec42" style="font-size: 80%;"><b>Covariance example</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec43" style="font-size: 80%;"><b>Covariance in numpy</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec44" style="font-size: 80%;"><b>Practicalities, Useful Python Packages</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec45" style="font-size: 80%;"><b>Meet the Pandas</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec46" style="font-size: 80%;"><b>Data Frames in Pandas</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec47" style="font-size: 80%;"><b>More  Pandas</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec48" style="font-size: 80%;"><b>Pandas Series</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec49" style="font-size: 80%;"><b>Our first Machine Learning Encounter</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec50" style="font-size: 80%;"><b>Reading Data and Fitting</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec51" style="font-size: 80%;"><b>Simple linear regression model using <b>scikit-learn</b></b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec52" style="font-size: 80%;"><b>Simple linear regression model using <b>scikit-learn</b>, Numpy functions</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec53" style="font-size: 80%;"><b>Simple linear regression model using <b>scikit-learn</b>, Matplotlib</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec54" style="font-size: 80%;"><b>Simple linear regression model, what to expect</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec55" style="font-size: 80%;"><b>Simple linear regression model, how to evaluate the model</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec56" style="font-size: 80%;"><b>Our first Cost/Loss function encounter</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec57" style="font-size: 80%;"><b>Our first Cost/Loss function encounter</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec58" style="font-size: 80%;"><b>Our first Cost/Loss function encounter, how do we define them?</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec59" style="font-size: 80%;"><b><b>Scikit-Learn</b> functionality</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec60" style="font-size: 80%;"><b>Cubic Polynomial</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec61" style="font-size: 80%;"><b>Getting more serious, fitting Nuclear Binding Energies</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec62" style="font-size: 80%;"><b>To our real data: nuclear binding energies. Brief reminder on masses and binding energies</b></a></li>
-     <!-- navigation toc: --> <li><a href="#___sec63" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organizing our data</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec64" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Seeing the wood for the trees</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec65" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;And what about using neural networks?</a></li>
-     <!-- navigation toc: --> <li><a href="#___sec66" style="font-size: 80%;"><b>More on flexibility with pandas and xarray</b></a></li>
+     <!-- navigation toc: --> <li><a href="#introduction" style="font-size: 80%;"><b>Introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#overview-of-these-introductory-notes" style="font-size: 80%;"><b>Overview of these introductory notes</b></a></li>
+     <!-- navigation toc: --> <li><a href="#machine-learning-short-overview" style="font-size: 80%;"><b>Machine Learning, short overview</b></a></li>
+     <!-- navigation toc: --> <li><a href="#machine-learning-a-small-and-probably-biased-introduction" style="font-size: 80%;"><b>Machine Learning, a small (and probably biased) introduction</b></a></li>
+     <!-- navigation toc: --> <li><a href="#machine-learning-an-extremely-rich-field" style="font-size: 80%;"><b>Machine Learning, an extremely rich field</b></a></li>
+     <!-- navigation toc: --> <li><a href="#a-multidisciplinary-approach" style="font-size: 80%;"><b>A multidisciplinary approach</b></a></li>
+     <!-- navigation toc: --> <li><a href="#learning-outcomes" style="font-size: 80%;"><b>Learning outcomes</b></a></li>
+     <!-- navigation toc: --> <li><a href="#types-of-machine-learning" style="font-size: 80%;"><b>Types of Machine Learning</b></a></li>
+     <!-- navigation toc: --> <li><a href="#essential-elements-of-ml" style="font-size: 80%;"><b>Essential elements of ML</b></a></li>
+     <!-- navigation toc: --> <li><a href="#an-optimization-minimization-problem" style="font-size: 80%;"><b>An optimization/minimization problem</b></a></li>
+     <!-- navigation toc: --> <li><a href="#a-frequentist-approach-to-data-analysis" style="font-size: 80%;"><b>A Frequentist approach to data analysis</b></a></li>
+     <!-- navigation toc: --> <li><a href="#what-is-a-good-model" style="font-size: 80%;"><b>What is a good model?</b></a></li>
+     <!-- navigation toc: --> <li><a href="#what-is-a-good-model-can-we-define-it" style="font-size: 80%;"><b>What is a good model? Can we define it?</b></a></li>
+     <!-- navigation toc: --> <li><a href="#practicalities-choice-of-programming-language-and-other-computational-issues" style="font-size: 80%;"><b>Practicalities, choice of programming language and other computational issues</b></a></li>
+     <!-- navigation toc: --> <li><a href="#choice-of-programming-language" style="font-size: 80%;"><b>Choice of Programming Language</b></a></li>
+     <!-- navigation toc: --> <li><a href="#software-and-needed-installations" style="font-size: 80%;"><b>Software and needed installations</b></a></li>
+     <!-- navigation toc: --> <li><a href="#python-installers" style="font-size: 80%;"><b>Python installers</b></a></li>
+     <!-- navigation toc: --> <li><a href="#useful-python-libraries" style="font-size: 80%;"><b>Useful Python libraries</b></a></li>
+     <!-- navigation toc: --> <li><a href="#more-practicalities-handling-arrays" style="font-size: 80%;"><b>More Practicalities, handling arrays</b></a></li>
+     <!-- navigation toc: --> <li><a href="#basic-matrix-features-numpy-examples-and-important-matrix-and-vector-handling-packages" style="font-size: 80%;"><b>Basic Matrix Features, Numpy examples and Important Matrix and vector handling packages</b></a></li>
+     <!-- navigation toc: --> <li><a href="#some-famous-matrices" style="font-size: 80%;"><b>Some famous Matrices</b></a></li>
+     <!-- navigation toc: --> <li><a href="#more-basic-matrix-features" style="font-size: 80%;"><b>More Basic Matrix Features</b></a></li>
+     <!-- navigation toc: --> <li><a href="#numpy-and-arrays" style="font-size: 80%;"><b>Numpy and arrays</b></a></li>
+     <!-- navigation toc: --> <li><a href="#more-examples" style="font-size: 80%;"><b>More Examples</b></a></li>
+     <!-- navigation toc: --> <li><a href="#matrices-in-python" style="font-size: 80%;"><b>Matrices in Python</b></a></li>
+     <!-- navigation toc: --> <li><a href="#more-examples-covariance-matrix" style="font-size: 80%;"><b>More Examples, Covariance matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="#more-on-the-covariance-matrix" style="font-size: 80%;"><b>More on the Covariance Matrix</b></a></li>
+     <!-- navigation toc: --> <li><a href="#practicalities-reminder-on-statistics" style="font-size: 80%;"><b>Practicalities, Reminder on Statistics</b></a></li>
+     <!-- navigation toc: --> <li><a href="#brief-reminder-on-statistical-analysis" style="font-size: 80%;"><b>Brief Reminder on Statistical Analysis</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-moments" style="font-size: 80%;"><b>Statistics, moments</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-central-moments" style="font-size: 80%;"><b>Statistics, central moments</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-covariance" style="font-size: 80%;"><b>Statistics, covariance</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-more-covariance" style="font-size: 80%;"><b>Statistics, more covariance</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-independent-variables" style="font-size: 80%;"><b>Statistics, independent variables</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-more-variance" style="font-size: 80%;"><b>Statistics, more variance</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-and-stochastic-processes" style="font-size: 80%;"><b>Statistics and stochastic processes</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-and-sample-variables" style="font-size: 80%;"><b>Statistics and sample variables</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-sample-variance-and-covariance" style="font-size: 80%;"><b>Statistics, sample variance and covariance</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-law-of-large-numbers" style="font-size: 80%;"><b>Statistics, law of large numbers</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-more-on-sample-error" style="font-size: 80%;"><b>Statistics, more on sample error</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics" style="font-size: 80%;"><b>Statistics</b></a></li>
+     <!-- navigation toc: --> <li><a href="#statistics-central-limit-theorem" style="font-size: 80%;"><b>Statistics, central limit theorem</b></a></li>
+     <!-- navigation toc: --> <li><a href="#covariance-example" style="font-size: 80%;"><b>Covariance example</b></a></li>
+     <!-- navigation toc: --> <li><a href="#covariance-in-numpy" style="font-size: 80%;"><b>Covariance in numpy</b></a></li>
+     <!-- navigation toc: --> <li><a href="#practicalities-useful-python-packages" style="font-size: 80%;"><b>Practicalities, Useful Python Packages</b></a></li>
+     <!-- navigation toc: --> <li><a href="#meet-the-pandas" style="font-size: 80%;"><b>Meet the Pandas</b></a></li>
+     <!-- navigation toc: --> <li><a href="#data-frames-in-pandas" style="font-size: 80%;"><b>Data Frames in Pandas</b></a></li>
+     <!-- navigation toc: --> <li><a href="#more-pandas" style="font-size: 80%;"><b>More  Pandas</b></a></li>
+     <!-- navigation toc: --> <li><a href="#pandas-series" style="font-size: 80%;"><b>Pandas Series</b></a></li>
+     <!-- navigation toc: --> <li><a href="#our-first-machine-learning-encounter" style="font-size: 80%;"><b>Our first Machine Learning Encounter</b></a></li>
+     <!-- navigation toc: --> <li><a href="#reading-data-and-fitting" style="font-size: 80%;"><b>Reading Data and Fitting</b></a></li>
+     <!-- navigation toc: --> <li><a href="#simple-linear-regression-model-using-_scikit-learn_" style="font-size: 80%;"><b>Simple linear regression model using <b>scikit-learn</b></b></a></li>
+     <!-- navigation toc: --> <li><a href="#simple-linear-regression-model-using-<b>scikit-learn</b>-numpy-functions" style="font-size: 80%;"><b>Simple linear regression model using <b>scikit-learn</b>, Numpy functions</b></a></li>
+     <!-- navigation toc: --> <li><a href="#simple-linear-regression-model-using-<b>scikit-learn</b>-matplotlib" style="font-size: 80%;"><b>Simple linear regression model using <b>scikit-learn</b>, Matplotlib</b></a></li>
+     <!-- navigation toc: --> <li><a href="#simple-linear-regression-model-what-to-expect" style="font-size: 80%;"><b>Simple linear regression model, what to expect</b></a></li>
+     <!-- navigation toc: --> <li><a href="#simple-linear-regression-model-how-to-evaluate-the-model" style="font-size: 80%;"><b>Simple linear regression model, how to evaluate the model</b></a></li>
+     <!-- navigation toc: --> <li><a href="#our-first-cost-loss-function-encounter" style="font-size: 80%;"><b>Our first Cost/Loss function encounter</b></a></li>
+     <!-- navigation toc: --> <li><a href="#our-first-cost-loss-function-encounter" style="font-size: 80%;"><b>Our first Cost/Loss function encounter</b></a></li>
+     <!-- navigation toc: --> <li><a href="#our-first-cost-loss-function-encounter-how-do-we-define-them" style="font-size: 80%;"><b>Our first Cost/Loss function encounter, how do we define them?</b></a></li>
+     <!-- navigation toc: --> <li><a href="#_scikit-learn_-functionality" style="font-size: 80%;"><b><b>Scikit-Learn</b> functionality</b></a></li>
+     <!-- navigation toc: --> <li><a href="#cubic-polynomial" style="font-size: 80%;"><b>Cubic Polynomial</b></a></li>
+     <!-- navigation toc: --> <li><a href="#getting-more-serious-fitting-nuclear-binding-energies" style="font-size: 80%;"><b>Getting more serious, fitting Nuclear Binding Energies</b></a></li>
+     <!-- navigation toc: --> <li><a href="#to-our-real-data-nuclear-binding-energies-brief-reminder-on-masses-and-binding-energies" style="font-size: 80%;"><b>To our real data: nuclear binding energies. Brief reminder on masses and binding energies</b></a></li>
+     <!-- navigation toc: --> <li><a href="#organizing-our-data" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Organizing our data</a></li>
+     <!-- navigation toc: --> <li><a href="#seeing-the-wood-for-the-trees" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;Seeing the wood for the trees</a></li>
+     <!-- navigation toc: --> <li><a href="#and-what-about-using-neural-networks" style="font-size: 80%;">&nbsp;&nbsp;&nbsp;And what about using neural networks?</a></li>
+     <!-- navigation toc: --> <li><a href="#more-on-flexibility-with-pandas-and-xarray" style="font-size: 80%;"><b>More on flexibility with pandas and xarray</b></a></li>
 
         </ul>
       </li>
@@ -289,7 +385,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Center for Computing in Science Education, University of Oslo, Oslo, Norway</b></center>
 <br>
 <p>
-<center><h4>Jan 18, 2021</h4></center> <!-- date -->
+<center><h4>Oct 11, 2021</h4></center> <!-- date -->
 <br>
 <p>
 <!-- potential-jumbotron-button -->
@@ -297,7 +393,7 @@ MathJax.Hub.Config({
 
 <!-- !split -->
 
-<h2 id="___sec0" class="anchor">Introduction </h2>
+<h2 id="introduction" class="anchor">Introduction </h2>
 
 <p>
 During the last two decades there has been a swift and amazing
@@ -323,7 +419,7 @@ Sciences.
 <p>
 <!-- !split -->
 
-<h2 id="___sec1" class="anchor">Overview of these introductory notes </h2>
+<h2 id="overview-of-these-introductory-notes" class="anchor">Overview of these introductory notes </h2>
 
 <p>
 The aim of these notes is to give you a birds view over overarching
@@ -352,12 +448,12 @@ After these introductory words, the set of lectures will contain the following t
 <p>
 <!-- !split -->
 
-<h2 id="___sec2" class="anchor">Machine Learning, short overview  </h2>
+<h2 id="machine-learning-short-overview" class="anchor">Machine Learning, short overview  </h2>
 
 <p>
 <!-- !split -->
 
-<h2 id="___sec3" class="anchor">Machine Learning, a small (and probably biased) introduction  </h2>
+<h2 id="machine-learning-a-small-and-probably-biased-introduction" class="anchor">Machine Learning, a small (and probably biased) introduction  </h2>
 
 <p>
 Ideally, machine learning represents the science of giving computers
@@ -373,7 +469,7 @@ role when we develop a specific machine learning algorithm.
 <p>
 <!-- !split -->
 
-<h2 id="___sec4" class="anchor">Machine Learning, an extremely rich field  </h2>
+<h2 id="machine-learning-an-extremely-rich-field" class="anchor">Machine Learning, an extremely rich field  </h2>
 
 <p>
 Machine learning is an extremely rich field, in spite of its young
@@ -393,7 +489,7 @@ code developers and contributors keeps increasing.
 <p>
 <!-- !split -->
 
-<h2 id="___sec5" class="anchor">A multidisciplinary approach </h2>
+<h2 id="a-multidisciplinary-approach" class="anchor">A multidisciplinary approach </h2>
 
 <p>
 Not all the
@@ -408,7 +504,7 @@ of the algorithms and methods we will discuss.
 <p>
 <!-- !split  -->
 
-<h2 id="___sec6" class="anchor">Learning outcomes </h2>
+<h2 id="learning-outcomes" class="anchor">Learning outcomes </h2>
 
 <p>
 These sets of lectures aim at giving you an overview of central aspects of
@@ -441,7 +537,7 @@ More specifically, you will
 <p>
 <!-- !split -->
 
-<h2 id="___sec7" class="anchor">Types of Machine Learning </h2>
+<h2 id="types-of-machine-learning" class="anchor">Types of Machine Learning </h2>
 
 <p>
 The approaches to machine learning are many, but are often split into
@@ -472,7 +568,7 @@ desired output of a system.  Some of the most common tasks are:
 <p>
 <!-- !split -->
 
-<h2 id="___sec8" class="anchor">Essential elements of ML </h2>
+<h2 id="essential-elements-of-ml" class="anchor">Essential elements of ML </h2>
 
 <p>
 The methods we cover have three main topics in common, irrespective of
@@ -490,7 +586,7 @@ whether we deal with supervised or unsupervised learning.
 <p>
 <!-- !split -->
 
-<h2 id="___sec9" class="anchor">An optimization/minimization problem </h2>
+<h2 id="an-optimization-minimization-problem" class="anchor">An optimization/minimization problem </h2>
 
 <p>
 At the heart of basically all Machine Learning algorithms we will encounter so-called minimization or optimization algorithms. A large family of such methods are so-called <b>gradient methods</b>.
@@ -498,7 +594,7 @@ At the heart of basically all Machine Learning algorithms we will encounter so-c
 <p>
 <!-- !split -->
 
-<h2 id="___sec10" class="anchor">A Frequentist approach to data analysis  </h2>
+<h2 id="a-frequentist-approach-to-data-analysis" class="anchor">A Frequentist approach to data analysis  </h2>
 
 <p>
 When you hear phrases like <b>predictions and estimations</b> and
@@ -531,7 +627,7 @@ what is the likelihood of finding \( B \).
 <p>
 <!-- !split -->
 
-<h2 id="___sec11" class="anchor">What is a good model? </h2>
+<h2 id="what-is-a-good-model" class="anchor">What is a good model? </h2>
 
 <p>
 In science and engineering we often end up in situations where we want to infer (or learn) a
@@ -561,7 +657,7 @@ could easily be many different models that fit the given data set <em>equally we
 <p>
 <!-- !split -->
 
-<h2 id="___sec12" class="anchor">What is a good model? Can we define it?  </h2>
+<h2 id="what-is-a-good-model-can-we-define-it" class="anchor">What is a good model? Can we define it?  </h2>
 
 <p>
 The central question is this: what leads us to say that a model is correct or
@@ -590,12 +686,12 @@ How to evaluate which model fits best the data is something we will come back to
 <p>
 <!-- !split -->
 
-<h2 id="___sec13" class="anchor">Practicalities, choice of programming language and other computational issues </h2>
+<h2 id="practicalities-choice-of-programming-language-and-other-computational-issues" class="anchor">Practicalities, choice of programming language and other computational issues </h2>
 
 <p>
 <!-- !split -->
 
-<h2 id="___sec14" class="anchor">Choice of Programming Language </h2>
+<h2 id="choice-of-programming-language" class="anchor">Choice of Programming Language </h2>
 
 <p>
 Python plays nowadays a central role in the development of machine
@@ -614,7 +710,7 @@ algorithms either as a Python codes or C++ or Fortran (or other languages) codes
 <p>
 <!-- !split -->
 
-<h2 id="___sec15" class="anchor">Software and needed installations </h2>
+<h2 id="software-and-needed-installations" class="anchor">Software and needed installations </h2>
 
 <p>
 We will make extensive use of Python as programming language and its
@@ -654,7 +750,7 @@ etc etc.
 <p>
 <!-- !split -->
 
-<h2 id="___sec16" class="anchor">Python installers </h2>
+<h2 id="python-installers" class="anchor">Python installers </h2>
 
 <p>
 If you don't want to perform these operations separately and venture
@@ -688,7 +784,7 @@ no setup and runs entirely in the cloud. Try it out!
 <p>
 <!-- !split -->
 
-<h2 id="___sec17" class="anchor">Useful Python libraries </h2>
+<h2 id="useful-python-libraries" class="anchor">Useful Python libraries </h2>
 Here we list several useful Python libraries we strongly recommend (if you use anaconda many of these are already there)
 
 <ul>
@@ -707,12 +803,12 @@ Here we list several useful Python libraries we strongly recommend (if you use a
 
 <!-- !split -->
 
-<h2 id="___sec18" class="anchor">More Practicalities, handling arrays </h2>
+<h2 id="more-practicalities-handling-arrays" class="anchor">More Practicalities, handling arrays </h2>
 
 <p>
 <!-- !split -->
 
-<h2 id="___sec19" class="anchor">Basic Matrix Features, Numpy examples and Important Matrix and vector handling packages  </h2>
+<h2 id="basic-matrix-features-numpy-examples-and-important-matrix-and-vector-handling-packages" class="anchor">Basic Matrix Features, Numpy examples and Important Matrix and vector handling packages  </h2>
 
 <p>
 <div class="panel panel-default">
@@ -766,7 +862,7 @@ $$
 <p>
 <!-- !split -->
 
-<h2 id="___sec20" class="anchor">Some famous Matrices </h2>
+<h2 id="some-famous-matrices" class="anchor">Some famous Matrices </h2>
 
 <ul>
   <li> Diagonal if \( a_{ij}=0 \) for \( i\ne j \)</li>
@@ -782,7 +878,7 @@ $$
 
 <!-- !split -->
 
-<h2 id="___sec21" class="anchor">More Basic Matrix Features </h2>
+<h2 id="more-basic-matrix-features" class="anchor">More Basic Matrix Features </h2>
 
 <p>
 <div class="panel panel-default">
@@ -805,20 +901,20 @@ For an \( N\times N \) matrix  \( \mathbf{A} \) the following properties are all
 <p>
 <!-- !split -->
 
-<h2 id="___sec22" class="anchor">Numpy and arrays </h2>
+<h2 id="numpy-and-arrays" class="anchor">Numpy and arrays </h2>
 <a href="http://www.numpy.org/" target="_self">Numpy</a> provides an easy way to handle arrays in Python. The standard way to import this library is as
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 </pre></div>
 <p>
 Here follows a simple example where we set up an array of ten elements, all determined by random numbers drawn according to the normal distribution,
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>n <span style="color: #666666">=</span> <span style="color: #666666">10</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>n <span style="color: #666666">=</span> <span style="color: #666666">10</span>
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>normal(size<span style="color: #666666">=</span>n)
 <span style="color: #008000">print</span>(x)
 </pre></div>
@@ -828,7 +924,7 @@ Another alternative is to declare a vector as follows
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([<span style="color: #666666">1</span>, <span style="color: #666666">2</span>, <span style="color: #666666">3</span>])
 <span style="color: #008000">print</span>(x)
 </pre></div>
@@ -838,14 +934,14 @@ start numbering array elements from \( 0 \) and on. This means that a vector wit
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>log(np<span style="color: #666666">.</span>array([<span style="color: #666666">4</span>, <span style="color: #666666">7</span>, <span style="color: #666666">8</span>]))
 <span style="color: #008000">print</span>(x)
 </pre></div>
 <p>
 <!-- !split -->
 
-<h2 id="___sec23" class="anchor">More Examples </h2>
+<h2 id="more-examples" class="anchor">More Examples </h2>
 
 <p>
 In the last example we used Numpy's unary function \( np.log \). This function is
@@ -859,7 +955,7 @@ logarithms of a vector would be to write
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> log
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([<span style="color: #666666">4</span>, <span style="color: #666666">7</span>, <span style="color: #666666">8</span>])
 <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">0</span>, <span style="color: #008000">len</span>(x)):
@@ -872,7 +968,7 @@ The attentive reader will also notice that the output is \( [1, 1, 2] \). Python
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>log(np<span style="color: #666666">.</span>array([<span style="color: #666666">4</span>, <span style="color: #666666">7</span>, <span style="color: #666666">8</span>], dtype <span style="color: #666666">=</span> np<span style="color: #666666">.</span>float64))
 <span style="color: #008000">print</span>(x)
 </pre></div>
@@ -881,7 +977,7 @@ or simply write them as double precision numbers (Python uses 64 bits as default
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>log(np<span style="color: #666666">.</span>array([<span style="color: #666666">4.0</span>, <span style="color: #666666">7.0</span>, <span style="color: #666666">8.0</span>]))
 <span style="color: #008000">print</span>(x)
 </pre></div>
@@ -890,14 +986,14 @@ To check the number of bytes (remember that one byte contains eight bits for dou
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>log(np<span style="color: #666666">.</span>array([<span style="color: #666666">4.0</span>, <span style="color: #666666">7.0</span>, <span style="color: #666666">8.0</span>]))
 <span style="color: #008000">print</span>(x)
 </pre></div>
 <p>
 <!-- !split -->
 
-<h2 id="___sec24" class="anchor">Matrices in Python </h2>
+<h2 id="matrices-in-python" class="anchor">Matrices in Python </h2>
 
 <p>
 Having defined vectors, we are now ready to try out matrices. We can
@@ -907,7 +1003,7 @@ lowercase letters for vectors and uppercase letters for matrices)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>log(np<span style="color: #666666">.</span>array([ [<span style="color: #666666">4.0</span>, <span style="color: #666666">7.0</span>, <span style="color: #666666">8.0</span>], [<span style="color: #666666">3.0</span>, <span style="color: #666666">10.0</span>, <span style="color: #666666">11.0</span>], [<span style="color: #666666">4.0</span>, <span style="color: #666666">5.0</span>, <span style="color: #666666">7.0</span>] ]))
 <span style="color: #008000">print</span>(A)
 </pre></div>
@@ -916,7 +1012,7 @@ If we use the <b>shape</b> function we would get \( (3, 3) \) as output, that is
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>log(np<span style="color: #666666">.</span>array([ [<span style="color: #666666">4.0</span>, <span style="color: #666666">7.0</span>, <span style="color: #666666">8.0</span>], [<span style="color: #666666">3.0</span>, <span style="color: #666666">10.0</span>, <span style="color: #666666">11.0</span>], [<span style="color: #666666">4.0</span>, <span style="color: #666666">5.0</span>, <span style="color: #666666">7.0</span>] ]))
 <span style="color: #408080; font-style: italic"># print the first column, row-major order and elements start with 0</span>
 <span style="color: #008000">print</span>(A[:,<span style="color: #666666">0</span>]) 
@@ -926,7 +1022,7 @@ We can continue this was by printing out other columns or rows. The example here
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>log(np<span style="color: #666666">.</span>array([ [<span style="color: #666666">4.0</span>, <span style="color: #666666">7.0</span>, <span style="color: #666666">8.0</span>], [<span style="color: #666666">3.0</span>, <span style="color: #666666">10.0</span>, <span style="color: #666666">11.0</span>], [<span style="color: #666666">4.0</span>, <span style="color: #666666">5.0</span>, <span style="color: #666666">7.0</span>] ]))
 <span style="color: #408080; font-style: italic"># print the first column, row-major order and elements start with 0</span>
 <span style="color: #008000">print</span>(A[<span style="color: #666666">1</span>,:]) 
@@ -936,7 +1032,7 @@ Numpy contains many other functionalities that allow us to slice, subdivide etc 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 n <span style="color: #666666">=</span> <span style="color: #666666">10</span>
 <span style="color: #408080; font-style: italic"># define a matrix of dimension 10 x 10 and set all elements to zero</span>
 A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros( (n, n) )
@@ -947,7 +1043,7 @@ or initializing all elements to
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 n <span style="color: #666666">=</span> <span style="color: #666666">10</span>
 <span style="color: #408080; font-style: italic"># define a matrix of dimension 10 x 10 and set all elements to one</span>
 A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>ones( (n, n) )
@@ -958,7 +1054,7 @@ or as unitarily distributed random numbers (see the material on random number ge
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 n <span style="color: #666666">=</span> <span style="color: #666666">10</span>
 <span style="color: #408080; font-style: italic"># define a matrix of dimension 10 x 10 and set all elements to random numbers with x \in [0, 1]</span>
 A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n, n)
@@ -967,7 +1063,7 @@ A <span style="color: #666666">=</span> np<span style="color: #666666">.</span>r
 <p>
 <!-- !split -->
 
-<h2 id="___sec25" class="anchor">More Examples, Covariance matrix </h2>
+<h2 id="more-examples-covariance-matrix" class="anchor">More Examples, Covariance matrix </h2>
 
 <p>
 As we will see throughout these lectures, there are several extremely useful functionalities in Numpy.
@@ -1000,7 +1096,7 @@ $$
 <p>
 <!-- !split -->
 
-<h2 id="___sec26" class="anchor">More on the Covariance Matrix </h2>
+<h2 id="more-on-the-covariance-matrix" class="anchor">More on the Covariance Matrix </h2>
 
 <p>
 Our matrix is in turn converted into into the \( 3\times 3 \) covariance matrix
@@ -1012,7 +1108,7 @@ covariance matrix through the <b>np.linalg.eig()</b> function.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Importing various packages</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Importing various packages</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
@@ -1031,12 +1127,12 @@ Eigvals, Eigvecs <span style="color: #666666">=</span> np<span style="color: #66
 <p>
 <!-- !split -->
 
-<h2 id="___sec27" class="anchor">Practicalities, Reminder on Statistics  </h2>
+<h2 id="practicalities-reminder-on-statistics" class="anchor">Practicalities, Reminder on Statistics  </h2>
 
 <p>
 <!-- !split -->
 
-<h2 id="___sec28" class="anchor">Brief Reminder on Statistical Analysis </h2>
+<h2 id="brief-reminder-on-statistical-analysis" class="anchor">Brief Reminder on Statistical Analysis </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1068,7 +1164,7 @@ selection of a large set of these numbers reproduces this PDF.
 <p>
 <!-- !split -->
 
-<h2 id="___sec29" class="anchor">Statistics, moments </h2>
+<h2 id="statistics-moments" class="anchor">Statistics, moments </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1092,7 +1188,7 @@ $$
 <p>
 <!-- !split -->
 
-<h2 id="___sec30" class="anchor">Statistics, central moments </h2>
+<h2 id="statistics-central-moments" class="anchor">Statistics, central moments </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1131,7 +1227,7 @@ qualitatively as the <em>spread</em> of \( p \) around its mean.
 <p>
 <!-- !split -->
 
-<h2 id="___sec31" class="anchor">Statistics, covariance </h2>
+<h2 id="statistics-covariance" class="anchor">Statistics, covariance </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1163,7 +1259,7 @@ $$
 <p>
 <!-- !split -->
 
-<h2 id="___sec32" class="anchor">Statistics, more covariance  </h2>
+<h2 id="statistics-more-covariance" class="anchor">Statistics, more covariance  </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1196,7 +1292,7 @@ $$
 <p>
 <!-- !split -->
 
-<h2 id="___sec33" class="anchor">Statistics, independent variables  </h2>
+<h2 id="statistics-independent-variables" class="anchor">Statistics, independent variables  </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1212,7 +1308,7 @@ We normally use the acronym <b>iid</b> for independent and identically distribut
 <p>
 <!-- !split -->
 
-<h2 id="___sec34" class="anchor">Statistics, more variance  </h2>
+<h2 id="statistics-more-variance" class="anchor">Statistics, more variance  </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1247,7 +1343,7 @@ value of a set of measurements.
 <p>
 <!-- !split -->
 
-<h2 id="___sec35" class="anchor">Statistics and stochastic processes  </h2>
+<h2 id="statistics-and-stochastic-processes" class="anchor">Statistics and stochastic processes  </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1276,7 +1372,7 @@ interested in finding the few lowest moments, like the mean
 <p>
 <!-- !split  -->
 
-<h2 id="___sec36" class="anchor">Statistics and sample variables  </h2>
+<h2 id="statistics-and-sample-variables" class="anchor">Statistics and sample variables  </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1303,7 +1399,7 @@ $$
 <p>
 <!-- !split -->
 
-<h2 id="___sec37" class="anchor">Statistics, sample variance and covariance </h2>
+<h2 id="statistics-sample-variance-and-covariance" class="anchor">Statistics, sample variance and covariance </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1325,7 +1421,7 @@ and covariance \( \mathrm{cov}(X,Y) \).
 <p>
 <!-- !split -->
 
-<h2 id="___sec38" class="anchor">Statistics, law of large numbers </h2>
+<h2 id="statistics-law-of-large-numbers" class="anchor">Statistics, law of large numbers </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1358,7 +1454,7 @@ true PDFs behind, which we usually do not have.
 <p>
 <!-- !split -->
 
-<h2 id="___sec39" class="anchor">Statistics, more on sample error </h2>
+<h2 id="statistics-more-on-sample-error" class="anchor">Statistics, more on sample error </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1381,7 +1477,7 @@ means.
 <p>
 <!-- !split -->
 
-<h2 id="___sec40" class="anchor">Statistics  </h2>
+<h2 id="statistics" class="anchor">Statistics  </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1403,7 +1499,7 @@ And in particular we are interested in its variance \( \mathrm{var}(\overline X_
 <p>
 <!-- !split -->
 
-<h2 id="___sec41" class="anchor">Statistics, central limit theorem </h2>
+<h2 id="statistics-central-limit-theorem" class="anchor">Statistics, central limit theorem </h2>
 <div class="panel panel-default">
 <div class="panel-body">
 <p> <!-- subsequent paragraphs come in larger fonts, so start with a paragraph -->
@@ -1429,7 +1525,7 @@ $$
 <p>
 <!-- !split -->
 
-<h2 id="___sec42" class="anchor">Covariance example </h2>
+<h2 id="covariance-example" class="anchor">Covariance example </h2>
 
 <p>
 Suppose we have defined three vectors \( \boldsymbol{x}, \boldsymbol{y}, \boldsymbol{z} \) with
@@ -1478,12 +1574,12 @@ function.
 <p>
 <!-- !split -->
 
-<h2 id="___sec43" class="anchor">Covariance in numpy </h2>
+<h2 id="covariance-in-numpy" class="anchor">Covariance in numpy </h2>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Importing various packages</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Importing various packages</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 
 n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
@@ -1500,12 +1596,12 @@ Sigma <span style="color: #666666">=</span> np<span style="color: #666666">.</sp
 <p>
 <!-- !split -->
 
-<h2 id="___sec44" class="anchor">Practicalities, Useful Python Packages </h2>
+<h2 id="practicalities-useful-python-packages" class="anchor">Practicalities, Useful Python Packages </h2>
 
 <p>
 <!-- !split -->
 
-<h2 id="___sec45" class="anchor">Meet the Pandas </h2>
+<h2 id="meet-the-pandas" class="anchor">Meet the Pandas </h2>
 
 <p>
 <br /><br /><center><p><img src="fig/pandas.jpg" align="bottom" width=600></p></center><br /><br />
@@ -1524,7 +1620,7 @@ The following simple example shows how we can, in an easy way make tables of our
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">IPython.display</span> <span style="color: #008000; font-weight: bold">import</span> display
 data <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;First Name&#39;</span>: [<span style="color: #BA2121">&quot;Frodo&quot;</span>, <span style="color: #BA2121">&quot;Bilbo&quot;</span>, <span style="color: #BA2121">&quot;Aragorn II&quot;</span>, <span style="color: #BA2121">&quot;Samwise&quot;</span>],
         <span style="color: #BA2121">&#39;Last Name&#39;</span>: [<span style="color: #BA2121">&quot;Baggins&quot;</span>, <span style="color: #BA2121">&quot;Baggins&quot;</span>,<span style="color: #BA2121">&quot;Elessar&quot;</span>,<span style="color: #BA2121">&quot;Gamgee&quot;</span>],
@@ -1537,7 +1633,7 @@ display(data_pandas)
 <p>
 <!-- !split -->
 
-<h2 id="___sec46" class="anchor">Data Frames in Pandas </h2>
+<h2 id="data-frames-in-pandas" class="anchor">Data Frames in Pandas </h2>
 
 <p>
 In the above we have imported <b>pandas</b> with the shorthand <b>pd</b>, the latter has become the standard way we import <b>pandas</b>. We make then a list of various variables
@@ -1547,7 +1643,7 @@ Displaying these results, we see that the indices are given by the default numbe
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>data_pandas <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(data,index<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;Frodo&#39;</span>,<span style="color: #BA2121">&#39;Bilbo&#39;</span>,<span style="color: #BA2121">&#39;Aragorn&#39;</span>,<span style="color: #BA2121">&#39;Sam&#39;</span>])
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>data_pandas <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(data,index<span style="color: #666666">=</span>[<span style="color: #BA2121">&#39;Frodo&#39;</span>,<span style="color: #BA2121">&#39;Bilbo&#39;</span>,<span style="color: #BA2121">&#39;Aragorn&#39;</span>,<span style="color: #BA2121">&#39;Sam&#39;</span>])
 display(data_pandas)
 </pre></div>
 <p>
@@ -1555,14 +1651,14 @@ Thereafter we display the content of the row which begins with the index <b>Arag
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>display(data_pandas<span style="color: #666666">.</span>loc[<span style="color: #BA2121">&#39;Aragorn&#39;</span>])
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>display(data_pandas<span style="color: #666666">.</span>loc[<span style="color: #BA2121">&#39;Aragorn&#39;</span>])
 </pre></div>
 <p>
 We can easily append data to this, for example
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>new_hobbit <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;First Name&#39;</span>: [<span style="color: #BA2121">&quot;Peregrin&quot;</span>],
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>new_hobbit <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;First Name&#39;</span>: [<span style="color: #BA2121">&quot;Peregrin&quot;</span>],
               <span style="color: #BA2121">&#39;Last Name&#39;</span>: [<span style="color: #BA2121">&quot;Took&quot;</span>],
               <span style="color: #BA2121">&#39;Place of birth&#39;</span>: [<span style="color: #BA2121">&quot;Shire&quot;</span>],
               <span style="color: #BA2121">&#39;Date of Birth T.A.&#39;</span>: [<span style="color: #666666">2990</span>]
@@ -1573,7 +1669,7 @@ display(data_pandas)
 <p>
 <!-- !split -->
 
-<h2 id="___sec47" class="anchor">More  Pandas </h2>
+<h2 id="more-pandas" class="anchor">More  Pandas </h2>
 
 <p>
 Here are other examples where we use the <b>DataFrame</b> functionality to handle arrays, now with more interesting features for us, namely numbers. We set up a matrix 
@@ -1581,7 +1677,7 @@ of dimensionality \( 10\times 5 \) and compute the mean value and standard devia
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">IPython.display</span> <span style="color: #008000; font-weight: bold">import</span> display
 np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">100</span>)
@@ -1600,7 +1696,7 @@ Thereafter we can select specific columns only and plot final results
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>df<span style="color: #666666">.</span>columns <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;First&#39;</span>, <span style="color: #BA2121">&#39;Second&#39;</span>, <span style="color: #BA2121">&#39;Third&#39;</span>, <span style="color: #BA2121">&#39;Fourth&#39;</span>, <span style="color: #BA2121">&#39;Fifth&#39;</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>df<span style="color: #666666">.</span>columns <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;First&#39;</span>, <span style="color: #BA2121">&#39;Second&#39;</span>, <span style="color: #BA2121">&#39;Third&#39;</span>, <span style="color: #BA2121">&#39;Fourth&#39;</span>, <span style="color: #BA2121">&#39;Fifth&#39;</span>]
 df<span style="color: #666666">.</span>index <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">10</span>)
 
 display(df)
@@ -1624,7 +1720,7 @@ We can produce a \( 4\times 4 \) matrix
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>b <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">16</span>)<span style="color: #666666">.</span>reshape((<span style="color: #666666">4</span>,<span style="color: #666666">4</span>))
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>b <span style="color: #666666">=</span> np<span style="color: #666666">.</span>arange(<span style="color: #666666">16</span>)<span style="color: #666666">.</span>reshape((<span style="color: #666666">4</span>,<span style="color: #666666">4</span>))
 <span style="color: #008000">print</span>(b)
 df1 <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(b)
 <span style="color: #008000">print</span>(df1)
@@ -1635,7 +1731,7 @@ and many other operations.
 <p>
 <!-- !split -->
 
-<h2 id="___sec48" class="anchor">Pandas Series </h2>
+<h2 id="pandas-series" class="anchor">Pandas Series </h2>
 
 <p>
 The <b>Series</b> class is another important class included in
@@ -1648,12 +1744,12 @@ For multidimensional arrays, we also recommend <a href="http://xarray.pydata.org
 <p>
 <!-- !split -->
 
-<h2 id="___sec49" class="anchor">Our first Machine Learning Encounter </h2>
+<h2 id="our-first-machine-learning-encounter" class="anchor">Our first Machine Learning Encounter </h2>
 
 <p>
 <!-- !split -->
 
-<h2 id="___sec50" class="anchor">Reading Data and Fitting  </h2>
+<h2 id="reading-data-and-fitting" class="anchor">Reading Data and Fitting  </h2>
 
 <p>
 In order to study various Machine Learning algorithms, we need to
@@ -1692,7 +1788,7 @@ But before we really start with nuclear physics data, let's just look at some si
 <p>
 <!-- !split -->
 
-<h2 id="___sec51" class="anchor">Simple linear regression model using <b>scikit-learn</b> </h2>
+<h2 id="simple-linear-regression-model-using-_scikit-learn_" class="anchor">Simple linear regression model using <b>scikit-learn</b> </h2>
 
 <p>
 We start with perhaps our simplest possible example, using <b>Scikit-Learn</b> to perform linear regression analysis on a data set produced by us.
@@ -1710,7 +1806,7 @@ random noise added via the normal distribution.
 <p>
 <!-- !split -->
 
-<h2 id="___sec52" class="anchor">Simple linear regression model using <b>scikit-learn</b>, Numpy functions </h2>
+<h2 id="simple-linear-regression-model-using-<b>scikit-learn</b>-numpy-functions" class="anchor">Simple linear regression model using <b>scikit-learn</b>, Numpy functions </h2>
 
 <p>
 The Numpy functions are imported used the <b>import numpy as np</b>
@@ -1740,7 +1836,7 @@ distinguish between training data and test data.
 <p>
 <!-- !split -->
 
-<h2 id="___sec53" class="anchor">Simple linear regression model using <b>scikit-learn</b>, Matplotlib </h2>
+<h2 id="simple-linear-regression-model-using-<b>scikit-learn</b>-matplotlib" class="anchor">Simple linear regression model using <b>scikit-learn</b>, Matplotlib </h2>
 
 <p>
 For plotting we use the Python package
@@ -1756,7 +1852,7 @@ The Python code follows here.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Importing various packages</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Importing various packages</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LinearRegression
@@ -1779,7 +1875,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split -->
 
-<h2 id="___sec54" class="anchor">Simple linear regression model, what to expect </h2>
+<h2 id="simple-linear-regression-model-what-to-expect" class="anchor">Simple linear regression model, what to expect </h2>
 
 <p>
 This example serves several aims. It allows us to demonstrate several
@@ -1806,7 +1902,7 @@ have not discussed a more rigorous approach to the <b>cost</b> function.
 <p>
 <!-- !split -->
 
-<h2 id="___sec55" class="anchor">Simple linear regression model, how to evaluate the model </h2>
+<h2 id="simple-linear-regression-model-how-to-evaluate-the-model" class="anchor">Simple linear regression model, how to evaluate the model </h2>
 
 <p>
 We need more rigorous criteria in defining whether we have succeeded or
@@ -1828,7 +1924,7 @@ dimensionless.
 <p>
 <!-- !split -->
 
-<h2 id="___sec56" class="anchor">Our first Cost/Loss function encounter </h2>
+<h2 id="our-first-cost-loss-function-encounter" class="anchor">Our first Cost/Loss function encounter </h2>
 
 <p>
 Minimizing the cost function is a central aspect of
@@ -1849,7 +1945,7 @@ the  \( \chi^2 \) function becomes smaller.
 <p>
 <!-- !split -->
 
-<h2 id="___sec57" class="anchor">Our first Cost/Loss function encounter </h2>
+<h2 id="our-first-cost-loss-function-encounter" class="anchor">Our first Cost/Loss function encounter </h2>
 
 <p>
 The terms cost and loss functions are often synonymous, sometimes you will also encounter the usage  error function.
@@ -1859,7 +1955,7 @@ It is common to see statements like this however: <b>The loss function computes 
 <p>
 <!-- !split -->
 
-<h2 id="___sec58" class="anchor">Our first Cost/Loss function encounter, how do we define them?  </h2>
+<h2 id="our-first-cost-loss-function-encounter-how-do-we-define-them" class="anchor">Our first Cost/Loss function encounter, how do we define them?  </h2>
 
 <p>
 There are many ways to define the cost/loss function. A simpler approach is to look at the relative difference between the training data and the predicted data, that is we define 
@@ -1882,7 +1978,7 @@ We can modify easily the above Python code and plot the relative error instead
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LinearRegression
 
@@ -1908,7 +2004,7 @@ relative error.
 <p>
 <!-- !split -->
 
-<h2 id="___sec59" class="anchor"><b>Scikit-Learn</b> functionality  </h2>
+<h2 id="_scikit-learn_-functionality" class="anchor"><b>Scikit-Learn</b> functionality  </h2>
 
 <p>
 As mentioned above, <b>Scikit-Learn</b> has an impressive functionality.
@@ -1922,7 +2018,7 @@ example of the functionality of <b>Scikit-Learn</b>.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span> 
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span> 
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span> 
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LinearRegression 
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> mean_squared_error, r2_score, mean_squared_log_error, mean_absolute_error
@@ -2022,14 +2118,14 @@ detail these and other functions in the various lectures.
 <p>
 <!-- !split -->
 
-<h2 id="___sec60" class="anchor">Cubic Polynomial </h2>
+<h2 id="cubic-polynomial" class="anchor">Cubic Polynomial </h2>
 We conclude this part with another example. Instead of 
 a linear \( x \)-dependence we study now a cubic polynomial and use the polynomial regression analysis tools of scikit-learn.
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">random</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> Ridge
@@ -2063,12 +2159,12 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split -->
 
-<h2 id="___sec61" class="anchor">Getting more serious, fitting Nuclear Binding Energies </h2>
+<h2 id="getting-more-serious-fitting-nuclear-binding-energies" class="anchor">Getting more serious, fitting Nuclear Binding Energies </h2>
 
 <p>
 <!-- !split -->
 
-<h2 id="___sec62" class="anchor">To our real data: nuclear binding energies. Brief reminder on masses and binding energies </h2>
+<h2 id="to-our-real-data-nuclear-binding-energies-brief-reminder-on-masses-and-binding-energies" class="anchor">To our real data: nuclear binding energies. Brief reminder on masses and binding energies </h2>
 
 <p>
 Let us now dive into  nuclear physics and remind ourselves briefly about some basic features about binding
@@ -2146,7 +2242,7 @@ We could also add a so-called pairing term, which is a correction term that
 arises from the tendency of proton pairs and neutron pairs to
 occur. An even number of particles is more stable than an odd number.
 
-<h3 id="___sec63" class="anchor">Organizing our data </h3>
+<h3 id="organizing-our-data" class="anchor">Organizing our data </h3>
 
 <p>
 Let us start with reading and organizing our data. 
@@ -2158,7 +2254,7 @@ We start with preparing folders for storing our calculations and the data file o
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
@@ -2204,7 +2300,7 @@ In particular, the program that outputs the final nuclear masses is written in F
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;                                                                                                                         </span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #BA2121; font-style: italic">&quot;&quot;&quot;                                                                                                                         </span>
 <span style="color: #BA2121; font-style: italic">This is taken from the data file of the mass 2016 evaluation.                                                               </span>
 <span style="color: #BA2121; font-style: italic">All files are 3436 lines long with 124 character per line.                                                                  </span>
 <span style="color: #BA2121; font-style: italic">       Headers are 39 lines long.                                                                                           </span>
@@ -2224,7 +2320,7 @@ covert them into the <b>pandas</b> DataFrame structure.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Read the experimental data with Pandas</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Read the experimental data with Pandas</span>
 Masses <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>read_fwf(infile, usecols<span style="color: #666666">=</span>(<span style="color: #666666">2</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #666666">6</span>,<span style="color: #666666">11</span>),
               names<span style="color: #666666">=</span>(<span style="color: #BA2121">&#39;N&#39;</span>, <span style="color: #BA2121">&#39;Z&#39;</span>, <span style="color: #BA2121">&#39;A&#39;</span>, <span style="color: #BA2121">&#39;Element&#39;</span>, <span style="color: #BA2121">&#39;Ebinding&#39;</span>),
               widths<span style="color: #666666">=</span>(<span style="color: #666666">1</span>,<span style="color: #666666">3</span>,<span style="color: #666666">5</span>,<span style="color: #666666">5</span>,<span style="color: #666666">5</span>,<span style="color: #666666">1</span>,<span style="color: #666666">3</span>,<span style="color: #666666">4</span>,<span style="color: #666666">1</span>,<span style="color: #666666">13</span>,<span style="color: #666666">11</span>,<span style="color: #666666">11</span>,<span style="color: #666666">9</span>,<span style="color: #666666">1</span>,<span style="color: #666666">2</span>,<span style="color: #666666">11</span>,<span style="color: #666666">9</span>,<span style="color: #666666">1</span>,<span style="color: #666666">3</span>,<span style="color: #666666">1</span>,<span style="color: #666666">12</span>,<span style="color: #666666">11</span>,<span style="color: #666666">1</span>),
@@ -2258,7 +2354,7 @@ the number of nucleons \( A \), the number of protons \( Z \) and the number of 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>A <span style="color: #666666">=</span> Masses[<span style="color: #BA2121">&#39;A&#39;</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>A <span style="color: #666666">=</span> Masses[<span style="color: #BA2121">&#39;A&#39;</span>]
 Z <span style="color: #666666">=</span> Masses[<span style="color: #BA2121">&#39;Z&#39;</span>]
 N <span style="color: #666666">=</span> Masses[<span style="color: #BA2121">&#39;N&#39;</span>]
 Element <span style="color: #666666">=</span> Masses[<span style="color: #BA2121">&#39;Element&#39;</span>]
@@ -2271,7 +2367,7 @@ It has dimensionality \( n\times p \), where \( n \) is the number of data point
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Now we set up the design matrix X</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Now we set up the design matrix X</span>
 X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((<span style="color: #008000">len</span>(A),<span style="color: #666666">5</span>))
 X[:,<span style="color: #666666">0</span>] <span style="color: #666666">=</span> <span style="color: #666666">1</span>
 X[:,<span style="color: #666666">1</span>] <span style="color: #666666">=</span> A
@@ -2284,7 +2380,7 @@ With <b>scikitlearn</b> we are now ready to use linear regression and fit our da
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>clf <span style="color: #666666">=</span> skl<span style="color: #666666">.</span>LinearRegression()<span style="color: #666666">.</span>fit(X, Energies)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>clf <span style="color: #666666">=</span> skl<span style="color: #666666">.</span>LinearRegression()<span style="color: #666666">.</span>fit(X, Energies)
 fity <span style="color: #666666">=</span> clf<span style="color: #666666">.</span>predict(X)
 </pre></div>
 <p>
@@ -2295,7 +2391,7 @@ Now we can print measures of how our fit is doing, the coefficients from the fit
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># The mean squared error                               </span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># The mean squared error                               </span>
 <span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Mean squared error: </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&quot;</span> <span style="color: #666666">%</span> mean_squared_error(Energies, fity))
 <span style="color: #408080; font-style: italic"># Explained variance score: 1 is perfect prediction                                 </span>
 <span style="color: #008000">print</span>(<span style="color: #BA2121">&#39;Variance score: </span><span style="color: #BB6688; font-weight: bold">%.2f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> r2_score(Energies, fity))
@@ -2317,7 +2413,7 @@ save_fig(<span style="color: #BA2121">&quot;Masses2016&quot;</span>)
 plt<span style="color: #666666">.</span>show()
 </pre></div>
 
-<h3 id="___sec64" class="anchor">Seeing the wood for the trees </h3>
+<h3 id="seeing-the-wood-for-the-trees" class="anchor">Seeing the wood for the trees </h3>
 
 <p>
 As a teaser, let us now see how we can do this with decision trees using <b>scikit-learn</b>. We will discuss the method in more details later.
@@ -2325,7 +2421,7 @@ As a teaser, let us now see how we can do this with decision trees using <b>scik
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic">#Decision Tree Regression</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic">#Decision Tree Regression</span>
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.tree</span> <span style="color: #008000; font-weight: bold">import</span> DecisionTreeRegressor
 regr_1<span style="color: #666666">=</span>DecisionTreeRegressor(max_depth<span style="color: #666666">=5</span>)
 regr_2<span style="color: #666666">=</span>DecisionTreeRegressor(max_depth<span style="color: #666666">=7</span>)
@@ -2356,7 +2452,7 @@ plt<span style="color: #666666">.</span>show()
 <span style="color: #008000">print</span>(np<span style="color: #666666">.</span>mean( (Energies<span style="color: #666666">-</span>y_1)<span style="color: #666666">**2</span>))
 </pre></div>
 
-<h3 id="___sec65" class="anchor">And what about using neural networks? </h3>
+<h3 id="and-what-about-using-neural-networks" class="anchor">And what about using neural networks? </h3>
 
 <p>
 The <b>seaborn</b> package allows us to visualize data in an efficient way. Note that we use <b>scikit-learn</b>'s multi-layer perceptron (or feed forward neural network) 
@@ -2364,7 +2460,7 @@ functionality.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.neural_network</span> <span style="color: #008000; font-weight: bold">import</span> MLPRegressor
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.neural_network</span> <span style="color: #008000; font-weight: bold">import</span> MLPRegressor
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> accuracy_score
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
 
@@ -2397,7 +2493,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split -->
 
-<h2 id="___sec66" class="anchor">More on flexibility with pandas and xarray </h2>
+<h2 id="more-on-flexibility-with-pandas-and-xarray" class="anchor">More on flexibility with pandas and xarray </h2>
 
 <p>
 Let us study the \( Q \) values associated with the removal of one or two nucleons from
@@ -2452,7 +2548,7 @@ Thereafter we pick the oxygen isotopes and simply compute the separation energie
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
@@ -2539,7 +2635,7 @@ plt<span style="color: #666666">.</span>show()
 
 <!-- Bootstrap footer
 <footer>
-<a href="http://..."><img width="250" align=right src="http://..."></a>
+<a href="https://..."><img width="250" align=right src="https://..."></a>
 </footer>
 -->
 
