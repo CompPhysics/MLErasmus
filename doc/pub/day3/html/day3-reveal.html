@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/doconce/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Data Analysis and Machine Learning: Day 3, Ridge and Lasso Regression and Resampling Methods">
+<meta name="description" content="Data Analysis and Machine Learning: Session 3, Ridge and Lasso Regression and Resampling Methods">
 
-<title>Data Analysis and Machine Learning: Day 3, Ridge and Lasso Regression and Resampling Methods</title>
-
-
+<title>Data Analysis and Machine Learning: Session 3, Ridge and Lasso Regression and Resampling Methods</title>
 
 
 
 
 
-<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+
+<!-- reveal.js: https://lab.hakim.se/reveal-js/ -->
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -76,10 +76,10 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
      .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
      /*.reveal .alert li {margin-top: 1em}*/
      .reveal .alert-block p+p {margin-top:5px}
-     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
-     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
-     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
-     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+     /*.reveal .alert-notice { background-image: url(https://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(https://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(https://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(https://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
 
 </style>
 
@@ -132,7 +132,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1 style="text-align: center;">Data Analysis and Machine Learning: Day 3, Ridge and Lasso Regression and Resampling Methods</h1></center>  <!-- document title -->
+<center><h1 style="text-align: center;">Data Analysis and Machine Learning: Session 3, Ridge and Lasso Regression and Resampling Methods</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Morten Hjorth-Jensen -->
@@ -148,7 +148,7 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA</b></center>
 <br>
 <p>&nbsp;<br>
-<center><h4>Jan 22, 2021</h4></center> <!-- date -->
+<center><h4>Oct 11, 2021</h4></center> <!-- date -->
 <br>
 <p>
 
@@ -159,7 +159,7 @@ MathJax.Hub.Config({
 
 
 <section>
-<h2 id="___sec0">Plans for Day 3 </h2>
+<h2 id="plans-for-session-3">Plans for Session 3 </h2>
 
 <ul>
 <p><li> Statistics, probability theory and resampling methods</li>
@@ -169,7 +169,7 @@ MathJax.Hub.Config({
 
 
 <section>
-<h2 id="___sec1">Why resampling methods </h2>
+<h2 id="why-resampling-methods">Why resampling methods </h2>
 
 <p>
 Before we proceed, we need to rethink what we have been doing. In our
@@ -187,7 +187,7 @@ This will allow us to link the standard linear algebra methods we have discussed
 
 
 <section>
-<h2 id="___sec2">Resampling methods </h2>
+<h2 id="resampling-methods">Resampling methods </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -220,7 +220,7 @@ cross-validation and the bootstrap method.
 
 
 <section>
-<h2 id="___sec3">Resampling approaches can be computationally expensive </h2>
+<h2 id="resampling-approaches-can-be-computationally-expensive">Resampling approaches can be computationally expensive </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -246,9 +246,9 @@ bootstrap is widely used.
 
 
 <section>
-<h2 id="___sec4">Why resampling methods ? </h2>
+<h2 id="why-resampling-methods">Why resampling methods ? </h2>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Statistical analysis.</b>
+<b>Statistical analysis</b>
 <ul>
 <p><li> Our simulations can be treated as <em>computer experiments</em>. This is particularly the case for Monte Carlo methods</li>
 <p><li> The results can be analysed with the same statistical tools as we would use analysing experimental data.</li>
@@ -259,7 +259,7 @@ bootstrap is widely used.
 
 
 <section>
-<h2 id="___sec5">Statistical analysis </h2>
+<h2 id="statistical-analysis">Statistical analysis </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <ul>
@@ -279,7 +279,7 @@ bootstrap is widely used.
 
 
 <section>
-<h2 id="___sec6">Linking the regression analysis with a statistical interpretation </h2>
+<h2 id="linking-the-regression-analysis-with-a-statistical-interpretation">Linking the regression analysis with a statistical interpretation </h2>
 
 <p>
 The
@@ -318,7 +318,7 @@ row number \( i \) and perform a sum over all values \( p \).
 
 
 <section>
-<h2 id="___sec7">Assumptions made </h2>
+<h2 id="assumptions-made">Assumptions made </h2>
 
 <p>
 The assumption we have made here can be summarized as (and this is going to be useful when we discuss the bias-variance trade off)
@@ -342,7 +342,7 @@ $$
 
 
 <section>
-<h2 id="___sec8">Expectation value and variance </h2>
+<h2 id="expectation-value-and-variance">Expectation value and variance </h2>
 
 <p>
 We can calculate the expectation value of \( \boldsymbol{y} \) for a given element \( i \) 
@@ -381,7 +381,7 @@ mean value \( \boldsymbol{X}\boldsymbol{\beta} \) and variance \( \sigma^2 \) (n
 
 
 <section>
-<h2 id="___sec9">Expectation value and variance for \( \boldsymbol{\beta} \) </h2>
+<h2 id="expectation-value-and-variance-for-boldsymbol-beta">Expectation value and variance for \( \boldsymbol{\beta} \) </h2>
 
 <p>
 With the OLS expressions for the parameters \( \boldsymbol{\beta} \) we can evaluate the expectation value
@@ -475,7 +475,7 @@ This means the variance we obtain with the standard OLS will always for \( \lamb
 
 
 <section>
-<h2 id="___sec10">Resampling methods </h2>
+<h2 id="resampling-methods">Resampling methods </h2>
 
 <p>
 With all these analytical equations for both the OLS and Ridge
@@ -505,7 +505,7 @@ training error reaches a saturation.
 
 
 <section>
-<h2 id="___sec11">Resampling methods: Jackknife and Bootstrap </h2>
+<h2 id="resampling-methods-jackknife-and-bootstrap">Resampling methods: Jackknife and Bootstrap </h2>
 
 <p>
 Two famous
@@ -528,7 +528,7 @@ need for bootstrapping.
 
 
 <section>
-<h2 id="___sec12">Resampling methods: Jackknife </h2>
+<h2 id="resampling-methods-jackknife">Resampling methods: Jackknife </h2>
 
 <p>
 The Jackknife works by making many replicas of the estimator \( \widehat{\theta} \). 
@@ -549,11 +549,11 @@ number \( i \) is left out. Using this notation, define
 
 
 <section>
-<h2 id="___sec13">Jackknife code example </h2>
+<h2 id="jackknife-code-example">Jackknife code example </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy.random</span> <span style="color: #8B008B; font-weight: bold">import</span> randint, randn
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">time</span> <span style="color: #8B008B; font-weight: bold">import</span> time
 
@@ -586,7 +586,7 @@ t = jackknife(x, stat)
 
 
 <section>
-<h2 id="___sec14">Resampling methods: Bootstrap </h2>
+<h2 id="resampling-methods-bootstrap">Resampling methods: Bootstrap </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -608,7 +608,7 @@ advantages:
 
 
 <section>
-<h2 id="___sec15">Resampling methods: Bootstrap background </h2>
+<h2 id="resampling-methods-bootstrap-background">Resampling methods: Bootstrap background </h2>
 
 <p>
 Since \( \widehat{\theta} = \widehat{\theta}(\boldsymbol{X}) \) is a function of random variables,
@@ -624,7 +624,7 @@ estimators.
 
 
 <section>
-<h2 id="___sec16">Resampling methods: More Bootstrap background </h2>
+<h2 id="resampling-methods-more-bootstrap-background">Resampling methods: More Bootstrap background </h2>
 
 <p>
 In the case that \( \widehat{\theta} \) has
@@ -647,7 +647,7 @@ idea is to use the relative frequency of \( \widehat{\theta}^* \)
 
 
 <section>
-<h2 id="___sec17">Resampling methods: Bootstrap approach </h2>
+<h2 id="resampling-methods-bootstrap-approach">Resampling methods: Bootstrap approach </h2>
 
 <p>
 But
@@ -668,7 +668,7 @@ frequency of the observation \( X_i \), just draw the values
 
 
 <section>
-<h2 id="___sec18">Resampling methods: Bootstrap steps </h2>
+<h2 id="resampling-methods-bootstrap-steps">Resampling methods: Bootstrap steps </h2>
 
 <p>
 The independent bootstrap works like this: 
@@ -694,7 +694,7 @@ example, if you are interested in estimating the variance of \( \widehat
 
 
 <section>
-<h2 id="___sec19">Code example for the Bootstrap method </h2>
+<h2 id="code-example-for-the-bootstrap-method">Code example for the Bootstrap method </h2>
 
 <p>
 The following code starts with a Gaussian distribution with mean value
@@ -713,7 +713,7 @@ theorem.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> *
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy.random</span> <span style="color: #8B008B; font-weight: bold">import</span> randint, randn
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">time</span> <span style="color: #8B008B; font-weight: bold">import</span> time
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.mlab</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">mlab</span>
@@ -759,7 +759,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec20">Various steps in cross-validation </h2>
+<h2 id="various-steps-in-cross-validation">Various steps in cross-validation </h2>
 
 <p>
 When the repetitive splitting of the data set is done randomly,
@@ -780,7 +780,7 @@ cross-validation (LOOCV).
 
 
 <section>
-<h2 id="___sec21">Cross-validation in brief </h2>
+<h2 id="cross-validation-in-brief">Cross-validation in brief </h2>
 
 <p>
 For the various values of \( k \)
@@ -802,14 +802,14 @@ For the various values of \( k \)
 
 
 <section>
-<h2 id="___sec22">Code Example for Cross-validation and \( k \)-fold Cross-validation </h2>
+<h2 id="code-example-for-cross-validation-and-k-fold-cross-validation">Code Example for Cross-validation and \( k \)-fold Cross-validation </h2>
 
 <p>
 The code here uses Ridge regression with cross-validation (CV)  resampling and \( k \)-fold CV in order to fit a specific polynomial. 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> KFold
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> Ridge
@@ -903,7 +903,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec23">The bias-variance tradeoff </h2>
+<h2 id="the-bias-variance-tradeoff">The bias-variance tradeoff </h2>
 
 <p>
 We will discuss the bias-variance tradeoff in the context of
@@ -981,11 +981,11 @@ that is the rewriting in terms of the so-called bias, the variance of the model 
 
 
 <section>
-<h2 id="___sec24">Example code for Bias-Variance tradeoff </h2>
+<h2 id="example-code-for-bias-variance-tradeoff">Example code for Bias-Variance tradeoff </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LinearRegression, Ridge, Lasso
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> PolynomialFeatures
@@ -1044,11 +1044,11 @@ plt.show()
 
 
 <section>
-<h2 id="___sec25">Understanding what happens </h2>
+<h2 id="understanding-what-happens">Understanding what happens </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LinearRegression, Ridge, Lasso
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> PolynomialFeatures
@@ -1099,7 +1099,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec26">Summing up </h2>
+<h2 id="summing-up">Summing up </h2>
 
 <p>
 The bias-variance tradeoff summarizes the fundamental tension in
@@ -1136,11 +1136,11 @@ You may also find this recent <a href="https://www.pnas.org/content/116/32/15849
 
 
 <section>
-<h2 id="___sec27">Another Example from Scikit-Learn's Repository </h2>
+<h2 id="another-example-from-scikit-learn-s-repository">Another Example from Scikit-Learn's Repository </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #CD5555">&quot;&quot;&quot;</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #CD5555">&quot;&quot;&quot;</span>
 <span style="color: #CD5555">============================</span>
 <span style="color: #CD5555">Underfitting vs. Overfitting</span>
 <span style="color: #CD5555">============================</span>
@@ -1216,12 +1216,12 @@ plt.show()
 
 
 <section>
-<h2 id="___sec28">More examples on bootstrap and cross-validation and errors </h2>
+<h2 id="more-examples-on-bootstrap-and-cross-validation-and-errors">More examples on bootstrap and cross-validation and errors </h2>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># Common imports</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #228B22"># Common imports</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
@@ -1304,12 +1304,12 @@ plt.show()
 
 
 <section>
-<h2 id="___sec29">The same example but now with cross-validation </h2>
+<h2 id="the-same-example-but-now-with-cross-validation">The same example but now with cross-validation </h2>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #228B22"># Common imports</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #228B22"># Common imports</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
@@ -1381,11 +1381,11 @@ plt.show()
 
 
 <section>
-<h2 id="___sec30">Cross-validation with Ridge </h2>
+<h2 id="cross-validation-with-ridge">Cross-validation with Ridge </h2>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> KFold
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> Ridge
@@ -1425,7 +1425,7 @@ plt.show()
 
 
 <section>
-<h2 id="___sec31">Ridge and LASSO Regression </h2>
+<h2 id="ridge-and-lasso-regression">Ridge and LASSO Regression </h2>
 
 <p>
 Let us remind ourselves about the expression for the standard Mean Squared Error (MSE) which we used to define our cost function and the equations for the ordinary least squares (OLS) method, that is 
@@ -1497,7 +1497,7 @@ $$
 
 
 <section>
-<h2 id="___sec32">More on Ridge Regression </h2>
+<h2 id="more-on-ridge-regression">More on Ridge Regression </h2>
 
 <p>
 Using the matrix-vector expression for Ridge regression,
@@ -1534,7 +1534,7 @@ with \( t \) a finite positive number.
 
 
 <section>
-<h2 id="___sec33">A better understanding of regularization </h2>
+<h2 id="a-better-understanding-of-regularization">A better understanding of regularization </h2>
 
 <p>
 The parameter \( \lambda \) that we have introduced in the Ridge (and
@@ -1553,7 +1553,7 @@ affected by changing the parameter \( \lambda \).
 
 
 <section>
-<h2 id="___sec34">Decomposing the OLS and Ridge expressions </h2>
+<h2 id="decomposing-the-ols-and-ridge-expressions">Decomposing the OLS and Ridge expressions </h2>
 
 <p>
 We have our design matrix
@@ -1578,7 +1578,7 @@ Below we discuss some of the mathematics of the SVD decompostion.
 
 
 <section>
-<h2 id="___sec35">The singular value decomposition  </h2>
+<h2 id="the-singular-value-decomposition">The singular value decomposition  </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1610,7 +1610,7 @@ inversion algorithm. Thereafter we dive into the math of the SVD.
 
 
 <section>
-<h2 id="___sec36">Linear Regression Problems </h2>
+<h2 id="linear-regression-problems">Linear Regression Problems </h2>
 
 <p>
 One of the typical problems we encounter with linear regression, in particular 
@@ -1665,7 +1665,7 @@ This is equivalent to saying that the matrix \( \boldsymbol{X} \) has at least a
 
 
 <section>
-<h2 id="___sec37">Fixing the singularity </h2>
+<h2 id="fixing-the-singularity">Fixing the singularity </h2>
 
 <p>
 If our design matrix \( \boldsymbol{X} \) which enters the linear regression problem
@@ -1697,7 +1697,7 @@ where \( \boldsymbol{I} \) is the identity matrix.  When we discuss <b>Ridge</b>
 
 
 <section>
-<h2 id="___sec38">Basic math of the SVD </h2>
+<h2 id="basic-math-of-the-svd">Basic math of the SVD </h2>
 
 <p>
 From standard linear algebra we know that a square matrix \( \boldsymbol{X} \) can be diagonalized if and only it is 
@@ -1744,7 +1744,7 @@ is not diagonalizable, it is a so-called <a href="https://en.wikipedia.org/wiki/
 
 
 <section>
-<h2 id="___sec39">The SVD, a Fantastic Algorithm </h2>
+<h2 id="the-svd-a-fantastic-algorithm">The SVD, a Fantastic Algorithm </h2>
 
 <p>
 However, and this is the strength of the SVD algorithm, any general
@@ -1800,7 +1800,7 @@ The columns of \( \boldsymbol{U} \) are called the left singular vectors while t
 
 
 <section>
-<h2 id="___sec40">Economy-size SVD </h2>
+<h2 id="economy-size-svd">Economy-size SVD </h2>
 
 <p>
 If we assume that \( n > p \), then our matrix \( \boldsymbol{U} \) has dimension \( n
@@ -1825,12 +1825,12 @@ In general the economy-size SVD leads to less FLOPS and still conserving the des
 
 
 <section>
-<h2 id="___sec41">Codes for the SVD </h2>
+<h2 id="codes-for-the-svd">Codes for the SVD </h2>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%;"><span></span><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
 <span style="color: #228B22"># SVD inversion</span>
 <span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">SVDinv</span>(A):
     <span style="color: #CD5555">&#39;&#39;&#39; Takes as input a numpy matrix A and returns inv(A) based on singular value decomposition (SVD).</span>
@@ -1876,7 +1876,7 @@ in the program terminating due to a singular matrix.
 
 
 <section>
-<h2 id="___sec42">Mathematical Properties </h2>
+<h2 id="mathematical-properties">Mathematical Properties </h2>
 
 <p>
 There are several interesting mathematical properties which will be
@@ -1938,7 +1938,7 @@ $$
 
 
 <section>
-<h2 id="___sec43">OLS and Ridge in terms of an SVD Decomposition </h2>
+<h2 id="ols-and-ridge-in-terms-of-an-svd-decomposition">OLS and Ridge in terms of an SVD Decomposition </h2>
 
 <p>
 We have then
@@ -1966,7 +1966,7 @@ Here we have that \( {\bf X} = {\bf U}{\bf \Sigma}{\bf V}^T \), with \( \Sigma \
 
 
 <section>
-<h2 id="___sec44">Ridge and SVD </h2>
+<h2 id="ridge-and-svd">Ridge and SVD </h2>
 We see that Ridge regression is nothing but the standard
 OLS with a modified diagonal term added to \( \boldsymbol{X}^T\boldsymbol{X} \). The
 consequences, in particular for our discussion of the bias-variance tradeoff 
@@ -2003,7 +2003,7 @@ with the vectors \( \boldsymbol{u}_j \) being the columns of \( \boldsymbol{U} \
 
 
 <section>
-<h2 id="___sec45">Interpreting the Ridge results </h2>
+<h2 id="interpreting-the-ridge-results">Interpreting the Ridge results </h2>
 
 <p>
 Since \( \lambda \geq 0 \), it means that compared to OLS, we have
@@ -2029,7 +2029,7 @@ With a parameter \( \lambda \) we can thus shrink the role of specific parameter
 
 
 <section>
-<h2 id="___sec46">More interpretations </h2>
+<h2 id="more-interpretations">More interpretations </h2>
 
 <p>
 For the sake of simplicity, let us assume that the design matrix is orthonormal, that is
