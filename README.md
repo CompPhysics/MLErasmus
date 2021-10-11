@@ -89,13 +89,15 @@ is recommended.
 ## Practicalities
 
 1. Lectures are in the morning, from 845am-1045am.
-2. Three hours of laboratory sessions for work on computational projects, from 2pm to 5pm;
+2. Group meeting and work on projects and exercises November 8
 3. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will be graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than February 1, hopefully the grades will be available before that.
 
 
 ## Lecture material
 _The link_ https://compphysics.github.io/MLErasmus/doc/web/course.html gives you direct access to the learning material with lectures slides and jupyter notebooks. Videos of the lectures will be added. 
 
+## Detailed Lecture Notes
+_Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/LectureNotes/_build/html/intro.html
 
 ##  Teaching schedule, topics and teacher
 
