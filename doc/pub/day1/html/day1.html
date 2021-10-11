@@ -1,15 +1,15 @@
 <!--
 Automatically generated HTML file from DocOnce source
-(https://github.com/hplgit/doconce/)
+(https://github.com/doconce/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/doconce/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Data Analysis and Machine Learning: Day 1 and Day 2, Linear Regression">
+<meta name="description" content="Data Analysis and Machine Learning: Sessions 1 and 2, Linear Regression">
 
-<title>Data Analysis and Machine Learning: Day 1 and Day 2, Linear Regression</title>
+<title>Data Analysis and Machine Learning: Sessions 1 and 2, Linear Regression</title>
 
 
 <style type="text/css">
@@ -53,10 +53,10 @@ hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_notice.png); }
-.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_summary.png); }
-.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_warning.png); }
-.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_gray_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/doconce/doconce/master/bundled/html_images/small_gray_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/doconce/doconce/master/bundled/html_images/small_gray_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/doconce/doconce/master/bundled/html_images/small_gray_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/doconce/doconce/master/bundled/html_images/small_gray_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -66,124 +66,172 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [('Linear Regression, basic overview', 2, None, '___sec0'),
+ 'sections': [('Linear Regression, basic overview',
+               2,
+               None,
+               'linear-regression-basic-overview'),
               ('Why Linear Regression (aka Ordinary Least Squares and family)?',
                2,
                None,
-               '___sec1'),
-              ('Additional Reading', 2, None, '___sec2'),
-              ('Regression Analysis, Definitions and Aims', 2, None, '___sec3'),
-              ('Regression analysis, overarching aims', 2, None, '___sec4'),
-              ('Regression analysis, overarching aims II', 2, None, '___sec5'),
-              ('Examples', 2, None, '___sec6'),
-              ('General linear models', 2, None, '___sec7'),
+               'why-linear-regression-aka-ordinary-least-squares-and-family'),
+              ('Additional Reading', 2, None, 'additional-reading'),
+              ('Regression Analysis, Definitions and Aims',
+               2,
+               None,
+               'regression-analysis-definitions-and-aims'),
+              ('Regression analysis, overarching aims',
+               2,
+               None,
+               'regression-analysis-overarching-aims'),
+              ('Regression analysis, overarching aims II',
+               2,
+               None,
+               'regression-analysis-overarching-aims-ii'),
+              ('Examples', 2, None, 'examples'),
+              ('General linear models', 2, None, 'general-linear-models'),
               ('Rewriting the fitting procedure as a linear algebra problem',
                2,
                None,
-               '___sec8'),
+               'rewriting-the-fitting-procedure-as-a-linear-algebra-problem'),
               ('Rewriting the fitting procedure as a linear algebra problem, '
                'more details',
                2,
                None,
-               '___sec9'),
+               'rewriting-the-fitting-procedure-as-a-linear-algebra-problem-more-details'),
               ('Generalizing the fitting procedure as a linear algebra problem',
                2,
                None,
-               '___sec10'),
+               'generalizing-the-fitting-procedure-as-a-linear-algebra-problem'),
               ('Generalizing the fitting procedure as a linear algebra problem',
                2,
                None,
-               '___sec11'),
-              ('Optimizing our parameters', 2, None, '___sec12'),
+               'generalizing-the-fitting-procedure-as-a-linear-algebra-problem'),
+              ('Optimizing our parameters',
+               2,
+               None,
+               'optimizing-our-parameters'),
               ('Our model for the nuclear binding energies',
                2,
                None,
-               '___sec13'),
-              ('Optimizing our parameters, more details', 2, None, '___sec14'),
+               'our-model-for-the-nuclear-binding-energies'),
+              ('Optimizing our parameters, more details',
+               2,
+               None,
+               'optimizing-our-parameters-more-details'),
               ('Interpretations and optimizing our parameters',
                2,
                None,
-               '___sec15'),
+               'interpretations-and-optimizing-our-parameters'),
               ('Interpretations and optimizing our parameters',
                2,
                None,
-               '___sec16'),
+               'interpretations-and-optimizing-our-parameters'),
               ('Some useful matrix and vector expressions',
                2,
                None,
-               '___sec17'),
+               'some-useful-matrix-and-vector-expressions'),
               ('Interpretations and optimizing our parameters',
                2,
                None,
-               '___sec18'),
-              ('Own code for Ordinary Least Squares', 2, None, '___sec19'),
+               'interpretations-and-optimizing-our-parameters'),
+              ('Own code for Ordinary Least Squares',
+               2,
+               None,
+               'own-code-for-ordinary-least-squares'),
               ('Adding error analysis and training set up',
                2,
                None,
-               '___sec20'),
-              ('The $\\chi^2$ function', 2, None, '___sec21'),
-              ('The $\\chi^2$ function', 2, None, '___sec22'),
-              ('The $\\chi^2$ function', 2, None, '___sec23'),
-              ('The $\\chi^2$ function', 2, None, '___sec24'),
-              ('The $\\chi^2$ function', 2, None, '___sec25'),
-              ('The $\\chi^2$ function', 2, None, '___sec26'),
-              ('Regression Examples', 2, None, '___sec27'),
+               'adding-error-analysis-and-training-set-up'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('The $\\chi^2$ function', 2, None, 'the-chi-2-function'),
+              ('Regression Examples', 2, None, 'regression-examples'),
               ('Fitting an Equation of State for Dense Nuclear Matter',
                2,
                None,
-               '___sec28'),
-              ('The code', 2, None, '___sec29'),
+               'fitting-an-equation-of-state-for-dense-nuclear-matter'),
+              ('The code', 2, None, 'the-code'),
               ('Splitting our Data in Training and Test data',
                2,
                None,
-               '___sec30'),
-              ('The Boston housing data example', 2, None, '___sec31'),
-              ('Housing data, the code', 2, None, '___sec32'),
+               'splitting-our-data-in-training-and-test-data'),
+              ('The Boston housing data example',
+               2,
+               None,
+               'the-boston-housing-data-example'),
+              ('Housing data, the code', 2, None, 'housing-data-the-code'),
               ('Reducing the number of degrees of freedom, overarching view',
                2,
                None,
-               '___sec33'),
-              ('Preprocessing our data', 2, None, '___sec34'),
-              ('More preprocessing', 2, None, '___sec35'),
+               'reducing-the-number-of-degrees-of-freedom-overarching-view'),
+              ('Preprocessing our data', 2, None, 'preprocessing-our-data'),
+              ('More preprocessing', 2, None, 'more-preprocessing'),
               ('Simple preprocessing examples, Franke function and regression',
                2,
                None,
-               '___sec36'),
-              ('Singular Value Decomposition Algorithm', 2, None, '___sec37'),
-              ('The singular value decomposition', 2, None, '___sec38'),
-              ('Linear Regression Problems', 2, None, '___sec39'),
-              ('Fixing the singularity', 2, None, '___sec40'),
-              ('Basic math of the SVD', 2, None, '___sec41'),
-              ('The SVD, a Fantastic Algorithm', 2, None, '___sec42'),
-              ('Another Example', 2, None, '___sec43'),
-              ('Economy-size SVD', 2, None, '___sec44'),
-              ('Codes for the SVD', 2, None, '___sec45'),
-              ('Mathematical Properties', 2, None, '___sec46'),
-              ('Beyond Ordinary Least Squares', 2, None, '___sec47'),
-              ('Ridge and LASSO Regression', 2, None, '___sec48'),
-              ('More on Ridge Regression', 2, None, '___sec49'),
-              ('Interpreting the Ridge results', 2, None, '___sec50'),
-              ('More interpretations', 2, None, '___sec51'),
-              ('Statistics', 2, None, '___sec52'),
-              ('Where are we going?', 2, None, '___sec53'),
-              ('Resampling methods', 2, None, '___sec54'),
+               'simple-preprocessing-examples-franke-function-and-regression'),
+              ('Singular Value Decomposition Algorithm',
+               2,
+               None,
+               'singular-value-decomposition-algorithm'),
+              ('The singular value decomposition',
+               2,
+               None,
+               'the-singular-value-decomposition'),
+              ('Linear Regression Problems',
+               2,
+               None,
+               'linear-regression-problems'),
+              ('Fixing the singularity', 2, None, 'fixing-the-singularity'),
+              ('Basic math of the SVD', 2, None, 'basic-math-of-the-svd'),
+              ('The SVD, a Fantastic Algorithm',
+               2,
+               None,
+               'the-svd-a-fantastic-algorithm'),
+              ('Another Example', 2, None, 'another-example'),
+              ('Economy-size SVD', 2, None, 'economy-size-svd'),
+              ('Codes for the SVD', 2, None, 'codes-for-the-svd'),
+              ('Mathematical Properties', 2, None, 'mathematical-properties'),
+              ('Beyond Ordinary Least Squares',
+               2,
+               None,
+               'beyond-ordinary-least-squares'),
+              ('Ridge and LASSO Regression',
+               2,
+               None,
+               'ridge-and-lasso-regression'),
+              ('More on Ridge Regression', 2, None, 'more-on-ridge-regression'),
+              ('Interpreting the Ridge results',
+               2,
+               None,
+               'interpreting-the-ridge-results'),
+              ('More interpretations', 2, None, 'more-interpretations'),
+              ('Statistics', 2, None, 'statistics'),
+              ('Where are we going?', 2, None, 'where-are-we-going'),
+              ('Resampling methods', 2, None, 'resampling-methods'),
               ('Resampling approaches can be computationally expensive',
                2,
                None,
-               '___sec55'),
-              ('Why resampling methods ?', 2, None, '___sec56'),
-              ('Statistical analysis', 2, None, '___sec57'),
+               'resampling-approaches-can-be-computationally-expensive'),
+              ('Why resampling methods ?', 2, None, 'why-resampling-methods'),
+              ('Statistical analysis', 2, None, 'statistical-analysis'),
               ('Linking the regression analysis with a statistical '
                'interpretation',
                2,
                None,
-               '___sec58'),
-              ('Assumptions made', 2, None, '___sec59'),
-              ('Expectation value and variance', 2, None, '___sec60'),
+               'linking-the-regression-analysis-with-a-statistical-interpretation'),
+              ('Assumptions made', 2, None, 'assumptions-made'),
+              ('Expectation value and variance',
+               2,
+               None,
+               'expectation-value-and-variance'),
               ('Expectation value and variance for $\\boldsymbol{\\beta}$',
                2,
                None,
-               '___sec61')]}
+               'expectation-value-and-variance-for-boldsymbol-beta')]}
 end of tocinfo -->
 
 <body>
@@ -209,7 +257,7 @@ MathJax.Hub.Config({
 
 
 
-<center><h1>Data Analysis and Machine Learning: Day 1 and Day 2, Linear Regression</h1></center>  <!-- document title -->
+<center><h1>Data Analysis and Machine Learning: Sessions 1 and 2, Linear Regression</h1></center>  <!-- document title -->
 
 <p>
 <!-- author(s): Morten Hjorth-Jensen -->
@@ -225,12 +273,12 @@ MathJax.Hub.Config({
 <center>[2] <b>Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA</b></center>
 <br>
 <p>
-<center><h4>Jan 19, 2021</h4></center> <!-- date -->
+<center><h4>Oct 11, 2021</h4></center> <!-- date -->
 <br>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec0">Linear Regression, basic overview </h2>
+<h2 id="linear-regression-basic-overview">Linear Regression, basic overview </h2>
 
 <p>
 The aim of this set of lectures is to introduce basic aspects of linear regression, a widely applied set of methods used to fit continuous functions.
@@ -257,7 +305,7 @@ We will in particular focus on
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec1">Why Linear Regression (aka Ordinary Least Squares and family)? </h2>
+<h2 id="why-linear-regression-aka-ordinary-least-squares-and-family">Why Linear Regression (aka Ordinary Least Squares and family)? </h2>
 
 <p>
 Fitting a continuous function with linear parameterization in terms of the parameters  \( \boldsymbol{\beta} \).
@@ -280,7 +328,7 @@ Fitting a continuous function with linear parameterization in terms of the param
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec2">Additional Reading  </h2>
+<h2 id="additional-reading">Additional Reading  </h2>
 
 <p>
 For more discussions of Ridge and Lasso regression, <a href="https://arxiv.org/abs/1509.09169" target="_blank">Wessel van Wieringen's</a> article is highly recommended.
@@ -290,12 +338,12 @@ Also <a href="https://www.springer.com/gp/book/9780387310732" target="_blank">Bi
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec3">Regression Analysis, Definitions and Aims  </h2>
+<h2 id="regression-analysis-definitions-and-aims">Regression Analysis, Definitions and Aims  </h2>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec4">Regression analysis, overarching aims  </h2>
+<h2 id="regression-analysis-overarching-aims">Regression analysis, overarching aims  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -320,7 +368,7 @@ A regression model aims at finding a likelihood function \( p(\boldsymbol{y}\ver
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec5">Regression analysis, overarching aims II </h2>
+<h2 id="regression-analysis-overarching-aims-ii">Regression analysis, overarching aims II </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -357,7 +405,7 @@ as \( \boldsymbol{\hat{\beta}} \) or as \( \boldsymbol{\beta}^{\mathrm{opt}} \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec6">Examples  </h2>
+<h2 id="examples">Examples  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -386,7 +434,7 @@ so-called <a href="https://www.sciencedirect.com/science/article/pii/S0957417407
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec7">General linear models  </h2>
+<h2 id="general-linear-models">General linear models  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -407,7 +455,7 @@ where \( \epsilon_i \) is the error in our approximation.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec8">Rewriting the fitting procedure as a linear algebra problem  </h2>
+<h2 id="rewriting-the-fitting-procedure-as-a-linear-algebra-problem">Rewriting the fitting procedure as a linear algebra problem  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -427,7 +475,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec9">Rewriting the fitting procedure as a linear algebra problem, more details  </h2>
+<h2 id="rewriting-the-fitting-procedure-as-a-linear-algebra-problem-more-details">Rewriting the fitting procedure as a linear algebra problem, more details  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -470,7 +518,7 @@ The above design matrix is called a <a href="https://en.wikipedia.org/wiki/Vande
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec10">Generalizing the fitting procedure as a linear algebra problem  </h2>
+<h2 id="generalizing-the-fitting-procedure-as-a-linear-algebra-problem">Generalizing the fitting procedure as a linear algebra problem  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -502,7 +550,7 @@ Note that we have used \( p=n \) here. The matrix is thus quadratic (it may be s
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec11">Generalizing the fitting procedure as a linear algebra problem  </h2>
+<h2 id="generalizing-the-fitting-procedure-as-a-linear-algebra-problem">Generalizing the fitting procedure as a linear algebra problem  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -530,7 +578,7 @@ The left-hand side of this equation is kwown. Our error vector \( \boldsymbol{\e
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec12">Optimizing our parameters  </h2>
+<h2 id="optimizing-our-parameters">Optimizing our parameters  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -559,7 +607,7 @@ our matrix as \( \boldsymbol{X}\in {\mathbb{R}}^{n\times p} \), with the predict
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec13">Our model for the nuclear binding energies </h2>
+<h2 id="our-model-for-the-nuclear-binding-energies">Our model for the nuclear binding energies </h2>
 
 <p>
 In our <a href="https://compphysics.github.io/MachineLearning/doc/pub/How2ReadData/html/How2ReadData.html" target="_blank">introductory notes</a> we looked at the so-called <a href="https://en.wikipedia.org/wiki/Semi-empirical_mass_formula" target="_blank">liquid drop model</a>. Let us remind ourselves about what we did by looking at the code.
@@ -569,7 +617,7 @@ We restate the parts of the code we are most interested in.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
@@ -650,7 +698,7 @@ throughout these lectures.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec14">Optimizing our parameters, more details  </h2>
+<h2 id="optimizing-our-parameters-more-details">Optimizing our parameters, more details  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -686,7 +734,7 @@ since when taking the first derivative with respect to the unknown parameters \(
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec15">Interpretations and optimizing our parameters  </h2>
+<h2 id="interpretations-and-optimizing-our-parameters">Interpretations and optimizing our parameters  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -742,7 +790,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec16">Interpretations and optimizing our parameters  </h2>
+<h2 id="interpretations-and-optimizing-our-parameters">Interpretations and optimizing our parameters  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -786,7 +834,7 @@ allow for the usage of direct linear algebra methods such as <b>LU</b> decomposi
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec17">Some useful matrix and vector expressions </h2>
+<h2 id="some-useful-matrix-and-vector-expressions">Some useful matrix and vector expressions </h2>
 
 <p>
 The following matrix and vector relation will be useful here and for the rest of the course. Vectors are always written as boldfaced lower case letters and 
@@ -810,7 +858,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec18">Interpretations and optimizing our parameters  </h2>
+<h2 id="interpretations-and-optimizing-our-parameters">Interpretations and optimizing our parameters  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -841,7 +889,7 @@ Let us now return to our nuclear binding energies and simply code the above equa
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec19">Own code for Ordinary Least Squares </h2>
+<h2 id="own-code-for-ordinary-least-squares">Own code for Ordinary Least Squares </h2>
 
 <p>
 It is rather straightforward to implement the matrix inversion and obtain the parameters \( \boldsymbol{\beta} \). After having defined the matrix \( \boldsymbol{X} \) we simply need to 
@@ -849,7 +897,7 @@ write
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># matrix inversion to find beta</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># matrix inversion to find beta</span>
 beta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>inv(X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> X) <span style="color: #666666">@</span> X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> Energies
 <span style="color: #408080; font-style: italic"># or in a more old-fashioned way</span>
 <span style="color: #408080; font-style: italic"># beta = np.linalg.inv(X.T.dot(X)).dot(X.T).dot(Energies)</span>
@@ -861,7 +909,7 @@ Alternatively, you can use the least squares functionality in <b>Numpy</b> as
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>fit <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>lstsq(X, Energies, rcond <span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">None</span>)[<span style="color: #666666">0</span>]
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>fit <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>lstsq(X, Energies, rcond <span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">None</span>)[<span style="color: #666666">0</span>]
 ytildenp <span style="color: #666666">=</span> np<span style="color: #666666">.</span>dot(fit,X<span style="color: #666666">.</span>T)
 </pre></div>
 <p>
@@ -869,7 +917,7 @@ And finally we plot our fit with and compare with data
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>Masses[<span style="color: #BA2121">&#39;Eapprox&#39;</span>]  <span style="color: #666666">=</span> ytilde
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>Masses[<span style="color: #BA2121">&#39;Eapprox&#39;</span>]  <span style="color: #666666">=</span> ytilde
 <span style="color: #408080; font-style: italic"># Generate a plot comparing the experimental with the fitted values values.</span>
 fig, ax <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>subplots()
 ax<span style="color: #666666">.</span>set_xlabel(<span style="color: #BA2121">r&#39;$A = N + Z$&#39;</span>)
@@ -885,7 +933,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec20">Adding error analysis and training set up </h2>
+<h2 id="adding-error-analysis-and-training-set-up">Adding error analysis and training set up </h2>
 
 <p>
 We can easily test our fit by computing the \( R2 \) score that we discussed in connection with the functionality of <b>Scikit-Learn</b> in the introductory slides.
@@ -893,7 +941,7 @@ Since we are not using <b>Scikit-Learn</b> here we can define our own \( R2 \) f
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">R2</span>(y_data, y_model):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">R2</span>(y_data, y_model):
     <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span> <span style="color: #666666">-</span> np<span style="color: #666666">.</span>sum((y_data <span style="color: #666666">-</span> y_model) <span style="color: #666666">**</span> <span style="color: #666666">2</span>) <span style="color: #666666">/</span> np<span style="color: #666666">.</span>sum((y_data <span style="color: #666666">-</span> np<span style="color: #666666">.</span>mean(y_data)) <span style="color: #666666">**</span> <span style="color: #666666">2</span>)
 </pre></div>
 <p>
@@ -901,14 +949,14 @@ and we would be using it as
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000">print</span>(R2(Energies,ytilde))
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000">print</span>(R2(Energies,ytilde))
 </pre></div>
 <p>
 We can also add our <b>MSE</b> score as
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">MSE</span>(y_data,y_model):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">MSE</span>(y_data,y_model):
     n <span style="color: #666666">=</span> np<span style="color: #666666">.</span>size(y_model)
     <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sum((y_data<span style="color: #666666">-</span>y_model)<span style="color: #666666">**2</span>)<span style="color: #666666">/</span>n
 
@@ -919,14 +967,14 @@ and finally the relative error as
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">RelativeError</span>(y_data,y_model):
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">RelativeError</span>(y_data,y_model):
     <span style="color: #008000; font-weight: bold">return</span> <span style="color: #008000">abs</span>((y_data<span style="color: #666666">-</span>y_model)<span style="color: #666666">/</span>y_data)
 <span style="color: #008000">print</span>(RelativeError(Energies, ytilde))
 </pre></div>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec21">The \( \chi^2 \) function  </h2>
+<h2 id="the-chi-2-function">The \( \chi^2 \) function  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -958,7 +1006,7 @@ where the matrix \( \boldsymbol{\Sigma} \) is a diagonal matrix with \( \sigma_i
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec22">The \( \chi^2 \) function  </h2>
+<h2 id="the-chi-2-function">The \( \chi^2 \) function  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -986,7 +1034,7 @@ where we have defined the matrix \( \boldsymbol{A} =\boldsymbol{X}/\boldsymbol{\
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec23">The \( \chi^2 \) function  </h2>
+<h2 id="the-chi-2-function">The \( \chi^2 \) function  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1012,7 +1060,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec24">The \( \chi^2 \) function  </h2>
+<h2 id="the-chi-2-function">The \( \chi^2 \) function  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1043,7 +1091,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec25">The \( \chi^2 \) function  </h2>
+<h2 id="the-chi-2-function">The \( \chi^2 \) function  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1067,7 +1115,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec26">The \( \chi^2 \) function  </h2>
+<h2 id="the-chi-2-function">The \( \chi^2 \) function  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1125,12 +1173,12 @@ Lasso and Ridge regression. See below.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec27">Regression Examples </h2>
+<h2 id="regression-examples">Regression Examples </h2>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec28">Fitting an Equation of State for Dense Nuclear Matter </h2>
+<h2 id="fitting-an-equation-of-state-for-dense-nuclear-matter">Fitting an Equation of State for Dense Nuclear Matter </h2>
 
 <p>
 Before we continue, let us introduce yet another example. We are going to fit the
@@ -1155,12 +1203,12 @@ hyperparameter \( \lambda \), also to be explained below.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec29">The code </h2>
+<h2 id="the-code">The code </h2>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
@@ -1258,7 +1306,7 @@ below.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec30">Splitting our Data in Training and Test data </h2>
+<h2 id="splitting-our-data-in-training-and-test-data">Splitting our Data in Training and Test data </h2>
 
 <p>
 It is normal in essentially all Machine Learning studies to split the
@@ -1275,7 +1323,7 @@ but now splitting the data into a training set and a test set.
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
@@ -1343,7 +1391,7 @@ ypredict <span style="color: #666666">=</span> X_test <span style="color: #66666
 <p>
 <!-- !split  -->
 
-<h2 id="___sec31">The Boston housing data example </h2>
+<h2 id="the-boston-housing-data-example">The Boston housing data example </h2>
 
 <p>
 The Boston housing  
@@ -1374,12 +1422,12 @@ The features/predictors are
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec32">Housing data, the code </h2>
+<h2 id="housing-data-the-code">Housing data, the code </h2>
 We start by importing the libraries
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span> 
 
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>  
@@ -1391,7 +1439,7 @@ and load the Boston Housing DataSet from <b>Scikit-Learn</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.datasets</span> <span style="color: #008000; font-weight: bold">import</span> load_boston
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.datasets</span> <span style="color: #008000; font-weight: bold">import</span> load_boston
 
 boston_dataset <span style="color: #666666">=</span> load_boston()
 
@@ -1404,7 +1452,7 @@ Then we invoke Pandas
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>boston <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(boston_dataset<span style="color: #666666">.</span>data, columns<span style="color: #666666">=</span>boston_dataset<span style="color: #666666">.</span>feature_names)
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>boston <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(boston_dataset<span style="color: #666666">.</span>data, columns<span style="color: #666666">=</span>boston_dataset<span style="color: #666666">.</span>feature_names)
 boston<span style="color: #666666">.</span>head()
 boston[<span style="color: #BA2121">&#39;MEDV&#39;</span>] <span style="color: #666666">=</span> boston_dataset<span style="color: #666666">.</span>target
 </pre></div>
@@ -1413,7 +1461,7 @@ and preprocess the data
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># check for missing values in all the columns</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># check for missing values in all the columns</span>
 boston<span style="color: #666666">.</span>isnull()<span style="color: #666666">.</span>sum()
 </pre></div>
 <p>
@@ -1421,7 +1469,7 @@ We can then visualize the data
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># set the size of the figure</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># set the size of the figure</span>
 sns<span style="color: #666666">.</span>set(rc<span style="color: #666666">=</span>{<span style="color: #BA2121">&#39;figure.figsize&#39;</span>:(<span style="color: #666666">11.7</span>,<span style="color: #666666">8.27</span>)})
 
 <span style="color: #408080; font-style: italic"># plot a histogram showing the distribution of the target values</span>
@@ -1433,7 +1481,7 @@ It is now useful to look at the correlation matrix
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># compute the pair wise correlation for all columns  </span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># compute the pair wise correlation for all columns  </span>
 correlation_matrix <span style="color: #666666">=</span> boston<span style="color: #666666">.</span>corr()<span style="color: #666666">.</span>round(<span style="color: #666666">2</span>)
 <span style="color: #408080; font-style: italic"># use the heatmap function from seaborn to plot the correlation matrix</span>
 <span style="color: #408080; font-style: italic"># annot = True to print the values inside the square</span>
@@ -1445,7 +1493,7 @@ From the above coorelation plot we can see that <b>MEDV</b> is strongly correlat
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">20</span>, <span style="color: #666666">5</span>))
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">20</span>, <span style="color: #666666">5</span>))
 
 features <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;LSTAT&#39;</span>, <span style="color: #BA2121">&#39;RM&#39;</span>]
 target <span style="color: #666666">=</span> boston[<span style="color: #BA2121">&#39;MEDV&#39;</span>]
@@ -1464,7 +1512,7 @@ Now we start training our model
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span>X <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(np<span style="color: #666666">.</span>c_[boston[<span style="color: #BA2121">&#39;LSTAT&#39;</span>], boston[<span style="color: #BA2121">&#39;RM&#39;</span>]], columns <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;LSTAT&#39;</span>,<span style="color: #BA2121">&#39;RM&#39;</span>])
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span>X <span style="color: #666666">=</span> pd<span style="color: #666666">.</span>DataFrame(np<span style="color: #666666">.</span>c_[boston[<span style="color: #BA2121">&#39;LSTAT&#39;</span>], boston[<span style="color: #BA2121">&#39;RM&#39;</span>]], columns <span style="color: #666666">=</span> [<span style="color: #BA2121">&#39;LSTAT&#39;</span>,<span style="color: #BA2121">&#39;RM&#39;</span>])
 Y <span style="color: #666666">=</span> boston[<span style="color: #BA2121">&#39;MEDV&#39;</span>]
 </pre></div>
 <p>
@@ -1473,7 +1521,7 @@ We split the data into training and test sets
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
 
 <span style="color: #408080; font-style: italic"># splits the training and test data set in 80% : 20%</span>
 <span style="color: #408080; font-style: italic"># assign random_state to any value.This ensures consistency.</span>
@@ -1488,7 +1536,7 @@ Then we use the linear regression functionality from <b>Scikit-Learn</b>
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LinearRegression
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> LinearRegression
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.metrics</span> <span style="color: #008000; font-weight: bold">import</span> mean_squared_error, r2_score
 
 lin_model <span style="color: #666666">=</span> LinearRegression()
@@ -1523,7 +1571,7 @@ r2 <span style="color: #666666">=</span> r2_score(Y_test, y_test_predict)
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># plotting the y_test vs y_pred</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># plotting the y_test vs y_pred</span>
 <span style="color: #408080; font-style: italic"># ideally should have been a straight line</span>
 plt<span style="color: #666666">.</span>scatter(Y_test, y_test_predict)
 plt<span style="color: #666666">.</span>show()
@@ -1531,7 +1579,7 @@ plt<span style="color: #666666">.</span>show()
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec33">Reducing the number of degrees of freedom, overarching view  </h2>
+<h2 id="reducing-the-number-of-degrees-of-freedom-overarching-view">Reducing the number of degrees of freedom, overarching view  </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -1565,7 +1613,7 @@ visualization.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec34">Preprocessing our data  </h2>
+<h2 id="preprocessing-our-data">Preprocessing our data  </h2>
 
 <p>
 Before we proceed however, we will discuss how to preprocess our
@@ -1589,7 +1637,7 @@ ensures that all features are exactly between \( 0 \) and \( 1 \). The
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec35">More preprocessing </h2>
+<h2 id="more-preprocessing">More preprocessing </h2>
 
 <p>
 The <b>Normalizer</b> scales each data
@@ -1613,12 +1661,12 @@ techniques.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec36">Simple preprocessing examples, Franke function and regression </h2>
+<h2 id="simple-preprocessing-examples-franke-function-and-regression">Simple preprocessing examples, Franke function and regression </h2>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #408080; font-style: italic"># Common imports</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">os</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
@@ -1714,12 +1762,12 @@ clf <span style="color: #666666">=</span> skl<span style="color: #666666">.</spa
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec37">Singular Value Decomposition Algorithm </h2>
+<h2 id="singular-value-decomposition-algorithm">Singular Value Decomposition Algorithm </h2>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec38">The singular value decomposition  </h2>
+<h2 id="the-singular-value-decomposition">The singular value decomposition  </h2>
 
 <p>
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1754,7 +1802,7 @@ inversion algorithm. Thereafter we dive into the math of the SVD.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec39">Linear Regression Problems </h2>
+<h2 id="linear-regression-problems">Linear Regression Problems </h2>
 
 <p>
 One of the typical problems we encounter with linear regression, in particular 
@@ -1805,7 +1853,7 @@ This is equivalent to saying that the matrix \( \boldsymbol{X} \) has at least a
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec40">Fixing the singularity </h2>
+<h2 id="fixing-the-singularity">Fixing the singularity </h2>
 
 <p>
 If our design matrix \( \boldsymbol{X} \) which enters the linear regression problem
@@ -1833,7 +1881,7 @@ where \( \boldsymbol{I} \) is the identity matrix.  When we discuss <b>Ridge</b>
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec41">Basic math of the SVD </h2>
+<h2 id="basic-math-of-the-svd">Basic math of the SVD </h2>
 
 <p>
 From standard linear algebra we know that a square matrix \( \boldsymbol{X} \) can be diagonalized if and only it is 
@@ -1872,7 +1920,7 @@ is not diagonalizable, it is a so-called <a href="https://en.wikipedia.org/wiki/
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec42">The SVD, a Fantastic Algorithm </h2>
+<h2 id="the-svd-a-fantastic-algorithm">The SVD, a Fantastic Algorithm </h2>
 
 <p>
 However, and this is the strength of the SVD algorithm, any general
@@ -1903,7 +1951,7 @@ The SVD exits always!
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec43">Another Example </h2>
+<h2 id="another-example">Another Example </h2>
 
 <p>
 Consider the following matrix which can be SVD decomposed as
@@ -1941,7 +1989,7 @@ The columns of \( \boldsymbol{U} \) are called the left singular vectors while t
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec44">Economy-size SVD </h2>
+<h2 id="economy-size-svd">Economy-size SVD </h2>
 
 <p>
 If we assume that \( n > p \), then our matrix \( \boldsymbol{U} \) has dimension \( n
@@ -1966,12 +2014,12 @@ In general the economy-size SVD leads to less FLOPS and still conserving the des
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec45">Codes for the SVD </h2>
+<h2 id="codes-for-the-svd">Codes for the SVD </h2>
 
 <p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<div class="highlight" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
 <span style="color: #408080; font-style: italic"># SVD inversion</span>
 <span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">SVDinv</span>(A):
     <span style="color: #BA2121; font-style: italic">&#39;&#39;&#39; Takes as input a numpy matrix A and returns inv(A) based on singular value decomposition (SVD).</span>
@@ -2017,7 +2065,7 @@ in the program terminating due to a singular matrix.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec46">Mathematical Properties </h2>
+<h2 id="mathematical-properties">Mathematical Properties </h2>
 
 <p>
 There are several interesting mathematical properties which will be
@@ -2069,12 +2117,12 @@ We will come back to this expression when we discuss Ridge regression.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec47">Beyond Ordinary Least Squares </h2>
+<h2 id="beyond-ordinary-least-squares">Beyond Ordinary Least Squares </h2>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec48">Ridge and LASSO Regression </h2>
+<h2 id="ridge-and-lasso-regression">Ridge and LASSO Regression </h2>
 
 <p>
 Let us remind ourselves about the expression for the standard Mean Squared Error (MSE) which we used to define our cost function and the equations for the ordinary least squares (OLS) method, that is 
@@ -2132,7 +2180,7 @@ $$
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec49">More on Ridge Regression </h2>
+<h2 id="more-on-ridge-regression">More on Ridge Regression </h2>
 
 <p>
 Using the matrix-vector expression for Ridge regression (we drop the \( 1/n \) factor),
@@ -2197,7 +2245,7 @@ with the vectors \( \boldsymbol{u}_j \) being the columns of \( \boldsymbol{U} \
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec50">Interpreting the Ridge results </h2>
+<h2 id="interpreting-the-ridge-results">Interpreting the Ridge results </h2>
 
 <p>
 Since \( \lambda \geq 0 \), it means that compared to OLS, we have 
@@ -2221,7 +2269,7 @@ With a parameter \( \lambda \) we can thus shrink the role of specific parameter
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec51">More interpretations </h2>
+<h2 id="more-interpretations">More interpretations </h2>
 
 <p>
 For the sake of simplicity, let us assume that the design matrix is orthonormal, that is 
@@ -2255,12 +2303,12 @@ Similarly, <a href="https://arxiv.org/abs/1803.08823" target="_blank">Mehta et a
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec52">Statistics  </h2>
+<h2 id="statistics">Statistics  </h2>
 
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec53">Where are we going? </h2>
+<h2 id="where-are-we-going">Where are we going? </h2>
 
 <p>
 Before we proceed, we need to rethink what we have been doing. In our
@@ -2277,7 +2325,7 @@ This will allow us to link the standard linear algebra methods we have discussed
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec54">Resampling methods </h2>
+<h2 id="resampling-methods">Resampling methods </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -2310,7 +2358,7 @@ cross-validation and the bootstrap method.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec55">Resampling approaches can be computationally expensive </h2>
+<h2 id="resampling-approaches-can-be-computationally-expensive">Resampling approaches can be computationally expensive </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -2339,9 +2387,9 @@ bootstrap is widely used.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec56">Why resampling methods ? </h2>
+<h2 id="why-resampling-methods">Why resampling methods ? </h2>
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Statistical analysis.</b>
+<b>Statistical analysis</b>
 <p>
 
 <ul>
@@ -2355,7 +2403,7 @@ bootstrap is widely used.
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec57">Statistical analysis </h2>
+<h2 id="statistical-analysis">Statistical analysis </h2>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -2377,7 +2425,7 @@ bootstrap is widely used.
 <p>
 <!-- !split  -->
 
-<h2 id="___sec58">Linking the regression analysis with a statistical interpretation </h2>
+<h2 id="linking-the-regression-analysis-with-a-statistical-interpretation">Linking the regression analysis with a statistical interpretation </h2>
 
 <p>
 We are going to discuss several statistical properties which can be obtained in terms of analytical expressions. 
@@ -2415,7 +2463,7 @@ row number \( i \) and perform a sum over all values \( p \).
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec59">Assumptions made </h2>
+<h2 id="assumptions-made">Assumptions made </h2>
 
 <p>
 The assumption we have made here can be summarized as (and this is going to be useful when we discuss the bias-variance trade off)
@@ -2438,7 +2486,7 @@ Note that we reserve the design matrix \( \boldsymbol{X} \) to represent our spe
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec60">Expectation value and variance </h2>
+<h2 id="expectation-value-and-variance">Expectation value and variance </h2>
 
 <p>
 We can calculate the expectation value of \( \boldsymbol{y} \) for a given element \( i \) 
@@ -2473,7 +2521,7 @@ mean value \( \boldsymbol{X}\boldsymbol{\beta} \) and variance \( \sigma^2 \) (n
 <p>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 
-<h2 id="___sec61">Expectation value and variance for \( \boldsymbol{\beta} \) </h2>
+<h2 id="expectation-value-and-variance-for-boldsymbol-beta">Expectation value and variance for \( \boldsymbol{\beta} \) </h2>
 
 <p>
 With the OLS expressions for the parameters \( \boldsymbol{\beta} \) we can evaluate the expectation value
