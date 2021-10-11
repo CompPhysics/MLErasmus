@@ -29,7 +29,7 @@ formulas in HTML or ipython notebook files.
 
 
 
-===== Day 1: Introduction to Data Analysis and Machine Learning =====
+===== Session 1: Introduction to Data Analysis and Machine Learning =====
 
 
 
@@ -44,7 +44,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/Introduction/ipynb/Introduction.ipynb"
 
 
-===== Day 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression =====
+===== Session 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression =====
 
 
 
@@ -59,7 +59,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day1/ipynb/day1.ipynb"
 
 
-===== Day 3: Linear Regression and Bias-Variance Tradeoff =====
+===== Session 3: Linear Regression and Bias-Variance Tradeoff =====
 
 
 
@@ -74,7 +74,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day3/ipynb/day3.ipynb"
 
 
-===== Day 4: Logistic Regression and Optimization =====
+===== Session 4: Logistic Regression and Optimization =====
 
 
 
@@ -89,7 +89,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day4/ipynb/day4.ipynb"
 
 
-===== Day 5: Logistic Regression and begin Neural Networks =====
+===== Session 5: Logistic Regression and begin Neural Networks =====
 
 
 
@@ -104,7 +104,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day5/ipynb/day5.ipynb"
 
 
-===== Day 6: Neural Networks and Deep Learning =====
+===== Session 6: Neural Networks and Deep Learning =====
 
 
 
@@ -119,7 +119,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day6/ipynb/day6.ipynb"
 
 
-===== Day 7: Neural Networks, back propagation and examples of classification and regression problems =====
+===== Session 7: Neural Networks, back propagation and examples of classification and regression problems =====
 
 
 
@@ -134,7 +134,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day7/ipynb/day7.ipynb"
 
 
-===== Day 8: Deep Learning, Covoluntional and Recurrence Neural Networks =====
+===== Session 8: Deep Learning, Covoluntional and Recurrence Neural Networks =====
 
 
 
@@ -149,7 +149,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day8/ipynb/day8.ipynb"
 
 
-===== Day 9: Decision trees, Random Forests and Boosting =====
+===== Session 9: Decision trees, Random Forests and Boosting =====
 
 
 
@@ -164,7 +164,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day9/ipynb/day9.ipynb"
 
 
-===== Day 10:  Boosting and XGBoost and Summary of course  =====
+===== Session 10:  Boosting and XGBoost and Summary of course  =====
 
 
 
@@ -184,7 +184,7 @@ formulas in HTML or ipython notebook files.
 !split
 ===== Projects and Exercises =====
 
-=== First exercise set (Day 1 and Day 2) ===
+=== First exercise set (Session 1 and Session 2) ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/pdf/hw1.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/pdf/hw1.pdf"
@@ -192,7 +192,7 @@ formulas in HTML or ipython notebook files.
    * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/html/hw1.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/html/hw1-bs.html"
 
-=== Second exercise set (Day 3) ===
+=== Second exercise set (Session 3) ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/pdf/hw2.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/pdf/hw2.pdf"
@@ -201,7 +201,7 @@ formulas in HTML or ipython notebook files.
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/html/hw2-bs.html"
 
 
-=== Third  exercise set (Day 4 and 5)  ===
+=== Third  exercise set (Sessions 4 and 5)  ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/pdf/hw3.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/pdf/hw3.pdf"
@@ -211,7 +211,7 @@ formulas in HTML or ipython notebook files.
 
 
 
-=== Project 1, deadline February 20  ===
+=== Project 1, deadline December 15  ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/pdf/Project1.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/pdf/Project1.pdf"
@@ -220,7 +220,7 @@ formulas in HTML or ipython notebook files.
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/html/Project1-bs.html"
 
 
-=== Project 2, deadline February 20  ===
+=== Project 2, deadline February 1  ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project2/pdf/Project2.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project2/pdf/Project2.pdf"

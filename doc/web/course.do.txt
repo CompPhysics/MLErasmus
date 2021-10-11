@@ -5,16 +5,16 @@ AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Depart
 pub_url = 'https://compphysics.github.io/MLErasmus/doc/pub'
 published = ['Introduction', 'day1', 'day3', 'day4',  'day5', 'day6', 'day7', 'day8', 'day9', 'day10', ]
 chapters = {
- 'Introduction': 'Day 1: Introduction to Data Analysis and Machine Learning',
- 'day1': 'Day 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression', 
- 'day3': 'Day 3: Linear Regression and Bias-Variance Tradeoff',
- 'day4': 'Day 4: Logistic Regression and Optimization',
- 'day5': 'Day 5: Logistic Regression and begin Neural Networks',
- 'day6': 'Day 6: Neural Networks and Deep Learning',
- 'day7': 'Day 7: Neural Networks, back propagation and examples of classification and regression problems',
- 'day8': 'Day 8: Deep Learning, Covoluntional and Recurrence Neural Networks', 
- 'day9': 'Day 9: Decision trees, Random Forests and Boosting', 
- 'day10': 'Day 10:  Boosting and XGBoost and Summary of course ',
+ 'Introduction': 'Session 1: Introduction to Data Analysis and Machine Learning',
+ 'day1': 'Session 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression', 
+ 'day3': 'Session 3: Linear Regression and Bias-Variance Tradeoff',
+ 'day4': 'Session 4: Logistic Regression and Optimization',
+ 'day5': 'Session 5: Logistic Regression and begin Neural Networks',
+ 'day6': 'Session 6: Neural Networks and Deep Learning',
+ 'day7': 'Session 7: Neural Networks, back propagation and examples of classification and regression problems',
+ 'day8': 'Session 8: Deep Learning, Covoluntional and Recurrence Neural Networks', 
+ 'day9': 'Session 9: Decision trees, Random Forests and Boosting', 
+ 'day10': 'Session 10:  Boosting and XGBoost and Summary of course ',
 }
 %>
 
@@ -67,7 +67,7 @@ ${text_types(ch)}
 !split
 ===== Projects and Exercises =====
 
-=== First exercise set (Day 1 and Day 2) ===
+=== First exercise set (Session 1 and Session 2) ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/pdf/hw1.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/pdf/hw1.pdf"
@@ -75,7 +75,7 @@ ${text_types(ch)}
    * "Plain html":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/html/hw1.html"
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw1/html/hw1-bs.html"
 
-=== Second exercise set (Day 3) ===
+=== Second exercise set (Session 3) ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/pdf/hw2.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/pdf/hw2.pdf"
@@ -84,7 +84,7 @@ ${text_types(ch)}
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw2/html/hw2-bs.html"
 
 
-=== Third  exercise set (Day 4 and 5)  ===
+=== Third  exercise set (Sessions 4 and 5)  ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/pdf/hw3.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/hw3/pdf/hw3.pdf"
@@ -94,7 +94,7 @@ ${text_types(ch)}
 
 
 
-=== Project 1, deadline February 20  ===
+=== Project 1, deadline December 15  ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/pdf/Project1.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/pdf/Project1.pdf"
@@ -103,7 +103,7 @@ ${text_types(ch)}
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project1/html/Project1-bs.html"
 
 
-=== Project 2, deadline February 20  ===
+=== Project 2, deadline February 1  ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project2/pdf/Project2.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2021/Project2/pdf/Project2.pdf"
