@@ -7,6 +7,8 @@ DATE: today
 
 The aim of this set of lectures is to introduce basic aspects of linear regression, a widely applied set of methods used to fit continuous functions.
 
+* Video of Lecture at URL:"https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/EramusplusLectureOctober18.mp4?vrtx=view-as-webpage"
+
 We will also use these widely popular methods to introduce resampling techniques like bootstrapping and cross-validation. 
 
 We will in particular focus on
@@ -18,6 +20,7 @@ We will in particular focus on
 * Resampling techniques
 * Bias-variance tradeoff
 !epop
+
 
 
 
