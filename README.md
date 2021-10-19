@@ -114,7 +114,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Monday October 18 | - _Lecture 845am-1045am_: Linear Regression, from ordinary least squares to Lasso and Ridge (MHJ) |
 | Recommended readings |  Bishop Sections 3.1 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 2 |
-| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/EramusplusLectureOctober18.mp4?vrtx=view-as-webpage | 
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/ErasmusplusLectureOctober18.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session2.pdf  |
 | Monday October 25 | - _Lecture 845am-1045am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
 | Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
