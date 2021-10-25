@@ -59,22 +59,22 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day1/ipynb/day1.ipynb"
 
 
-===== Session 3: Linear Regression and Bias-Variance Tradeoff =====
+===== Session 3: Linear Regression, Ridge and Lasso Regression =====
 
 
 
  * LaTeX PDF:
    * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day3/pdf/day3.pdf"
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day2/pdf/day2.pdf"
  * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day3/html/day3.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day3/html/day3-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day3/html/day3-bs.html"
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day2/html/day2-bs.html"
  * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day3/ipynb/day3.ipynb"
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day2/ipynb/day2.ipynb"
 
 
-===== Session 4: Logistic Regression and Optimization =====
+===== Session 4: Resampling methods and Bias-Variance Tradeoff =====
 
 
 
@@ -89,7 +89,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day4/ipynb/day4.ipynb"
 
 
-===== Session 5: Logistic Regression and begin Neural Networks =====
+===== Session 5: Logistic Regression and Optmization =====
 
 
 

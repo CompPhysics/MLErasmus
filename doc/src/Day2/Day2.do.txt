@@ -3,6 +3,11 @@ AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of
 DATE: today
 
 
+!split
+=====  Video of Lecture =====
+
+"Video of Lecture":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/ErasmusPlusOctober25.mp4?vrtx=view-as-webpage"
+
 
 !split
 ===== Preprocessing our data  =====
