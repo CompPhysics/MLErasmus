@@ -119,7 +119,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Monday October 25 | - _Lecture 845am-1045am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
 | Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 3 | 
-| | Video of Lecture at |
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/ErasmusPlusOctober25.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session3.pdf  |
 | Monday November 1 | - _Lecture 845am-1045am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ) |
 | Recommended readings | Bishop Sections 4.1-4.3, Hastie et al Chapter 4 |
