@@ -1,5 +1,5 @@
 TITLE: Project 1, deadline December 15, 2021
-AUTHOR: Erasmus+ Data Analysis and Machine Learning course, Caen January 18-29, 2021
+AUTHOR: Erasmus+ Data Analysis and Machine Learning course, Fall semester 2021
 DATE: today
 
 
