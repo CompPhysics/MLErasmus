@@ -1,7 +1,7 @@
 %%
 %% Automatically generated file from DocOnce source
-%% (https://github.com/hplgit/doconce/)
-%%
+%% (https://github.com/doconce/doconce/)
+%% doconce format latex Project1.do.txt --minted_latex_style=trac --latex_admon=paragraph
 %%
 
 
@@ -84,7 +84,7 @@ final,                   % draft: marks overfull hboxes, figures with paths
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-Project 1, deadline February 20, 2021
+Project 1, deadline December 15, 2021
 \end{spacing}
 }
 \end{center}
@@ -103,7 +103,7 @@ Project 1, deadline February 20, 2021
 
 % --- begin date ---
 \begin{center}
-Jan 29, 2021
+Nov 3, 2021
 \end{center}
 % --- end date ---
 
@@ -126,7 +126,6 @@ established the model and the method, we will employ resamling
 techniques such as cross-validation and/or bootstrap in order to perform a
 proper assessment of our models. We will also study in detail the
 so-called Bias-Variance trade off.
-
 
 The Franke function, which is a weighted sum of four exponentials  reads as follows
 \begin{align*}
@@ -153,8 +152,48 @@ reproduce these data using the same methods. We will also try to go
 beyond the second-order polynomials metioned above and explore 
 which polynomial fits the data best.
 
-
 The Python code for the Franke function is included here (it performs also a three-dimensional plot of it)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
@@ -195,6 +234,7 @@ ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
 fig.colorbar(surf, shrink=0.5, aspect=5)
 
 plt.show()
+
 
 \end{minted}
 
@@ -247,11 +287,6 @@ is no explicit recipe for how much data should be included as training
 data and say test data.  An accepted rule of thumb is to use
 approximately $2/3$ to $4/5$ of the data as training data.
 
-
-
-
-
-
 \paragraph{Part b): Bias-variance trade-off and resamplng techniques.}
 Our aim here is to study the bias-variance trade-off by implementing the \textbf{bootstrap} resampling technique.
 
@@ -267,8 +302,6 @@ Tibshirani, and Friedman. Figure 2.11 of this reference displays only
 the test and training MSEs. The test MSE can be used to indicate
 possible regions of low/high bias and variance. You will most likely
 not get an equally smooth curve!
-
-
 
 With this result we move on to the bias-variance trade-off analysis.
 
@@ -312,13 +345,9 @@ Plot the bias and variance trade-off, and evaluate how it depends on
 your model complexity, the number of data points, and possibly also
 the noise parameter.
 
-
-
-
 Note also that when you calculate the bias, in all applications you
 don't know the function values $f_i$. You would hence replace them
 with the actual data points $y_i$.
-
 
 \paragraph{Part c) Cross-validation as resampling techniques, adding more complexity.}
 The aim here is to study  another widely popular
@@ -338,11 +367,9 @@ Try $5-10$ folds, comment on your results.
 Compare the MSE you get from your cross-validation code with the one
 you got from your \textbf{bootstrap} code. Comment your results.
 
-
 \paragraph{Part d): Ridge Regression on the Franke function  with resampling.}
 We will now use Ridge regression. You can use the \textbf{Scikit-Learn}
 functionality or write your own code.
-
 
 Perform the same bootstrap analysis as in the
 part b)  (for the same polynomials) and the cross-validation part in part c) but now for different values of $\lambda$. Compare and
@@ -359,12 +386,19 @@ The data we are going to use is the
 \href{{https://www.cs.toronto.edu/~delve/data/boston/bostonDetail.html}}{Boston Housing data set}.
 
 The dataset can be imported from scikit-learn as follows
+
+
+
+
+
+
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
     import pandas as pd
     from sklearn.datasets import load_boston
     boston_data = load_boston()
     boston_df = pd.DataFrame(boston_data.data, columns=boston_data.feature_names)
     boston_df['MEDV'] = boston_data.target
+
 \end{minted}
 
 
@@ -376,10 +410,15 @@ using the MSE and the R2 score.
 
 You will have to use scikit-learn's functionality to create your
 design matrix
+
+
+
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 poly = PolynomialFeatures(degree)
 X = poly.fit_transform(x)
+
 \end{minted}
+
 
 Note that previously we had a dependence on
 two original features $(x,y)$, this time around we have $13$ original
@@ -396,11 +435,16 @@ different data-scaling methods, and even evaluate whether you need all
 is to look at linear correlations asdefined by the correlation matrix.
 
 
+
+
+
 \begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 import seaborn as sns
 corr_matrix = boston_df.corr().round(3)
 sns.heatmap(data=corr_matrix, annot=True)
+
 \end{minted}
+
 
 You can try to remove features that have low correlation with the
 target, and evaluate to what degree it affects your metrics. You may
@@ -408,23 +452,15 @@ also want to remove features that have high correlation with each
 other, this is up to you.  More on this here on
 "Multicollinearity":"https://en.wikipedia.org/wiki/Multicollinearity.
 
-
-
 Lastly, employ cross-validation as in part c) to assess how well your
 model(s) generalizes.
 
 \paragraph{Part f): Presentation.}
 Plot your results from part e)(e.g.~the test MSE or predictions vs.~true).
 
-
 At the end, you should present a critical evaluation of your results
 and discuss the applicability of these regression methods to the type
 of data presented here.​
-
-
-
-
-
 
 \subsection*{Background literature}
 
@@ -465,7 +501,6 @@ project.
 
 The preferred format for the report is a PDF file. You can also use DOC or postscript formats or as an ipython notebook file.  As programming language we prefer that you choose between C/C++, Fortran2008 or Python. The following prescription should be followed when preparing the report:
 
-
 \begin{itemize}
   \item Send us by email  \textbf{only} the report file or the link to your GitHub/GitLab or similar repos!  Mske sure it is public or if not, give us access. For the source code file(s) you have developed please provide us with your link to your GitHub/GitLab or similar  domain.  The report file should include all of your discussions and a list of the codes you have developed. 
 
@@ -476,8 +511,6 @@ The preferred format for the report is a PDF file. You can also use DOC or posts
 Finally, 
 we encourage you to collaborate. Optimal working groups consist of 
 2-3 students. You can then hand in a common report. 
-
-
 
 \subsection*{Software and needed installations}
 
@@ -532,18 +565,6 @@ Popular software packages written in Python for ML are
 These are all freely available at their respective GitHub sites. They 
 encompass communities of developers in the thousands or more. And the number
 of code developers and contributors keeps increasing.
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 % ------------------- end of main content ---------------
