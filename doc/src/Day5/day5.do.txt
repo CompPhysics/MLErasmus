@@ -1,4 +1,4 @@
-TITLE: Data Analysis and Machine Learning: Logistic Regression, Gradient Methods and begin Neural Networks
+TITLE: Data Analysis and Machine Learning: Logistic Regression and Gradient Methods
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
 DATE: today
 
