@@ -129,7 +129,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Monday November 8 | - _Lecture 845am-1045am_:  Logistic Regression and begin Neural Networks (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 | 
-| | Video of Lecture at |
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureNovember8.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session5.pdf  |
 | | - _Laboratory and discussions till 6pm_: Computational Exercises and project 1(PDBS and KW),|
 | Monday November 15 | - _Lecture 845am-1045am_:  Neural Networks  (MHJ) |
