@@ -89,7 +89,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day3/ipynb/day3.ipynb"
 
 
-===== Session 5: Logistic Regression and Optmization =====
+===== Session 5: Logistic Regression and Optimization =====
 
 
 
