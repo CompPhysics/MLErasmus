@@ -9,7 +9,7 @@ chapters = {
  'day1': 'Session 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression', 
  'day2': 'Session 3: Linear Regression, Ridge and Lasso Regression',
  'day3': 'Session 4: Resampling methods and Bias-Variance Tradeoff',
- 'day5': 'Session 5: Logistic Regression and Optmization',
+ 'day5': 'Session 5: Logistic Regression and Optimization',
  'day6': 'Session 6: Neural Networks and Deep Learning',
  'day7': 'Session 7: Neural Networks, back propagation and examples of classification and regression problems',
  'day8': 'Session 8: Deep Learning, Covoluntional and Recurrence Neural Networks', 

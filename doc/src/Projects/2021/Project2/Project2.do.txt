@@ -1,5 +1,5 @@
-TITLE: Project 2, deadline February 20, 2021
-AUTHOR: Erasmus+ Data Analysis and Machine Learning course, Caen January 18-29, 2021
+TITLE: Project 2, deadline February 15, 2022
+AUTHOR: Erasmus+ Data Analysis and Machine Learning course, Fall/Winter 2021/2022
 DATE: today
 
 ===== Introduction to project 2 =====
