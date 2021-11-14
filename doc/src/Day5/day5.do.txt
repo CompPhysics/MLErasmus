@@ -4,7 +4,7 @@ DATE: today
 
 
 !split
-===== Searching for Optimal Regularization Parameters $\lambda$ =====
+===== Addendum to Project 1 about Regularization Parameters =====
 
 In project 1, when using Ridge (and if you wanted Lasso as well)  regression, we end up
 searching for the optimal parameter $\lambda$ which minimizes our
