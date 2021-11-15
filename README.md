@@ -135,7 +135,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Monday November 15 | - _Lecture 845am-1045am_:  Neural Networks  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
-| | Video of Lecture at |
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureNovember15.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session6.pdf  |
 | | Video of Lecture athttps://www.uio.no/studier/emner/matnat/fys/FYS4411/v21/forelesningsvideoer/ExerciseSessionJan25.mp4?vrtx=view-as-webpage |
 | Monday November 22 | - _Lecture 845am-1045am_:  Neural Networks, back propagation and examples of classification and CNNs |
