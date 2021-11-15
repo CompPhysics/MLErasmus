@@ -2,6 +2,11 @@ TITLE: Data Analysis and Machine Learning: Logistic Regression and Gradient Meth
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
 DATE: today
 
+!split
+===== Video of Lecture November 15 =====
+
+"Video of Lecture":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureNovember15.mp4?vrtx=view-as-webpage"
+
 
 !split
 ===== Addendum to Project 1 about Regularization Parameters =====
