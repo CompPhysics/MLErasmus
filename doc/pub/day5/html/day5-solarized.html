@@ -4920,7 +4920,8 @@ theta = np.random.randn(<span style="color: #B452CD">2</span>,<span style="color
         random_index = M*np.random.randint(m)
         xi = X[random_index:random_index+M]
         yi = y[random_index:random_index+M]
-        gradients = (<span style="color: #B452CD">2.0</span>/M)*training_gradient(yi, xi, theta)
+	<span style="color: #228B22"># autograd takes care of factor of 2</span>
+        gradients = (<span style="color: #B452CD">1.0</span>/M)*training_gradient(yi, xi, theta)
         eta = learning_schedule(epoch*m+i)
         theta = theta - eta*gradients
 <span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;theta from own sdg&quot;</span>)
