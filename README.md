@@ -121,28 +121,28 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 3 | 
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/ErasmusPlusOctober25.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session3.pdf  |
-| Monday November 1 | - _Lecture 845am-1045am_: Bias-Variance tradeoff, Logistic Regression and Optimization (MHJ) |
+| Monday November 1 | - _Lecture 845am-1045am_: Bias-Variance tradeoff and resampling methods (MHJ) |
 | Recommended readings | Bishop Sections 4.1-4.3, Hastie et al Chapter 4 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 | 
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureNovember1.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session4.pdf  |
-| Monday November 8 | - _Lecture 845am-1045am_:  Logistic Regression and begin Neural Networks (MHJ) |
+| Monday November 8 | - _Lecture 845am-1045am_:  Resampling Methods and discussion of project 1 (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 | 
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureNovember8.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session5.pdf  |
 | | - _Laboratory and discussions till 6pm_: Computational Exercises and project 1(PDBS and KW),|
-| Monday November 15 | - _Lecture 845am-1045am_:  Neural Networks  (MHJ) |
+| Monday November 15 | - _Lecture 845am-1045am_:  Logitic Regression and Optimization  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureNovember15.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session6.pdf  |
-| Monday November 22 | - _Lecture 845am-1045am_:  Neural Networks, back propagation and examples of classification and CNNs |
+| Monday November 22 | - _Lecture 845am-1045am_:  Optimization and Gradient Descent |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
-| | Video of Lecture at |
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureNovember22.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session7.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 | 
-| Monday November 29 | - _Lecture 845am-1045am_: CNNs and Recurrent neural networks |
+| Monday November 29 | - _Lecture 845am-1045am_: Neural networks |
 | Recommended readings |   |
 | | Video of Lecture at |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session8.pdf  |
