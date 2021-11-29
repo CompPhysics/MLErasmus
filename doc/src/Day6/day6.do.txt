@@ -204,7 +204,7 @@ as to not restrict the range of output values.
 
 
 !split
-=====  Illustration of a single perceptropn model and a multi-perceptron model =====
+=====  Illustration of a single perceptron model and a multi-perceptron model =====
 
 FIGURE: [figures/nns.png, width=600 frac=0.8]  In a) we show a single perceptron model while in b) we dispay a network with two  hidden layers, an input layer and an output layer.
 
