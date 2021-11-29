@@ -134,7 +134,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day7/ipynb/day7.ipynb"
 
 
-===== Session 8: Deep Learning, Convoluntional and Recurrent Neural Networks =====
+===== Session 8: Deep Learning, Convolutional and Recurrent Neural Networks =====
 
 
 
