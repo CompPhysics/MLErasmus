@@ -1,0 +1,67 @@
+\begin{Verbatim}[commandchars=\\\{\},codes={\catcode`\$=3\catcode`\^=7\catcode`\_=8\relax}]
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+\PYG{l+s+sd}{Simple code that tests XOR, OR and AND gates with linear regression}
+\PYG{l+s+sd}{\PYGZdq{}\PYGZdq{}\PYGZdq{}}
+
+\PYG{c+c1}{\PYGZsh{} import necessary packages}
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k+kn}{import} \PYG{n+nn}{matplotlib.pyplot} \PYG{k}{as} \PYG{n+nn}{plt}
+\PYG{k+kn}{from} \PYG{n+nn}{sklearn} \PYG{k+kn}{import} \PYG{n}{datasets}
+
+\PYG{k}{def} \PYG{n+nf}{sigmoid}\PYG{p}{(}\PYG{n}{x}\PYG{p}{):}
+    \PYG{k}{return} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{p}{(}\PYG{l+m+mi}{1} \PYG{o}{+} \PYG{n}{np}\PYG{o}{.}\PYG{n}{exp}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{x}\PYG{p}{))}
+
+\PYG{k}{def} \PYG{n+nf}{feed\PYGZus{}forward}\PYG{p}{(}\PYG{n}{X}\PYG{p}{):}
+    \PYG{c+c1}{\PYGZsh{} weighted sum of inputs to the hidden layer}
+    \PYG{n}{z\PYGZus{}h} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{matmul}\PYG{p}{(}\PYG{n}{X}\PYG{p}{,} \PYG{n}{hidden\PYGZus{}weights}\PYG{p}{)} \PYG{o}{+} \PYG{n}{hidden\PYGZus{}bias}
+    \PYG{c+c1}{\PYGZsh{} activation in the hidden layer}
+    \PYG{n}{a\PYGZus{}h} \PYG{o}{=} \PYG{n}{sigmoid}\PYG{p}{(}\PYG{n}{z\PYGZus{}h}\PYG{p}{)}
+
+    \PYG{c+c1}{\PYGZsh{} weighted sum of inputs to the output layer}
+    \PYG{n}{z\PYGZus{}o} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{matmul}\PYG{p}{(}\PYG{n}{a\PYGZus{}h}\PYG{p}{,} \PYG{n}{output\PYGZus{}weights}\PYG{p}{)} \PYG{o}{+} \PYG{n}{output\PYGZus{}bias}
+    \PYG{c+c1}{\PYGZsh{} softmax output}
+    \PYG{c+c1}{\PYGZsh{} axis 0 holds each input and axis 1 the probabilities of each category}
+    \PYG{n}{probabilities} \PYG{o}{=} \PYG{n}{sigmoid}\PYG{p}{(}\PYG{n}{z\PYGZus{}o}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{probabilities}
+
+\PYG{c+c1}{\PYGZsh{} we obtain a prediction by taking the class with the highest likelihood}
+\PYG{k}{def} \PYG{n+nf}{predict}\PYG{p}{(}\PYG{n}{X}\PYG{p}{):}
+    \PYG{n}{probabilities} \PYG{o}{=} \PYG{n}{feed\PYGZus{}forward}\PYG{p}{(}\PYG{n}{X}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{argmax}\PYG{p}{(}\PYG{n}{probabilities}\PYG{p}{,} \PYG{n}{axis}\PYG{o}{=}\PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} ensure the same random numbers appear every time}
+\PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{seed}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} Design matrix}
+\PYG{n}{X} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{([} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{],} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{],[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]],}\PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{float64}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{} The XOR gate}
+\PYG{n}{yXOR} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(} \PYG{p}{[} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1} \PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{])}
+\PYG{c+c1}{\PYGZsh{} The OR gate}
+\PYG{n}{yOR} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(} \PYG{p}{[} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1} \PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])}
+\PYG{c+c1}{\PYGZsh{} The AND gate}
+\PYG{n}{yAND} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{array}\PYG{p}{(} \PYG{p}{[} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0} \PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{])}
+
+\PYG{c+c1}{\PYGZsh{} Defining the neural network}
+\PYG{n}{n\PYGZus{}inputs}\PYG{p}{,} \PYG{n}{n\PYGZus{}features} \PYG{o}{=} \PYG{n}{X}\PYG{o}{.}\PYG{n}{shape}
+\PYG{n}{n\PYGZus{}hidden\PYGZus{}neurons} \PYG{o}{=} \PYG{l+m+mi}{2}
+\PYG{n}{n\PYGZus{}categories} \PYG{o}{=} \PYG{l+m+mi}{2}
+\PYG{n}{n\PYGZus{}features} \PYG{o}{=} \PYG{l+m+mi}{2}
+
+\PYG{c+c1}{\PYGZsh{} we make the weights normally distributed using numpy.random.randn}
+
+\PYG{c+c1}{\PYGZsh{} weights and bias in the hidden layer}
+\PYG{n}{hidden\PYGZus{}weights} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{randn}\PYG{p}{(}\PYG{n}{n\PYGZus{}features}\PYG{p}{,} \PYG{n}{n\PYGZus{}hidden\PYGZus{}neurons}\PYG{p}{)}
+\PYG{n}{hidden\PYGZus{}bias} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{n\PYGZus{}hidden\PYGZus{}neurons}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mf}{0.01}
+
+\PYG{c+c1}{\PYGZsh{} weights and bias in the output layer}
+\PYG{n}{output\PYGZus{}weights} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{random}\PYG{o}{.}\PYG{n}{randn}\PYG{p}{(}\PYG{n}{n\PYGZus{}hidden\PYGZus{}neurons}\PYG{p}{,} \PYG{n}{n\PYGZus{}categories}\PYG{p}{)}
+\PYG{n}{output\PYGZus{}bias} \PYG{o}{=} \PYG{n}{np}\PYG{o}{.}\PYG{n}{zeros}\PYG{p}{(}\PYG{n}{n\PYGZus{}categories}\PYG{p}{)} \PYG{o}{+} \PYG{l+m+mf}{0.01}
+
+\PYG{n}{probabilities} \PYG{o}{=} \PYG{n}{feed\PYGZus{}forward}\PYG{p}{(}\PYG{n}{X}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{probabilities}\PYG{p}{)}
+
+
+\PYG{n}{predictions} \PYG{o}{=} \PYG{n}{predict}\PYG{p}{(}\PYG{n}{X}\PYG{p}{)}
+\PYG{n+nb}{print}\PYG{p}{(}\PYG{n}{predictions}\PYG{p}{)}
+\end{Verbatim}
