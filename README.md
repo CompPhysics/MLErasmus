@@ -138,12 +138,12 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureNovember15.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session6.pdf  |
 | Monday November 22 | - _Lecture 845am-1045am_:  Optimization and Gradient Descent |
-| Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
+| Recommended readings |  Goodfellow et al, chapter 4 and 8 |
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureNovember22.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session7.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 | 
 | Monday November 29 | - _Lecture 845am-1045am_: Neural networks, basic elements|
-| Recommended readings |   |
+| Recommended readings | Goodfellow et al, chaptes 6 and 7, Bishop chapter 5 and Hastie et al chapter 11. See also Geron chapter 11  |
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureNovember29.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session8.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
@@ -236,6 +236,7 @@ Here we list several useful Python libraries we strongly recommend (if you use a
 | | |
 |-|-|
 |_Recommended textbooks_:| |
+| | - Goodfellow, Bengio and Courville, Deep Learning, see https://www.deeplearningbook.org. This textbook is excellent, in particular chapter 1-12 for this course.
 | | - Christopher M. Bishop, Pattern Recognition and Machine Learning, Springer, https://www.springer.com/gp/book/9780387310732. This is the main textbook and this course covers chapters 1-7, 11 and 12. |
 | | - Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer, https://www.springer.com/gp/book/9780387848570. This is a well-known text and serves as additional text.|
 | | - Aurelien Geron, Hands‑On Machine Learning with Scikit‑Learn and TensorFlow, O'Reilly, https://www.oreilly.com/library/view/hands-on-machine-learning/9781492032632/. This text is very useful since it contains many code examples.|
