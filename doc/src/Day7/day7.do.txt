@@ -6,7 +6,7 @@ DATE: today
 !split
 ===== Plan for week 49, December 6-10 =====
 
-
+* Lecture Friday December 10 at 12pm-2pm
 
 * Building our own Feed-forward Neural Network and playing around with our own Feed-forward Neural Network and introduction to TensorFlow. Start convolutional Neural Networks (CNN). 
 
