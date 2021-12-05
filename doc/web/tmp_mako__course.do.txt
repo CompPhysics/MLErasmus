@@ -119,7 +119,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day6/ipynb/day6.ipynb"
 
 
-===== Session 7: Neural Networks, back propagation and examples of classification and regression problems =====
+===== Session 7: Neural Networks, building our own code using back propagation. Examples of classification and regression problems =====
 
 
 
