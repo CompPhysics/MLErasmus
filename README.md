@@ -147,7 +147,16 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureNovember29.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session8.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
+| Friday December 10 | - _Lecture 1pm-3pm_: Neural networks, Developing our own code|
+| Recommended readings | Goodfellow et al, chaptes 6 and 7, Bishop chapter 5 and Hastie et al chapter 11. See also Geron chapter 11  |
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureDecember10.mp4?vrtx=view-as-webpage |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session9.pdf  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 |
+| Monday December 13 | - _Lecture 845am-1045am_: Deep Learning, practicalities, examples and start Convolutional Neural Networks|
+| Recommended readings | Goodfellow et al, chaptes 9, 11 and 12, See also Geron chapters 11-14  |
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureDecember13.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session8.pdf  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 10 |
 | January 2022 | - _Lecture TBD:  Decision trees, Random Forests and Boosting (MHJ) |
 | Recommended readings |  Hastie et al chapter 10 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 | 
