@@ -6,7 +6,9 @@ DATE: today
 !split
 ===== Plan for week 49, December 6-10 =====
 
-* Lecture Friday December 10 at 12pm-2pm
+* Lecture Friday December 10 at 1pm-3pm
+
+* "Video of lecture":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureDecember10.mp4?vrtx=view-as-webpage"
 
 * Building our own Feed-forward Neural Network and playing around with our own Feed-forward Neural Network and introduction to TensorFlow. Start convolutional Neural Networks (CNN). 
 
