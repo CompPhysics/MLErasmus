@@ -1,12 +1,12 @@
-TITLE: Convolutional (CNN) and Recurrent (RNN) Neural Networks. Start decision trees
+TITLE: Convolutional (CNN) and Recurrent (RNN) Neural Networks.
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics, University of Oslo & Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University
 DATE: today
 
 
 !split
-===== Plan for Day 8 =====
+===== Plan for week 50, December 13-17 =====
 
-Finalize discussions on  CNNs and RNNs and start with  decision trees.
+
 
 Reading suggestions: "Aurelien Geron's chapters 13 and 14":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/Textbooks/TensorflowML.pdf". 
 
