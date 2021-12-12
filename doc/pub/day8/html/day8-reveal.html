@@ -9,8 +9,8 @@ doconce format html day8-reveal.html day8-reveal reveal --html_slide_theme=beige
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="DocOnce: https://github.com/doconce/doconce/" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="description" content="Convolutional (CNN) and Recurrent (RNN) Neural Networks.">
-<title>Convolutional (CNN) and Recurrent (RNN) Neural Networks.</title>
+<meta name="description" content="Summary on Neural Networks, start discussiin of Convolutional (CNN) and Recurrent (RNN) Neural Networks.">
+<title>Summary on Neural Networks, start discussiin of Convolutional (CNN) and Recurrent (RNN) Neural Networks.</title>
 
 <!-- reveal.js: https://lab.hakim.se/reveal-js/ -->
 
@@ -168,7 +168,7 @@ MathJax.Hub.Config({
 <section>
 <!-- ------------------- main content ---------------------- -->
 <center>
-<h1 style="text-align: center;">Convolutional (CNN) and Recurrent (RNN) Neural Networks.</h1>
+<h1 style="text-align: center;">Summary on Neural Networks, start discussiin of Convolutional (CNN) and Recurrent (RNN) Neural Networks.</h1>
 </center>  <!-- document title -->
 
 <!-- author(s): Morten Hjorth-Jensen -->
@@ -184,7 +184,7 @@ MathJax.Hub.Config({
 </center>
 <br>
 <center>
-<h4>Dec 11, 2021</h4>
+<h4>Dec 12, 2021</h4>
 </center> <!-- date -->
 <br>
 
@@ -197,7 +197,12 @@ MathJax.Hub.Config({
 <section>
 <h2 id="plan-for-week-50-december-13-17">Plan for week 50, December 13-17 </h2>
 
-<p>Reading suggestions: <a href="https://github.com/CompPhysics/MachineLearning/blob/master/doc/Textbooks/TensorflowML.pdf" target="_blank">Aurelien Geron's chapters 13 and 14</a>. </p>
+<ul>
+<p><li> Summary of Neural networks, pros and cons</li>
+<p><li> Start discussing CNNs</li>
+</ul>
+<p>
+<p>Reading suggestions: <a href="https://github.com/CompPhysics/MachineLearning/blob/master/doc/Textbooks/TensorflowML.pdf" target="_blank">Aurelien Geron's chapters 13 and 14</a>. See also discussions in Goodfellow et al, chapters 6-7, 9-12.</p>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Excellent lectures on CNNs and RNNs</b>
@@ -207,8 +212,940 @@ MathJax.Hub.Config({
 <p><li> <a href="https://www.youtube.com/watch?v=SEnXr6v2ifU&ab_channel=AlexanderAmini" target="_blank">Video  on Recurrent Neural Networks from MIT</a></li>
 </ul>
 </div>
+</section>
 
-<p>For decision trees we have Geron's chapter 6 which covers decision trees while ensemble models, voting and bagging are discussed in chapter 7. See also lecture from <a href="https://www.uio.no/studier/emner/matnat/math/STK-IN4300/h20/slides/lecture_7.pdf" target="_blank">STK-IN4300, lecture 7</a>. Chapter 9.2 of Hastie et al contains also a good discussion.</p>
+<section>
+<h2 id="building-neural-networks-in-tensorflow-and-keras">Building neural networks in Tensorflow and Keras </h2>
+
+<p>Now we want  to build on the experience gained from our neural network implementation in NumPy and scikit-learn
+and use it to construct a neural network in Tensorflow. Once we have constructed a neural network in NumPy
+and Tensorflow, building one in Keras is really quite trivial, though the performance may suffer.  
+</p>
+
+<p>In our previous example we used only one hidden layer, and in this we will use two. From this it should be quite
+clear how to build one using an arbitrary number of hidden layers, using data structures such as Python lists or
+NumPy arrays.
+</p>
+</section>
+
+<section>
+<h2 id="tensorflow">Tensorflow </h2>
+
+<p>Tensorflow is an open source library machine learning library
+developed by the Google Brain team for internal use. It was released
+under the Apache 2.0 open source license in November 9, 2015.
+</p>
+
+<p>Tensorflow is a computational framework that allows you to construct
+machine learning models at different levels of abstraction, from
+high-level, object-oriented APIs like Keras, down to the C++ kernels
+that Tensorflow is built upon. The higher levels of abstraction are
+simpler to use, but less flexible, and our choice of implementation
+should reflect the problems we are trying to solve.
+</p>
+
+<p><a href="https://www.tensorflow.org/guide/graphs" target="_blank">Tensorflow uses</a> so-called graphs to represent your computation
+in terms of the dependencies between individual operations, such that you first build a Tensorflow <em>graph</em>
+to represent your model, and then create a Tensorflow <em>session</em> to run the graph.
+</p>
+
+<p>In this guide we will analyze the same data as we did in our NumPy and
+scikit-learn tutorial, gathered from the MNIST database of images. We
+will give an introduction to the lower level Python Application
+Program Interfaces (APIs), and see how we use them to build our graph.
+Then we will build (effectively) the same graph in Keras, to see just
+how simple solving a machine learning problem can be.
+</p>
+
+<p>To install tensorflow on Unix/Linux systems, use pip as</p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">pip3 install tensorflow
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>and/or if you use <b>anaconda</b>, just write (or install from the graphical user interface)
+(current release of CPU-only TensorFlow)
+</p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">conda create -n tf tensorflow
+conda activate tf
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>To install the current release of GPU TensorFlow</p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">conda create -n tf-gpu tensorflow-gpu
+conda activate tf-gpu
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="using-keras">Using Keras </h2>
+
+<p>Keras is a high level <a href="https://en.wikipedia.org/wiki/Application_programming_interface" target="_blank">neural network</a>
+that supports Tensorflow, CTNK and Theano as backends.  
+If you have Anaconda installed you may run the following command
+</p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">conda install keras
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>You can look up the <a href="https://keras.io/" target="_blank">instructions here</a> for more information.</p>
+
+<p>We will to a large extent use <b>keras</b> in this course. </p>
+</section>
+
+<section>
+<h2 id="collect-and-pre-process-data">Collect and pre-process data </h2>
+
+<p>Let us look again at the MINST data set.</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #228B22"># import necessary packages</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn</span> <span style="color: #8B008B; font-weight: bold">import</span> datasets
+
+
+<span style="color: #228B22"># ensure the same random numbers appear every time</span>
+np.random.seed(<span style="color: #B452CD">0</span>)
+
+<span style="color: #228B22"># display images in notebook</span>
+%matplotlib inline
+plt.rcParams[<span style="color: #CD5555">&#39;figure.figsize&#39;</span>] = (<span style="color: #B452CD">12</span>,<span style="color: #B452CD">12</span>)
+
+
+<span style="color: #228B22"># download MNIST dataset</span>
+digits = datasets.load_digits()
+
+<span style="color: #228B22"># define inputs and labels</span>
+inputs = digits.images
+labels = digits.target
+
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;inputs = (n_inputs, pixel_width, pixel_height) = &quot;</span> + <span style="color: #658b00">str</span>(inputs.shape))
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;labels = (n_inputs) = &quot;</span> + <span style="color: #658b00">str</span>(labels.shape))
+
+
+<span style="color: #228B22"># flatten the image</span>
+<span style="color: #228B22"># the value -1 means dimension is inferred from the remaining dimensions: 8x8 = 64</span>
+n_inputs = <span style="color: #658b00">len</span>(inputs)
+inputs = inputs.reshape(n_inputs, -<span style="color: #B452CD">1</span>)
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;X = (n_inputs, n_features) = &quot;</span> + <span style="color: #658b00">str</span>(inputs.shape))
+
+
+<span style="color: #228B22"># choose some random images to display</span>
+indices = np.arange(n_inputs)
+random_indices = np.random.choice(indices, size=<span style="color: #B452CD">5</span>)
+
+<span style="color: #8B008B; font-weight: bold">for</span> i, image <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(digits.images[random_indices]):
+    plt.subplot(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">5</span>, i+<span style="color: #B452CD">1</span>)
+    plt.axis(<span style="color: #CD5555">&#39;off&#39;</span>)
+    plt.imshow(image, cmap=plt.cm.gray_r, interpolation=<span style="color: #CD5555">&#39;nearest&#39;</span>)
+    plt.title(<span style="color: #CD5555">&quot;Label: %d&quot;</span> % digits.target[random_indices[i]])
+plt.show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.layers</span> <span style="color: #8B008B; font-weight: bold">import</span> Input
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.models</span> <span style="color: #8B008B; font-weight: bold">import</span> Sequential      <span style="color: #228B22">#This allows appending layers to existing models</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.layers</span> <span style="color: #8B008B; font-weight: bold">import</span> Dense           <span style="color: #228B22">#This allows defining the characteristics of a particular layer</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras</span> <span style="color: #8B008B; font-weight: bold">import</span> optimizers             <span style="color: #228B22">#This allows using whichever optimiser we want (sgd,adam,RMSprop)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras</span> <span style="color: #8B008B; font-weight: bold">import</span> regularizers           <span style="color: #228B22">#This allows using whichever regularizer we want (l1,l2,l1_l2)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.utils</span> <span style="color: #8B008B; font-weight: bold">import</span> to_categorical   <span style="color: #228B22">#This allows using categorical cross entropy as the cost function</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split
+
+<span style="color: #228B22"># one-hot representation of labels</span>
+labels = to_categorical(labels)
+
+<span style="color: #228B22"># split into train and test data</span>
+train_size = <span style="color: #B452CD">0.8</span>
+test_size = <span style="color: #B452CD">1</span> - train_size
+X_train, X_test, Y_train, Y_test = train_test_split(inputs, labels, train_size=train_size,
+                                                    test_size=test_size)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">epochs = <span style="color: #B452CD">100</span>
+batch_size = <span style="color: #B452CD">100</span>
+n_neurons_layer1 = <span style="color: #B452CD">100</span>
+n_neurons_layer2 = <span style="color: #B452CD">50</span>
+n_categories = <span style="color: #B452CD">10</span>
+eta_vals = np.logspace(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">7</span>)
+lmbd_vals = np.logspace(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">7</span>)
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">create_neural_network_keras</span>(n_neurons_layer1, n_neurons_layer2, n_categories, eta, lmbd):
+    model = Sequential()
+    model.add(Dense(n_neurons_layer1, activation=<span style="color: #CD5555">&#39;sigmoid&#39;</span>, kernel_regularizer=regularizers.l2(lmbd)))
+    model.add(Dense(n_neurons_layer2, activation=<span style="color: #CD5555">&#39;sigmoid&#39;</span>, kernel_regularizer=regularizers.l2(lmbd)))
+    model.add(Dense(n_categories, activation=<span style="color: #CD5555">&#39;softmax&#39;</span>))
+    
+    sgd = optimizers.SGD(lr=eta)
+    model.compile(loss=<span style="color: #CD5555">&#39;categorical_crossentropy&#39;</span>, optimizer=sgd, metrics=[<span style="color: #CD5555">&#39;accuracy&#39;</span>])
+    
+    <span style="color: #8B008B; font-weight: bold">return</span> model
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">DNN_keras = np.zeros((<span style="color: #658b00">len</span>(eta_vals), <span style="color: #658b00">len</span>(lmbd_vals)), dtype=<span style="color: #658b00">object</span>)
+        
+<span style="color: #8B008B; font-weight: bold">for</span> i, eta <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(eta_vals):
+    <span style="color: #8B008B; font-weight: bold">for</span> j, lmbd <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(lmbd_vals):
+        DNN = create_neural_network_keras(n_neurons_layer1, n_neurons_layer2, n_categories,
+                                         eta=eta, lmbd=lmbd)
+        DNN.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=<span style="color: #B452CD">0</span>)
+        scores = DNN.evaluate(X_test, Y_test)
+        
+        DNN_keras[i][j] = DNN
+        
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Learning rate = &quot;</span>, eta)
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Lambda = &quot;</span>, lmbd)
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test accuracy: %.3f&quot;</span> % scores[<span style="color: #B452CD">1</span>])
+        <span style="color: #658b00">print</span>()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #228B22"># optional</span>
+<span style="color: #228B22"># visual representation of grid search</span>
+<span style="color: #228B22"># uses seaborn heatmap, could probably do this in matplotlib</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
+
+sns.set()
+
+train_accuracy = np.zeros((<span style="color: #658b00">len</span>(eta_vals), <span style="color: #658b00">len</span>(lmbd_vals)))
+test_accuracy = np.zeros((<span style="color: #658b00">len</span>(eta_vals), <span style="color: #658b00">len</span>(lmbd_vals)))
+
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(eta_vals)):
+    <span style="color: #8B008B; font-weight: bold">for</span> j <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(lmbd_vals)):
+        DNN = DNN_keras[i][j]
+
+        train_accuracy[i][j] = DNN.evaluate(X_train, Y_train)[<span style="color: #B452CD">1</span>]
+        test_accuracy[i][j] = DNN.evaluate(X_test, Y_test)[<span style="color: #B452CD">1</span>]
+
+        
+fig, ax = plt.subplots(figsize = (<span style="color: #B452CD">10</span>, <span style="color: #B452CD">10</span>))
+sns.heatmap(train_accuracy, annot=<span style="color: #8B008B; font-weight: bold">True</span>, ax=ax, cmap=<span style="color: #CD5555">&quot;viridis&quot;</span>)
+ax.set_title(<span style="color: #CD5555">&quot;Training Accuracy&quot;</span>)
+ax.set_ylabel(<span style="color: #CD5555">&quot;$\eta$&quot;</span>)
+ax.set_xlabel(<span style="color: #CD5555">&quot;$\lambda$&quot;</span>)
+plt.show()
+
+fig, ax = plt.subplots(figsize = (<span style="color: #B452CD">10</span>, <span style="color: #B452CD">10</span>))
+sns.heatmap(test_accuracy, annot=<span style="color: #8B008B; font-weight: bold">True</span>, ax=ax, cmap=<span style="color: #CD5555">&quot;viridis&quot;</span>)
+ax.set_title(<span style="color: #CD5555">&quot;Test Accuracy&quot;</span>)
+ax.set_ylabel(<span style="color: #CD5555">&quot;$\eta$&quot;</span>)
+ax.set_xlabel(<span style="color: #CD5555">&quot;$\lambda$&quot;</span>)
+plt.show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="the-breast-cancer-data-now-with-keras">The Breast Cancer Data, now with Keras </h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.layers</span> <span style="color: #8B008B; font-weight: bold">import</span> Input
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.models</span> <span style="color: #8B008B; font-weight: bold">import</span> Sequential      <span style="color: #228B22">#This allows appending layers to existing models</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.layers</span> <span style="color: #8B008B; font-weight: bold">import</span> Dense           <span style="color: #228B22">#This allows defining the characteristics of a particular layer</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras</span> <span style="color: #8B008B; font-weight: bold">import</span> optimizers             <span style="color: #228B22">#This allows using whichever optimiser we want (sgd,adam,RMSprop)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras</span> <span style="color: #8B008B; font-weight: bold">import</span> regularizers           <span style="color: #228B22">#This allows using whichever regularizer we want (l1,l2,l1_l2)</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.utils</span> <span style="color: #8B008B; font-weight: bold">import</span> to_categorical   <span style="color: #228B22">#This allows using categorical cross entropy as the cost function</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">seaborn</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">sns</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split <span style="color: #8B008B; font-weight: bold">as</span> splitter
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_breast_cancer
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pickle</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span> 
+
+
+<span style="color: #CD5555">&quot;&quot;&quot;Load breast cancer dataset&quot;&quot;&quot;</span>
+
+np.random.seed(<span style="color: #B452CD">0</span>)        <span style="color: #228B22">#create same seed for random number every time</span>
+
+cancer=load_breast_cancer()      <span style="color: #228B22">#Download breast cancer dataset</span>
+
+inputs=cancer.data                     <span style="color: #228B22">#Feature matrix of 569 rows (samples) and 30 columns (parameters)</span>
+outputs=cancer.target                  <span style="color: #228B22">#Label array of 569 rows (0 for benign and 1 for malignant)</span>
+labels=cancer.feature_names[<span style="color: #B452CD">0</span>:<span style="color: #B452CD">30</span>]
+
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;The content of the breast cancer dataset is:&#39;</span>)      <span style="color: #228B22">#Print information about the datasets</span>
+<span style="color: #658b00">print</span>(labels)
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&#39;-------------------------&#39;</span>)
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;inputs =  &quot;</span> + <span style="color: #658b00">str</span>(inputs.shape))
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;outputs =  &quot;</span> + <span style="color: #658b00">str</span>(outputs.shape))
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;labels =  &quot;</span>+ <span style="color: #658b00">str</span>(labels.shape))
+
+x=inputs      <span style="color: #228B22">#Reassign the Feature and Label matrices to other variables</span>
+y=outputs
+
+<span style="color: #228B22">#%% </span>
+
+<span style="color: #228B22"># Visualisation of dataset (for correlation analysis)</span>
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">0</span>],x[:,<span style="color: #B452CD">2</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean radius&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean perimeter&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">5</span>],x[:,<span style="color: #B452CD">6</span>],s=<span style="color: #B452CD">40</span>,c=y, cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean compactness&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean concavity&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">0</span>],x[:,<span style="color: #B452CD">1</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean radius&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean texture&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+plt.figure()
+plt.scatter(x[:,<span style="color: #B452CD">2</span>],x[:,<span style="color: #B452CD">1</span>],s=<span style="color: #B452CD">40</span>,c=y,cmap=plt.cm.Spectral)
+plt.xlabel(<span style="color: #CD5555">&#39;Mean perimeter&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;Mean compactness&#39;</span>,fontweight=<span style="color: #CD5555">&#39;bold&#39;</span>)
+plt.show()
+
+
+<span style="color: #228B22"># Generate training and testing datasets</span>
+
+<span style="color: #228B22">#Select features relevant to classification (texture,perimeter,compactness and symmetery) </span>
+<span style="color: #228B22">#and add to input matrix</span>
+
+temp1=np.reshape(x[:,<span style="color: #B452CD">1</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">1</span>]),<span style="color: #B452CD">1</span>))
+temp2=np.reshape(x[:,<span style="color: #B452CD">2</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">2</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((temp1,temp2))      
+temp=np.reshape(x[:,<span style="color: #B452CD">5</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">5</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((X,temp))       
+temp=np.reshape(x[:,<span style="color: #B452CD">8</span>],(<span style="color: #658b00">len</span>(x[:,<span style="color: #B452CD">8</span>]),<span style="color: #B452CD">1</span>))
+X=np.hstack((X,temp))       
+
+X_train,X_test,y_train,y_test=splitter(X,y,test_size=<span style="color: #B452CD">0.1</span>)   <span style="color: #228B22">#Split datasets into training and testing</span>
+
+y_train=to_categorical(y_train)     <span style="color: #228B22">#Convert labels to categorical when using categorical cross entropy</span>
+y_test=to_categorical(y_test)
+
+<span style="color: #8B008B; font-weight: bold">del</span> temp1,temp2,temp
+
+<span style="color: #228B22"># %%</span>
+
+<span style="color: #228B22"># Define tunable parameters&quot;</span>
+
+eta=np.logspace(-<span style="color: #B452CD">3</span>,-<span style="color: #B452CD">1</span>,<span style="color: #B452CD">3</span>)                    <span style="color: #228B22">#Define vector of learning rates (parameter to SGD optimiser)</span>
+lamda=<span style="color: #B452CD">0.01</span>                                  <span style="color: #228B22">#Define hyperparameter</span>
+n_layers=<span style="color: #B452CD">2</span>                                  <span style="color: #228B22">#Define number of hidden layers in the model</span>
+n_neuron=np.logspace(<span style="color: #B452CD">0</span>,<span style="color: #B452CD">3</span>,<span style="color: #B452CD">4</span>,dtype=<span style="color: #658b00">int</span>)       <span style="color: #228B22">#Define number of neurons per layer</span>
+epochs=<span style="color: #B452CD">100</span>                                   <span style="color: #228B22">#Number of reiterations over the input data</span>
+batch_size=<span style="color: #B452CD">100</span>                              <span style="color: #228B22">#Number of samples per gradient update</span>
+
+<span style="color: #228B22"># %%</span>
+
+<span style="color: #CD5555">&quot;&quot;&quot;Define function to return Deep Neural Network model&quot;&quot;&quot;</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">NN_model</span>(inputsize,n_layers,n_neuron,eta,lamda):
+    model=Sequential()      
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(n_layers):       <span style="color: #228B22">#Run loop to add hidden layers to the model</span>
+        <span style="color: #8B008B; font-weight: bold">if</span> (i==<span style="color: #B452CD">0</span>):                  <span style="color: #228B22">#First layer requires input dimensions</span>
+            model.add(Dense(n_neuron,activation=<span style="color: #CD5555">&#39;relu&#39;</span>,kernel_regularizer=regularizers.l2(lamda),input_dim=inputsize))
+        <span style="color: #8B008B; font-weight: bold">else</span>:                       <span style="color: #228B22">#Subsequent layers are capable of automatic shape inferencing</span>
+            model.add(Dense(n_neuron,activation=<span style="color: #CD5555">&#39;relu&#39;</span>,kernel_regularizer=regularizers.l2(lamda)))
+    model.add(Dense(<span style="color: #B452CD">2</span>,activation=<span style="color: #CD5555">&#39;softmax&#39;</span>))  <span style="color: #228B22">#2 outputs - ordered and disordered (softmax for prob)</span>
+    sgd=optimizers.SGD(lr=eta)
+    model.compile(loss=<span style="color: #CD5555">&#39;categorical_crossentropy&#39;</span>,optimizer=sgd,metrics=[<span style="color: #CD5555">&#39;accuracy&#39;</span>])
+    <span style="color: #8B008B; font-weight: bold">return</span> model
+
+    
+Train_accuracy=np.zeros((<span style="color: #658b00">len</span>(n_neuron),<span style="color: #658b00">len</span>(eta)))      <span style="color: #228B22">#Define matrices to store accuracy scores as a function</span>
+Test_accuracy=np.zeros((<span style="color: #658b00">len</span>(n_neuron),<span style="color: #658b00">len</span>(eta)))       <span style="color: #228B22">#of learning rate and number of hidden neurons for </span>
+
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(n_neuron)):     <span style="color: #228B22">#run loops over hidden neurons and learning rates to calculate </span>
+    <span style="color: #8B008B; font-weight: bold">for</span> j <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">len</span>(eta)):      <span style="color: #228B22">#accuracy scores </span>
+        DNN_model=NN_model(X_train.shape[<span style="color: #B452CD">1</span>],n_layers,n_neuron[i],eta[j],lamda)
+        DNN_model.fit(X_train,y_train,epochs=epochs,batch_size=batch_size,verbose=<span style="color: #B452CD">1</span>)
+        Train_accuracy[i,j]=DNN_model.evaluate(X_train,y_train)[<span style="color: #B452CD">1</span>]
+        Test_accuracy[i,j]=DNN_model.evaluate(X_test,y_test)[<span style="color: #B452CD">1</span>]
+               
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">plot_data</span>(x,y,data,title=<span style="color: #8B008B; font-weight: bold">None</span>):
+
+    <span style="color: #228B22"># plot results</span>
+    fontsize=<span style="color: #B452CD">16</span>
+
+
+    fig = plt.figure()
+    ax = fig.add_subplot(<span style="color: #B452CD">111</span>)
+    cax = ax.matshow(data, interpolation=<span style="color: #CD5555">&#39;nearest&#39;</span>, vmin=<span style="color: #B452CD">0</span>, vmax=<span style="color: #B452CD">1</span>)
+    
+    cbar=fig.colorbar(cax)
+    cbar.ax.set_ylabel(<span style="color: #CD5555">&#39;accuracy (%)&#39;</span>,rotation=<span style="color: #B452CD">90</span>,fontsize=fontsize)
+    cbar.set_ticks([<span style="color: #B452CD">0</span>,<span style="color: #B452CD">.2</span>,<span style="color: #B452CD">.4</span>,<span style="color: #B452CD">0.6</span>,<span style="color: #B452CD">0.8</span>,<span style="color: #B452CD">1.0</span>])
+    cbar.set_ticklabels([<span style="color: #CD5555">&#39;0%&#39;</span>,<span style="color: #CD5555">&#39;20%&#39;</span>,<span style="color: #CD5555">&#39;40%&#39;</span>,<span style="color: #CD5555">&#39;60%&#39;</span>,<span style="color: #CD5555">&#39;80%&#39;</span>,<span style="color: #CD5555">&#39;100%&#39;</span>])
+
+    <span style="color: #228B22"># put text on matrix elements</span>
+    <span style="color: #8B008B; font-weight: bold">for</span> i, x_val <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(np.arange(<span style="color: #658b00">len</span>(x))):
+        <span style="color: #8B008B; font-weight: bold">for</span> j, y_val <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(np.arange(<span style="color: #658b00">len</span>(y))):
+            c = <span style="color: #CD5555">&quot;${0:.1f}\\%$&quot;</span>.format( <span style="color: #B452CD">100</span>*data[j,i])  
+            ax.text(x_val, y_val, c, va=<span style="color: #CD5555">&#39;center&#39;</span>, ha=<span style="color: #CD5555">&#39;center&#39;</span>)
+
+    <span style="color: #228B22"># convert axis vaues to to string labels</span>
+    x=[<span style="color: #658b00">str</span>(i) <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> x]
+    y=[<span style="color: #658b00">str</span>(i) <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> y]
+
+
+    ax.set_xticklabels([<span style="color: #CD5555">&#39;&#39;</span>]+x)
+    ax.set_yticklabels([<span style="color: #CD5555">&#39;&#39;</span>]+y)
+
+    ax.set_xlabel(<span style="color: #CD5555">&#39;$\\mathrm{learning\\ rate}$&#39;</span>,fontsize=fontsize)
+    ax.set_ylabel(<span style="color: #CD5555">&#39;$\\mathrm{hidden\\ neurons}$&#39;</span>,fontsize=fontsize)
+    <span style="color: #8B008B; font-weight: bold">if</span> title <span style="color: #8B008B">is</span> <span style="color: #8B008B">not</span> <span style="color: #8B008B; font-weight: bold">None</span>:
+        ax.set_title(title)
+
+    plt.tight_layout()
+
+    plt.show()
+    
+plot_data(eta,n_neuron,Train_accuracy, <span style="color: #CD5555">&#39;training&#39;</span>)
+plot_data(eta,n_neuron,Test_accuracy, <span style="color: #CD5555">&#39;testing&#39;</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="the-mathematics-of-neural-networks">The Mathematics of Neural Networks </h2>
+
+<ol>
+<p><li> Activation functions and vanishing gradients</li>
+<p><li> Brief summary of gradient methods</li>
+<p><li> Approximation theorems, in particular the <em>universal approximation theorem</em> for neural networks by Cybenko and Hornik</li>
+</ol>
+<p>
+<p>I strongly recommend Michael Nielsen's intuitive approach to the neural networks and the universal approximation theorem, see the slides at <a href="http://neuralnetworksanddeeplearning.com/chap4.html" target="_blank"><tt>http://neuralnetworksanddeeplearning.com/chap4.html</tt></a>.</p>
+</section>
+
+<section>
+<h2 id="fine-tuning-neural-network-hyperparameters">Fine-tuning neural network hyperparameters </h2>
+
+<p>The flexibility of neural networks is also one of their main
+drawbacks: there are many hyperparameters to tweak. Not only can you
+use any imaginable network topology (how neurons/nodes are interconnected),
+but even in a simple FFNN you can change the number of layers, the
+number of neurons per layer, the type of activation function to use in
+each layer, the weight initialization logic, the stochastic gradient optmized and much more. How do you
+know what combination of hyperparameters is the best for your task?
+</p>
+
+<ul>
+<p><li> You can use grid search with cross-validation to find the right hyperparameters.</li>
+</ul>
+<p>
+<p>However,since there are many hyperparameters to tune, and since
+training a neural network on a large dataset takes a lot of time, you
+will only be able to explore a tiny part of the hyperparameter space.
+</p>
+
+<ul>
+<p><li> You can use randomized search.</li>
+<p><li> Or use tools like <a href="http://oscar.calldesk.ai/" target="_blank">Oscar</a>, which implements more complex algorithms to help you find a good set of hyperparameters quickly.</li>  
+</ul>
+</section>
+
+<section>
+<h2 id="hidden-layers">Hidden layers </h2>
+
+<p>For many problems you can start with just one or two hidden layers and it will work just fine.
+For the MNIST data set you ca easily get a high accuracy using just one hidden layer with a
+few hundred neurons.
+You can reach for this data set above 98% accuracy using two hidden layers with the same total amount of
+neurons, in roughly the same amount of training time. 
+</p>
+
+<p>For more complex problems, you can gradually
+ramp up the number of hidden layers, until you start overfitting the training set. Very complex tasks, such
+as large image classification or speech recognition, typically require networks with dozens of layers
+and they need a huge amount
+of training data. However, you will rarely have to train such networks from scratch: it is much more
+common to reuse parts of a pretrained state-of-the-art network that performs a similar task.
+</p>
+</section>
+
+<section>
+<h2 id="which-activation-function-should-i-use">Which activation function should I use? </h2>
+
+<p>The Back propagation algorithm we derived above works by going from
+the output layer to the input layer, propagating the error gradient on
+the way. Once the algorithm has computed the gradient of the cost
+function with regards to each parameter in the network, it uses these
+gradients to update each parameter with a Gradient Descent (GD) step.
+</p>
+
+<p>Unfortunately for us, the gradients often get smaller and smaller as the
+algorithm progresses down to the first hidden layers. As a result, the
+GD update leaves the lower layer connection weights
+virtually unchanged, and training never converges to a good
+solution. This is known in the literature as 
+<b>the vanishing gradients problem</b>. 
+</p>
+
+<p>In other cases, the opposite can happen, namely the the gradients can grow bigger and
+bigger. The result is that many of the layers get large updates of the 
+weights the
+algorithm diverges. This is the <b>exploding gradients problem</b>, which is
+mostly encountered in recurrent neural networks. More generally, deep
+neural networks suffer from unstable gradients, different layers may
+learn at widely different speeds
+</p>
+</section>
+
+<section>
+<h2 id="is-the-logistic-activation-function-sigmoid-our-choice">Is the Logistic activation function (Sigmoid)  our choice? </h2>
+
+<p>Although this unfortunate behavior has been empirically observed for
+quite a while (it was one of the reasons why deep neural networks were
+mostly abandoned for a long time), it is only around 2010 that
+significant progress was made in understanding it.
+</p>
+
+<p>A paper titled <a href="http://proceedings.mlr.press/v9/glorot10a.html" target="_blank">Understanding the Difficulty of Training Deep
+Feedforward Neural Networks by Xavier Glorot and Yoshua Bengio</a> found that
+the problems with the popular logistic
+sigmoid activation function and the weight initialization technique
+that was most popular at the time, namely random initialization using
+a normal distribution with a mean of 0 and a standard deviation of
+1. 
+</p>
+
+<p>They showed that with this activation function and this
+initialization scheme, the variance of the outputs of each layer is
+much greater than the variance of its inputs. Going forward in the
+network, the variance keeps increasing after each layer until the
+activation function saturates at the top layers. This is actually made
+worse by the fact that the logistic function has a mean of 0.5, not 0
+(the hyperbolic tangent function has a mean of 0 and behaves slightly
+better than the logistic function in deep networks).
+</p>
+</section>
+
+<section>
+<h2 id="the-derivative-of-the-logistic-funtion">The derivative of the Logistic funtion </h2>
+
+<p>Looking at the logistic activation function, when inputs become large
+(negative or positive), the function saturates at 0 or 1, with a
+derivative extremely close to 0. Thus when backpropagation kicks in,
+it has virtually no gradient to propagate back through the network,
+and what little gradient exists keeps getting diluted as
+backpropagation progresses down through the top layers, so there is
+really nothing left for the lower layers.
+</p>
+
+<p>In their paper, Glorot and Bengio propose a way to significantly
+alleviate this problem. We need the signal to flow properly in both
+directions: in the forward direction when making predictions, and in
+the reverse direction when backpropagating gradients. We don&#8217;t want
+the signal to die out, nor do we want it to explode and saturate. For
+the signal to flow properly, the authors argue that we need the
+variance of the outputs of each layer to be equal to the variance of
+its inputs, and we also need the gradients to have equal variance
+before and after flowing through a layer in the reverse direction.
+</p>
+
+<p>One of the insights in the 2010 paper by Glorot and Bengio was that
+the vanishing/exploding gradients problems were in part due to a poor
+choice of activation function. Until then most people had assumed that
+if Nature had chosen to use roughly sigmoid activation functions in
+biological neurons, they must be an excellent choice. But it turns out
+that other activation functions behave much better in deep neural
+networks, in particular the ReLU activation function, mostly because
+it does not saturate for positive values (and also because it is quite
+fast to compute).
+</p>
+</section>
+
+<section>
+<h2 id="the-relu-function-family">The RELU function family </h2>
+
+<p>The ReLU activation function suffers from a problem known as the dying
+ReLUs: during training, some neurons effectively die, meaning they
+stop outputting anything other than 0.
+</p>
+
+<p>In some cases, you may find that half of your network&#8217;s neurons are
+dead, especially if you used a large learning rate. During training,
+if a neuron&#8217;s weights get updated such that the weighted sum of the
+neuron&#8217;s inputs is negative, it will start outputting 0. When this
+happen, the neuron is unlikely to come back to life since the gradient
+of the ReLU function is 0 when its input is negative.
+</p>
+
+<p>To solve this problem, nowadays practitioners use a  variant of the ReLU
+function, such as the leaky ReLU discussed above or the so-called
+exponential linear unit (ELU) function
+</p>
+
+<p>&nbsp;<br>
+$$
+ELU(z) = \left\{\begin{array}{cc} \alpha\left( \exp{(z)}-1\right) & z < 0,\\  z & z \ge 0.\end{array}\right. 
+$$
+<p>&nbsp;<br>
+</section>
+
+<section>
+<h2 id="which-activation-function-should-we-use">Which activation function should we use? </h2>
+
+<p>In general it seems that the ELU activation function is better than
+the leaky ReLU function (and its variants), which is better than
+ReLU. ReLU performs better than \( \tanh \) which in turn performs better
+than the logistic function. 
+</p>
+
+<p>If runtime
+performance is an issue, then you may opt for the  leaky ReLU function  over the 
+ELU function If you don&#8217;t
+want to tweak yet another hyperparameter, you may just use the default
+\( \alpha \) of \( 0.01 \) for the leaky ReLU, and \( 1 \) for ELU. If you have
+spare time and computing power, you can use cross-validation or
+bootstrap to evaluate other activation functions.
+</p>
+</section>
+
+<section>
+<h2 id="more-on-activation-functions-output-layers">More on activation functions, output layers </h2>
+
+<p>In most cases you can use the ReLU activation function in the hidden layers (or one of its variants).</p>
+
+<p>It is a bit faster to compute than other activation functions, and the gradient descent optimization does in general not get stuck.</p>
+
+<b>For the output layer:</b>
+
+<ul>
+<p><li> For classification the softmax activation function is generally a good choice for classification tasks (when the classes are mutually exclusive).</li>
+<p><li> For regression tasks, you can simply use no activation function at all.</li>
+</ul>
+</section>
+
+<section>
+<h2 id="batch-normalization">Batch Normalization </h2>
+
+<p>Batch Normalization
+aims to address the vanishing/exploding gradients problems, and more generally the problem that the
+distribution of each layer&#8217;s inputs changes during training, as the parameters of the previous layers change.
+</p>
+
+<p>The technique consists of adding an operation in the model just before the activation function of each
+layer, simply zero-centering and normalizing the inputs, then scaling and shifting the result using two new
+parameters per layer (one for scaling, the other for shifting). In other words, this operation lets the model
+learn the optimal scale and mean of the inputs for each layer.
+In order to zero-center and normalize the inputs, the algorithm needs to estimate the inputs&#8217; mean and
+standard deviation. It does so by evaluating the mean and standard deviation of the inputs over the current
+mini-batch, from this the name batch normalization.
+</p>
+</section>
+
+<section>
+<h2 id="dropout">Dropout </h2>
+
+<p>It is a fairly simple algorithm: at every training step, every neuron (including the input neurons but
+excluding the output neurons) has a probability \( p \) of being temporarily dropped out, meaning it will be
+entirely ignored during this training step, but it may be active during the next step.
+</p>
+
+<p>The
+hyperparameter \( p \) is called the dropout rate, and it is typically set to 50%. After training, the neurons are not dropped anymore.
+ It is viewed as one of the most popular regularization techniques.
+</p>
+</section>
+
+<section>
+<h2 id="gradient-clipping">Gradient Clipping </h2>
+
+<p>A popular technique to lessen the exploding gradients problem is to simply clip the gradients during
+backpropagation so that they never exceed some threshold (this is mostly useful for recurrent neural
+networks).
+</p>
+
+<p>This technique is called Gradient Clipping.</p>
+
+<p>In general however, Batch
+Normalization is preferred.
+</p>
+</section>
+
+<section>
+<h2 id="a-very-nice-website-on-neural-networks">A very nice website on Neural Networks </h2>
+
+<p>You may find this <a href="https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.29243&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" target="_blank">website</a> very useful. Thx a million to Ghadi for sharing. </p>
+</section>
+
+<section>
+<h2 id="a-top-down-perspective-on-neural-networks">A top-down perspective on Neural networks </h2>
+
+<p>The first thing we would like to do is divide the data into two or three
+parts. A training set, a validation or dev (development) set, and a
+test set. The test set is the data on which we want to make
+predictions. The dev set is a subset of the training data we use to
+check how well we are doing out-of-sample, after training the model on
+the training dataset. We use the validation error as a proxy for the
+test error in order to make tweaks to our model. It is crucial that we
+do not use any of the test data to train the algorithm. This is a
+cardinal sin in ML. Then:
+</p>
+
+<ul>
+<p><li> Estimate optimal error rate</li>
+<p><li> Minimize underfitting (bias) on training data set.</li>
+<p><li> Make sure you are not overfitting.</li>
+</ul>
+<p>
+<p>If the validation and test sets are drawn from the same distributions,
+then a good performance on the validation set should lead to similarly
+good performance on the test set. 
+</p>
+
+<p>However, sometimes
+the training data and test data differ in subtle ways because, for
+example, they are collected using slightly different methods, or
+because it is cheaper to collect data in one way versus another. In
+this case, there can be a mismatch between the training and test
+data. This can lead to the neural network overfitting these small
+differences between the test and training sets, and a poor performance
+on the test set despite having a good performance on the validation
+set. To rectify this, Andrew Ng suggests making two validation or dev
+sets, one constructed from the training data and one constructed from
+the test data. The difference between the performance of the algorithm
+on these two validation sets quantifies the train-test mismatch. This
+can serve as another important diagnostic when using DNNs for
+supervised learning.
+</p>
+</section>
+
+<section>
+<h2 id="limitations-of-supervised-learning-with-deep-networks">Limitations of supervised learning with deep networks </h2>
+
+<p>Like all statistical methods, supervised learning using neural
+networks has important limitations. This is especially important when
+one seeks to apply these methods, especially to physics problems. Like
+all tools, DNNs are not a universal solution. Often, the same or
+better performance on a task can be achieved by using a few
+hand-engineered features (or even a collection of random
+features). 
+</p>
+
+<p>Here we list some of the important limitations of supervised neural network based models. </p>
+
+<ul>
+<p><li> <b>Need labeled data</b>. All supervised learning methods, DNNs for supervised learning require labeled data. Often, labeled data is harder to acquire than unlabeled data (e.g. one must pay for human experts to label images).</li>
+<p><li> <b>Supervised neural networks are extremely data intensive.</b> DNNs are data hungry. They perform best when data is plentiful. This is doubly so for supervised methods where the data must also be labeled. The utility of DNNs is extremely limited if data is hard to acquire or the datasets are small (hundreds to a few thousand samples). In this case, the performance of other methods that utilize hand-engineered features can exceed that of DNNs.</li>
+<p><li> <b>Homogeneous data.</b> Almost all DNNs deal with homogeneous data of one type. It is very hard to design architectures that mix and match data types (i.e.&nbsp;some continuous variables, some discrete variables, some time series). In applications beyond images, video, and language, this is often what is required. In contrast, ensemble models like random forests or gradient-boosted trees have no difficulty handling mixed data types.</li>
+<p><li> <b>Many problems are not about prediction.</b> In natural science we are often interested in learning something about the underlying distribution that generates the data. In this case, it is often difficult to cast these ideas in a supervised learning setting. While the problems are related, it is possible to make good predictions with a <em>wrong</em> model. The model might or might not be useful for understanding the underlying science.</li>
+</ul>
+<p>
+<p>Some of these remarks are particular to DNNs, others are shared by all supervised learning methods. This motivates the use of unsupervised methods which in part circumvent these problems.</p>
+</section>
+
+<section>
+<h2 id="overarching-views-a-personal-note">Overarching Views, a personal  note </h2>
+
+<p>The author of these lecture notes has an overarching take on many of
+the machine learning algorithms we discuss here. 
+</p>
+
+<p>If we wish to understand complex systems, we need to find some
+effective degrees of freedom or features that we find essential,
+simply in order to reduce the complexity of the systems we are
+studying.  This leads, in one way or the other to dimensionality
+reductions. Most of the Machine Learning methods we encounter deal
+with this, whether we opt for a principal component analysis, or
+clustering, or convolutional neural networks, or Ridge or Lasso
+regression or random forest, yes, perhaps most machine learning
+methods at large.
+</p>
+
+<p>For neural networks and our previous discussion, we have seen that we
+in essence end up with matrix-matrix and matrix-vector
+multiplications. In all cases, our matrices are dense ones, and the
+more data we deal with the larger the dimensionalities of the matrices
+and vectors. How can we reduce such dimensionalities?  One possible
+answer is offered by <b>convolutional neural networks</b> (CNN), as
+discussed below. The figure here shows a typical situation of the
+reduction of information in an image and is typical of what CNNs
+actually end up doing.
+</p>
 </section>
 
 <section>
@@ -232,8 +1169,12 @@ loss function (for example Softmax) on the last (fully-connected) layer
 and all the tips/tricks we developed for learning regular Neural
 Networks still apply (back propagation, gradient descent etc etc).
 </p>
+</section>
 
-<p>What is the difference? <b>CNN architectures make the explicit assumption that
+<section>
+<h2 id="what-is-the-difference">What is the Difference </h2>
+
+<p><b>CNN architectures make the explicit assumption that
 the inputs are images, which allows us to encode certain properties
 into the architecture. These then make the forward function more
 efficient to implement and vastly reduce the amount of parameters in
@@ -414,6 +1355,564 @@ the course
 <a href="https://www.uio.no/studier/emner/matnat/ifi/IN5400/index-eng.html" target="_blank">IN5400 &#8211; Machine Learning for Image Analysis</a>
 and the slides of <a href="http://cs231n.github.io/convolutional-networks/" target="_blank">CS231</a> which is taught at Stanford University (consistently ranked as one of the top computer science programs in the world). <a href="http://neuralnetworksanddeeplearning.com/chap6.html" target="_blank">Michael Nielsen's book is a must read, in particular chapter 6 which deals with CNNs</a>.
 </p>
+
+<p>The textbook by Goodfellow et al, see chapter 9 contains an in depth discussion as well.</p>
+</section>
+
+<section>
+<h2 id="key-idea">Key Idea </h2>
+
+<p>A dense neural network is representd by an affine operation (like matrix-matrix multiplication) where all parameters are included.</p>
+
+<p>The key idea in CNNs for say imaging is that in images neighbor pixels tend to be related! So we connect
+only neighboring neurons in the input instead of connecting all with the first hidden layer.
+</p>
+
+<p>We say we perform a filtering (convolution is the mathematical operation). </p>
+</section>
+
+<section>
+<h2 id="mathematics-of-cnns">Mathematics of CNNs </h2>
+
+<p>The mathematics of CNNs is based on the mathematical operation of
+<b>convolution</b>.  In mathematics (in particular in functional analysis),
+convolution is represented by matheematical operation (integration,
+summation etc) on two function in order to produce a third function
+that expresses how the shape of one gets modified by the other.
+Convolution has a plethora of applications in a variety of disciplines, spanning from statistics to signal processing, computer vision, solutions of differential equations,linear algebra, engineering,  and yes, machine learning.
+</p>
+
+<p>Mathematically, convolution is defined as follows (one-dimensional example):
+Let us define a continuous function \( y(t) \) given by
+</p>
+<p>&nbsp;<br>
+$$
+y(t) = \int x(a) w(t-a) da,
+$$
+<p>&nbsp;<br>
+
+<p>where \( x(a) \) represents a so-called input and \( w(t-a) \) is normally called the weight function or kernel.</p>
+
+<p>The above integral is written in  a more compact form as</p>
+<p>&nbsp;<br>
+$$
+y(t) = \left(x * w\right)(t).
+$$
+<p>&nbsp;<br>
+
+<p>The discretized version reads</p>
+<p>&nbsp;<br>
+$$
+y(t) = \sum_{a=-\infty}^{a=\infty}x(a)w(t-a).
+$$
+<p>&nbsp;<br>
+
+<p>Computing the inverse of the above convolution operations is known as deconvolution.</p>
+
+<p>How can we use this? And what does it mean? Let us study some familiar examples first.</p>
+</section>
+
+<section>
+<h2 id="convolution-examples-polynomial-multiplication">Convolution Examples: Polynomial multiplication </h2>
+
+<p>We have already met such an example in project 1 when we tried to set
+up the design matrix for a two-dimensional function. This was an
+example of polynomial multiplication.  Let us recast such a problem in terms of the convolution operation.
+Let us look a the following polynomials to second and third order, respectively:
+</p>
+<p>&nbsp;<br>
+$$
+p(t) = \alpha_0+\alpha_1 t+\alpha_2 t^2,
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+<p>&nbsp;<br>
+$$
+s(t) = \beta_0+\beta_1 t+\beta_2 t^2+\beta_3 t^3.
+$$
+<p>&nbsp;<br>
+
+<p>The polynomial multiplication gives us a new polynomial of degree \( 5 \)</p>
+<p>&nbsp;<br>
+$$
+z(t) = \delta_0+\delta_1 t+\delta_2 t^2+\delta_3 t^3+\delta_4 t^4+\delta_5 t^5.
+$$
+<p>&nbsp;<br>
+</section>
+
+<section>
+<h2 id="efficient-polynomial-multiplication">Efficient Polynomial Multiplication </h2>
+
+<p>Computing polynomial products can be implemented efficiently if we rewrite the more brute force multiplications using convolution.
+We note first that the new coefficients are given as
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{split}
+\delta_0=&\alpha_0\beta_0\\
+\delta_1=&\alpha_1\beta_0+\alpha_1\beta_0\\
+\delta_2=&\alpha_0\beta_2+\alpha_1\beta_1+\alpha_2\beta_0\\
+\delta_3=&\alpha_1\beta_2+\alpha_2\beta_1+\alpha_0\beta_3\\
+\delta_4=&\alpha_2\beta_2+\alpha_1\beta_3\\
+\delta_5=&\alpha_2\beta_3.\\
+\end{split}
+$$
+<p>&nbsp;<br>
+
+<p>We note that \( \alpha_i=0 \) except for \( i\in \left\{0,1,2\right\} \) and \( \beta_i=0 \) except for \( i\in\left\{0,1,2,3\right\} \).</p>
+
+<p>We can then rewrite the coefficients \( \delta_j \) using a discrete convolution as</p>
+<p>&nbsp;<br>
+$$
+\delta_j = \sum_{i=-\infty}^{i=\infty}\alpha_i\beta_{j-i}=(\alpha * \beta)_j,
+$$
+<p>&nbsp;<br>
+
+<p>or as a double sum with restriction \( l=i+j \)</p>
+<p>&nbsp;<br>
+$$
+\delta_l = \sum_{ij}\alpha_i\beta_{j}.
+$$
+<p>&nbsp;<br>
+
+<p>Do you see a potential drawback with these equations?</p>
+</section>
+
+<section>
+<h2 id="a-more-efficient-way-of-coding-the-above-convolution">A more efficient way of coding the above Convolution </h2>
+
+<p>Since we only have a finite number of \( \alpha \) and \( \beta \) values
+which are non-zero, we can rewrite the above convolution expressions
+as a matrix-vector multiplication
+</p>
+
+<p>&nbsp;<br>
+$$
+\boldsymbol{\delta}=\begin{bmatrix}\alpha_0 & 0 & 0 & 0 \\
+                            \alpha_1 & \alpha_0 & 0 & 0 \\
+			    \alpha_2 & \alpha_1 & \alpha_0 & 0 \\
+			    0 & \alpha_2 & \alpha_1 & \alpha_0 \\
+			    0 & 0 & \alpha_2 & \alpha_1 \\
+			    0 & 0 & 0 & \alpha_2
+			    \end{bmatrix}\begin{bmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \\ \beta_3\end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>The process is commutative and we can easily see that we can rewrite the multiplication in terms of  a matrix holding \( \beta \) and a vector holding \( \alpha \).
+In this case we have
+</p>
+<p>&nbsp;<br>
+$$
+\boldsymbol{\delta}=\begin{bmatrix}\beta_0 & 0 & 0  \\
+                            \beta_1 & \beta_0 & 0  \\
+			    \beta_2 & \beta_1 & \beta_0  \\
+			    \beta_3 & \beta_2 & \beta_1 \\
+			    0 & \beta_3 & \beta_2 \\
+			    0 & 0 & \beta_3
+			    \end{bmatrix}\begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2\end{bmatrix}.
+$$
+<p>&nbsp;<br>
+
+<p>Note that the use of these  matrices is for mathematical purposes only  and not implementation purposes.
+When implementing the above equation we do not encode (and allocate memory) the matrices explicitely.
+We rather code the convolutions in the minimal memory footprint that they require.
+</p>
+
+<p>Does the number of floating point operations change here when we use the commutative property?</p>
+</section>
+
+<section>
+<h2 id="convolution-examples-principle-of-superposition-and-periodic-forces-fourier-transforms">Convolution Examples: Principle of Superposition and Periodic Forces (Fourier Transforms) </h2>
+
+<p>For problems with so-called harmonic oscillations, given by for example the following differential equation</p>
+<p>&nbsp;<br>
+$$
+m\frac{d^2x}{dt^2}+\eta\frac{dx}{dt}+x(t)=F(t),
+$$
+<p>&nbsp;<br>
+
+<p>where \( F(t) \) is an applied external force acting on the system (often called a driving force), one can use the theory of Fourier transformations to find the solutions of this type of equations.</p>
+
+<p>If one has several driving forces, \( F(t)=\sum_n F_n(t) \), one can find
+the particular solution to each \( F_n \), \( x_{pn}(t) \), and the particular
+solution for the entire driving force is then given by a series like
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+x_p(t)=\sum_nx_{pn}(t).
+\tag{1}
+\end{equation}
+$$
+<p>&nbsp;<br>
+</section>
+
+<section>
+<h2 id="principle-of-superposition">Principle of Superposition </h2>
+
+<p>This is known as the principle of superposition. It only applies when
+the homogenous equation is linear. If there were an anharmonic term
+such as \( x^3 \) in the homogenous equation, then when one summed various
+solutions, \( x=(\sum_n x_n)^2 \), one would get cross
+terms. Superposition is especially useful when \( F(t) \) can be written
+as a sum of sinusoidal terms, because the solutions for each
+sinusoidal (sine or cosine)  term is analytic. 
+</p>
+
+<p>Driving forces are often periodic, even when they are not
+sinusoidal. Periodicity implies that for some time \( \tau \)
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{eqnarray}
+F(t+\tau)=F(t). 
+\end{eqnarray}
+$$
+<p>&nbsp;<br>
+
+<p>One example of a non-sinusoidal periodic force is a square wave. Many
+components in electric circuits are non-linear, e.g. diodes, which
+makes many wave forms non-sinusoidal even when the circuits are being
+driven by purely sinusoidal sources.
+</p>
+</section>
+
+<section>
+<h2 id="simple-code-example">Simple Code Example </h2>
+
+<p>The code here shows a typical example of such a square wave generated using the functionality included in the <b>scipy</b> Python package. We have used a period of \( \tau=0.2 \).</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy</span> <span style="color: #8B008B; font-weight: bold">import</span> signal
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+
+<span style="color: #228B22"># number of points                                                                                       </span>
+n = <span style="color: #B452CD">500</span>
+<span style="color: #228B22"># start and final times                                                                                  </span>
+t0 = <span style="color: #B452CD">0.0</span>
+tn = <span style="color: #B452CD">1.0</span>
+<span style="color: #228B22"># Period                                                                                                 </span>
+t = np.linspace(t0, tn, n, endpoint=<span style="color: #8B008B; font-weight: bold">False</span>)
+SqrSignal = np.zeros(n)
+SqrSignal = <span style="color: #B452CD">1.0</span>+signal.square(<span style="color: #B452CD">2</span>*np.pi*<span style="color: #B452CD">5</span>*t)
+plt.plot(t, SqrSignal)
+plt.ylim(-<span style="color: #B452CD">0.5</span>, <span style="color: #B452CD">2.5</span>)
+plt.show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>For the sinusoidal example the
+period is \( \tau=2\pi/\omega \). However, higher harmonics can also
+satisfy the periodicity requirement. In general, any force that
+satisfies the periodicity requirement can be expressed as a sum over
+harmonics,
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+F(t)=\frac{f_0}{2}+\sum_{n>0} f_n\cos(2n\pi t/\tau)+g_n\sin(2n\pi t/\tau).
+\tag{2}
+\end{equation}
+$$
+<p>&nbsp;<br>
+</section>
+
+<section>
+<h2 id="wrapping-up-fourier-transforms">Wrapping up Fourier transforms </h2>
+
+<p>We can write down the answer for
+\( x_{pn}(t) \), by substituting \( f_n/m \) or \( g_n/m \) for \( F_0/m \). By
+writing each factor \( 2n\pi t/\tau \) as \( n\omega t \), with \( \omega\equiv
+2\pi/\tau \),
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\tag{3}
+F(t)=\frac{f_0}{2}+\sum_{n>0}f_n\cos(n\omega t)+g_n\sin(n\omega t).
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>The solutions for \( x(t) \) then come from replacing \( \omega \) with
+\( n\omega \) for each term in the particular solution,
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{eqnarray}
+x_p(t)&=&\frac{f_0}{2k}+\sum_{n>0} \alpha_n\cos(n\omega t-\delta_n)+\beta_n\sin(n\omega t-\delta_n),\\
+\nonumber
+\alpha_n&=&\frac{f_n/m}{\sqrt{((n\omega)^2-\omega_0^2)+4\beta^2n^2\omega^2}},\\
+\nonumber
+\beta_n&=&\frac{g_n/m}{\sqrt{((n\omega)^2-\omega_0^2)+4\beta^2n^2\omega^2}},\\
+\nonumber
+\delta_n&=&\tan^{-1}\left(\frac{2\beta n\omega}{\omega_0^2-n^2\omega^2}\right).
+\end{eqnarray}
+$$
+<p>&nbsp;<br>
+</section>
+
+<section>
+<h2 id="finding-the-coefficients">Finding the Coefficients </h2>
+
+<p>Because the forces have been applied for a long time, any non-zero
+damping eliminates the homogenous parts of the solution, so one need
+only consider the particular solution for each \( n \).
+</p>
+
+<p>The problem is considered solved if one can find expressions for the
+coefficients \( f_n \) and \( g_n \), even though the solutions are expressed
+as an infinite sum. The coefficients can be extracted from the
+function \( F(t) \) by
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{eqnarray}
+\tag{4}
+f_n&=&\frac{2}{\tau}\int_{-\tau/2}^{\tau/2} dt~F(t)\cos(2n\pi t/\tau),\\
+\nonumber
+g_n&=&\frac{2}{\tau}\int_{-\tau/2}^{\tau/2} dt~F(t)\sin(2n\pi t/\tau).
+\end{eqnarray}
+$$
+<p>&nbsp;<br>
+
+<p>To check the consistency of these expressions and to verify
+Eq. <a href="#mjx-eqn-4">(4)</a>, one can insert the expansion of \( F(t) \) in
+Eq. <a href="#mjx-eqn-3">(3)</a> into the expression for the coefficients in
+Eq. <a href="#mjx-eqn-4">(4)</a> and see whether
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{eqnarray}
+f_n&=?&\frac{2}{\tau}\int_{-\tau/2}^{\tau/2} dt~\left\{
+\frac{f_0}{2}+\sum_{m>0}f_m\cos(m\omega t)+g_m\sin(m\omega t)
+\right\}\cos(n\omega t).
+\end{eqnarray}
+$$
+<p>&nbsp;<br>
+
+<p>Immediately, one can throw away all the terms with \( g_m \) because they
+convolute an even and an odd function. The term with \( f_0/2 \)
+disappears because \( \cos(n\omega t) \) is equally positive and negative
+over the interval and will integrate to zero. For all the terms
+\( f_m\cos(m\omega t) \) appearing in the sum, one can use angle addition
+formulas to see that \( \cos(m\omega t)\cos(n\omega
+t)=(1/2)(\cos[(m+n)\omega t]+\cos[(m-n)\omega t] \). This will integrate
+to zero unless \( m=n \). In that case the \( m=n \) term gives
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+\int_{-\tau/2}^{\tau/2}dt~\cos^2(m\omega t)=\frac{\tau}{2},
+\tag{5}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>and</p>
+
+<p>&nbsp;<br>
+$$
+\begin{eqnarray}
+f_n&=?&\frac{2}{\tau}\int_{-\tau/2}^{\tau/2} dt~f_n/2\\
+\nonumber
+&=&f_n~\checkmark.
+\end{eqnarray}
+$$
+<p>&nbsp;<br>
+
+<p>The same method can be used to check for the consistency of \( g_n \).</p>
+</section>
+
+<section>
+<h2 id="final-words-on-fourier-transforms">Final words on Fourier Transforms </h2>
+
+<p>The code here uses the Fourier series applied to a 
+square wave signal. The code here
+visualizes the various approximations given by Fourier series compared
+with a square wave with period \( T=0.2 \) (dimensionless time), width \( 0.1 \) and max value of the force \( F=2 \). We
+see that when we increase the number of components in the Fourier
+series, the Fourier series approximation gets closer and closer to the
+square wave signal.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">math</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy</span> <span style="color: #8B008B; font-weight: bold">import</span> signal
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+
+<span style="color: #228B22"># number of points                                                                                       </span>
+n = <span style="color: #B452CD">500</span>
+<span style="color: #228B22"># start and final times                                                                                  </span>
+t0 = <span style="color: #B452CD">0.0</span>
+tn = <span style="color: #B452CD">1.0</span>
+<span style="color: #228B22"># Period                                                                                                 </span>
+T =<span style="color: #B452CD">0.2</span>
+<span style="color: #228B22"># Max value of square signal                                                                             </span>
+Fmax= <span style="color: #B452CD">2.0</span>
+<span style="color: #228B22"># Width of signal   </span>
+Width = <span style="color: #B452CD">0.1</span>
+t = np.linspace(t0, tn, n, endpoint=<span style="color: #8B008B; font-weight: bold">False</span>)
+SqrSignal = np.zeros(n)
+FourierSeriesSignal = np.zeros(n)
+SqrSignal = <span style="color: #B452CD">1.0</span>+signal.square(<span style="color: #B452CD">2</span>*np.pi*<span style="color: #B452CD">5</span>*t+np.pi*Width/T)
+a0 = Fmax*Width/T
+FourierSeriesSignal = a0
+Factor = <span style="color: #B452CD">2.0</span>*Fmax/np.pi
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>,<span style="color: #B452CD">500</span>):
+    FourierSeriesSignal += Factor/(i)*np.sin(np.pi*i*Width/T)*np.cos(i*t*<span style="color: #B452CD">2</span>*np.pi/T)
+plt.plot(t, SqrSignal)
+plt.plot(t, FourierSeriesSignal)
+plt.ylim(-<span style="color: #B452CD">0.5</span>, <span style="color: #B452CD">2.5</span>)
+plt.show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="two-dimensional-objects">Two-dimensional Objects </h2>
+
+<p>We often use convolutions over more than one dimension at a time. If
+we have a two-dimensional image \( I \) as input, we can have a <b>filter</b>
+defined by a two-dimensional <b>kernel</b> \( K \). This leads to an output \( S \)
+</p>
+
+<p>&nbsp;<br>
+$$
+S_(i,j)=(I * K)(i,j) = \sum_m\sum_n I(m,n)K(i-m,j-n).
+$$
+<p>&nbsp;<br>
+
+<p>Convolution is a commutatitave process, which means we can rewrite this equation as</p>
+<p>&nbsp;<br>
+$$
+S_(i,j)=(I * K)(i,j) = \sum_m\sum_n I(i-m,j-n)K(m,n).
+$$
+<p>&nbsp;<br>
+
+<p>Normally the latter is more straightforward to implement in  a machine elarning library since there is less variation in the range of values of \( m \) and \( n \).</p>
+</section>
+
+<section>
+<h2 id="cross-correlation">Cross-Correlation </h2>
+
+<p>Many deep learning libraries implement cross-correlation instead of convolution</p>
+<p>&nbsp;<br>
+$$
+S_(i,j)=(I * K)(i,j) = \sum_m\sum_n I(i+m,j-+)K(m,n).
+$$
+<p>&nbsp;<br>
+</section>
+
+<section>
+<h2 id="more-on-dimensionalities">More on Dimensionalities </h2>
+
+<p>In feilds like signal processing (and imaging as well), one designs
+so-called filters. These filters are defined by the convolutions and
+are often hand-crafted. One may specify filters for smoothing, edge
+detection, frequency reshaping, and similar operations. However with
+neural networks the idea is to automatically learn the filters and use
+many of them in conjunction with non-linear operations (activation
+functions).
+</p>
+
+<p>As an example consider a neural network operating on sound sequence
+data.  Assume that we an input vector \( \boldsymbol{x} \) of length \( d=10^6 \).  We
+construct then a neural network with onle hidden layer only with
+\( 10^4 \) nodes. This means that we will have a weight matrix with
+\( 10^4\times 10^6=10^{10} \) weights to be determined, together with \( 10^4 \) biases.
+</p>
+
+<p>Assume furthermore that we have an output layer which is meant to train whether the sound sequence represents a human voice (true) or something else (false).
+It means that we have only one output node. But since this output node connects to \( 10^4 \) nodes in the hidden layer, there are in total \( 10^4 \) weights to be determined for the output layer, plus one bias. In total we have
+</p>
+
+<p>&nbsp;<br>
+$$
+\mathrm{NumberParameters}=10^{10}+10^4+10^4+1 \approx 10^{10},
+$$
+<p>&nbsp;<br>
+
+<p>that is ten billion parameters to determine. </p>
+</section>
+
+<section>
+<h2 id="further-dimensionality-remarks">Further Dimensionality Remarks </h2>
+
+<p>In today&#8217;s architecture one can train such neural networks, however
+this is a huge number of parameters for the task at hand. In general,
+it is a very wasteful and inefficient use of dense matrices as
+parameters. Just as importantly, such trained network parameters are
+very specific for the type of input data on which they were trained
+and the network is not likely to generalize easily to variations in
+the input.
+</p>
+
+<p>The main principles that justify convolutions is locality of
+information and repetion of patterns within the signal. Sound samples
+of the input in adjacent spots are much more likely to affect each
+other than those that are very far away. Similarly, sounds are
+repeated in multiple times in the signal. While slightly simplistic,
+reasoning about such a sound example demonstrates this. The same
+principles then apply to images and other similar data.
+</p>
+</section>
+
+<section>
+<h2 id="cnns-in-more-detail-lecture-from-in5400">CNNs in more detail, Lecture from IN5400 </h2>
+
+<ul>
+<p><li> <a href="https://www.uio.no/studier/emner/matnat/ifi/IN5400/v19/material/week5/in5400_2019_week5_convolutional_nerual_networks.pdf" target="_blank">Lectures from IN5400 spring 2019</a></li>
+</ul>
 </section>
 
 <section>
@@ -1039,6 +2538,8 @@ systems such as automatic translation and speech-to-text.
 
 <section>
 <h2 id="set-up-of-an-rnn">Set up of an RNN </h2>
+
+<p>More to text to be added</p>
 </section>
 
 <section>
@@ -1802,501 +3303,189 @@ end = timer()
 </section>
 
 <section>
-<h2 id="decision-trees-overarching-aims">Decision trees, overarching aims  </h2>
+<h2 id="generative-models">Generative Models </h2>
 
-<p>We start here with the most basic algorithm, the so-called decision
-tree. With this basic algorithm we can in turn build more complex
-networks, spanning from homogeneous and heterogenous forests (bagging,
-random forests and more) to one of the most popular supervised
-algorithms nowadays, the extreme gradient boosting, or just
-XGBoost. But let us start with the simplest possible ingredient.
+<p><b>Generative models</b> describe a class of statistical models that are a contrast
+to <b>discriminative models</b>. Informally we say that generative models can
+generate new data instances while discriminative models discriminate between
+different kinds of data instances. A generative model could generate new photos
+of animals that look like 'real' animals while a discriminative model could tell
+a dog from a cat. More formally, given a data set \( x \) and a set of labels /
+targets \( y \). Generative models capture the joint probability \( p(x, y) \), or
+just \( p(x) \) if there are no labels, while discriminative models capture the
+conditional probability \( p(y | x) \). Discriminative models generally try to draw
+boundaries in the data space (often high dimensional), while generative models
+try to model how data is placed throughout the space.
 </p>
 
-<p>Decision trees are supervised learning algorithms used for both,
-classification and regression tasks.
-</p>
-
-<p>The main idea of decision trees
-is to find those descriptive features which contain the most
-<b>information</b> regarding the target feature and then split the dataset
-along the values of these features such that the target feature values
-for the resulting underlying datasets are as pure as possible.
-</p>
-
-<p>The descriptive features which reproduce best the target/output features are normally  said
-to be the most informative ones. The process of finding the <b>most
-informative</b> feature is done until we accomplish a stopping criteria
-where we then finally end up in so called <b>leaf nodes</b>. 
-</p>
+<p><b>Note</b>: this material is thanks to Linus Ekstr&#248;m. </p>
 </section>
 
 <section>
-<h2 id="basics-of-a-tree">Basics of a tree </h2>
+<h2 id="generative-adversarial-networks">Generative Adversarial Networks </h2>
 
-<p>A decision tree is typically divided into a <b>root node</b>, the <b>interior nodes</b>,
-and the final <b>leaf nodes</b> or just <b>leaves</b>. These entities are then connected by so-called <b>branches</b>.
+<p><b>Generative Adversarial Networks</b> are a type of unsupervised machine learning
+algorithm proposed by <a href="https://arxiv.org/pdf/1406.2661.pdf" target="_blank">Goodfellow et. al</a>
+in 2014 (short and good article).
 </p>
 
-<p>The leaf nodes
-contain the predictions we will make for new query instances presented
-to our trained model. This is possible since the model has 
-learned the underlying structure of the training data and hence can,
-given some assumptions, make predictions about the target feature value
-(class) of unseen query instances.
-</p>
-</section>
-
-<section>
-<h2 id="a-sketch-of-a-tree-regression-problem">A Sketch of a Tree, Regression problem  </h2>
-
-<!-- FIGURE: [DataFiles/Regsimpletree.png, width=600 frac=0.8] -->
-</section>
-
-<section>
-<h2 id="a-sketch-of-a-tree-classification-problem">A Sketch of a Tree, Classification  problem  </h2>
-
-<!-- FIGURE: [DataFiles/Classimpletree.png, width=600 frac=0.8] -->
-</section>
-
-<section>
-<h2 id="a-typical-decision-tree-with-its-pertinent-jargon-classification-problem">A typical Decision Tree with its pertinent Jargon, Classification Problem </h2>
-
-<br/><br/>
-<center>
-<p><img src="DataFiles/cancer.png" width="600" align="bottom"></p>
-</center>
-<br/><br/>
-
-<p>This tree was produced using the Wisconsin cancer data (discussed here as well, see code examples below) using <b>Scikit-Learn</b>'s decision tree classifier. Here we have used the so-called <b>gini</b> index (see below) to split the various branches.</p>
-</section>
-
-<section>
-<h2 id="general-features">General Features </h2>
-
-<p>The overarching approach to decision trees is a top-down approach.</p>
-
-<ul>
-<p><li> A leaf provides the classification of a given instance.</li>
-<p><li> A node specifies a test of some attribute of the instance.</li>
-<p><li> A branch corresponds to a possible values of an attribute.</li>
-<p><li> An instance is classified by starting at the root node of the tree, testing the attribute specified by this node, then moving down the tree branch corresponding to the value of the attribute in the given example.</li>
-</ul>
-<p>
-<p>This process is then repeated for the subtree rooted at the new
-node.
-</p>
-</section>
-
-<section>
-<h2 id="how-do-we-set-it-up">How do we set it up? </h2>
-
-<p>In simplified terms, the process of training a decision tree and
-predicting the target features of query instances is as follows:
-</p>
-
-<ol>
-<p><li> Present a dataset containing of a number of training instances characterized by a number of descriptive features and a target feature</li>
-<p><li> Train the decision tree model by continuously splitting the target feature along the values of the descriptive features using a measure of information gain during the training process</li>
-<p><li> Grow the tree until we accomplish a stopping criteria create leaf nodes which represent the <em>predictions</em> we want to make for new query instances</li>
-<p><li> Show query instances to the tree and run down the tree until we arrive at leaf nodes</li>
-</ol>
-<p>
-<p>Then we are essentially done!</p>
-</section>
-
-<section>
-<h2 id="decision-trees-and-regression">Decision trees and Regression  </h2>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> PolynomialFeatures
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LinearRegression
-
-steps=<span style="color: #B452CD">250</span>
-
-distance=<span style="color: #B452CD">0</span>
-x=<span style="color: #B452CD">0</span>
-distance_list=[]
-steps_list=[]
-<span style="color: #8B008B; font-weight: bold">while</span> x&lt;steps:
-    distance+=np.random.randint(-<span style="color: #B452CD">1</span>,<span style="color: #B452CD">2</span>)
-    distance_list.append(distance)
-    x+=<span style="color: #B452CD">1</span>
-    steps_list.append(x)
-plt.plot(steps_list,distance_list, color=<span style="color: #CD5555">&#39;green&#39;</span>, label=<span style="color: #CD5555">&quot;Random Walk Data&quot;</span>)
-
-steps_list=np.asarray(steps_list)
-distance_list=np.asarray(distance_list)
-
-X=steps_list[:,np.newaxis]
-
-<span style="color: #228B22">#Polynomial fits</span>
-
-<span style="color: #228B22">#Degree 2</span>
-poly_features=PolynomialFeatures(degree=<span style="color: #B452CD">2</span>, include_bias=<span style="color: #8B008B; font-weight: bold">False</span>)
-X_poly=poly_features.fit_transform(X)
-
-lin_reg=LinearRegression()
-poly_fit=lin_reg.fit(X_poly,distance_list)
-b=lin_reg.coef_
-c=lin_reg.intercept_
-<span style="color: #658b00">print</span> (<span style="color: #CD5555">&quot;2nd degree coefficients:&quot;</span>)
-<span style="color: #658b00">print</span> (<span style="color: #CD5555">&quot;zero power: &quot;</span>,c)
-<span style="color: #658b00">print</span> (<span style="color: #CD5555">&quot;first power: &quot;</span>, b[<span style="color: #B452CD">0</span>])
-<span style="color: #658b00">print</span> (<span style="color: #CD5555">&quot;second power: &quot;</span>,b[<span style="color: #B452CD">1</span>])
-
-z = np.arange(<span style="color: #B452CD">0</span>, steps, <span style="color: #B452CD">.01</span>)
-z_mod=b[<span style="color: #B452CD">1</span>]*z**<span style="color: #B452CD">2</span>+b[<span style="color: #B452CD">0</span>]*z+c
-
-fit_mod=b[<span style="color: #B452CD">1</span>]*X**<span style="color: #B452CD">2</span>+b[<span style="color: #B452CD">0</span>]*X+c
-plt.plot(z, z_mod, color=<span style="color: #CD5555">&#39;r&#39;</span>, label=<span style="color: #CD5555">&quot;2nd Degree Fit&quot;</span>)
-plt.title(<span style="color: #CD5555">&quot;Polynomial Regression&quot;</span>)
-
-plt.xlabel(<span style="color: #CD5555">&quot;Steps&quot;</span>)
-plt.ylabel(<span style="color: #CD5555">&quot;Distance&quot;</span>)
-
-<span style="color: #228B22">#Degree 10</span>
-poly_features10=PolynomialFeatures(degree=<span style="color: #B452CD">10</span>, include_bias=<span style="color: #8B008B; font-weight: bold">False</span>)
-X_poly10=poly_features10.fit_transform(X)
-
-poly_fit10=lin_reg.fit(X_poly10,distance_list)
-
-y_plot=poly_fit10.predict(X_poly10)
-plt.plot(X, y_plot, color=<span style="color: #CD5555">&#39;black&#39;</span>, label=<span style="color: #CD5555">&quot;10th Degree Fit&quot;</span>)
-
-plt.legend()
-plt.show()
-
-
-<span style="color: #228B22">#Decision Tree Regression</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeRegressor
-regr_1=DecisionTreeRegressor(max_depth=<span style="color: #B452CD">2</span>)
-regr_2=DecisionTreeRegressor(max_depth=<span style="color: #B452CD">5</span>)
-regr_3=DecisionTreeRegressor(max_depth=<span style="color: #B452CD">7</span>)
-regr_1.fit(X, distance_list)
-regr_2.fit(X, distance_list)
-regr_3.fit(X, distance_list)
-
-X_test = np.arange(<span style="color: #B452CD">0.0</span>, steps, <span style="color: #B452CD">0.01</span>)[:, np.newaxis]
-y_1 = regr_1.predict(X_test)
-y_2 = regr_2.predict(X_test)
-y_3=regr_3.predict(X_test)
-
-<span style="color: #228B22"># Plot the results</span>
-plt.figure()
-plt.scatter(X, distance_list, s=<span style="color: #B452CD">2.5</span>, c=<span style="color: #CD5555">&quot;black&quot;</span>, label=<span style="color: #CD5555">&quot;data&quot;</span>)
-plt.plot(X_test, y_1, color=<span style="color: #CD5555">&quot;red&quot;</span>,
-         label=<span style="color: #CD5555">&quot;max_depth=2&quot;</span>, linewidth=<span style="color: #B452CD">2</span>)
-plt.plot(X_test, y_2, color=<span style="color: #CD5555">&quot;green&quot;</span>, label=<span style="color: #CD5555">&quot;max_depth=5&quot;</span>, linewidth=<span style="color: #B452CD">2</span>)
-plt.plot(X_test, y_3, color=<span style="color: #CD5555">&quot;m&quot;</span>, label=<span style="color: #CD5555">&quot;max_depth=7&quot;</span>, linewidth=<span style="color: #B452CD">2</span>)
-
-plt.xlabel(<span style="color: #CD5555">&quot;Data&quot;</span>)
-plt.ylabel(<span style="color: #CD5555">&quot;Darget&quot;</span>)
-plt.title(<span style="color: #CD5555">&quot;Decision Tree Regression&quot;</span>)
-plt.legend()
-plt.show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="building-a-tree-regression">Building a tree, regression </h2>
-
-<p>There are mainly two steps</p>
-<ol>
-<p><li> We split the predictor space (the set of possible values \( x_1,x_2,\dots, x_p \)) into \( J \) distinct and non-non-overlapping regions, \( R_1,R_2,\dots,R_J \).</li>
-
-<p><li> For every observation that falls into the region \( R_j \) , we make the same prediction, which is simply the mean of the response values for the training observations in \( R_j \).</li>
-</ol>
-<p>
-<p>How do we construct the regions \( R_1,\dots,R_J \)?  In theory, the
-regions could have any shape. However, we choose to divide the
-predictor space into high-dimensional rectangles, or boxes, for
-simplicity and for ease of interpretation of the resulting predictive
-model. The goal is to find boxes \( R_1,\dots,R_J \) that minimize the
-MSE, given by
-</p>
-
-<p>&nbsp;<br>
-$$
-\sum_{j=1}^J\sum_{i\in R_j}(y_i-\overline{y}_{R_j})^2,
-$$
-<p>&nbsp;<br>
-
-<p>where \( \overline{y}_{R_j} \)  is the mean response for the training observations 
-within box \( j \). 
-</p>
-</section>
-
-<section>
-<h2 id="a-top-down-approach-recursive-binary-splitting">A top-down approach, recursive binary splitting </h2>
-
-<p>Unfortunately, it is computationally infeasible to consider every
-possible partition of the feature space into \( J \) boxes.  The common
-strategy is to take a top-down approach
-</p>
-
-<p>The approach is top-down because it begins at the top of the tree (all
-observations belong to a single region) and then successively splits
-the predictor space; each split is indicated via two new branches
-further down on the tree. It is greedy because at each step of the
-tree-building process, the best split is made at that particular step,
-rather than looking ahead and picking a split that will lead to a
-better tree in some future step.
-</p>
-</section>
-
-<section>
-<h2 id="making-a-tree">Making a tree </h2>
-
-<p>In order to implement the recursive binary splitting we start by selecting
-the predictor \( x_j \) and a cutpoint \( s \) that splits the predictor space into two regions \( R_1 \) and \( R_2 \)
+<p>The simplest formulation of
+the model is based on a game theoretic approach, <em>zero sum game</em>, where we pit
+two neural networks against one another. We define two rival networks, one
+generator \( g \), and one discriminator \( d \). The generator directly produces
+samples
 </p>
 <p>&nbsp;<br>
 $$
-\left\{X\vert x_j < s\right\},
-$$
-<p>&nbsp;<br>
-
-<p>and</p>
-<p>&nbsp;<br>
-$$
-\left\{X\vert x_j \geq s\right\},
-$$
-<p>&nbsp;<br>
-
-<p>so that we obtain the lowest MSE, that is</p>
-<p>&nbsp;<br>
-$$
-\sum_{i:x_i\in R_j}(y_i-\overline{y}_{R_1})^2+\sum_{i:x_i\in R_2}(y_i-\overline{y}_{R_2})^2,
-$$
-<p>&nbsp;<br>
-
-<p>which we want to minimize by considering all predictors
-\( x_1,x_2,\dots,x_p \).  We consider also all possible values of \( s \) for
-each predictor. These values could be determined by randomly assigned
-numbers or by starting at the midpoint and then proceed till we find
-an optimal value.
-</p>
-
-<p>For any \( j \) and \( s \), we define the pair of half-planes where
-\( \overline{y}_{R_1} \) is the mean response for the training
-observations in \( R_1(j,s) \), and \( \overline{y}_{R_2} \) is the mean
-response for the training observations in \( R_2(j,s) \).
-</p>
-
-<p>Finding the values of \( j \) and \( s \) that minimize the above equation can be
-done quite quickly, especially when the number of features \( p \) is not
-too large.
-</p>
-
-<p>Next, we repeat the process, looking
-for the best predictor and best cutpoint in order to split the data
-further so as to minimize the MSE within each of the resulting
-regions. However, this time, instead of splitting the entire predictor
-space, we split one of the two previously identified regions. We now
-have three regions. Again, we look to split one of these three regions
-further, so as to minimize the MSE. The process continues until a
-stopping criterion is reached; for instance, we may continue until no
-region contains more than five observations.
-</p>
-</section>
-
-<section>
-<h2 id="pruning-the-tree">Pruning the tree </h2>
-
-<p>The above procedure is rather straightforward, but leads often to
-overfitting and unnecessarily large and complicated trees. The basic
-idea is to grow a large tree \( T_0 \) and then prune it back in order to
-obtain a subtree. A smaller tree with fewer splits (fewer regions) can
-lead to smaller variance and better interpretation at the cost of a
-little more bias.
-</p>
-
-<p>The so-called Cost complexity pruning algorithm gives us a
-way to do just this. Rather than considering every possible subtree,
-we consider a sequence of trees indexed by a nonnegative tuning
-parameter \( \alpha \).
-</p>
-
-<p>Read more at the following <a href="https://scikit-learn.org/stable/auto_examples/tree/plot_cost_complexity_pruning.html#sphx-glr-auto-examples-tree-plot-cost-complexity-pruning-py" target="_blank">Scikit-Learn link on pruning</a>.</p>
-</section>
-
-<section>
-<h2 id="cost-complexity-pruning">Cost complexity pruning </h2>
-
-<p>For each value of \( \alpha \)  there corresponds a subtree \( T \in T_0 \) such that</p>
-<p>&nbsp;<br>
-$$
-\sum_{m=1}^{\overline{T}}\sum_{i:x_i\in R_m}(y_i-\overline{y}_{R_m})^2+\alpha\overline{T},
-$$
-<p>&nbsp;<br>
-
-<p>is as small as possible. Here \( \overline{T} \) is 
-the number of terminal nodes of the tree \( T \) , \( R_m \) is the
-rectangle (i.e. the subset of predictor space)  corresponding to the \( m \)-th terminal node.
-</p>
-
-<p>The tuning parameter \( \alpha \) controls a trade-off between the subtree&#8217;s
-complexity and its fit to the training data. When \( \alpha = 0 \), then the
-subtree \( T \) will simply equal \( T_0 \), 
-because then the above equation just measures the
-training error. 
-However, as \( \alpha \) increases, there is a price to pay for
-having a tree with many terminal nodes. The above equation will
-tend to be minimized for a smaller subtree. 
-</p>
-
-<p>It turns out that as we increase \( \alpha \) from zero
-branches get pruned from the tree in a nested and predictable fashion,
-so obtaining the whole sequence of subtrees as a function of \( \alpha \) is
-easy. We can select a value of \( \alpha \) using a validation set or using
-cross-validation. We then return to the full data set and obtain the
-subtree corresponding to \( \alpha \). 
-</p>
-</section>
-
-<section>
-<h2 id="schematic-regression-procedure">Schematic Regression Procedure </h2>
-
-<div class="alert alert-block alert-block alert-text-normal">
-<b>Building a Regression Tree</b>
-<p>
-
-<ol>
-<p><li> Use recursive binary splitting to grow a large tree on the training data, stopping only when each terminal node has fewer than some minimum number of observations.</li>
-<p><li> Apply cost complexity pruning to the large tree in order to obtain a sequence of best subtrees, as a function of \( \alpha \).</li>
-<p><li> Use for example \( K \)-fold cross-validation to choose \( \alpha \). Divide the training observations into \( K \) folds. For each \( k=1,2,\dots,K \) we:</li> 
-<ul>
-
-<p><li> repeat steps 1 and 2 on all but the \( k \)-th fold of the training data.</li>
-
-<p><li> Then we valuate the mean squared prediction error on the data in the left-out \( k \)-th fold, as a function of \( \alpha \).</li>
-
-<p><li> Finally  we average the results for each value of \( \alpha \), and pick \( \alpha \) to minimize the average error.</li>
-</ul>
-<p>
-<p><li> Return the subtree from Step 2 that corresponds to the chosen value of \( \alpha \).</li> 
-</ol>
-</div>
-</section>
-
-<section>
-<h2 id="a-classification-tree">A Classification Tree </h2>
-
-<p>A classification tree is very similar to a regression tree, except
-that it is used to predict a qualitative response rather than a
-quantitative one. Recall that for a regression tree, the predicted
-response for an observation is given by the mean response of the
-training observations that belong to the same terminal node. In
-contrast, for a classification tree, we predict that each observation
-belongs to the most commonly occurring class of training observations
-in the region to which it belongs. In interpreting the results of a
-classification tree, we are often interested not only in the class
-prediction corresponding to a particular terminal node region, but
-also in the class proportions among the training observations that
-fall into that region.  
-</p>
-</section>
-
-<section>
-<h2 id="growing-a-classification-tree">Growing a classification tree </h2>
-
-<p>The task of growing a
-classification tree is quite similar to the task of growing a
-regression tree. Just as in the regression setting, we use recursive
-binary splitting to grow a classification tree. However, in the
-classification setting, the MSE cannot be used as a criterion for making
-the binary splits.  A natural alternative to MSE is the <b>classification
-error rate</b>. Since we plan to assign an observation in a given region
-to the most commonly occurring error rate class of training
-observations in that region, the classification error rate is simply
-the fraction of the training observations in that region that do not
-belong to the most common class. 
-</p>
-
-<p>When building a classification tree, either the Gini index or the
-entropy are typically used to evaluate the quality of a particular
-split, since these two approaches are more sensitive to node purity
-than is the classification error rate. 
-</p>
-</section>
-
-<section>
-<h2 id="classification-tree-how-to-split-nodes">Classification tree, how to split nodes </h2>
-
-<p>If our targets are the outcome of a classification process that takes
-for example \( k=1,2,\dots,K \) values, the only thing we need to think of
-is to set up the splitting criteria for each node.
-</p>
-
-<p>We define a PDF \( p_{mk} \) that represents the number of observations of
-a class \( k \) in a region \( R_m \) with \( N_m \) observations. We represent
-this likelihood function in terms of the proportion \( I(y_i=k) \) of
-observations of this class in the region \( R_m \) as
-</p>
-
-<p>&nbsp;<br>
-$$
-p_{mk} = \frac{1}{N_m}\sum_{x_i\in R_m}I(y_i=k).
-$$
-<p>&nbsp;<br>
-
-<p>We let \( p_{mk} \) represent the majority class of observations in region
-\( m \). The three most common ways of splitting a node are given by
-</p>
-
-<ul>
-<p><li> Misclassification error</li> 
-</ul>
-<p>
-<p>&nbsp;<br>
-$$
-p_{mk} = \frac{1}{N_m}\sum_{x_i\in R_m}I(y_i\ne k) = 1-p_{mk}.
-$$
-<p>&nbsp;<br>
-
-<ul>
-<p><li> Gini index \( g \)</li>
-</ul>
-<p>
-<p>&nbsp;<br>
-$$
-g = \sum_{k=1}^K p_{mk}(1-p_{mk}).
-$$
-<p>&nbsp;<br>
-
-<ul>
-<p><li> Information entropy or just entropy \( s \)</li>
-</ul>
-<p>
-<p>&nbsp;<br>
-$$
-s = -\sum_{k=1}^K p_{mk}\log{p_{mk}}.
+\begin{equation}
+    x = g(z; \theta^{(g)})
+\tag{6}
+\end{equation}
 $$
 <p>&nbsp;<br>
 </section>
 
 <section>
-<h2 id="visualizing-the-tree-classification">Visualizing the Tree, Classification </h2>
+<h2 id="discriminator">Discriminator </h2>
+<p>The discriminator attempts to distinguish between samples drawn from the
+training data and samples drawn from the generator. In other words, it tries to
+tell the difference between the fake data produced by \( g \) and the actual data
+samples we want to do prediction on. The discriminator outputs a probability
+value given by
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+    d(x; \theta^{(d)})
+\tag{7}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>indicating the probability that \( x \) is a real training example rather than a
+fake sample the generator has generated. The simplest way to formulate the
+learning process in a generative adversarial network is a zero-sum game, in
+which a function
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+    v(\theta^{(g)}, \theta^{(d)})
+\tag{8}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>determines the reward for the discriminator, while the generator gets the
+conjugate reward
+</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+    -v(\theta^{(g)}, \theta^{(d)})
+\tag{9}
+\end{equation}
+$$
+<p>&nbsp;<br>
+</section>
+
+<section>
+<h2 id="learning-process">Learning Process </h2>
+
+<p>During learning both of the networks maximize their own reward function, so that
+the generator gets better and better at tricking the discriminator, while the
+discriminator gets better and better at telling the difference between the fake
+and real data. The generator and discriminator alternate on which one trains at
+one time (i.e. for one epoch). In other words, we keep the generator constant
+and train the discriminator, then we keep the discriminator constant to train
+the generator and repeat. It is this back and forth dynamic which lets GANs
+tackle otherwise intractable generative problems. As the generator improves with
+ training, the discriminator's performance gets worse because it cannot easily
+ tell the difference between real and fake. If the generator ends up succeeding
+ perfectly, the the discriminator will do no better than random guessing i.e.
+ 50\%. This progression in the training poses a problem for the convergence
+ criteria for GANs. The discriminator feedback gets less meaningful over time,
+ if we continue training after this point then the generator is effectively
+ training on junk data which can undo the learning up to that point. Therefore,
+ we stop training when the discriminator starts outputting \( 1/2 \) everywhere.
+</p>
+</section>
+
+<section>
+<h2 id="more-about-the-learning-process">More about the Learning Process </h2>
+
+<p>At convergence we have</p>
+
+<p>&nbsp;<br>
+$$
+\begin{equation}
+    g^* = \underset{g}{\mathrm{argmin}}\hspace{2pt}
+          \underset{d}{\mathrm{max}}v(\theta^{(g)}, \theta^{(d)})
+\tag{10}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>The default choice for \( v \) is</p>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+    v(\theta^{(g)}, \theta^{(d)}) = \mathbb{E}_{x\sim p_\mathrm{data}}\log d(x)
+                                  + \mathbb{E}_{x\sim p_\mathrm{model}}
+                                  \log (1 - d(x))
+\tag{11}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>The main motivation for the design of GANs is that the learning process requires
+neither approximate inference (variational autoencoders for example) nor
+approximation of a partition function. In the case where
+</p>
+<p>&nbsp;<br>
+$$
+\begin{equation}
+    \underset{d}{\mathrm{max}}v(\theta^{(g)}, \theta^{(d)})
+\tag{12}
+\end{equation}
+$$
+<p>&nbsp;<br>
+
+<p>is convex in $\theta^{(g)} then the procedure is guaranteed to converge and is
+asymptotically consistent
+( <a href="https://arxiv.org/pdf/1804.09139.pdf" target="_blank">Seth Lloyd on QuGANs</a>  ).
+</p>
+</section>
+
+<section>
+<h2 id="additional-references">Additional References </h2>
+<p>This is in
+general not the case and it is possible to get situations where the training
+process never converges because the generator and discriminator chase one
+another around in the parameter space indefinitely. A much deeper discussion on
+the currently open research problem of GAN convergence is available
+<a href="https://www.deeplearningbook.org/contents/generative_models.html" target="_blank">here</a>. To
+anyone interested in learning more about GANs it is a highly recommended read.
+Direct quote: "In this best-performing formulation, the generator aims to
+increase the log probability that the discriminator makes a mistake, rather than
+aiming to decrease the log probability that the discriminator makes the correct
+prediction." <a href="https://arxiv.org/abs/1701.00160" target="_blank">Another interesting read</a>
+</p>
+</section>
+
+<section>
+<h2 id="writing-our-first-generative-adversarial-network">Writing Our First Generative Adversarial Network </h2>
+<p>Let us now move on to actually implementing a GAN in tensorflow. We will study
+the performance of our GAN on the MNIST dataset. This code is based on and
+adapted from the
+<a href="https://www.tensorflow.org/tutorials/generative/dcgan" target="_blank">google tutorial</a>
+</p>
+
+<p>First we import our libraries</p>
+
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="cell border-box-sizing code_cell rendered">
@@ -2305,392 +3494,80 @@ $$
       <div class="input_area">
         <div class="highlight" style="background: #eeeedd">
   <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_breast_cancer
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeClassifier
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.metrics</span> <span style="color: #8B008B; font-weight: bold">import</span> confusion_matrix
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> export_graphviz
-
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">IPython.display</span> <span style="color: #8B008B; font-weight: bold">import</span> Image 
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">pydot</span> <span style="color: #8B008B; font-weight: bold">import</span> graph_from_dot_data
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">time</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-
-
-cancer = load_breast_cancer()
-X = pd.DataFrame(cancer.data, columns=cancer.feature_names)
-<span style="color: #658b00">print</span>(X)
-y = pd.Categorical.from_codes(cancer.target, cancer.target_names)
-y = pd.get_dummies(y)
-<span style="color: #658b00">print</span>(y)
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=<span style="color: #B452CD">1</span>)
-tree_clf = DecisionTreeClassifier(max_depth=<span style="color: #B452CD">5</span>)
-tree_clf.fit(X_train, y_train)
-
-export_graphviz(
-    tree_clf,
-    out_file=<span style="color: #CD5555">&quot;DataFiles/cancer.dot&quot;</span>,
-    feature_names=cancer.feature_names,
-    class_names=cancer.target_names,
-    rounded=<span style="color: #8B008B; font-weight: bold">True</span>,
-    filled=<span style="color: #8B008B; font-weight: bold">True</span>
-)
-cmd = <span style="color: #CD5555">&#39;dot -Tpng DataFiles/cancer.dot -o DataFiles/cancer.png&#39;</span>
-os.system(cmd)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="visualizing-the-tree-the-moons">Visualizing the Tree, The Moons  </h2>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #228B22"># Common imports</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span>  train_test_split 
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeClassifier
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> make_moons
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> export_graphviz
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">pydot</span> <span style="color: #8B008B; font-weight: bold">import</span> graph_from_dot_data
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
-
-np.random.seed(<span style="color: #B452CD">42</span>)
-X, y = make_moons(n_samples=<span style="color: #B452CD">100</span>, noise=<span style="color: #B452CD">0.25</span>, random_state=<span style="color: #B452CD">53</span>)
-X_train, X_test, y_train, y_test = train_test_split(X,y,random_state=<span style="color: #B452CD">0</span>)
-tree_clf = DecisionTreeClassifier(max_depth=<span style="color: #B452CD">5</span>)
-tree_clf.fit(X_train, y_train)
-
-export_graphviz(
-    tree_clf,
-    out_file=<span style="color: #CD5555">&quot;DataFiles/moons.dot&quot;</span>,
-    rounded=<span style="color: #8B008B; font-weight: bold">True</span>,
-    filled=<span style="color: #8B008B; font-weight: bold">True</span>
-)
-cmd = <span style="color: #CD5555">&#39;dot -Tpng DataFiles/moons.dot -o DataFiles/moons.png&#39;</span>
-os.system(cmd)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="other-ways-of-visualizing-the-trees">Other ways of visualizing the trees </h2>
-
-<p><b>Scikit-Learn</b> has also another way to visualize the trees which is very useful, here with the Iris data.</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_iris
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn</span> <span style="color: #8B008B; font-weight: bold">import</span> tree
-X, y = load_iris(return_X_y=<span style="color: #8B008B; font-weight: bold">True</span>)
-tree_clf = tree.DecisionTreeClassifier()
-tree_clf = tree_clf.fit(X, y)
-<span style="color: #228B22"># and then plot the tree</span>
-tree.plot_tree(tree_clf) 
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="printing-out-as-text">Printing out as text </h2>
-
-<p>Alternatively, the tree can also be exported in textual format with the function exporttext.
-This method doesn&#8217;t require the installation of external libraries and is more compact:
-</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_iris
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeClassifier
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> export_text
-iris = load_iris()
-decision_tree = DecisionTreeClassifier(random_state=<span style="color: #B452CD">0</span>, max_depth=<span style="color: #B452CD">2</span>)
-decision_tree = decision_tree.fit(iris.data, iris.target)
-r = export_text(decision_tree, feature_names=iris[<span style="color: #CD5555">&#39;feature_names&#39;</span>])
-<span style="color: #658b00">print</span>(r)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="algorithms-for-setting-up-decision-trees">Algorithms for Setting up Decision Trees </h2>
-
-<p>Two algorithms stand out in the set up of decision trees:</p>
-<ol>
-<p><li> The CART (Classification And Regression Tree) algorithm for both classification and regression</li>
-<p><li> The ID3 algorithm based on the computation of the information gain for classification</li>
-</ol>
-<p>
-<p>We discuss both algorithms with applications here. The popular library
-<b>Scikit-Learn</b> uses the CART algorithm. For classification problems
-you can use either the <b>gini</b> index or the <b>entropy</b> to split a tree
-in two branches.
-</p>
-</section>
-
-<section>
-<h2 id="the-cart-algorithm-for-classification">The CART algorithm for Classification </h2>
-
-<p>For classification, the CART algorithm splits the data set in two subsets using a single feature \( k \) and a threshold \( t_k \).
-This could be for example a threshold set by a number below a certain circumference of a malign tumor.
-</p>
-
-<p>How do we find these two quantities?
-We search for the pair \( (k,t_k) \) that produces the purest subset using for example the <b>gini</b> factor \( G \).
-The cost function it tries to minimize is then
-</p>
-<p>&nbsp;<br>
-$$
-C(k,t_k) = \frac{m_{\mathrm{left}}}{m}G_{\mathrm{left}}+ \frac{m_{\mathrm{right}}}{m}G_{\mathrm{right}},
-$$
-<p>&nbsp;<br>
-
-<p>where \( G_{\mathrm{left/right}} \) measures the impurity of the left/right subset  and \( m_{\mathrm{left/right}} \)
- is the number of instances in the left/right subset
-</p>
-
-<p>Once it has successfully split the training set in two, it splits the subsets using the same logic, then the subsubsets
-and so on, recursively. It stops recursing once it reaches the maximum depth (defined by the
-\( max\_depth \) hyperparameter), or if it cannot find a split that will reduce impurity. A few other
-hyperparameters control additional stopping conditions such as the \( min\_samples\_split \),
-\( min\_samples\_leaf \), \( min\_weight\_fraction\_leaf \), and \( max\_leaf\_nodes \).
-</p>
-</section>
-
-<section>
-<h2 id="the-cart-algorithm-for-regression">The CART algorithm for Regression </h2>
-
-<p>The CART algorithm for regression works is similar to the one for classification except that instead of trying to split the
-training set in a way that minimizes say the <b>gini</b> or <b>entropy</b> impurity, it now tries to split the training set in a way that minimizes our well-known mean-squared error (MSE). The cost function is now
-</p>
-<p>&nbsp;<br>
-$$
-C(k,t_k) = \frac{m_{\mathrm{left}}}{m}\mathrm{MSE}_{\mathrm{left}}+ \frac{m_{\mathrm{right}}}{m}\mathrm{MSE}_{\mathrm{right}}.
-$$
-<p>&nbsp;<br>
-
-<p>Here the MSE for a specific node is defined as</p>
-<p>&nbsp;<br>
-$$
-\mathrm{MSE}_{\mathrm{node}}=\frac{1}{m_\mathrm{node}}\sum_{i\in \mathrm{node}}(\overline{y}_{\mathrm{node}}-y_i)^2,
-$$
-<p>&nbsp;<br>
-
-<p>with</p>
-<p>&nbsp;<br>
-$$
-\overline{y}_{\mathrm{node}}=\frac{1}{m_\mathrm{node}}\sum_{i\in \mathrm{node}}y_i,
-$$
-<p>&nbsp;<br>
-
-<p>the mean value of all observations in a specific node.</p>
-
-<p>Without any regularization, the regression task for decision trees, 
-just like for classification tasks, is  prone to overfitting.
-</p>
-</section>
-
-<section>
-<h2 id="cancer-data-again-now-with-decision-trees-and-other-methods">Cancer Data again now with Decision Trees and other Methods </h2>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span>  train_test_split 
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> load_breast_cancer
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.svm</span> <span style="color: #8B008B; font-weight: bold">import</span> SVC
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> LogisticRegression
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeClassifier
-
-<span style="color: #228B22"># Load the data</span>
-cancer = load_breast_cancer()
-
-X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,random_state=<span style="color: #B452CD">0</span>)
-<span style="color: #658b00">print</span>(X_train.shape)
-<span style="color: #658b00">print</span>(X_test.shape)
-<span style="color: #228B22"># Logistic Regression</span>
-logreg = LogisticRegression(solver=<span style="color: #CD5555">&#39;lbfgs&#39;</span>)
-logreg.fit(X_train, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy with Logistic Regression: {:.2f}&quot;</span>.format(logreg.score(X_test,y_test)))
-<span style="color: #228B22"># Support vector machine</span>
-svm = SVC(gamma=<span style="color: #CD5555">&#39;auto&#39;</span>, C=<span style="color: #B452CD">100</span>)
-svm.fit(X_train, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy with SVM: {:.2f}&quot;</span>.format(svm.score(X_test,y_test)))
-<span style="color: #228B22"># Decision Trees</span>
-deep_tree_clf = DecisionTreeClassifier(max_depth=<span style="color: #8B008B; font-weight: bold">None</span>)
-deep_tree_clf.fit(X_train, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy with Decision Trees: {:.2f}&quot;</span>.format(deep_tree_clf.score(X_test,y_test)))
-<span style="color: #228B22">#now scale the data</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-<span style="color: #228B22"># Logistic Regression</span>
-logreg.fit(X_train_scaled, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy Logistic Regression with scaled data: {:.2f}&quot;</span>.format(logreg.score(X_test_scaled,y_test)))
-<span style="color: #228B22"># Support Vector Machine</span>
-svm.fit(X_train_scaled, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy SVM with scaled data: {:.2f}&quot;</span>.format(logreg.score(X_test_scaled,y_test)))
-<span style="color: #228B22"># Decision Trees</span>
-deep_tree_clf.fit(X_train_scaled, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy with Decision Trees and scaled data: {:.2f}&quot;</span>.format(deep_tree_clf.score(X_test_scaled,y_test)))
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="another-example-the-moons-again">Another example, the moons again </h2>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">__future__</span> <span style="color: #8B008B; font-weight: bold">import</span> division, print_function, unicode_literals
-
-<span style="color: #228B22"># Common imports</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">os</span>
-
-<span style="color: #228B22"># to make this notebook&#39;s output stable across runs</span>
-np.random.seed(<span style="color: #B452CD">42</span>)
-
-<span style="color: #228B22"># To plot pretty figures</span>
-<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">tensorflow</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">tf</span>
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.colors</span> <span style="color: #8B008B; font-weight: bold">import</span> ListedColormap
-plt.rcParams[<span style="color: #CD5555">&#39;axes.labelsize&#39;</span>] = <span style="color: #B452CD">14</span>
-plt.rcParams[<span style="color: #CD5555">&#39;xtick.labelsize&#39;</span>] = <span style="color: #B452CD">12</span>
-plt.rcParams[<span style="color: #CD5555">&#39;ytick.labelsize&#39;</span>] = <span style="color: #B452CD">12</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras</span> <span style="color: #8B008B; font-weight: bold">import</span> layers
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">tensorflow.keras.utils</span> <span style="color: #8B008B; font-weight: bold">import</span> plot_model
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Next we define our hyperparameters and import our data the usual way</p>
 
 
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.svm</span> <span style="color: #8B008B; font-weight: bold">import</span> SVC
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn</span> <span style="color: #8B008B; font-weight: bold">import</span> datasets
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeClassifier
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.datasets</span> <span style="color: #8B008B; font-weight: bold">import</span> make_moons
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> export_graphviz
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">BUFFER_SIZE = <span style="color: #B452CD">60000</span>
+BATCH_SIZE = <span style="color: #B452CD">256</span>
+EPOCHS = <span style="color: #B452CD">30</span>
 
-Xm, ym = make_moons(n_samples=<span style="color: #B452CD">100</span>, noise=<span style="color: #B452CD">0.25</span>, random_state=<span style="color: #B452CD">53</span>)
+data = tf.keras.datasets.mnist.load_data()
+(train_images, train_labels), (test_images, test_labels) = data
+train_images = np.reshape(train_images, (train_images.shape[<span style="color: #B452CD">0</span>],
+                                         <span style="color: #B452CD">28</span>,
+                                         <span style="color: #B452CD">28</span>,
+                                         <span style="color: #B452CD">1</span>)).astype(<span style="color: #CD5555">&#39;float32&#39;</span>)
 
-deep_tree_clf1 = DecisionTreeClassifier(random_state=<span style="color: #B452CD">42</span>)
-deep_tree_clf2 = DecisionTreeClassifier(min_samples_leaf=<span style="color: #B452CD">4</span>, random_state=<span style="color: #B452CD">42</span>)
-deep_tree_clf1.fit(Xm, ym)
-deep_tree_clf2.fit(Xm, ym)
+<span style="color: #228B22"># we normalize between -1 and 1</span>
+train_images = (train_images - <span style="color: #B452CD">127.5</span>) / <span style="color: #B452CD">127.5</span>
+training_dataset = tf.data.Dataset.from_tensor_slices(
+                      train_images).shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="mnist-and-gans">MNIST and GANs </h2>
+
+<p>Let's have a quick look</p>
 
 
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">plot_decision_boundary</span>(clf, X, y, axes=[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">7.5</span>, <span style="color: #B452CD">0</span>, <span style="color: #B452CD">3</span>], iris=<span style="color: #8B008B; font-weight: bold">True</span>, legend=<span style="color: #8B008B; font-weight: bold">False</span>, plot_training=<span style="color: #8B008B; font-weight: bold">True</span>):
-    x1s = np.linspace(axes[<span style="color: #B452CD">0</span>], axes[<span style="color: #B452CD">1</span>], <span style="color: #B452CD">100</span>)
-    x2s = np.linspace(axes[<span style="color: #B452CD">2</span>], axes[<span style="color: #B452CD">3</span>], <span style="color: #B452CD">100</span>)
-    x1, x2 = np.meshgrid(x1s, x2s)
-    X_new = np.c_[x1.ravel(), x2.ravel()]
-    y_pred = clf.predict(X_new).reshape(x1.shape)
-    custom_cmap = ListedColormap([<span style="color: #CD5555">&#39;#fafab0&#39;</span>,<span style="color: #CD5555">&#39;#9898ff&#39;</span>,<span style="color: #CD5555">&#39;#a0faa0&#39;</span>])
-    plt.contourf(x1, x2, y_pred, alpha=<span style="color: #B452CD">0.3</span>, cmap=custom_cmap)
-    <span style="color: #8B008B; font-weight: bold">if</span> <span style="color: #8B008B">not</span> iris:
-        custom_cmap2 = ListedColormap([<span style="color: #CD5555">&#39;#7d7d58&#39;</span>,<span style="color: #CD5555">&#39;#4c4c7f&#39;</span>,<span style="color: #CD5555">&#39;#507d50&#39;</span>])
-        plt.contour(x1, x2, y_pred, cmap=custom_cmap2, alpha=<span style="color: #B452CD">0.8</span>)
-    <span style="color: #8B008B; font-weight: bold">if</span> plot_training:
-        plt.plot(X[:, <span style="color: #B452CD">0</span>][y==<span style="color: #B452CD">0</span>], X[:, <span style="color: #B452CD">1</span>][y==<span style="color: #B452CD">0</span>], <span style="color: #CD5555">&quot;yo&quot;</span>, label=<span style="color: #CD5555">&quot;Iris-Setosa&quot;</span>)
-        plt.plot(X[:, <span style="color: #B452CD">0</span>][y==<span style="color: #B452CD">1</span>], X[:, <span style="color: #B452CD">1</span>][y==<span style="color: #B452CD">1</span>], <span style="color: #CD5555">&quot;bs&quot;</span>, label=<span style="color: #CD5555">&quot;Iris-Versicolor&quot;</span>)
-        plt.plot(X[:, <span style="color: #B452CD">0</span>][y==<span style="color: #B452CD">2</span>], X[:, <span style="color: #B452CD">1</span>][y==<span style="color: #B452CD">2</span>], <span style="color: #CD5555">&quot;g^&quot;</span>, label=<span style="color: #CD5555">&quot;Iris-Virginica&quot;</span>)
-        plt.axis(axes)
-    <span style="color: #8B008B; font-weight: bold">if</span> iris:
-        plt.xlabel(<span style="color: #CD5555">&quot;Petal length&quot;</span>, fontsize=<span style="color: #B452CD">14</span>)
-        plt.ylabel(<span style="color: #CD5555">&quot;Petal width&quot;</span>, fontsize=<span style="color: #B452CD">14</span>)
-    <span style="color: #8B008B; font-weight: bold">else</span>:
-        plt.xlabel(<span style="color: #CD5555">r&quot;$x_1$&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-        plt.ylabel(<span style="color: #CD5555">r&quot;$x_2$&quot;</span>, fontsize=<span style="color: #B452CD">18</span>, rotation=<span style="color: #B452CD">0</span>)
-    <span style="color: #8B008B; font-weight: bold">if</span> legend:
-        plt.legend(loc=<span style="color: #CD5555">&quot;lower right&quot;</span>, fontsize=<span style="color: #B452CD">14</span>)
-plt.figure(figsize=(<span style="color: #B452CD">11</span>, <span style="color: #B452CD">4</span>))
-plt.subplot(<span style="color: #B452CD">121</span>)
-plot_decision_boundary(deep_tree_clf1, Xm, ym, axes=[-<span style="color: #B452CD">1.5</span>, <span style="color: #B452CD">2.5</span>, -<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1.5</span>], iris=<span style="color: #8B008B; font-weight: bold">False</span>)
-plt.title(<span style="color: #CD5555">&quot;No restrictions&quot;</span>, fontsize=<span style="color: #B452CD">16</span>)
-plt.subplot(<span style="color: #B452CD">122</span>)
-plot_decision_boundary(deep_tree_clf2, Xm, ym, axes=[-<span style="color: #B452CD">1.5</span>, <span style="color: #B452CD">2.5</span>, -<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1.5</span>], iris=<span style="color: #8B008B; font-weight: bold">False</span>)
-plt.title(<span style="color: #CD5555">&quot;min_samples_leaf = {}&quot;</span>.format(deep_tree_clf2.min_samples_leaf), fontsize=<span style="color: #B452CD">14</span>)
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">plt.imshow(train_images[<span style="color: #B452CD">0</span>], cmap=<span style="color: #CD5555">&#39;Greys&#39;</span>)
 plt.show()
 </pre>
 </div>
@@ -2706,248 +3583,830 @@ plt.show()
     </div>
   </div>
 </div>
-</section>
 
-<section>
-<h2 id="playing-around-with-regions">Playing around with regions </h2>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;">np.random.seed(<span style="color: #B452CD">6</span>)
-Xs = np.random.rand(<span style="color: #B452CD">100</span>, <span style="color: #B452CD">2</span>) - <span style="color: #B452CD">0.5</span>
-ys = (Xs[:, <span style="color: #B452CD">0</span>] &gt; <span style="color: #B452CD">0</span>).astype(np.float32) * <span style="color: #B452CD">2</span>
-
-angle = np.pi/<span style="color: #B452CD">4</span>
-rotation_matrix = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
-Xsr = Xs.dot(rotation_matrix)
-
-tree_clf_s = DecisionTreeClassifier(random_state=<span style="color: #B452CD">42</span>)
-tree_clf_s.fit(Xs, ys)
-tree_clf_sr = DecisionTreeClassifier(random_state=<span style="color: #B452CD">42</span>)
-tree_clf_sr.fit(Xsr, ys)
-
-plt.figure(figsize=(<span style="color: #B452CD">11</span>, <span style="color: #B452CD">4</span>))
-plt.subplot(<span style="color: #B452CD">121</span>)
-plot_decision_boundary(tree_clf_s, Xs, ys, axes=[-<span style="color: #B452CD">0.7</span>, <span style="color: #B452CD">0.7</span>, -<span style="color: #B452CD">0.7</span>, <span style="color: #B452CD">0.7</span>], iris=<span style="color: #8B008B; font-weight: bold">False</span>)
-plt.subplot(<span style="color: #B452CD">122</span>)
-plot_decision_boundary(tree_clf_sr, Xsr, ys, axes=[-<span style="color: #B452CD">0.7</span>, <span style="color: #B452CD">0.7</span>, -<span style="color: #B452CD">0.7</span>, <span style="color: #B452CD">0.7</span>], iris=<span style="color: #8B008B; font-weight: bold">False</span>)
-
-plt.show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="regression-trees">Regression trees </h2>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #228B22"># Quadratic training set + noise</span>
-np.random.seed(<span style="color: #B452CD">42</span>)
-m = <span style="color: #B452CD">200</span>
-X = np.random.rand(m, <span style="color: #B452CD">1</span>)
-y = <span style="color: #B452CD">4</span> * (X - <span style="color: #B452CD">0.5</span>) ** <span style="color: #B452CD">2</span>
-y = y + np.random.randn(m, <span style="color: #B452CD">1</span>) / <span style="color: #B452CD">10</span>
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeRegressor
-
-tree_reg = DecisionTreeRegressor(max_depth=<span style="color: #B452CD">2</span>, random_state=<span style="color: #B452CD">42</span>)
-tree_reg.fit(X, y)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="final-regressor-code">Final regressor code </h2>
-
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.tree</span> <span style="color: #8B008B; font-weight: bold">import</span> DecisionTreeRegressor
-
-tree_reg1 = DecisionTreeRegressor(random_state=<span style="color: #B452CD">42</span>, max_depth=<span style="color: #B452CD">2</span>)
-tree_reg2 = DecisionTreeRegressor(random_state=<span style="color: #B452CD">42</span>, max_depth=<span style="color: #B452CD">3</span>)
-tree_reg1.fit(X, y)
-tree_reg2.fit(X, y)
-
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">plot_regression_predictions</span>(tree_reg, X, y, axes=[<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, -<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1</span>], ylabel=<span style="color: #CD5555">&quot;$y$&quot;</span>):
-    x1 = np.linspace(axes[<span style="color: #B452CD">0</span>], axes[<span style="color: #B452CD">1</span>], <span style="color: #B452CD">500</span>).reshape(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
-    y_pred = tree_reg.predict(x1)
-    plt.axis(axes)
-    plt.xlabel(<span style="color: #CD5555">&quot;$x_1$&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-    <span style="color: #8B008B; font-weight: bold">if</span> ylabel:
-        plt.ylabel(ylabel, fontsize=<span style="color: #B452CD">18</span>, rotation=<span style="color: #B452CD">0</span>)
-    plt.plot(X, y, <span style="color: #CD5555">&quot;b.&quot;</span>)
-    plt.plot(x1, y_pred, <span style="color: #CD5555">&quot;r.-&quot;</span>, linewidth=<span style="color: #B452CD">2</span>, label=<span style="color: #CD5555">r&quot;$\hat{y}$&quot;</span>)
-
-plt.figure(figsize=(<span style="color: #B452CD">11</span>, <span style="color: #B452CD">4</span>))
-plt.subplot(<span style="color: #B452CD">121</span>)
-plot_regression_predictions(tree_reg1, X, y)
-<span style="color: #8B008B; font-weight: bold">for</span> split, style <span style="color: #8B008B">in</span> ((<span style="color: #B452CD">0.1973</span>, <span style="color: #CD5555">&quot;k-&quot;</span>), (<span style="color: #B452CD">0.0917</span>, <span style="color: #CD5555">&quot;k--&quot;</span>), (<span style="color: #B452CD">0.7718</span>, <span style="color: #CD5555">&quot;k--&quot;</span>)):
-    plt.plot([split, split], [-<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1</span>], style, linewidth=<span style="color: #B452CD">2</span>)
-plt.text(<span style="color: #B452CD">0.21</span>, <span style="color: #B452CD">0.65</span>, <span style="color: #CD5555">&quot;Depth=0&quot;</span>, fontsize=<span style="color: #B452CD">15</span>)
-plt.text(<span style="color: #B452CD">0.01</span>, <span style="color: #B452CD">0.2</span>, <span style="color: #CD5555">&quot;Depth=1&quot;</span>, fontsize=<span style="color: #B452CD">13</span>)
-plt.text(<span style="color: #B452CD">0.65</span>, <span style="color: #B452CD">0.8</span>, <span style="color: #CD5555">&quot;Depth=1&quot;</span>, fontsize=<span style="color: #B452CD">13</span>)
-plt.legend(loc=<span style="color: #CD5555">&quot;upper center&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-plt.title(<span style="color: #CD5555">&quot;max_depth=2&quot;</span>, fontsize=<span style="color: #B452CD">14</span>)
-
-plt.subplot(<span style="color: #B452CD">122</span>)
-plot_regression_predictions(tree_reg2, X, y, ylabel=<span style="color: #8B008B; font-weight: bold">None</span>)
-<span style="color: #8B008B; font-weight: bold">for</span> split, style <span style="color: #8B008B">in</span> ((<span style="color: #B452CD">0.1973</span>, <span style="color: #CD5555">&quot;k-&quot;</span>), (<span style="color: #B452CD">0.0917</span>, <span style="color: #CD5555">&quot;k--&quot;</span>), (<span style="color: #B452CD">0.7718</span>, <span style="color: #CD5555">&quot;k--&quot;</span>)):
-    plt.plot([split, split], [-<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1</span>], style, linewidth=<span style="color: #B452CD">2</span>)
-<span style="color: #8B008B; font-weight: bold">for</span> split <span style="color: #8B008B">in</span> (<span style="color: #B452CD">0.0458</span>, <span style="color: #B452CD">0.1298</span>, <span style="color: #B452CD">0.2873</span>, <span style="color: #B452CD">0.9040</span>):
-    plt.plot([split, split], [-<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1</span>], <span style="color: #CD5555">&quot;k:&quot;</span>, linewidth=<span style="color: #B452CD">1</span>)
-plt.text(<span style="color: #B452CD">0.3</span>, <span style="color: #B452CD">0.5</span>, <span style="color: #CD5555">&quot;Depth=2&quot;</span>, fontsize=<span style="color: #B452CD">13</span>)
-plt.title(<span style="color: #CD5555">&quot;max_depth=3&quot;</span>, fontsize=<span style="color: #B452CD">14</span>)
-
-plt.show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="font-size: 80%; line-height: 125%;">tree_reg1 = DecisionTreeRegressor(random_state=<span style="color: #B452CD">42</span>)
-tree_reg2 = DecisionTreeRegressor(random_state=<span style="color: #B452CD">42</span>, min_samples_leaf=<span style="color: #B452CD">10</span>)
-tree_reg1.fit(X, y)
-tree_reg2.fit(X, y)
-
-x1 = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, <span style="color: #B452CD">500</span>).reshape(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>)
-y_pred1 = tree_reg1.predict(x1)
-y_pred2 = tree_reg2.predict(x1)
-
-plt.figure(figsize=(<span style="color: #B452CD">11</span>, <span style="color: #B452CD">4</span>))
-
-plt.subplot(<span style="color: #B452CD">121</span>)
-plt.plot(X, y, <span style="color: #CD5555">&quot;b.&quot;</span>)
-plt.plot(x1, y_pred1, <span style="color: #CD5555">&quot;r.-&quot;</span>, linewidth=<span style="color: #B452CD">2</span>, label=<span style="color: #CD5555">r&quot;$\hat{y}$&quot;</span>)
-plt.axis([<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, -<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1.1</span>])
-plt.xlabel(<span style="color: #CD5555">&quot;$x_1$&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-plt.ylabel(<span style="color: #CD5555">&quot;$y$&quot;</span>, fontsize=<span style="color: #B452CD">18</span>, rotation=<span style="color: #B452CD">0</span>)
-plt.legend(loc=<span style="color: #CD5555">&quot;upper center&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-plt.title(<span style="color: #CD5555">&quot;No restrictions&quot;</span>, fontsize=<span style="color: #B452CD">14</span>)
-
-plt.subplot(<span style="color: #B452CD">122</span>)
-plt.plot(X, y, <span style="color: #CD5555">&quot;b.&quot;</span>)
-plt.plot(x1, y_pred2, <span style="color: #CD5555">&quot;r.-&quot;</span>, linewidth=<span style="color: #B452CD">2</span>, label=<span style="color: #CD5555">r&quot;$\hat{y}$&quot;</span>)
-plt.axis([<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, -<span style="color: #B452CD">0.2</span>, <span style="color: #B452CD">1.1</span>])
-plt.xlabel(<span style="color: #CD5555">&quot;$x_1$&quot;</span>, fontsize=<span style="color: #B452CD">18</span>)
-plt.title(<span style="color: #CD5555">&quot;min_samples_leaf={}&quot;</span>.format(tree_reg2.min_samples_leaf), fontsize=<span style="color: #B452CD">14</span>)
-
-plt.show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</section>
-
-<section>
-<h2 id="pros-and-cons-of-trees-pros">Pros and cons of trees, pros </h2>
-
-<ul>
-<p><li> White box, easy to interpret model. Some people believe that decision trees more closely mirror human decision-making than do the regression and classification approaches discussed earlier (think of support vector machines)</li>
-<p><li> Trees are very easy to explain to people. In fact, they are even easier to explain than linear regression!</li>
-<p><li> No feature normalization needed</li>
-<p><li> Tree models can handle both continuous and categorical data (Classification and Regression Trees)</li>
-<p><li> Can model nonlinear relationships</li>
-<p><li> Can model interactions between the different descriptive features</li>
-<p><li> Trees can be displayed graphically, and are easily interpreted even by a non-expert (especially if they are small)</li>
-</ul>
-</section>
-
-<section>
-<h2 id="disadvantages">Disadvantages </h2>
-
-<ul>
-<p><li> Unfortunately, trees generally do not have the same level of predictive accuracy as some of the other regression and classification approaches</li>
-<p><li> If continuous features are used the tree may become quite large and hence less interpretable</li>
-<p><li> Decision trees are prone to overfit the training data and hence do not well generalize the data if no stopping criteria or improvements like pruning, boosting or bagging are implemented</li>
-<p><li> Small changes in the data may lead to a completely different tree. This issue can be addressed by using ensemble methods like bagging, boosting or random forests</li>
-<p><li> Unbalanced datasets where some target feature values occur much more frequently than others may lead to biased trees since the frequently occurring feature values are preferred over the less frequently occurring ones.</li> 
-<p><li> If the number of features is relatively large (high dimensional) and the number of instances is relatively low, the tree might overfit the data</li>
-<p><li> Features with many levels may be preferred over features with less levels since for them it is <em>more easy</em> to split the dataset such that the sub datasets only contain pure target feature values. This issue can be addressed by preferring for instance the information gain ratio as splitting criteria over information gain</li>
-</ul>
-<p>
-<p>However, by aggregating many decision trees, using methods like
-bagging, random forests, and boosting, the predictive performance of
-trees can be substantially improved.
+<p>Now we define our two models. This is where the 'magic' happens. There are a
+huge amount of possible formulations for both models. A lot of engineering and
+trial and error can be done here to try to produce better performing models. For
+more advanced GANs this is by far the step where you can 'make or break' a
+model.
 </p>
+
+<p>We start with the generator. As stated in the introductory text the generator
+\( g \) upsamples from a random sample to the shape of what we want to predict. In
+our case we are trying to predict MNIST images (\( 28\times 28 \) pixels).
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">generator_model</span>():
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    The generator uses upsampling layers tf.keras.layers.Conv2DTranspose() to</span>
+<span style="color: #CD5555">    produce an image from a random seed. We start with a Dense layer taking this</span>
+<span style="color: #CD5555">    random sample as an input and subsequently upsample through multiple</span>
+<span style="color: #CD5555">    convolutional layers.</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+
+    <span style="color: #228B22"># we define our model</span>
+    model = tf.keras.Sequential()
+
+
+    <span style="color: #228B22"># adding our input layer. Dense means that every neuron is connected and</span>
+    <span style="color: #228B22"># the input shape is the shape of our random noise. The units need to match</span>
+    <span style="color: #228B22"># in some sense the upsampling strides to reach our desired output shape.</span>
+    <span style="color: #228B22"># we are using 100 random numbers as our seed</span>
+    model.add(layers.Dense(units=<span style="color: #B452CD">7</span>*<span style="color: #B452CD">7</span>*BATCH_SIZE,
+                           use_bias=<span style="color: #8B008B; font-weight: bold">False</span>,
+                           input_shape=(<span style="color: #B452CD">100</span>, )))
+    <span style="color: #228B22"># we normalize the output form the Dense layer</span>
+    model.add(layers.BatchNormalization())
+    <span style="color: #228B22"># and add an activation function to our &#39;layer&#39;. LeakyReLU avoids vanishing</span>
+    <span style="color: #228B22"># gradient problem</span>
+    model.add(layers.LeakyReLU())
+    model.add(layers.Reshape((<span style="color: #B452CD">7</span>, <span style="color: #B452CD">7</span>, BATCH_SIZE)))
+    <span style="color: #8B008B; font-weight: bold">assert</span> model.output_shape == (<span style="color: #8B008B; font-weight: bold">None</span>, <span style="color: #B452CD">7</span>, <span style="color: #B452CD">7</span>, BATCH_SIZE)
+    <span style="color: #228B22"># even though we just added four keras layers we think of everything above</span>
+    <span style="color: #228B22"># as &#39;one&#39; layer</span>
+
+    <span style="color: #228B22"># next we add our upscaling convolutional layers</span>
+    model.add(layers.Conv2DTranspose(filters=<span style="color: #B452CD">128</span>,
+                                     kernel_size=(<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>),
+                                     strides=(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>),
+                                     padding=<span style="color: #CD5555">&#39;same&#39;</span>,
+                                     use_bias=<span style="color: #8B008B; font-weight: bold">False</span>))
+    model.add(layers.BatchNormalization())
+    model.add(layers.LeakyReLU())
+    <span style="color: #8B008B; font-weight: bold">assert</span> model.output_shape == (<span style="color: #8B008B; font-weight: bold">None</span>, <span style="color: #B452CD">7</span>, <span style="color: #B452CD">7</span>, <span style="color: #B452CD">128</span>)
+
+    model.add(layers.Conv2DTranspose(filters=<span style="color: #B452CD">64</span>,
+                                     kernel_size=(<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>),
+                                     strides=(<span style="color: #B452CD">2</span>, <span style="color: #B452CD">2</span>),
+                                     padding=<span style="color: #CD5555">&#39;same&#39;</span>,
+                                     use_bias=<span style="color: #8B008B; font-weight: bold">False</span>))
+    model.add(layers.BatchNormalization())
+    model.add(layers.LeakyReLU())
+    <span style="color: #8B008B; font-weight: bold">assert</span> model.output_shape == (<span style="color: #8B008B; font-weight: bold">None</span>, <span style="color: #B452CD">14</span>, <span style="color: #B452CD">14</span>, <span style="color: #B452CD">64</span>)
+
+    model.add(layers.Conv2DTranspose(filters=<span style="color: #B452CD">1</span>,
+                                     kernel_size=(<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>),
+                                     strides=(<span style="color: #B452CD">2</span>, <span style="color: #B452CD">2</span>),
+                                     padding=<span style="color: #CD5555">&#39;same&#39;</span>,
+                                     use_bias=<span style="color: #8B008B; font-weight: bold">False</span>,
+                                     activation=<span style="color: #CD5555">&#39;tanh&#39;</span>))
+    <span style="color: #8B008B; font-weight: bold">assert</span> model.output_shape == (<span style="color: #8B008B; font-weight: bold">None</span>, <span style="color: #B452CD">28</span>, <span style="color: #B452CD">28</span>, <span style="color: #B452CD">1</span>)
+
+    <span style="color: #8B008B; font-weight: bold">return</span> model
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>And there we have our 'simple' generator model. Now we move on to defining our
+discriminator model \( d \), which is a convolutional neural network based image
+classifier.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">discriminator_model</span>():
+    <span style="color: #CD5555">&quot;&quot;&quot;</span>
+<span style="color: #CD5555">    The discriminator is a convolutional neural network based image classifier</span>
+<span style="color: #CD5555">    &quot;&quot;&quot;</span>
+
+    <span style="color: #228B22"># we define our model</span>
+    model = tf.keras.Sequential()
+    model.add(layers.Conv2D(filters=<span style="color: #B452CD">64</span>,
+                            kernel_size=(<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>),
+                            strides=(<span style="color: #B452CD">2</span>, <span style="color: #B452CD">2</span>),
+                            padding=<span style="color: #CD5555">&#39;same&#39;</span>,
+                            input_shape=[<span style="color: #B452CD">28</span>, <span style="color: #B452CD">28</span>, <span style="color: #B452CD">1</span>]))
+    model.add(layers.LeakyReLU())
+    <span style="color: #228B22"># adding a dropout layer as you do in conv-nets</span>
+    model.add(layers.Dropout(<span style="color: #B452CD">0.3</span>))
+
+
+    model.add(layers.Conv2D(filters=<span style="color: #B452CD">128</span>,
+                            kernel_size=(<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>),
+                            strides=(<span style="color: #B452CD">2</span>, <span style="color: #B452CD">2</span>),
+                            padding=<span style="color: #CD5555">&#39;same&#39;</span>))
+    model.add(layers.LeakyReLU())
+    <span style="color: #228B22"># adding a dropout layer as you do in conv-nets</span>
+    model.add(layers.Dropout(<span style="color: #B452CD">0.3</span>))
+
+    model.add(layers.Flatten())
+    model.add(layers.Dense(<span style="color: #B452CD">1</span>))
+
+    <span style="color: #8B008B; font-weight: bold">return</span> model
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="other-models">Other Models </h2>
+<p>Let us take a look at our models. <b>Note</b>: double click images for bigger view.</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">generator = generator_model()
+plot_model(generator, show_shapes=<span style="color: #8B008B; font-weight: bold">True</span>, rankdir=<span style="color: #CD5555">&#39;LR&#39;</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">discriminator = discriminator_model()
+plot_model(discriminator, show_shapes=<span style="color: #8B008B; font-weight: bold">True</span>, rankdir=<span style="color: #CD5555">&#39;LR&#39;</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Next we need a few helper objects we will use in training</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=<span style="color: #8B008B; font-weight: bold">True</span>)
+generator_optimizer = tf.keras.optimizers.Adam(<span style="color: #B452CD">1e-4</span>)
+discriminator_optimizer = tf.keras.optimizers.Adam(<span style="color: #B452CD">1e-4</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>The first object, <em>cross_entropy</em> is our loss function and the two others are
+our optimizers. Notice we use the same learning rate for both \( g \) and \( d \). This
+is because they need to improve their accuracy at approximately equal speeds to
+get convergence (not necessarily exactly equal). Now we define our loss
+functions
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">generator_loss</span>(fake_output):
+    loss = cross_entropy(tf.ones_like(fake_output), fake_output)
+
+    <span style="color: #8B008B; font-weight: bold">return</span> loss
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">discriminator_loss</span>(real_output, fake_output):
+    real_loss = cross_entropy(tf.ones_like(real_output), real_output)
+    fake_loss = cross_entropy(tf.zeros_liks(fake_output), fake_output)
+    total_loss = real_loss + fake_loss
+
+    <span style="color: #8B008B; font-weight: bold">return</span> total_loss
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Next we define a kind of seed to help us compare the learning process over
+multiple training epochs.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">noise_dimension = <span style="color: #B452CD">100</span>
+n_examples_to_generate = <span style="color: #B452CD">16</span>
+seed_images = tf.random.normal([n_examples_to_generate, noise_dimension])
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="training-step">Training Step </h2>
+
+<p>Now we have everything we need to define our training step, which we will apply
+for every step in our training loop. Notice the @tf.function flag signifying
+that the function is tensorflow 'compiled'. Removing this flag doubles the
+computation time.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #707a7c">@tf</span>.function
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">train_step</span>(images):
+    noise = tf.random.normal([BATCH_SIZE, noise_dimension])
+
+    <span style="color: #8B008B; font-weight: bold">with</span> tf.GradientTape() <span style="color: #8B008B; font-weight: bold">as</span> gen_tape, tf.GradientTape() <span style="color: #8B008B; font-weight: bold">as</span> disc_tape:
+        generated_images = generator(noise, training=<span style="color: #8B008B; font-weight: bold">True</span>)
+
+        real_output = discriminator(images, training=<span style="color: #8B008B; font-weight: bold">True</span>)
+        fake_output = discriminator(generated_images, training=<span style="color: #8B008B; font-weight: bold">True</span>)
+
+        gen_loss = generator_loss(fake_output)
+        disc_loss = discriminator_loss(real_output, fake_output)
+
+    gradients_of_generator = gen_tape.gradient(gen_loss,
+                                            generator.trainable_variables)
+    gradients_of_discriminator = disc_tape.gradient(disc_loss,
+                                            discriminator.trainable_variables)
+    generator_optimizer.apply_gradients(<span style="color: #658b00">zip</span>(gradients_of_generator,
+                                            generator.trainable_variables))
+    discriminator_optimizer.apply_gradients(<span style="color: #658b00">zip</span>(gradients_of_discriminator,
+                                            discriminator.trainable_variables))
+
+    <span style="color: #8B008B; font-weight: bold">return</span> gen_loss, disc_loss
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Next we define a helper function to produce an output over our training epochs
+to see the predictive progression of our generator model. <b>Note</b>: I am including
+this code here, but comment it out in the training loop.
+</p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">generate_and_save_images</span>(model, epoch, test_input):
+    <span style="color: #228B22"># we&#39;re making inferences here</span>
+    predictions = model(test_input, training=<span style="color: #8B008B; font-weight: bold">False</span>)
+
+    fig = plt.figure(figsize=(<span style="color: #B452CD">4</span>, <span style="color: #B452CD">4</span>))
+
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(predictions.shape[<span style="color: #B452CD">0</span>]):
+        plt.subplot(<span style="color: #B452CD">4</span>, <span style="color: #B452CD">4</span>, i+<span style="color: #B452CD">1</span>)
+        plt.imshow(predictions[i, :, :, <span style="color: #B452CD">0</span>] * <span style="color: #B452CD">127.5</span> + <span style="color: #B452CD">127.5</span>, cmap=<span style="color: #CD5555">&#39;gray&#39;</span>)
+        plt.axis(<span style="color: #CD5555">&#39;off&#39;</span>)
+
+    plt.savefig(<span style="color: #CD5555">f&#39;./images_from_seed_images/image_at_epoch_{</span><span style="color: #658b00">str</span>(epoch).zfill(<span style="color: #B452CD">3</span>)<span style="color: #CD5555">}.png&#39;</span>)
+    plt.close()
+    <span style="color: #228B22">#plt.show()</span>
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="checkpoints">Checkpoints </h2>
+<p>Setting up checkpoints to periodically save our model during training so that
+everything is not lost even if the program were to somehow terminate while
+training.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #228B22"># Setting up checkpoints to save model during training</span>
+checkpoint_dir = <span style="color: #CD5555">&#39;./training_checkpoints&#39;</span>
+checkpoint_prefix = os.path.join(checkpoint_dir, <span style="color: #CD5555">&#39;ckpt&#39;</span>)
+checkpoint = tf.train.Checkpoint(generator_optimizer=generator_optimizer,
+                            discriminator_optimizer=discriminator_optimizer,
+                            generator=generator,
+                            discriminator=discriminator)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Now we define our training loop</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">train</span>(dataset, epochs):
+    generator_loss_list = []
+    discriminator_loss_list = []
+
+    <span style="color: #8B008B; font-weight: bold">for</span> epoch <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(epochs):
+        start = time.time()
+
+        <span style="color: #8B008B; font-weight: bold">for</span> image_batch <span style="color: #8B008B">in</span> dataset:
+            gen_loss, disc_loss = train_step(image_batch)
+            generator_loss_list.append(gen_loss.numpy())
+            discriminator_loss_list.append(disc_loss.numpy())
+
+        <span style="color: #228B22">#generate_and_save_images(generator, epoch + 1, seed_images)</span>
+
+        <span style="color: #8B008B; font-weight: bold">if</span> (epoch + <span style="color: #B452CD">1</span>) % <span style="color: #B452CD">15</span> == <span style="color: #B452CD">0</span>:
+            checkpoint.save(file_prefix=checkpoint_prefix)
+
+        <span style="color: #658b00">print</span>(<span style="color: #CD5555">f&#39;Time for epoch {</span>epoch<span style="color: #CD5555">} is {</span>time.time() - start<span style="color: #CD5555">}&#39;</span>)
+
+    <span style="color: #228B22">#generate_and_save_images(generator, epochs, seed_images)</span>
+
+    loss_file = <span style="color: #CD5555">&#39;./data/lossfile.txt&#39;</span>
+    <span style="color: #8B008B; font-weight: bold">with</span> <span style="color: #658b00">open</span>(loss_file, <span style="color: #CD5555">&#39;w&#39;</span>) <span style="color: #8B008B; font-weight: bold">as</span> outfile:
+        outfile.write(<span style="color: #658b00">str</span>(generator_loss_list))
+        outfile.write(<span style="color: #CD5555">&#39;\n&#39;</span>)
+        outfile.write(<span style="color: #CD5555">&#39;\n&#39;</span>)
+        outfile.write(<span style="color: #658b00">str</span>(discriminator_loss_list))
+        outfile.write(<span style="color: #CD5555">&#39;\n&#39;</span>)
+        outfile.write(<span style="color: #CD5555">&#39;\n&#39;</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>To train simply call this function. <b>Warning</b>: this might take a long time so
+there is a folder of a pretrained network already included in the repository.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">train(train_dataset, EPOCHS)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>And here is the result of training our model for 100 epochs</p>
+
+<embed src="images_from_seed_images/generation.gif"  autoplay="false" loop="true"></embed>
+<p><em></em></p>
+
+<p>Now to avoid having to train and everything, which will take a while depending
+on your computer setup we now load in the model which produced the above gif.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
+restored_generator = checkpoint.generator
+restored_discriminator = checkpoint.discriminator
+
+<span style="color: #658b00">print</span>(restored_generator)
+<span style="color: #658b00">print</span>(restored_discriminator)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="exploring-the-latent-space">Exploring the Latent Space </h2>
+
+<p>We have successfully loaded in our latest model. Let us now play around a bit
+and see what kind of things we can learn about this model. Our generator takes
+an array of 100 numbers. One idea can be to try to systematically change our
+input. Let us try and see what we get
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">generate_latent_points</span>(number=<span style="color: #B452CD">100</span>, scale_means=<span style="color: #B452CD">1</span>, scale_stds=<span style="color: #B452CD">1</span>):
+    latent_dim = <span style="color: #B452CD">100</span>
+    means = scale_means * tf.linspace(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>, num=latent_dim)
+    stds = scale_stds * tf.linspace(-<span style="color: #B452CD">1</span>, <span style="color: #B452CD">1</span>, num=latent_dim)
+    latent_space_value_range = tf.random.normal([number, latent_dim],
+                                                means,
+                                                stds,
+                                                dtype=tf.float64)
+
+    <span style="color: #8B008B; font-weight: bold">return</span> latent_space_value_range
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">generate_images</span>(latent_points):
+    <span style="color: #228B22"># notice we set training to false because we are making inferences</span>
+    generated_images = restored_generator.predict(latent_points)
+
+    <span style="color: #8B008B; font-weight: bold">return</span> generated_images
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">plot_result</span>(generated_images, number=<span style="color: #B452CD">100</span>):
+    <span style="color: #228B22"># obviously this assumes sqrt number is an int</span>
+    fig, axs = plt.subplots(<span style="color: #658b00">int</span>(np.sqrt(number)), <span style="color: #658b00">int</span>(np.sqrt(number)),
+                            figsize=(<span style="color: #B452CD">10</span>, <span style="color: #B452CD">10</span>))
+
+    <span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">int</span>(np.sqrt(number))):
+        <span style="color: #8B008B; font-weight: bold">for</span> j <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #658b00">int</span>(np.sqrt(number))):
+            axs[i, j].imshow(generated_images[i*j], cmap=<span style="color: #CD5555">&#39;Greys&#39;</span>)
+            axs[i, j].axis(<span style="color: #CD5555">&#39;off&#39;</span>)
+
+    plt.show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">generated_images = generate_images(generate_latent_points())
+plot_result(generated_images)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section>
+<h2 id="getting-results">Getting Results </h2>
+<p>We see that the generator generates images that look like MNIST
+numbers: \( 1, 4, 7, 9 \). Let's try to tweak it a bit more to see if we are able
+to generate a similar plot where we generate every MNIST number. Let us now try
+to 'move' a bit around in the latent space. <b>Note</b>: decrease the plot number if
+these following cells take too long to run on your computer.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">plot_number = <span style="color: #B452CD">225</span>
+
+generated_images = generate_images(generate_latent_points(number=plot_number,
+                                                          scale_means=<span style="color: #B452CD">5</span>,
+                                                          scale_stds=<span style="color: #B452CD">1</span>))
+plot_result(generated_images, number=plot_number)
+
+generated_images = generate_images(generate_latent_points(number=plot_number,
+                                                          scale_means=-<span style="color: #B452CD">5</span>,
+                                                          scale_stds=<span style="color: #B452CD">1</span>))
+plot_result(generated_images, number=plot_number)
+
+generated_images = generate_images(generate_latent_points(number=plot_number,
+                                                          scale_means=<span style="color: #B452CD">1</span>,
+                                                          scale_stds=<span style="color: #B452CD">5</span>))
+plot_result(generated_images, number=plot_number)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Again, we have found something interesting. <em>Moving</em> around using our means
+takes us from digit to digit, while <em>moving</em> around using our standard
+deviations seem to increase the number of different digits! In the last image
+above, we can barely make out every MNIST digit. Let us make on last plot using
+this information by upping the standard deviation of our Gaussian noises.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">plot_number = <span style="color: #B452CD">400</span>
+generated_images = generate_images(generate_latent_points(number=plot_number,
+                                                          scale_means=<span style="color: #B452CD">1</span>,
+                                                          scale_stds=<span style="color: #B452CD">10</span>))
+plot_result(generated_images, number=plot_number)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>A pretty cool result! We see that our generator indeed has learned a
+distribution which qualitatively looks a whole lot like the MNIST dataset.
+</p>
+</section>
+
+<section>
+<h2 id="interpolating-between-mnist-digits">Interpolating Between MNIST Digits </h2>
+<p>Another interesting way to explore the latent space of our generator model is by
+interpolating between the MNIST digits. This section is largely based on
+<a href="https://machinelearningmastery.com/how-to-interpolate-and-perform-vector-arithmetic-with-faces-using-a-generative-adversarial-network/" target="_blank">this excellent blogpost</a>
+by Jason Brownlee.
+</p>
+
+<p>So let us start by defining a function to interpolate between two points in the
+latent space.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">interpolation</span>(point_1, point_2, n_steps=<span style="color: #B452CD">10</span>):
+    ratios = np.linspace(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">1</span>, num=n_steps)
+    vectors = []
+    <span style="color: #8B008B; font-weight: bold">for</span> i, ratio <span style="color: #8B008B">in</span> <span style="color: #658b00">enumerate</span>(ratios):
+        vectors.append(((<span style="color: #B452CD">1.0</span> - ratio) * point_1 + ratio * point_2))
+
+    <span style="color: #8B008B; font-weight: bold">return</span> tf.stack(vectors)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Now we have all we need to do our interpolation analysis.</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="font-size: 80%; line-height: 125%;">plot_number = <span style="color: #B452CD">100</span>
+latent_points = generate_latent_points(number=plot_number)
+results = <span style="color: #8B008B; font-weight: bold">None</span>
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">0</span>, <span style="color: #B452CD">2</span>*np.sqrt(plot_number), <span style="color: #B452CD">2</span>):
+    interpolated = interpolation(latent_points[i], latent_points[i+<span style="color: #B452CD">1</span>])
+    generated_images = generate_images(interpolated)
+
+    <span style="color: #8B008B; font-weight: bold">if</span> results <span style="color: #8B008B">is</span> <span style="color: #8B008B; font-weight: bold">None</span>:
+        results = generated_images
+    <span style="color: #8B008B; font-weight: bold">else</span>:
+        results = tf.stack((results, generated_images))
+
+plot_results(results, plot_number)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
 
 

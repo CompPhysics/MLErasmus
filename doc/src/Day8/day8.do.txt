@@ -1,4 +1,4 @@
-TITLE: Convolutional (CNN) and Recurrent (RNN) Neural Networks.
+TITLE: Summary on Neural Networks, start discussiin of Convolutional (CNN) and Recurrent (RNN) Neural Networks.
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics, University of Oslo & Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University
 DATE: today
 
@@ -6,9 +6,10 @@ DATE: today
 !split
 ===== Plan for week 50, December 13-17 =====
 
+* Summary of Neural networks, pros and cons
+* Start discussing CNNs
 
-
-Reading suggestions: "Aurelien Geron's chapters 13 and 14":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/Textbooks/TensorflowML.pdf". 
+Reading suggestions: "Aurelien Geron's chapters 13 and 14":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/Textbooks/TensorflowML.pdf". See also discussions in Goodfellow et al, chapters 6-7, 9-12.
 
 
 !bblock  Excellent lectures on CNNs and RNNs 
@@ -16,8 +17,728 @@ Reading suggestions: "Aurelien Geron's chapters 13 and 14":"https://github.com/C
 * "Video  on Recurrent Neural Networks from MIT":"https://www.youtube.com/watch?v=SEnXr6v2ifU&ab_channel=AlexanderAmini"
 !eblock
 
-For decision trees we have Geron's chapter 6 which covers decision trees while ensemble models, voting and bagging are discussed in chapter 7. See also lecture from "STK-IN4300, lecture 7":"https://www.uio.no/studier/emner/matnat/math/STK-IN4300/h20/slides/lecture_7.pdf". Chapter 9.2 of Hastie et al contains also a good discussion.
 
+
+!split
+===== Building neural networks in Tensorflow and Keras =====
+
+Now we want  to build on the experience gained from our neural network implementation in NumPy and scikit-learn
+and use it to construct a neural network in Tensorflow. Once we have constructed a neural network in NumPy
+and Tensorflow, building one in Keras is really quite trivial, though the performance may suffer.  
+  
+In our previous example we used only one hidden layer, and in this we will use two. From this it should be quite
+clear how to build one using an arbitrary number of hidden layers, using data structures such as Python lists or
+NumPy arrays.
+
+!split
+===== Tensorflow =====
+  
+Tensorflow is an open source library machine learning library
+developed by the Google Brain team for internal use. It was released
+under the Apache 2.0 open source license in November 9, 2015.
+  
+Tensorflow is a computational framework that allows you to construct
+machine learning models at different levels of abstraction, from
+high-level, object-oriented APIs like Keras, down to the C++ kernels
+that Tensorflow is built upon. The higher levels of abstraction are
+simpler to use, but less flexible, and our choice of implementation
+should reflect the problems we are trying to solve.
+  
+"Tensorflow uses":"https://www.tensorflow.org/guide/graphs" so-called graphs to represent your computation
+in terms of the dependencies between individual operations, such that you first build a Tensorflow *graph*
+to represent your model, and then create a Tensorflow *session* to run the graph.
+  
+In this guide we will analyze the same data as we did in our NumPy and
+scikit-learn tutorial, gathered from the MNIST database of images. We
+will give an introduction to the lower level Python Application
+Program Interfaces (APIs), and see how we use them to build our graph.
+Then we will build (effectively) the same graph in Keras, to see just
+how simple solving a machine learning problem can be.
+  
+To install tensorflow on Unix/Linux systems, use pip as
+!bc pycod
+pip3 install tensorflow
+!ec
+and/or if you use _anaconda_, just write (or install from the graphical user interface)
+(current release of CPU-only TensorFlow)
+!bc pycod 
+conda create -n tf tensorflow
+conda activate tf
+!ec
+To install the current release of GPU TensorFlow
+!bc pycod
+conda create -n tf-gpu tensorflow-gpu
+conda activate tf-gpu
+!ec
+
+!split
+===== Using Keras =====
+  
+Keras is a high level "neural network":"https://en.wikipedia.org/wiki/Application_programming_interface"
+that supports Tensorflow, CTNK and Theano as backends.  
+If you have Anaconda installed you may run the following command
+!bc pycod
+conda install keras
+!ec
+You can look up the "instructions here":"https://keras.io/" for more information.
+
+We will to a large extent use _keras_ in this course. 
+
+!split
+===== Collect and pre-process data =====
+
+Let us look again at the MINST data set.
+
+!bc pycod
+# import necessary packages
+import numpy as np
+import matplotlib.pyplot as plt
+import tensorflow as tf
+from sklearn import datasets
+
+
+# ensure the same random numbers appear every time
+np.random.seed(0)
+
+# display images in notebook
+%matplotlib inline
+plt.rcParams['figure.figsize'] = (12,12)
+
+
+# download MNIST dataset
+digits = datasets.load_digits()
+
+# define inputs and labels
+inputs = digits.images
+labels = digits.target
+
+print("inputs = (n_inputs, pixel_width, pixel_height) = " + str(inputs.shape))
+print("labels = (n_inputs) = " + str(labels.shape))
+
+
+# flatten the image
+# the value -1 means dimension is inferred from the remaining dimensions: 8x8 = 64
+n_inputs = len(inputs)
+inputs = inputs.reshape(n_inputs, -1)
+print("X = (n_inputs, n_features) = " + str(inputs.shape))
+
+
+# choose some random images to display
+indices = np.arange(n_inputs)
+random_indices = np.random.choice(indices, size=5)
+
+for i, image in enumerate(digits.images[random_indices]):
+    plt.subplot(1, 5, i+1)
+    plt.axis('off')
+    plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
+    plt.title("Label: %d" % digits.target[random_indices[i]])
+plt.show()
+!ec
+
+!bc pycod
+from tensorflow.keras.layers import Input
+from tensorflow.keras.models import Sequential      #This allows appending layers to existing models
+from tensorflow.keras.layers import Dense           #This allows defining the characteristics of a particular layer
+from tensorflow.keras import optimizers             #This allows using whichever optimiser we want (sgd,adam,RMSprop)
+from tensorflow.keras import regularizers           #This allows using whichever regularizer we want (l1,l2,l1_l2)
+from tensorflow.keras.utils import to_categorical   #This allows using categorical cross entropy as the cost function
+
+from sklearn.model_selection import train_test_split
+
+# one-hot representation of labels
+labels = to_categorical(labels)
+
+# split into train and test data
+train_size = 0.8
+test_size = 1 - train_size
+X_train, X_test, Y_train, Y_test = train_test_split(inputs, labels, train_size=train_size,
+                                                    test_size=test_size)
+!ec
+
+
+
+!bc pycod
+
+epochs = 100
+batch_size = 100
+n_neurons_layer1 = 100
+n_neurons_layer2 = 50
+n_categories = 10
+eta_vals = np.logspace(-5, 1, 7)
+lmbd_vals = np.logspace(-5, 1, 7)
+def create_neural_network_keras(n_neurons_layer1, n_neurons_layer2, n_categories, eta, lmbd):
+    model = Sequential()
+    model.add(Dense(n_neurons_layer1, activation='sigmoid', kernel_regularizer=regularizers.l2(lmbd)))
+    model.add(Dense(n_neurons_layer2, activation='sigmoid', kernel_regularizer=regularizers.l2(lmbd)))
+    model.add(Dense(n_categories, activation='softmax'))
+    
+    sgd = optimizers.SGD(lr=eta)
+    model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+    
+    return model
+!ec
+
+!bc pycod
+DNN_keras = np.zeros((len(eta_vals), len(lmbd_vals)), dtype=object)
+        
+for i, eta in enumerate(eta_vals):
+    for j, lmbd in enumerate(lmbd_vals):
+        DNN = create_neural_network_keras(n_neurons_layer1, n_neurons_layer2, n_categories,
+                                         eta=eta, lmbd=lmbd)
+        DNN.fit(X_train, Y_train, epochs=epochs, batch_size=batch_size, verbose=0)
+        scores = DNN.evaluate(X_test, Y_test)
+        
+        DNN_keras[i][j] = DNN
+        
+        print("Learning rate = ", eta)
+        print("Lambda = ", lmbd)
+        print("Test accuracy: %.3f" % scores[1])
+        print()
+!ec
+
+
+
+!bc pycod
+# optional
+# visual representation of grid search
+# uses seaborn heatmap, could probably do this in matplotlib
+import seaborn as sns
+
+sns.set()
+
+train_accuracy = np.zeros((len(eta_vals), len(lmbd_vals)))
+test_accuracy = np.zeros((len(eta_vals), len(lmbd_vals)))
+
+for i in range(len(eta_vals)):
+    for j in range(len(lmbd_vals)):
+        DNN = DNN_keras[i][j]
+
+        train_accuracy[i][j] = DNN.evaluate(X_train, Y_train)[1]
+        test_accuracy[i][j] = DNN.evaluate(X_test, Y_test)[1]
+
+        
+fig, ax = plt.subplots(figsize = (10, 10))
+sns.heatmap(train_accuracy, annot=True, ax=ax, cmap="viridis")
+ax.set_title("Training Accuracy")
+ax.set_ylabel("$\eta$")
+ax.set_xlabel("$\lambda$")
+plt.show()
+
+fig, ax = plt.subplots(figsize = (10, 10))
+sns.heatmap(test_accuracy, annot=True, ax=ax, cmap="viridis")
+ax.set_title("Test Accuracy")
+ax.set_ylabel("$\eta$")
+ax.set_xlabel("$\lambda$")
+plt.show()
+!ec
+
+
+
+!split
+=====  The Breast Cancer Data, now with Keras =====
+
+!bc pycod
+
+import tensorflow as tf
+from tensorflow.keras.layers import Input
+from tensorflow.keras.models import Sequential      #This allows appending layers to existing models
+from tensorflow.keras.layers import Dense           #This allows defining the characteristics of a particular layer
+from tensorflow.keras import optimizers             #This allows using whichever optimiser we want (sgd,adam,RMSprop)
+from tensorflow.keras import regularizers           #This allows using whichever regularizer we want (l1,l2,l1_l2)
+from tensorflow.keras.utils import to_categorical   #This allows using categorical cross entropy as the cost function
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split as splitter
+from sklearn.datasets import load_breast_cancer
+import pickle
+import os 
+
+
+"""Load breast cancer dataset"""
+
+np.random.seed(0)        #create same seed for random number every time
+
+cancer=load_breast_cancer()      #Download breast cancer dataset
+
+inputs=cancer.data                     #Feature matrix of 569 rows (samples) and 30 columns (parameters)
+outputs=cancer.target                  #Label array of 569 rows (0 for benign and 1 for malignant)
+labels=cancer.feature_names[0:30]
+
+print('The content of the breast cancer dataset is:')      #Print information about the datasets
+print(labels)
+print('-------------------------')
+print("inputs =  " + str(inputs.shape))
+print("outputs =  " + str(outputs.shape))
+print("labels =  "+ str(labels.shape))
+
+x=inputs      #Reassign the Feature and Label matrices to other variables
+y=outputs
+
+#%% 
+
+# Visualisation of dataset (for correlation analysis)
+
+plt.figure()
+plt.scatter(x[:,0],x[:,2],s=40,c=y,cmap=plt.cm.Spectral)
+plt.xlabel('Mean radius',fontweight='bold')
+plt.ylabel('Mean perimeter',fontweight='bold')
+plt.show()
+
+plt.figure()
+plt.scatter(x[:,5],x[:,6],s=40,c=y, cmap=plt.cm.Spectral)
+plt.xlabel('Mean compactness',fontweight='bold')
+plt.ylabel('Mean concavity',fontweight='bold')
+plt.show()
+
+
+plt.figure()
+plt.scatter(x[:,0],x[:,1],s=40,c=y,cmap=plt.cm.Spectral)
+plt.xlabel('Mean radius',fontweight='bold')
+plt.ylabel('Mean texture',fontweight='bold')
+plt.show()
+
+plt.figure()
+plt.scatter(x[:,2],x[:,1],s=40,c=y,cmap=plt.cm.Spectral)
+plt.xlabel('Mean perimeter',fontweight='bold')
+plt.ylabel('Mean compactness',fontweight='bold')
+plt.show()
+
+
+# Generate training and testing datasets
+
+#Select features relevant to classification (texture,perimeter,compactness and symmetery) 
+#and add to input matrix
+
+temp1=np.reshape(x[:,1],(len(x[:,1]),1))
+temp2=np.reshape(x[:,2],(len(x[:,2]),1))
+X=np.hstack((temp1,temp2))      
+temp=np.reshape(x[:,5],(len(x[:,5]),1))
+X=np.hstack((X,temp))       
+temp=np.reshape(x[:,8],(len(x[:,8]),1))
+X=np.hstack((X,temp))       
+
+X_train,X_test,y_train,y_test=splitter(X,y,test_size=0.1)   #Split datasets into training and testing
+
+y_train=to_categorical(y_train)     #Convert labels to categorical when using categorical cross entropy
+y_test=to_categorical(y_test)
+
+del temp1,temp2,temp
+
+# %%
+
+# Define tunable parameters"
+
+eta=np.logspace(-3,-1,3)                    #Define vector of learning rates (parameter to SGD optimiser)
+lamda=0.01                                  #Define hyperparameter
+n_layers=2                                  #Define number of hidden layers in the model
+n_neuron=np.logspace(0,3,4,dtype=int)       #Define number of neurons per layer
+epochs=100                                   #Number of reiterations over the input data
+batch_size=100                              #Number of samples per gradient update
+
+# %%
+
+"""Define function to return Deep Neural Network model"""
+
+def NN_model(inputsize,n_layers,n_neuron,eta,lamda):
+    model=Sequential()      
+    for i in range(n_layers):       #Run loop to add hidden layers to the model
+        if (i==0):                  #First layer requires input dimensions
+            model.add(Dense(n_neuron,activation='relu',kernel_regularizer=regularizers.l2(lamda),input_dim=inputsize))
+        else:                       #Subsequent layers are capable of automatic shape inferencing
+            model.add(Dense(n_neuron,activation='relu',kernel_regularizer=regularizers.l2(lamda)))
+    model.add(Dense(2,activation='softmax'))  #2 outputs - ordered and disordered (softmax for prob)
+    sgd=optimizers.SGD(lr=eta)
+    model.compile(loss='categorical_crossentropy',optimizer=sgd,metrics=['accuracy'])
+    return model
+
+    
+Train_accuracy=np.zeros((len(n_neuron),len(eta)))      #Define matrices to store accuracy scores as a function
+Test_accuracy=np.zeros((len(n_neuron),len(eta)))       #of learning rate and number of hidden neurons for 
+
+for i in range(len(n_neuron)):     #run loops over hidden neurons and learning rates to calculate 
+    for j in range(len(eta)):      #accuracy scores 
+        DNN_model=NN_model(X_train.shape[1],n_layers,n_neuron[i],eta[j],lamda)
+        DNN_model.fit(X_train,y_train,epochs=epochs,batch_size=batch_size,verbose=1)
+        Train_accuracy[i,j]=DNN_model.evaluate(X_train,y_train)[1]
+        Test_accuracy[i,j]=DNN_model.evaluate(X_test,y_test)[1]
+               
+
+def plot_data(x,y,data,title=None):
+
+    # plot results
+    fontsize=16
+
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    cax = ax.matshow(data, interpolation='nearest', vmin=0, vmax=1)
+    
+    cbar=fig.colorbar(cax)
+    cbar.ax.set_ylabel('accuracy (%)',rotation=90,fontsize=fontsize)
+    cbar.set_ticks([0,.2,.4,0.6,0.8,1.0])
+    cbar.set_ticklabels(['0%','20%','40%','60%','80%','100%'])
+
+    # put text on matrix elements
+    for i, x_val in enumerate(np.arange(len(x))):
+        for j, y_val in enumerate(np.arange(len(y))):
+            c = "${0:.1f}\\%$".format( 100*data[j,i])  
+            ax.text(x_val, y_val, c, va='center', ha='center')
+
+    # convert axis vaues to to string labels
+    x=[str(i) for i in x]
+    y=[str(i) for i in y]
+
+
+    ax.set_xticklabels(['']+x)
+    ax.set_yticklabels(['']+y)
+
+    ax.set_xlabel('$\\mathrm{learning\\ rate}$',fontsize=fontsize)
+    ax.set_ylabel('$\\mathrm{hidden\\ neurons}$',fontsize=fontsize)
+    if title is not None:
+        ax.set_title(title)
+
+    plt.tight_layout()
+
+    plt.show()
+    
+plot_data(eta,n_neuron,Train_accuracy, 'training')
+plot_data(eta,n_neuron,Test_accuracy, 'testing')
+
+!ec
+
+
+!split
+===== The Mathematics of Neural Networks =====
+
+o Activation functions and vanishing gradients
+o Brief summary of gradient methods
+o Approximation theorems, in particular the *universal approximation theorem* for neural networks by Cybenko and Hornik
+
+I strongly recommend Michael Nielsen's intuitive approach to the neural networks and the universal approximation theorem, see the slides at URL:"http://neuralnetworksanddeeplearning.com/chap4.html".
+
+
+
+
+!split
+===== Fine-tuning neural network hyperparameters =====
+
+The flexibility of neural networks is also one of their main
+drawbacks: there are many hyperparameters to tweak. Not only can you
+use any imaginable network topology (how neurons/nodes are interconnected),
+but even in a simple FFNN you can change the number of layers, the
+number of neurons per layer, the type of activation function to use in
+each layer, the weight initialization logic, the stochastic gradient optmized and much more. How do you
+know what combination of hyperparameters is the best for your task?
+
+* You can use grid search with cross-validation to find the right hyperparameters.
+
+However,since there are many hyperparameters to tune, and since
+training a neural network on a large dataset takes a lot of time, you
+will only be able to explore a tiny part of the hyperparameter space.
+
+
+* You can use randomized search.
+* Or use tools like "Oscar":"http://oscar.calldesk.ai/", which implements more complex algorithms to help you find a good set of hyperparameters quickly.  
+
+!split
+===== Hidden layers =====
+
+
+
+For many problems you can start with just one or two hidden layers and it will work just fine.
+For the MNIST data set you ca easily get a high accuracy using just one hidden layer with a
+few hundred neurons.
+You can reach for this data set above 98% accuracy using two hidden layers with the same total amount of
+neurons, in roughly the same amount of training time. 
+
+For more complex problems, you can gradually
+ramp up the number of hidden layers, until you start overfitting the training set. Very complex tasks, such
+as large image classification or speech recognition, typically require networks with dozens of layers
+and they need a huge amount
+of training data. However, you will rarely have to train such networks from scratch: it is much more
+common to reuse parts of a pretrained state-of-the-art network that performs a similar task.
+
+
+
+
+!split 
+===== Which activation function should I use? =====
+
+The Back propagation algorithm we derived above works by going from
+the output layer to the input layer, propagating the error gradient on
+the way. Once the algorithm has computed the gradient of the cost
+function with regards to each parameter in the network, it uses these
+gradients to update each parameter with a Gradient Descent (GD) step.
+
+
+Unfortunately for us, the gradients often get smaller and smaller as the
+algorithm progresses down to the first hidden layers. As a result, the
+GD update leaves the lower layer connection weights
+virtually unchanged, and training never converges to a good
+solution. This is known in the literature as 
+_the vanishing gradients problem_. 
+
+In other cases, the opposite can happen, namely the the gradients can grow bigger and
+bigger. The result is that many of the layers get large updates of the 
+weights the
+algorithm diverges. This is the _exploding gradients problem_, which is
+mostly encountered in recurrent neural networks. More generally, deep
+neural networks suffer from unstable gradients, different layers may
+learn at widely different speeds
+
+
+
+!split 
+===== Is the Logistic activation function (Sigmoid)  our choice? =====
+
+Although this unfortunate behavior has been empirically observed for
+quite a while (it was one of the reasons why deep neural networks were
+mostly abandoned for a long time), it is only around 2010 that
+significant progress was made in understanding it.
+
+A paper titled "Understanding the Difficulty of Training Deep
+Feedforward Neural Networks by Xavier Glorot and Yoshua Bengio":"http://proceedings.mlr.press/v9/glorot10a.html" found that
+the problems with the popular logistic
+sigmoid activation function and the weight initialization technique
+that was most popular at the time, namely random initialization using
+a normal distribution with a mean of 0 and a standard deviation of
+1. 
+
+They showed that with this activation function and this
+initialization scheme, the variance of the outputs of each layer is
+much greater than the variance of its inputs. Going forward in the
+network, the variance keeps increasing after each layer until the
+activation function saturates at the top layers. This is actually made
+worse by the fact that the logistic function has a mean of 0.5, not 0
+(the hyperbolic tangent function has a mean of 0 and behaves slightly
+better than the logistic function in deep networks).
+
+
+!split
+===== The derivative of the Logistic funtion =====
+
+Looking at the logistic activation function, when inputs become large
+(negative or positive), the function saturates at 0 or 1, with a
+derivative extremely close to 0. Thus when backpropagation kicks in,
+it has virtually no gradient to propagate back through the network,
+and what little gradient exists keeps getting diluted as
+backpropagation progresses down through the top layers, so there is
+really nothing left for the lower layers.
+
+In their paper, Glorot and Bengio propose a way to significantly
+alleviate this problem. We need the signal to flow properly in both
+directions: in the forward direction when making predictions, and in
+the reverse direction when backpropagating gradients. We don’t want
+the signal to die out, nor do we want it to explode and saturate. For
+the signal to flow properly, the authors argue that we need the
+variance of the outputs of each layer to be equal to the variance of
+its inputs, and we also need the gradients to have equal variance
+before and after flowing through a layer in the reverse direction.
+
+
+
+One of the insights in the 2010 paper by Glorot and Bengio was that
+the vanishing/exploding gradients problems were in part due to a poor
+choice of activation function. Until then most people had assumed that
+if Nature had chosen to use roughly sigmoid activation functions in
+biological neurons, they must be an excellent choice. But it turns out
+that other activation functions behave much better in deep neural
+networks, in particular the ReLU activation function, mostly because
+it does not saturate for positive values (and also because it is quite
+fast to compute).
+
+
+!split
+===== The RELU function family =====
+
+The ReLU activation function suffers from a problem known as the dying
+ReLUs: during training, some neurons effectively die, meaning they
+stop outputting anything other than 0.
+
+In some cases, you may find that half of your network’s neurons are
+dead, especially if you used a large learning rate. During training,
+if a neuron’s weights get updated such that the weighted sum of the
+neuron’s inputs is negative, it will start outputting 0. When this
+happen, the neuron is unlikely to come back to life since the gradient
+of the ReLU function is 0 when its input is negative.
+
+To solve this problem, nowadays practitioners use a  variant of the ReLU
+function, such as the leaky ReLU discussed above or the so-called
+exponential linear unit (ELU) function
+
+
+!bt
+\[
+ELU(z) = \left\{\begin{array}{cc} \alpha\left( \exp{(z)}-1\right) & z < 0,\\  z & z \ge 0.\end{array}\right. 
+\]
+!et
+
+!split
+===== Which activation function should we use? =====
+
+In general it seems that the ELU activation function is better than
+the leaky ReLU function (and its variants), which is better than
+ReLU. ReLU performs better than $\tanh$ which in turn performs better
+than the logistic function. 
+
+If runtime
+performance is an issue, then you may opt for the  leaky ReLU function  over the 
+ELU function If you don’t
+want to tweak yet another hyperparameter, you may just use the default
+$\alpha$ of $0.01$ for the leaky ReLU, and $1$ for ELU. If you have
+spare time and computing power, you can use cross-validation or
+bootstrap to evaluate other activation functions.
+
+
+!split
+=====  More on activation functions, output layers =====
+
+In most cases you can use the ReLU activation function in the hidden layers (or one of its variants).
+
+It is a bit faster to compute than other activation functions, and the gradient descent optimization does in general not get stuck.
+
+_For the output layer:_
+
+* For classification the softmax activation function is generally a good choice for classification tasks (when the classes are mutually exclusive).
+* For regression tasks, you can simply use no activation function at all.
+
+
+
+
+!split
+===== Batch Normalization =====
+
+Batch Normalization
+aims to address the vanishing/exploding gradients problems, and more generally the problem that the
+distribution of each layer’s inputs changes during training, as the parameters of the previous layers change.
+
+The technique consists of adding an operation in the model just before the activation function of each
+layer, simply zero-centering and normalizing the inputs, then scaling and shifting the result using two new
+parameters per layer (one for scaling, the other for shifting). In other words, this operation lets the model
+learn the optimal scale and mean of the inputs for each layer.
+In order to zero-center and normalize the inputs, the algorithm needs to estimate the inputs’ mean and
+standard deviation. It does so by evaluating the mean and standard deviation of the inputs over the current
+mini-batch, from this the name batch normalization.
+
+!split
+===== Dropout =====
+
+It is a fairly simple algorithm: at every training step, every neuron (including the input neurons but
+excluding the output neurons) has a probability $p$ of being temporarily dropped out, meaning it will be
+entirely ignored during this training step, but it may be active during the next step.
+
+The
+hyperparameter $p$ is called the dropout rate, and it is typically set to 50%. After training, the neurons are not dropped anymore.
+ It is viewed as one of the most popular regularization techniques.
+
+!split
+===== Gradient Clipping =====
+
+A popular technique to lessen the exploding gradients problem is to simply clip the gradients during
+backpropagation so that they never exceed some threshold (this is mostly useful for recurrent neural
+networks).
+
+This technique is called Gradient Clipping.
+
+In general however, Batch
+Normalization is preferred.
+
+!split
+=====  A very nice website on Neural Networks =====
+
+You may find this "website":"https://playground.tensorflow.org/#activation=tanh&batchSize=10&dataset=circle&regDataset=reg-plane&learningRate=0.03&regularizationRate=0&noise=0&networkShape=4,2&seed=0.29243&showTestData=false&discretize=false&percTrainData=50&x=true&y=true&xTimesY=false&xSquared=false&ySquared=false&cosX=false&sinX=false&cosY=false&sinY=false&collectStats=false&problem=classification&initZero=false&hideText=false" very useful. Thx a million to Ghadi for sharing. 
+
+!split 
+===== A top-down perspective on Neural networks =====
+
+
+The first thing we would like to do is divide the data into two or three
+parts. A training set, a validation or dev (development) set, and a
+test set. The test set is the data on which we want to make
+predictions. The dev set is a subset of the training data we use to
+check how well we are doing out-of-sample, after training the model on
+the training dataset. We use the validation error as a proxy for the
+test error in order to make tweaks to our model. It is crucial that we
+do not use any of the test data to train the algorithm. This is a
+cardinal sin in ML. Then:
+
+ 
+* Estimate optimal error rate
+
+* Minimize underfitting (bias) on training data set.
+
+* Make sure you are not overfitting.
+
+If the validation and test sets are drawn from the same distributions,
+then a good performance on the validation set should lead to similarly
+good performance on the test set. 
+
+However, sometimes
+the training data and test data differ in subtle ways because, for
+example, they are collected using slightly different methods, or
+because it is cheaper to collect data in one way versus another. In
+this case, there can be a mismatch between the training and test
+data. This can lead to the neural network overfitting these small
+differences between the test and training sets, and a poor performance
+on the test set despite having a good performance on the validation
+set. To rectify this, Andrew Ng suggests making two validation or dev
+sets, one constructed from the training data and one constructed from
+the test data. The difference between the performance of the algorithm
+on these two validation sets quantifies the train-test mismatch. This
+can serve as another important diagnostic when using DNNs for
+supervised learning.
+
+!split
+===== Limitations of supervised learning with deep networks =====
+
+Like all statistical methods, supervised learning using neural
+networks has important limitations. This is especially important when
+one seeks to apply these methods, especially to physics problems. Like
+all tools, DNNs are not a universal solution. Often, the same or
+better performance on a task can be achieved by using a few
+hand-engineered features (or even a collection of random
+features). 
+
+Here we list some of the important limitations of supervised neural network based models. 
+
+
+
+* _Need labeled data_. All supervised learning methods, DNNs for supervised learning require labeled data. Often, labeled data is harder to acquire than unlabeled data (e.g. one must pay for human experts to label images).
+* _Supervised neural networks are extremely data intensive._ DNNs are data hungry. They perform best when data is plentiful. This is doubly so for supervised methods where the data must also be labeled. The utility of DNNs is extremely limited if data is hard to acquire or the datasets are small (hundreds to a few thousand samples). In this case, the performance of other methods that utilize hand-engineered features can exceed that of DNNs.
+* _Homogeneous data._ Almost all DNNs deal with homogeneous data of one type. It is very hard to design architectures that mix and match data types (i.e.~some continuous variables, some discrete variables, some time series). In applications beyond images, video, and language, this is often what is required. In contrast, ensemble models like random forests or gradient-boosted trees have no difficulty handling mixed data types.
+* _Many problems are not about prediction._ In natural science we are often interested in learning something about the underlying distribution that generates the data. In this case, it is often difficult to cast these ideas in a supervised learning setting. While the problems are related, it is possible to make good predictions with a *wrong* model. The model might or might not be useful for understanding the underlying science.
+
+Some of these remarks are particular to DNNs, others are shared by all supervised learning methods. This motivates the use of unsupervised methods which in part circumvent these problems.
+
+
+
+!split
+===== Overarching Views, a personal  note =====
+
+The author of these lecture notes has an overarching take on many of
+the machine learning algorithms we discuss here. 
+
+
+If we wish to understand complex systems, we need to find some
+effective degrees of freedom or features that we find essential,
+simply in order to reduce the complexity of the systems we are
+studying.  This leads, in one way or the other to dimensionality
+reductions. Most of the Machine Learning methods we encounter deal
+with this, whether we opt for a principal component analysis, or
+clustering, or convolutional neural networks, or Ridge or Lasso
+regression or random forest, yes, perhaps most machine learning
+methods at large.
+
+For neural networks and our previous discussion, we have seen that we
+in essence end up with matrix-matrix and matrix-vector
+multiplications. In all cases, our matrices are dense ones, and the
+more data we deal with the larger the dimensionalities of the matrices
+and vectors. How can we reduce such dimensionalities?  One possible
+answer is offered by _convolutional neural networks_ (CNN), as
+discussed below. The figure here shows a typical situation of the
+reduction of information in an image and is typical of what CNNs
+actually end up doing.
 
 
 
@@ -42,7 +763,10 @@ loss function (for example Softmax) on the last (fully-connected) layer
 and all the tips/tricks we developed for learning regular Neural
 Networks still apply (back propagation, gradient descent etc etc).
 
-What is the difference? _CNN architectures make the explicit assumption that
+!split
+===== What is the Difference =====
+
+_CNN architectures make the explicit assumption that
 the inputs are images, which allows us to encode certain properties
 into the architecture. These then make the forward function more
 efficient to implement and vastly reduce the amount of parameters in
@@ -195,6 +919,465 @@ the course
 "IN5400 – Machine Learning for Image Analysis":"https://www.uio.no/studier/emner/matnat/ifi/IN5400/index-eng.html"
 and the slides of "CS231":"http://cs231n.github.io/convolutional-networks/" which is taught at Stanford University (consistently ranked as one of the top computer science programs in the world). "Michael Nielsen's book is a must read, in particular chapter 6 which deals with CNNs":"http://neuralnetworksanddeeplearning.com/chap6.html".
 
+The textbook by Goodfellow et al, see chapter 9 contains an in depth discussion as well.
+
+!split
+===== Key Idea =====
+
+A dense neural network is representd by an affine operation (like matrix-matrix multiplication) where all parameters are included.
+
+The key idea in CNNs for say imaging is that in images neighbor pixels tend to be related! So we connect
+only neighboring neurons in the input instead of connecting all with the first hidden layer.
+
+We say we perform a filtering (convolution is the mathematical operation). 
+
+
+!split
+===== Mathematics of CNNs =====
+
+The mathematics of CNNs is based on the mathematical operation of
+_convolution_.  In mathematics (in particular in functional analysis),
+convolution is represented by matheematical operation (integration,
+summation etc) on two function in order to produce a third function
+that expresses how the shape of one gets modified by the other.
+Convolution has a plethora of applications in a variety of disciplines, spanning from statistics to signal processing, computer vision, solutions of differential equations,linear algebra, engineering,  and yes, machine learning.
+
+Mathematically, convolution is defined as follows (one-dimensional example):
+Let us define a continuous function $y(t)$ given by
+!bt
+\[
+y(t) = \int x(a) w(t-a) da,
+\]
+!et
+where $x(a)$ represents a so-called input and $w(t-a)$ is normally called the weight function or kernel.
+
+The above integral is written in  a more compact form as
+!bt
+\[
+y(t) = \left(x * w\right)(t).
+\]
+!et
+
+The discretized version reads
+!bt
+\[
+y(t) = \sum_{a=-\infty}^{a=\infty}x(a)w(t-a).
+\]
+!et
+Computing the inverse of the above convolution operations is known as deconvolution.
+
+How can we use this? And what does it mean? Let us study some familiar examples first.
+
+
+!split
+===== Convolution Examples: Polynomial multiplication =====
+
+We have already met such an example in project 1 when we tried to set
+up the design matrix for a two-dimensional function. This was an
+example of polynomial multiplication.  Let us recast such a problem in terms of the convolution operation.
+Let us look a the following polynomials to second and third order, respectively:
+!bt
+\[
+p(t) = \alpha_0+\alpha_1 t+\alpha_2 t^2,
+\]
+!et
+and
+!bt
+\[
+s(t) = \beta_0+\beta_1 t+\beta_2 t^2+\beta_3 t^3.
+\]
+!et
+
+The polynomial multiplication gives us a new polynomial of degree $5$
+!bt
+\[
+z(t) = \delta_0+\delta_1 t+\delta_2 t^2+\delta_3 t^3+\delta_4 t^4+\delta_5 t^5.
+\]
+!et
+
+!split
+===== Efficient Polynomial Multiplication =====
+
+Computing polynomial products can be implemented efficiently if we rewrite the more brute force multiplications using convolution.
+We note first that the new coefficients are given as
+
+!bt
+\begin{split}
+\delta_0=&\alpha_0\beta_0\\
+\delta_1=&\alpha_1\beta_0+\alpha_1\beta_0\\
+\delta_2=&\alpha_0\beta_2+\alpha_1\beta_1+\alpha_2\beta_0\\
+\delta_3=&\alpha_1\beta_2+\alpha_2\beta_1+\alpha_0\beta_3\\
+\delta_4=&\alpha_2\beta_2+\alpha_1\beta_3\\
+\delta_5=&\alpha_2\beta_3.\\
+\end{split}
+!et
+
+
+We note that $\alpha_i=0$ except for $i\in \left\{0,1,2\right\}$ and $\beta_i=0$ except for $i\in\left\{0,1,2,3\right\}$.
+
+We can then rewrite the coefficients $\delta_j$ using a discrete convolution as
+!bt
+\[
+\delta_j = \sum_{i=-\infty}^{i=\infty}\alpha_i\beta_{j-i}=(\alpha * \beta)_j,
+\]
+!et
+or as a double sum with restriction $l=i+j$
+!bt
+\[
+\delta_l = \sum_{ij}\alpha_i\beta_{j}.
+\]
+!et
+
+Do you see a potential drawback with these equations?
+
+!split
+===== A more efficient way of coding the above Convolution =====
+
+Since we only have a finite number of $\alpha$ and $\beta$ values
+which are non-zero, we can rewrite the above convolution expressions
+as a matrix-vector multiplication
+
+!bt
+\[
+\bm{\delta}=\begin{bmatrix}\alpha_0 & 0 & 0 & 0 \\
+                            \alpha_1 & \alpha_0 & 0 & 0 \\
+			    \alpha_2 & \alpha_1 & \alpha_0 & 0 \\
+			    0 & \alpha_2 & \alpha_1 & \alpha_0 \\
+			    0 & 0 & \alpha_2 & \alpha_1 \\
+			    0 & 0 & 0 & \alpha_2
+			    \end{bmatrix}\begin{bmatrix} \beta_0 \\ \beta_1 \\ \beta_2 \\ \beta_3\end{bmatrix}.
+\]
+!et
+
+The process is commutative and we can easily see that we can rewrite the multiplication in terms of  a matrix holding $\beta$ and a vector holding $\alpha$.
+In this case we have
+!bt
+\[
+\bm{\delta}=\begin{bmatrix}\beta_0 & 0 & 0  \\
+                            \beta_1 & \beta_0 & 0  \\
+			    \beta_2 & \beta_1 & \beta_0  \\
+			    \beta_3 & \beta_2 & \beta_1 \\
+			    0 & \beta_3 & \beta_2 \\
+			    0 & 0 & \beta_3
+			    \end{bmatrix}\begin{bmatrix} \alpha_0 \\ \alpha_1 \\ \alpha_2\end{bmatrix}.
+\]
+!et
+
+Note that the use of these  matrices is for mathematical purposes only  and not implementation purposes.
+When implementing the above equation we do not encode (and allocate memory) the matrices explicitely.
+We rather code the convolutions in the minimal memory footprint that they require.
+
+Does the number of floating point operations change here when we use the commutative property?
+
+!split
+===== Convolution Examples: Principle of Superposition and Periodic Forces (Fourier Transforms) =====
+
+For problems with so-called harmonic oscillations, given by for example the following differential equation
+!bt
+\[
+m\frac{d^2x}{dt^2}+\eta\frac{dx}{dt}+x(t)=F(t),
+\]
+!et
+where $F(t)$ is an applied external force acting on the system (often called a driving force), one can use the theory of Fourier transformations to find the solutions of this type of equations.
+
+If one has several driving forces, $F(t)=\sum_n F_n(t)$, one can find
+the particular solution to each $F_n$, $x_{pn}(t)$, and the particular
+solution for the entire driving force is then given by a series like
+
+!bt
+\begin{equation}
+x_p(t)=\sum_nx_{pn}(t).
+\end{equation}
+!et
+
+!split
+===== Principle of Superposition =====
+
+This is known as the principle of superposition. It only applies when
+the homogenous equation is linear. If there were an anharmonic term
+such as $x^3$ in the homogenous equation, then when one summed various
+solutions, $x=(\sum_n x_n)^2$, one would get cross
+terms. Superposition is especially useful when $F(t)$ can be written
+as a sum of sinusoidal terms, because the solutions for each
+sinusoidal (sine or cosine)  term is analytic. 
+
+Driving forces are often periodic, even when they are not
+sinusoidal. Periodicity implies that for some time $\tau$
+
+!bt
+\begin{eqnarray}
+F(t+\tau)=F(t). 
+\end{eqnarray}
+!et
+
+One example of a non-sinusoidal periodic force is a square wave. Many
+components in electric circuits are non-linear, e.g. diodes, which
+makes many wave forms non-sinusoidal even when the circuits are being
+driven by purely sinusoidal sources.
+
+!split
+===== Simple Code Example =====
+
+The code here shows a typical example of such a square wave generated using the functionality included in the _scipy_ Python package. We have used a period of $\tau=0.2$.
+
+!bc pycod
+import numpy as np
+import math
+from scipy import signal
+import matplotlib.pyplot as plt
+
+# number of points                                                                                       
+n = 500
+# start and final times                                                                                  
+t0 = 0.0
+tn = 1.0
+# Period                                                                                                 
+t = np.linspace(t0, tn, n, endpoint=False)
+SqrSignal = np.zeros(n)
+SqrSignal = 1.0+signal.square(2*np.pi*5*t)
+plt.plot(t, SqrSignal)
+plt.ylim(-0.5, 2.5)
+plt.show()
+!ec
+
+
+For the sinusoidal example the
+period is $\tau=2\pi/\omega$. However, higher harmonics can also
+satisfy the periodicity requirement. In general, any force that
+satisfies the periodicity requirement can be expressed as a sum over
+harmonics,
+
+!bt
+\begin{equation}
+F(t)=\frac{f_0}{2}+\sum_{n>0} f_n\cos(2n\pi t/\tau)+g_n\sin(2n\pi t/\tau).
+\end{equation}
+!et
+
+!split
+===== Wrapping up Fourier transforms =====
+
+We can write down the answer for
+$x_{pn}(t)$, by substituting $f_n/m$ or $g_n/m$ for $F_0/m$. By
+writing each factor $2n\pi t/\tau$ as $n\omega t$, with $\omega\equiv
+2\pi/\tau$,
+
+!bt
+\begin{equation}
+label{eq:fourierdef1}
+F(t)=\frac{f_0}{2}+\sum_{n>0}f_n\cos(n\omega t)+g_n\sin(n\omega t).
+\end{equation}
+!et
+
+The solutions for $x(t)$ then come from replacing $\omega$ with
+$n\omega$ for each term in the particular solution,
+
+!bt
+\begin{eqnarray}
+x_p(t)&=&\frac{f_0}{2k}+\sum_{n>0} \alpha_n\cos(n\omega t-\delta_n)+\beta_n\sin(n\omega t-\delta_n),\\
+\nonumber
+\alpha_n&=&\frac{f_n/m}{\sqrt{((n\omega)^2-\omega_0^2)+4\beta^2n^2\omega^2}},\\
+\nonumber
+\beta_n&=&\frac{g_n/m}{\sqrt{((n\omega)^2-\omega_0^2)+4\beta^2n^2\omega^2}},\\
+\nonumber
+\delta_n&=&\tan^{-1}\left(\frac{2\beta n\omega}{\omega_0^2-n^2\omega^2}\right).
+\end{eqnarray}
+!et
+
+!split
+===== Finding the Coefficients =====
+
+Because the forces have been applied for a long time, any non-zero
+damping eliminates the homogenous parts of the solution, so one need
+only consider the particular solution for each $n$.
+
+The problem is considered solved if one can find expressions for the
+coefficients $f_n$ and $g_n$, even though the solutions are expressed
+as an infinite sum. The coefficients can be extracted from the
+function $F(t)$ by
+
+!bt
+\begin{eqnarray}
+label{eq:fourierdef2}
+f_n&=&\frac{2}{\tau}\int_{-\tau/2}^{\tau/2} dt~F(t)\cos(2n\pi t/\tau),\\
+\nonumber
+g_n&=&\frac{2}{\tau}\int_{-\tau/2}^{\tau/2} dt~F(t)\sin(2n\pi t/\tau).
+\end{eqnarray}
+!et
+
+To check the consistency of these expressions and to verify
+Eq. (ref{eq:fourierdef2}), one can insert the expansion of $F(t)$ in
+Eq. (ref{eq:fourierdef1}) into the expression for the coefficients in
+Eq. (ref{eq:fourierdef2}) and see whether
+
+!bt
+\begin{eqnarray}
+f_n&=?&\frac{2}{\tau}\int_{-\tau/2}^{\tau/2} dt~\left\{
+\frac{f_0}{2}+\sum_{m>0}f_m\cos(m\omega t)+g_m\sin(m\omega t)
+\right\}\cos(n\omega t).
+\end{eqnarray}
+!et
+
+Immediately, one can throw away all the terms with $g_m$ because they
+convolute an even and an odd function. The term with $f_0/2$
+disappears because $\cos(n\omega t)$ is equally positive and negative
+over the interval and will integrate to zero. For all the terms
+$f_m\cos(m\omega t)$ appearing in the sum, one can use angle addition
+formulas to see that $\cos(m\omega t)\cos(n\omega
+t)=(1/2)(\cos[(m+n)\omega t]+\cos[(m-n)\omega t]$. This will integrate
+to zero unless $m=n$. In that case the $m=n$ term gives
+
+!bt
+\begin{equation}
+\int_{-\tau/2}^{\tau/2}dt~\cos^2(m\omega t)=\frac{\tau}{2},
+\end{equation}
+!et
+
+and
+
+!bt
+\begin{eqnarray}
+f_n&=?&\frac{2}{\tau}\int_{-\tau/2}^{\tau/2} dt~f_n/2\\
+\nonumber
+&=&f_n~\checkmark.
+\end{eqnarray}
+!et
+
+The same method can be used to check for the consistency of $g_n$.
+
+
+
+!split
+===== Final words on Fourier Transforms =====
+
+The code here uses the Fourier series applied to a 
+square wave signal. The code here
+visualizes the various approximations given by Fourier series compared
+with a square wave with period $T=0.2$ (dimensionless time), width $0.1$ and max value of the force $F=2$. We
+see that when we increase the number of components in the Fourier
+series, the Fourier series approximation gets closer and closer to the
+square wave signal.
+
+!bc pycod
+import numpy as np
+import math
+from scipy import signal
+import matplotlib.pyplot as plt
+
+# number of points                                                                                       
+n = 500
+# start and final times                                                                                  
+t0 = 0.0
+tn = 1.0
+# Period                                                                                                 
+T =0.2
+# Max value of square signal                                                                             
+Fmax= 2.0
+# Width of signal   
+Width = 0.1
+t = np.linspace(t0, tn, n, endpoint=False)
+SqrSignal = np.zeros(n)
+FourierSeriesSignal = np.zeros(n)
+SqrSignal = 1.0+signal.square(2*np.pi*5*t+np.pi*Width/T)
+a0 = Fmax*Width/T
+FourierSeriesSignal = a0
+Factor = 2.0*Fmax/np.pi
+for i in range(1,500):
+    FourierSeriesSignal += Factor/(i)*np.sin(np.pi*i*Width/T)*np.cos(i*t*2*np.pi/T)
+plt.plot(t, SqrSignal)
+plt.plot(t, FourierSeriesSignal)
+plt.ylim(-0.5, 2.5)
+plt.show()
+!ec
+
+
+!split
+=====  Two-dimensional Objects =====
+
+We often use convolutions over more than one dimension at a time. If
+we have a two-dimensional image $I$ as input, we can have a _filter_
+defined by a two-dimensional _kernel_ $K$. This leads to an output $S$
+
+!bt
+\[
+S_(i,j)=(I * K)(i,j) = \sum_m\sum_n I(m,n)K(i-m,j-n).
+\]
+!et
+
+Convolution is a commutatitave process, which means we can rewrite this equation as
+!bt
+\[
+S_(i,j)=(I * K)(i,j) = \sum_m\sum_n I(i-m,j-n)K(m,n).
+\]
+!et
+
+Normally the latter is more straightforward to implement in  a machine elarning library since there is less variation in the range of values of $m$ and $n$.
+
+!split
+===== Cross-Correlation =====
+
+
+
+Many deep learning libraries implement cross-correlation instead of convolution
+!bt
+\[
+S_(i,j)=(I * K)(i,j) = \sum_m\sum_n I(i+m,j-+)K(m,n).
+\]
+!et
+
+
+!split
+===== More on Dimensionalities =====
+
+In feilds like signal processing (and imaging as well), one designs
+so-called filters. These filters are defined by the convolutions and
+are often hand-crafted. One may specify filters for smoothing, edge
+detection, frequency reshaping, and similar operations. However with
+neural networks the idea is to automatically learn the filters and use
+many of them in conjunction with non-linear operations (activation
+functions).
+
+As an example consider a neural network operating on sound sequence
+data.  Assume that we an input vector $\bm{x}$ of length $d=10^6$.  We
+construct then a neural network with onle hidden layer only with
+$10^4$ nodes. This means that we will have a weight matrix with
+$10^4\times 10^6=10^{10}$ weights to be determined, together with $10^4$ biases.
+
+Assume furthermore that we have an output layer which is meant to train whether the sound sequence represents a human voice (true) or something else (false).
+It means that we have only one output node. But since this output node connects to $10^4$ nodes in the hidden layer, there are in total $10^4$ weights to be determined for the output layer, plus one bias. In total we have
+
+!bt
+\[
+\mathrm{NumberParameters}=10^{10}+10^4+10^4+1 \approx 10^{10},
+\]
+!et
+that is ten billion parameters to determine. 
+
+
+!split
+===== Further Dimensionality Remarks =====
+
+In today’s architecture one can train such neural networks, however
+this is a huge number of parameters for the task at hand. In general,
+it is a very wasteful and inefficient use of dense matrices as
+parameters. Just as importantly, such trained network parameters are
+very specific for the type of input data on which they were trained
+and the network is not likely to generalize easily to variations in
+the input.
+
+
+The main principles that justify convolutions is locality of
+information and repetion of patterns within the signal. Sound samples
+of the input in adjacent spots are much more likely to affect each
+other than those that are very far away. Similarly, sounds are
+repeated in multiple times in the signal. While slightly simplistic,
+reasoning about such a sound example demonstrates this. The same
+principles then apply to images and other similar data.
+
+
+!split
+===== CNNs in more detail, Lecture from IN5400 =====
+
+* "Lectures from IN5400 spring 2019":"https://www.uio.no/studier/emner/matnat/ifi/IN5400/v19/material/week5/in5400_2019_week5_convolutional_nerual_networks.pdf"
 
 
 !split
@@ -574,6 +1757,15 @@ print(test_acc)
 !ec
 
 
+
+
+
+
+
+
+
+
+
 !split
 ===== Recurrent neural networks: Overarching view =====
 
@@ -595,11 +1787,10 @@ input, making them extremely useful for natural language processing
 systems such as automatic translation and speech-to-text.
 
 
-
-
 !split
 =====  Set up of an RNN =====
 
+More to text to be added
 
 !split
 ===== A simple example =====
@@ -1248,852 +2439,607 @@ print('Time: ', end-start)
 
 
 !split
-===== Decision trees, overarching aims  =====
+===== Generative Models =====
 
+_Generative models_ describe a class of statistical models that are a contrast
+to _discriminative models_. Informally we say that generative models can
+generate new data instances while discriminative models discriminate between
+different kinds of data instances. A generative model could generate new photos
+of animals that look like 'real' animals while a discriminative model could tell
+a dog from a cat. More formally, given a data set $x$ and a set of labels /
+targets $y$. Generative models capture the joint probability $p(x, y)$, or
+just $p(x)$ if there are no labels, while discriminative models capture the
+conditional probability $p(y | x)$. Discriminative models generally try to draw
+boundaries in the data space (often high dimensional), while generative models
+try to model how data is placed throughout the space.
 
-We start here with the most basic algorithm, the so-called decision
-tree. With this basic algorithm we can in turn build more complex
-networks, spanning from homogeneous and heterogenous forests (bagging,
-random forests and more) to one of the most popular supervised
-algorithms nowadays, the extreme gradient boosting, or just
-XGBoost. But let us start with the simplest possible ingredient.
-
-Decision trees are supervised learning algorithms used for both,
-classification and regression tasks.
-
-
-The main idea of decision trees
-is to find those descriptive features which contain the most
-_information_ regarding the target feature and then split the dataset
-along the values of these features such that the target feature values
-for the resulting underlying datasets are as pure as possible.
-
-The descriptive features which reproduce best the target/output features are normally  said
-to be the most informative ones. The process of finding the _most
-informative_ feature is done until we accomplish a stopping criteria
-where we then finally end up in so called _leaf nodes_. 
+_Note_: this material is thanks to Linus Ekstrøm. 
 
 !split
-===== Basics of a tree =====
+===== Generative Adversarial Networks =====
 
-A decision tree is typically divided into a _root node_, the _interior nodes_,
-and the final _leaf nodes_ or just _leaves_. These entities are then connected by so-called _branches_.
+_Generative Adversarial Networks_ are a type of unsupervised machine learning
+algorithm proposed by "Goodfellow et. al": "https://arxiv.org/pdf/1406.2661.pdf"
+in 2014 (short and good article).
 
-The leaf nodes
-contain the predictions we will make for new query instances presented
-to our trained model. This is possible since the model has 
-learned the underlying structure of the training data and hence can,
-given some assumptions, make predictions about the target feature value
-(class) of unseen query instances.
-
-!split
-===== A Sketch of a Tree, Regression problem  =====
-
-
-
-#FIGURE: [DataFiles/Regsimpletree.png, width=600 frac=0.8]
-
-!split
-===== A Sketch of a Tree, Classification  problem  =====
-
-#FIGURE: [DataFiles/Classimpletree.png, width=600 frac=0.8]
-
+The simplest formulation of
+the model is based on a game theoretic approach, *zero sum game*, where we pit
+two neural networks against one another. We define two rival networks, one
+generator $g$, and one discriminator $d$. The generator directly produces
+samples
+!bt
+\begin{equation}
+    x = g(z; \theta^{(g)})
+\end{equation}
+!et
 
 
 !split
-===== A typical Decision Tree with its pertinent Jargon, Classification Problem =====
+===== Discriminator =====
+The discriminator attempts to distinguish between samples drawn from the
+training data and samples drawn from the generator. In other words, it tries to
+tell the difference between the fake data produced by $g$ and the actual data
+samples we want to do prediction on. The discriminator outputs a probability
+value given by
 
-FIGURE: [DataFiles/cancer.png, width=600 frac=0.8]
+!bt
+\begin{equation}
+    d(x; \theta^{(d)})
+\end{equation}
+!et
 
-This tree was produced using the Wisconsin cancer data (discussed here as well, see code examples below) using _Scikit-Learn_'s decision tree classifier. Here we have used the so-called _gini_ index (see below) to split the various branches.
+indicating the probability that $x$ is a real training example rather than a
+fake sample the generator has generated. The simplest way to formulate the
+learning process in a generative adversarial network is a zero-sum game, in
+which a function
 
+!bt
+\begin{equation}
+    v(\theta^{(g)}, \theta^{(d)})
+\end{equation}
+!et
 
+determines the reward for the discriminator, while the generator gets the
+conjugate reward
 
-!split
-===== General Features =====
-
-The overarching approach to decision trees is a top-down approach.
-
-* A leaf provides the classification of a given instance.
-* A node specifies a test of some attribute of the instance.
-* A branch corresponds to a possible values of an attribute.
-* An instance is classified by starting at the root node of the tree, testing the attribute specified by this node, then moving down the tree branch corresponding to the value of the attribute in the given example.
-
-
-This process is then repeated for the subtree rooted at the new
-node.
-
-
-!split
-===== How do we set it up? =====
-
-
-In simplified terms, the process of training a decision tree and
-predicting the target features of query instances is as follows:
-
-o Present a dataset containing of a number of training instances characterized by a number of descriptive features and a target feature
-
-o Train the decision tree model by continuously splitting the target feature along the values of the descriptive features using a measure of information gain during the training process
-
-o Grow the tree until we accomplish a stopping criteria create leaf nodes which represent the *predictions* we want to make for new query instances
-
-o Show query instances to the tree and run down the tree until we arrive at leaf nodes
-
-Then we are essentially done!
-
-
-
+!bt
+\begin{equation}
+    -v(\theta^{(g)}, \theta^{(d)})
+\end{equation}
+!et
 
 
 !split
-===== Decision trees and Regression  =====
+===== Learning Process =====
+
+During learning both of the networks maximize their own reward function, so that
+the generator gets better and better at tricking the discriminator, while the
+discriminator gets better and better at telling the difference between the fake
+and real data. The generator and discriminator alternate on which one trains at
+one time (i.e. for one epoch). In other words, we keep the generator constant
+and train the discriminator, then we keep the discriminator constant to train
+the generator and repeat. It is this back and forth dynamic which lets GANs
+tackle otherwise intractable generative problems. As the generator improves with
+ training, the discriminator's performance gets worse because it cannot easily
+ tell the difference between real and fake. If the generator ends up succeeding
+ perfectly, the the discriminator will do no better than random guessing i.e.
+ 50\%. This progression in the training poses a problem for the convergence
+ criteria for GANs. The discriminator feedback gets less meaningful over time,
+ if we continue training after this point then the generator is effectively
+ training on junk data which can undo the learning up to that point. Therefore,
+ we stop training when the discriminator starts outputting $1/2$ everywhere.
+
+
+!split
+===== More about the Learning Process =====
+
+At convergence we have
+
+!bt
+\begin{equation}
+    g^* = \underset{g}{\mathrm{argmin}}\hspace{2pt}
+          \underset{d}{\mathrm{max}}v(\theta^{(g)}, \theta^{(d)})
+\end{equation}
+!et
+The default choice for $v$ is
+!bt
+\begin{equation}
+    v(\theta^{(g)}, \theta^{(d)}) = \mathbb{E}_{x\sim p_\mathrm{data}}\log d(x)
+                                  + \mathbb{E}_{x\sim p_\mathrm{model}}
+                                  \log (1 - d(x))
+\end{equation}
+!et
+The main motivation for the design of GANs is that the learning process requires
+neither approximate inference (variational autoencoders for example) nor
+approximation of a partition function. In the case where
+!bt
+\begin{equation}
+    \underset{d}{\mathrm{max}}v(\theta^{(g)}, \theta^{(d)})
+\end{equation}
+!et
+is convex in $\theta^{(g)} then the procedure is guaranteed to converge and is
+asymptotically consistent
+( "Seth Lloyd on QuGANs": "https://arxiv.org/pdf/1804.09139.pdf"  ).
+
+!split
+===== Additional References =====
+This is in
+general not the case and it is possible to get situations where the training
+process never converges because the generator and discriminator chase one
+another around in the parameter space indefinitely. A much deeper discussion on
+the currently open research problem of GAN convergence is available
+"here": "https://www.deeplearningbook.org/contents/generative_models.html". To
+anyone interested in learning more about GANs it is a highly recommended read.
+Direct quote: "In this best-performing formulation, the generator aims to
+increase the log probability that the discriminator makes a mistake, rather than
+aiming to decrease the log probability that the discriminator makes the correct
+prediction." "Another interesting read": "https://arxiv.org/abs/1701.00160"
+
+
+!split
+===== Writing Our First Generative Adversarial Network =====
+Let us now move on to actually implementing a GAN in tensorflow. We will study
+the performance of our GAN on the MNIST dataset. This code is based on and
+adapted from the
+"google tutorial": "https://www.tensorflow.org/tutorials/generative/dcgan"
+
+First we import our libraries
+
 !bc pycod
+import os
+import time
 import numpy as np
+import tensorflow as tf
 import matplotlib.pyplot as plt
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.linear_model import LinearRegression
+from tensorflow.keras import layers
+from tensorflow.keras.utils import plot_model
+!ec
 
-steps=250
+Next we define our hyperparameters and import our data the usual way
 
-distance=0
-x=0
-distance_list=[]
-steps_list=[]
-while x<steps:
-    distance+=np.random.randint(-1,2)
-    distance_list.append(distance)
-    x+=1
-    steps_list.append(x)
-plt.plot(steps_list,distance_list, color='green', label="Random Walk Data")
+!bc pycod
+BUFFER_SIZE = 60000
+BATCH_SIZE = 256
+EPOCHS = 30
 
-steps_list=np.asarray(steps_list)
-distance_list=np.asarray(distance_list)
+data = tf.keras.datasets.mnist.load_data()
+(train_images, train_labels), (test_images, test_labels) = data
+train_images = np.reshape(train_images, (train_images.shape[0],
+                                         28,
+                                         28,
+                                         1)).astype('float32')
 
-X=steps_list[:,np.newaxis]
+# we normalize between -1 and 1
+train_images = (train_images - 127.5) / 127.5
+training_dataset = tf.data.Dataset.from_tensor_slices(
+                      train_images).shuffle(BUFFER_SIZE).batch(BATCH_SIZE)
+!ec
 
-#Polynomial fits
+!split
+===== MNIST and GANs =====
 
-#Degree 2
-poly_features=PolynomialFeatures(degree=2, include_bias=False)
-X_poly=poly_features.fit_transform(X)
+Let's have a quick look
 
-lin_reg=LinearRegression()
-poly_fit=lin_reg.fit(X_poly,distance_list)
-b=lin_reg.coef_
-c=lin_reg.intercept_
-print ("2nd degree coefficients:")
-print ("zero power: ",c)
-print ("first power: ", b[0])
-print ("second power: ",b[1])
-
-z = np.arange(0, steps, .01)
-z_mod=b[1]*z**2+b[0]*z+c
-
-fit_mod=b[1]*X**2+b[0]*X+c
-plt.plot(z, z_mod, color='r', label="2nd Degree Fit")
-plt.title("Polynomial Regression")
-
-plt.xlabel("Steps")
-plt.ylabel("Distance")
-
-#Degree 10
-poly_features10=PolynomialFeatures(degree=10, include_bias=False)
-X_poly10=poly_features10.fit_transform(X)
-
-poly_fit10=lin_reg.fit(X_poly10,distance_list)
-
-y_plot=poly_fit10.predict(X_poly10)
-plt.plot(X, y_plot, color='black', label="10th Degree Fit")
-
-plt.legend()
+!bc pycod
+plt.imshow(train_images[0], cmap='Greys')
 plt.show()
+!ec
+
+Now we define our two models. This is where the 'magic' happens. There are a
+huge amount of possible formulations for both models. A lot of engineering and
+trial and error can be done here to try to produce better performing models. For
+more advanced GANs this is by far the step where you can 'make or break' a
+model.
+
+We start with the generator. As stated in the introductory text the generator
+$g$ upsamples from a random sample to the shape of what we want to predict. In
+our case we are trying to predict MNIST images ($28\times 28$ pixels).
+
+!bc pycod
+def generator_model():
+    """
+    The generator uses upsampling layers tf.keras.layers.Conv2DTranspose() to
+    produce an image from a random seed. We start with a Dense layer taking this
+    random sample as an input and subsequently upsample through multiple
+    convolutional layers.
+    """
+
+    # we define our model
+    model = tf.keras.Sequential()
 
 
-#Decision Tree Regression
-from sklearn.tree import DecisionTreeRegressor
-regr_1=DecisionTreeRegressor(max_depth=2)
-regr_2=DecisionTreeRegressor(max_depth=5)
-regr_3=DecisionTreeRegressor(max_depth=7)
-regr_1.fit(X, distance_list)
-regr_2.fit(X, distance_list)
-regr_3.fit(X, distance_list)
+    # adding our input layer. Dense means that every neuron is connected and
+    # the input shape is the shape of our random noise. The units need to match
+    # in some sense the upsampling strides to reach our desired output shape.
+    # we are using 100 random numbers as our seed
+    model.add(layers.Dense(units=7*7*BATCH_SIZE,
+                           use_bias=False,
+                           input_shape=(100, )))
+    # we normalize the output form the Dense layer
+    model.add(layers.BatchNormalization())
+    # and add an activation function to our 'layer'. LeakyReLU avoids vanishing
+    # gradient problem
+    model.add(layers.LeakyReLU())
+    model.add(layers.Reshape((7, 7, BATCH_SIZE)))
+    assert model.output_shape == (None, 7, 7, BATCH_SIZE)
+    # even though we just added four keras layers we think of everything above
+    # as 'one' layer
 
-X_test = np.arange(0.0, steps, 0.01)[:, np.newaxis]
-y_1 = regr_1.predict(X_test)
-y_2 = regr_2.predict(X_test)
-y_3=regr_3.predict(X_test)
+    # next we add our upscaling convolutional layers
+    model.add(layers.Conv2DTranspose(filters=128,
+                                     kernel_size=(5, 5),
+                                     strides=(1, 1),
+                                     padding='same',
+                                     use_bias=False))
+    model.add(layers.BatchNormalization())
+    model.add(layers.LeakyReLU())
+    assert model.output_shape == (None, 7, 7, 128)
 
-# Plot the results
-plt.figure()
-plt.scatter(X, distance_list, s=2.5, c="black", label="data")
-plt.plot(X_test, y_1, color="red",
-         label="max_depth=2", linewidth=2)
-plt.plot(X_test, y_2, color="green", label="max_depth=5", linewidth=2)
-plt.plot(X_test, y_3, color="m", label="max_depth=7", linewidth=2)
+    model.add(layers.Conv2DTranspose(filters=64,
+                                     kernel_size=(5, 5),
+                                     strides=(2, 2),
+                                     padding='same',
+                                     use_bias=False))
+    model.add(layers.BatchNormalization())
+    model.add(layers.LeakyReLU())
+    assert model.output_shape == (None, 14, 14, 64)
 
-plt.xlabel("Data")
-plt.ylabel("Darget")
-plt.title("Decision Tree Regression")
-plt.legend()
-plt.show()
+    model.add(layers.Conv2DTranspose(filters=1,
+                                     kernel_size=(5, 5),
+                                     strides=(2, 2),
+                                     padding='same',
+                                     use_bias=False,
+                                     activation='tanh'))
+    assert model.output_shape == (None, 28, 28, 1)
+
+    return model
 
 !ec
 
+And there we have our 'simple' generator model. Now we move on to defining our
+discriminator model $d$, which is a convolutional neural network based image
+classifier.
 
-
-!split
-===== Building a tree, regression =====
-
-There are mainly two steps
-o We split the predictor space (the set of possible values $x_1,x_2,\dots, x_p$) into $J$ distinct and non-non-overlapping regions, $R_1,R_2,\dots,R_J$.  
-o For every observation that falls into the region $R_j$ , we make the same prediction, which is simply the mean of the response values for the training observations in $R_j$.
-
-How do we construct the regions $R_1,\dots,R_J$?  In theory, the
-regions could have any shape. However, we choose to divide the
-predictor space into high-dimensional rectangles, or boxes, for
-simplicity and for ease of interpretation of the resulting predictive
-model. The goal is to find boxes $R_1,\dots,R_J$ that minimize the
-MSE, given by
-
-!bt
-\[
-\sum_{j=1}^J\sum_{i\in R_j}(y_i-\overline{y}_{R_j})^2,
-\]
-!et
-
-where $\overline{y}_{R_j}$  is the mean response for the training observations 
-within box $j$. 
-
-!split
-===== A top-down approach, recursive binary splitting =====
-
-Unfortunately, it is computationally infeasible to consider every
-possible partition of the feature space into $J$ boxes.  The common
-strategy is to take a top-down approach
-
-The approach is top-down because it begins at the top of the tree (all
-observations belong to a single region) and then successively splits
-the predictor space; each split is indicated via two new branches
-further down on the tree. It is greedy because at each step of the
-tree-building process, the best split is made at that particular step,
-rather than looking ahead and picking a split that will lead to a
-better tree in some future step.
-
-!split
-===== Making a tree =====
-
-In order to implement the recursive binary splitting we start by selecting
-the predictor $x_j$ and a cutpoint $s$ that splits the predictor space into two regions $R_1$ and $R_2$
-!bt
-\[
-\left\{X\vert x_j < s\right\},
-\]
-!et
-and
-!bt
-\[
-\left\{X\vert x_j \geq s\right\},
-\]
-!et
-so that we obtain the lowest MSE, that is
-!bt
-\[
-\sum_{i:x_i\in R_j}(y_i-\overline{y}_{R_1})^2+\sum_{i:x_i\in R_2}(y_i-\overline{y}_{R_2})^2,
-\]
-!et
-
-which we want to minimize by considering all predictors
-$x_1,x_2,\dots,x_p$.  We consider also all possible values of $s$ for
-each predictor. These values could be determined by randomly assigned
-numbers or by starting at the midpoint and then proceed till we find
-an optimal value.
-
-For any $j$ and $s$, we define the pair of half-planes where
-$\overline{y}_{R_1}$ is the mean response for the training
-observations in $R_1(j,s)$, and $\overline{y}_{R_2}$ is the mean
-response for the training observations in $R_2(j,s)$.
-
-Finding the values of $j$ and $s$ that minimize the above equation can be
-done quite quickly, especially when the number of features $p$ is not
-too large.
-
-Next, we repeat the process, looking
-for the best predictor and best cutpoint in order to split the data
-further so as to minimize the MSE within each of the resulting
-regions. However, this time, instead of splitting the entire predictor
-space, we split one of the two previously identified regions. We now
-have three regions. Again, we look to split one of these three regions
-further, so as to minimize the MSE. The process continues until a
-stopping criterion is reached; for instance, we may continue until no
-region contains more than five observations.
-
-!split 
-===== Pruning the tree =====
-
-The above procedure is rather straightforward, but leads often to
-overfitting and unnecessarily large and complicated trees. The basic
-idea is to grow a large tree $T_0$ and then prune it back in order to
-obtain a subtree. A smaller tree with fewer splits (fewer regions) can
-lead to smaller variance and better interpretation at the cost of a
-little more bias.
-
-The so-called Cost complexity pruning algorithm gives us a
-way to do just this. Rather than considering every possible subtree,
-we consider a sequence of trees indexed by a nonnegative tuning
-parameter $\alpha$.
-
-Read more at the following "Scikit-Learn link on pruning":"https://scikit-learn.org/stable/auto_examples/tree/plot_cost_complexity_pruning.html#sphx-glr-auto-examples-tree-plot-cost-complexity-pruning-py".
-
-!split
-===== Cost complexity pruning =====
-
-For each value of $\alpha$  there corresponds a subtree $T \in T_0$ such that
-!bt
-\[
-\sum_{m=1}^{\overline{T}}\sum_{i:x_i\in R_m}(y_i-\overline{y}_{R_m})^2+\alpha\overline{T},
-\]
-!et
-is as small as possible. Here $\overline{T}$ is 
-the number of terminal nodes of the tree $T$ , $R_m$ is the
-rectangle (i.e. the subset of predictor space)  corresponding to the $m$-th terminal node.
-
-The tuning parameter $\alpha$ controls a trade-off between the subtree’s
-complexity and its fit to the training data. When $\alpha = 0$, then the
-subtree $T$ will simply equal $T_0$, 
-because then the above equation just measures the
-training error. 
-However, as $\alpha$ increases, there is a price to pay for
-having a tree with many terminal nodes. The above equation will
-tend to be minimized for a smaller subtree. 
-
-
-It turns out that as we increase $\alpha$ from zero
-branches get pruned from the tree in a nested and predictable fashion,
-so obtaining the whole sequence of subtrees as a function of $\alpha$ is
-easy. We can select a value of $\alpha$ using a validation set or using
-cross-validation. We then return to the full data set and obtain the
-subtree corresponding to $\alpha$. 
-
-
-!split
-===== Schematic Regression Procedure =====
-
-!bblock Building a Regression Tree
-
-o Use recursive binary splitting to grow a large tree on the training data, stopping only when each terminal node has fewer than some minimum number of observations.
-o Apply cost complexity pruning to the large tree in order to obtain a sequence of best subtrees, as a function of $\alpha$.
-o Use for example $K$-fold cross-validation to choose $\alpha$. Divide the training observations into $K$ folds. For each $k=1,2,\dots,K$ we: 
-  * repeat steps 1 and 2 on all but the $k$-th fold of the training data. 
-  * Then we valuate the mean squared prediction error on the data in the left-out $k$-th fold, as a function of $\alpha$.
-  * Finally  we average the results for each value of $\alpha$, and pick $\alpha$ to minimize the average error.
-o Return the subtree from Step 2 that corresponds to the chosen value of $\alpha$. 
-!eblock
-
-
-!split
-===== A Classification Tree =====
-
-A classification tree is very similar to a regression tree, except
-that it is used to predict a qualitative response rather than a
-quantitative one. Recall that for a regression tree, the predicted
-response for an observation is given by the mean response of the
-training observations that belong to the same terminal node. In
-contrast, for a classification tree, we predict that each observation
-belongs to the most commonly occurring class of training observations
-in the region to which it belongs. In interpreting the results of a
-classification tree, we are often interested not only in the class
-prediction corresponding to a particular terminal node region, but
-also in the class proportions among the training observations that
-fall into that region.  
-
-!split
-===== Growing a classification tree =====
-
-The task of growing a
-classification tree is quite similar to the task of growing a
-regression tree. Just as in the regression setting, we use recursive
-binary splitting to grow a classification tree. However, in the
-classification setting, the MSE cannot be used as a criterion for making
-the binary splits.  A natural alternative to MSE is the _classification
-error rate_. Since we plan to assign an observation in a given region
-to the most commonly occurring error rate class of training
-observations in that region, the classification error rate is simply
-the fraction of the training observations in that region that do not
-belong to the most common class. 
-
-When building a classification tree, either the Gini index or the
-entropy are typically used to evaluate the quality of a particular
-split, since these two approaches are more sensitive to node purity
-than is the classification error rate. 
-
-
-!split
-===== Classification tree, how to split nodes =====
-
-If our targets are the outcome of a classification process that takes
-for example $k=1,2,\dots,K$ values, the only thing we need to think of
-is to set up the splitting criteria for each node.
-
-We define a PDF $p_{mk}$ that represents the number of observations of
-a class $k$ in a region $R_m$ with $N_m$ observations. We represent
-this likelihood function in terms of the proportion $I(y_i=k)$ of
-observations of this class in the region $R_m$ as
-
-!bt
-\[
-p_{mk} = \frac{1}{N_m}\sum_{x_i\in R_m}I(y_i=k).
-\]
-!et 
-
-We let $p_{mk}$ represent the majority class of observations in region
-$m$. The three most common ways of splitting a node are given by
-
-* Misclassification error 
-!bt
-\[
-p_{mk} = \frac{1}{N_m}\sum_{x_i\in R_m}I(y_i\ne k) = 1-p_{mk}.
-\]
-!et 
-* Gini index $g$
-!bt
-\[
-g = \sum_{k=1}^K p_{mk}(1-p_{mk}).
-\]
-!et 
-* Information entropy or just entropy $s$
-!bt
-\[
-s = -\sum_{k=1}^K p_{mk}\log{p_{mk}}.
-\]
-!et 
-
-
-!split
-===== Visualizing the Tree, Classification =====
 !bc pycod
-import os
-from sklearn.datasets import load_breast_cancer
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import confusion_matrix
-from sklearn.tree import export_graphviz
+def discriminator_model():
+    """
+    The discriminator is a convolutional neural network based image classifier
+    """
 
-from IPython.display import Image 
-from pydot import graph_from_dot_data
-import pandas as pd
-import numpy as np
+    # we define our model
+    model = tf.keras.Sequential()
+    model.add(layers.Conv2D(filters=64,
+                            kernel_size=(5, 5),
+                            strides=(2, 2),
+                            padding='same',
+                            input_shape=[28, 28, 1]))
+    model.add(layers.LeakyReLU())
+    # adding a dropout layer as you do in conv-nets
+    model.add(layers.Dropout(0.3))
 
 
-cancer = load_breast_cancer()
-X = pd.DataFrame(cancer.data, columns=cancer.feature_names)
-print(X)
-y = pd.Categorical.from_codes(cancer.target, cancer.target_names)
-y = pd.get_dummies(y)
-print(y)
-X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)
-tree_clf = DecisionTreeClassifier(max_depth=5)
-tree_clf.fit(X_train, y_train)
+    model.add(layers.Conv2D(filters=128,
+                            kernel_size=(5, 5),
+                            strides=(2, 2),
+                            padding='same'))
+    model.add(layers.LeakyReLU())
+    # adding a dropout layer as you do in conv-nets
+    model.add(layers.Dropout(0.3))
 
-export_graphviz(
-    tree_clf,
-    out_file="DataFiles/cancer.dot",
-    feature_names=cancer.feature_names,
-    class_names=cancer.target_names,
-    rounded=True,
-    filled=True
-)
-cmd = 'dot -Tpng DataFiles/cancer.dot -o DataFiles/cancer.png'
-os.system(cmd)
+    model.add(layers.Flatten())
+    model.add(layers.Dense(1))
+
+    return model
 !ec
 
 !split
-===== Visualizing the Tree, The Moons  =====
+===== Other Models =====
+Let us take a look at our models. _Note_: double click images for bigger view.
+
 !bc pycod
-# Common imports
-import numpy as np
-from sklearn.model_selection import  train_test_split 
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import make_moons
-from sklearn.tree import export_graphviz
-from pydot import graph_from_dot_data
-import pandas as pd
-import os
+generator = generator_model()
+plot_model(generator, show_shapes=True, rankdir='LR')
+!ec
 
-np.random.seed(42)
-X, y = make_moons(n_samples=100, noise=0.25, random_state=53)
-X_train, X_test, y_train, y_test = train_test_split(X,y,random_state=0)
-tree_clf = DecisionTreeClassifier(max_depth=5)
-tree_clf.fit(X_train, y_train)
+!bc pycod
+discriminator = discriminator_model()
+plot_model(discriminator, show_shapes=True, rankdir='LR')
+!ec
 
-export_graphviz(
-    tree_clf,
-    out_file="DataFiles/moons.dot",
-    rounded=True,
-    filled=True
-)
-cmd = 'dot -Tpng DataFiles/moons.dot -o DataFiles/moons.png'
-os.system(cmd)
+Next we need a few helper objects we will use in training
+
+!bc pycod
+cross_entropy = tf.keras.losses.BinaryCrossentropy(from_logits=True)
+generator_optimizer = tf.keras.optimizers.Adam(1e-4)
+discriminator_optimizer = tf.keras.optimizers.Adam(1e-4)
+!ec
+
+The first object, *cross_entropy* is our loss function and the two others are
+our optimizers. Notice we use the same learning rate for both $g$ and $d$. This
+is because they need to improve their accuracy at approximately equal speeds to
+get convergence (not necessarily exactly equal). Now we define our loss
+functions
+
+!bc pycod
+def generator_loss(fake_output):
+    loss = cross_entropy(tf.ones_like(fake_output), fake_output)
+
+    return loss
+!ec
+
+!bc pycod
+def discriminator_loss(real_output, fake_output):
+    real_loss = cross_entropy(tf.ones_like(real_output), real_output)
+    fake_loss = cross_entropy(tf.zeros_liks(fake_output), fake_output)
+    total_loss = real_loss + fake_loss
+
+    return total_loss
+!ec
+
+Next we define a kind of seed to help us compare the learning process over
+multiple training epochs.
+
+!bc pycod
+noise_dimension = 100
+n_examples_to_generate = 16
+seed_images = tf.random.normal([n_examples_to_generate, noise_dimension])
 !ec
 
 !split
-===== Other ways of visualizing the trees =====
+===== Training Step =====
 
-_Scikit-Learn_ has also another way to visualize the trees which is very useful, here with the Iris data.
+Now we have everything we need to define our training step, which we will apply
+for every step in our training loop. Notice the @tf.function flag signifying
+that the function is tensorflow 'compiled'. Removing this flag doubles the
+computation time.
 
 !bc pycod
-from sklearn.datasets import load_iris
-from sklearn import tree
-X, y = load_iris(return_X_y=True)
-tree_clf = tree.DecisionTreeClassifier()
-tree_clf = tree_clf.fit(X, y)
-# and then plot the tree
-tree.plot_tree(tree_clf) 
+@tf.function
+def train_step(images):
+    noise = tf.random.normal([BATCH_SIZE, noise_dimension])
+
+    with tf.GradientTape() as gen_tape, tf.GradientTape() as disc_tape:
+        generated_images = generator(noise, training=True)
+
+        real_output = discriminator(images, training=True)
+        fake_output = discriminator(generated_images, training=True)
+
+        gen_loss = generator_loss(fake_output)
+        disc_loss = discriminator_loss(real_output, fake_output)
+
+    gradients_of_generator = gen_tape.gradient(gen_loss,
+                                            generator.trainable_variables)
+    gradients_of_discriminator = disc_tape.gradient(disc_loss,
+                                            discriminator.trainable_variables)
+    generator_optimizer.apply_gradients(zip(gradients_of_generator,
+                                            generator.trainable_variables))
+    discriminator_optimizer.apply_gradients(zip(gradients_of_discriminator,
+                                            discriminator.trainable_variables))
+
+    return gen_loss, disc_loss
 !ec
 
-!split
-===== Printing out as text =====
 
-Alternatively, the tree can also be exported in textual format with the function exporttext.
-This method doesn’t require the installation of external libraries and is more compact:
-
+Next we define a helper function to produce an output over our training epochs
+to see the predictive progression of our generator model. _Note_: I am including
+this code here, but comment it out in the training loop.
 !bc pycod
-from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.tree import export_text
-iris = load_iris()
-decision_tree = DecisionTreeClassifier(random_state=0, max_depth=2)
-decision_tree = decision_tree.fit(iris.data, iris.target)
-r = export_text(decision_tree, feature_names=iris['feature_names'])
-print(r)
+def generate_and_save_images(model, epoch, test_input):
+    # we're making inferences here
+    predictions = model(test_input, training=False)
+
+    fig = plt.figure(figsize=(4, 4))
+
+    for i in range(predictions.shape[0]):
+        plt.subplot(4, 4, i+1)
+        plt.imshow(predictions[i, :, :, 0] * 127.5 + 127.5, cmap='gray')
+        plt.axis('off')
+
+    plt.savefig(f'./images_from_seed_images/image_at_epoch_{str(epoch).zfill(3)}.png')
+    plt.close()
+    #plt.show()
 !ec
 
 
 !split
-===== Algorithms for Setting up Decision Trees =====
+===== Checkpoints =====
+Setting up checkpoints to periodically save our model during training so that
+everything is not lost even if the program were to somehow terminate while
+training.
 
-Two algorithms stand out in the set up of decision trees:
-o The CART (Classification And Regression Tree) algorithm for both classification and regression
-o The ID3 algorithm based on the computation of the information gain for classification
-
-We discuss both algorithms with applications here. The popular library
-_Scikit-Learn_ uses the CART algorithm. For classification problems
-you can use either the _gini_ index or the _entropy_ to split a tree
-in two branches.
-
-!split
-===== The CART algorithm for Classification =====
-
-For classification, the CART algorithm splits the data set in two subsets using a single feature $k$ and a threshold $t_k$.
-This could be for example a threshold set by a number below a certain circumference of a malign tumor.
-
-How do we find these two quantities?
-We search for the pair $(k,t_k)$ that produces the purest subset using for example the _gini_ factor $G$.
-The cost function it tries to minimize is then
-!bt
-\[
-C(k,t_k) = \frac{m_{\mathrm{left}}}{m}G_{\mathrm{left}}+ \frac{m_{\mathrm{right}}}{m}G_{\mathrm{right}},
-\]
-!et
-where $G_{\mathrm{left/right}}$ measures the impurity of the left/right subset  and $m_{\mathrm{left/right}}$
- is the number of instances in the left/right subset
-
-Once it has successfully split the training set in two, it splits the subsets using the same logic, then the subsubsets
-and so on, recursively. It stops recursing once it reaches the maximum depth (defined by the
-$max\_depth$ hyperparameter), or if it cannot find a split that will reduce impurity. A few other
-hyperparameters control additional stopping conditions such as the $min\_samples\_split$,
-$min\_samples\_leaf$, $min\_weight\_fraction\_leaf$, and $max\_leaf\_nodes$.
-
-!split
-===== The CART algorithm for Regression =====
-
-The CART algorithm for regression works is similar to the one for classification except that instead of trying to split the
-training set in a way that minimizes say the _gini_ or _entropy_ impurity, it now tries to split the training set in a way that minimizes our well-known mean-squared error (MSE). The cost function is now
-!bt
-\[
-C(k,t_k) = \frac{m_{\mathrm{left}}}{m}\mathrm{MSE}_{\mathrm{left}}+ \frac{m_{\mathrm{right}}}{m}\mathrm{MSE}_{\mathrm{right}}.
-\]
-!et
-Here the MSE for a specific node is defined as
-!bt
-\[
-\mathrm{MSE}_{\mathrm{node}}=\frac{1}{m_\mathrm{node}}\sum_{i\in \mathrm{node}}(\overline{y}_{\mathrm{node}}-y_i)^2,
-\]
-!et
-with
-!bt
-\[
-\overline{y}_{\mathrm{node}}=\frac{1}{m_\mathrm{node}}\sum_{i\in \mathrm{node}}y_i,
-\]
-!et
-the mean value of all observations in a specific node.
-
-Without any regularization, the regression task for decision trees, 
-just like for classification tasks, is  prone to overfitting.
-
-
-
-!split
-=====  Cancer Data again now with Decision Trees and other Methods =====
 !bc pycod
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.model_selection import  train_test_split 
-from sklearn.datasets import load_breast_cancer
-from sklearn.svm import SVC
-from sklearn.linear_model import LogisticRegression
-from sklearn.tree import DecisionTreeClassifier
+# Setting up checkpoints to save model during training
+checkpoint_dir = './training_checkpoints'
+checkpoint_prefix = os.path.join(checkpoint_dir, 'ckpt')
+checkpoint = tf.train.Checkpoint(generator_optimizer=generator_optimizer,
+                            discriminator_optimizer=discriminator_optimizer,
+                            generator=generator,
+                            discriminator=discriminator)
+!ec
 
-# Load the data
-cancer = load_breast_cancer()
+Now we define our training loop
 
-X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,random_state=0)
-print(X_train.shape)
-print(X_test.shape)
-# Logistic Regression
-logreg = LogisticRegression(solver='lbfgs')
-logreg.fit(X_train, y_train)
-print("Test set accuracy with Logistic Regression: {:.2f}".format(logreg.score(X_test,y_test)))
-# Support vector machine
-svm = SVC(gamma='auto', C=100)
-svm.fit(X_train, y_train)
-print("Test set accuracy with SVM: {:.2f}".format(svm.score(X_test,y_test)))
-# Decision Trees
-deep_tree_clf = DecisionTreeClassifier(max_depth=None)
-deep_tree_clf.fit(X_train, y_train)
-print("Test set accuracy with Decision Trees: {:.2f}".format(deep_tree_clf.score(X_test,y_test)))
-#now scale the data
-from sklearn.preprocessing import StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-# Logistic Regression
-logreg.fit(X_train_scaled, y_train)
-print("Test set accuracy Logistic Regression with scaled data: {:.2f}".format(logreg.score(X_test_scaled,y_test)))
-# Support Vector Machine
-svm.fit(X_train_scaled, y_train)
-print("Test set accuracy SVM with scaled data: {:.2f}".format(logreg.score(X_test_scaled,y_test)))
-# Decision Trees
-deep_tree_clf.fit(X_train_scaled, y_train)
-print("Test set accuracy with Decision Trees and scaled data: {:.2f}".format(deep_tree_clf.score(X_test_scaled,y_test)))
+!bc pycod
+def train(dataset, epochs):
+    generator_loss_list = []
+    discriminator_loss_list = []
 
+    for epoch in range(epochs):
+        start = time.time()
+
+        for image_batch in dataset:
+            gen_loss, disc_loss = train_step(image_batch)
+            generator_loss_list.append(gen_loss.numpy())
+            discriminator_loss_list.append(disc_loss.numpy())
+
+        #generate_and_save_images(generator, epoch + 1, seed_images)
+
+        if (epoch + 1) % 15 == 0:
+            checkpoint.save(file_prefix=checkpoint_prefix)
+
+        print(f'Time for epoch {epoch} is {time.time() - start}')
+
+    #generate_and_save_images(generator, epochs, seed_images)
+
+    loss_file = './data/lossfile.txt'
+    with open(loss_file, 'w') as outfile:
+        outfile.write(str(generator_loss_list))
+        outfile.write('\n')
+        outfile.write('\n')
+        outfile.write(str(discriminator_loss_list))
+        outfile.write('\n')
+        outfile.write('\n')
+!ec
+
+
+To train simply call this function. _Warning_: this might take a long time so
+there is a folder of a pretrained network already included in the repository.
+
+!bc pycod
+train(train_dataset, EPOCHS)
+!ec
+
+And here is the result of training our model for 100 epochs
+
+MOVIE: [images_from_seed_images/generation.gif]
+
+Now to avoid having to train and everything, which will take a while depending
+on your computer setup we now load in the model which produced the above gif.
+
+!bc pycod
+checkpoint.restore(tf.train.latest_checkpoint(checkpoint_dir))
+restored_generator = checkpoint.generator
+restored_discriminator = checkpoint.discriminator
+
+print(restored_generator)
+print(restored_discriminator)
 !ec
 
 
 !split
-=====  Another example, the moons again =====
+===== Exploring the Latent Space =====
+
+We have successfully loaded in our latest model. Let us now play around a bit
+and see what kind of things we can learn about this model. Our generator takes
+an array of 100 numbers. One idea can be to try to systematically change our
+input. Let us try and see what we get
+
 !bc pycod
-from __future__ import division, print_function, unicode_literals
+def generate_latent_points(number=100, scale_means=1, scale_stds=1):
+    latent_dim = 100
+    means = scale_means * tf.linspace(-1, 1, num=latent_dim)
+    stds = scale_stds * tf.linspace(-1, 1, num=latent_dim)
+    latent_space_value_range = tf.random.normal([number, latent_dim],
+                                                means,
+                                                stds,
+                                                dtype=tf.float64)
 
-# Common imports
-import numpy as np
-import os
+    return latent_space_value_range
 
-# to make this notebook's output stable across runs
-np.random.seed(42)
+def generate_images(latent_points):
+    # notice we set training to false because we are making inferences
+    generated_images = restored_generator.predict(latent_points)
 
-# To plot pretty figures
-import matplotlib
-import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
-plt.rcParams['axes.labelsize'] = 14
-plt.rcParams['xtick.labelsize'] = 12
-plt.rcParams['ytick.labelsize'] = 12
+    return generated_images
+!ec
 
+!bc pycod
+def plot_result(generated_images, number=100):
+    # obviously this assumes sqrt number is an int
+    fig, axs = plt.subplots(int(np.sqrt(number)), int(np.sqrt(number)),
+                            figsize=(10, 10))
 
-from sklearn.svm import SVC
-from sklearn import datasets
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.datasets import make_moons
-from sklearn.tree import export_graphviz
+    for i in range(int(np.sqrt(number))):
+        for j in range(int(np.sqrt(number))):
+            axs[i, j].imshow(generated_images[i*j], cmap='Greys')
+            axs[i, j].axis('off')
 
-Xm, ym = make_moons(n_samples=100, noise=0.25, random_state=53)
+    plt.show()
+!ec
 
-deep_tree_clf1 = DecisionTreeClassifier(random_state=42)
-deep_tree_clf2 = DecisionTreeClassifier(min_samples_leaf=4, random_state=42)
-deep_tree_clf1.fit(Xm, ym)
-deep_tree_clf2.fit(Xm, ym)
+!bc pycod
+generated_images = generate_images(generate_latent_points())
+plot_result(generated_images)
+!ec
 
+!split
+===== Getting Results =====
+We see that the generator generates images that look like MNIST
+numbers: $1, 4, 7, 9$. Let's try to tweak it a bit more to see if we are able
+to generate a similar plot where we generate every MNIST number. Let us now try
+to 'move' a bit around in the latent space. _Note_: decrease the plot number if
+these following cells take too long to run on your computer.
 
-def plot_decision_boundary(clf, X, y, axes=[0, 7.5, 0, 3], iris=True, legend=False, plot_training=True):
-    x1s = np.linspace(axes[0], axes[1], 100)
-    x2s = np.linspace(axes[2], axes[3], 100)
-    x1, x2 = np.meshgrid(x1s, x2s)
-    X_new = np.c_[x1.ravel(), x2.ravel()]
-    y_pred = clf.predict(X_new).reshape(x1.shape)
-    custom_cmap = ListedColormap(['#fafab0','#9898ff','#a0faa0'])
-    plt.contourf(x1, x2, y_pred, alpha=0.3, cmap=custom_cmap)
-    if not iris:
-        custom_cmap2 = ListedColormap(['#7d7d58','#4c4c7f','#507d50'])
-        plt.contour(x1, x2, y_pred, cmap=custom_cmap2, alpha=0.8)
-    if plot_training:
-        plt.plot(X[:, 0][y==0], X[:, 1][y==0], "yo", label="Iris-Setosa")
-        plt.plot(X[:, 0][y==1], X[:, 1][y==1], "bs", label="Iris-Versicolor")
-        plt.plot(X[:, 0][y==2], X[:, 1][y==2], "g^", label="Iris-Virginica")
-        plt.axis(axes)
-    if iris:
-        plt.xlabel("Petal length", fontsize=14)
-        plt.ylabel("Petal width", fontsize=14)
+!bc pycod
+plot_number = 225
+
+generated_images = generate_images(generate_latent_points(number=plot_number,
+                                                          scale_means=5,
+                                                          scale_stds=1))
+plot_result(generated_images, number=plot_number)
+
+generated_images = generate_images(generate_latent_points(number=plot_number,
+                                                          scale_means=-5,
+                                                          scale_stds=1))
+plot_result(generated_images, number=plot_number)
+
+generated_images = generate_images(generate_latent_points(number=plot_number,
+                                                          scale_means=1,
+                                                          scale_stds=5))
+plot_result(generated_images, number=plot_number)
+!ec
+
+Again, we have found something interesting. *Moving* around using our means
+takes us from digit to digit, while *moving* around using our standard
+deviations seem to increase the number of different digits! In the last image
+above, we can barely make out every MNIST digit. Let us make on last plot using
+this information by upping the standard deviation of our Gaussian noises.
+
+!bc pycod
+plot_number = 400
+generated_images = generate_images(generate_latent_points(number=plot_number,
+                                                          scale_means=1,
+                                                          scale_stds=10))
+plot_result(generated_images, number=plot_number)
+!ec
+A pretty cool result! We see that our generator indeed has learned a
+distribution which qualitatively looks a whole lot like the MNIST dataset.
+
+!split
+===== Interpolating Between MNIST Digits =====
+Another interesting way to explore the latent space of our generator model is by
+interpolating between the MNIST digits. This section is largely based on
+"this excellent blogpost": "https://machinelearningmastery.com/how-to-interpolate-and-perform-vector-arithmetic-with-faces-using-a-generative-adversarial-network/"
+by Jason Brownlee.
+
+So let us start by defining a function to interpolate between two points in the
+latent space.
+
+!bc pycod
+def interpolation(point_1, point_2, n_steps=10):
+    ratios = np.linspace(0, 1, num=n_steps)
+    vectors = []
+    for i, ratio in enumerate(ratios):
+        vectors.append(((1.0 - ratio) * point_1 + ratio * point_2))
+
+    return tf.stack(vectors)
+!ec
+
+Now we have all we need to do our interpolation analysis.
+
+!bc pycod
+plot_number = 100
+latent_points = generate_latent_points(number=plot_number)
+results = None
+for i in range(0, 2*np.sqrt(plot_number), 2):
+    interpolated = interpolation(latent_points[i], latent_points[i+1])
+    generated_images = generate_images(interpolated)
+
+    if results is None:
+        results = generated_images
     else:
-        plt.xlabel(r"$x_1$", fontsize=18)
-        plt.ylabel(r"$x_2$", fontsize=18, rotation=0)
-    if legend:
-        plt.legend(loc="lower right", fontsize=14)
-plt.figure(figsize=(11, 4))
-plt.subplot(121)
-plot_decision_boundary(deep_tree_clf1, Xm, ym, axes=[-1.5, 2.5, -1, 1.5], iris=False)
-plt.title("No restrictions", fontsize=16)
-plt.subplot(122)
-plot_decision_boundary(deep_tree_clf2, Xm, ym, axes=[-1.5, 2.5, -1, 1.5], iris=False)
-plt.title("min_samples_leaf = {}".format(deep_tree_clf2.min_samples_leaf), fontsize=14)
-plt.show()
+        results = tf.stack((results, generated_images))
 
+plot_results(results, plot_number)
 !ec
-
-!split
-===== Playing around with regions =====
-!bc pycod
-np.random.seed(6)
-Xs = np.random.rand(100, 2) - 0.5
-ys = (Xs[:, 0] > 0).astype(np.float32) * 2
-
-angle = np.pi/4
-rotation_matrix = np.array([[np.cos(angle), -np.sin(angle)], [np.sin(angle), np.cos(angle)]])
-Xsr = Xs.dot(rotation_matrix)
-
-tree_clf_s = DecisionTreeClassifier(random_state=42)
-tree_clf_s.fit(Xs, ys)
-tree_clf_sr = DecisionTreeClassifier(random_state=42)
-tree_clf_sr.fit(Xsr, ys)
-
-plt.figure(figsize=(11, 4))
-plt.subplot(121)
-plot_decision_boundary(tree_clf_s, Xs, ys, axes=[-0.7, 0.7, -0.7, 0.7], iris=False)
-plt.subplot(122)
-plot_decision_boundary(tree_clf_sr, Xsr, ys, axes=[-0.7, 0.7, -0.7, 0.7], iris=False)
-
-plt.show()
-!ec
-
-!split
-===== Regression trees =====
-!bc pycod 
-# Quadratic training set + noise
-np.random.seed(42)
-m = 200
-X = np.random.rand(m, 1)
-y = 4 * (X - 0.5) ** 2
-y = y + np.random.randn(m, 1) / 10
-!ec
-
-!bc pycod 
-from sklearn.tree import DecisionTreeRegressor
-
-tree_reg = DecisionTreeRegressor(max_depth=2, random_state=42)
-tree_reg.fit(X, y)
-!ec
-
-!split
-===== Final regressor code =====
-!bc pycod
-from sklearn.tree import DecisionTreeRegressor
-
-tree_reg1 = DecisionTreeRegressor(random_state=42, max_depth=2)
-tree_reg2 = DecisionTreeRegressor(random_state=42, max_depth=3)
-tree_reg1.fit(X, y)
-tree_reg2.fit(X, y)
-
-def plot_regression_predictions(tree_reg, X, y, axes=[0, 1, -0.2, 1], ylabel="$y$"):
-    x1 = np.linspace(axes[0], axes[1], 500).reshape(-1, 1)
-    y_pred = tree_reg.predict(x1)
-    plt.axis(axes)
-    plt.xlabel("$x_1$", fontsize=18)
-    if ylabel:
-        plt.ylabel(ylabel, fontsize=18, rotation=0)
-    plt.plot(X, y, "b.")
-    plt.plot(x1, y_pred, "r.-", linewidth=2, label=r"$\hat{y}$")
-
-plt.figure(figsize=(11, 4))
-plt.subplot(121)
-plot_regression_predictions(tree_reg1, X, y)
-for split, style in ((0.1973, "k-"), (0.0917, "k--"), (0.7718, "k--")):
-    plt.plot([split, split], [-0.2, 1], style, linewidth=2)
-plt.text(0.21, 0.65, "Depth=0", fontsize=15)
-plt.text(0.01, 0.2, "Depth=1", fontsize=13)
-plt.text(0.65, 0.8, "Depth=1", fontsize=13)
-plt.legend(loc="upper center", fontsize=18)
-plt.title("max_depth=2", fontsize=14)
-
-plt.subplot(122)
-plot_regression_predictions(tree_reg2, X, y, ylabel=None)
-for split, style in ((0.1973, "k-"), (0.0917, "k--"), (0.7718, "k--")):
-    plt.plot([split, split], [-0.2, 1], style, linewidth=2)
-for split in (0.0458, 0.1298, 0.2873, 0.9040):
-    plt.plot([split, split], [-0.2, 1], "k:", linewidth=1)
-plt.text(0.3, 0.5, "Depth=2", fontsize=13)
-plt.title("max_depth=3", fontsize=14)
-
-plt.show()
-!ec
-
-!bc pycod
-tree_reg1 = DecisionTreeRegressor(random_state=42)
-tree_reg2 = DecisionTreeRegressor(random_state=42, min_samples_leaf=10)
-tree_reg1.fit(X, y)
-tree_reg2.fit(X, y)
-
-x1 = np.linspace(0, 1, 500).reshape(-1, 1)
-y_pred1 = tree_reg1.predict(x1)
-y_pred2 = tree_reg2.predict(x1)
-
-plt.figure(figsize=(11, 4))
-
-plt.subplot(121)
-plt.plot(X, y, "b.")
-plt.plot(x1, y_pred1, "r.-", linewidth=2, label=r"$\hat{y}$")
-plt.axis([0, 1, -0.2, 1.1])
-plt.xlabel("$x_1$", fontsize=18)
-plt.ylabel("$y$", fontsize=18, rotation=0)
-plt.legend(loc="upper center", fontsize=18)
-plt.title("No restrictions", fontsize=14)
-
-plt.subplot(122)
-plt.plot(X, y, "b.")
-plt.plot(x1, y_pred2, "r.-", linewidth=2, label=r"$\hat{y}$")
-plt.axis([0, 1, -0.2, 1.1])
-plt.xlabel("$x_1$", fontsize=18)
-plt.title("min_samples_leaf={}".format(tree_reg2.min_samples_leaf), fontsize=14)
-
-plt.show()
-!ec
-
-
-
-!split
-===== Pros and cons of trees, pros =====
-
-* White box, easy to interpret model. Some people believe that decision trees more closely mirror human decision-making than do the regression and classification approaches discussed earlier (think of support vector machines)
-* Trees are very easy to explain to people. In fact, they are even easier to explain than linear regression!
-* No feature normalization needed
-* Tree models can handle both continuous and categorical data (Classification and Regression Trees)
-* Can model nonlinear relationships
-* Can model interactions between the different descriptive features
-* Trees can be displayed graphically, and are easily interpreted even by a non-expert (especially if they are small)
-
-
-!split
-===== Disadvantages =====
-
-* Unfortunately, trees generally do not have the same level of predictive accuracy as some of the other regression and classification approaches
-* If continuous features are used the tree may become quite large and hence less interpretable
-* Decision trees are prone to overfit the training data and hence do not well generalize the data if no stopping criteria or improvements like pruning, boosting or bagging are implemented
-* Small changes in the data may lead to a completely different tree. This issue can be addressed by using ensemble methods like bagging, boosting or random forests
-* Unbalanced datasets where some target feature values occur much more frequently than others may lead to biased trees since the frequently occurring feature values are preferred over the less frequently occurring ones. 
-* If the number of features is relatively large (high dimensional) and the number of instances is relatively low, the tree might overfit the data
-* Features with many levels may be preferred over features with less levels since for them it is *more easy* to split the dataset such that the sub datasets only contain pure target feature values. This issue can be addressed by preferring for instance the information gain ratio as splitting criteria over information gain
-
-However, by aggregating many decision trees, using methods like
-bagging, random forests, and boosting, the predictive performance of
-trees can be substantially improved.
-
 
