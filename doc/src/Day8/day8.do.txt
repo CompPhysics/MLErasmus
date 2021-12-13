@@ -8,6 +8,9 @@ DATE: today
 
 * Summary of Neural networks, pros and cons
 * Start discussing CNNs
+* "Video of Lecture December 13":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureDecember13.mp4?vrtx=view-as-webpage"
+
+
 
 Reading suggestions: "Aurelien Geron's chapters 13 and 14":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/Textbooks/TensorflowML.pdf". See also discussions in Goodfellow et al, chapters 6-7, 9-12.
 
