@@ -154,7 +154,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 |
 | Monday December 13 | - _Lecture 845am-1045am_: Deep Learning, practicalities, examples and start Convolutional Neural Networks|
 | Recommended readings | Goodfellow et al, chapters 9, 11 and 12, See also Geron chapters 11-14  |
-| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureDecember13.mp4?vrtx=view-as-webpage |
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureDecember13.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session10.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 10 |
 | January 2022 | - _Lecture TBD:  Decision trees, Random Forests and Boosting (MHJ) |
