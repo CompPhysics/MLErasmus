@@ -4,7 +4,7 @@ DATE: today
 
 
 !split
-===== Plan for Day 9 =====
+===== Plan for Day 11 =====
 
 We will discuss in more detail decision trees, voting and bagging methods.
 
