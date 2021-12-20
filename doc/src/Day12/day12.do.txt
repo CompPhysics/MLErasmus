@@ -4,11 +4,132 @@ DATE: today
 
 
 !split
-===== Plan for Day 10 =====
+===== Plan for last session =====
 
-Geron's chapter 7. See also lecture from "STK-IN4300, lecture 9":"https://www.uio.no/studier/emner/matnat/math/STK-IN4300/h20/slides/lecture_9.pdf". Chapter 10 (sections 10.1-10.10 are the most relevant ones)  of Hastie et al contains also a good discussion.
 
-"Video on boosting methods by Hastie (the textbook author)":"https://www.youtube.com/watch?v=wPqtzj5VZus&ab_channel=H2O.ai".
+!bblock Videos
+o "Video on Decision trees":"https://www.youtube.com/watch?v=RmajweUFKvM&ab_channel=Simplilearn"
+o "Video on boosting methods by Hastie":"https://www.youtube.com/watch?v=wPqtzj5VZus&ab_channel=H2O.ai".
+!eblock
+
+!bblock Reading  
+o Decision Trees: Geron's chapter 6 covers decision trees while ensemble models, voting and bagging are discussed in chapter 7. See also lecture from "STK-IN4300, lecture 7":"https://www.uio.no/studier/emner/matnat/math/STK-IN4300/h20/slides/lecture_7.pdf". Chapter 9.2 of Hastie et al contains also a good discussion.
+!eblock
+
+
+
+!split
+===== An Overview of Ensemble Methods  =====
+
+FIGURE: [DataFiles/ensembleoverview.png, width=600 frac=0.8]
+
+
+
+!split
+===== Bagging =====
+
+The _plain_ decision trees suffer from high
+variance. This means that if we split the training data into two parts
+at random, and fit a decision tree to both halves, the results that we
+get could be quite different. In contrast, a procedure with low
+variance will yield similar results if applied repeatedly to distinct
+data sets; linear regression tends to have low variance, if the ratio
+of $n$ to $p$ is moderately large. 
+
+_Bootstrap aggregation_, or just _bagging_, is a
+general-purpose procedure for reducing the variance of a statistical
+learning method. 
+
+
+!split
+===== More bagging =====
+
+Bagging typically results in improved accuracy
+over prediction using a single tree. Unfortunately, however, it can be
+difficult to interpret the resulting model. Recall that one of the
+advantages of decision trees is the attractive and easily interpreted
+diagram that results.
+
+However, when we bag a large number of trees, it is no longer
+possible to represent the resulting statistical learning procedure
+using a single tree, and it is no longer clear which variables are
+most important to the procedure. Thus, bagging improves prediction
+accuracy at the expense of interpretability.  Although the collection
+of bagged trees is much more difficult to interpret than a single
+tree, one can obtain an overall summary of the importance of each
+predictor using the MSE (for bagging regression trees) or the Gini
+index (for bagging classification trees). In the case of bagging
+regression trees, we can record the total amount that the MSE is
+decreased due to splits over a given predictor, averaged over all $B$ possible
+trees. A large value indicates an important predictor. Similarly, in
+the context of bagging classification trees, we can add up the total
+amount that the Gini index  is decreased by splits over a given
+predictor, averaged over all $B$ trees.
+
+
+
+!split
+=====  Making your own Bootstrap: Changing the Level of the Decision Tree =====
+
+Let us bring up our good old boostrap example from the linear regression lectures. We change the linerar regression algorithm with
+a decision tree wth different depths and perform a bootstrap aggregate (in this case we perform as many bootstraps as data points $n$).
+!bc pycod
+
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.pipeline import make_pipeline
+from sklearn.utils import resample
+from sklearn.tree import DecisionTreeRegressor
+
+n = 1000
+n_boostraps = 100
+maxdepth = 10
+
+# Make data set.
+x = np.linspace(-3, 3, n).reshape(-1, 1)
+y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
+error = np.zeros(maxdepth)
+bias = np.zeros(maxdepth)
+variance = np.zeros(maxdepth)
+polydegree = np.zeros(maxdepth)
+X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
+
+# we produce a simple tree first as benchmark, no scaling
+simpletree = DecisionTreeRegressor(max_depth=3) 
+simpletree.fit(X_train, y_train)
+simpleprediction = simpletree.predict(X_test)
+for degree in range(1,maxdepth):
+    model = DecisionTreeRegressor(max_depth=degree) 
+    y_pred = np.empty((y_test.shape[0], n_boostraps))
+    for i in range(n_boostraps):
+        x_, y_ = resample(X_train, y_train)
+        model.fit(x_, y_)
+        y_pred[:, i] = model.predict(X_test)#.ravel()
+
+    polydegree[degree] = degree
+    error[degree] = np.mean( np.mean((y_test - y_pred)**2, axis=1, keepdims=True) )
+    bias[degree] = np.mean( (y_test - np.mean(y_pred, axis=1, keepdims=True))**2 )
+    variance[degree] = np.mean( np.var(y_pred, axis=1, keepdims=True) )
+    print('Polynomial degree:', degree)
+    print('Error:', error[degree])
+    print('Bias^2:', bias[degree])
+    print('Var:', variance[degree])
+    print('{} >= {} + {} = {}'.format(error[degree], bias[degree], variance[degree], bias[degree]+variance[degree]))
+ 
+mse_simpletree= np.mean( np.mean((y_test - simpleprediction)**2))
+print(mse_simpletree)
+plt.xlim(1,maxdepth)
+plt.plot(polydegree, error, label='MSE')
+plt.plot(polydegree, bias, label='bias')
+plt.plot(polydegree, variance, label='Variance')
+plt.legend()
+save_fig("baggingboot")
+plt.show()
+
+!ec
+
+
 
 
 
@@ -822,7 +943,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
-from sklearn.preprocessing import StandardScaler
 import scikitplot as skplt
 from sklearn.metrics import mean_squared_error
 
@@ -838,15 +958,11 @@ bias = np.zeros(maxdegree)
 variance = np.zeros(maxdegree)
 polydegree = np.zeros(maxdegree)
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
 
 for degree in range(1,maxdegree):
     model = GradientBoostingRegressor(max_depth=degree, n_estimators=100, learning_rate=1.0)  
-    model.fit(X_train_scaled,y_train)
-    y_pred = model.predict(X_test_scaled)
+    model.fit(X_train,y_train)
+    y_pred = model.predict(X_test)
     polydegree[degree] = degree
     error[degree] = np.mean( np.mean((y_test - y_pred)**2) )
     bias[degree] = np.mean( (y_test - np.mean(y_pred))**2 )
@@ -938,7 +1054,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
 import xgboost as xgb
-from sklearn.preprocessing import StandardScaler
 import scikitplot as skplt
 from sklearn.metrics import mean_squared_error
 
@@ -954,16 +1069,12 @@ bias = np.zeros(maxdegree)
 variance = np.zeros(maxdegree)
 polydegree = np.zeros(maxdegree)
 X_train, X_test, y_train, y_test = train_test_split(x, y, test_size=0.2)
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
 
 for degree in range(maxdegree):
     model =  xgb.XGBRegressor(objective ='reg:squarederror', colsaobjective ='reg:squarederror', colsample_bytree = 0.3, learning_rate = 0.1,max_depth = degree, alpha = 10, n_estimators = 200)
 
-    model.fit(X_train_scaled,y_train)
-    y_pred = model.predict(X_test_scaled)
+    model.fit(X_train,y_train)
+    y_pred = model.predict(X_test)
     polydegree[degree] = degree
     error[degree] = np.mean( np.mean((y_test - y_pred)**2) )
     bias[degree] = np.mean( (y_test - np.mean(y_pred))**2 )
@@ -1042,486 +1153,6 @@ save_fig("xgparams")
 plt.show()
 
 !ec
-
-
-
-
-
-!split
-===== Topics we have covered  =====
-
-The course has two central parts
-
-o Statistical analysis and optimization of data
-o Machine learning
-
-!split
-===== Statistical analysis and optimization of data =====
-
-The following topics have been discussed:
-o Basic concepts, expectation values, variance, covariance, correlation functions and errors;
-o Gradient methods for data optimization
-o Estimation of errors using cross-validation, bootstrapping and jackknife methods;
-
-!split
-===== Machine learning =====
-
-The following topics will be covered
-o Linear methods for regression and classification:
-  o Ordinary Least Squares
-  o Ridge regression
-  o Lasso regression
-  o Logistic regression
-o Neural networks and deep learning:
-  o Feed Forward Neural Networks
-  o Convolutional Neural Networks
-  o Recurrent Neural Networks
-o Decisions trees and ensemble methods:
-  o Decision trees
-  o Bagging and voting
-  o Random forests
-  o Boosting and gradient boosting
-
-!split
-===== Learning outcomes and overarching aims of this course =====
-
-The course introduces a variety of central algorithms and methods
-essential for studies of data analysis and machine learning. The
-course is project based and through the various projects, normally
-three, you will be exposed to fundamental research problems
-in these fields, with the aim to reproduce state of the art scientific
-results. The students will learn to develop and structure large codes
-for studying these systems, get acquainted with computing facilities
-and learn to handle large scientific projects. A good scientific and
-ethical conduct is emphasized throughout the course. 
-
-* Understand linear methods for regression and classification;
-* Learn about neural network;
-* Learn about bagging, boosting and trees
-* Learn about basic data analysis;
-* Be capable of extending the acquired knowledge to other systems and cases;
-* Have an understanding of central algorithms used in data analysis and machine learning;
-* Work on numerical projects to illustrate the theory. The projects play a central role and you are expected to know modern programming languages like Python or C++.
-
-
-
-!split
-===== Perspective on Machine Learning =====
-
-o Rapidly emerging application area
-o Experiment AND theory are evolving in many many fields. Still many low-hanging fruits.
-o Requires education/retraining for more widespread adoption
-o A lot of “word-of-mouth” development methods
-
-Huge amounts of data sets require automation, classical analysis tools often inadequate. 
-High energy physics hit this wall in the 90’s.
-In 2009 single top quark production was determined via "Boosted decision trees, Bayesian
-Neural Networks, etc.":"https://arxiv.org/pdf/0903.0850.pdf"
-
-
-!split
-===== Machine Learning Research =====
-
-Where to find recent results:
-o Conference proceedings, arXiv and blog posts!
-o _NIPS_: "Neural Information Processing Systems":"https://papers.nips.cc"
-o _ICLR_: "International Conference on Learning Representations":"https://openreview.net/group?id=ICLR.cc/2018/Conference#accepted-oral-papers"
-o _ICML_: International Conference on Machine Learning
-o "Journal of Machine Learning Research":"http://www.jmlr.org/papers/v19/" 
-o "Follow ML on ArXiv":"https://arxiv.org/list/cs.LG/recent"
-
-
-!split
-===== Starting your Machine Learning Project  =====
-
-o Identify problem type: classification, regression
-o Consider your data carefully
-o Choose a simple model that fits 1. and 2.
-o Consider your data carefully again! Think of data representation more carefully.
-o Based on your results, feedback loop to earliest possible point
-
-
-
-
-!split
-===== Choose a Model and Algorithm  =====
-
-o Supervised?
-o Start with the simplest model that fits your problem
-o Start with minimal processing of data
-
-!split
-===== Preparing Your Data =====
-
-o Shuffle your data
-o Mean center your data
-  * Why?
-o Normalize the variance
-  * Why?
-o _Whitening_
-  * Decorrelates data
-  * Can be hit or miss
-o  When to do train/test split?
-
-
-!split
-=====  Which Activation and Weights to Choose in Neural Networks =====
-
-o RELU? ELU?
-o Sigmoid or Tanh?
-o Set all weights to 0?
-  * Terrible idea
-o Set all weights to random values?
-  * Small random values
-
-
-!split
-===== Optimization Methods and Hyperparameters =====
-o Stochastic gradient descent
-o  Stochastic gradient descent + momentum
-o State-of-the-art approaches:
-  * RMSProp
-  * Adam
-  * and more
-
-Which regularization and hyperparameters? $L_1$ or $L_2$, soft
-classifiers, depths of trees and many other. Need to explore a large
-set of hyperparameters and regularization methods.
-
-
-!split
-===== Resampling =====
-
-When do we resample?
-
-o "Bootstrap":"https://www.cambridge.org/core/books/bootstrap-methods-and-their-application/ED2FD043579F27952363566DC09CBD6A"
-o "Cross-validation":"https://www.youtube.com/watch?v=fSytzGwwBVw&ab_channel=StatQuestwithJoshStarmer"
-o Jackknife and many other
-
-
-!split
-===== What's the future like?  =====
-
-Based on multi-layer nonlinear neural networks, deep learning can
-learn directly from raw data, automatically extract and abstract
-features from layer to layer, and then achieve the goal of regression,
-classification, or ranking. Deep learning has made breakthroughs in
-computer vision, speech processing and natural language, and reached
-or even surpassed human level. The success of deep learning is mainly
-due to the three factors: big data, big model, and big computing.
-
-In the past few decades, many different architectures of deep neural
-networks have been proposed, such as
-o Convolutional neural networks, which are mostly used in image and video data processing, and have also been applied to sequential data such as text processing;
-o Recurrent neural networks, which can process sequential data of variable length and have been widely used in natural language understanding and speech processing;
-o Encoder-decoder framework, which is mostly used for image or sequence generation, such as machine translation, text summarization, and image captioning.
-
-!split
-===== Types of Machine Learning, a repetition =====
-
-!bblock
-The approaches to machine learning are many, but are often split into two main categories. 
-In *supervised learning* we know the answer to a problem,
-and let the computer deduce the logic behind it. On the other hand, *unsupervised learning*
-is a method for finding patterns and relationship in data sets without any prior knowledge of the system.
-Some authours also operate with a third category, namely *reinforcement learning*. This is a paradigm 
-of learning inspired by behavioural psychology, where learning is achieved by trial-and-error, 
-solely from rewards and punishment.
-
-Another way to categorize machine learning tasks is to consider the desired output of a system.
-Some of the most common tasks are:
-
-  * Classification: Outputs are divided into two or more classes. The goal is to   produce a model that assigns inputs into one of these classes. An example is to identify  digits based on pictures of hand-written ones. Classification is typically supervised learning.
-
-  * Regression: Finding a functional relationship between an input data set and a reference data set.   The goal is to construct a function that maps input data to continuous output values.
-
-  * Clustering: Data are divided into groups with certain common traits, without knowing the different groups beforehand.  It is thus a form of unsupervised learning.
-
-  * Other unsupervised learning algortihms like _Boltzmann machines_
-!eblock
-
-
-
-!split
-===== Autoencoders: Overarching view =====
-
-Autoencoders are artificial neural networks capable of learning
-efficient representations of the input data (these representations are called codings)  without
-any supervision (i.e., the training set is unlabeled). These codings
-typically have a much lower dimensionality than the input data, making
-autoencoders useful for dimensionality reduction. 
-
-More importantly, autoencoders act as powerful feature detectors, and
-they can be used for unsupervised pretraining of deep neural networks.
-
-Lastly, they are capable of randomly generating new data that looks
-very similar to the training data; this is called a generative
-model. For example, you could train an autoencoder on pictures of
-faces, and it would then be able to generate new faces.  Surprisingly,
-autoencoders work by simply learning to copy their inputs to their
-outputs. This may sound like a trivial task, but we will see that
-constraining the network in various ways can make it rather
-difficult. For example, you can limit the size of the internal
-representation, or you can add noise to the inputs and train the
-network to recover the original inputs. These constraints prevent the
-autoencoder from trivially copying the inputs directly to the outputs,
-which forces it to learn efficient ways of representing the data. In
-short, the codings are byproducts of the autoencoder’s attempt to
-learn the identity function under some constraints.
-
-"Video on autoencoders":"https://www.coursera.org/lecture/building-deep-learning-models-with-tensorflow/autoencoders-1U4L3"
-
-See also A. Geron's textbook, chapter 15.
-
-!split
-=====  Bayesian Machine Learning =====
-
-This is an important topic if we aim at extracting a probability
-distribution. This gives us also a confidence interval and error
-estimates.
-
-Bayesian machine learning allows us to encode our prior beliefs about
-what those models should look like, independent of what the data tells
-us. This is especially useful when we don’t have a ton of data to
-confidently learn our model.
-
-"Video on Bayesian deep learning":"https://www.youtube.com/watch?v=E1qhGw8QxqY&ab_channel=AndrewGordonWilson"
-
-See also the "slides here":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/Articles/lec03.pdf".
-
-!split
-===== Reinforcement Learning =====
-
-Reinforcement Learning (RL) is one of the most exciting fields of
-Machine Learning today, and also one of the oldest. It has been around
-since the 1950s, producing many interesting applications over the
-years.
-
-It studies
-how agents take actions based on trial and error, so as to maximize
-some notion of cumulative reward in a dynamic system or
-environment. Due to its generality, the problem has also been studied
-in many other disciplines, such as game theory, control theory,
-operations research, information theory, multi-agent systems, swarm
-intelligence, statistics, and genetic algorithms.
-
-In March 2016, AlphaGo, a computer program that plays the board game
-Go, beat Lee Sedol in a five-game match. This was the first time a
-computer Go program had beaten a 9-dan (highest rank) professional
-without handicaps. AlphaGo is based on deep convolutional neural
-networks and reinforcement learning. AlphaGo’s victory was a major
-milestone in artificial intelligence and it has also made
-reinforcement learning a hot research area in the field of machine
-learning.
-
-"Lecture on Reinforcement Learning":"https://www.youtube.com/watch?v=FgzM3zpZ55o&ab_channel=stanfordonline".
-
-See also A. Geron's textbook, chapter 16.
-
-!split
-===== Transfer learning =====
-
-The goal of transfer learning is to transfer the model or knowledge
-obtained from a source task to the target task, in order to resolve
-the issues of insufficient training data in the target task. The
-rationality of doing so lies in that usually the source and target
-tasks have inter-correlations, and therefore either the features,
-samples, or models in the source task might provide useful information
-for us to better solve the target task. Transfer learning is a hot
-research topic in recent years, with many problems still waiting to be studied.
-
-"Lecture on transfer learning":"https://www.ias.edu/video/machinelearning/2020/0331-SamoryKpotufe".
-
-!split
-===== Adversarial learning =====
-
-The conventional deep generative model has a potential problem: the
-model tends to generate extreme instances to maximize the
-probabilistic likelihood, which will hurt its performance. Adversarial
-learning utilizes the adversarial behaviors (e.g., generating
-adversarial instances or training an adversarial model) to enhance the
-robustness of the model and improve the quality of the generated
-data. In recent years, one of the most promising unsupervised learning
-technologies, generative adversarial networks (GAN), has already been
-successfully applied to image, speech, and text.
-
-"Lecture on adversial learning":"https://www.youtube.com/watch?v=CIfsB_EYsVI&ab_channel=StanfordUniversitySchoolofEngineering".
-
-!split
-===== Dual learning =====
-
-Dual learning is a new learning paradigm, the basic idea of which is
-to use the primal-dual structure between machine learning tasks to
-obtain effective feedback/regularization, and guide and strengthen the
-learning process, thus reducing the requirement of large-scale labeled
-data for deep learning. The idea of dual learning has been applied to
-many problems in machine learning, including machine translation,
-image style conversion, question answering and generation, image
-classification and generation, text classification and generation,
-image-to-text, and text-to-image.
-
-!split
-===== Distributed machine learning =====
-
-Distributed computation will speed up machine learning algorithms,
-significantly improve their efficiency, and thus enlarge their
-application. When distributed meets machine learning, more than just
-implementing the machine learning algorithms in parallel is required.
-
-
-!split
-===== Meta learning =====
-
-Meta learning is an emerging research direction in machine
-learning. Roughly speaking, meta learning concerns learning how to
-learn, and focuses on the understanding and adaptation of the learning
-itself, instead of just completing a specific learning task. That is,
-a meta learner needs to be able to evaluate its own learning methods
-and adjust its own learning methods according to specific learning
-tasks.
-
-!split
-===== The Challenges Facing Machine Learning =====
-
-While there has been much progress in machine learning, there are also challenges.
-
-For example, the mainstream machine learning technologies are
-black-box approaches, making us concerned about their potential
-risks. To tackle this challenge, we may want to make machine learning
-more explainable and controllable. As another example, the
-computational complexity of machine learning algorithms is usually
-very high and we may want to invent lightweight algorithms or
-implementations. Furthermore, in many domains such as physics,
-chemistry, biology, and social sciences, people usually seek elegantly
-simple equations (e.g., the Schrödinger equation) to uncover the
-underlying laws behind various phenomena. In the field of machine
-learning, can we reveal simple laws instead of designing more complex
-models for data fitting? Although there are many challenges, we are
-still very optimistic about the future of machine learning. As we look
-forward to the future, here are what we think the research hotspots in
-the next ten years will be.
-
-See the article on "Discovery of Physics From Data: Universal Laws and Discrepancies":"https://www.frontiersin.org/articles/10.3389/frai.2020.00025/full"
-
-!split
-===== Explainable machine learning =====
-
-Machine learning, especially deep learning, evolves rapidly. The
-ability gap between machine and human on many complex cognitive tasks
-becomes narrower and narrower. However, we are still in the very early
-stage in terms of explaining why those effective models work and how
-they work.
-
-_What is missing: the gap between correlation and causation_. Standard Machine Learning is based on what e have called a frequentist approach. 
-
-Most
-machine learning techniques, especially the statistical ones, depend
-highly on correlations in data sets to make predictions and analyses. In
-contrast, rational humans tend to reply on clear and trustworthy
-causality relations obtained via logical reasoning on real and clear
-facts. It is one of the core goals of explainable machine learning to
-transition from solving problems by data correlation to solving
-problems by logical reasoning.
-
-_Bayesian Machine Learning is one of the exciting research directions in this field_.
-
-!split
-===== Quantum machine learning =====
-
-Quantum machine learning is an emerging interdisciplinary research
-area at the intersection of quantum computing and machine learning.
-
-Quantum computers use effects such as quantum coherence and quantum
-entanglement to process information, which is fundamentally different
-from classical computers. Quantum algorithms have surpassed the best
-classical algorithms in several problems (e.g., searching for an
-unsorted database, inverting a sparse matrix), which we call quantum
-acceleration.
-
-When quantum computing meets machine learning, it can be a mutually
-beneficial and reinforcing process, as it allows us to take advantage
-of quantum computing to improve the performance of classical machine
-learning algorithms. In addition, we can also use the machine learning
-algorithms (on classic computers) to analyze and improve quantum
-computing systems.
-
-"Lecture on Quantum ML":"https://www.youtube.com/watch?v=Xh9pUu3-WxM&ab_channel=InstituteforPure%26AppliedMathematics%28IPAM%29".
-
-
-"Read interview with Maria Schuld on her work on Quantum Machine Learning":"https://physics.aps.org/articles/v13/179?utm_campaign=weekly&utm_medium=email&utm_source=emailalert". See also "her recent textbook":"https://www.springer.com/gp/book/9783319964232". 
-
-
-!split
-===== Quantum machine learning algorithms based on linear algebra =====
-
-Many quantum machine learning algorithms are based on variants of
-quantum algorithms for solving linear equations, which can efficiently
-solve N-variable linear equations with complexity of O(log2 N) under
-certain conditions. The quantum matrix inversion algorithm can
-accelerate many machine learning methods, such as least square linear
-regression, least square version of support vector machine, Gaussian
-process, and more. The training of these algorithms can be simplified
-to solve linear equations. The key bottleneck of this type of quantum
-machine learning algorithms is data input—that is, how to initialize
-the quantum system with the entire data set. Although efficient
-data-input algorithms exist for certain situations, how to efficiently
-input data into a quantum system is as yet unknown for most cases.
-
-!split
-===== Quantum reinforcement learning =====
-
-In quantum reinforcement learning, a quantum agent interacts with the
-classical environment to obtain rewards from the environment, so as to
-adjust and improve its behavioral strategies. In some cases, it
-achieves quantum acceleration by the quantum processing capabilities
-of the agent or the possibility of exploring the environment through
-quantum superposition. Such algorithms have been proposed in
-superconducting circuits and systems of trapped ions.
-
-!split
-===== Quantum deep learning =====
-
-Dedicated quantum information processors, such as quantum annealers
-and programmable photonic circuits, are well suited for building deep
-quantum networks. The simplest deep quantum network is the Boltzmann
-machine. The classical Boltzmann machine consists of bits with tunable
-interactions and is trained by adjusting the interaction of these bits
-so that the distribution of its expression conforms to the statistics
-of the data. To quantize the Boltzmann machine, the neural network can
-simply be represented as a set of interacting quantum spins that
-correspond to an adjustable Ising model. Then, by initializing the
-input neurons in the Boltzmann machine to a fixed state and allowing
-the system to heat up, we can read out the output qubits to get the
-result.
-
-
-!split
-===== Social machine learning =====
-
-Machine learning aims to imitate how humans
-learn. While we have developed successful machine learning algorithms,
-until now we have ignored one important fact: humans are social. Each
-of us is one part of the total society and it is difficult for us to
-live, learn, and improve ourselves, alone and isolated. Therefore, we
-should design machines with social properties. Can we let machines
-evolve by imitating human society so as to achieve more effective,
-intelligent, interpretable “social machine learning”?
-
-And much more.
-
-
-
-!split
-===== The last words? =====
-
-Early computer scientist Alan Kay said, _The best way to predict the
-future is to create it_. Therefore, all machine learning
-practitioners, whether scholars or engineers, professors or students,
-need to work together to advance these important research
-topics. Together, we will not just predict the future, but create it.
-
-
-
 
 
 
