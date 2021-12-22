@@ -6,6 +6,7 @@ DATE: today
 !split
 ===== Plan for last session =====
 
+Discussion of random forests and boosting methods
 
 !bblock Videos
 o "Video on Decision trees":"https://www.youtube.com/watch?v=RmajweUFKvM&ab_channel=Simplilearn"
