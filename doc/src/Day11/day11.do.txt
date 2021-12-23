@@ -4,7 +4,7 @@ DATE: today
 
 
 !split
-===== Plan for Day 11 =====
+===== Plan =====
 
 * Basics of Decision Trees, Bagging and Voting
 * Random Forests
