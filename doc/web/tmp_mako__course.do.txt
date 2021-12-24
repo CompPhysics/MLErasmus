@@ -134,7 +134,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day7/ipynb/day7.ipynb"
 
 
-===== Session 8: Deep Learning, Convolutional and Recurrent Neural Networks =====
+===== Session 8: Deep Learning, More on Neural Networks and start Convolutional Neural Networks =====
 
 
 
@@ -149,7 +149,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day8/ipynb/day8.ipynb"
 
 
-===== Session 9: Decision trees, Random Forests and Boosting =====
+===== Session 9: Deep Learning, Convolutional and Neural Networks =====
 
 
 
@@ -164,7 +164,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day9/ipynb/day9.ipynb"
 
 
-===== Session 10:  Boosting and XGBoost and Summary of course  =====
+===== Session 10: Deep Learning, Recurrent Neural Networks and Solving differential equations with Neural Networks =====
 
 
 
@@ -177,6 +177,36 @@ formulas in HTML or ipython notebook files.
    * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day10/html/day10-bs.html"
  * Jupyter notebook:
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day10/ipynb/day10.ipynb"
+
+
+===== Session 11: Decision Trees and Ensemble Methods =====
+
+
+
+ * LaTeX PDF:
+   * For printing:
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day11/pdf/day11.pdf"
+ * HTML:
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day11/html/day11.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day11/html/day11-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day11/html/day11-bs.html"
+ * Jupyter notebook:
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day11/ipynb/day11.ipynb"
+
+
+===== Session 12: Ensemble Methods, bagging, random forests and boosting =====
+
+
+
+ * LaTeX PDF:
+   * For printing:
+     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day12/pdf/day12.pdf"
+ * HTML:
+   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day12/html/day12.html"
+   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day12/html/day12-reveal.html"
+   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day12/html/day12-bs.html"
+ * Jupyter notebook:
+   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day12/ipynb/day12.ipynb"
 
 
 
