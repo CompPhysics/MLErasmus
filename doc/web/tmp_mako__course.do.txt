@@ -149,7 +149,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day8/ipynb/day8.ipynb"
 
 
-===== Session 9: Deep Learning, Convolutional and Neural Networks =====
+===== Session 9, January 2022: Deep Learning, Convolutional and Neural Networks =====
 
 
 
@@ -164,7 +164,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day9/ipynb/day9.ipynb"
 
 
-===== Session 10: Deep Learning, Recurrent Neural Networks and Solving differential equations with Neural Networks =====
+===== Session 10, January 2022: Deep Learning, Recurrent Neural Networks and Solving differential equations with Neural Networks =====
 
 
 
@@ -179,7 +179,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day10/ipynb/day10.ipynb"
 
 
-===== Session 11: Decision Trees and Ensemble Methods =====
+===== Session 11, January 2022: Decision Trees and Ensemble Methods =====
 
 
 
@@ -194,7 +194,7 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day11/ipynb/day11.ipynb"
 
 
-===== Session 12: Ensemble Methods, bagging, random forests and boosting =====
+===== Session 12, January 2022: Ensemble Methods, bagging, random forests and boosting =====
 
 
 
