@@ -156,19 +156,24 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Recommended readings | Goodfellow et al, chapters 9, 11 and 12, See also Geron chapters 11-14  |
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureDecember13.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session10.pdf  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 10 |
-| January 2022 | - _Lecture TBD:  Decision trees, Random Forests and Boosting (MHJ) |
-| Recommended readings |  Hastie et al chapter 10 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 | 
-| | Video of Lecture at |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session9.pdf  |
-| January 2022 | - _Lecture TBD_:  Boosting and XGBoost and Summary of course (MHJ), presentation of project 2 |
-| Recommended readings |  Hastie et al chapter 10 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 10 ||
+| January 12, 2022 | - _Lecture 12pm-2pm:  Convolutional Neural Networks |
+| Recommended readings |  Goodfellow et al chapter 9 abd Geron chapter 13 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 11 | 
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJan12.mp4?vrtx=view-as-webpage |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session11Jan12.pdf  |
+| January, 13 2022 | - _Lecture 12pm-2pm_:  Recurrent Neural Networks and Solving Differential equations with deep learning |
+| Recommended readings |  Goodfellow et al chapter 10 and Geron chapter 14 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  10 | 
 | | Video of Lecture at |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session10.pdf  |
 
 ---
+
+
+
+
+
 
 ## Required Technologies
 
