@@ -157,14 +157,14 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureDecember13.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session10.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 10 ||
-| January 12, 2022 | - _Lecture 12pm-2pm:  Convolutional Neural Networks |
+| January 12, 2022 | - _Lecture 12pm-2pm_:  Convolutional Neural Networks |
 | Recommended readings |  Goodfellow et al chapter 9 abd Geron chapter 13 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 11 | 
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJan12.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session11Jan12.pdf  |
 | January, 13 2022 | - _Lecture 12pm-2pm_:  Recurrent Neural Networks and Solving Differential equations with deep learning |
-| Recommended readings |  Goodfellow et al chapter 10 and Geron chapter 14 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  10 | 
+| Recommended readings |  Goodfellow et al chapter 10 and Geron chapter 14, for RNN, see slides from January 12 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  11 and session 12 | 
 | | Video of Lecture at |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session10.pdf  |
 
