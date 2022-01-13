@@ -161,12 +161,18 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Recommended readings |  Goodfellow et al chapter 9 abd Geron chapter 13 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 11 | 
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJan12.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session11Jan12.pdf  |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/Session11Jan12.pdf  |
 | January, 13 2022 | - _Lecture 12pm-2pm_:  Recurrent Neural Networks and Solving Differential equations with deep learning |
 | Recommended readings |  Goodfellow et al chapter 10 and Geron chapter 14, for RNN, see slides from January 12 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  11 and session 12 | 
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJanuary13.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session12Jan13.pdf  |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/Session12Jan13.pdf  |
+| January, 14 2022 | - _Lecture 12pm-2pm_:  Decisions Trees and Ensemble Methods |
+| Recommended readings |  See slides from January 14 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
+| | Video of Lecture at  |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/Session12Jan14.pdf  |
+
 
 ---
 
