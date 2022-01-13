@@ -165,8 +165,8 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | January, 13 2022 | - _Lecture 12pm-2pm_:  Recurrent Neural Networks and Solving Differential equations with deep learning |
 | Recommended readings |  Goodfellow et al chapter 10 and Geron chapter 14, for RNN, see slides from January 12 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  11 and session 12 | 
-| | Video of Lecture at |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session10.pdf  |
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJanuary13.mp4?vrtx=view-as-webpage |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/session12Jan13.pdf  |
 
 ---
 
