@@ -498,36 +498,6 @@ o The final grade whether it is above or below average
 |---------------------------------------------------|
 
 
-!split
-===== Computing the various Gini Indices =====
-
-In computations we will translate all classes into numbers. Being
-these binary classes, they can easily be split into ones and zeros.
-
-!bblock Gini index for Average trend
-See handwritten notes for Thursday November 11
-!eblock
-
-
-!split
-===== Computing the various Gini Indices, Hours slept =====
-
-
-!bblock Gini index for hour slept
-See handwritten notes for Thursday November 11
-!eblock
-
-
-!split
-===== Computing the various Gini Indices, Hours studied =====
-
-
-!bblock Gini index for hour studied
-See handwritten notes for Thursday November 11
-!eblock
-
-For final tree, see the above handwritten notes
-
 
 !split
 ===== A possible code using Scikit-Learn =====
