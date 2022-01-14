@@ -194,21 +194,6 @@ formulas in HTML or ipython notebook files.
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day11/ipynb/day11.ipynb"
 
 
-===== Session 12, January 2022: Ensemble Methods, bagging, random forests and boosting =====
-
-
-
- * LaTeX PDF:
-   * For printing:
-     * "Standard one-page format": "https://compphysics.github.io/MLErasmus/doc/pub/day12/pdf/day12.pdf"
- * HTML:
-   * "Plain html": "https://compphysics.github.io/MLErasmus/doc/pub/day12/html/day12.html"
-   * "Reveal format": "https://compphysics.github.io/MLErasmus/doc/pub/day12/html/day12-reveal.html"
-   * "Bootstrap  slide style, easy for reading on mobile devices": "https://compphysics.github.io/MLErasmus/doc/pub/day12/html/day12-bs.html"
- * Jupyter notebook:
-   * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day12/ipynb/day12.ipynb"
-
-
 
 
 !split

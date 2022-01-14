@@ -3,7 +3,7 @@ AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Depart
 
 <%
 pub_url = 'https://compphysics.github.io/MLErasmus/doc/pub'
-published = ['Introduction', 'day1', 'day2', 'day3',  'day5', 'day6', 'day7', 'day8', 'day9', 'day10', 'day11', 'day12',]
+published = ['Introduction', 'day1', 'day2', 'day3',  'day5', 'day6', 'day7', 'day8', 'day9', 'day10', 'day11',]
 chapters = {
  'Introduction': 'Session 1: Introduction to Data Analysis and Machine Learning',
  'day1': 'Session 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression', 
@@ -15,8 +15,7 @@ chapters = {
  'day8': 'Session 8: Deep Learning, More on Neural Networks and start Convolutional Neural Networks', 
  'day9': 'Session 9, January 2022: Deep Learning, Convolutional and Recurrent  Networks', 
  'day10': 'Session 10, January 2022: Deep Learning, Recurrent Neural Networks and Solving differential equations with Neural Networks',
- 'day11': 'Session 11, January 2022: Decision Trees and Ensemble Methods',
- 'day12': 'Session 12, January 2022: Ensemble Methods, bagging, random forests and boosting', 
+ 'day11': 'Session 11, January 2022: Decision Trees and Ensemble Methods', 
 }
 %>
 
