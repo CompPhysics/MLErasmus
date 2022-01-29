@@ -172,6 +172,10 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
 | | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJanuary14.mp4?vrtx=view-as-webpage |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/Session12Jan14.pdf  |
+| January, 29 2022 | - _Lecture 3pm-6pm_:  Ensemble Methods, Bagging, Voting and Boosting |
+| Recommended readings |  See slides from January 14 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
+| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/ErasmusPlusLectureJanuary29.mp4?vrtx=view-as-webpage |
 
 
 ---
