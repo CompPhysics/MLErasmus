@@ -106,7 +106,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | |
 |-|-|
 | Monday September 26  | - _Lecture 815am-1000am_: Introduction to Machine Learning and linear regression (MHJ) |
-| Recommended readings |  Before the course starts: Bishop Sections 1.1, 1.2 and 1.3 |
+| Recommended readings |  Bishop Sections 1.1, 1.2 and 1.3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 1 |
 | | Video of Lecture at (to be added, TBA) |
 | | Handwritten notes at TBA |
