@@ -13,9 +13,9 @@ chapters = {
  'day6': 'Session 6: Neural Networks, the basics',
  'day7': 'Session 7: Neural Networks, building our own code using back propagation. Examples of classification and regression problems',
  'day8': 'Session 8: Deep Learning, More on Neural Networks and start Convolutional Neural Networks', 
- 'day9': 'Session 9, January 2022: Deep Learning, Convolutional and Recurrent  Networks', 
- 'day10': 'Session 10, January 2022: Deep Learning, Recurrent Neural Networks and Solving differential equations with Neural Networks',
- 'day11': 'Session 11, January 2022: Decision Trees and Ensemble Methods', 
+ 'day9': 'Session 9: Deep Learning, Convolutional and Recurrent  Networks', 
+ 'day10': 'Session 10: Deep Learning, Recurrent Neural Networks and Solving differential equations with Neural Networks',
+ 'day11': 'Session 11: Decision Trees and Ensemble Methods', 
 }
 %>
 
