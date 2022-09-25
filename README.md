@@ -156,26 +156,18 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of Lecture  at TBA |
 | | Handwritten notes at TBA |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 10 ||
-| January 12, 2022 | - __:  Convolutional Neural Networks |
+| December, 2022 | - _To be decided_:  Convolutional Neural Networks |
 | Recommended readings |  Goodfellow et al chapter 9 abd Geron chapter 13 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 11 | 
-| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJan12.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/Session11Jan12.pdf  |
-| January, 13 2022 | - _Lecture 12pm-2pm_:  Recurrent Neural Networks and Solving Differential equations with deep learning |
-| Recommended readings |  Goodfellow et al chapter 10 and Geron chapter 14, for RNN, see slides from January 12 |
+| January | - _To be decided_:  Recurrent Neural Networks and Solving Differential equations with deep learning |
+| Recommended readings |  Goodfellow et al chapter 10 and Geron chapter 14, for RNN, see slides from January, 2023 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  11 and session 12 | 
-| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJanuary13.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/Session12Jan13.pdf  |
-| January, 14 2022 | - _Lecture 12pm-2pm_:  Decisions Trees and Ensemble Methods |
+| January, 2023 | - _To be decided_:  Decisions Trees and Ensemble Methods |
 | Recommended readings |  See slides from January 14 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
-| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/LectureJanuary14.mp4?vrtx=view-as-webpage |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/Session12Jan14.pdf  |
-| January, 29 2022 | - _Lecture 3pm-6pm_:  Ensemble Methods, Bagging, Voting and Boosting |
+| January, 2023 | - _To be decided_:  Ensemble Methods, Bagging, Voting and Boosting |
 | Recommended readings |  See slides from January 14 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
-| | Video of Lecture at https://www.uio.no/studier/emner/matnat/fys/FYS4411/v22/forelesningsvideoer/ErasmusPlusLectureJanuary29.mp4?vrtx=view-as-webpage |
-
 
 ---
 
