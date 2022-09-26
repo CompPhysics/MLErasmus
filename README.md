@@ -88,8 +88,8 @@ is recommended.
 
 ## Practicalities
 
-1. Lectures are in the morning, from 845am-1045am.
-2. Group meeting and work on projects and exercises November 8
+1. Lectures are Mondays from 815am-10am. Start September 26, 2022
+2. Group meeting and work on projects and exercises to be determined
 3. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will be graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than February 1, hopefully the grades will be available before that.
 
 
