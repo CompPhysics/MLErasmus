@@ -1,7 +1,7 @@
 %%
 %% Automatically generated file from DocOnce source
-%% (https://github.com/hplgit/doconce/)
-%%
+%% (https://github.com/doconce/doconce/)
+%% doconce format latex hw3.do.txt --minted_latex_style=trac --latex_admon=paragraph
 %%
 
 
@@ -21,6 +21,8 @@ final,                   % draft: marks overfull hboxes, figures with paths
 \usepackage[pdftex]{graphicx}
 
 \usepackage{fancyvrb} % packages needed for verbatim environments
+\usepackage{minted}
+\usemintedstyle{default}
 
 \usepackage[T1]{fontenc}
 %\usepackage[latin1]{inputenc}
@@ -82,7 +84,7 @@ final,                   % draft: marks overfull hboxes, figures with paths
 \begin{center}
 {\LARGE\bf
 \begin{spacing}{1.25}
-First day: Homework 3
+Fourth and fifth days: Homework set 3
 \end{spacing}
 }
 \end{center}
@@ -101,20 +103,20 @@ First day: Homework 3
 
 % --- begin date ---
 \begin{center}
-Jan 21, 2020
+Sep 26, 2022
 \end{center}
 % --- end date ---
 
 \vspace{1cm}
 
 
-\subsection*{Day three and four exercises}
+\subsection*{Day four and five exercises}
 
 The exercises here are somewhat longer and we expect to use at least two days on them.
 
 \paragraph{Exercise 1, Bias-Variance tradeoff and Bootstrap.}
 This exercise is a continuation of exercise 2 from the second homework set.
-In that exercise we computed the MSE and $R2$-score for the training
+In that exercise we computed the MSE-score for the training
 data and the test data as functions of the complexity of a polynomial,
 that is the degree of a given polynomial.
 
@@ -122,14 +124,23 @@ One of the aims of that exercise was
 to reproduce Figure 2.11 of \href{{https://github.com/CompPhysics/MLErasmus/blob/master/doc/Textbooks/elementsstat.pdf}}{Hastie et al}.
 
 Our data is defined by $x\in [-3,3]$ with a total of for example $100$ data points.
-\begin{verbatim}
+
+
+
+
+
+
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 np.random.seed()
 n = 100
 maxdegree = 14
 # Make data set.
 x = np.linspace(-3, 3, n).reshape(-1, 1)
 y = np.exp(-x**2) + 1.5 * np.exp(-(x-2)**2)+ np.random.normal(0, 0.1, x.shape)
-\end{verbatim}
+
+\end{minted}
+
 where $y$ is the function we want to fit with a given polynomial.
 
 \paragraph{Part (1a) Proving the bias-variance tradeoff.}
@@ -166,9 +177,8 @@ Show that you can rewrite  this as
 Explain what the terms mean, which one is the bias and which one is
 the variance and discuss their interpretations.
 
-
 \paragraph{Part (1b) Adding Bootstrap and Bias-Variance Tradeoff.}
-Add now bootstrapping as discussed in the \href{{https://compphysics.github.io/MLErasmus/doc/pub/Regression/html/Regression.html}}{Regression lectures} (scroll down to the bias-variance code).
+Add now bootstrapping as discussed in the \href{{https://compphysics.github.io/MachineLearningECT/doc/pub/Day1/html/Day1.html}}{Regression lectures} (scroll down to the bias-variance code).
 Add also the expressions for the bias and the variance as discussed above.
 
 Discuss the bias and variance tradeoff as function
@@ -177,8 +187,6 @@ of data points, and possibly also your training and test data.
 
 Try to make a figure similar to Fig.~2.11 of Hastie et al.~You should include an analysis of the bias and variance for the test results. Figure 2.11 displays only the test and training MSEs while indicating regions of low/high bias and variance. You will most likely not get an
 equally smooth curve! Note also that when you calculate the bias, in all applications you don't know the function values $f_i$. You would hence replace them with the actual data points $y_i$.
-
-
 
 \paragraph{Exercise 2, Linear Regression for  a two-dimensional function.}
 This is a longer  exercise and the aim is to study in more detail various
@@ -195,7 +203,6 @@ established the model and the method, we will employ resamling
 like the bootstrap from the previous exercise in order to perform a
 proper assessment of our models. We will also study in detail the
 so-called Bias-Variance trade off.
-
 
 The Franke function, which is a weighted sum of four exponentials  reads as follows
 \begin{align*}
@@ -222,9 +229,49 @@ reproduce these data using the same methods. We will also try to go
 beyond the second-order polynomials metioned above and explore 
 which polynomial fits the data best.
 
-
 The Python fucntion for the Franke function is included here (it performs also a three-dimensional plot of it)
-\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 from mpl_toolkits.mplot3d import Axes3D
 import matplotlib.pyplot as plt
 from matplotlib import cm
@@ -265,7 +312,8 @@ fig.colorbar(surf, shrink=0.5, aspect=5)
 
 plt.show()
 
-\end{verbatim}
+
+\end{minted}
 
 
 \paragraph{(2a) Ordinary Least Square on the Franke function  with resampling.}
@@ -279,7 +327,6 @@ Write your own code (using either a matrix inversion or a singular
 value decomposition from e.g., \textbf{numpy} ) or use your code from
 homeworks 1 and 2 and perform a standard least square regression
 analysis using polynomials in $x$ and $y$ up to fifth order. You can use \textbf{scikit-learn} as well.
-
 
 Evaluate the Mean Squared error (MSE)
 
@@ -301,9 +348,41 @@ where we have defined the mean value  of $\hat{y}$ as
 \bar{y} =  \frac{1}{n} \sum_{i=0}^{n - 1} y_i.
 \]
 
-
 To set up the design matrix, the following code can be used
-\begin{verbatim}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{minted}[fontsize=\fontsize{9pt}{9pt},linenos=false,mathescape,baselinestretch=1.0,fontfamily=tt,xleftmargin=7mm]{python}
 def FrankeFunction(x,y):
 	term1 = 0.75*np.exp(-(0.25*(9*x-2)**2) - 0.25*((9*y-2)**2))
 	term2 = 0.75*np.exp(-((9*x+1)**2)/49.0 - 0.1*(9*y+1))
@@ -336,7 +415,8 @@ x = np.sort(np.random.uniform(0, 1, N))
 y = np.sort(np.random.uniform(0, 1, N))
 z = FrankeFunction(x, y)
 X = create_X(x, y, n=n)    
-\end{verbatim}
+
+\end{minted}
 
 
 \paragraph{Part (2b) Resampling techniques, adding more complexity.}
@@ -352,10 +432,9 @@ is no explicit recipe for how much data should be included as training
 data and say test data.  An accepted rule of thumb is to use
 approximately $2/3$ to $4/5$ of the data as training data.
 
-Use then the bootstrap code you developed in the previous exercise to resample your data
+Use then the _bootstrap code you developed in the previous exercise to resample your data
 and evaluate again the MSE function resulting
 from the test data. 
-
 
 \paragraph{Part (2c): Bias-variance tradeoff.}
 With a code which does OLS and includes bootstrap
@@ -387,10 +466,6 @@ use the functionalities of \textbf{Scikit-Learn} (recommended).
 Give a
 critical discussion of the three methods and a judgement of which
 model fits the data best.
-
-
-
-
 
 
 % ------------------- end of main content ---------------

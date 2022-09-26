@@ -1,12 +1,12 @@
 %%
 %% Automatically generated file from DocOnce source
-%% (https://github.com/hplgit/doconce/)
-%%
+%% (https://github.com/doconce/doconce/)
+%% doconce format latex hw1.do.txt --minted_latex_style=trac --latex_admon=paragraph
 %%
 % #ifdef PTEX2TEX_EXPLANATION
 %%
 %% The file follows the ptex2tex extended LaTeX format, see
-%% ptex2tex: http://code.google.com/p/ptex2tex/
+%% ptex2tex: https://code.google.com/p/ptex2tex/
 %%
 %% Run
 %%      ptex2tex myfile
@@ -14,7 +14,7 @@
 %%      doconce ptex2tex myfile
 %%
 %% to turn myfile.p.tex into an ordinary LaTeX file myfile.tex.
-%% (The ptex2tex program: http://code.google.com/p/ptex2tex)
+%% (The ptex2tex program: https://code.google.com/p/ptex2tex)
 %% Many preprocess options can be added to ptex2tex or doconce ptex2tex
 %%
 %%      ptex2tex -DMINTED myfile
@@ -151,7 +151,7 @@ First and second days: Exercise set 1
 
 % --- begin date ---
 \begin{center}
-Jan 18, 2021
+Sep 26, 2022
 \end{center}
 % --- end date ---
 
@@ -160,15 +160,12 @@ Jan 18, 2021
 
 \subsection{Day one and two  exercises}
 
-
-
-
 % --- begin exercise ---
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
 \exercisesection{Exercise \thedoconceexercisecounter: Getting started}
-
+                             
 
 The first exercise here is of a mere technical art. We want you to have 
 \begin{itemize}
@@ -250,15 +247,12 @@ We recommend using \textbf{Anaconda}.
 \end{doconceexercise}
 % --- end exercise ---
 
-
-
-
 % --- begin exercise ---
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
 \exercisesection{Exercise \thedoconceexercisecounter: Our first Python encounter}
-
+                             
 
 This exercise has as its aim to write a small program which reads in data from a \textbf{csv} file on the equation of state for dense nuclear matter. The file is localized at \href{{https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/pub/Regression/ipynb/datafiles/EoS.csv}}{\nolinkurl{https://github.com/mhjensen/MachineLearningMSU-FRIB2020/blob/master/doc/pub/Regression/ipynb/datafiles/EoS.csv}}. Thereafter you will have to set up the design matrix $\bm{X}$ for the  $n$
 datapoints and a polynomial of degree $3$. The steps are:
@@ -273,9 +267,73 @@ datapoints and a polynomial of degree $3$. The steps are:
 \noindent
 We recommend looking at the examples in the \href{{https://compphysics.github.io/MachineLearning/doc/pub/Regression/html/Regression-bs.html}}{regression slides}.
 
-
 % --- begin solution of exercise ---
 \paragraph{Solution.}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \bpycod
 import os
 import numpy as np
@@ -341,29 +399,33 @@ print("Test R2")
 print(R2(y_test,ypredict))
 print("Test MSE")
 print(MSE(y_test,ypredict))
+
 \epycod
+
 
 % --- end solution of exercise ---
 
 \end{doconceexercise}
 % --- end exercise ---
 
-
-
-
 % --- begin exercise ---
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
 \exercisesection{Exercise \thedoconceexercisecounter: making your own data and exploring scikit-learn}
-
+                             
 
 We will generate our own dataset for a function $y(x)$ where $x \in [0,1]$ and defined by random numbers computed with the uniform distribution. The function $y$ is a quadratic polynomial in $x$ with added stochastic noise according to the normal distribution $N(0,1)$.
 The following simple Python instructions define our $x$ and $y$ values (with 100 data points).
+
+
+
 \bpycod
 x = np.random.rand(100,1)
 y = 2.0+5*x*x+0.1*np.random.randn(100,1)
+
 \epycod
+
 
 \begin{enumerate}
 \item Write your own code (following the examples under the \href{{https://compphysics.github.io/MachineLearningECT/doc/pub/Day1/html/Day1-bs.html}}{regression slides}) for computing the parametrization of the data set fitting a second-order polynomial. 
@@ -389,10 +451,50 @@ where we have defined the mean value  of $\hat{y}$ as
 You can use the functionality included in scikit-learn. If you feel for it, you can use your own program and define functions which compute the above two functions. 
 Discuss the meaning of these results. Try also to vary the coefficient in front of the added stochastic noise term and discuss the quality of the fits.
 
-
 % --- begin solution of exercise ---
 \paragraph{Solution.}
 The code here is an example of where we define our own design matrix and fit parameters $\beta$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \bpycod
 import os
 import numpy as np
@@ -434,22 +536,21 @@ print("Test R2")
 print(R2(y_test,ypredict))
 print("Test MSE")
 print(MSE(y_test,ypredict))
+
 \epycod
+
 
 % --- end solution of exercise ---
 
 \end{doconceexercise}
 % --- end exercise ---
 
-
-
-
 % --- begin exercise ---
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
 \exercisesection{Exercise \thedoconceexercisecounter: mean values and variances in linear regression}
-
+                             
 
 This exercise deals with various mean values ad variances in  linear regression method (here it may be useful to look up chapter 3, equation (3.8) of \href{{https://www.springer.com/gp/book/9780387848570}}{Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer}).
 
@@ -467,7 +568,7 @@ f(\bm{x})\approx \bm{\tilde{y}} = \bm{X}\bm{\beta}.
 \]
 The matrix $\bm{X}$ is the so-called design matrix.
 
-
+% --- begin subexercise ---
 \subex{a)}
 Show that  the expected value of $\bm{y}$ for a given element $i$ 
 \begin{align*} 
@@ -479,7 +580,6 @@ its variance is
 \end{align*}
 Hence, $y_i \sim \mathcal{N}( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
 mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$.
-
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
@@ -505,15 +605,16 @@ its variance is
 \end{align*}
 Hence, $y_i \sim \mathcal{N}( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
 mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$ (not be confused with the singular values of the SVD).
-
 % --- end solution of exercise ---
 
+% --- end subexercise ---
+
+% --- begin subexercise ---
 \subex{b)}
 With the OLS expressions for the optimal parameters $\bm{\beta}^{\mathrm{opt}}$ show that
 \[
 \mathbb{E}(\bm{\beta}^{\mathrm{opt}}) = \bm{\beta}.
 \]
-
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
@@ -521,15 +622,16 @@ With the OLS expressions for the optimal parameters $\bm{\beta}^{\mathrm{opt}}$ 
 \mathbb{E}(\bm{\beta}^{\mathrm{opt}}) = \mathbb{E}[ (\mathbf{X}^{\top} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1}\mathbf{X}^{T} \mathbb{E}[ \mathbf{Y}]=(\mathbf{X}^{T} \mathbf{X})^{-1} \mathbf{X}^{T}\mathbf{X}\bm{\beta}=\bm{\beta}.
 \]
 This means that the estimator of the regression parameters is unbiased.
-
 % --- end solution of exercise ---
 
+% --- end subexercise ---
+
+% --- begin subexercise ---
 \subex{c)}
 Show finally that the variance of $\bm{\beta}$ is
 \begin{eqnarray*}
 \mbox{Var}(\bm{\beta}^{\mathrm{opt}}) & = & \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
 \end{eqnarray*}
-
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
@@ -564,31 +666,27 @@ $\bm{\sigma}^2 (\hat{\beta}_j ) = \bm{\sigma}^2 \sqrt{
 [(\mathbf{X}^{T} \mathbf{X})^{-1}]_{jj} }$. This may be used to
 construct a confidence interval for the estimates.
 
-
 In a similar way, we can obtain analytical expressions for say the
 expectation values of the parameters $\bm{\beta}$ and their variance
 when we employ Ridge regression, allowing us again to define a confidence interval.
-
 % --- end solution of exercise ---
+
+% --- end subexercise ---
 
 \end{doconceexercise}
 % --- end exercise ---
-
-
-
 
 % --- begin exercise ---
 \begin{doconceexercise}
 \refstepcounter{doconceexercisecounter}
 
 \exercisesection{Exercise \thedoconceexercisecounter: Playing with nuclear masses}
-
+                             
 
 Finally, try now to write your own code (you can use the example the nuclear masses in the lecture slides on Regression and Getting started from Day1, that reads in the nuclear masses and
 compute the proton separation energies, the two-neutron and two-proton separation energies and finally the shell gaps for selected nuclei.
 
 Finally, try to compute the $Q$-values for $\beta-$ decay for selected nuclei.
-
 
 % --- begin solution of exercise ---
 \paragraph{Solution.}
@@ -634,6 +732,13 @@ For protons we would have
 To calculate say the neutron separation we need to multiply our masses with the nucleon number $A$.
 The example here is for the neutron separation energies for the oxygen isotopes.
 Note the simple function we use to compute the neutron separation energies
+
+
+
+
+
+
+
 \bpycod
 # Her we pick the oyxgen isotopes
 Nucleus = df.loc[lambda df: df.Z==8, :]
@@ -641,9 +746,18 @@ Nucleus = df.loc[lambda df: df.Z==8, :]
 Nucleus = Nucleus.dropna()
 # Here we do the magic and obtain the neutron separation energies, one line of code!!
 Nucleus['NeutronSeparationEnergies'] = Nucleus['Energies'].diff(+1)
+
 \epycod
 
+
 If we want another isotope we need simply to change the $Z$ value. For isotones, we fix simply the neutron number. Furthermore, if we wish to compute say the two-neutron separation energies of the oyxgen isotopes we need simply to write 
+
+
+
+
+
+
+
 \bpycod
 # Her we pick the oyxgen isotopes
 Nucleus = df.loc[lambda df: df.Z==8, :]
@@ -651,8 +765,78 @@ Nucleus = df.loc[lambda df: df.Z==8, :]
 Nucleus = Nucleus.dropna()
 # Here we do the magic and obtain the neutron separation energies, one line of code!!
 Nucleus['NeutronSeparationEnergies'] = Nucleus['Energies'].diff(+2)
+
 \epycod
+
 Note the $+2$ in the function \textbf{diff(+2)}!  Easy, isn't it? It is easy to change to two-proton separation energies. The full example here is for the neutron separation energies.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \bpycod
 # Common imports
@@ -722,7 +906,9 @@ MakePlot([Nucleus.A], [Nucleus.NeutronSeparationEnergies], ['b'], ['Neutron Sepa
 save_fig('Nucleus')
 plt.show()
 
+
 \epycod
+
 
 % --- end solution of exercise ---
 
