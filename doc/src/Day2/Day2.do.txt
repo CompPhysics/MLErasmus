@@ -1808,7 +1808,7 @@ C(\bm{X},\bm{\beta})=\left\{(\bm{y}-\bm{X}\bm{\beta})^T(\bm{y}-\bm{X}\bm{\beta})
 Taking the derivative with respect to $\bm{\beta}$ and recalling that the derivative of the absolute value is (we drop the boldfaced vector symbol for simplicty)
 !bt
 \[
-\frac{d \vert \beta\vert}{d \bm{\beta}}=\mathrm{sgn}(\bm{\beta})=\left\{\begin{array}{cc} 1 & \beta > 0 \\ 0 & \beta =0\\-1 & \beta < 0, \end{array}\right.
+\frac{d \vert \beta\vert}{d \bm{\beta}}=\mathrm{sgn}(\bm{\beta})=\left\{\begin{array}{cc} 1 & \beta > 0 \\ 0 & -1 & \beta < 0, \end{array}\right.
 \]
 !et
 we have that the derivative of the cost function is
@@ -1826,6 +1826,7 @@ and reordering we have
 !et
 This equation does not lead to a nice analytical equation as in either Ridge regression or ordinary least squares. This equation can however be solved by using standard convex optimization algorithms using for example the Python package "CVXOPT":"https://cvxopt.org/". We will discuss this later. 
 
+Note that we have a discountinuity at zero for the derivative of the absolute value. In many practical implementations, the value at zero is set to zero.
 
 !split
 ===== Linear Regression and  the SVD =====

@@ -2305,7 +2305,7 @@ $$
 <p>Taking the derivative with respect to \( \boldsymbol{\beta} \) and recalling that the derivative of the absolute value is (we drop the boldfaced vector symbol for simplicty)</p>
 <p>&nbsp;<br>
 $$
-\frac{d \vert \beta\vert}{d \boldsymbol{\beta}}=\mathrm{sgn}(\boldsymbol{\beta})=\left\{\begin{array}{cc} 1 & \beta > 0 \\ 0 & \beta =0\\-1 & \beta < 0, \end{array}\right.
+\frac{d \vert \beta\vert}{d \boldsymbol{\beta}}=\mathrm{sgn}(\boldsymbol{\beta})=\left\{\begin{array}{cc} 1 & \beta > 0 \\ 0 & -1 & \beta < 0, \end{array}\right.
 $$
 <p>&nbsp;<br>
 
@@ -2325,6 +2325,8 @@ $$
 <p>&nbsp;<br>
 
 <p>This equation does not lead to a nice analytical equation as in either Ridge regression or ordinary least squares. This equation can however be solved by using standard convex optimization algorithms using for example the Python package <a href="https://cvxopt.org/" target="_blank">CVXOPT</a>. We will discuss this later. </p>
+
+<p>Note that we have a discountinuity at zero for the derivative of the absolute value. In many practical implementations, the value at zero is set to zero.</p>
 </section>
 
 <section>
