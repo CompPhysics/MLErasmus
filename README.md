@@ -124,7 +124,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Monday October 17 | - _Lecture 815am-10am_: Bias-Variance tradeoff and resampling methods (MHJ) |
 | Recommended readings | Bishop Sections 4.1-4.3, Hastie et al Chapter 4 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 | 
-| | Video of Lecture at TBA |
+| | Video of Lecture at https://youtu.be/5gZKOoFGDBo |
 | | Handwritten notes at Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct172022.pdf |
 | Monday October 24 | - _Lecture 815am-10am_:  Resampling Methods and discussion of project 1 (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
