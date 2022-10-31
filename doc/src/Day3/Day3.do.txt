@@ -3,7 +3,7 @@ AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of
 DATE: October 17 and 24, 2022
 
 !split
-===== Plans for Sessions 4 and 5 =====
+===== Plans for Sessions 4-6 =====
 
 * More on Ridge and Lasso Regression
 * Statistics, probability theory and resampling methods

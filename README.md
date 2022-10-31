@@ -126,18 +126,18 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 | 
 | | Video of Lecture at https://youtu.be/5gZKOoFGDBo |
 | | Handwritten notes at Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct172022.pdf |
-| Monday October 24 | - _Lecture 815am-10am_:  Resampling Methods and discussion of project 1 (MHJ) |
+| Monday October 24 | - _Lecture 815am-10am_:  Resampling Methods (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 | 
 | | Video of Lecture at https://youtu.be/rfa_khkpXg0 |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct242022.pdf |
-| Monday October 31 | - _Lecture 815am-10am_:  Logitic Regression and Optimization  (MHJ) |
+| Monday October 31 | - _Lecture 815am-10am_:  Resampling methods  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
 | | Video of Lecture at TBA |
 | | Handwritten notes at TBA |
-| Monday November 7 | - _Lecture 815am-10am_:  Optimization and Gradient Descent |
-| Recommended readings |  Goodfellow et al, chapter 4 and 8 |
+| Monday November 7 | - _Lecture 815am-10am_:  Logistic Regression, Optimization and Gradient Descent |
+| Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11, Goodfellow et al, chapter 4 and 8 |
 | | Video of Lecture at TBA |
 | | Handwritten notes at TBA |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 | 
