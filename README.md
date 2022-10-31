@@ -133,7 +133,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct242022.pdf |
 | Monday October 31 | - _Lecture 815am-10am_:  Resampling methods  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 | 
 | | Video of Lecture at TBA |
 | | Handwritten notes at TBA |
 | Monday November 7 | - _Lecture 815am-10am_:  Logistic Regression, Optimization and Gradient Descent |
