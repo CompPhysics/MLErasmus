@@ -36,44 +36,7 @@ doconce format html day5.do.txt --html_style=bootstrap --pygments_html_style=def
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [('Video of Lecture November 15',
-               2,
-               None,
-               'video-of-lecture-november-15'),
-              ('Addendum to Project 1 about Regularization Parameters',
-               2,
-               None,
-               'addendum-to-project-1-about-regularization-parameters'),
-              ('Grid Search', 2, None, 'grid-search'),
-              ('Randomized Grid Search', 2, None, 'randomized-grid-search'),
-              ('A more complicated Example: The Ising model',
-               2,
-               None,
-               'a-more-complicated-example-the-ising-model'),
-              ('Reformulating the problem to suit regression',
-               2,
-               None,
-               'reformulating-the-problem-to-suit-regression'),
-              ('Linear regression', 2, None, 'linear-regression'),
-              ('Singular Value decomposition',
-               2,
-               None,
-               'singular-value-decomposition'),
-              ('The one-dimensional Ising model',
-               2,
-               None,
-               'the-one-dimensional-ising-model'),
-              ('Ridge regression', 2, None, 'ridge-regression'),
-              ('LASSO regression', 2, None, 'lasso-regression'),
-              ('Performance as  function of the regularization parameter',
-               2,
-               None,
-               'performance-as-function-of-the-regularization-parameter'),
-              ('Finding the optimal value of $\\lambda$',
-               2,
-               None,
-               'finding-the-optimal-value-of-lambda'),
-              ('Logistic Regression', 2, None, 'logistic-regression'),
+ 'sections': [('Logistic Regression', 2, None, 'logistic-regression'),
               ('Classification problems', 2, None, 'classification-problems'),
               ('Optimization and Deep learning',
                2,
@@ -209,10 +172,10 @@ doconce format html day5.do.txt --html_style=bootstrap --pygments_html_style=def
                2,
                None,
                'conjugate-gradient-method'),
-              ('Revisiting our first homeworks',
+              ('Revisiting our first homework',
                2,
                None,
-               'revisiting-our-first-homeworks'),
+               'revisiting-our-first-homework'),
               ('Gradient descent example', 2, None, 'gradient-descent-example'),
               ('The derivative of the cost/loss function',
                2,
@@ -241,15 +204,27 @@ doconce format html day5.do.txt --html_style=bootstrap --pygments_html_style=def
                2,
                None,
                'using-gradient-descent-methods-limitations'),
-              ('Challenge yourself', 2, None, 'challenge-yourself'),
-              ('Stochastic Gradient Descent',
+              ('Improving gradient descent with momentum',
                2,
                None,
-               'stochastic-gradient-descent'),
+               'improving-gradient-descent-with-momentum'),
+              ('Same code but now with momentum gradient descent',
+               2,
+               None,
+               'same-code-but-now-with-momentum-gradient-descent'),
               ('Overview video on Stochastic Gradient Descent',
                2,
                None,
                'overview-video-on-stochastic-gradient-descent'),
+              ('Batches and mini-batches', 2, None, 'batches-and-mini-batches'),
+              ('Stochastic Gradient Descent (SGD)',
+               2,
+               None,
+               'stochastic-gradient-descent-sgd'),
+              ('Stochastic Gradient Descent',
+               2,
+               None,
+               'stochastic-gradient-descent'),
               ('Computation of gradients', 2, None, 'computation-of-gradients'),
               ('SGD example', 2, None, 'sgd-example'),
               ('The gradient step', 2, None, 'the-gradient-step'),
@@ -259,10 +234,7 @@ doconce format html day5.do.txt --html_style=bootstrap --pygments_html_style=def
                2,
                None,
                'slightly-different-approach'),
-              ('Program for stochastic gradient',
-               2,
-               None,
-               'program-for-stochastic-gradient'),
+              ('Time decay rate', 2, None, 'time-decay-rate'),
               ('Code with a Number of Minibatches which varies',
                2,
                None,
@@ -279,7 +251,14 @@ doconce format html day5.do.txt --html_style=bootstrap --pygments_html_style=def
                None,
                'second-moment-of-the-gradient'),
               ('RMS prop', 2, None, 'rms-prop'),
-              ('ADAM optimizer', 2, None, 'adam-optimizer'),
+              ('"ADAM optimizer":"https://arxiv.org/abs/1412.6980"',
+               2,
+               None,
+               'adam-optimizer-https-arxiv-org-abs-1412-6980'),
+              ('Algorithms and codes for Adagrad, RMSprop and Adam',
+               2,
+               None,
+               'algorithms-and-codes-for-adagrad-rmsprop-and-adam'),
               ('Practical tips', 2, None, 'practical-tips'),
               ('Automatic differentiation',
                2,
@@ -309,11 +288,41 @@ doconce format html day5.do.txt --html_style=bootstrap --pygments_html_style=def
                'the-syntax-a-dot-b-when-finding-the-dot-product'),
               ('Recommended to avoid', 2, None, 'recommended-to-avoid'),
               ('Using Autograd with OLS', 2, None, 'using-autograd-with-ols'),
+              ('Same code but now with momentum gradient descent',
+               2,
+               None,
+               'same-code-but-now-with-momentum-gradient-descent'),
+              ("But noen of these can compete with Newton's method",
+               2,
+               None,
+               'but-noen-of-these-can-compete-with-newton-s-method'),
               ('Including Stochastic Gradient Descent with Autograd',
                2,
                None,
                'including-stochastic-gradient-descent-with-autograd'),
-              ('And Logistic Regression', 2, None, 'and-logistic-regression')]}
+              ('Same code but now with momentum gradient descent',
+               2,
+               None,
+               'same-code-but-now-with-momentum-gradient-descent'),
+              ('Similar (second order function now) problem but now with '
+               'AdaGrad',
+               2,
+               None,
+               'similar-second-order-function-now-problem-but-now-with-adagrad'),
+              ('RMSprop for adaptive learning rate with Stochastic Gradient '
+               'Descent',
+               2,
+               None,
+               'rmsprop-for-adaptive-learning-rate-with-stochastic-gradient-descent'),
+              ('And finally "ADAM":"https://arxiv.org/pdf/1412.6980.pdf"',
+               2,
+               None,
+               'and-finally-adam-https-arxiv-org-pdf-1412-6980-pdf'),
+              ('And Logistic Regression', 2, None, 'and-logistic-regression'),
+              ('Introducing "JAX":"https://jax.readthedocs.io/en/latest/"',
+               2,
+               None,
+               'introducing-jax-https-jax-readthedocs-io-en-latest')]}
 end of tocinfo -->
 
 <body>
@@ -348,19 +357,6 @@ MathJax.Hub.Config({
       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contents <b class="caret"></b></a>
         <ul class="dropdown-menu">
-     <!-- navigation toc: --> <li><a href="#video-of-lecture-november-15" style="font-size: 80%;">Video of Lecture November 15</a></li>
-     <!-- navigation toc: --> <li><a href="#addendum-to-project-1-about-regularization-parameters" style="font-size: 80%;">Addendum to Project 1 about Regularization Parameters</a></li>
-     <!-- navigation toc: --> <li><a href="#grid-search" style="font-size: 80%;">Grid Search</a></li>
-     <!-- navigation toc: --> <li><a href="#randomized-grid-search" style="font-size: 80%;">Randomized Grid Search</a></li>
-     <!-- navigation toc: --> <li><a href="#a-more-complicated-example-the-ising-model" style="font-size: 80%;">A more complicated Example: The Ising model</a></li>
-     <!-- navigation toc: --> <li><a href="#reformulating-the-problem-to-suit-regression" style="font-size: 80%;">Reformulating the problem to suit regression</a></li>
-     <!-- navigation toc: --> <li><a href="#linear-regression" style="font-size: 80%;">Linear regression</a></li>
-     <!-- navigation toc: --> <li><a href="#singular-value-decomposition" style="font-size: 80%;">Singular Value decomposition</a></li>
-     <!-- navigation toc: --> <li><a href="#the-one-dimensional-ising-model" style="font-size: 80%;">The one-dimensional Ising model</a></li>
-     <!-- navigation toc: --> <li><a href="#ridge-regression" style="font-size: 80%;">Ridge regression</a></li>
-     <!-- navigation toc: --> <li><a href="#lasso-regression" style="font-size: 80%;">LASSO regression</a></li>
-     <!-- navigation toc: --> <li><a href="#performance-as-function-of-the-regularization-parameter" style="font-size: 80%;">Performance as  function of the regularization parameter</a></li>
-     <!-- navigation toc: --> <li><a href="#finding-the-optimal-value-of-lambda" style="font-size: 80%;">Finding the optimal value of \( \lambda \)</a></li>
      <!-- navigation toc: --> <li><a href="#logistic-regression" style="font-size: 80%;">Logistic Regression</a></li>
      <!-- navigation toc: --> <li><a href="#classification-problems" style="font-size: 80%;">Classification problems</a></li>
      <!-- navigation toc: --> <li><a href="#optimization-and-deep-learning" style="font-size: 80%;">Optimization and Deep learning</a></li>
@@ -414,7 +410,7 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#conjugate-gradient-method" style="font-size: 80%;">Conjugate gradient method</a></li>
      <!-- navigation toc: --> <li><a href="#conjugate-gradient-method" style="font-size: 80%;">Conjugate gradient method</a></li>
      <!-- navigation toc: --> <li><a href="#conjugate-gradient-method" style="font-size: 80%;">Conjugate gradient method</a></li>
-     <!-- navigation toc: --> <li><a href="#revisiting-our-first-homeworks" style="font-size: 80%;">Revisiting our first homeworks</a></li>
+     <!-- navigation toc: --> <li><a href="#revisiting-our-first-homework" style="font-size: 80%;">Revisiting our first homework</a></li>
      <!-- navigation toc: --> <li><a href="#gradient-descent-example" style="font-size: 80%;">Gradient descent example</a></li>
      <!-- navigation toc: --> <li><a href="#the-derivative-of-the-cost-loss-function" style="font-size: 80%;">The derivative of the cost/loss function</a></li>
      <!-- navigation toc: --> <li><a href="#the-hessian-matrix" style="font-size: 80%;">The Hessian matrix</a></li>
@@ -425,16 +421,19 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#the-hessian-matrix-for-ridge-regression" style="font-size: 80%;">The Hessian matrix for Ridge Regression</a></li>
      <!-- navigation toc: --> <li><a href="#program-example-for-gradient-descent-with-ridge-regression" style="font-size: 80%;">Program example for gradient descent with Ridge Regression</a></li>
      <!-- navigation toc: --> <li><a href="#using-gradient-descent-methods-limitations" style="font-size: 80%;">Using gradient descent methods, limitations</a></li>
-     <!-- navigation toc: --> <li><a href="#challenge-yourself" style="font-size: 80%;">Challenge yourself</a></li>
-     <!-- navigation toc: --> <li><a href="#stochastic-gradient-descent" style="font-size: 80%;">Stochastic Gradient Descent</a></li>
+     <!-- navigation toc: --> <li><a href="#improving-gradient-descent-with-momentum" style="font-size: 80%;">Improving gradient descent with momentum</a></li>
+     <!-- navigation toc: --> <li><a href="#same-code-but-now-with-momentum-gradient-descent" style="font-size: 80%;">Same code but now with momentum gradient descent</a></li>
      <!-- navigation toc: --> <li><a href="#overview-video-on-stochastic-gradient-descent" style="font-size: 80%;">Overview video on Stochastic Gradient Descent</a></li>
+     <!-- navigation toc: --> <li><a href="#batches-and-mini-batches" style="font-size: 80%;">Batches and mini-batches</a></li>
+     <!-- navigation toc: --> <li><a href="#stochastic-gradient-descent-sgd" style="font-size: 80%;">Stochastic Gradient Descent (SGD)</a></li>
+     <!-- navigation toc: --> <li><a href="#stochastic-gradient-descent" style="font-size: 80%;">Stochastic Gradient Descent</a></li>
      <!-- navigation toc: --> <li><a href="#computation-of-gradients" style="font-size: 80%;">Computation of gradients</a></li>
      <!-- navigation toc: --> <li><a href="#sgd-example" style="font-size: 80%;">SGD example</a></li>
      <!-- navigation toc: --> <li><a href="#the-gradient-step" style="font-size: 80%;">The gradient step</a></li>
      <!-- navigation toc: --> <li><a href="#simple-example-code" style="font-size: 80%;">Simple example code</a></li>
      <!-- navigation toc: --> <li><a href="#when-do-we-stop" style="font-size: 80%;">When do we stop?</a></li>
      <!-- navigation toc: --> <li><a href="#slightly-different-approach" style="font-size: 80%;">Slightly different approach</a></li>
-     <!-- navigation toc: --> <li><a href="#program-for-stochastic-gradient" style="font-size: 80%;">Program for stochastic gradient</a></li>
+     <!-- navigation toc: --> <li><a href="#time-decay-rate" style="font-size: 80%;">Time decay rate</a></li>
      <!-- navigation toc: --> <li><a href="#code-with-a-number-of-minibatches-which-varies" style="font-size: 80%;">Code with a Number of Minibatches which varies</a></li>
      <!-- navigation toc: --> <li><a href="#replace-or-not" style="font-size: 80%;">Replace or not</a></li>
      <!-- navigation toc: --> <li><a href="#momentum-based-gd" style="font-size: 80%;">Momentum based GD</a></li>
@@ -442,7 +441,8 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#momentum-parameter" style="font-size: 80%;">Momentum parameter</a></li>
      <!-- navigation toc: --> <li><a href="#second-moment-of-the-gradient" style="font-size: 80%;">Second moment of the gradient</a></li>
      <!-- navigation toc: --> <li><a href="#rms-prop" style="font-size: 80%;">RMS prop</a></li>
-     <!-- navigation toc: --> <li><a href="#adam-optimizer" style="font-size: 80%;">ADAM optimizer</a></li>
+     <!-- navigation toc: --> <li><a href="#adam-optimizer-https-arxiv-org-abs-1412-6980" style="font-size: 80%;">"ADAM optimizer":"https://arxiv.org/abs/1412.6980"</a></li>
+     <!-- navigation toc: --> <li><a href="#algorithms-and-codes-for-adagrad-rmsprop-and-adam" style="font-size: 80%;">Algorithms and codes for Adagrad, RMSprop and Adam</a></li>
      <!-- navigation toc: --> <li><a href="#practical-tips" style="font-size: 80%;">Practical tips</a></li>
      <!-- navigation toc: --> <li><a href="#automatic-differentiation" style="font-size: 80%;">Automatic differentiation</a></li>
      <!-- navigation toc: --> <li><a href="#using-autograd" style="font-size: 80%;">Using autograd</a></li>
@@ -456,8 +456,15 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#the-syntax-a-dot-b-when-finding-the-dot-product" style="font-size: 80%;">The syntax a.dot(b) when finding the dot product</a></li>
      <!-- navigation toc: --> <li><a href="#recommended-to-avoid" style="font-size: 80%;">Recommended to avoid</a></li>
      <!-- navigation toc: --> <li><a href="#using-autograd-with-ols" style="font-size: 80%;">Using Autograd with OLS</a></li>
+     <!-- navigation toc: --> <li><a href="#same-code-but-now-with-momentum-gradient-descent" style="font-size: 80%;">Same code but now with momentum gradient descent</a></li>
+     <!-- navigation toc: --> <li><a href="#but-noen-of-these-can-compete-with-newton-s-method" style="font-size: 80%;">But noen of these can compete with Newton's method</a></li>
      <!-- navigation toc: --> <li><a href="#including-stochastic-gradient-descent-with-autograd" style="font-size: 80%;">Including Stochastic Gradient Descent with Autograd</a></li>
+     <!-- navigation toc: --> <li><a href="#same-code-but-now-with-momentum-gradient-descent" style="font-size: 80%;">Same code but now with momentum gradient descent</a></li>
+     <!-- navigation toc: --> <li><a href="#similar-second-order-function-now-problem-but-now-with-adagrad" style="font-size: 80%;">Similar (second order function now) problem but now with AdaGrad</a></li>
+     <!-- navigation toc: --> <li><a href="#rmsprop-for-adaptive-learning-rate-with-stochastic-gradient-descent" style="font-size: 80%;">RMSprop for adaptive learning rate with Stochastic Gradient Descent</a></li>
+     <!-- navigation toc: --> <li><a href="#and-finally-adam-https-arxiv-org-pdf-1412-6980-pdf" style="font-size: 80%;">And finally "ADAM":"https://arxiv.org/pdf/1412.6980.pdf"</a></li>
      <!-- navigation toc: --> <li><a href="#and-logistic-regression" style="font-size: 80%;">And Logistic Regression</a></li>
+     <!-- navigation toc: --> <li><a href="#introducing-jax-https-jax-readthedocs-io-en-latest" style="font-size: 80%;">Introducing "JAX":"https://jax.readthedocs.io/en/latest/"</a></li>
 
         </ul>
       </li>
@@ -482,1099 +489,28 @@ MathJax.Hub.Config({
 [1] <b>Department of Physics and Center for Computing in Science Education, University of Oslo, Norway</b>
 </center>
 <center>
-[2] <b>Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA</b>
+[2] <b>Department of Physics and Astronomy and Facility for Rare Isotope Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA</b>
 </center>
 <br>
 <center>
-<h4>Nov 22, 2021</h4>
+<h4>November 7 and 14, 2022</h4>
 </center> <!-- date -->
 <br>
 
-<!-- potential-jumbotron-button -->
-</div> <!-- end jumbotron -->
-
-<!-- !split -->
-<h2 id="video-of-lecture-november-15" class="anchor">Video of Lecture November 15 </h2>
-
-<a href="https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureNovember15.mp4?vrtx=view-as-webpage" target="_self">Video of Lecture</a>
-
-<!-- !split -->
-<h2 id="addendum-to-project-1-about-regularization-parameters" class="anchor">Addendum to Project 1 about Regularization Parameters </h2>
-
-<p>In project 1, when using Ridge (and if you wanted Lasso as well)  regression, we end up
-searching for the optimal parameter \( \lambda \) which minimizes our
-selected scores (MSE or \( R2 \) values for example). The brute force
-approach, as discussed in the code here for Ridge regression, consists
-in evaluating the MSE as function of different \( \lambda \) values.
-Based on these calculations, one tries then to determine the value of the hyperparameter \( \lambda \)
-which results in optimal scores (for example the smallest MSE or an \( R2=1 \)).
-</p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">pandas</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">pd</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn</span> <span style="color: #008000; font-weight: bold">import</span> linear_model
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">MSE</span>(y_data,y_model):
-    n <span style="color: #666666">=</span> np<span style="color: #666666">.</span>size(y_model)
-    <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sum((y_data<span style="color: #666666">-</span>y_model)<span style="color: #666666">**2</span>)<span style="color: #666666">/</span>n
-<span style="color: #408080; font-style: italic"># A seed just to ensure that the random numbers are the same for every run.</span>
-<span style="color: #408080; font-style: italic"># Useful for eventual debugging.</span>
-np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">2021</span>)
-
-n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
-x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n)
-y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>) <span style="color: #666666">+</span> <span style="color: #666666">1.5</span> <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>(x<span style="color: #666666">-2</span>)<span style="color: #666666">**2</span>)<span style="color: #666666">+</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(n)
-
-Maxpolydegree <span style="color: #666666">=</span> <span style="color: #666666">5</span>
-X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((n,Maxpolydegree<span style="color: #666666">-1</span>))
-
-<span style="color: #008000; font-weight: bold">for</span> degree <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,Maxpolydegree): <span style="color: #408080; font-style: italic">#No intercept column</span>
-    X[:,degree<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> x<span style="color: #666666">**</span>(degree)
-
-<span style="color: #408080; font-style: italic"># We split the data in test and training data</span>
-X_train, X_test, y_train, y_test <span style="color: #666666">=</span> train_test_split(X, y, test_size<span style="color: #666666">=0.2</span>)
-
-<span style="color: #408080; font-style: italic"># Decide which values of lambda to use</span>
-nlambdas <span style="color: #666666">=</span> <span style="color: #666666">500</span>
-MSERidgePredict <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(nlambdas)
-lambdas <span style="color: #666666">=</span> np<span style="color: #666666">.</span>logspace(<span style="color: #666666">-4</span>, <span style="color: #666666">2</span>, nlambdas)
-<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(nlambdas):
-    lmb <span style="color: #666666">=</span> lambdas[i]
-    RegRidge <span style="color: #666666">=</span> linear_model<span style="color: #666666">.</span>Ridge(lmb)
-    RegRidge<span style="color: #666666">.</span>fit(X_train,y_train)
-    ypredictRidge <span style="color: #666666">=</span> RegRidge<span style="color: #666666">.</span>predict(X_test)
-    MSERidgePredict[i] <span style="color: #666666">=</span> MSE(y_test,ypredictRidge)
-
-<span style="color: #408080; font-style: italic"># Now plot the results</span>
-plt<span style="color: #666666">.</span>figure()
-plt<span style="color: #666666">.</span>plot(np<span style="color: #666666">.</span>log10(lambdas), MSERidgePredict, <span style="color: #BA2121">&#39;g--&#39;</span>, label <span style="color: #666666">=</span> <span style="color: #BA2121">&#39;MSE SL Ridge Test&#39;</span>)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">&#39;log10(lambda)&#39;</span>)
-plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">&#39;MSE&#39;</span>)
-plt<span style="color: #666666">.</span>legend()
-plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>Here we have performed a rather data greedy calculation as function of the regularization parameter \( \lambda \). There is no resampling here. The latter can easily be added by employing the function <b>RidgeCV</b> instead of just calling the <b>Ridge</b> function. For <b>RidgeCV</b> we need to pass the array of \( \lambda \) values.
-By inspecting the figure we can in turn determine which is the optimal regularization parameter.
-This becomes however less functional in the long run. 
-</p>
-
-<!-- !split -->
-<h2 id="grid-search" class="anchor">Grid Search </h2>
-
-<p>An alternative is to use the so-called grid search functionality
-included with the library <b>Scikit-Learn</b>, as demonstrated for the same
-example here.
-</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> Ridge
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> GridSearchCV
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">R2</span>(y_data, y_model):
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span> <span style="color: #666666">-</span> np<span style="color: #666666">.</span>sum((y_data <span style="color: #666666">-</span> y_model) <span style="color: #666666">**</span> <span style="color: #666666">2</span>) <span style="color: #666666">/</span> np<span style="color: #666666">.</span>sum((y_data <span style="color: #666666">-</span> np<span style="color: #666666">.</span>mean(y_data)) <span style="color: #666666">**</span> <span style="color: #666666">2</span>)
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">MSE</span>(y_data,y_model):
-    n <span style="color: #666666">=</span> np<span style="color: #666666">.</span>size(y_model)
-    <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sum((y_data<span style="color: #666666">-</span>y_model)<span style="color: #666666">**2</span>)<span style="color: #666666">/</span>n
-
-<span style="color: #408080; font-style: italic"># A seed just to ensure that the random numbers are the same for every run.</span>
-<span style="color: #408080; font-style: italic"># Useful for eventual debugging.</span>
-np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">2021</span>)
-
-n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
-x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n)
-y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>) <span style="color: #666666">+</span> <span style="color: #666666">1.5</span> <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>(x<span style="color: #666666">-2</span>)<span style="color: #666666">**2</span>)<span style="color: #666666">+</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(n)
-
-Maxpolydegree <span style="color: #666666">=</span> <span style="color: #666666">5</span>
-X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((n,Maxpolydegree<span style="color: #666666">-1</span>))
-
-<span style="color: #008000; font-weight: bold">for</span> degree <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,Maxpolydegree): <span style="color: #408080; font-style: italic">#No intercept column</span>
-    X[:,degree<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> x<span style="color: #666666">**</span>(degree)
-
-<span style="color: #408080; font-style: italic"># We split the data in test and training data</span>
-X_train, X_test, y_train, y_test <span style="color: #666666">=</span> train_test_split(X, y, test_size<span style="color: #666666">=0.2</span>)
-
-<span style="color: #408080; font-style: italic"># Decide which values of lambda to use</span>
-nlambdas <span style="color: #666666">=</span> <span style="color: #666666">10</span>
-lambdas <span style="color: #666666">=</span> np<span style="color: #666666">.</span>logspace(<span style="color: #666666">-4</span>, <span style="color: #666666">2</span>, nlambdas)
-<span style="color: #408080; font-style: italic"># create and fit a ridge regression model, testing each alpha</span>
-model <span style="color: #666666">=</span> Ridge()
-gridsearch <span style="color: #666666">=</span> GridSearchCV(estimator<span style="color: #666666">=</span>model, param_grid<span style="color: #666666">=</span><span style="color: #008000">dict</span>(alpha<span style="color: #666666">=</span>lambdas))
-gridsearch<span style="color: #666666">.</span>fit(X_train, y_train)
-<span style="color: #008000">print</span>(gridsearch)
-ypredictRidge <span style="color: #666666">=</span> gridsearch<span style="color: #666666">.</span>predict(X_test)
-<span style="color: #408080; font-style: italic"># summarize the results of the grid search</span>
-<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;Best estimated lambda-value: </span><span style="color: #BB6688; font-weight: bold">{</span>gridsearch<span style="color: #666666">.</span>best_estimator_<span style="color: #666666">.</span>alpha<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
-<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;MSE score: </span><span style="color: #BB6688; font-weight: bold">{</span>MSE(y_test,ypredictRidge)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
-<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;R2 score: </span><span style="color: #BB6688; font-weight: bold">{</span>R2(y_test,ypredictRidge)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>By default the grid search function includes cross validation with
-five folds. The <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" target="_self">Scikit-Learn
-documentation</a>
-contains more information on how to set the different parameters.
-</p>
-
-<p>If we take out the random noise, running the above codes results in \( \lambda=0 \) yielding the best fit. </p>
-
-<!-- !split -->
-<h2 id="randomized-grid-search" class="anchor">Randomized Grid Search </h2>
-
-<p>An alternative to the above manual grid set up, is to use a random
-search where the parameters are tuned from a random distribution
-(uniform below) for a fixed number of iterations. A model is
-constructed and evaluated for each combination of chosen parameters.
-We repeat the previous example but now with a random search.  Note
-that values of \( \lambda \) are now limited to be within \( x\in
-[0,1] \). This domain may not be the most relevant one for the specific
-case under study.
-</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> Ridge
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> GridSearchCV
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">scipy.stats</span> <span style="color: #008000; font-weight: bold">import</span> uniform <span style="color: #008000; font-weight: bold">as</span> randuniform
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> RandomizedSearchCV
-
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">R2</span>(y_data, y_model):
-    <span style="color: #008000; font-weight: bold">return</span> <span style="color: #666666">1</span> <span style="color: #666666">-</span> np<span style="color: #666666">.</span>sum((y_data <span style="color: #666666">-</span> y_model) <span style="color: #666666">**</span> <span style="color: #666666">2</span>) <span style="color: #666666">/</span> np<span style="color: #666666">.</span>sum((y_data <span style="color: #666666">-</span> np<span style="color: #666666">.</span>mean(y_data)) <span style="color: #666666">**</span> <span style="color: #666666">2</span>)
-
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">MSE</span>(y_data,y_model):
-    n <span style="color: #666666">=</span> np<span style="color: #666666">.</span>size(y_model)
-    <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sum((y_data<span style="color: #666666">-</span>y_model)<span style="color: #666666">**2</span>)<span style="color: #666666">/</span>n
-
-<span style="color: #408080; font-style: italic"># A seed just to ensure that the random numbers are the same for every run.</span>
-<span style="color: #408080; font-style: italic"># Useful for eventual debugging.</span>
-np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>seed(<span style="color: #666666">2021</span>)
-
-n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
-x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n)
-y <span style="color: #666666">=</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x<span style="color: #666666">**2</span>) <span style="color: #666666">+</span> <span style="color: #666666">1.5</span> <span style="color: #666666">*</span> np<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>(x<span style="color: #666666">-2</span>)<span style="color: #666666">**2</span>)<span style="color: #666666">+</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(n)
-
-Maxpolydegree <span style="color: #666666">=</span> <span style="color: #666666">5</span>
-X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((n,Maxpolydegree<span style="color: #666666">-1</span>))
-
-<span style="color: #008000; font-weight: bold">for</span> degree <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(<span style="color: #666666">1</span>,Maxpolydegree): <span style="color: #408080; font-style: italic">#No intercept column</span>
-    X[:,degree<span style="color: #666666">-1</span>] <span style="color: #666666">=</span> x<span style="color: #666666">**</span>(degree)
-
-<span style="color: #408080; font-style: italic"># We split the data in test and training data</span>
-X_train, X_test, y_train, y_test <span style="color: #666666">=</span> train_test_split(X, y, test_size<span style="color: #666666">=0.2</span>)
-
-param_grid <span style="color: #666666">=</span> {<span style="color: #BA2121">&#39;alpha&#39;</span>: randuniform()}
-<span style="color: #408080; font-style: italic"># create and fit a ridge regression model, testing each alpha</span>
-model <span style="color: #666666">=</span> Ridge()
-gridsearch <span style="color: #666666">=</span> RandomizedSearchCV(estimator<span style="color: #666666">=</span>model, param_distributions<span style="color: #666666">=</span>param_grid, n_iter<span style="color: #666666">=100</span>)
-gridsearch<span style="color: #666666">.</span>fit(X_train, y_train)
-<span style="color: #008000">print</span>(gridsearch)
-ypredictRidge <span style="color: #666666">=</span> gridsearch<span style="color: #666666">.</span>predict(X_test)
-<span style="color: #408080; font-style: italic"># summarize the results of the grid search</span>
-<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;Best estimated lambda-value: </span><span style="color: #BB6688; font-weight: bold">{</span>gridsearch<span style="color: #666666">.</span>best_estimator_<span style="color: #666666">.</span>alpha<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
-<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;MSE score: </span><span style="color: #BB6688; font-weight: bold">{</span>MSE(y_test,ypredictRidge)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
-<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;R2 score: </span><span style="color: #BB6688; font-weight: bold">{</span>R2(y_test,ypredictRidge)<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- !split -->
-<h2 id="a-more-complicated-example-the-ising-model" class="anchor">A more complicated Example: The Ising model </h2>
-
-<p>The one-dimensional Ising model with nearest neighbor interaction, no
-external field and a constant coupling constant \( J \) is given by
-</p>
-
-$$
-\begin{align}
-    H = -J \sum_{k}^L s_k s_{k + 1},
-\label{_auto1}
-\end{align}
-$$
-
-<p>where \( s_i \in \{-1, 1\} \) and \( s_{N + 1} = s_1 \). The number of spins
-in the system is determined by \( L \). For the one-dimensional system
-there is no phase transition.
-</p>
-
-<p>We will look at a system of \( L = 40 \) spins with a coupling constant of
-\( J = 1 \). To get enough training data we will generate 10000 states
-with their respective energies.
-</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.axes_grid1</span> <span style="color: #008000; font-weight: bold">import</span> make_axes_locatable
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scipy.linalg</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">scl</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">tqdm</span>
-sns<span style="color: #666666">.</span>set(color_codes<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">True</span>)
-cmap_args<span style="color: #666666">=</span><span style="color: #008000">dict</span>(vmin<span style="color: #666666">=-1.</span>, vmax<span style="color: #666666">=1.</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;seismic&#39;</span>)
-
-L <span style="color: #666666">=</span> <span style="color: #666666">40</span>
-n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #666666">1e4</span>)
-
-spins <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>choice([<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>], size<span style="color: #666666">=</span>(n, L))
-J <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>
-
-energies <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
-
-<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
-    energies[i] <span style="color: #666666">=</span> <span style="color: #666666">-</span> J <span style="color: #666666">*</span> np<span style="color: #666666">.</span>dot(spins[i], np<span style="color: #666666">.</span>roll(spins[i], <span style="color: #666666">1</span>))
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>Here we use ordinary least squares
-regression to predict the energy for the nearest neighbor
-one-dimensional Ising model on a ring, i.e., the endpoints wrap
-around. We will use linear regression to fit a value for
-the coupling constant to achieve this.
-</p>
-
-<!-- !split -->
-<h2 id="reformulating-the-problem-to-suit-regression" class="anchor">Reformulating the problem to suit regression </h2>
-
-<p>A more general form for the one-dimensional Ising model is</p>
-
-$$
-\begin{align}
-    H = - \sum_j^L \sum_k^L s_j s_k J_{jk}.
-\label{_auto2}
-\end{align}
-$$
-
-<p>Here we allow for interactions beyond the nearest neighbors and a state dependent
-coupling constant. This latter expression can be formulated as
-a matrix-product
-</p>
-$$
-\begin{align}
-    \boldsymbol{H} = \boldsymbol{X} J,
-\label{_auto3}
-\end{align}
-$$
-
-<p>where \( X_{jk} = s_j s_k \) and \( J \) is a matrix which consists of the
-elements \( -J_{jk} \). This form of writing the energy fits perfectly
-with the form utilized in linear regression, that is
-</p>
-
-$$
-\begin{align}
-    \boldsymbol{y} = \boldsymbol{X}\boldsymbol{\beta} + \boldsymbol{\epsilon},
-\label{_auto4}
-\end{align}
-$$
-
-<p>We split the data in training and test data as discussed in the previous example</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((n, L <span style="color: #666666">**</span> <span style="color: #666666">2</span>))
-<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
-    X[i] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>outer(spins[i], spins[i])<span style="color: #666666">.</span>ravel()
-y <span style="color: #666666">=</span> energies
-X_train, X_test, y_train, y_test <span style="color: #666666">=</span> train_test_split(X, y, test_size<span style="color: #666666">=0.2</span>)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- !split -->
-<h2 id="linear-regression" class="anchor">Linear regression </h2>
-
-<p>In the ordinary least squares method we choose the cost function</p>
-
-$$
-\begin{align}
-    C(\boldsymbol{X}, \boldsymbol{\beta})= \frac{1}{n}\left\{(\boldsymbol{X}\boldsymbol{\beta} - \boldsymbol{y})^T(\boldsymbol{X}\boldsymbol{\beta} - \boldsymbol{y})\right\}.
-\label{_auto5}
-\end{align}
-$$
-
-<p>We then find the extremal point of \( C \) by taking the derivative with respect to \( \boldsymbol{\beta} \) as discussed above.
-This yields the expression for \( \boldsymbol{\beta} \) to be
-</p>
-
-$$
-    \boldsymbol{\beta} = \frac{\boldsymbol{X}^T \boldsymbol{y}}{\boldsymbol{X}^T \boldsymbol{X}},
-$$
-
-<p>which immediately imposes some requirements on \( \boldsymbol{X} \) as there must exist
-an inverse of \( \boldsymbol{X}^T \boldsymbol{X} \). If the expression we are modeling contains an
-intercept, i.e., a constant term, we must make sure that the
-first column of \( \boldsymbol{X} \) consists of \( 1 \). We do this here
-</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">X_train_own <span style="color: #666666">=</span> np<span style="color: #666666">.</span>concatenate(
-    (np<span style="color: #666666">.</span>ones(<span style="color: #008000">len</span>(X_train))[:, np<span style="color: #666666">.</span>newaxis], X_train),
-    axis<span style="color: #666666">=1</span>
-)
-X_test_own <span style="color: #666666">=</span> np<span style="color: #666666">.</span>concatenate(
-    (np<span style="color: #666666">.</span>ones(<span style="color: #008000">len</span>(X_test))[:, np<span style="color: #666666">.</span>newaxis], X_test),
-    axis<span style="color: #666666">=1</span>
-)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ols_inv</span>(x: np<span style="color: #666666">.</span>ndarray, y: np<span style="color: #666666">.</span>ndarray) <span style="color: #666666">-&gt;</span> np<span style="color: #666666">.</span>ndarray:
-    <span style="color: #008000; font-weight: bold">return</span> scl<span style="color: #666666">.</span>inv(x<span style="color: #666666">.</span>T <span style="color: #666666">@</span> x) <span style="color: #666666">@</span> (x<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y)
-beta <span style="color: #666666">=</span> ols_inv(X_train_own, y_train)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- !split -->
-<h2 id="singular-value-decomposition" class="anchor">Singular Value decomposition </h2>
-
-<p>Doing the inversion directly turns out to be a bad idea since the matrix
-\( \boldsymbol{X}^T\boldsymbol{X} \) is singular. An alternative approach is to use the <b>singular
-value decomposition</b>. Using the definition of the Moore-Penrose
-pseudoinverse we can write the equation for \( \boldsymbol{\beta} \) as
-</p>
-
-$$
-    \boldsymbol{\beta} = \boldsymbol{X}^{+}\boldsymbol{y},
-$$
-
-<p>where the pseudoinverse of \( \boldsymbol{X} \) is given by</p>
-
-$$
-    \boldsymbol{X}^{+} = \frac{\boldsymbol{X}^T}{\boldsymbol{X}^T\boldsymbol{X}}.
-$$
-
-<p>Using singular value decomposition we can decompose the matrix  \( \boldsymbol{X} = \boldsymbol{U}\boldsymbol{\Sigma} \boldsymbol{V}^T \),
-where \( \boldsymbol{U} \) and \( \boldsymbol{V} \) are orthogonal(unitary) matrices and \( \boldsymbol{\Sigma} \) contains the singular values (more details below).
-where \( X^{+} = V\Sigma^{+} U^T \). This reduces the equation for
-\( \omega \) to
-</p>
-$$
-\begin{align}
-    \boldsymbol{\beta} = \boldsymbol{V}\boldsymbol{\Sigma}^{+} \boldsymbol{U}^T \boldsymbol{y}.
-\label{_auto6}
-\end{align}
-$$
-
-<p>Note that solving this equation by actually doing the pseudoinverse
-(which is what we will do) is not a good idea as this operation scales
-as \( \mathcal{O}(n^3) \), where \( n \) is the number of elements in a
-general matrix. Instead, doing \( QR \)-factorization and solving the
-linear system as an equation would reduce this down to
-\( \mathcal{O}(n^2) \) operations.
-</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">ols_svd</span>(x: np<span style="color: #666666">.</span>ndarray, y: np<span style="color: #666666">.</span>ndarray) <span style="color: #666666">-&gt;</span> np<span style="color: #666666">.</span>ndarray:
-    u, s, v <span style="color: #666666">=</span> scl<span style="color: #666666">.</span>svd(x)
-    <span style="color: #008000; font-weight: bold">return</span> v<span style="color: #666666">.</span>T <span style="color: #666666">@</span> scl<span style="color: #666666">.</span>pinv(scl<span style="color: #666666">.</span>diagsvd(s, u<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>], v<span style="color: #666666">.</span>shape[<span style="color: #666666">0</span>])) <span style="color: #666666">@</span> u<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">beta <span style="color: #666666">=</span> ols_svd(X_train_own,y_train)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>When extracting the \( J \)-matrix  we need to make sure that we remove the intercept, as is done here</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">J <span style="color: #666666">=</span> beta[<span style="color: #666666">1</span>:]<span style="color: #666666">.</span>reshape(L, L)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>A way of looking at the coefficients in \( J \) is to plot the matrices as images.</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">20</span>, <span style="color: #666666">14</span>))
-im <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>imshow(J, <span style="color: #666666">**</span>cmap_args)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;OLS&quot;</span>, fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>xticks(fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>yticks(fontsize<span style="color: #666666">=18</span>)
-cb <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>colorbar(im)
-cb<span style="color: #666666">.</span>ax<span style="color: #666666">.</span>set_yticklabels(cb<span style="color: #666666">.</span>ax<span style="color: #666666">.</span>get_yticklabels(), fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>It is interesting to note that OLS
-considers both \( J_{j, j + 1} = -0.5 \) and \( J_{j, j - 1} = -0.5 \) as
-valid matrix elements for \( J \).
-In our discussion below on hyperparameters and Ridge and Lasso regression we will see that
-this problem can be removed, partly and only with Lasso regression. 
-</p>
-
-<p>In this case our matrix inversion was actually possible. The obvious question now is what is the mathematics behind the SVD?</p>
-
-<!-- !split -->
-<h2 id="the-one-dimensional-ising-model" class="anchor">The one-dimensional Ising model </h2>
-
-<p>Let us bring back the Ising model again, but now with an additional
-focus on Ridge and Lasso regression as well. We repeat some of the
-basic parts of the Ising model and the setup of the training and test
-data.  The one-dimensional Ising model with nearest neighbor
-interaction, no external field and a constant coupling constant \( J \) is
-given by
-</p>
-
-$$
-\begin{align}
-    H = -J \sum_{k}^L s_k s_{k + 1},
-\label{_auto7}
-\end{align}
-$$
-
-<p>where \( s_i \in \{-1, 1\} \) and \( s_{N + 1} = s_1 \). The number of spins in the system is determined by \( L \). For the one-dimensional system there is no phase transition.</p>
-
-<p>We will look at a system of \( L = 40 \) spins with a coupling constant of \( J = 1 \). To get enough training data we will generate 10000 states with their respective energies.</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">mpl_toolkits.axes_grid1</span> <span style="color: #008000; font-weight: bold">import</span> make_axes_locatable
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">seaborn</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">sns</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scipy.linalg</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">scl</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> train_test_split
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">skl</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">tqdm</span>
-sns<span style="color: #666666">.</span>set(color_codes<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">True</span>)
-cmap_args<span style="color: #666666">=</span><span style="color: #008000">dict</span>(vmin<span style="color: #666666">=-1.</span>, vmax<span style="color: #666666">=1.</span>, cmap<span style="color: #666666">=</span><span style="color: #BA2121">&#39;seismic&#39;</span>)
-
-L <span style="color: #666666">=</span> <span style="color: #666666">40</span>
-n <span style="color: #666666">=</span> <span style="color: #008000">int</span>(<span style="color: #666666">1e4</span>)
-
-spins <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>choice([<span style="color: #666666">-1</span>, <span style="color: #666666">1</span>], size<span style="color: #666666">=</span>(n, L))
-J <span style="color: #666666">=</span> <span style="color: #666666">1.0</span>
-
-energies <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros(n)
-
-<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
-    energies[i] <span style="color: #666666">=</span> <span style="color: #666666">-</span> J <span style="color: #666666">*</span> np<span style="color: #666666">.</span>dot(spins[i], np<span style="color: #666666">.</span>roll(spins[i], <span style="color: #666666">1</span>))
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>A more general form for the one-dimensional Ising model is</p>
-
-$$
-\begin{align}
-    H = - \sum_j^L \sum_k^L s_j s_k J_{jk}.
-\label{_auto8}
-\end{align}
-$$
-
-<p>Here we allow for interactions beyond the nearest neighbors and a more
-adaptive coupling matrix. This latter expression can be formulated as
-a matrix-product on the form
-</p>
-$$
-\begin{align}
-    H = X J,
-\label{_auto9}
-\end{align}
-$$
-
-<p>where \( X_{jk} = s_j s_k \) and \( J \) is the matrix consisting of the
-elements \( -J_{jk} \). This form of writing the energy fits perfectly
-with the form utilized in linear regression, viz.
-</p>
-$$
-\begin{align}
-    \boldsymbol{y} = \boldsymbol{X}\boldsymbol{\beta} + \boldsymbol{\epsilon}.
-\label{_auto10}
-\end{align}
-$$
-
-<p>We organize the data as we did above</p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>zeros((n, L <span style="color: #666666">**</span> <span style="color: #666666">2</span>))
-<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n):
-    X[i] <span style="color: #666666">=</span> np<span style="color: #666666">.</span>outer(spins[i], spins[i])<span style="color: #666666">.</span>ravel()
-y <span style="color: #666666">=</span> energies
-X_train, X_test, y_train, y_test <span style="color: #666666">=</span> train_test_split(X, y, test_size<span style="color: #666666">=0.96</span>)
-
-X_train_own <span style="color: #666666">=</span> np<span style="color: #666666">.</span>concatenate(
-    (np<span style="color: #666666">.</span>ones(<span style="color: #008000">len</span>(X_train))[:, np<span style="color: #666666">.</span>newaxis], X_train),
-    axis<span style="color: #666666">=1</span>
-)
-
-X_test_own <span style="color: #666666">=</span> np<span style="color: #666666">.</span>concatenate(
-    (np<span style="color: #666666">.</span>ones(<span style="color: #008000">len</span>(X_test))[:, np<span style="color: #666666">.</span>newaxis], X_test),
-    axis<span style="color: #666666">=1</span>
-)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>We will do all fitting with <b>Scikit-Learn</b>,</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">clf <span style="color: #666666">=</span> skl<span style="color: #666666">.</span>LinearRegression()<span style="color: #666666">.</span>fit(X_train, y_train)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>When  extracting the \( J \)-matrix we make sure to remove the intercept</p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">J_sk <span style="color: #666666">=</span> clf<span style="color: #666666">.</span>coef_<span style="color: #666666">.</span>reshape(L, L)
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>And then we plot the results</p>
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">20</span>, <span style="color: #666666">14</span>))
-im <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>imshow(J_sk, <span style="color: #666666">**</span>cmap_args)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;LinearRegression from Scikit-learn&quot;</span>, fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>xticks(fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>yticks(fontsize<span style="color: #666666">=18</span>)
-cb <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>colorbar(im)
-cb<span style="color: #666666">.</span>ax<span style="color: #666666">.</span>set_yticklabels(cb<span style="color: #666666">.</span>ax<span style="color: #666666">.</span>get_yticklabels(), fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>The results perfectly with our previous discussion where we used our own code.</p>
-
-<!-- !split -->
-<h2 id="ridge-regression" class="anchor">Ridge regression </h2>
-
-<p>Having explored the ordinary least squares we move on to ridge
-regression. In ridge regression we include a <b>regularizer</b>. This
-involves a new cost function which leads to a new estimate for the
-weights \( \boldsymbol{\beta} \). This results in a penalized regression problem. The
-cost function is given by
-</p>
-
-$$
-\begin{align}
-    C(\boldsymbol{X}, \boldsymbol{\beta}; \lambda) = (\boldsymbol{X}\boldsymbol{\beta} - \boldsymbol{y})^T(\boldsymbol{X}\boldsymbol{\beta} - \boldsymbol{y}) + \lambda \boldsymbol{\beta}^T\boldsymbol{\beta}.
-\label{_auto11}
-\end{align}
-$$
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">_lambda <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
-clf_ridge <span style="color: #666666">=</span> skl<span style="color: #666666">.</span>Ridge(alpha<span style="color: #666666">=</span>_lambda)<span style="color: #666666">.</span>fit(X_train, y_train)
-J_ridge_sk <span style="color: #666666">=</span> clf_ridge<span style="color: #666666">.</span>coef_<span style="color: #666666">.</span>reshape(L, L)
-fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">20</span>, <span style="color: #666666">14</span>))
-im <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>imshow(J_ridge_sk, <span style="color: #666666">**</span>cmap_args)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Ridge from Scikit-learn&quot;</span>, fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>xticks(fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>yticks(fontsize<span style="color: #666666">=18</span>)
-cb <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>colorbar(im)
-cb<span style="color: #666666">.</span>ax<span style="color: #666666">.</span>set_yticklabels(cb<span style="color: #666666">.</span>ax<span style="color: #666666">.</span>get_yticklabels(), fontsize<span style="color: #666666">=18</span>)
-
-plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-<!-- !split -->
-<h2 id="lasso-regression" class="anchor">LASSO regression </h2>
-
-<p>In the <b>Least Absolute Shrinkage and Selection Operator</b> (LASSO)-method we get a third cost function.</p>
-
-$$
-\begin{align}
-    C(\boldsymbol{X}, \boldsymbol{\beta}; \lambda) = (\boldsymbol{X}\boldsymbol{\beta} - \boldsymbol{y})^T(\boldsymbol{X}\boldsymbol{\beta} - \boldsymbol{y}) + \lambda \sqrt{\boldsymbol{\beta}^T\boldsymbol{\beta}}.
-\label{_auto12}
-\end{align}
-$$
-
-<p>Finding the extremal point of this cost function is not so straight-forward as in least squares and ridge. We will therefore rely solely on the function ``Lasso`` from <b>Scikit-Learn</b>.</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">clf_lasso <span style="color: #666666">=</span> skl<span style="color: #666666">.</span>Lasso(alpha<span style="color: #666666">=</span>_lambda)<span style="color: #666666">.</span>fit(X_train, y_train)
-J_lasso_sk <span style="color: #666666">=</span> clf_lasso<span style="color: #666666">.</span>coef_<span style="color: #666666">.</span>reshape(L, L)
-fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">20</span>, <span style="color: #666666">14</span>))
-im <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>imshow(J_lasso_sk, <span style="color: #666666">**</span>cmap_args)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">&quot;Lasso from Scikit-learn&quot;</span>, fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>xticks(fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>yticks(fontsize<span style="color: #666666">=18</span>)
-cb <span style="color: #666666">=</span> fig<span style="color: #666666">.</span>colorbar(im)
-cb<span style="color: #666666">.</span>ax<span style="color: #666666">.</span>set_yticklabels(cb<span style="color: #666666">.</span>ax<span style="color: #666666">.</span>get_yticklabels(), fontsize<span style="color: #666666">=18</span>)
-
-plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>It is quite striking how LASSO breaks the symmetry of the coupling
-constant as opposed to ridge and OLS. We get a sparse solution with
-\( J_{j, j + 1} = -1 \).
-</p>
-
-<!-- !split -->
-<h2 id="performance-as-function-of-the-regularization-parameter" class="anchor">Performance as  function of the regularization parameter </h2>
-
-<p>We see how the different models perform for a different set of values for \( \lambda \).</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">lambdas <span style="color: #666666">=</span> np<span style="color: #666666">.</span>logspace(<span style="color: #666666">-4</span>, <span style="color: #666666">5</span>, <span style="color: #666666">10</span>)
-
-train_errors <span style="color: #666666">=</span> {
-    <span style="color: #BA2121">&quot;ols_sk&quot;</span>: np<span style="color: #666666">.</span>zeros(lambdas<span style="color: #666666">.</span>size),
-    <span style="color: #BA2121">&quot;ridge_sk&quot;</span>: np<span style="color: #666666">.</span>zeros(lambdas<span style="color: #666666">.</span>size),
-    <span style="color: #BA2121">&quot;lasso_sk&quot;</span>: np<span style="color: #666666">.</span>zeros(lambdas<span style="color: #666666">.</span>size)
-}
-
-test_errors <span style="color: #666666">=</span> {
-    <span style="color: #BA2121">&quot;ols_sk&quot;</span>: np<span style="color: #666666">.</span>zeros(lambdas<span style="color: #666666">.</span>size),
-    <span style="color: #BA2121">&quot;ridge_sk&quot;</span>: np<span style="color: #666666">.</span>zeros(lambdas<span style="color: #666666">.</span>size),
-    <span style="color: #BA2121">&quot;lasso_sk&quot;</span>: np<span style="color: #666666">.</span>zeros(lambdas<span style="color: #666666">.</span>size)
-}
-
-plot_counter <span style="color: #666666">=</span> <span style="color: #666666">1</span>
-
-fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">32</span>, <span style="color: #666666">54</span>))
-
-<span style="color: #008000; font-weight: bold">for</span> i, _lambda <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">enumerate</span>(tqdm<span style="color: #666666">.</span>tqdm(lambdas)):
-    <span style="color: #008000; font-weight: bold">for</span> key, method <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">zip</span>(
-        [<span style="color: #BA2121">&quot;ols_sk&quot;</span>, <span style="color: #BA2121">&quot;ridge_sk&quot;</span>, <span style="color: #BA2121">&quot;lasso_sk&quot;</span>],
-        [skl<span style="color: #666666">.</span>LinearRegression(), skl<span style="color: #666666">.</span>Ridge(alpha<span style="color: #666666">=</span>_lambda), skl<span style="color: #666666">.</span>Lasso(alpha<span style="color: #666666">=</span>_lambda)]
-    ):
-        method <span style="color: #666666">=</span> method<span style="color: #666666">.</span>fit(X_train, y_train)
-
-        train_errors[key][i] <span style="color: #666666">=</span> method<span style="color: #666666">.</span>score(X_train, y_train)
-        test_errors[key][i] <span style="color: #666666">=</span> method<span style="color: #666666">.</span>score(X_test, y_test)
-
-        omega <span style="color: #666666">=</span> method<span style="color: #666666">.</span>coef_<span style="color: #666666">.</span>reshape(L, L)
-
-        plt<span style="color: #666666">.</span>subplot(<span style="color: #666666">10</span>, <span style="color: #666666">5</span>, plot_counter)
-        plt<span style="color: #666666">.</span>imshow(omega, <span style="color: #666666">**</span>cmap_args)
-        plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">r&quot;</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">, $\lambda = </span><span style="color: #BB6688; font-weight: bold">%.4f</span><span style="color: #BA2121">$&quot;</span> <span style="color: #666666">%</span> (key, _lambda))
-        plot_counter <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
-
-plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>We see that LASSO reaches a good solution for low
-values of \( \lambda \), but will "wither" when we increase \( \lambda \) too
-much. Ridge is more stable over a larger range of values for
-\( \lambda \), but eventually also fades away.
-</p>
-
-<!-- !split -->
-<h2 id="finding-the-optimal-value-of-lambda" class="anchor">Finding the optimal value of \( \lambda \) </h2>
-
-<p>To determine which value of \( \lambda \) is best we plot the accuracy of
-the models when predicting the training and the testing set. We expect
-the accuracy of the training set to be quite good, but if the accuracy
-of the testing set is much lower this tells us that we might be
-subject to an overfit model. The ideal scenario is an accuracy on the
-testing set that is close to the accuracy of the training set.
-</p>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;">fig <span style="color: #666666">=</span> plt<span style="color: #666666">.</span>figure(figsize<span style="color: #666666">=</span>(<span style="color: #666666">20</span>, <span style="color: #666666">14</span>))
-
-colors <span style="color: #666666">=</span> {
-    <span style="color: #BA2121">&quot;ols_sk&quot;</span>: <span style="color: #BA2121">&quot;r&quot;</span>,
-    <span style="color: #BA2121">&quot;ridge_sk&quot;</span>: <span style="color: #BA2121">&quot;y&quot;</span>,
-    <span style="color: #BA2121">&quot;lasso_sk&quot;</span>: <span style="color: #BA2121">&quot;c&quot;</span>
-}
-
-<span style="color: #008000; font-weight: bold">for</span> key <span style="color: #AA22FF; font-weight: bold">in</span> train_errors:
-    plt<span style="color: #666666">.</span>semilogx(
-        lambdas,
-        train_errors[key],
-        colors[key],
-        label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;Train </span><span style="color: #BB6688; font-weight: bold">{0}</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">.</span>format(key),
-        linewidth<span style="color: #666666">=4.0</span>
-    )
-
-<span style="color: #008000; font-weight: bold">for</span> key <span style="color: #AA22FF; font-weight: bold">in</span> test_errors:
-    plt<span style="color: #666666">.</span>semilogx(
-        lambdas,
-        test_errors[key],
-        colors[key] <span style="color: #666666">+</span> <span style="color: #BA2121">&quot;--&quot;</span>,
-        label<span style="color: #666666">=</span><span style="color: #BA2121">&quot;Test </span><span style="color: #BB6688; font-weight: bold">{0}</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">.</span>format(key),
-        linewidth<span style="color: #666666">=4.0</span>
-    )
-plt<span style="color: #666666">.</span>legend(loc<span style="color: #666666">=</span><span style="color: #BA2121">&quot;best&quot;</span>, fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">r&quot;$\lambda$&quot;</span>, fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">r&quot;$R^2$&quot;</span>, fontsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>tick_params(labelsize<span style="color: #666666">=18</span>)
-plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p>From the above figure we can see that LASSO with \( \lambda = 10^{-2} \)
-achieves a very good accuracy on the test set. This by far surpasses the
-other models for all values of \( \lambda \).
-</p>
-
 <!-- !split  -->
+
+</div> <!-- end jumbotron -->
 <h2 id="logistic-regression" class="anchor">Logistic Regression </h2>
 
 <p>In linear regression our main interest was centered on learning the
 coefficients of a functional fit (say a polynomial) in order to be
 able to predict the response of a continuous variable on some unseen
 data. The fit to the continuous variable \( y_i \) is based on some
-independent variables \( \boldsymbol{x}_i \). Linear regression resulted in
+independent variables \( \hat{x}_i \). Linear regression resulted in
 analytical expressions for standard ordinary Least Squares or Ridge
 regression (in terms of matrices to invert) for several quantities,
 ranging from the variance and thereby the confidence intervals of the
-parameters \( \boldsymbol{\beta} \) to the mean squared error. If we can invert
+parameters \( \hat{\beta} \) to the mean squared error. If we can invert
 the product of the design matrices, linear regression gives then a
 simple recipe for fitting our data.
 </p>
@@ -1606,7 +542,7 @@ failure etc.
 <p>Logistic regression will also serve as our stepping stone towards
 neural network algorithms and supervised deep learning. For logistic
 learning, the minimization of the cost function leads to a non-linear
-equation in the parameters \( \boldsymbol{\beta} \). The optimization of the
+equation in the parameters \( \hat{\beta} \). The optimization of the
 problem calls therefore for minimization algorithms. This forms the
 bottle neck of all machine learning algorithms, namely how to find
 reliable minima of a multi-variable function. This leads us to the
@@ -1628,7 +564,7 @@ from \( k=0,\dots,K-1 \) (i.e. \( K \) classes).
 </p>
 
 <p>The goal is to predict the
-output classes from the design matrix \( \boldsymbol{X}\in\mathbb{R}^{n\times p} \)
+output classes from the design matrix \( \hat{X}\in\mathbb{R}^{n\times p} \)
 made of \( n \) samples, each of which carries \( p \) features or predictors. The
 primary goal is to identify the classes to which new unseen samples
 belong.
@@ -1659,13 +595,13 @@ weighted linear combination, namely
 </p>
 $$
 \begin{equation}
-\boldsymbol{y} = \boldsymbol{X}^T\boldsymbol{\beta} +  \boldsymbol{\epsilon},
-\label{_auto13}
+\hat{y} = \hat{X}^T\hat{\beta} +  \hat{\epsilon},
+\label{_auto1}
 \end{equation}
 $$
 
-<p>where \( \boldsymbol{y} \) is a vector representing the possible outcomes, \( \boldsymbol{X} \) is our
-\( n\times p \) design matrix and \( \boldsymbol{\beta} \) represents our estimators/predictors.
+<p>where \( \hat{y} \) is a vector representing the possible outcomes, \( \hat{X} \) is our
+\( n\times p \) design matrix and \( \hat{\beta} \) represents our estimators/predictors.
 </p>
 
 <!-- !split -->
@@ -1933,16 +869,16 @@ plt<span style="color: #666666">.</span>show()
 <p>We assume now that we have two classes with \( y_i \) either \( 0 \) or \( 1 \). Furthermore we assume also that we have only two parameters \( \beta \) in our fitting of the Sigmoid function, that is we define probabilities </p>
 $$
 \begin{align*}
-p(y_i=1|x_i,\boldsymbol{\beta}) &= \frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}},\nonumber\\
-p(y_i=0|x_i,\boldsymbol{\beta}) &= 1 - p(y_i=1|x_i,\boldsymbol{\beta}),
+p(y_i=1|x_i,\hat{\beta}) &= \frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}},\nonumber\\
+p(y_i=0|x_i,\hat{\beta}) &= 1 - p(y_i=1|x_i,\hat{\beta}),
 \end{align*}
 $$
 
-<p>where \( \boldsymbol{\beta} \) are the weights we wish to extract from data, in our case \( \beta_0 \) and \( \beta_1 \). </p>
+<p>where \( \hat{\beta} \) are the weights we wish to extract from data, in our case \( \beta_0 \) and \( \beta_1 \). </p>
 
 <p>Note that we used</p>
 $$
-p(y_i=0\vert x_i, \boldsymbol{\beta}) = 1-p(y_i=1\vert x_i, \boldsymbol{\beta}).
+p(y_i=0\vert x_i, \hat{\beta}) = 1-p(y_i=1\vert x_i, \hat{\beta}).
 $$
 
 
@@ -1958,13 +894,13 @@ likelihood in terms of the product of the individual probabilities of a specific
 </p>
 $$
 \begin{align*}
-P(\mathcal{D}|\boldsymbol{\beta})& = \prod_{i=1}^n \left[p(y_i=1|x_i,\boldsymbol{\beta})\right]^{y_i}\left[1-p(y_i=1|x_i,\boldsymbol{\beta}))\right]^{1-y_i}\nonumber \\
+P(\mathcal{D}|\hat{\beta})& = \prod_{i=1}^n \left[p(y_i=1|x_i,\hat{\beta})\right]^{y_i}\left[1-p(y_i=1|x_i,\hat{\beta}))\right]^{1-y_i}\nonumber \\
 \end{align*}
 $$
 
 <p>from which we obtain the log-likelihood and our <b>cost/loss</b> function</p>
 $$
-\mathcal{C}(\boldsymbol{\beta}) = \sum_{i=1}^n \left( y_i\log{p(y_i=1|x_i,\boldsymbol{\beta})} + (1-y_i)\log\left[1-p(y_i=1|x_i,\boldsymbol{\beta}))\right]\right).
+\mathcal{C}(\hat{\beta}) = \sum_{i=1}^n \left( y_i\log{p(y_i=1|x_i,\hat{\beta})} + (1-y_i)\log\left[1-p(y_i=1|x_i,\hat{\beta}))\right]\right).
 $$
 
 
@@ -1973,14 +909,14 @@ $$
 
 <p>Reordering the logarithms, we can rewrite the <b>cost/loss</b> function as</p>
 $$
-\mathcal{C}(\boldsymbol{\beta}) = \sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
+\mathcal{C}(\hat{\beta}) = \sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
 $$
 
 <p>The maximum likelihood estimator is defined as the set of parameters that maximize the log-likelihood where we maximize with respect to \( \beta \).
 Since the cost (error) function is just the negative log-likelihood, for logistic regression we have that
 </p>
 $$
-\mathcal{C}(\boldsymbol{\beta})=-\sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
+\mathcal{C}(\hat{\beta})=-\sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
 $$
 
 <p>This equation is known in statistics as the <b>cross entropy</b>. Finally, we note that just as in linear regression, 
@@ -1990,7 +926,7 @@ in practice we often supplement the cross-entropy with additional regularization
 <!-- !split -->
 <h2 id="minimizing-the-cross-entropy" class="anchor">Minimizing the cross entropy </h2>
 
-<p>The cross entropy is a convex function of the weights \( \boldsymbol{\beta} \) and,
+<p>The cross entropy is a convex function of the weights \( \hat{\beta} \) and,
 therefore, any local minimizer is a global minimizer. 
 </p>
 
@@ -1999,34 +935,34 @@ cost function with respect to the two parameters \( \beta_0 \) and \( \beta_1 \)
 </p>
 
 $$
-\frac{\partial \mathcal{C}(\boldsymbol{\beta})}{\partial \beta_0} = -\sum_{i=1}^n  \left(y_i -\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right),
+\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \beta_0} = -\sum_{i=1}^n  \left(y_i -\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right),
 $$
 
 <p>and </p>
 $$
-\frac{\partial \mathcal{C}(\boldsymbol{\beta})}{\partial \beta_1} = -\sum_{i=1}^n  \left(y_ix_i -x_i\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right).
+\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \beta_1} = -\sum_{i=1}^n  \left(y_ix_i -x_i\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right).
 $$
 
 
 <!-- !split -->
 <h2 id="a-more-compact-expression" class="anchor">A more compact expression </h2>
 
-<p>Let us now define a vector \( \boldsymbol{y} \) with \( n \) elements \( y_i \), an
-\( n\times p \) matrix \( \boldsymbol{X} \) which contains the \( x_i \) values and a
-vector \( \boldsymbol{p} \) of fitted probabilities \( p(y_i\vert x_i,\boldsymbol{\beta}) \). We can rewrite in a more compact form the first
+<p>Let us now define a vector \( \hat{y} \) with \( n \) elements \( y_i \), an
+\( n\times p \) matrix \( \hat{X} \) which contains the \( x_i \) values and a
+vector \( \hat{p} \) of fitted probabilities \( p(y_i\vert x_i,\hat{\beta}) \). We can rewrite in a more compact form the first
 derivative of cost function as
 </p>
 
 $$
-\frac{\partial \mathcal{C}(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}} = -\boldsymbol{X}^T\left(\boldsymbol{y}-\boldsymbol{p}\right). 
+\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \hat{\beta}} = -\hat{X}^T\left(\hat{y}-\hat{p}\right). 
 $$
 
-<p>If we in addition define a diagonal matrix \( \boldsymbol{W} \) with elements 
-\( p(y_i\vert x_i,\boldsymbol{\beta})(1-p(y_i\vert x_i,\boldsymbol{\beta}) \), we can obtain a compact expression of the second derivative as 
+<p>If we in addition define a diagonal matrix \( \hat{W} \) with elements 
+\( p(y_i\vert x_i,\hat{\beta})(1-p(y_i\vert x_i,\hat{\beta}) \), we can obtain a compact expression of the second derivative as 
 </p>
 
 $$
-\frac{\partial^2 \mathcal{C}(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}\partial \boldsymbol{\beta}^T} = \boldsymbol{X}^T\boldsymbol{W}\boldsymbol{X}. 
+\frac{\partial^2 \mathcal{C}(\hat{\beta})}{\partial \hat{\beta}\partial \hat{\beta}^T} = \hat{X}^T\hat{W}\hat{X}. 
 $$
 
 
@@ -2035,12 +971,12 @@ $$
 
 <p>Within a binary classification problem, we can easily expand our model to include multiple predictors. Our ratio between likelihoods is then with \( p \) predictors</p>
 $$
-\log{ \frac{p(\boldsymbol{\beta}\boldsymbol{x})}{1-p(\boldsymbol{\beta}\boldsymbol{x})}} = \beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p.
+\log{ \frac{p(\hat{\beta}\hat{x})}{1-p(\hat{\beta}\hat{x})}} = \beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p.
 $$
 
-<p>Here we defined \( \boldsymbol{x}=[1,x_1,x_2,\dots,x_p] \) and \( \boldsymbol{\beta}=[\beta_0, \beta_1, \dots, \beta_p] \) leading to</p>
+<p>Here we defined \( \hat{x}=[1,x_1,x_2,\dots,x_p] \) and \( \hat{\beta}=[\beta_0, \beta_1, \dots, \beta_p] \) leading to</p>
 $$
-p(\boldsymbol{\beta}\boldsymbol{x})=\frac{ \exp{(\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p)}}{1+\exp{(\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p)}}.
+p(\hat{\beta}\hat{x})=\frac{ \exp{(\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p)}}{1+\exp{(\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p)}}.
 $$
 
 
@@ -2084,7 +1020,7 @@ Bayes classifiers, and artificial neural networks.  Specifically, in
 multinomial logistic regression and linear discriminant analysis, the
 input to the function is the result of \( K \) distinct linear functions,
 and the predicted probability for the \( k \)-th class given a sample
-vector \( \boldsymbol{x} \) and a weighting vector \( \boldsymbol{\beta} \) is (with two
+vector \( \hat{x} \) and a weighting vector \( \hat{\beta} \) is (with two
 predictors):
 </p>
 
@@ -2104,8 +1040,8 @@ what we derived earlier is compatible with these equations.
 
 <p>To find the optimal parameters we would typically use a gradient
 descent method.  Newton's method and gradient descent methods are
-discussed in the material on <a href="https://compphysics.github.io/MachineLearning/doc/pub/Splines/html/Splines-bs.html" target="_self">optimization
-methods</a>.
+discussed in the material on optimization
+methods below in these slides.
 </p>
 
 <!-- !split -->
@@ -2139,6 +1075,15 @@ X_train, X_test, y_train, y_test <span style="color: #666666">=</span> train_tes
 logreg <span style="color: #666666">=</span> LogisticRegression(solver<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lbfgs&#39;</span>)
 logreg<span style="color: #666666">.</span>fit(X_train, y_train)
 <span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Test set accuracy with Logistic Regression: </span><span style="color: #BB6688; font-weight: bold">{:.2f}</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">.</span>format(logreg<span style="color: #666666">.</span>score(X_test,y_test)))
+<span style="color: #408080; font-style: italic">#now scale the data</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> StandardScaler
+scaler <span style="color: #666666">=</span> StandardScaler()
+scaler<span style="color: #666666">.</span>fit(X_train)
+X_train_scaled <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(X_train)
+X_test_scaled <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(X_test)
+<span style="color: #408080; font-style: italic"># Logistic Regression</span>
+logreg<span style="color: #666666">.</span>fit(X_train_scaled, y_train)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Test set accuracy Logistic Regression with scaled data: </span><span style="color: #BB6688; font-weight: bold">{:.2f}</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">.</span>format(logreg<span style="color: #666666">.</span>score(X_test_scaled,y_test)))
 </pre>
 </div>
       </div>
@@ -2154,7 +1099,6 @@ logreg<span style="color: #666666">.</span>fit(X_train, y_train)
   </div>
 </div>
 
-<p>Question: How would you scale the data? Would it make sense?</p>
 
 <!-- !split -->
 <h2 id="using-the-correlation-matrix" class="anchor">Using the correlation matrix </h2>
@@ -2287,7 +1231,7 @@ matrix.
 <p>Diagonalizing this matrix we can in turn say something about which
 features are of relevance and which are not. This leads  us to
 the classical Principal Component Analysis (PCA) theorem with
-applications. This will be discussed later this semester (<a href="https://compphysics.github.io/MachineLearning/doc/pub/week43/html/week43-bs.html" target="_self">week 43</a>).
+applications. 
 </p>
 
 <!-- !split -->
@@ -2315,20 +1259,30 @@ X_train, X_test, y_train, y_test <span style="color: #666666">=</span> train_tes
 logreg <span style="color: #666666">=</span> LogisticRegression(solver<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lbfgs&#39;</span>)
 logreg<span style="color: #666666">.</span>fit(X_train, y_train)
 <span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Test set accuracy with Logistic Regression: </span><span style="color: #BB6688; font-weight: bold">{:.2f}</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">.</span>format(logreg<span style="color: #666666">.</span>score(X_test,y_test)))
+<span style="color: #408080; font-style: italic">#now scale the data</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> StandardScaler
+scaler <span style="color: #666666">=</span> StandardScaler()
+scaler<span style="color: #666666">.</span>fit(X_train)
+X_train_scaled <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(X_train)
+X_test_scaled <span style="color: #666666">=</span> scaler<span style="color: #666666">.</span>transform(X_test)
+<span style="color: #408080; font-style: italic"># Logistic Regression</span>
+logreg<span style="color: #666666">.</span>fit(X_train_scaled, y_train)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Test set accuracy Logistic Regression with scaled data: </span><span style="color: #BB6688; font-weight: bold">{:.2f}</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">.</span>format(logreg<span style="color: #666666">.</span>score(X_test_scaled,y_test)))
+
 
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.preprocessing</span> <span style="color: #008000; font-weight: bold">import</span> LabelEncoder
 <span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.model_selection</span> <span style="color: #008000; font-weight: bold">import</span> cross_validate
 <span style="color: #408080; font-style: italic">#Cross validation</span>
-accuracy <span style="color: #666666">=</span> cross_validate(logreg,X_test,y_test,cv<span style="color: #666666">=10</span>)[<span style="color: #BA2121">&#39;test_score&#39;</span>]
+accuracy <span style="color: #666666">=</span> cross_validate(logreg,X_test_scaled,y_test,cv<span style="color: #666666">=10</span>)[<span style="color: #BA2121">&#39;test_score&#39;</span>]
 <span style="color: #008000">print</span>(accuracy)
-<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Test set accuracy with Logistic Regression: </span><span style="color: #BB6688; font-weight: bold">{:.2f}</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">.</span>format(logreg<span style="color: #666666">.</span>score(X_test,y_test)))
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Test set accuracy with Logistic Regression  and scaled data: </span><span style="color: #BB6688; font-weight: bold">{:.2f}</span><span style="color: #BA2121">&quot;</span><span style="color: #666666">.</span>format(logreg<span style="color: #666666">.</span>score(X_test_scaled,y_test)))
 
 
 <span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">scikitplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">skplt</span>
-y_pred <span style="color: #666666">=</span> logreg<span style="color: #666666">.</span>predict(X_test)
+y_pred <span style="color: #666666">=</span> logreg<span style="color: #666666">.</span>predict(X_test_scaled)
 skplt<span style="color: #666666">.</span>metrics<span style="color: #666666">.</span>plot_confusion_matrix(y_test, y_pred, normalize<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">True</span>)
 plt<span style="color: #666666">.</span>show()
-y_probas <span style="color: #666666">=</span> logreg<span style="color: #666666">.</span>predict_proba(X_test)
+y_probas <span style="color: #666666">=</span> logreg<span style="color: #666666">.</span>predict_proba(X_test_scaled)
 skplt<span style="color: #666666">.</span>metrics<span style="color: #666666">.</span>plot_roc(y_test, y_probas)
 plt<span style="color: #666666">.</span>show()
 skplt<span style="color: #666666">.</span>metrics<span style="color: #666666">.</span>plot_cumulative_gain(y_test, y_probas)
@@ -2351,6 +1305,8 @@ plt<span style="color: #666666">.</span>show()
 
 <!-- !split -->
 <h2 id="optimization-the-central-part-of-any-machine-learning-algortithm" class="anchor">Optimization, the central part of any Machine Learning algortithm </h2>
+
+<p>For a good discussion on gradient methods, we would like to recommend Goodfellow et al section 4.3-4.5 and chapter 8. For Stochastic Gradient Descent, we recommend chapter 4 of Geron's text.</p>
 
 <p>Almost every problem in machine learning and data science starts with
 a dataset \( X \), a model \( g(\beta) \), which is a function of the
@@ -2866,7 +1822,7 @@ $$
 <p>leading to the iterative scheme</p>
 $$
 \begin{equation*}
-\boldsymbol{x}_{k+1}=\boldsymbol{x}_k-\alpha_k\boldsymbol{r}_{k},
+\boldsymbol{x}_{k+1}=\boldsymbol{x}_k+\alpha_k\boldsymbol{r}_{k},
  \end{equation*}
 $$
 </div>
@@ -3269,7 +2225,7 @@ $$
 
 
 <!-- !split  -->
-<h2 id="revisiting-our-first-homeworks" class="anchor">Revisiting our first homeworks </h2>
+<h2 id="revisiting-our-first-homework" class="anchor">Revisiting our first homework </h2>
 
 <p>We will use linear regression as a case study for the gradient descent
 methods. Linear regression is a great test case for the gradient
@@ -3622,9 +2578,223 @@ plt<span style="color: #666666">.</span>show()
 <li> GD can take exponential time to escape saddle points, even with random initialization. As we mentioned, GD is extremely sensitive to initial condition since it determines the particular local minimum GD would eventually reach. However, even with a good initialization scheme, through the introduction of randomness, GD can still take exponential time to escape saddle points.</li>
 </ul>
 <!-- !split -->
-<h2 id="challenge-yourself" class="anchor">Challenge yourself </h2>
+<h2 id="improving-gradient-descent-with-momentum" class="anchor">Improving gradient descent with momentum </h2>
 
-<p>Write a code which implements gradient descent for a logistic regression example.</p>
+<p>We discuss here some simple examples where we introduce what is called 'memory'about previous steps, or what is normally called momentum gradient descent. The mathematics is explained below in connection with Stochastic gradient descent.</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> asarray
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> arange
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy.random</span> <span style="color: #008000; font-weight: bold">import</span> rand
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy.random</span> <span style="color: #008000; font-weight: bold">import</span> seed
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib</span> <span style="color: #008000; font-weight: bold">import</span> pyplot
+ 
+<span style="color: #408080; font-style: italic"># objective function</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">objective</span>(x):
+	<span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">**2.0</span>
+ 
+<span style="color: #408080; font-style: italic"># derivative of objective function</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">derivative</span>(x):
+	<span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">*</span> <span style="color: #666666">2.0</span>
+ 
+<span style="color: #408080; font-style: italic"># gradient descent algorithm</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">gradient_descent</span>(objective, derivative, bounds, n_iter, step_size):
+	<span style="color: #408080; font-style: italic"># track all solutions</span>
+	solutions, scores <span style="color: #666666">=</span> <span style="color: #008000">list</span>(), <span style="color: #008000">list</span>()
+	<span style="color: #408080; font-style: italic"># generate an initial point</span>
+	solution <span style="color: #666666">=</span> bounds[:, <span style="color: #666666">0</span>] <span style="color: #666666">+</span> rand(<span style="color: #008000">len</span>(bounds)) <span style="color: #666666">*</span> (bounds[:, <span style="color: #666666">1</span>] <span style="color: #666666">-</span> bounds[:, <span style="color: #666666">0</span>])
+	<span style="color: #408080; font-style: italic"># run the gradient descent</span>
+	<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_iter):
+		<span style="color: #408080; font-style: italic"># calculate gradient</span>
+		gradient <span style="color: #666666">=</span> derivative(solution)
+		<span style="color: #408080; font-style: italic"># take a step</span>
+		solution <span style="color: #666666">=</span> solution <span style="color: #666666">-</span> step_size <span style="color: #666666">*</span> gradient
+		<span style="color: #408080; font-style: italic"># evaluate candidate point</span>
+		solution_eval <span style="color: #666666">=</span> objective(solution)
+		<span style="color: #408080; font-style: italic"># store solution</span>
+		solutions<span style="color: #666666">.</span>append(solution)
+		scores<span style="color: #666666">.</span>append(solution_eval)
+		<span style="color: #408080; font-style: italic"># report progress</span>
+		<span style="color: #008000">print</span>(<span style="color: #BA2121">&#39;&gt;</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> f(</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">) = </span><span style="color: #BB6688; font-weight: bold">%.5f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (i, solution, solution_eval))
+	<span style="color: #008000; font-weight: bold">return</span> [solutions, scores]
+ 
+<span style="color: #408080; font-style: italic"># seed the pseudo random number generator</span>
+seed(<span style="color: #666666">4</span>)
+<span style="color: #408080; font-style: italic"># define range for input</span>
+bounds <span style="color: #666666">=</span> asarray([[<span style="color: #666666">-1.0</span>, <span style="color: #666666">1.0</span>]])
+<span style="color: #408080; font-style: italic"># define the total iterations</span>
+n_iter <span style="color: #666666">=</span> <span style="color: #666666">30</span>
+<span style="color: #408080; font-style: italic"># define the step size</span>
+step_size <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+<span style="color: #408080; font-style: italic"># perform the gradient descent search</span>
+solutions, scores <span style="color: #666666">=</span> gradient_descent(objective, derivative, bounds, n_iter, step_size)
+<span style="color: #408080; font-style: italic"># sample input range uniformly at 0.1 increments</span>
+inputs <span style="color: #666666">=</span> arange(bounds[<span style="color: #666666">0</span>,<span style="color: #666666">0</span>], bounds[<span style="color: #666666">0</span>,<span style="color: #666666">1</span>]<span style="color: #666666">+0.1</span>, <span style="color: #666666">0.1</span>)
+<span style="color: #408080; font-style: italic"># compute targets</span>
+results <span style="color: #666666">=</span> objective(inputs)
+<span style="color: #408080; font-style: italic"># create a line plot of input vs result</span>
+pyplot<span style="color: #666666">.</span>plot(inputs, results)
+<span style="color: #408080; font-style: italic"># plot the solutions found</span>
+pyplot<span style="color: #666666">.</span>plot(solutions, scores, <span style="color: #BA2121">&#39;.-&#39;</span>, color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;red&#39;</span>)
+<span style="color: #408080; font-style: italic"># show the plot</span>
+pyplot<span style="color: #666666">.</span>show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- !split -->
+<h2 id="same-code-but-now-with-momentum-gradient-descent" class="anchor">Same code but now with momentum gradient descent </h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> asarray
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> arange
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy.random</span> <span style="color: #008000; font-weight: bold">import</span> rand
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy.random</span> <span style="color: #008000; font-weight: bold">import</span> seed
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib</span> <span style="color: #008000; font-weight: bold">import</span> pyplot
+ 
+<span style="color: #408080; font-style: italic"># objective function</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">objective</span>(x):
+	<span style="color: #008000; font-weight: bold">return</span> x<span style="color: #666666">**2.0</span>
+ 
+<span style="color: #408080; font-style: italic"># derivative of objective function</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">derivative</span>(x):
+	<span style="color: #008000; font-weight: bold">return</span> x <span style="color: #666666">*</span> <span style="color: #666666">2.0</span>
+ 
+<span style="color: #408080; font-style: italic"># gradient descent algorithm</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">gradient_descent</span>(objective, derivative, bounds, n_iter, step_size, momentum):
+	<span style="color: #408080; font-style: italic"># track all solutions</span>
+	solutions, scores <span style="color: #666666">=</span> <span style="color: #008000">list</span>(), <span style="color: #008000">list</span>()
+	<span style="color: #408080; font-style: italic"># generate an initial point</span>
+	solution <span style="color: #666666">=</span> bounds[:, <span style="color: #666666">0</span>] <span style="color: #666666">+</span> rand(<span style="color: #008000">len</span>(bounds)) <span style="color: #666666">*</span> (bounds[:, <span style="color: #666666">1</span>] <span style="color: #666666">-</span> bounds[:, <span style="color: #666666">0</span>])
+	<span style="color: #408080; font-style: italic"># keep track of the change</span>
+	change <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+	<span style="color: #408080; font-style: italic"># run the gradient descent</span>
+	<span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_iter):
+		<span style="color: #408080; font-style: italic"># calculate gradient</span>
+		gradient <span style="color: #666666">=</span> derivative(solution)
+		<span style="color: #408080; font-style: italic"># calculate update</span>
+		new_change <span style="color: #666666">=</span> step_size <span style="color: #666666">*</span> gradient <span style="color: #666666">+</span> momentum <span style="color: #666666">*</span> change
+		<span style="color: #408080; font-style: italic"># take a step</span>
+		solution <span style="color: #666666">=</span> solution <span style="color: #666666">-</span> new_change
+		<span style="color: #408080; font-style: italic"># save the change</span>
+		change <span style="color: #666666">=</span> new_change
+		<span style="color: #408080; font-style: italic"># evaluate candidate point</span>
+		solution_eval <span style="color: #666666">=</span> objective(solution)
+		<span style="color: #408080; font-style: italic"># store solution</span>
+		solutions<span style="color: #666666">.</span>append(solution)
+		scores<span style="color: #666666">.</span>append(solution_eval)
+		<span style="color: #408080; font-style: italic"># report progress</span>
+		<span style="color: #008000">print</span>(<span style="color: #BA2121">&#39;&gt;</span><span style="color: #BB6688; font-weight: bold">%d</span><span style="color: #BA2121"> f(</span><span style="color: #BB6688; font-weight: bold">%s</span><span style="color: #BA2121">) = </span><span style="color: #BB6688; font-weight: bold">%.5f</span><span style="color: #BA2121">&#39;</span> <span style="color: #666666">%</span> (i, solution, solution_eval))
+	<span style="color: #008000; font-weight: bold">return</span> [solutions, scores]
+ 
+<span style="color: #408080; font-style: italic"># seed the pseudo random number generator</span>
+seed(<span style="color: #666666">4</span>)
+<span style="color: #408080; font-style: italic"># define range for input</span>
+bounds <span style="color: #666666">=</span> asarray([[<span style="color: #666666">-1.0</span>, <span style="color: #666666">1.0</span>]])
+<span style="color: #408080; font-style: italic"># define the total iterations</span>
+n_iter <span style="color: #666666">=</span> <span style="color: #666666">30</span>
+<span style="color: #408080; font-style: italic"># define the step size</span>
+step_size <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
+<span style="color: #408080; font-style: italic"># define momentum</span>
+momentum <span style="color: #666666">=</span> <span style="color: #666666">0.3</span>
+<span style="color: #408080; font-style: italic"># perform the gradient descent search with momentum</span>
+solutions, scores <span style="color: #666666">=</span> gradient_descent(objective, derivative, bounds, n_iter, step_size, momentum)
+<span style="color: #408080; font-style: italic"># sample input range uniformly at 0.1 increments</span>
+inputs <span style="color: #666666">=</span> arange(bounds[<span style="color: #666666">0</span>,<span style="color: #666666">0</span>], bounds[<span style="color: #666666">0</span>,<span style="color: #666666">1</span>]<span style="color: #666666">+0.1</span>, <span style="color: #666666">0.1</span>)
+<span style="color: #408080; font-style: italic"># compute targets</span>
+results <span style="color: #666666">=</span> objective(inputs)
+<span style="color: #408080; font-style: italic"># create a line plot of input vs result</span>
+pyplot<span style="color: #666666">.</span>plot(inputs, results)
+<span style="color: #408080; font-style: italic"># plot the solutions found</span>
+pyplot<span style="color: #666666">.</span>plot(solutions, scores, <span style="color: #BA2121">&#39;.-&#39;</span>, color<span style="color: #666666">=</span><span style="color: #BA2121">&#39;red&#39;</span>)
+<span style="color: #408080; font-style: italic"># show the plot</span>
+pyplot<span style="color: #666666">.</span>show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- !split -->
+<h2 id="overview-video-on-stochastic-gradient-descent" class="anchor">Overview video on Stochastic Gradient Descent </h2>
+
+<a href="https://www.youtube.com/watch?v=vMh0zPT0tLI&ab_channel=StatQuestwithJoshStarmer" target="_self">What is Stochastic Gradient Descent</a>
+
+<!-- !split -->
+<h2 id="batches-and-mini-batches" class="anchor">Batches and mini-batches </h2>
+
+<p>In gradient descent we compute the cost function and its gradient for all data points we have.</p>
+
+<p>In large-scale applications such as the <a href="https://www.image-net.org/challenges/LSVRC/" target="_self">ILSVRC challenge</a>, the
+training data can have on order of millions of examples. Hence, it
+seems wasteful to compute the full cost function over the entire
+training set in order to perform only a single parameter update. A
+very common approach to addressing this challenge is to compute the
+gradient over batches of the training data. For example, a typical batch could contain some thousand  examples from
+an  entire training set of several millions. This batch is then used to
+perform a parameter update.
+</p>
+
+<!-- !split -->
+<h2 id="stochastic-gradient-descent-sgd" class="anchor">Stochastic Gradient Descent (SGD) </h2>
+
+<p>In stochastic gradient descent, the extreme case is the case where we
+have only one batch, that is we include the whole data set.
+</p>
+
+<p>This process is called Stochastic Gradient
+Descent (SGD) (or also sometimes on-line gradient descent). This is
+relatively less common to see because in practice due to vectorized
+code optimizations it can be computationally much more efficient to
+evaluate the gradient for 100 examples, than the gradient for one
+example 100 times. Even though SGD technically refers to using a
+single example at a time to evaluate the gradient, you will hear
+people use the term SGD even when referring to mini-batch gradient
+descent (i.e. mentions of MGD for &#8220;Minibatch Gradient Descent&#8221;, or BGD
+for &#8220;Batch gradient descent&#8221; are rare to see), where it is usually
+assumed that mini-batches are used. The size of the mini-batch is a
+hyperparameter but it is not very common to cross-validate or bootstrap it. It is
+usually based on memory constraints (if any), or set to some value,
+e.g. 32, 64 or 128. We use powers of 2 in practice because many
+vectorized operation implementations work faster when their inputs are
+sized in powers of 2.
+</p>
+
+<p>In our notes with  SGD we mean stochastic gradient descent with mini-batches.</p>
 
 <!-- !split -->
 <h2 id="stochastic-gradient-descent" class="anchor">Stochastic Gradient Descent </h2>
@@ -3642,11 +2812,6 @@ C(\mathbf{\beta}) = \sum_{i=1}^n c_i(\mathbf{x}_i,
 \mathbf{\beta}). 
 $$
 
-
-<!-- !split -->
-<h2 id="overview-video-on-stochastic-gradient-descent" class="anchor">Overview video on Stochastic Gradient Descent </h2>
-
-<a href="https://www.youtube.com/watch?v=vMh0zPT0tLI&ab_channel=StatQuestwithJoshStarmer" target="_self">What is Stochastic Gradient Descent</a>
 
 <!-- !split -->
 <h2 id="computation-of-gradients" class="anchor">Computation of gradients </h2>
@@ -3774,8 +2939,17 @@ gave the lowest value.
 
 <p>Another approach is to let the step length \( \gamma_j \) depend on the
 number of epochs in such a way that it becomes very small after a
-reasonable time such that we do not move at all.
+reasonable time such that we do not move at all. Such approaches are
+also called scaling. There are many such ways to <a href="https://towardsdatascience.com/gradient-descent-the-learning-rate-and-the-importance-of-feature-scaling-6c0b416596e1" target="_self">scale the learning
+rate</a>
+and <a href="https://www.jmlr.org/papers/volume23/20-1258/20-1258.pdf" target="_self">discussions here</a>. See
+also
+<a href="https://towardsdatascience.com/learning-rate-schedules-and-adaptive-learning-rate-methods-for-deep-learning-2c8f433990d1" target="_self"><tt>https://towardsdatascience.com/learning-rate-schedules-and-adaptive-learning-rate-methods-for-deep-learning-2c8f433990d1</tt></a>
+for a discussion of different scaling functions for the learning rate.
 </p>
+
+<!-- !split -->
+<h2 id="time-decay-rate" class="anchor">Time decay rate </h2>
 
 <p>As an example, let \( e = 0,1,2,3,\cdots \) denote the current epoch and let \( t_0, t_1 > 0 \) be two fixed numbers. Furthermore, let \( t = e \cdot m + i \) where \( m \) is the number of minibatches and \( i=0,\cdots,m-1 \). Then the function $$\gamma_j(t; t_0, t_1) = \frac{t_0}{t+t_1} $$ goes to zero as the number of epochs gets large. I.e. we start with a step length \( \gamma_j (0; t_0, t_1) = t_0/t_1 \) which decays in <em>time</em> \( t \).</p>
 
@@ -3834,98 +3008,6 @@ j <span style="color: #666666">=</span> <span style="color: #666666">0</span>
 
 
 <!-- !split -->
-<h2 id="program-for-stochastic-gradient" class="anchor">Program for stochastic gradient </h2>
-
-
-<!-- code=python (!bc pycod) typeset with pygments style "default" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #f8f8f8">
-  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic"># Importing various packages</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">math</span> <span style="color: #008000; font-weight: bold">import</span> exp, sqrt
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">random</span> <span style="color: #008000; font-weight: bold">import</span> random, seed
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
-<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
-<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">sklearn.linear_model</span> <span style="color: #008000; font-weight: bold">import</span> SGDRegressor
-
-m <span style="color: #666666">=</span> <span style="color: #666666">100</span>
-x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(m,<span style="color: #666666">1</span>)
-y <span style="color: #666666">=</span> <span style="color: #666666">4+3*</span>x<span style="color: #666666">+</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(m,<span style="color: #666666">1</span>)
-
-X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((m,<span style="color: #666666">1</span>)), x]
-theta_linreg <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>inv(X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> X) <span style="color: #666666">@</span> (X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y)
-<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Own inversion&quot;</span>)
-<span style="color: #008000">print</span>(theta_linreg)
-sgdreg <span style="color: #666666">=</span> SGDRegressor(max_iter <span style="color: #666666">=</span> <span style="color: #666666">50</span>, penalty<span style="color: #666666">=</span><span style="color: #008000; font-weight: bold">None</span>, eta0<span style="color: #666666">=0.1</span>)
-sgdreg<span style="color: #666666">.</span>fit(x,y<span style="color: #666666">.</span>ravel())
-<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;sgdreg from scikit&quot;</span>)
-<span style="color: #008000">print</span>(sgdreg<span style="color: #666666">.</span>intercept_, sgdreg<span style="color: #666666">.</span>coef_)
-
-
-theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
-eta <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>
-Niterations <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
-
-
-<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">iter</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Niterations):
-    gradients <span style="color: #666666">=</span> <span style="color: #666666">2.0/</span>m<span style="color: #666666">*</span>X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> ((X <span style="color: #666666">@</span> theta)<span style="color: #666666">-</span>y)
-    theta <span style="color: #666666">-=</span> eta<span style="color: #666666">*</span>gradients
-<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own gd&quot;</span>)
-<span style="color: #008000">print</span>(theta)
-
-xnew <span style="color: #666666">=</span> np<span style="color: #666666">.</span>array([[<span style="color: #666666">0</span>],[<span style="color: #666666">2</span>]])
-Xnew <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)), xnew]
-ypredict <span style="color: #666666">=</span> Xnew<span style="color: #666666">.</span>dot(theta)
-ypredict2 <span style="color: #666666">=</span> Xnew<span style="color: #666666">.</span>dot(theta_linreg)
-
-
-n_epochs <span style="color: #666666">=</span> <span style="color: #666666">50</span>
-t0, t1 <span style="color: #666666">=</span> <span style="color: #666666">5</span>, <span style="color: #666666">50</span>
-<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">learning_schedule</span>(t):
-    <span style="color: #008000; font-weight: bold">return</span> t0<span style="color: #666666">/</span>(t<span style="color: #666666">+</span>t1)
-
-theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
-
-<span style="color: #408080; font-style: italic"># note: here the number of minibatches is equal to the number of points!!</span>
-<span style="color: #008000; font-weight: bold">for</span> epoch <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_epochs):
-    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(m):
-        random_index <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randint(m)
-        xi <span style="color: #666666">=</span> X[random_index:random_index<span style="color: #666666">+1</span>]
-        yi <span style="color: #666666">=</span> y[random_index:random_index<span style="color: #666666">+1</span>]
-        gradients <span style="color: #666666">=</span> <span style="color: #666666">2</span> <span style="color: #666666">*</span> xi<span style="color: #666666">.</span>T <span style="color: #666666">@</span> ((xi <span style="color: #666666">@</span> theta)<span style="color: #666666">-</span>yi)
-        eta <span style="color: #666666">=</span> learning_schedule(epoch<span style="color: #666666">*</span>m<span style="color: #666666">+</span>i)
-        theta <span style="color: #666666">=</span> theta <span style="color: #666666">-</span> eta<span style="color: #666666">*</span>gradients
-<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own sdg&quot;</span>)
-<span style="color: #008000">print</span>(theta)
-
-plt<span style="color: #666666">.</span>plot(xnew, ypredict, <span style="color: #BA2121">&quot;r-&quot;</span>)
-plt<span style="color: #666666">.</span>plot(xnew, ypredict2, <span style="color: #BA2121">&quot;b-&quot;</span>)
-plt<span style="color: #666666">.</span>plot(x, y ,<span style="color: #BA2121">&#39;ro&#39;</span>)
-plt<span style="color: #666666">.</span>axis([<span style="color: #666666">0</span>,<span style="color: #666666">2.0</span>,<span style="color: #666666">0</span>, <span style="color: #666666">15.0</span>])
-plt<span style="color: #666666">.</span>xlabel(<span style="color: #BA2121">r&#39;$x$&#39;</span>)
-plt<span style="color: #666666">.</span>ylabel(<span style="color: #BA2121">r&#39;$y$&#39;</span>)
-plt<span style="color: #666666">.</span>title(<span style="color: #BA2121">r&#39;Random numbers &#39;</span>)
-plt<span style="color: #666666">.</span>show()
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<p><b>Challenge</b>: try to write a similar code for a Logistic Regression case.</p>
-
-<!-- !split -->
 <h2 id="code-with-a-number-of-minibatches-which-varies" class="anchor">Code with a Number of Minibatches which varies </h2>
 
 <p>In the code here we vary the number of mini-batches.</p>
@@ -3976,6 +3058,7 @@ n_epochs = 50
 M = 5   #size of each minibatch
 m = int(n/M) #number of minibatches
 t0, t1 = 5, 50
+
 def learning_schedule(t):
     return t0/(t+t1)
 
@@ -4023,7 +3106,7 @@ plt.show()
 <p>In the above code, we have use replacement in setting up the
 mini-batches. The discussion
 <a href="https://sebastianraschka.com/faq/docs/sgd-methods.html" target="_self">here</a> may be
-useful.  More material will be added later.
+useful.  
 </p>
 
 <!-- !split -->
@@ -4039,7 +3122,7 @@ $$
 \begin{align}
 \mathbf{v}_{t}&=\gamma \mathbf{v}_{t-1}+\eta_{t}\nabla_\theta E(\boldsymbol{\theta}_t) \nonumber \\
 \boldsymbol{\theta}_{t+1}&= \boldsymbol{\theta}_t -\mathbf{v}_{t},
-\label{_auto14}
+\label{_auto2}
 \end{align}
 $$
 
@@ -4135,7 +3218,7 @@ $$
 \begin{align}
 \mathbf{v}_{t}&=\gamma \mathbf{v}_{t-1}+\eta_{t}\nabla_\theta E(\boldsymbol{\theta}_t +\gamma \mathbf{v}_{t-1}) \nonumber \\
 \boldsymbol{\theta}_{t+1}&= \boldsymbol{\theta}_t -\mathbf{v}_{t}.
-\label{_auto15}
+\label{_auto3}
 \end{align}
 $$
 
@@ -4164,7 +3247,7 @@ Hessians.
 <p>Recently, a number of methods have been introduced that accomplish
 this by tracking not only the gradient, but also the second moment of
 the gradient. These methods include AdaGrad, AdaDelta, Root Mean Squared Propagation (RMS-Prop), and
-ADAM.
+<a href="https://arxiv.org/abs/1412.6980" target="_self">ADAM</a>.
 </p>
 
 <!-- !split -->
@@ -4179,7 +3262,7 @@ for RMS prop is given by
 $$
 \begin{align}
 \mathbf{g}_t &= \nabla_\theta E(\boldsymbol{\theta}) 
-\label{_auto16}\\
+\label{_auto4}\\
 \mathbf{s}_t &=\beta \mathbf{s}_{t-1} +(1-\beta)\mathbf{g}_t^2 \nonumber \\
 \boldsymbol{\theta}_{t+1}&=&\boldsymbol{\theta}_t - \eta_t { \mathbf{g}_t \over \sqrt{\mathbf{s}_t +\epsilon}}, \nonumber
 \end{align}
@@ -4197,12 +3280,19 @@ learning rate for flat directions.
 </p>
 
 <!-- !split -->
-<h2 id="adam-optimizer" class="anchor">ADAM optimizer </h2>
+<h2 id="adam-optimizer-https-arxiv-org-abs-1412-6980" class="anchor"><a href="https://arxiv.org/abs/1412.6980" target="_self">ADAM optimizer</a> </h2>
 
-<p>A related algorithm is the ADAM optimizer. In ADAM, we keep a running
-average of both the first and second moment of the gradient and use
-this information to adaptively change the learning rate for different
-parameters. In addition to keeping a running average of the first and
+<p>A related algorithm is the ADAM optimizer. In
+<a href="https://arxiv.org/abs/1412.6980" target="_self">ADAM</a>, we keep a running average of
+both the first and second moment of the gradient and use this
+information to adaptively change the learning rate for different
+parameters.  The method isefficient when working with large
+problems involving lots data and/or parameters.  It is a combination of the
+gradient descent with momentum algorithm and the RMSprop algorithm
+discussed above.
+</p>
+
+<p>In addition to keeping a running average of the first and
 second moments of the gradient
 (i.e. \( \mathbf{m}_t=\mathbb{E}[\mathbf{g}_t] \) and
 \( \mathbf{s}_t=\mathbb{E}[\mathbf{g}^2_t] \), respectively), ADAM
@@ -4216,13 +3306,13 @@ again understood to be element-wise operations below)
 $$
 \begin{align}
 \mathbf{g}_t &= \nabla_\theta E(\boldsymbol{\theta}) 
-\label{_auto17}\\
+\label{_auto5}\\
 \mathbf{m}_t &= \beta_1 \mathbf{m}_{t-1} + (1-\beta_1) \mathbf{g}_t \nonumber \\
 \mathbf{s}_t &=\beta_2 \mathbf{s}_{t-1} +(1-\beta_2)\mathbf{g}_t^2 \nonumber \\
 \boldsymbol{\mathbf{m}}_t&={\mathbf{m}_t \over 1-\beta_1^t} \nonumber \\
 \boldsymbol{\mathbf{s}}_t &={\mathbf{s}_t \over1-\beta_2^t} \nonumber \\
 \boldsymbol{\theta}_{t+1}&=\boldsymbol{\theta}_t - \eta_t { \boldsymbol{\mathbf{m}}_t \over \sqrt{\boldsymbol{\mathbf{s}}_t} +\epsilon}, \nonumber \\
-\label{_auto18}
+\label{_auto6}
 \end{align}
 $$
 
@@ -4243,6 +3333,13 @@ $$
 \Delta \theta_{t+1}= -\eta_t { \boldsymbol{m}_t \over \sqrt{\sigma_t^2 +  m_t^2 }+\epsilon}.
 $$
 
+
+<!-- !split -->
+<h2 id="algorithms-and-codes-for-adagrad-rmsprop-and-adam" class="anchor">Algorithms and codes for Adagrad, RMSprop and Adam </h2>
+
+<p>The algorithms we have implemented are well described in the text by <a href="https://www.deeplearningbook.org/contents/optimization.html" target="_self">Goodfellow, Bengio and Courville, chapter 8</a>.</p>
+
+<p>The codes which implement these algorithms are discussed after our presentation of automatic differentiation.</p>
 
 <!-- !split -->
 <h2 id="practical-tips" class="anchor">Practical tips </h2>
@@ -4966,6 +4063,148 @@ plt<span style="color: #666666">.</span>show()
 
 
 <!-- !split -->
+<h2 id="same-code-but-now-with-momentum-gradient-descent" class="anchor">Same code but now with momentum gradient descent </h2>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic"># Using Autograd to calculate gradients for OLS</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">random</span> <span style="color: #008000; font-weight: bold">import</span> random, seed
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">autograd.numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">autograd</span> <span style="color: #008000; font-weight: bold">import</span> grad
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">CostOLS</span>(beta):
+    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1.0/</span>n)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sum((y<span style="color: #666666">-</span>X <span style="color: #666666">@</span> beta)<span style="color: #666666">**2</span>)
+
+n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n,<span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> <span style="color: #666666">4+3*</span>x<span style="color: #408080; font-style: italic">#+np.random.randn(n,1)</span>
+
+X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((n,<span style="color: #666666">1</span>)), x]
+XT_X <span style="color: #666666">=</span> X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> X
+theta_linreg <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>pinv(XT_X) <span style="color: #666666">@</span> (X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Own inversion&quot;</span>)
+<span style="color: #008000">print</span>(theta_linreg)
+<span style="color: #408080; font-style: italic"># Hessian matrix</span>
+H <span style="color: #666666">=</span> (<span style="color: #666666">2.0/</span>n)<span style="color: #666666">*</span> XT_X
+EigValues, EigVectors <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>eig(H)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;Eigenvalues of Hessian Matrix:</span><span style="color: #BB6688; font-weight: bold">{</span>EigValues<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
+
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+eta <span style="color: #666666">=</span> <span style="color: #666666">1.0/</span>np<span style="color: #666666">.</span>max(EigValues)
+Niterations <span style="color: #666666">=</span> <span style="color: #666666">30</span>
+
+<span style="color: #408080; font-style: italic"># define the gradient</span>
+training_gradient <span style="color: #666666">=</span> grad(CostOLS)
+
+<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">iter</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Niterations):
+    gradients <span style="color: #666666">=</span> training_gradient(theta)
+    theta <span style="color: #666666">-=</span> eta<span style="color: #666666">*</span>gradients
+    <span style="color: #008000">print</span>(<span style="color: #008000">iter</span>,gradients[<span style="color: #666666">0</span>],gradients[<span style="color: #666666">1</span>])
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own gd&quot;</span>)
+<span style="color: #008000">print</span>(theta)
+
+<span style="color: #408080; font-style: italic"># Now improve with momentum gradient descent</span>
+change <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+delta_momentum <span style="color: #666666">=</span> <span style="color: #666666">0.3</span>
+<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">iter</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Niterations):
+    <span style="color: #408080; font-style: italic"># calculate gradient</span>
+    gradients <span style="color: #666666">=</span> training_gradient(theta)
+    <span style="color: #408080; font-style: italic"># calculate update</span>
+    new_change <span style="color: #666666">=</span> eta<span style="color: #666666">*</span>gradients<span style="color: #666666">+</span>delta_momentum<span style="color: #666666">*</span>change
+    <span style="color: #408080; font-style: italic"># take a step</span>
+    theta <span style="color: #666666">-=</span> new_change
+    <span style="color: #408080; font-style: italic"># save the change</span>
+    change <span style="color: #666666">=</span> new_change
+    <span style="color: #008000">print</span>(<span style="color: #008000">iter</span>,gradients[<span style="color: #666666">0</span>],gradients[<span style="color: #666666">1</span>])
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own gd wth momentum&quot;</span>)
+<span style="color: #008000">print</span>(theta)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- !split -->
+<h2 id="but-noen-of-these-can-compete-with-newton-s-method" class="anchor">But noen of these can compete with Newton's method </h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic"># Using Newton&#39;s method</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">random</span> <span style="color: #008000; font-weight: bold">import</span> random, seed
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">autograd.numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">autograd</span> <span style="color: #008000; font-weight: bold">import</span> grad
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">CostOLS</span>(beta):
+    <span style="color: #008000; font-weight: bold">return</span> (<span style="color: #666666">1.0/</span>n)<span style="color: #666666">*</span>np<span style="color: #666666">.</span>sum((y<span style="color: #666666">-</span>X <span style="color: #666666">@</span> beta)<span style="color: #666666">**2</span>)
+
+n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n,<span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> <span style="color: #666666">4+3*</span>x<span style="color: #666666">+</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(n,<span style="color: #666666">1</span>)
+
+X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((n,<span style="color: #666666">1</span>)), x]
+XT_X <span style="color: #666666">=</span> X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> X
+beta_linreg <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>pinv(XT_X) <span style="color: #666666">@</span> (X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Own inversion&quot;</span>)
+<span style="color: #008000">print</span>(beta_linreg)
+<span style="color: #408080; font-style: italic"># Hessian matrix</span>
+H <span style="color: #666666">=</span> (<span style="color: #666666">2.0/</span>n)<span style="color: #666666">*</span> XT_X
+<span style="color: #408080; font-style: italic"># Note that here the Hessian does not depend on the parameters beta</span>
+invH <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>pinv(H)
+EigValues, EigVectors <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>eig(H)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;Eigenvalues of Hessian Matrix:</span><span style="color: #BB6688; font-weight: bold">{</span>EigValues<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
+
+beta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+Niterations <span style="color: #666666">=</span> <span style="color: #666666">5</span>
+
+<span style="color: #408080; font-style: italic"># define the gradient</span>
+training_gradient <span style="color: #666666">=</span> grad(CostOLS)
+
+<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">iter</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Niterations):
+    gradients <span style="color: #666666">=</span> training_gradient(beta)
+    beta <span style="color: #666666">-=</span> invH <span style="color: #666666">@</span> gradients
+    <span style="color: #008000">print</span>(<span style="color: #008000">iter</span>,gradients[<span style="color: #666666">0</span>],gradients[<span style="color: #666666">1</span>])
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;beta from own Newton code&quot;</span>)
+<span style="color: #008000">print</span>(beta)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- !split -->
 <h2 id="including-stochastic-gradient-descent-with-autograd" class="anchor">Including Stochastic Gradient Descent with Autograd </h2>
 <p>In this code we include the stochastic gradient descent approach discussed above. Note here that we specify which argument we are taking the derivative with respect to when using <b>autograd</b>.</p>
 
@@ -5044,11 +4283,340 @@ theta <span style="color: #666666">=</span> np<span style="color: #666666">.</sp
         random_index <span style="color: #666666">=</span> M<span style="color: #666666">*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randint(m)
         xi <span style="color: #666666">=</span> X[random_index:random_index<span style="color: #666666">+</span>M]
         yi <span style="color: #666666">=</span> y[random_index:random_index<span style="color: #666666">+</span>M]
-	<span style="color: #408080; font-style: italic"># autograd takes care of factor of 2</span>
         gradients <span style="color: #666666">=</span> (<span style="color: #666666">1.0/</span>M)<span style="color: #666666">*</span>training_gradient(yi, xi, theta)
         eta <span style="color: #666666">=</span> learning_schedule(epoch<span style="color: #666666">*</span>m<span style="color: #666666">+</span>i)
         theta <span style="color: #666666">=</span> theta <span style="color: #666666">-</span> eta<span style="color: #666666">*</span>gradients
 <span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own sdg&quot;</span>)
+<span style="color: #008000">print</span>(theta)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- !split -->
+<h2 id="same-code-but-now-with-momentum-gradient-descent" class="anchor">Same code but now with momentum gradient descent </h2>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic"># Using Autograd to calculate gradients using SGD</span>
+<span style="color: #408080; font-style: italic"># OLS example</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">random</span> <span style="color: #008000; font-weight: bold">import</span> random, seed
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">autograd.numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">autograd</span> <span style="color: #008000; font-weight: bold">import</span> grad
+
+<span style="color: #408080; font-style: italic"># Note change from previous example</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">CostOLS</span>(y,X,theta):
+    <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sum((y<span style="color: #666666">-</span>X <span style="color: #666666">@</span> theta)<span style="color: #666666">**2</span>)
+
+n <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+x <span style="color: #666666">=</span> <span style="color: #666666">2*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n,<span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> <span style="color: #666666">4+3*</span>x<span style="color: #666666">+</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(n,<span style="color: #666666">1</span>)
+
+X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((n,<span style="color: #666666">1</span>)), x]
+XT_X <span style="color: #666666">=</span> X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> X
+theta_linreg <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>pinv(XT_X) <span style="color: #666666">@</span> (X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Own inversion&quot;</span>)
+<span style="color: #008000">print</span>(theta_linreg)
+<span style="color: #408080; font-style: italic"># Hessian matrix</span>
+H <span style="color: #666666">=</span> (<span style="color: #666666">2.0/</span>n)<span style="color: #666666">*</span> XT_X
+EigValues, EigVectors <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>eig(H)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">f&quot;Eigenvalues of Hessian Matrix:</span><span style="color: #BB6688; font-weight: bold">{</span>EigValues<span style="color: #BB6688; font-weight: bold">}</span><span style="color: #BA2121">&quot;</span>)
+
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+eta <span style="color: #666666">=</span> <span style="color: #666666">1.0/</span>np<span style="color: #666666">.</span>max(EigValues)
+Niterations <span style="color: #666666">=</span> <span style="color: #666666">100</span>
+
+<span style="color: #408080; font-style: italic"># Note that we request the derivative wrt third argument (theta, 2 here)</span>
+training_gradient <span style="color: #666666">=</span> grad(CostOLS,<span style="color: #666666">2</span>)
+
+<span style="color: #008000; font-weight: bold">for</span> <span style="color: #008000">iter</span> <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(Niterations):
+    gradients <span style="color: #666666">=</span> (<span style="color: #666666">1.0/</span>n)<span style="color: #666666">*</span>training_gradient(y, X, theta)
+    theta <span style="color: #666666">-=</span> eta<span style="color: #666666">*</span>gradients
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own gd&quot;</span>)
+<span style="color: #008000">print</span>(theta)
+
+
+n_epochs <span style="color: #666666">=</span> <span style="color: #666666">50</span>
+M <span style="color: #666666">=</span> <span style="color: #666666">5</span>   <span style="color: #408080; font-style: italic">#size of each minibatch</span>
+m <span style="color: #666666">=</span> <span style="color: #008000">int</span>(n<span style="color: #666666">/</span>M) <span style="color: #408080; font-style: italic">#number of minibatches</span>
+t0, t1 <span style="color: #666666">=</span> <span style="color: #666666">5</span>, <span style="color: #666666">50</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">learning_schedule</span>(t):
+    <span style="color: #008000; font-weight: bold">return</span> t0<span style="color: #666666">/</span>(t<span style="color: #666666">+</span>t1)
+
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">2</span>,<span style="color: #666666">1</span>)
+
+change <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+delta_momentum <span style="color: #666666">=</span> <span style="color: #666666">0.3</span>
+
+<span style="color: #008000; font-weight: bold">for</span> epoch <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_epochs):
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(m):
+        random_index <span style="color: #666666">=</span> M<span style="color: #666666">*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randint(m)
+        xi <span style="color: #666666">=</span> X[random_index:random_index<span style="color: #666666">+</span>M]
+        yi <span style="color: #666666">=</span> y[random_index:random_index<span style="color: #666666">+</span>M]
+        gradients <span style="color: #666666">=</span> (<span style="color: #666666">1.0/</span>M)<span style="color: #666666">*</span>training_gradient(yi, xi, theta)
+        eta <span style="color: #666666">=</span> learning_schedule(epoch<span style="color: #666666">*</span>m<span style="color: #666666">+</span>i)
+        <span style="color: #408080; font-style: italic"># calculate update</span>
+        new_change <span style="color: #666666">=</span> eta<span style="color: #666666">*</span>gradients<span style="color: #666666">+</span>delta_momentum<span style="color: #666666">*</span>change
+        <span style="color: #408080; font-style: italic"># take a step</span>
+        theta <span style="color: #666666">-=</span> new_change
+        <span style="color: #408080; font-style: italic"># save the change</span>
+        change <span style="color: #666666">=</span> new_change
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own sdg with momentum&quot;</span>)
+<span style="color: #008000">print</span>(theta)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- !split -->
+<h2 id="similar-second-order-function-now-problem-but-now-with-adagrad" class="anchor">Similar (second order function now) problem but now with AdaGrad </h2>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic"># Using Autograd to calculate gradients using AdaGrad and Stochastic Gradient descent</span>
+<span style="color: #408080; font-style: italic"># OLS example</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">random</span> <span style="color: #008000; font-weight: bold">import</span> random, seed
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">autograd.numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">autograd</span> <span style="color: #008000; font-weight: bold">import</span> grad
+
+<span style="color: #408080; font-style: italic"># Note change from previous example</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">CostOLS</span>(y,X,theta):
+    <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sum((y<span style="color: #666666">-</span>X <span style="color: #666666">@</span> theta)<span style="color: #666666">**2</span>)
+
+n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n,<span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> <span style="color: #666666">2.0+3*</span>x <span style="color: #666666">+4*</span>x<span style="color: #666666">*</span>x
+
+X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((n,<span style="color: #666666">1</span>)), x, x<span style="color: #666666">*</span>x]
+XT_X <span style="color: #666666">=</span> X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> X
+theta_linreg <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>pinv(XT_X) <span style="color: #666666">@</span> (X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Own inversion&quot;</span>)
+<span style="color: #008000">print</span>(theta_linreg)
+
+
+<span style="color: #408080; font-style: italic"># Note that we request the derivative wrt third argument (theta, 2 here)</span>
+training_gradient <span style="color: #666666">=</span> grad(CostOLS,<span style="color: #666666">2</span>)
+<span style="color: #408080; font-style: italic"># Define parameters for Stochastic Gradient Descent</span>
+n_epochs <span style="color: #666666">=</span> <span style="color: #666666">50</span>
+M <span style="color: #666666">=</span> <span style="color: #666666">5</span>   <span style="color: #408080; font-style: italic">#size of each minibatch</span>
+m <span style="color: #666666">=</span> <span style="color: #008000">int</span>(n<span style="color: #666666">/</span>M) <span style="color: #408080; font-style: italic">#number of minibatches</span>
+<span style="color: #408080; font-style: italic"># Guess for unknown parameters theta</span>
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">3</span>,<span style="color: #666666">1</span>)
+
+<span style="color: #408080; font-style: italic"># Value for learning rate</span>
+eta <span style="color: #666666">=</span> <span style="color: #666666">0.01</span>
+<span style="color: #408080; font-style: italic"># Including AdaGrad parameter to avoid possible division by zero</span>
+delta  <span style="color: #666666">=</span> <span style="color: #666666">1e-8</span>
+<span style="color: #008000; font-weight: bold">for</span> epoch <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_epochs):
+    Giter <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(m):
+        random_index <span style="color: #666666">=</span> M<span style="color: #666666">*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randint(m)
+        xi <span style="color: #666666">=</span> X[random_index:random_index<span style="color: #666666">+</span>M]
+        yi <span style="color: #666666">=</span> y[random_index:random_index<span style="color: #666666">+</span>M]
+        gradients <span style="color: #666666">=</span> (<span style="color: #666666">1.0/</span>M)<span style="color: #666666">*</span>training_gradient(yi, xi, theta)
+        Giter <span style="color: #666666">+=</span> gradients<span style="color: #666666">*</span>gradients
+        update <span style="color: #666666">=</span> gradients<span style="color: #666666">*</span>eta<span style="color: #666666">/</span>(delta<span style="color: #666666">+</span>np<span style="color: #666666">.</span>sqrt(Giter))
+        theta <span style="color: #666666">-=</span> update
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own AdaGrad&quot;</span>)
+<span style="color: #008000">print</span>(theta)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Running this code we note an almost perfect agreement with the results from matrix inversion.</p>
+
+<!-- !split -->
+<h2 id="rmsprop-for-adaptive-learning-rate-with-stochastic-gradient-descent" class="anchor">RMSprop for adaptive learning rate with Stochastic Gradient Descent </h2>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic"># Using Autograd to calculate gradients using RMSprop  and Stochastic Gradient descent</span>
+<span style="color: #408080; font-style: italic"># OLS example</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">random</span> <span style="color: #008000; font-weight: bold">import</span> random, seed
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">autograd.numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">autograd</span> <span style="color: #008000; font-weight: bold">import</span> grad
+
+<span style="color: #408080; font-style: italic"># Note change from previous example</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">CostOLS</span>(y,X,theta):
+    <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sum((y<span style="color: #666666">-</span>X <span style="color: #666666">@</span> theta)<span style="color: #666666">**2</span>)
+
+n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n,<span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> <span style="color: #666666">2.0+3*</span>x <span style="color: #666666">+4*</span>x<span style="color: #666666">*</span>x<span style="color: #408080; font-style: italic"># +np.random.randn(n,1)</span>
+
+X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((n,<span style="color: #666666">1</span>)), x, x<span style="color: #666666">*</span>x]
+XT_X <span style="color: #666666">=</span> X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> X
+theta_linreg <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>pinv(XT_X) <span style="color: #666666">@</span> (X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Own inversion&quot;</span>)
+<span style="color: #008000">print</span>(theta_linreg)
+
+
+<span style="color: #408080; font-style: italic"># Note that we request the derivative wrt third argument (theta, 2 here)</span>
+training_gradient <span style="color: #666666">=</span> grad(CostOLS,<span style="color: #666666">2</span>)
+<span style="color: #408080; font-style: italic"># Define parameters for Stochastic Gradient Descent</span>
+n_epochs <span style="color: #666666">=</span> <span style="color: #666666">50</span>
+M <span style="color: #666666">=</span> <span style="color: #666666">5</span>   <span style="color: #408080; font-style: italic">#size of each minibatch</span>
+m <span style="color: #666666">=</span> <span style="color: #008000">int</span>(n<span style="color: #666666">/</span>M) <span style="color: #408080; font-style: italic">#number of minibatches</span>
+<span style="color: #408080; font-style: italic"># Guess for unknown parameters theta</span>
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">3</span>,<span style="color: #666666">1</span>)
+
+<span style="color: #408080; font-style: italic"># Value for learning rate</span>
+eta <span style="color: #666666">=</span> <span style="color: #666666">0.01</span>
+<span style="color: #408080; font-style: italic"># Value for parameter rho</span>
+rho <span style="color: #666666">=</span> <span style="color: #666666">0.99</span>
+<span style="color: #408080; font-style: italic"># Including AdaGrad parameter to avoid possible division by zero</span>
+delta  <span style="color: #666666">=</span> <span style="color: #666666">1e-8</span>
+<span style="color: #008000; font-weight: bold">for</span> epoch <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_epochs):
+    Giter <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(m):
+        random_index <span style="color: #666666">=</span> M<span style="color: #666666">*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randint(m)
+        xi <span style="color: #666666">=</span> X[random_index:random_index<span style="color: #666666">+</span>M]
+        yi <span style="color: #666666">=</span> y[random_index:random_index<span style="color: #666666">+</span>M]
+        gradients <span style="color: #666666">=</span> (<span style="color: #666666">1.0/</span>M)<span style="color: #666666">*</span>training_gradient(yi, xi, theta)
+	<span style="color: #408080; font-style: italic"># Accumulated gradient</span>
+	<span style="color: #408080; font-style: italic"># Scaling with rho the new and the previous results</span>
+        Giter <span style="color: #666666">=</span> (rho<span style="color: #666666">*</span>Giter<span style="color: #666666">+</span>(<span style="color: #666666">1-</span>rho)<span style="color: #666666">*</span>gradients<span style="color: #666666">*</span>gradients)
+	<span style="color: #408080; font-style: italic"># Taking the diagonal only and inverting</span>
+        update <span style="color: #666666">=</span> gradients<span style="color: #666666">*</span>eta<span style="color: #666666">/</span>(delta<span style="color: #666666">+</span>np<span style="color: #666666">.</span>sqrt(Giter))
+	<span style="color: #408080; font-style: italic"># Hadamard product</span>
+        theta <span style="color: #666666">-=</span> update
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own RMSprop&quot;</span>)
+<span style="color: #008000">print</span>(theta)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- !split -->
+<h2 id="and-finally-adam-https-arxiv-org-pdf-1412-6980-pdf" class="anchor">And finally <a href="https://arxiv.org/pdf/1412.6980.pdf" target="_self">ADAM</a> </h2>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #408080; font-style: italic"># Using Autograd to calculate gradients using RMSprop  and Stochastic Gradient descent</span>
+<span style="color: #408080; font-style: italic"># OLS example</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">random</span> <span style="color: #008000; font-weight: bold">import</span> random, seed
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">autograd.numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">np</span>
+<span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">plt</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">autograd</span> <span style="color: #008000; font-weight: bold">import</span> grad
+
+<span style="color: #408080; font-style: italic"># Note change from previous example</span>
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">CostOLS</span>(y,X,theta):
+    <span style="color: #008000; font-weight: bold">return</span> np<span style="color: #666666">.</span>sum((y<span style="color: #666666">-</span>X <span style="color: #666666">@</span> theta)<span style="color: #666666">**2</span>)
+
+n <span style="color: #666666">=</span> <span style="color: #666666">1000</span>
+x <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>rand(n,<span style="color: #666666">1</span>)
+y <span style="color: #666666">=</span> <span style="color: #666666">2.0+3*</span>x <span style="color: #666666">+4*</span>x<span style="color: #666666">*</span>x<span style="color: #408080; font-style: italic"># +np.random.randn(n,1)</span>
+
+X <span style="color: #666666">=</span> np<span style="color: #666666">.</span>c_[np<span style="color: #666666">.</span>ones((n,<span style="color: #666666">1</span>)), x, x<span style="color: #666666">*</span>x]
+XT_X <span style="color: #666666">=</span> X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> X
+theta_linreg <span style="color: #666666">=</span> np<span style="color: #666666">.</span>linalg<span style="color: #666666">.</span>pinv(XT_X) <span style="color: #666666">@</span> (X<span style="color: #666666">.</span>T <span style="color: #666666">@</span> y)
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;Own inversion&quot;</span>)
+<span style="color: #008000">print</span>(theta_linreg)
+
+
+<span style="color: #408080; font-style: italic"># Note that we request the derivative wrt third argument (theta, 2 here)</span>
+training_gradient <span style="color: #666666">=</span> grad(CostOLS,<span style="color: #666666">2</span>)
+<span style="color: #408080; font-style: italic"># Define parameters for Stochastic Gradient Descent</span>
+n_epochs <span style="color: #666666">=</span> <span style="color: #666666">50</span>
+M <span style="color: #666666">=</span> <span style="color: #666666">5</span>   <span style="color: #408080; font-style: italic">#size of each minibatch</span>
+m <span style="color: #666666">=</span> <span style="color: #008000">int</span>(n<span style="color: #666666">/</span>M) <span style="color: #408080; font-style: italic">#number of minibatches</span>
+<span style="color: #408080; font-style: italic"># Guess for unknown parameters theta</span>
+theta <span style="color: #666666">=</span> np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randn(<span style="color: #666666">3</span>,<span style="color: #666666">1</span>)
+
+<span style="color: #408080; font-style: italic"># Value for learning rate</span>
+eta <span style="color: #666666">=</span> <span style="color: #666666">0.01</span>
+<span style="color: #408080; font-style: italic"># Value for parameters beta1 and beta2, see https://arxiv.org/abs/1412.6980</span>
+beta1 <span style="color: #666666">=</span> <span style="color: #666666">0.9</span>
+beta2 <span style="color: #666666">=</span> <span style="color: #666666">0.999</span>
+<span style="color: #408080; font-style: italic"># Including AdaGrad parameter to avoid possible division by zero</span>
+delta  <span style="color: #666666">=</span> <span style="color: #666666">1e-7</span>
+<span style="color: #008000">iter</span> <span style="color: #666666">=</span> <span style="color: #666666">0</span>
+<span style="color: #008000; font-weight: bold">for</span> epoch <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(n_epochs):
+    first_moment <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+    second_moment <span style="color: #666666">=</span> <span style="color: #666666">0.0</span>
+    <span style="color: #008000">iter</span> <span style="color: #666666">+=</span> <span style="color: #666666">1</span>
+    <span style="color: #008000; font-weight: bold">for</span> i <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(m):
+        random_index <span style="color: #666666">=</span> M<span style="color: #666666">*</span>np<span style="color: #666666">.</span>random<span style="color: #666666">.</span>randint(m)
+        xi <span style="color: #666666">=</span> X[random_index:random_index<span style="color: #666666">+</span>M]
+        yi <span style="color: #666666">=</span> y[random_index:random_index<span style="color: #666666">+</span>M]
+        gradients <span style="color: #666666">=</span> (<span style="color: #666666">1.0/</span>M)<span style="color: #666666">*</span>training_gradient(yi, xi, theta)
+        <span style="color: #408080; font-style: italic"># Computing moments first</span>
+        first_moment <span style="color: #666666">=</span> beta1<span style="color: #666666">*</span>first_moment <span style="color: #666666">+</span> (<span style="color: #666666">1-</span>beta1)<span style="color: #666666">*</span>gradients
+        second_moment <span style="color: #666666">=</span> beta2<span style="color: #666666">*</span>second_moment<span style="color: #666666">+</span>(<span style="color: #666666">1-</span>beta2)<span style="color: #666666">*</span>gradients<span style="color: #666666">*</span>gradients
+        first_term <span style="color: #666666">=</span> first_moment<span style="color: #666666">/</span>(<span style="color: #666666">1.0-</span>beta1<span style="color: #666666">**</span><span style="color: #008000">iter</span>)
+        second_term <span style="color: #666666">=</span> second_moment<span style="color: #666666">/</span>(<span style="color: #666666">1.0-</span>beta2<span style="color: #666666">**</span><span style="color: #008000">iter</span>)
+	<span style="color: #408080; font-style: italic"># Scaling with rho the new and the previous results</span>
+        update <span style="color: #666666">=</span> eta<span style="color: #666666">*</span>first_term<span style="color: #666666">/</span>(np<span style="color: #666666">.</span>sqrt(second_term)<span style="color: #666666">+</span>delta)
+        theta <span style="color: #666666">-=</span> update
+<span style="color: #008000">print</span>(<span style="color: #BA2121">&quot;theta from own ADAM&quot;</span>)
 <span style="color: #008000">print</span>(theta)
 </pre>
 </div>
@@ -5125,6 +4693,50 @@ weights <span style="color: #666666">=</span> np<span style="color: #666666">.</
 </div>
 
 
+<!-- !split -->
+<h2 id="introducing-jax-https-jax-readthedocs-io-en-latest" class="anchor">Introducing <a href="https://jax.readthedocs.io/en/latest/" target="_self">JAX</a> </h2>
+
+<p>Presently, instead of using <b>autograd</b>, we recommend using <a href="https://jax.readthedocs.io/en/latest/" target="_self">JAX</a></p>
+
+<p><b>JAX</b> is Autograd and <a href="https://www.tensorflow.org/xla" target="_self">XLA (Accelerated Linear Algebra))</a>,
+brought together for high-performance numerical computing and machine learning research.
+It provides composable transformations of Python+NumPy programs: differentiate, vectorize, parallelize, Just-In-Time compile to GPU/TPU, and more.
+</p>
+
+<p>Here's a simple example on how you can use <b>JAX</b> to compute the derivate of the logistic function.</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #f8f8f8">
+  <pre style="line-height: 125%;"><span style="color: #008000; font-weight: bold">import</span> <span style="color: #0000FF; font-weight: bold">jax.numpy</span> <span style="color: #008000; font-weight: bold">as</span> <span style="color: #0000FF; font-weight: bold">jnp</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">jax</span> <span style="color: #008000; font-weight: bold">import</span> grad, jit, vmap
+
+<span style="color: #008000; font-weight: bold">def</span> <span style="color: #0000FF">sum_logistic</span>(x):
+  <span style="color: #008000; font-weight: bold">return</span> jnp<span style="color: #666666">.</span>sum(<span style="color: #666666">1.0</span> <span style="color: #666666">/</span> (<span style="color: #666666">1.0</span> <span style="color: #666666">+</span> jnp<span style="color: #666666">.</span>exp(<span style="color: #666666">-</span>x)))
+
+x_small <span style="color: #666666">=</span> jnp<span style="color: #666666">.</span>arange(<span style="color: #666666">3.</span>)
+derivative_fn <span style="color: #666666">=</span> grad(sum_logistic)
+<span style="color: #008000">print</span>(derivative_fn(x_small))
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <!-- ------------------- end of main content --------------- -->
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
@@ -5136,7 +4748,7 @@ weights <span style="color: #666666">=</span> np<span style="color: #666666">.</
 </footer>
 -->
 <center style="font-size:80%">
-<!-- copyright --> &copy; 1999-2021, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
+<!-- copyright --> &copy; 1999-2022, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
 </center>
 </body>
 </html>
