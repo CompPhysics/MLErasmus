@@ -150,8 +150,8 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
 | Monday November 21 | - _Lecture 815am-10am_: Neural networks, Basics and developing our own code|
 | Recommended readings | Goodfellow et al, chaptes 6 and 7, Bishop chapter 5 and Hastie et al chapter 11. See also Geron chapter 11  |
-| | Video of Lecture TBA |
-| | Handwritten notes TBA |
+| | Video of Lecture at https://youtu.be/9xTdzkzZPno |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov1412022.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 |
 | Monday November 28 | - _Lecture 815am-10am_: Deep Learning, writing a neural network code and practicalities, examples |
 | Recommended readings | Goodfellow et al, chapters 9, 11 and 12, See also Geron chapters 11-14  |
