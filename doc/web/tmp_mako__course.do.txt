@@ -211,7 +211,7 @@ The teaching material is produced in various formats for printing and on-screen 
 
 
 
-=== Project 1, deadline December 15, to be decided  ===
+=== Project 1, deadline January 31  ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2022/Project1/pdf/Project1.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2022/Project1/pdf/Project1.pdf"
@@ -220,7 +220,7 @@ The teaching material is produced in various formats for printing and on-screen 
    * "Bootstrap  slide style, easy for reading on mobile devices": "http://compphysics.github.io/MLErasmus/doc/Projects/2022/Project1/html/Project1-bs.html"
 
 
-=== Project 2, deadline February 1, to be decided  ===
+=== Project 2, deadline February 15   ===
  * LaTeX and PDF:
      * "LaTex file":"http://compphysics.github.io/MLErasmus/doc/Projects/2022/Project2/pdf/Project2.tex"
      * "PDF file":"http://compphysics.github.io/MLErasmus/doc/Projects/2022/Project2/pdf/Project2.pdf"
