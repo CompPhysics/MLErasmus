@@ -140,18 +140,18 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11, Goodfellow et al, chapter 4 and 8 |
 | | Video of Lecture, Morning session 8am-10am, https://youtu.be/u1YTYUMXAxM |
 | | Video of Lecture, Afternoon session 4pm-6pm, https://youtu.be/vCDlASJrHYU |
-| | Handwritten notes at TBA https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov712022.pdf |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov712022.pdf |
 | | If possible we may plan a lecture in the afternoon as well, say from 4pm to 6pm |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 | 
 | Monday November 14 | - _Lecture 815am-10am_: Optimization problems|
 | Recommended readings | Goodfellow et al, chaptes 4 and 8| 
-| | Video of Lecture at TBA |
-| | Handwritten notes at TBA |
+| | Video of Lecture at https://youtu.be/Yfp-zid958Y |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov1412022.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
 | Monday November 21 | - _Lecture 815am-10am_: Neural networks, Basics and developing our own code|
 | Recommended readings | Goodfellow et al, chaptes 6 and 7, Bishop chapter 5 and Hastie et al chapter 11. See also Geron chapter 11  |
-| | Video of Lecture TBA |
-| | Handwritten notes TBA |
+| | Video of Lecture at https://youtu.be/9xTdzkzZPno |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov1412022.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 |
 | Monday November 28 | - _Lecture 815am-10am_: Deep Learning, writing a neural network code and practicalities, examples |
 | Recommended readings | Goodfellow et al, chapters 9, 11 and 12, See also Geron chapters 11-14  |
