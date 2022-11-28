@@ -142,22 +142,22 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of Lecture, Afternoon session 4pm-6pm, https://youtu.be/vCDlASJrHYU |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov712022.pdf |
 | | If possible we may plan a lecture in the afternoon as well, say from 4pm to 6pm |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 | 
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  sessions 4 and 5 | 
 | Monday November 14 | - _Lecture 815am-10am_: Optimization problems|
 | Recommended readings | Goodfellow et al, chaptes 4 and 8| 
 | | Video of Lecture at https://youtu.be/Yfp-zid958Y |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov1412022.pdf |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
-| Monday November 21 | - _Lecture 815am-10am_: Neural networks, Basics and developing our own code|
-| Recommended readings | Goodfellow et al, chaptes 6 and 7, Bishop chapter 5 and Hastie et al chapter 11. See also Geron chapter 11  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
+| Monday November 21 | - _Lecture 815am-10am_: Optimization problems |
+| Recommended readings | Goodfellow et al, chaptes 4 and 8|
 | | Video of Lecture at https://youtu.be/9xTdzkzZPno |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov1412022.pdf  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 |
-| Monday November 28 | - _Lecture 815am-10am_: Deep Learning, writing a neural network code and practicalities, examples |
-| Recommended readings | Goodfellow et al, chapters 9, 11 and 12, See also Geron chapters 11-14  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
+| Monday November 28 | - _Lecture 815am-10am_: Deep Optimization problems and discussions of project 1 |
+| Recommended readings | Goodfellow et al, chapters 4 and 8  |
 | | Video of Lecture  at TBA |
 | | Handwritten notes at TBA |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 10 ||
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 ||
 | December, 2022 | - _To be decided_:  Convolutional Neural Networks |
 | Recommended readings |  Goodfellow et al chapter 9 abd Geron chapter 13 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 11 | 
