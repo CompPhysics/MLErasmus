@@ -1,11 +1,10 @@
 TITLE: Neural Networks
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
-DATE: today
+DATE: December 15 and 16
 
 !split
-===== Reading Suggestions and Videos to Watch =====
+===== Reading Suggestions =====
 
-"Video of Lecture November 29":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureNovember29.mp4?vrtx=view-as-webpage"
 
 Reading suggestions:
 * "Aurelien Geron's chapters 10-11":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/Textbooks/TensorflowML.pdf".
