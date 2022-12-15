@@ -159,7 +159,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov2812022.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
 | December 15 and 16 | - _Lectures Thursday 1.15pm-3pm and Friday 10.15am-12pm_:  Start Neural Networks |
-| | Video of lectrure December 15 athttps://youtu.be/jIWBe0xZQCw |
+| | Video of lectrure December 15 at https://youtu.be/jIWBe0xZQCw |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesDec1512022.pdf  |
 | Recommended readings |  Goodfellow et al chapters 6 and 7 Geron chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
