@@ -2,6 +2,12 @@ TITLE: Neural Networks
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Ion Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
 DATE: December 15 and 16
 
+
+!split
+===== Videos of Lectures =====
+
+* "Video of lecture December 15":"https://youtu.be/jIWBe0xZQCw"
+
 !split
 ===== Reading Suggestions =====
 
