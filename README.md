@@ -162,7 +162,9 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of lecture on basics of neural networks at https://youtu.be/jIWBe0xZQCw |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesDec152022.pdf  |
 | | Lecture on Back-propagation and automatic differentiation at https://youtu.be/yzbxJI6LgL0  |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesDec16a2022.pdf  |
 | | Lecture on building a neural network code at https://youtu.be/CPj4mh7M9no  |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesDec16b2022.pdf  |
 | Recommended readings |  Goodfellow et al chapters 6 and 7 Geron chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
 | January | - _To be decided_:  Recurrent Neural Networks and Solving Differential equations with deep learning |
