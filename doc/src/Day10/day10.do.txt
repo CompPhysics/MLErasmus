@@ -4,10 +4,10 @@ DATE: today
 
 
 !split
-===== Plan for Day 10 =====
+===== January 15 =====
 
 !bblock
-* Recurrent Neural Networks, see slides from January 12
+* Recurrent Neural Networks
 * Solving differential equations with Neural Networks and start Convolutional Neural Networks and examples.
 !eblock
 
