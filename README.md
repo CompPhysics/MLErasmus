@@ -165,19 +165,21 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture on building a neural network code at https://youtu.be/CPj4mh7M9no  |
 | Recommended readings |  Goodfellow et al chapters 6 and 7 Geron chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
-| January | - _To be decided_:  Recurrent Neural Networks and Solving Differential equations with deep learning |
-| Recommended readings |  Goodfellow et al chapter 10 and Geron chapter 14, for RNN, see slides from January, 2023 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  11 and session 12 | 
+| January 12 | - _Building a feed forward neural network_  |
+| Recommended readings |  Goodfellow et al chapter 6 and 7  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  7  | 
+| January 13 | - _Solving differential equations with deep learning and start CNNs_  |
+| Recommended readings |  Goodfellow et al chapter 6, 7 and 9  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  8  | 
+| January 14 | - _Convolutional Neural Networks_  |
+| Recommended readings |  Goodfellow et al chapter 9  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  9  | 
+| January 15 | - _Recurrent neural networks__  |
+| Recommended readings |  Goodfellow et al chapter 10  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  10  | 
 | January, 2023 | - _To be decided_:  Decisions Trees and Ensemble Methods |
-| Recommended readings |  See slides from January 14 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
 | January, 2023 | - _To be decided_:  Ensemble Methods, Bagging, Voting and Boosting |
-| Recommended readings |  See slides from January 14 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
-
----
-
-
 
 
 
