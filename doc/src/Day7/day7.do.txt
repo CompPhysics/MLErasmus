@@ -4,11 +4,7 @@ DATE: today
 
 
 !split
-===== Plan for week 49, December 6-10 =====
-
-* Lecture Friday December 10 at 1pm-3pm
-
-* "Video of lecture":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK3155/h21/forelesningsvideoer/LectureDecember10.mp4?vrtx=view-as-webpage"
+===== Plan for week 2, January 12 =====
 
 * Building our own Feed-forward Neural Network and playing around with our own Feed-forward Neural Network and introduction to TensorFlow. Start convolutional Neural Networks (CNN). 
 
@@ -30,7 +26,7 @@ For a more in depth discussion on  neural networks we recommend Goodfellow et al
 
 
 
-The four equations  derived last week provide us with a way of computing the gradient of the cost function. Let us write this out in the form of an algorithm.
+The four equations  derived last time  provide us with a way of computing the gradient of the cost function. Let us write this out in the form of an algorithm.
 
 !bblock
 First, we set up the input data $\bm{x}$ and the activations
