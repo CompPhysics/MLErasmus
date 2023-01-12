@@ -1,15 +1,13 @@
-TITLE: Summary on Neural Networks, start discussiin of Convolutional (CNN) and Recurrent (RNN) Neural Networks.
+TITLE: Summary on Neural Networks, start discussion of Convolutional (CNN)
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics, University of Oslo & Department of Physics and Astronomy and National Superconducting Cyclotron Laboratory, Michigan State University
 DATE: today
 
 
 !split
-===== Plan for week 50, December 13-17 =====
+===== January 13 =====
 
 * Summary of Neural networks, pros and cons
 * Start discussing CNNs
-* "Video of Lecture December 13":"https://www.uio.no/studier/emner/matnat/fys/FYS-STK4155/h21/forelesningsvideoer/LectureDecember13.mp4?vrtx=view-as-webpage"
-
 
 
 Reading suggestions: "Aurelien Geron's chapters 13 and 14":"https://github.com/CompPhysics/MachineLearning/blob/master/doc/Textbooks/TensorflowML.pdf". See also discussions in Goodfellow et al, chapters 6-7, 9-12.
