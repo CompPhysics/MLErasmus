@@ -164,19 +164,21 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture on Back-propagation and automatic differentiation at https://youtu.be/yzbxJI6LgL0  |
 | | Lecture on building a neural network code at https://youtu.be/CPj4mh7M9no  |
 | Recommended readings |  Goodfellow et al chapters 6 and 7 Geron chapter 11 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 | 
-| January 12 | - _Building a feed forward neural network_  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  sessions 6 and 7  | 
+| January 12 | - _Solving differential equations with Neural Networks_  |
+| | Video of lecture at https://youtu.be/MdYT6uwOkT0 |
 | Recommended readings |  Goodfellow et al chapter 6 and 7  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  7  | 
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  8  | 
 | January 13 | - _Summary of neural networks and start CNNs_  |
 | Recommended readings |  Goodfellow et al chapter 6, 7 and 9  |
+| | Video of lecture at https://youtu.be/3bDkrB-E7cU |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  8  | 
 | January 14 | - _Convolutional Neural Networks_  |
 | Recommended readings |  Goodfellow et al chapter 9  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  9  | 
-| January 15 | - _Recurrent neural networks and solving differential equations with NNs_  |
-| Recommended readings |  Goodfellow et al chapter 10  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  10  | 
+| January 15 | - _Recurrent neural networks and summary of deep learning and discussion of project 2_  |
+| Recommended readings |  Goodfellow et al chapter 10, see also lecture notes session 9  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  9  | 
 | January, 2023 | - _To be decided_:  Decisions Trees and Ensemble Methods |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
 | January, 2023 | - _To be decided_:  Ensemble Methods, Bagging, Voting and Boosting |
