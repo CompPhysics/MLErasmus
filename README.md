@@ -179,11 +179,6 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | January 15 | - _Recurrent neural networks and summary of deep learning and discussion of project 2_  |
 | Recommended readings |  Goodfellow et al chapter 10, see also lecture notes session 9  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  9  | 
-| January, 2023 | - _To be decided_:  Decisions Trees and Ensemble Methods |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html | 
-| January, 2023 | - _To be decided_:  Ensemble Methods, Bagging, Voting and Boosting |
-
-
 
 
 ## Required Technologies
