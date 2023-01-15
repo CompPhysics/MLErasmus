@@ -87,7 +87,7 @@ Here follows a set up on how to structure your report and analyze the data you h
 
 === Part a) ===
 
-The first part deals with structuring and reading the data, much along the same lines as done in projects 1 and 2.  Explain how the data are produced and place them in a proper context.
+The first part deals with structuring and reading the data, much along the same lines as done in project 1.  Explain how the data are produced and place them in a proper context.
 
 === Part b) ===
 
@@ -202,17 +202,9 @@ explicit scheme. Include also the analytical solution and compare with
 that.
 
 
-=== Part d) Solving eigenvalue problems ===
+=== Part d) ===
 
-Follow the discussion in the work of Yi *et al.* in the article from
-"Computers and Mathematics with Applications 47, 1155 (2004)":"https://www.sciencedirect.com/science/article/pii/S0898122104901101", and
-use your differential equation solver with neural networks, set up a
-simple square, real and symmetric $6\times 6$ matrix and find the
-eigenvalues. Compare with the solution from numerical diagonalization with standard eigenvalue solvers from linear algebra.
-
-=== Part e) ===
-
-Finally, present a critical assessment of the methods you have studied and discuss the potential for the solving differential equations and eigenvalue problems with machine learning methods. 
+Finally, present a critical assessment of the methods you have studied and discuss the potential for  solving differential equations with machine learning methods. 
 
 
 
