@@ -1,5 +1,5 @@
-TITLE: Project 2, deadline February 15, 2022
-AUTHOR: Erasmus+ Data Analysis and Machine Learning course, Fall/Winter 2021/2022
+TITLE: Project 2, deadline February 15, 2023
+AUTHOR: Erasmus+ Data Analysis and Machine Learning course, Fall/Winter 2022/2023
 DATE: today
 
 ===== Introduction to project 2 =====
@@ -17,6 +17,10 @@ research interests or just use existing data sets from say
 * "The pulsar classification data set is obtained from Kaggle":"https://www.kaggle.com/pavanraj159/predicting-pulsar-star-in-the-universe/notebook?scriptVersionId=4487650", where it was posted by Pavan Raj. The data file is available in the DataFiles folder of this project.
 
 * Or other data sets you find interesting and relevant.
+
+
+* Furthermore, if you are interested in differential equations and their solutio with deep learning methods, we present below an alternative project based on using neural networks.  This project variant is presented at the end here.
+
 
 
 The approach to the analysis of these new data sets should follow to a
@@ -43,51 +47,6 @@ ditto perspectives and recommendations is also something you need to
 include.  All in all, the report should follow the same pattern with
 abstract, introduction, methods, code, results, conclusions etc as in project 1.
 
-===== Studying the credit card data set as possible project. =====
-
-We include this data set as an example on how one could study new data
-sets with the algorithms we have discussed during the lectures, using
-either your own codes or the functionality of scikit-learn, tensorflow
-or other Python packages.
-
-The data set is presented at the site of "UCI":"https://archive.ics.uci.edu/ml/index.php". It is particularly
-interesting since it is also analyzed using various ML methods in a recent
-scientific article.
-
-The authors apply several ML methods, from nearest neighbors via
-logistic regression to neural networks and Bayesian analysis (not
-covered in our course). Here follows a set up on how to analyze
-these data.
-
-=== Part a). ===
-
-The first part deals with structuring and reading the data, much along the same lines as done in project 1.
-
-=== Part b) ===
-
-Perform a logistic regression analysis and see if you can reproduce
-the results of figure 3 of the article mentioned in
-URL:"https://archive.ics.uci.edu/ml/datasets/default+of+credit+card+clients" of "Yeh and Lien":"https://www.sciencedirect.com/science/article/abs/pii/S0957417407006719".
-
-=== Part c). ===
-
-The next step is to use neural networks and the functionality provided
-by Tensorflow/Keras or Scikit-learn's MLP method (or you could write
-your own code). Compare and discuss again your results with those from
-the above article.
-
-=== Part d). ===
-
-The above article does not study random forests, bagging and gradient boosting or support vector
-machine algorithms. Try to apply one of these methods to the
-credit card data and see if these methods provide a better description
-of the data. Can you outperform the authors of the article?
-
-=== Part e). ===
-
-Finally, here you should present a critical assessment of the methods
-you have studied and link your results with the existing literature.
-
 
 
 === The Pulsar data. ===
@@ -108,12 +67,154 @@ advances in machine learning and data mining has made this task
 much simpler by introducing incredibly fast, in comparison to humans
 that is, classification methods.
 
-You could repeat many of the steps discussed for the credit card data problem.
+
 The article of "Bathes et al":"https://arxiv.org/abs/1209.0793" can serve as a reference for your discussions.
 
 === Other data sets ===
 
 Alternatively, if you would like to test the various algorithms on other data sets, please feel free to do so.
+
+
+We propose also an alternative to the above. This is a project on using machine learning methods (neural networks mainly) to the solution of ordinary differential equations and partial differential equations, with a final twist on how to diagonalize a symmetric matrix with neural networks.
+
+This is a field with a large interest recently, spanning from studies of turbulence in fluid mechanics and meteorology to the solution of quantum mechanical systems. As reading background you can use the slides "from week 42":"https://compphysics.github.io/MachineLearning/doc/pub/week42/html/week42.html" and/or the textbook by "Yadav et al":"https://www.springer.com/gp/book/9789401798150".
+
+
+
+=====  The basic structure of your project =====
+
+Here follows a set up on how to structure your report and analyze the data you have opted for.
+
+=== Part a) ===
+
+The first part deals with structuring and reading the data, much along the same lines as done in projects 1 and 2.  Explain how the data are produced and place them in a proper context.
+
+=== Part b) ===
+
+You need to include at least two central algorithms. Explain the basics of the methods you have chosen to work with. This would be your theory part.
+
+
+=== Part c) ===
+
+Then describe your algorithm and its implementation and tests you have performed.
+
+=== Part d) ===
+
+Then presents your results and findings, link with existing literature and more.
+
+=== Part e) ===
+
+Finally, here you should present a critical assessment of the methods you have studied and link your results with the existing literature. 
+
+===== Solving partial differential equations with neural networks =====
+
+For this variant of project 2, we will assume that you have some
+background in the solution of partial differential equations using
+finite difference schemes. We will study the solution of the diffusion
+equation in one dimension using a standard explicit scheme and neural
+networks to solve the same equations.
+
+For the explicit scheme, you can study for example chapter 10 of the lecture notes in "Computational Physics":"https://github.com/CompPhysics/ComputationalPhysics/blob/master/doc/Lectures/lectures2015.pdf" or alternative sources. 
+
+
+=== Part a), setting up the problem ===
+
+The physical problem can be that of the temperature gradient in a rod of length $L=1$ at $x=0$ and $x=1$.
+We are looking at a one-dimensional
+problem
+
+!bt
+\begin{equation*}
+ \frac{\partial^2 u(x,t)}{\partial x^2} =\frac{\partial u(x,t)}{\partial t}, t> 0, x\in [0,L]
+\end{equation*}
+!et
+or
+
+!bt
+\begin{equation*}
+u_{xx} = u_t,
+\end{equation*}
+!et
+with initial conditions, i.e., the conditions at $t=0$,
+!bt
+\begin{equation*}
+u(x,0)= \sin{(\pi x)} \hspace{0.5cm} 0 < x < L,
+\end{equation*}
+!et
+with $L=1$ the length of the $x$-region of interest. The 
+boundary conditions are
+
+!bt
+\begin{equation*}
+u(0,t)= 0 \hspace{0.5cm} t \ge 0,
+\end{equation*}
+!et
+and
+
+!bt
+\begin{equation*}
+u(L,t)= 0 \hspace{0.5cm} t \ge 0.
+\end{equation*}
+!et
+The function $u(x,t)$  can be the temperature gradient of a  rod.
+As time increases, the velocity approaches a linear variation with $x$. 
+
+We will limit ourselves to the so-called explicit forward Euler algorithm with discretized versions of time given by a forward formula and a centered difference in space resulting in   
+!bt 
+\begin{equation*} 
+u_t\approx \frac{u(x,t+\Delta t)-u(x,t)}{\Delta t}=\frac{u(x_i,t_j+\Delta t)-u(x_i,t_j)}{\Delta t}
+\end{equation*}
+!et
+and
+
+!bt
+\begin{equation*}
+u_{xx}\approx \frac{u(x+\Delta x,t)-2u(x,t)+u(x-\Delta x,t)}{\Delta x^2},
+\end{equation*}
+!et
+or
+
+!bt
+\begin{equation*}
+u_{xx}\approx \frac{u(x_i+\Delta x,t_j)-2u(x_i,t_j)+u(x_i-\Delta x,t_j)}{\Delta x^2}.
+\end{equation*}
+!et
+
+Write down the algorithm and the equations you need to implement.
+Find also the analytical solution to the problem. 
+
+=== Part b) ===
+
+Implement the explicit scheme  algorithm and perform tests of the solution 
+for $\Delta x=1/10$, $\Delta x=1/100$ using  $\Delta t$ as dictated by the stability limit of the explicit scheme. The stability criterion for the explicit scheme requires that $\Delta t/\Delta x^2 \leq 1/2$. 
+
+Study the solutions at two time points $t_1$ and $t_2$ where $u(x,t_1)$ is smooth but still significantly curved
+and $u(x,t_2)$ is almost linear, close to the stationary state.
+
+
+=== Part c) Neural networks ===
+
+Study now the lecture notes on solving ODEs and PDEs with neural
+network and use either your own code from project 2 or the
+functionality of tensorflow/keras to solve the same equation as in
+part b).  Discuss your results and compare them with the standard
+explicit scheme. Include also the analytical solution and compare with
+that.
+
+
+=== Part d) Solving eigenvalue problems ===
+
+Follow the discussion in the work of Yi *et al.* in the article from
+"Computers and Mathematics with Applications 47, 1155 (2004)":"https://www.sciencedirect.com/science/article/pii/S0898122104901101", and
+use your differential equation solver with neural networks, set up a
+simple square, real and symmetric $6\times 6$ matrix and find the
+eigenvalues. Compare with the solution from numerical diagonalization with standard eigenvalue solvers from linear algebra.
+
+=== Part e) ===
+
+Finally, present a critical assessment of the methods you have studied and discuss the potential for the solving differential equations and eigenvalue problems with machine learning methods. 
+
+
 
 
 ===== Introduction to numerical projects =====
@@ -190,7 +291,6 @@ Popular software packages written in Python for ML are
 These are all freely available at their respective GitHub sites. They 
 encompass communities of developers in the thousands or more. And the number
 of code developers and contributors keeps increasing.
-
 
 
 
