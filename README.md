@@ -178,6 +178,8 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of lecture at https://youtu.be/Hm6Ay5DS6o0 and  https://youtu.be/JHfgQ77fpqs |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  9  | 
 | January 15 | - _Recurrent neural networks and summary of deep learning and discussion of project 2_  |
+| | Video of lecture at https://youtu.be/YZuFh7_2C3Q |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesJan152023.pdf  |
 | Recommended readings |  Goodfellow et al chapter 10, see also lecture notes session 9  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  9  | 
 
