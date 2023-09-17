@@ -88,7 +88,7 @@ is recommended.
 
 ## Practicalities
 
-1. Lectures are Mondays from 815am-10am. Start September 26, 2022
+1. Lectures are Mondays from 815am-10am. Start September 25, 2022
 2. Group meeting and work on projects and exercises to be determined
 3. Grading scale: Grades are awarded on a scale from A to F, where A is the best grade and F is a fail. We are aiming at having two projects to be handed in. These will be graded and should be finalized not later than two weeks after the course is over. Both projects count 50% each of the final grade. We plan to make the grades available not later than February 1, hopefully the grades will be available before that.
 
@@ -105,59 +105,60 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 
 | | |
 |-|-|
-| Monday September 26  | - _Lecture 815am-1000am_: Introduction to Machine Learning and linear regression (MHJ) |
+| Monday September 25  | - _Lecture 815am-1000am_: Introduction to Machine Learning and linear regression (MHJ) |
 | Recommended readings |  Bishop Sections 1.1, 1.2 and 1.3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 1 |
-| | Video of Lecture at https://youtu.be/jOx5SIcHJGo |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesSep262022.pdf |
+| | Video of Lecture TBA at https://youtu.be/ |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesSep262022.pdf |
 | | Video on using Git and GitHub https://mediaspace.msu.edu/media/t/1_8mgx3cyf |
-| Monday October 3 | - _Lecture 815am-10am_: Linear Regression, from ordinary least squares to Lasso and Ridge (MHJ) |
+| Monday October 2 | - _Lecture 815am-10am_: Linear Regression, from ordinary least squares to Lasso and Ridge (MHJ) |
 | Recommended readings |  Bishop Sections 3.1 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 2 |
-| | Video of Lecture at https://youtu.be/U2mjsvbqH8w |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct32022.pdf |
-| Monday October 10 | - _Lecture 815am-10am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
+| | Video of Lecture at https://youtu.be/ |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct32022.pdf |
+| Monday October 9 | - _Lecture 815am-10am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
 | Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 3 | 
-| | Video of Lecture at https://youtu.be/INAKKMF2rJY |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct102022.pdf |
-| Monday October 17 | - _Lecture 815am-10am_: Bias-Variance tradeoff and resampling methods (MHJ) |
+| | Video of Lecture at https://youtu.be/ |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct102023.pdf |
+| Monday October 16 | - _Lecture 815am-10am_: Bias-Variance tradeoff and resampling methods (MHJ) |
 | Recommended readings | Bishop Sections 4.1-4.3, Hastie et al Chapter 4 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 | 
-| | Video of Lecture at https://youtu.be/5gZKOoFGDBo |
-| | Handwritten notes at Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct172022.pdf |
-| Monday October 24 | - _Lecture 815am-10am_:  Resampling Methods (MHJ) |
+| | Video of Lecture at https://youtu.be/ |
+| | Handwritten notes at Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct172022.pdf |
+| Monday October 23 | - _Lecture 815am-10am_:  Resampling Methods (MHJ) |
 | Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 material | 
-| | Video of Lecture at https://youtu.be/rfa_khkpXg0 |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct242022.pdf |
-| Monday October 31 | - _Lecture 815am-10am_:  Resampling methods  (MHJ) |
+| | Video of Lecture at https://youtu.be/ |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct242022.pdf |
+| Monday October 30 | - _Lecture 815am-10am_:  Resampling methods  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 material | 
-| | Video of Lecture at https://youtu.be/c8OOUqCGkC4 |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesOct312022.pdf |
-| Monday November 7 | - _Lecture 815am-10am_:  Logistic Regression, Optimization and Gradient Descent, material from sessions 5 and 6 |
+| | Video of Lecture at https://youtu.be/ |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct312022.pdf |
+| Monday November 4-5 or 6 | - _Lecture 815am-10am_:  Logistic Regression, Optimization and Gradient Descent, material from sessions 5 and 6 |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11, Goodfellow et al, chapter 4 and 8 |
-| | Video of Lecture, Morning session 8am-10am, https://youtu.be/u1YTYUMXAxM |
-| | Video of Lecture, Afternoon session 4pm-6pm, https://youtu.be/vCDlASJrHYU |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov712022.pdf |
-| | If possible we may plan a lecture in the afternoon as well, say from 4pm to 6pm |
+| | Video of Lecture, Morning session 8am-10am, https://youtu.be/ |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov712022.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  sessions 4 and 5 | 
-| Monday November 14 | - _Lecture 815am-10am_: Optimization problems|
+| Monday November 13 | - _Lecture 815am-10am_: Optimization problems|
 | Recommended readings | Goodfellow et al, chaptes 4 and 8| 
-| | Video of Lecture at https://youtu.be/Yfp-zid958Y |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov1412022.pdf |
+| | Video of Lecture at https://youtu.be/ |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov1412022.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
-| Monday November 21 | - _Lecture 815am-10am_: Optimization problems |
+| Monday November 20 | - _Lecture 815am-10am_: Optimization problems |
 | Recommended readings | Goodfellow et al, chaptes 4 and 8|
-| | Video of Lecture at https://youtu.be/9xTdzkzZPno |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov2112022.pdf  |
+| | Video of Lecture at https://youtu.be/ |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2112022.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
-| Monday November 28 | - _Lecture 815am-10am_: Optimization problems and discussions of project 1 |
+| Monday November 27 | - _Lecture 815am-10am_: Optimization problems and discussions of project 1 |
 | Recommended readings | Goodfellow et al, chapters 4 and 8  |
-| | Video of Lecture  at https://youtu.be/B5MpYhxfHuo |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesNov2812022.pdf  |
+| | Video of Lecture  at https://youtu.be/ |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2812022.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
+
+### The schedule after November 27 is not yet finalized. Here we simply add what was done last year.
+
 | December 15 and 16 | - _Lectures Thursday 1.15pm-3pm and Friday 10.15am-12pm_:  Start Neural Networks |
 | | Video of lecture on basics of neural networks at https://youtu.be/jIWBe0xZQCw |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesDec152022.pdf  |
