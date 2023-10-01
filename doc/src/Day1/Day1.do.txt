@@ -326,7 +326,7 @@ $\bm{z}^T=\bm{y}^T\bm{A}$, a vector of length $n$. We have then, using the defin
 which means that (using our previous example) we have
 !bt
 \[
-\frac{\partial \alpha}{\partial \bm{x}} = \bm{z}=bm{A}^T\bm{y}.
+\frac{\partial \alpha}{\partial \bm{x}} = \bm{z}=\bm{A}^T\bm{y}.
 \]
 !et
 
@@ -483,11 +483,6 @@ or as
 ===== Other useful relations =====
 
 We list here some other useful relations we may encounter (recall that vectors are defined by boldfaced low-key letters)
-!bt
-\[
-\frac{\partial (\bm{b}^T\bm{a})}{\partial \bm{a}} = \bm{b},
-\]
-!et
 !bt
 \[
 \frac{\partial tr(\bm{B}\bm{A})}{\partial \bm{A}} = \bm{B}^T,
