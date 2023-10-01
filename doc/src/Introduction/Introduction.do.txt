@@ -2378,7 +2378,7 @@ analytical expressions is extremely helpful in case we have simpler
 derivatives as well as when we analyze various properties (like second
 derivatives) of the chosen cost functions.  Vectors are always written
 as boldfaced lower case letters and matrices as upper case boldfaced
-letters. You will find useful the notes from week 35 on derivatives of vectors and matrices.
+letters. 
 
 Show that
 !bt
@@ -2451,7 +2451,7 @@ y = 2.0+5*x*x+0.1*np.random.randn(100,1)
 !ec
 
 o Write your own code (following the examples under the "regression notes":"https://compphysics.github.io/MachineLearning/doc/LectureNotes/_build/html/chapter1.html") for computing the parametrization of the data set fitting a second-order polynomial. 
-o Use thereafter _scikit-learn_ (see again the examples in the slides for week 35) and compare with your own code. Note here that _scikit-learn_ does not include, by default, the intercept. See the discussions on scaling your data in the slides for this week. This type of problems appear in particular if we fit a polynomial with an intercept. 
+o Use thereafter _scikit-learn_ and compare with your own code. Note here that _scikit-learn_ does not include, by default, the intercept. See the discussions on scaling your data in the slides for this week. This type of problems appear in particular if we fit a polynomial with an intercept. 
 o Using scikit-learn, compute also the mean squared error, a risk metric corresponding to the expected value of the squared (quadratic) error defined as
 !bt 
 \[ MSE(\bm{y},\bm{\tilde{y}}) = \frac{1}{n}
