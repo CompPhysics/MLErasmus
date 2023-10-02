@@ -115,7 +115,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Recommended readings |  Goodfellow et al, Deep Learning, chapter 2 on linear algebra. Hastie et al, The elements of statistical learning, sections 3.1-3.4. Deisenroth et al, Mathematics for Machine Learning, see chapter 6, see https://mml-book.github.io/book/mml-book.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 2 |
 | | Video of Lecture at https://youtu.be/ |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct32022.pdf |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct22023.pdf |
 | Monday October 9 | - _Lecture 815am-10am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
 | Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 3 | 
