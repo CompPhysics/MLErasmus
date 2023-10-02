@@ -14,8 +14,9 @@ o Derivation of the equations for ordinary least squares
 o Discussion on how to prepare data and examples of applications of linear regression
 o Mathematical interpretations of linear regression
 o Ridge and Lasso regression and Singular Value Decomposition
-o "Video of lecture TBA":"https://youtu.be/"
-o "Whiteboard notes to be added ":"https://github.com/CompPhysics"
+o "Video of lecture TBA":"Video of Lecture at https://youtu.be/RlCLw-y9qwM"
+o "Whiteboard notes":"https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct22023.pdf |"
+
 
 === Reading recommendations: ===
 
