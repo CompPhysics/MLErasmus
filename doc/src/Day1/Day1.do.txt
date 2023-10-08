@@ -218,7 +218,7 @@ matrices to invert. The methods discussed here and for many other
 supervised learning algorithms like classification with logistic
 regression or support vector machines, exhibit dimensionalities which
 allow for the usage of direct linear algebra methods such as _LU_ decomposition or _Singular Value Decomposition_ (SVD) for finding the inverse of the matrix
-$\bm{X}^T\bm{X}$.  This is discussed on Thursday this week.
+$\bm{X}^T\bm{X}$.  
 !eblock
 
 !bblock
