@@ -4,6 +4,13 @@ DATE: October 9, 2023
 
 
 !split
+===== Teaching material from October 9 lecture =====
+
+* "Video of Lecture":"https://youtu.be/SaQ1I-yyvIo"
+* "Handwritten notes":"https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct92023.pdf"
+
+
+!split
 ===== Ridge and LASSO Regression =====
 
 Let us remind ourselves about the expression for the standard Mean Squared Error (MSE) which we used to define our cost function and the equations for the ordinary least squares (OLS) method, that is 
