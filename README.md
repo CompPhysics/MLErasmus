@@ -116,12 +116,12 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 2 |
 | | Video of Lecture at https://youtu.be/ |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct22023.pdf |
-| Monday October 9 | - _Lecture 815am-10am_: Linear Regression and Bias-Variance Tradeoff (MHJ) |
+| Monday October 9 | - _Lecture 815am-10am_: Linear Regression, Ridge and Lasso regression (MHJ) |
 | Recommended readings |  Bishop Section 3.2 and Hastie et al chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 3 | 
 | | Video of Lecture at https://youtu.be/SaQ1I-yyvIo |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct92023.pdf |
-| Monday October 16 | - _Lecture 815am-10am_: Bias-Variance tradeoff and resampling methods (MHJ) |
+| Monday October 15 | - _Lecture 815am-10am_: Ridge and Lasso regression and start Bias-Variance tradeoff and resampling methods (MHJ) |
 | Recommended readings | Bishop Sections 4.1-4.3, Hastie et al Chapter 4 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 | 
 | | Video of Lecture at https://youtu.be/ |
