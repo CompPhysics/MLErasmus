@@ -1,14 +1,14 @@
 TITLE: Data Analysis and Machine Learning: Ridge and Lasso Regression and Resampling Methods
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Isotope Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
-DATE: October 17 and 24, 2022
+DATE: October 15 and 22, 2023
 
 !split
 ===== Plans for Sessions 4-6 =====
 
 * More on Ridge and Lasso Regression
 * Statistics, probability theory and resampling methods
-  * "Video of Lecture October 24":"https://youtu.be/rfa_khkpXg0"
-  * "Video of Lecture October 31":"https://youtu.be/c8OOUqCGkC4"
+  * "Video of Lecture October 15 to be added":"https://youtu.be/"
+  * "Video of Lecture October 22 to be added":"https://youtu.be/"
 
 
 !split
@@ -2875,4 +2875,101 @@ plt.legend()
 plt.show()
 
 !ec
+
+
+=====  Overarching aims of the exercises this week =====
+
+
+This exercise deals with various mean values and variances in linear
+regression method (here it may be useful to look up chapter 3,
+equation (3.8) of "Trevor Hastie, Robert Tibshirani, Jerome
+H. Friedman, The Elements of Statistical Learning,
+Springer":"https://www.springer.com/gp/book/9780387848570"). 
+
+For more discussions on Ridge regression and calculation of
+expectation values, "Wessel van
+Wieringen's":"https://arxiv.org/abs/1509.09169" article is highly
+recommended.
+
+
+The assumption we have made is that there exists a continuous function
+$f(\bm{x})$ and a normal distributed error $\bm{\varepsilon}\sim N(0,
+\sigma^2)$ which describes our data
+
+!bt
+\[
+\bm{y} = f(\bm{x})+\bm{\varepsilon}
+\]
+!et
+
+We then approximate this function $f(\bm{x})$ with our model $\bm{\tilde{y}}$ from the solution of the linear regression equations (ordinary least squares OLS), that is our
+function $f$ is approximated by $\bm{\tilde{y}}$ where we minimized  $(\bm{y}-\bm{\tilde{y}})^2$, with
+!bt
+\[
+\bm{\tilde{y}} = \bm{X}\bm{\beta}.
+\]
+!et
+The matrix $\bm{X}$ is the so-called design or feature matrix. 
+
+===== Exercise: Expectation values for ordinary least squares expressions =====
+
+Show that  the expectation value of $\bm{y}$ for a given element $i$ 
+!bt
+\[
+\mathbb{E}(y_i)  =\sum_{j}x_{ij} \beta_j=\mathbf{X}_{i, \ast} \, \bm{\beta}, 
+\]
+!et
+and that
+its variance is 
+!bt
+\[
+\mbox{Var}(y_i)  = \sigma^2.  
+\]
+!et
+Hence, $y_i \sim N( \mathbf{X}_{i, \ast} \, \bm{\beta}, \sigma^2)$, that is $\bm{y}$ follows a normal distribution with 
+mean value $\bm{X}\bm{\beta}$ and variance $\sigma^2$.
+
+With the OLS expressions for the optimal parameters $\bm{\hat{\beta}}$ show that
+!bt
+\[
+\mathbb{E}(\bm{\hat{\beta}}) = \bm{\beta}.
+\]
+!et
+Show finally that the variance of $\bm{\bm{\beta}}$ is
+!bt
+\[
+\mbox{Var}(\bm{\hat{\beta}}) = \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
+\]
+!et
+
+
+We can use the last expression when we define a "so-called confidence interval":"https://en.wikipedia.org/wiki/Confidence_interval" for the parameters $\beta$. 
+A given parameter $\beta_j$ is given by the diagonal matrix element of the above matrix.
+
+
+===== Exercise: Expectation values for Ridge regression =====
+
+Show that
+!bt
+\[
+\mathbb{E} \big[ \hat{\bm{\beta}}^{\mathrm{Ridge}} \big]=(\mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I}_{pp})^{-1} (\mathbf{X}^{\top} \mathbf{X})\bm{\beta}.
+\]
+!et
+We see clearly that
+$\mathbb{E} \big[ \hat{\bm{\beta}}^{\mathrm{Ridge}} \big] \not= \mathbb{E} \big[\hat{\bm{\beta}}^{\mathrm{OLS}}\big ]$ for any $\lambda > 0$.
+
+
+Show also that the variance is
+
+!bt
+\[
+\mbox{Var}[\hat{\bm{\beta}}^{\mathrm{Ridge}}]=\sigma^2[  \mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I} ]^{-1}  \mathbf{X}^{T}\mathbf{X} \{ [  \mathbf{X}^{\top} \mathbf{X} + \lambda \mathbf{I} ]^{-1}\}^{T},
+\]
+!et
+and it is easy to see that if the parameter $\lambda$ goes to infinity then the variance of the Ridge parameters $\bm{\beta}$ goes to zero.
+
+
+
+
+
 

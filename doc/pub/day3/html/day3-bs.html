@@ -268,7 +268,20 @@ doconce format html Day3.do.txt --html_style=bootstrap --pygments_html_style=def
               ('The same example but now with cross-validation',
                2,
                None,
-               'the-same-example-but-now-with-cross-validation')]}
+               'the-same-example-but-now-with-cross-validation'),
+              ('Overarching aims of the exercises this week',
+               2,
+               None,
+               'overarching-aims-of-the-exercises-this-week'),
+              ('Exercise 1: Expectation values for ordinary least squares '
+               'expressions',
+               2,
+               None,
+               'exercise-1-expectation-values-for-ordinary-least-squares-expressions'),
+              ('Exercise 2: Expectation values for Ridge regression',
+               2,
+               None,
+               'exercise-2-expectation-values-for-ridge-regression')]}
 end of tocinfo -->
 
 <body>
@@ -389,6 +402,9 @@ MathJax.Hub.Config({
      <!-- navigation toc: --> <li><a href="#code-example-for-cross-validation-and-k-fold-cross-validation" style="font-size: 80%;">Code Example for Cross-validation and \( k \)-fold Cross-validation</a></li>
      <!-- navigation toc: --> <li><a href="#more-examples-on-bootstrap-and-cross-validation-and-errors" style="font-size: 80%;">More examples on bootstrap and cross-validation and errors</a></li>
      <!-- navigation toc: --> <li><a href="#the-same-example-but-now-with-cross-validation" style="font-size: 80%;">The same example but now with cross-validation</a></li>
+     <!-- navigation toc: --> <li><a href="#overarching-aims-of-the-exercises-this-week" style="font-size: 80%;">Overarching aims of the exercises this week</a></li>
+     <!-- navigation toc: --> <li><a href="#exercise-1-expectation-values-for-ordinary-least-squares-expressions" style="font-size: 80%;">Exercise 1: Expectation values for ordinary least squares expressions</a></li>
+     <!-- navigation toc: --> <li><a href="#exercise-2-expectation-values-for-ridge-regression" style="font-size: 80%;">Exercise 2: Expectation values for Ridge regression</a></li>
 
         </ul>
       </li>
@@ -417,7 +433,7 @@ MathJax.Hub.Config({
 </center>
 <br>
 <center>
-<h4>October 17 and 24, 2022</h4>
+<h4>October 15 and 22, 2023</h4>
 </center> <!-- date -->
 <br>
 
@@ -431,8 +447,8 @@ MathJax.Hub.Config({
 <li> More on Ridge and Lasso Regression</li>
 <li> Statistics, probability theory and resampling methods</li>
 <ul>
-  <li> <a href="https://youtu.be/rfa_khkpXg0" target="_self">Video of Lecture October 24</a></li>
-  <li> <a href="https://youtu.be/c8OOUqCGkC4" target="_self">Video of Lecture October 31</a></li>
+  <li> <a href="https://youtu.be/" target="_self">Video of Lecture October 15 to be added</a></li>
+  <li> <a href="https://youtu.be/" target="_self">Video of Lecture October 22 to be added</a></li>
 </ul>
 </ul>
 <!-- !split -->
@@ -3467,7 +3483,95 @@ plt<span style="color: #666666">.</span>show()
     </div>
   </div>
 </div>
+<h2 id="overarching-aims-of-the-exercises-this-week" class="anchor">Overarching aims of the exercises this week </h2>
 
+<p>This exercise deals with various mean values and variances in linear
+regression method (here it may be useful to look up chapter 3,
+equation (3.8) of <a href="https://www.springer.com/gp/book/9780387848570" target="_self">Trevor Hastie, Robert Tibshirani, Jerome
+H. Friedman, The Elements of Statistical Learning,
+Springer</a>). 
+</p>
+
+<p>For more discussions on Ridge regression and calculation of
+expectation values, <a href="https://arxiv.org/abs/1509.09169" target="_self">Wessel van
+Wieringen's</a> article is highly
+recommended.
+</p>
+
+<p>The assumption we have made is that there exists a continuous function
+\( f(\boldsymbol{x}) \) and a normal distributed error \( \boldsymbol{\varepsilon}\sim N(0,
+\sigma^2) \) which describes our data
+</p>
+
+$$
+\boldsymbol{y} = f(\boldsymbol{x})+\boldsymbol{\varepsilon}
+$$
+
+<p>We then approximate this function \( f(\boldsymbol{x}) \) with our model \( \boldsymbol{\tilde{y}} \) from the solution of the linear regression equations (ordinary least squares OLS), that is our
+function \( f \) is approximated by \( \boldsymbol{\tilde{y}} \) where we minimized  \( (\boldsymbol{y}-\boldsymbol{\tilde{y}})^2 \), with
+</p>
+$$
+\boldsymbol{\tilde{y}} = \boldsymbol{X}\boldsymbol{\beta}.
+$$
+
+<p>The matrix \( \boldsymbol{X} \) is the so-called design or feature matrix. </p>
+
+<!-- --- begin exercise --- -->
+<h2 id="exercise-1-expectation-values-for-ordinary-least-squares-expressions" class="anchor">Exercise 1: Expectation values for ordinary least squares expressions </h2>
+
+<p>Show that  the expectation value of \( \boldsymbol{y} \) for a given element \( i \) </p>
+$$
+\mathbb{E}(y_i)  =\sum_{j}x_{ij} \beta_j=\mathbf{X}_{i, \ast} \, \boldsymbol{\beta}, 
+$$
+
+<p>and that
+its variance is 
+</p>
+$$
+\mbox{Var}(y_i)  = \sigma^2.  
+$$
+
+<p>Hence, \( y_i \sim N( \mathbf{X}_{i, \ast} \, \boldsymbol{\beta}, \sigma^2) \), that is \( \boldsymbol{y} \) follows a normal distribution with 
+mean value \( \boldsymbol{X}\boldsymbol{\beta} \) and variance \( \sigma^2 \).
+</p>
+
+<p>With the OLS expressions for the optimal parameters \( \boldsymbol{\hat{\beta}} \) show that</p>
+$$
+\mathbb{E}(\boldsymbol{\hat{\beta}}) = \boldsymbol{\beta}.
+$$
+
+<p>Show finally that the variance of \( \boldsymbol{\boldsymbol{\beta}} \) is</p>
+$$
+\mbox{Var}(\boldsymbol{\hat{\beta}}) = \sigma^2 \, (\mathbf{X}^{T} \mathbf{X})^{-1}.
+$$
+
+<p>We can use the last expression when we define a <a href="https://en.wikipedia.org/wiki/Confidence_interval" target="_self">so-called confidence interval</a> for the parameters \( \beta \). 
+A given parameter \( \beta_j \) is given by the diagonal matrix element of the above matrix.
+</p>
+
+<!-- --- end exercise --- -->
+
+<!-- --- begin exercise --- -->
+<h2 id="exercise-2-expectation-values-for-ridge-regression" class="anchor">Exercise 2: Expectation values for Ridge regression </h2>
+
+<p>Show that</p>
+$$
+\mathbb{E} \big[ \hat{\boldsymbol{\beta}}^{\mathrm{Ridge}} \big]=(\mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I}_{pp})^{-1} (\mathbf{X}^{\top} \mathbf{X})\boldsymbol{\beta}.
+$$
+
+<p>We see clearly that
+\( \mathbb{E} \big[ \hat{\boldsymbol{\beta}}^{\mathrm{Ridge}} \big] \not= \mathbb{E} \big[\hat{\boldsymbol{\beta}}^{\mathrm{OLS}}\big ] \) for any \( \lambda > 0 \).
+</p>
+
+<p>Show also that the variance is</p>
+
+$$
+\mbox{Var}[\hat{\boldsymbol{\beta}}^{\mathrm{Ridge}}]=\sigma^2[  \mathbf{X}^{T} \mathbf{X} + \lambda \mathbf{I} ]^{-1}  \mathbf{X}^{T}\mathbf{X} \{ [  \mathbf{X}^{\top} \mathbf{X} + \lambda \mathbf{I} ]^{-1}\}^{T},
+$$
+
+<p>and it is easy to see that if the parameter \( \lambda \) goes to infinity then the variance of the Ridge parameters \( \boldsymbol{\beta} \) goes to zero.</p>
+
+<!-- --- end exercise --- -->
 <!-- ------------------- end of main content --------------- -->
 </div>  <!-- end container -->
 <!-- include javascript, jQuery *first* -->
@@ -3479,7 +3583,7 @@ plt<span style="color: #666666">.</span>show()
 </footer>
 -->
 <center style="font-size:80%">
-<!-- copyright --> &copy; 1999-2022, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
+<!-- copyright --> &copy; 1999-2023, Morten Hjorth-Jensen. Released under CC Attribution-NonCommercial 4.0 license
 </center>
 </body>
 </html>
