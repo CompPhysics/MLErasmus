@@ -121,21 +121,21 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 3 | 
 | | Video of Lecture at https://youtu.be/SaQ1I-yyvIo |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct92023.pdf |
-| Monday October 15 | - _Lecture 815am-10am_: Ridge and Lasso regression and start Bias-Variance tradeoff and resampling methods (MHJ) |
-| Recommended readings | Bishop Sections 4.1-4.3, Hastie et al Chapter 4 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 | 
+| Monday October 16 | - _Lecture 815am-10am_: Ridge and Lasso regression and statistical interpretations (MHJ) |
+| Recommended readings | Hastie et al Chapter 3 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  sessions 3 and 4 | 
 | | Video of Lecture at https://youtu.be/ |
 | | Handwritten notes at Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct162022.pdf |
-| Monday October 23 | - _Lecture 815am-10am_:  Resampling Methods (MHJ) |
-| Recommended readings |  Bishop Sections 5.1-5.5 and Hastie et al chapter 11 |
+| Monday October 23 | - _Lecture 815am-10am_:  Resampling Methods and Bias-Variance tradeoff (MHJ) |
+| Recommended readings |  Hastie et al chapter 7 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 material | 
 | | Video of Lecture at https://youtu.be/ |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct242022.pdf |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct232023.pdf |
 | Monday October 30 | - _Lecture 815am-10am_:  Resampling methods  (MHJ) |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 4 material | 
 | | Video of Lecture at https://youtu.be/ |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct312022.pdf |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct302023.pdf |
 | Monday November 4-5 or 6 | - _Lecture 815am-10am_:  Logistic Regression, Optimization and Gradient Descent, material from sessions 5 and 6 |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11, Goodfellow et al, chapter 4 and 8 |
 | | Video of Lecture, Morning session 8am-10am, https://youtu.be/ |
