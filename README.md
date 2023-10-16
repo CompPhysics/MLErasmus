@@ -124,7 +124,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Monday October 16 | - _Lecture 815am-10am_: Ridge and Lasso regression and statistical interpretations (MHJ) |
 | Recommended readings | Hastie et al Chapter 3 |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  sessions 3 and 4 | 
-| | Video of Lecture at https://youtu.be/ |
+| | Video of Lecture at https://youtu.be/iqRKUPJr_bY |
 | | Handwritten notes at Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct162022.pdf |
 | Monday October 23 | - _Lecture 815am-10am_:  Resampling Methods and Bias-Variance tradeoff (MHJ) |
 | Recommended readings |  Hastie et al chapter 7 |
