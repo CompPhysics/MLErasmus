@@ -1,14 +1,14 @@
 TITLE: Data Analysis and Machine Learning: Ridge and Lasso Regression and Resampling Methods
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Isotope Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
-DATE: October 15 and 22, 2023
+DATE: October 16 and 23, 2023
 
 !split
 ===== Plans for Sessions 4-6 =====
 
 * More on Ridge and Lasso Regression
 * Statistics, probability theory and resampling methods
-  * "Video of Lecture October 15 to be added":"https://youtu.be/"
-  * "Video of Lecture October 22 to be added":"https://youtu.be/"
+  * "Video of Lecture October 16 to be added":"https://youtu.be/iqRKUPJr_bY"
+  * "Video of Lecture October 23 to be added":"https://youtu.be/"
 
 
 !split
@@ -2969,6 +2969,75 @@ Show also that the variance is
 and it is easy to see that if the parameter $\lambda$ goes to infinity then the variance of the Ridge parameters $\bm{\beta}$ goes to zero.
 
 
+
+
+
+=====  Exercise: Bias-Variance tradeoff =====
+
+The aim of the exercises is to derive the equations for the bias-variance tradeoff to be used in project 1 as well as testing this for a simpler function using the bootstrap method. 
+
+Consider a
+dataset $\mathcal{L}$ consisting of the data
+$\mathbf{X}_\mathcal{L}=\{(y_j, \boldsymbol{x}_j), j=0\ldots n-1\}$.
+
+We assume that the true data is generated from a noisy model
+
+!bt
+\[
+\bm{y}=f(\boldsymbol{x}) + \bm{\epsilon}.
+\]
+!et
+
+Here $\epsilon$ is normally distributed with mean zero and standard
+deviation $\sigma^2$.
+
+In our derivation of the ordinary least squares method we defined 
+an approximation to the function $f$ in terms of the parameters
+$\bm{\beta}$ and the design matrix $\bm{X}$ which embody our model,
+that is $\bm{\tilde{y}}=\bm{X}\bm{\beta}$.
+
+The parameters $\bm{\beta}$ are in turn found by optimizing the mean
+squared error via the so-called cost function
+
+!bt
+\[
+C(\bm{X},\bm{\beta}) =\frac{1}{n}\sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2=\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right].
+\]
+!et
+Here the expected value $\mathbb{E}$ is the sample value. 
+
+Show that you can rewrite  this in terms of a term which contains the variance of the model itself (the so-called variance term), a
+term which measures the deviation from the true data and the mean value of the model (the bias term) and finally the variance of the noise.
+That is, show that
+!bt
+\[
+\mathbb{E}\left[(\bm{y}-\bm{\tilde{y}})^2\right]=\mathrm{Bias}[\tilde{y}]+\mathrm{var}[\tilde{y}]+\sigma^2, 
+\]
+!et
+with 
+!bt
+\[
+\mathrm{Bias}[\tilde{y}]=\mathbb{E}\left[\left(\bm{y}-\mathbb{E}\left[\bm{\tilde{y}}\right]\right)^2\right],
+\]
+!et
+and 
+!bt
+\[
+\mathrm{var}[\tilde{y}]=\mathbb{E}\left[\left(\tilde{\bm{y}}-\mathbb{E}\left[\bm{\tilde{y}}\right]\right)^2\right]=\frac{1}{n}\sum_i(\tilde{y}_i-\mathbb{E}\left[\bm{\tilde{y}}\right])^2.
+\]
+!et
+
+
+
+Explain what the terms mean and discuss their interpretations.
+
+Perform then a bias-variance analysis of a simple one-dimensional (or other models of your choice)  function by
+studying the MSE value as function of the complexity of your model. Use ordinary least squares only.
+
+Discuss the bias and variance trade-off as function
+of your model complexity (the degree of the polynomial) and the number
+of data points, and possibly also your training and test data using the _bootstrap_ resampling method.
+You can follow the code example in the jupyter-book at URL:"https://compphysics.github.io/MachineLearning/doc/LectureNotes/_build/html/chapter3.html#the-bias-variance-tradeoff".
 
 
 

@@ -385,7 +385,11 @@ div.toc p,a {
               ('Exercise 2: Expectation values for Ridge regression',
                2,
                None,
-               'exercise-2-expectation-values-for-ridge-regression')]}
+               'exercise-2-expectation-values-for-ridge-regression'),
+              ('Exercise 3: Bias-Variance tradeoff',
+               2,
+               None,
+               'exercise-3-bias-variance-tradeoff')]}
 end of tocinfo -->
 
 <body>
@@ -423,7 +427,7 @@ MathJax.Hub.Config({
 </center>
 <br>
 <center>
-<h4>October 15 and 22, 2023</h4>
+<h4>October 16 and 23, 2023</h4>
 </center> <!-- date -->
 <br>
 
@@ -434,8 +438,8 @@ MathJax.Hub.Config({
 <li> More on Ridge and Lasso Regression</li>
 <li> Statistics, probability theory and resampling methods</li>
 <ul>
-  <li> <a href="https://youtu.be/" target="_blank">Video of Lecture October 15 to be added</a></li>
-  <li> <a href="https://youtu.be/" target="_blank">Video of Lecture October 22 to be added</a></li>
+  <li> <a href="https://youtu.be/iqRKUPJr_bY" target="_blank">Video of Lecture October 16 to be added</a></li>
+  <li> <a href="https://youtu.be/" target="_blank">Video of Lecture October 23 to be added</a></li>
 </ul>
 </ul>
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -3548,6 +3552,74 @@ $$
 $$
 
 <p>and it is easy to see that if the parameter \( \lambda \) goes to infinity then the variance of the Ridge parameters \( \boldsymbol{\beta} \) goes to zero.</p>
+
+<!-- --- end exercise --- -->
+
+<!-- --- begin exercise --- -->
+<h2 id="exercise-3-bias-variance-tradeoff">Exercise 3: Bias-Variance tradeoff </h2>
+
+<p>The aim of the exercises is to derive the equations for the bias-variance tradeoff to be used in project 1 as well as testing this for a simpler function using the bootstrap method. </p>
+
+<p>Consider a
+dataset \( \mathcal{L} \) consisting of the data
+\( \mathbf{X}_\mathcal{L}=\{(y_j, \boldsymbol{x}_j), j=0\ldots n-1\} \).
+</p>
+
+<p>We assume that the true data is generated from a noisy model</p>
+
+$$
+\boldsymbol{y}=f(\boldsymbol{x}) + \boldsymbol{\epsilon}.
+$$
+
+<p>Here \( \epsilon \) is normally distributed with mean zero and standard
+deviation \( \sigma^2 \).
+</p>
+
+<p>In our derivation of the ordinary least squares method we defined 
+an approximation to the function \( f \) in terms of the parameters
+\( \boldsymbol{\beta} \) and the design matrix \( \boldsymbol{X} \) which embody our model,
+that is \( \boldsymbol{\tilde{y}}=\boldsymbol{X}\boldsymbol{\beta} \).
+</p>
+
+<p>The parameters \( \boldsymbol{\beta} \) are in turn found by optimizing the mean
+squared error via the so-called cost function
+</p>
+
+$$
+C(\boldsymbol{X},\boldsymbol{\beta}) =\frac{1}{n}\sum_{i=0}^{n-1}(y_i-\tilde{y}_i)^2=\mathbb{E}\left[(\boldsymbol{y}-\boldsymbol{\tilde{y}})^2\right].
+$$
+
+<p>Here the expected value \( \mathbb{E} \) is the sample value. </p>
+
+<p>Show that you can rewrite  this in terms of a term which contains the variance of the model itself (the so-called variance term), a
+term which measures the deviation from the true data and the mean value of the model (the bias term) and finally the variance of the noise.
+That is, show that
+</p>
+$$
+\mathbb{E}\left[(\boldsymbol{y}-\boldsymbol{\tilde{y}})^2\right]=\mathrm{Bias}[\tilde{y}]+\mathrm{var}[\tilde{y}]+\sigma^2, 
+$$
+
+<p>with </p>
+$$
+\mathrm{Bias}[\tilde{y}]=\mathbb{E}\left[\left(\boldsymbol{y}-\mathbb{E}\left[\boldsymbol{\tilde{y}}\right]\right)^2\right],
+$$
+
+<p>and </p>
+$$
+\mathrm{var}[\tilde{y}]=\mathbb{E}\left[\left(\tilde{\boldsymbol{y}}-\mathbb{E}\left[\boldsymbol{\tilde{y}}\right]\right)^2\right]=\frac{1}{n}\sum_i(\tilde{y}_i-\mathbb{E}\left[\boldsymbol{\tilde{y}}\right])^2.
+$$
+
+<p>Explain what the terms mean and discuss their interpretations.</p>
+
+<p>Perform then a bias-variance analysis of a simple one-dimensional (or other models of your choice)  function by
+studying the MSE value as function of the complexity of your model. Use ordinary least squares only.
+</p>
+
+<p>Discuss the bias and variance trade-off as function
+of your model complexity (the degree of the polynomial) and the number
+of data points, and possibly also your training and test data using the <b>bootstrap</b> resampling method.
+You can follow the code example in the jupyter-book at <a href="https://compphysics.github.io/MachineLearning/doc/LectureNotes/_build/html/chapter3.html#the-bias-variance-tradeoff" target="_blank"><tt>https://compphysics.github.io/MachineLearning/doc/LectureNotes/_build/html/chapter3.html#the-bias-variance-tradeoff</tt></a>.
+</p>
 
 <!-- --- end exercise --- -->
 <!-- ------------------- end of main content --------------- -->
