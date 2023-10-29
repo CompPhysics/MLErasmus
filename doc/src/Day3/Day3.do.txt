@@ -1,6 +1,6 @@
 TITLE: Data Analysis and Machine Learning: Ridge and Lasso Regression and Resampling Methods
 AUTHOR: Morten Hjorth-Jensen {copyright, 1999-present|CC BY-NC} at Department of Physics and Center for Computing in Science Education, University of Oslo, Norway & Department of Physics and Astronomy and Facility for Rare Isotope Beams and National Superconducting Cyclotron Laboratory, Michigan State University, USA
-DATE: October 16 and 23, 2023
+DATE: October 16, 23 and 30, 2023
 
 !split
 ===== Plans for Sessions 4-6 =====
