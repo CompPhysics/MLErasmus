@@ -9,7 +9,7 @@ DATE: October 16, 23 and 30, 2023
 * Statistics, probability theory and resampling methods
   * "Video of Lecture October 16":"https://youtu.be/iqRKUPJr_bY"
   * "Video of Lecture October 23":"https://youtu.be/3DyqMQaMgvQ"
-
+  * "Video of Lecture October 30":"https://youtu.be/-6Hpyj0dwC0"
 
 !split
 ===== Ridge and LASSO Regression =====
