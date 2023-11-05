@@ -62,7 +62,7 @@ div.toc p,a {
 </head>
 
 <!-- tocinfo
-{'highest level': 2,
+{'highest level': 1,
  'sections': [('Logistic Regression', 2, None, 'logistic-regression'),
               ('Classification problems', 2, None, 'classification-problems'),
               ('Optimization and Deep learning',
@@ -103,6 +103,13 @@ div.toc p,a {
                'extending-to-more-predictors'),
               ('Including more classes', 2, None, 'including-more-classes'),
               ('More classes', 2, None, 'more-classes'),
+              ('Friday September 23', 2, None, 'friday-september-23'),
+              ('Searching for Optimal Regularization Parameters $\\lambda$',
+               2,
+               None,
+               'searching-for-optimal-regularization-parameters-lambda'),
+              ('Grid Search', 2, None, 'grid-search'),
+              ('Randomized Grid Search', 2, None, 'randomized-grid-search'),
               ('Wisconsin Cancer Data', 2, None, 'wisconsin-cancer-data'),
               ('Using the correlation matrix',
                2,
@@ -319,10 +326,10 @@ div.toc p,a {
                2,
                None,
                'same-code-but-now-with-momentum-gradient-descent'),
-              ("But noen of these can compete with Newton's method",
+              ("But none of these can compete with Newton's method",
                2,
                None,
-               'but-noen-of-these-can-compete-with-newton-s-method'),
+               'but-none-of-these-can-compete-with-newton-s-method'),
               ('Including Stochastic Gradient Descent with Autograd',
                2,
                None,
@@ -331,25 +338,50 @@ div.toc p,a {
                2,
                None,
                'same-code-but-now-with-momentum-gradient-descent'),
+              ('AdaGrad algorithm, taken from "Goodfellow et '
+               'al":"https://www.deeplearningbook.org/contents/optimization.html"',
+               2,
+               None,
+               'adagrad-algorithm-taken-from-goodfellow-et-al-https-www-deeplearningbook-org-contents-optimization-html'),
               ('Similar (second order function now) problem but now with '
                'AdaGrad',
                2,
                None,
                'similar-second-order-function-now-problem-but-now-with-adagrad'),
+              ('RMSProp algorithm, taken from "Goodfellow et '
+               'al":"https://www.deeplearningbook.org/contents/optimization.html"',
+               2,
+               None,
+               'rmsprop-algorithm-taken-from-goodfellow-et-al-https-www-deeplearningbook-org-contents-optimization-html'),
               ('RMSprop for adaptive learning rate with Stochastic Gradient '
                'Descent',
                2,
                None,
                'rmsprop-for-adaptive-learning-rate-with-stochastic-gradient-descent'),
+              ('ADAM algorithm, taken from "Goodfellow et '
+               'al":"https://www.deeplearningbook.org/contents/optimization.html"',
+               2,
+               None,
+               'adam-algorithm-taken-from-goodfellow-et-al-https-www-deeplearningbook-org-contents-optimization-html'),
               ('And finally "ADAM":"https://arxiv.org/pdf/1412.6980.pdf"',
                2,
                None,
                'and-finally-adam-https-arxiv-org-pdf-1412-6980-pdf'),
-              ('And Logistic Regression', 2, None, 'and-logistic-regression'),
               ('Introducing "JAX":"https://jax.readthedocs.io/en/latest/"',
                2,
                None,
-               'introducing-jax-https-jax-readthedocs-io-en-latest')]}
+               'introducing-jax-https-jax-readthedocs-io-en-latest'),
+              ('Getting started with Jax, note the way we import numpy',
+               3,
+               None,
+               'getting-started-with-jax-note-the-way-we-import-numpy'),
+              ('A warm-up example', 3, None, 'a-warm-up-example'),
+              ('A more advanced example', 3, None, 'a-more-advanced-example'),
+              ('And Logistic Regression', 2, None, 'and-logistic-regression'),
+              ('Overarching aims of the exercises',
+               1,
+               None,
+               'overarching-aims-of-the-exercises')]}
 end of tocinfo -->
 
 <body>
@@ -398,11 +430,11 @@ MathJax.Hub.Config({
 coefficients of a functional fit (say a polynomial) in order to be
 able to predict the response of a continuous variable on some unseen
 data. The fit to the continuous variable \( y_i \) is based on some
-independent variables \( \hat{x}_i \). Linear regression resulted in
+independent variables \( \boldsymbol{x}_i \). Linear regression resulted in
 analytical expressions for standard ordinary Least Squares or Ridge
 regression (in terms of matrices to invert) for several quantities,
 ranging from the variance and thereby the confidence intervals of the
-parameters \( \hat{\beta} \) to the mean squared error. If we can invert
+parameters \( \boldsymbol{\beta} \) to the mean squared error. If we can invert
 the product of the design matrices, linear regression gives then a
 simple recipe for fitting our data.
 </p>
@@ -434,7 +466,7 @@ failure etc.
 <p>Logistic regression will also serve as our stepping stone towards
 neural network algorithms and supervised deep learning. For logistic
 learning, the minimization of the cost function leads to a non-linear
-equation in the parameters \( \hat{\beta} \). The optimization of the
+equation in the parameters \( \boldsymbol{\beta} \). The optimization of the
 problem calls therefore for minimization algorithms. This forms the
 bottle neck of all machine learning algorithms, namely how to find
 reliable minima of a multi-variable function. This leads us to the
@@ -456,7 +488,7 @@ from \( k=0,\dots,K-1 \) (i.e. \( K \) classes).
 </p>
 
 <p>The goal is to predict the
-output classes from the design matrix \( \hat{X}\in\mathbb{R}^{n\times p} \)
+output classes from the design matrix \( \boldsymbol{X}\in\mathbb{R}^{n\times p} \)
 made of \( n \) samples, each of which carries \( p \) features or predictors. The
 primary goal is to identify the classes to which new unseen samples
 belong.
@@ -487,13 +519,13 @@ weighted linear combination, namely
 </p>
 $$
 \begin{equation}
-\hat{y} = \hat{X}^T\hat{\beta} +  \hat{\epsilon},
+\boldsymbol{y} = \boldsymbol{X}^T\boldsymbol{\beta} +  \boldsymbol{\epsilon},
 \label{_auto1}
 \end{equation}
 $$
 
-<p>where \( \hat{y} \) is a vector representing the possible outcomes, \( \hat{X} \) is our
-\( n\times p \) design matrix and \( \hat{\beta} \) represents our estimators/predictors.
+<p>where \( \boldsymbol{y} \) is a vector representing the possible outcomes, \( \boldsymbol{X} \) is our
+\( n\times p \) design matrix and \( \boldsymbol{\beta} \) represents our estimators/predictors.
 </p>
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -510,7 +542,10 @@ in the data set (see the full example below).
 <p>One simple way to get a discrete output is to have sign
 functions that map the output of a linear regressor to values \( \{0,1\} \),
 \( f(s_i)=sign(s_i)=1 \) if \( s_i\ge 0 \) and 0 if otherwise. 
-We will encounter this model in our first demonstration of neural networks. Historically it is called the ``perceptron" model in the machine learning
+We will encounter this model in our first demonstration of neural networks.
+</p>
+
+<p>Historically it is called the <b>perceptron</b> model in the machine learning
 literature. This model is extremely simple. However, in many cases it is more
 favorable to use a ``soft" classifier that outputs
 the probability of a given category. This leads us to the logistic function.
@@ -761,16 +796,16 @@ plt.show()
 <p>We assume now that we have two classes with \( y_i \) either \( 0 \) or \( 1 \). Furthermore we assume also that we have only two parameters \( \beta \) in our fitting of the Sigmoid function, that is we define probabilities </p>
 $$
 \begin{align*}
-p(y_i=1|x_i,\hat{\beta}) &= \frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}},\nonumber\\
-p(y_i=0|x_i,\hat{\beta}) &= 1 - p(y_i=1|x_i,\hat{\beta}),
+p(y_i=1|x_i,\boldsymbol{\beta}) &= \frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}},\nonumber\\
+p(y_i=0|x_i,\boldsymbol{\beta}) &= 1 - p(y_i=1|x_i,\boldsymbol{\beta}),
 \end{align*}
 $$
 
-<p>where \( \hat{\beta} \) are the weights we wish to extract from data, in our case \( \beta_0 \) and \( \beta_1 \). </p>
+<p>where \( \boldsymbol{\beta} \) are the weights we wish to extract from data, in our case \( \beta_0 \) and \( \beta_1 \). </p>
 
 <p>Note that we used</p>
 $$
-p(y_i=0\vert x_i, \hat{\beta}) = 1-p(y_i=1\vert x_i, \hat{\beta}).
+p(y_i=0\vert x_i, \boldsymbol{\beta}) = 1-p(y_i=1\vert x_i, \boldsymbol{\beta}).
 $$
 
 
@@ -786,13 +821,13 @@ likelihood in terms of the product of the individual probabilities of a specific
 </p>
 $$
 \begin{align*}
-P(\mathcal{D}|\hat{\beta})& = \prod_{i=1}^n \left[p(y_i=1|x_i,\hat{\beta})\right]^{y_i}\left[1-p(y_i=1|x_i,\hat{\beta}))\right]^{1-y_i}\nonumber \\
+P(\mathcal{D}|\boldsymbol{\beta})& = \prod_{i=1}^n \left[p(y_i=1|x_i,\boldsymbol{\beta})\right]^{y_i}\left[1-p(y_i=1|x_i,\boldsymbol{\beta}))\right]^{1-y_i}\nonumber \\
 \end{align*}
 $$
 
 <p>from which we obtain the log-likelihood and our <b>cost/loss</b> function</p>
 $$
-\mathcal{C}(\hat{\beta}) = \sum_{i=1}^n \left( y_i\log{p(y_i=1|x_i,\hat{\beta})} + (1-y_i)\log\left[1-p(y_i=1|x_i,\hat{\beta}))\right]\right).
+\mathcal{C}(\boldsymbol{\beta}) = \sum_{i=1}^n \left( y_i\log{p(y_i=1|x_i,\boldsymbol{\beta})} + (1-y_i)\log\left[1-p(y_i=1|x_i,\boldsymbol{\beta}))\right]\right).
 $$
 
 
@@ -801,14 +836,14 @@ $$
 
 <p>Reordering the logarithms, we can rewrite the <b>cost/loss</b> function as</p>
 $$
-\mathcal{C}(\hat{\beta}) = \sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
+\mathcal{C}(\boldsymbol{\beta}) = \sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
 $$
 
 <p>The maximum likelihood estimator is defined as the set of parameters that maximize the log-likelihood where we maximize with respect to \( \beta \).
 Since the cost (error) function is just the negative log-likelihood, for logistic regression we have that
 </p>
 $$
-\mathcal{C}(\hat{\beta})=-\sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
+\mathcal{C}(\boldsymbol{\beta})=-\sum_{i=1}^n  \left(y_i(\beta_0+\beta_1x_i) -\log{(1+\exp{(\beta_0+\beta_1x_i)})}\right).
 $$
 
 <p>This equation is known in statistics as the <b>cross entropy</b>. Finally, we note that just as in linear regression, 
@@ -818,7 +853,7 @@ in practice we often supplement the cross-entropy with additional regularization
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 <h2 id="minimizing-the-cross-entropy">Minimizing the cross entropy </h2>
 
-<p>The cross entropy is a convex function of the weights \( \hat{\beta} \) and,
+<p>The cross entropy is a convex function of the weights \( \boldsymbol{\beta} \) and,
 therefore, any local minimizer is a global minimizer. 
 </p>
 
@@ -827,34 +862,34 @@ cost function with respect to the two parameters \( \beta_0 \) and \( \beta_1 \)
 </p>
 
 $$
-\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \beta_0} = -\sum_{i=1}^n  \left(y_i -\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right),
+\frac{\partial \mathcal{C}(\boldsymbol{\beta})}{\partial \beta_0} = -\sum_{i=1}^n  \left(y_i -\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right),
 $$
 
 <p>and </p>
 $$
-\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \beta_1} = -\sum_{i=1}^n  \left(y_ix_i -x_i\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right).
+\frac{\partial \mathcal{C}(\boldsymbol{\beta})}{\partial \beta_1} = -\sum_{i=1}^n  \left(y_ix_i -x_i\frac{\exp{(\beta_0+\beta_1x_i)}}{1+\exp{(\beta_0+\beta_1x_i)}}\right).
 $$
 
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 <h2 id="a-more-compact-expression">A more compact expression </h2>
 
-<p>Let us now define a vector \( \hat{y} \) with \( n \) elements \( y_i \), an
-\( n\times p \) matrix \( \hat{X} \) which contains the \( x_i \) values and a
-vector \( \hat{p} \) of fitted probabilities \( p(y_i\vert x_i,\hat{\beta}) \). We can rewrite in a more compact form the first
+<p>Let us now define a vector \( \boldsymbol{y} \) with \( n \) elements \( y_i \), an
+\( n\times p \) matrix \( \boldsymbol{X} \) which contains the \( x_i \) values and a
+vector \( \boldsymbol{p} \) of fitted probabilities \( p(y_i\vert x_i,\boldsymbol{\beta}) \). We can rewrite in a more compact form the first
 derivative of cost function as
 </p>
 
 $$
-\frac{\partial \mathcal{C}(\hat{\beta})}{\partial \hat{\beta}} = -\hat{X}^T\left(\hat{y}-\hat{p}\right). 
+\frac{\partial \mathcal{C}(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}} = -\boldsymbol{X}^T\left(\boldsymbol{y}-\boldsymbol{p}\right). 
 $$
 
-<p>If we in addition define a diagonal matrix \( \hat{W} \) with elements 
-\( p(y_i\vert x_i,\hat{\beta})(1-p(y_i\vert x_i,\hat{\beta}) \), we can obtain a compact expression of the second derivative as 
+<p>If we in addition define a diagonal matrix \( \boldsymbol{W} \) with elements 
+\( p(y_i\vert x_i,\boldsymbol{\beta})(1-p(y_i\vert x_i,\boldsymbol{\beta}) \), we can obtain a compact expression of the second derivative as 
 </p>
 
 $$
-\frac{\partial^2 \mathcal{C}(\hat{\beta})}{\partial \hat{\beta}\partial \hat{\beta}^T} = \hat{X}^T\hat{W}\hat{X}. 
+\frac{\partial^2 \mathcal{C}(\boldsymbol{\beta})}{\partial \boldsymbol{\beta}\partial \boldsymbol{\beta}^T} = \boldsymbol{X}^T\boldsymbol{W}\boldsymbol{X}. 
 $$
 
 
@@ -863,12 +898,12 @@ $$
 
 <p>Within a binary classification problem, we can easily expand our model to include multiple predictors. Our ratio between likelihoods is then with \( p \) predictors</p>
 $$
-\log{ \frac{p(\hat{\beta}\hat{x})}{1-p(\hat{\beta}\hat{x})}} = \beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p.
+\log{ \frac{p(\boldsymbol{\beta}\boldsymbol{x})}{1-p(\boldsymbol{\beta}\boldsymbol{x})}} = \beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p.
 $$
 
-<p>Here we defined \( \hat{x}=[1,x_1,x_2,\dots,x_p] \) and \( \hat{\beta}=[\beta_0, \beta_1, \dots, \beta_p] \) leading to</p>
+<p>Here we defined \( \boldsymbol{x}=[1,x_1,x_2,\dots,x_p] \) and \( \boldsymbol{\beta}=[\beta_0, \beta_1, \dots, \beta_p] \) leading to</p>
 $$
-p(\hat{\beta}\hat{x})=\frac{ \exp{(\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p)}}{1+\exp{(\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p)}}.
+p(\boldsymbol{\beta}\boldsymbol{x})=\frac{ \exp{(\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p)}}{1+\exp{(\beta_0+\beta_1x_1+\beta_2x_2+\dots+\beta_px_p)}}.
 $$
 
 
@@ -912,7 +947,7 @@ Bayes classifiers, and artificial neural networks.  Specifically, in
 multinomial logistic regression and linear discriminant analysis, the
 input to the function is the result of \( K \) distinct linear functions,
 and the predicted probability for the \( k \)-th class given a sample
-vector \( \hat{x} \) and a weighting vector \( \hat{\beta} \) is (with two
+vector \( \boldsymbol{x} \) and a weighting vector \( \boldsymbol{\beta} \) is (with two
 predictors):
 </p>
 
@@ -932,9 +967,253 @@ what we derived earlier is compatible with these equations.
 
 <p>To find the optimal parameters we would typically use a gradient
 descent method.  Newton's method and gradient descent methods are
-discussed in the material on optimization
-methods below in these slides.
+discussed in the material on <a href="https://compphysics.github.io/MachineLearning/doc/pub/Splines/html/Splines-bs.html" target="_blank">optimization
+methods</a>.
 </p>
+
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+<h2 id="friday-september-23">Friday September 23 </h2>
+
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+<h2 id="searching-for-optimal-regularization-parameters-lambda">Searching for Optimal Regularization Parameters \( \lambda \) </h2>
+
+<p>In project 1, when using Ridge and Lasso regression, we end up
+searching for the optimal parameter \( \lambda \) which minimizes our
+selected scores (MSE or \( R2 \) values for example). The brute force
+approach, as discussed in the code here for Ridge regression, consists
+in evaluating the MSE as function of different \( \lambda \) values.
+Based on these calculations, one tries then to determine the value of the hyperparameter \( \lambda \)
+which results in optimal scores (for example the smallest MSE or an \( R2=1 \)).
+</p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">pandas</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">pd</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn</span> <span style="color: #8B008B; font-weight: bold">import</span> linear_model
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">MSE</span>(y_data,y_model):
+    n = np.size(y_model)
+    <span style="color: #8B008B; font-weight: bold">return</span> np.sum((y_data-y_model)**<span style="color: #B452CD">2</span>)/n
+<span style="color: #228B22"># A seed just to ensure that the random numbers are the same for every run.</span>
+<span style="color: #228B22"># Useful for eventual debugging.</span>
+np.random.seed(<span style="color: #B452CD">2021</span>)
+
+n = <span style="color: #B452CD">100</span>
+x = np.random.rand(n)
+y = np.exp(-x**<span style="color: #B452CD">2</span>) + <span style="color: #B452CD">1.5</span> * np.exp(-(x-<span style="color: #B452CD">2</span>)**<span style="color: #B452CD">2</span>)+ np.random.randn(n)
+
+Maxpolydegree = <span style="color: #B452CD">5</span>
+X = np.zeros((n,Maxpolydegree-<span style="color: #B452CD">1</span>))
+
+<span style="color: #8B008B; font-weight: bold">for</span> degree <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>,Maxpolydegree): <span style="color: #228B22">#No intercept column</span>
+    X[:,degree-<span style="color: #B452CD">1</span>] = x**(degree)
+
+<span style="color: #228B22"># We split the data in test and training data</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span style="color: #B452CD">0.2</span>)
+
+<span style="color: #228B22"># Decide which values of lambda to use</span>
+nlambdas = <span style="color: #B452CD">500</span>
+MSERidgePredict = np.zeros(nlambdas)
+lambdas = np.logspace(-<span style="color: #B452CD">4</span>, <span style="color: #B452CD">2</span>, nlambdas)
+<span style="color: #8B008B; font-weight: bold">for</span> i <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(nlambdas):
+    lmb = lambdas[i]
+    RegRidge = linear_model.Ridge(lmb)
+    RegRidge.fit(X_train,y_train)
+    ypredictRidge = RegRidge.predict(X_test)
+    MSERidgePredict[i] = MSE(y_test,ypredictRidge)
+
+<span style="color: #228B22"># Now plot the results</span>
+plt.figure()
+plt.plot(np.log10(lambdas), MSERidgePredict, <span style="color: #CD5555">&#39;g--&#39;</span>, label = <span style="color: #CD5555">&#39;MSE SL Ridge Test&#39;</span>)
+plt.xlabel(<span style="color: #CD5555">&#39;log10(lambda)&#39;</span>)
+plt.ylabel(<span style="color: #CD5555">&#39;MSE&#39;</span>)
+plt.legend()
+plt.show()
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>Here we have performed a rather data greedy calculation as function of the regularization parameter \( \lambda \). There is no resampling here. The latter can easily be added by employing the function <b>RidgeCV</b> instead of just calling the <b>Ridge</b> function. For <b>RidgeCV</b> we need to pass the array of \( \lambda \) values.
+By inspecting the figure we can in turn determine which is the optimal regularization parameter.
+This becomes however less functional in the long run. 
+</p>
+
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+<h2 id="grid-search">Grid Search </h2>
+
+<p>An alternative is to use the so-called grid search functionality
+included with the library <b>Scikit-Learn</b>, as demonstrated for the same
+example here.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> Ridge
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> GridSearchCV
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">R2</span>(y_data, y_model):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">1</span> - np.sum((y_data - y_model) ** <span style="color: #B452CD">2</span>) / np.sum((y_data - np.mean(y_data)) ** <span style="color: #B452CD">2</span>)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">MSE</span>(y_data,y_model):
+    n = np.size(y_model)
+    <span style="color: #8B008B; font-weight: bold">return</span> np.sum((y_data-y_model)**<span style="color: #B452CD">2</span>)/n
+
+<span style="color: #228B22"># A seed just to ensure that the random numbers are the same for every run.</span>
+<span style="color: #228B22"># Useful for eventual debugging.</span>
+np.random.seed(<span style="color: #B452CD">2021</span>)
+
+n = <span style="color: #B452CD">100</span>
+x = np.random.rand(n)
+y = np.exp(-x**<span style="color: #B452CD">2</span>) + <span style="color: #B452CD">1.5</span> * np.exp(-(x-<span style="color: #B452CD">2</span>)**<span style="color: #B452CD">2</span>)+ np.random.randn(n)
+
+Maxpolydegree = <span style="color: #B452CD">5</span>
+X = np.zeros((n,Maxpolydegree-<span style="color: #B452CD">1</span>))
+
+<span style="color: #8B008B; font-weight: bold">for</span> degree <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>,Maxpolydegree): <span style="color: #228B22">#No intercept column</span>
+    X[:,degree-<span style="color: #B452CD">1</span>] = x**(degree)
+
+<span style="color: #228B22"># We split the data in test and training data</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span style="color: #B452CD">0.2</span>)
+
+<span style="color: #228B22"># Decide which values of lambda to use</span>
+nlambdas = <span style="color: #B452CD">10</span>
+lambdas = np.logspace(-<span style="color: #B452CD">4</span>, <span style="color: #B452CD">2</span>, nlambdas)
+<span style="color: #228B22"># create and fit a ridge regression model, testing each alpha</span>
+model = Ridge()
+gridsearch = GridSearchCV(estimator=model, param_grid=<span style="color: #658b00">dict</span>(alpha=lambdas))
+gridsearch.fit(X_train, y_train)
+<span style="color: #658b00">print</span>(gridsearch)
+ypredictRidge = gridsearch.predict(X_test)
+<span style="color: #228B22"># summarize the results of the grid search</span>
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Best estimated lambda-value: {</span>gridsearch.best_estimator_.alpha<span style="color: #CD5555">}&quot;</span>)
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;MSE score: {</span>MSE(y_test,ypredictRidge)<span style="color: #CD5555">}&quot;</span>)
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;R2 score: {</span>R2(y_test,ypredictRidge)<span style="color: #CD5555">}&quot;</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>By default the grid search function includes cross validation with
+five folds. The <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html#sklearn.model_selection.GridSearchCV" target="_blank">Scikit-Learn
+documentation</a>
+contains more information on how to set the different parameters.
+</p>
+
+<p>If we take out the random noise, running the above codes results in \( \lambda=0 \) yielding the best fit. </p>
+
+<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+<h2 id="randomized-grid-search">Randomized Grid Search </h2>
+
+<p>An alternative to the above manual grid set up, is to use a random
+search where the parameters are tuned from a random distribution
+(uniform below) for a fixed number of iterations. A model is
+constructed and evaluated for each combination of chosen parameters.
+We repeat the previous example but now with a random search.  Note
+that values of \( \lambda \) are now limited to be within \( x\in
+[0,1] \). This domain may not be the most relevant one for the specific
+case under study.
+</p>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> train_test_split
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.linear_model</span> <span style="color: #8B008B; font-weight: bold">import</span> Ridge
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> GridSearchCV
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">scipy.stats</span> <span style="color: #8B008B; font-weight: bold">import</span> uniform <span style="color: #8B008B; font-weight: bold">as</span> randuniform
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> RandomizedSearchCV
+
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">R2</span>(y_data, y_model):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">1</span> - np.sum((y_data - y_model) ** <span style="color: #B452CD">2</span>) / np.sum((y_data - np.mean(y_data)) ** <span style="color: #B452CD">2</span>)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">MSE</span>(y_data,y_model):
+    n = np.size(y_model)
+    <span style="color: #8B008B; font-weight: bold">return</span> np.sum((y_data-y_model)**<span style="color: #B452CD">2</span>)/n
+
+<span style="color: #228B22"># A seed just to ensure that the random numbers are the same for every run.</span>
+<span style="color: #228B22"># Useful for eventual debugging.</span>
+np.random.seed(<span style="color: #B452CD">2021</span>)
+
+n = <span style="color: #B452CD">100</span>
+x = np.random.rand(n)
+y = np.exp(-x**<span style="color: #B452CD">2</span>) + <span style="color: #B452CD">1.5</span> * np.exp(-(x-<span style="color: #B452CD">2</span>)**<span style="color: #B452CD">2</span>)+ np.random.randn(n)
+
+Maxpolydegree = <span style="color: #B452CD">5</span>
+X = np.zeros((n,Maxpolydegree-<span style="color: #B452CD">1</span>))
+
+<span style="color: #8B008B; font-weight: bold">for</span> degree <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(<span style="color: #B452CD">1</span>,Maxpolydegree): <span style="color: #228B22">#No intercept column</span>
+    X[:,degree-<span style="color: #B452CD">1</span>] = x**(degree)
+
+<span style="color: #228B22"># We split the data in test and training data</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span style="color: #B452CD">0.2</span>)
+
+param_grid = {<span style="color: #CD5555">&#39;alpha&#39;</span>: randuniform()}
+<span style="color: #228B22"># create and fit a ridge regression model, testing each alpha</span>
+model = Ridge()
+gridsearch = RandomizedSearchCV(estimator=model, param_distributions=param_grid, n_iter=<span style="color: #B452CD">100</span>)
+gridsearch.fit(X_train, y_train)
+<span style="color: #658b00">print</span>(gridsearch)
+ypredictRidge = gridsearch.predict(X_test)
+<span style="color: #228B22"># summarize the results of the grid search</span>
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;Best estimated lambda-value: {</span>gridsearch.best_estimator_.alpha<span style="color: #CD5555">}&quot;</span>)
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;MSE score: {</span>MSE(y_test,ypredictRidge)<span style="color: #CD5555">}&quot;</span>)
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">f&quot;R2 score: {</span>R2(y_test,ypredictRidge)<span style="color: #CD5555">}&quot;</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 <h2 id="wisconsin-cancer-data">Wisconsin Cancer Data  </h2>
@@ -967,15 +1246,6 @@ X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,ra
 logreg = LogisticRegression(solver=<span style="color: #CD5555">&#39;lbfgs&#39;</span>)
 logreg.fit(X_train, y_train)
 <span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy with Logistic Regression: {:.2f}&quot;</span>.format(logreg.score(X_test,y_test)))
-<span style="color: #228B22">#now scale the data</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-<span style="color: #228B22"># Logistic Regression</span>
-logreg.fit(X_train_scaled, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy Logistic Regression with scaled data: {:.2f}&quot;</span>.format(logreg.score(X_test_scaled,y_test)))
 </pre>
 </div>
       </div>
@@ -1123,7 +1393,7 @@ matrix.
 <p>Diagonalizing this matrix we can in turn say something about which
 features are of relevance and which are not. This leads  us to
 the classical Principal Component Analysis (PCA) theorem with
-applications. 
+applications. This will be discussed later this semester (<a href="https://compphysics.github.io/MachineLearning/doc/pub/week43/html/week43-bs.html" target="_blank">week 43</a>).
 </p>
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -1150,31 +1420,19 @@ X_train, X_test, y_train, y_test = train_test_split(cancer.data,cancer.target,ra
 <span style="color: #228B22"># Logistic Regression</span>
 logreg = LogisticRegression(solver=<span style="color: #CD5555">&#39;lbfgs&#39;</span>)
 logreg.fit(X_train, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy with Logistic Regression: {:.2f}&quot;</span>.format(logreg.score(X_test,y_test)))
-<span style="color: #228B22">#now scale the data</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> StandardScaler
-scaler = StandardScaler()
-scaler.fit(X_train)
-X_train_scaled = scaler.transform(X_train)
-X_test_scaled = scaler.transform(X_test)
-<span style="color: #228B22"># Logistic Regression</span>
-logreg.fit(X_train_scaled, y_train)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy Logistic Regression with scaled data: {:.2f}&quot;</span>.format(logreg.score(X_test_scaled,y_test)))
-
 
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.preprocessing</span> <span style="color: #8B008B; font-weight: bold">import</span> LabelEncoder
 <span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">sklearn.model_selection</span> <span style="color: #8B008B; font-weight: bold">import</span> cross_validate
 <span style="color: #228B22">#Cross validation</span>
-accuracy = cross_validate(logreg,X_test_scaled,y_test,cv=<span style="color: #B452CD">10</span>)[<span style="color: #CD5555">&#39;test_score&#39;</span>]
+accuracy = cross_validate(logreg,X_test,y_test,cv=<span style="color: #B452CD">10</span>)[<span style="color: #CD5555">&#39;test_score&#39;</span>]
 <span style="color: #658b00">print</span>(accuracy)
-<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy with Logistic Regression  and scaled data: {:.2f}&quot;</span>.format(logreg.score(X_test_scaled,y_test)))
-
+<span style="color: #658b00">print</span>(<span style="color: #CD5555">&quot;Test set accuracy with Logistic Regression: {:.2f}&quot;</span>.format(logreg.score(X_test,y_test)))
 
 <span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">scikitplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">skplt</span>
-y_pred = logreg.predict(X_test_scaled)
+y_pred = logreg.predict(X_test)
 skplt.metrics.plot_confusion_matrix(y_test, y_pred, normalize=<span style="color: #8B008B; font-weight: bold">True</span>)
 plt.show()
-y_probas = logreg.predict_proba(X_test_scaled)
+y_probas = logreg.predict_proba(X_test)
 skplt.metrics.plot_roc(y_test, y_probas)
 plt.show()
 skplt.metrics.plot_cumulative_gain(y_test, y_probas)
@@ -1197,8 +1455,6 @@ plt.show()
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 <h2 id="optimization-the-central-part-of-any-machine-learning-algortithm">Optimization, the central part of any Machine Learning algortithm </h2>
-
-<p>For a good discussion on gradient methods, we would like to recommend Goodfellow et al section 4.3-4.5 and chapter 8. For Stochastic Gradient Descent, we recommend chapter 4 of Geron's text.</p>
 
 <p>Almost every problem in machine learning and data science starts with
 a dataset \( X \), a model \( g(\beta) \), which is a function of the
@@ -1492,7 +1748,17 @@ regular polygons (triangles, rectangles, pentagons, etc...).
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 <h2 id="convex-function">Convex function </h2>
 
-<p><b>Convex function</b>: Let \( X \subset \mathbb{R}^n \) be a convex set. Assume that the function \( f: X \rightarrow \mathbb{R} \) is continuous, then \( f \) is said to be convex if $$f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2) $$ for all \( x_1, x_2 \in X \) and for all \( t \in [0,1] \). If \( \leq \) is replaced with a strict inequaltiy in the definition, we demand \( x_1 \neq x_2 \) and \( t\in(0,1) \) then \( f \) is said to be strictly convex. For a single variable function, convexity means that if you draw a straight line connecting \( f(x_1) \) and \( f(x_2) \), the value of the function on the interval \( [x_1,x_2] \) is always below the line as illustrated below.</p>
+<p><b>Convex function</b>: Let \( X \subset \mathbb{R}^n \) be a convex
+set. Assume that the function \( f: X \rightarrow \mathbb{R} \) is
+continuous, then \( f \) is said to be convex if \( f(tx_1 + (1-t)x_2) \leq tf(x_1) + (1-t)f(x_2) \)
+for all \( x_1, x_2 \in X \) and for all \( t \in [0,1] \).
+If \( \leq \) is replaced with a strict inequaltiy in the
+definition, we demand \( x_1 \neq x_2 \) and \( t\in(0,1) \) then \( f \) is said
+to be strictly convex. For a single variable function, convexity means
+that if you draw a straight line connecting \( f(x_1) \) and \( f(x_2) \), the
+value of the function on the interval \( [x_1,x_2] \) is always below the
+line as illustrated below.
+</p>
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
 <h2 id="conditions-on-convex-functions">Conditions on convex functions </h2>
@@ -1500,7 +1766,7 @@ regular polygons (triangles, rectangles, pentagons, etc...).
 <p>In the following we state first and second-order conditions which
 ensures convexity of a function \( f \). We write \( D_f \) to denote the
 domain of \( f \), i.e the subset of \( R^n \) where \( f \) is defined. For more
-details and proofs we refer to: <a href="http://stanford.edu/boyd/cvxbook/, 2004" target="_blank">S. Boyd and L. Vandenberghe. Convex Optimization. Cambridge University Press</a>.
+details and proofs we refer to: <a href="http://stanford.edu/boyd/cvxbook/" target="_blank">S. Boyd and L. Vandenberghe. Convex Optimization. Cambridge University Press</a>.
 </p>
 
 <div class="alert alert-block alert-block alert-text-normal">
@@ -1508,8 +1774,11 @@ details and proofs we refer to: <a href="http://stanford.edu/boyd/cvxbook/, 2004
 <p>
 <p>Suppose \( f \) is differentiable (i.e \( \nabla f(x) \) is well defined for
 all \( x \) in the domain of \( f \)). Then \( f \) is convex if and only if \( D_f \)
-is a convex set and $$f(y) \geq f(x) + \nabla f(x)^T (y-x) $$ holds
-for all \( x,y \in D_f \). This condition means that for a convex function
+is a convex set and \( f(y) \geq f(x) + \nabla f(x)^T (y-x) \) holds
+for all \( x,y \in D_f \).
+</p>
+
+<p>This condition means that for a convex function
 the first order Taylor expansion (right hand side above) at any point
 a global under estimator of the function. To convince yourself you can
 make a drawing of \( f(x) = x^2+1 \) and draw the tangent line to \( f(x) \) and
@@ -4020,7 +4289,7 @@ delta_momentum = <span style="color: #B452CD">0.3</span>
 
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
-<h2 id="but-noen-of-these-can-compete-with-newton-s-method">But noen of these can compete with Newton's method </h2>
+<h2 id="but-none-of-these-can-compete-with-newton-s-method">But none of these can compete with Newton's method </h2>
 
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -4273,9 +4542,13 @@ delta_momentum = <span style="color: #B452CD">0.3</span>
     </div>
   </div>
 </div>
+<h2 id="adagrad-algorithm-taken-from-goodfellow-et-al-https-www-deeplearningbook-org-contents-optimization-html">AdaGrad algorithm, taken from <a href="https://www.deeplearningbook.org/contents/optimization.html" target="_blank">Goodfellow et al</a> </h2>
 
-
-<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+<br/><br/>
+<center>
+<p><img src="figures/adagrad.png" width="600" align="bottom"></p>
+</center>
+<br/><br/>
 <h2 id="similar-second-order-function-now-problem-but-now-with-adagrad">Similar (second order function now) problem but now with AdaGrad </h2>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -4348,8 +4621,13 @@ delta  = <span style="color: #B452CD">1e-8</span>
 </div>
 
 <p>Running this code we note an almost perfect agreement with the results from matrix inversion.</p>
+<h2 id="rmsprop-algorithm-taken-from-goodfellow-et-al-https-www-deeplearningbook-org-contents-optimization-html">RMSProp algorithm, taken from <a href="https://www.deeplearningbook.org/contents/optimization.html" target="_blank">Goodfellow et al</a> </h2>
 
-<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+<br/><br/>
+<center>
+<p><img src="figures/rmsprop.png" width="600" align="bottom"></p>
+</center>
+<br/><br/>
 <h2 id="rmsprop-for-adaptive-learning-rate-with-stochastic-gradient-descent">RMSprop for adaptive learning rate with Stochastic Gradient Descent </h2>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
@@ -4426,9 +4704,13 @@ delta  = <span style="color: #B452CD">1e-8</span>
     </div>
   </div>
 </div>
+<h2 id="adam-algorithm-taken-from-goodfellow-et-al-https-www-deeplearningbook-org-contents-optimization-html">ADAM algorithm, taken from <a href="https://www.deeplearningbook.org/contents/optimization.html" target="_blank">Goodfellow et al</a> </h2>
 
-
-<!-- !split --><br><br><br><br><br><br><br><br><br><br>
+<br/><br/>
+<center>
+<p><img src="figures/adam.png" width="600" align="bottom"></p>
+</center>
+<br/><br/>
 <h2 id="and-finally-adam-https-arxiv-org-pdf-1412-6980-pdf">And finally <a href="https://arxiv.org/pdf/1412.6980.pdf" target="_blank">ADAM</a> </h2>
 
 
@@ -4511,6 +4793,142 @@ delta  = <span style="color: #B452CD">1e-7</span>
     </div>
   </div>
 </div>
+<h2 id="introducing-jax-https-jax-readthedocs-io-en-latest">Introducing <a href="https://jax.readthedocs.io/en/latest/" target="_blank">JAX</a> </h2>
+
+<p>Presently, instead of using <b>autograd</b>, we recommend using <a href="https://jax.readthedocs.io/en/latest/" target="_blank">JAX</a></p>
+
+<p><b>JAX</b> is Autograd and <a href="https://www.tensorflow.org/xla" target="_blank">XLA (Accelerated Linear Algebra))</a>,
+brought together for high-performance numerical computing and machine learning research.
+It provides composable transformations of Python+NumPy programs: differentiate, vectorize, parallelize, Just-In-Time compile to GPU/TPU, and more.
+</p>
+<h3 id="getting-started-with-jax-note-the-way-we-import-numpy">Getting started with Jax, note the way we import numpy </h3>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">jax</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">jax.numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">jnp</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">np</span>
+<span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">plt</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">jax</span> <span style="color: #8B008B; font-weight: bold">import</span> grad <span style="color: #8B008B; font-weight: bold">as</span> jax_grad
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h3 id="a-warm-up-example">A warm-up example </h3>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="line-height: 125%;"><span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">function</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x**<span style="color: #B452CD">2</span>
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">analytical_gradient</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> <span style="color: #B452CD">2</span>*x
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">gradient_descent</span>(starting_point, learning_rate, num_iterations, solver=<span style="color: #CD5555">&quot;analytical&quot;</span>):
+    x = starting_point
+    trajectory_x = [x]
+    trajectory_y = [function(x)]
+
+    <span style="color: #8B008B; font-weight: bold">if</span> solver == <span style="color: #CD5555">&quot;analytical&quot;</span>:
+        grad = analytical_gradient    
+    <span style="color: #8B008B; font-weight: bold">elif</span> solver == <span style="color: #CD5555">&quot;jax&quot;</span>:
+        grad = jax_grad(function)
+        x = jnp.float64(x)
+        learning_rate = jnp.float64(learning_rate)
+
+    <span style="color: #8B008B; font-weight: bold">for</span> _ <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(num_iterations):
+        
+        x = x - learning_rate * grad(x)
+        trajectory_x.append(x)
+        trajectory_y.append(function(x))
+
+    <span style="color: #8B008B; font-weight: bold">return</span> trajectory_x, trajectory_y
+
+x = np.linspace(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>, <span style="color: #B452CD">100</span>)
+plt.plot(x, function(x), label=<span style="color: #CD5555">&quot;f(x)&quot;</span>)
+
+descent_x, descent_y = gradient_descent(<span style="color: #B452CD">5</span>, <span style="color: #B452CD">0.1</span>, <span style="color: #B452CD">10</span>, solver=<span style="color: #CD5555">&quot;analytical&quot;</span>)
+jax_descend_x, jax_descend_y = gradient_descent(<span style="color: #B452CD">5</span>, <span style="color: #B452CD">0.1</span>, <span style="color: #B452CD">10</span>, solver=<span style="color: #CD5555">&quot;jax&quot;</span>)
+
+plt.plot(descent_x, descent_y, label=<span style="color: #CD5555">&quot;Gradient descent&quot;</span>, marker=<span style="color: #CD5555">&quot;o&quot;</span>)
+plt.plot(jax_descend_x, jax_descend_y, label=<span style="color: #CD5555">&quot;JAX&quot;</span>, marker=<span style="color: #CD5555">&quot;x&quot;</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h3 id="a-more-advanced-example">A more advanced example </h3>
+
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="cell border-box-sizing code_cell rendered">
+  <div class="input">
+    <div class="inner_cell">
+      <div class="input_area">
+        <div class="highlight" style="background: #eeeedd">
+  <pre style="line-height: 125%;">backend = np
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">function</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> x*backend.sin(x**<span style="color: #B452CD">2</span> + <span style="color: #B452CD">1</span>)
+
+<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">analytical_gradient</span>(x):
+    <span style="color: #8B008B; font-weight: bold">return</span> backend.sin(x**<span style="color: #B452CD">2</span> + <span style="color: #B452CD">1</span>) + <span style="color: #B452CD">2</span>*x**<span style="color: #B452CD">2</span>*backend.cos(x**<span style="color: #B452CD">2</span> + <span style="color: #B452CD">1</span>)
+
+
+x = np.linspace(-<span style="color: #B452CD">5</span>, <span style="color: #B452CD">5</span>, <span style="color: #B452CD">100</span>)
+plt.plot(x, function(x), label=<span style="color: #CD5555">&quot;f(x)&quot;</span>)
+
+descent_x, descent_y = gradient_descent(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">0.01</span>, <span style="color: #B452CD">300</span>, solver=<span style="color: #CD5555">&quot;analytical&quot;</span>)
+
+<span style="color: #228B22"># Change the backend to JAX</span>
+backend = jnp
+jax_descend_x, jax_descend_y = gradient_descent(<span style="color: #B452CD">1</span>, <span style="color: #B452CD">0.01</span>, <span style="color: #B452CD">300</span>, solver=<span style="color: #CD5555">&quot;jax&quot;</span>)
+
+plt.scatter(descent_x, descent_y, label=<span style="color: #CD5555">&quot;Gradient descent&quot;</span>, marker=<span style="color: #CD5555">&quot;v&quot;</span>, s=<span style="color: #B452CD">10</span>, color=<span style="color: #CD5555">&quot;red&quot;</span>) 
+plt.scatter(jax_descend_x, jax_descend_y, label=<span style="color: #CD5555">&quot;JAX&quot;</span>, marker=<span style="color: #CD5555">&quot;x&quot;</span>, s=<span style="color: #B452CD">5</span>, color=<span style="color: #CD5555">&quot;black&quot;</span>)
+</pre>
+</div>
+      </div>
+    </div>
+  </div>
+  <div class="output_wrapper">
+    <div class="output">
+      <div class="output_area">
+        <div class="output_subarea output_stream output_stdout output_text">          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <!-- !split --><br><br><br><br><br><br><br><br><br><br>
@@ -4570,51 +4988,38 @@ weights = np.array([<span style="color: #B452CD">0.0</span>, <span style="color:
     </div>
   </div>
 </div>
+<h1 id="overarching-aims-of-the-exercises">Overarching aims of the exercises  </h1>
 
-
-<!-- !split --><br><br><br><br><br><br><br><br><br><br>
-<h2 id="introducing-jax-https-jax-readthedocs-io-en-latest">Introducing <a href="https://jax.readthedocs.io/en/latest/" target="_blank">JAX</a> </h2>
-
-<p>Presently, instead of using <b>autograd</b>, we recommend using <a href="https://jax.readthedocs.io/en/latest/" target="_blank">JAX</a></p>
-
-<p><b>JAX</b> is Autograd and <a href="https://www.tensorflow.org/xla" target="_blank">XLA (Accelerated Linear Algebra))</a>,
-brought together for high-performance numerical computing and machine learning research.
-It provides composable transformations of Python+NumPy programs: differentiate, vectorize, parallelize, Just-In-Time compile to GPU/TPU, and more.
+<p>The aim of the exercises this week is to get started with implementing
+gradient methods. 
 </p>
 
-<p>Here's a simple example on how you can use <b>JAX</b> to compute the derivate of the logistic function.</p>
+<p>In order to get started, we will now replace in our standard ordinary
+least squares (OLS) and Ridge regression codes the
+matrix inversion algorithm with our own gradient descent (GD) and SGD
+codes.  In developing the codes we recommend using a simple function like
+\( f(x)=a_0+a_1x+a_2x^2 \) or higher-order one-dimensional polynomials.
+</p>
 
+<p>You should include in your analysis of the GD and SGD codes the following elements</p>
+<ol>
+<li> A plain gradient descent with a fixed learning rate (you will need to tune it) using the analytical expression of the gradients</li>
+<li> Add momentum to the plain GD code and compare convergence with a fixed learning rate (you may need to tune the learning rate), again using the analytical expression of the gradients.</li>
+<li> Repeat these steps for stochastic gradient descent with mini batches and a given number of epochs. Use a tunable learning rate. Discuss the results as functions of the various parameters (size of batches, number of epochs etc)</li>
+<li> Implement the Adagrad method in order to tune the learning rate. Do this with and without momentum for plain gradient descent and SGD.</li>
+<li> Add RMSprop and Adam to your library of methods for tuning the learning rate.</li>
+</ol>
+<p>In summary, you should 
+perform an analysis of the results for OLS and Ridge regression as
+function of the chosen learning rates, the number of mini-batches and
+epochs as well as algorithm for scaling the learning rate. You can
+also compare your own results with those that can be obtained using
+for example <b>Scikit-Learn</b>'s various SGD options.  Discuss your
+results. For Ridge regression you need now to study the results as functions of  the hyper-parameter \( \lambda \) and 
+the learning rate \( \eta \).  Discuss your results.
+</p>
 
-<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
-<div class="cell border-box-sizing code_cell rendered">
-  <div class="input">
-    <div class="inner_cell">
-      <div class="input_area">
-        <div class="highlight" style="background: #eeeedd">
-  <pre style="line-height: 125%;"><span style="color: #8B008B; font-weight: bold">import</span> <span style="color: #008b45; text-decoration: underline">jax.numpy</span> <span style="color: #8B008B; font-weight: bold">as</span> <span style="color: #008b45; text-decoration: underline">jnp</span>
-<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">jax</span> <span style="color: #8B008B; font-weight: bold">import</span> grad, jit, vmap
-
-<span style="color: #8B008B; font-weight: bold">def</span> <span style="color: #008b45">sum_logistic</span>(x):
-  <span style="color: #8B008B; font-weight: bold">return</span> jnp.sum(<span style="color: #B452CD">1.0</span> / (<span style="color: #B452CD">1.0</span> + jnp.exp(-x)))
-
-x_small = jnp.arange(<span style="color: #B452CD">3.</span>)
-derivative_fn = grad(sum_logistic)
-<span style="color: #658b00">print</span>(derivative_fn(x_small))
-</pre>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="output_wrapper">
-    <div class="output">
-      <div class="output_area">
-        <div class="output_subarea output_stream output_stdout output_text">          
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
+<p>We recommend reading chapter 8 on optimization from the textbook of <a href="https://www.deeplearningbook.org/" target="_blank">Goodfellow, Bengio and Courville</a>. This chapter contains many useful insights and discussions on the optimization part of machine learning.</p>
 
 <!-- ------------------- end of main content --------------- -->
 <center style="font-size:80%">
