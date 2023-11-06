@@ -138,13 +138,13 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesOct302023.pdf |
 | Monday November 6 | - _Lecture 815am-10am_:  Logistic Regression, Optimization and Gradient Descent, material from sessions 5 and 6 |
 | Recommended readings | Bishop Sections 5.1-5.5 and Hastie et al chapter 11, Goodfellow et al, chapter 4 and 8 |
-| | Video of Lecture, Morning session 8am-10am, https://youtu.be/ |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov712022.pdf |
+| | Video of Lecture, Morning session 8am-10am, https://youtu.be/NwVnnQ3SHD8 |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov62023.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  sessions 4 and 5 | 
 | Sunday and Monday November 12-13 | - _Lecture 815am-10am_: Optimization problems and start discussion of project 1 |
 | Recommended readings | Goodfellow et al, chaptes 4 and 8| 
 | | Video of Lecture at https://youtu.be/ |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov1412022.pdf |
+| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov122023.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
 | Monday November 20 | - _Lecture 815am-10am_: Optimization problems |
 | Recommended readings | Goodfellow et al, chaptes 4 and 8|
