@@ -264,7 +264,7 @@ the parameter $\lambda$. For the bias-variance trade-off, use the _bootstrap_ re
 === Part e): Introducing Real Data ===
 
 With our codes functioning and having been tested properly on a
-simpler function we are now ready to look at real data.  _Feel free to propose other data sets!_
+simpler function we are now ready to look at real data.  _Feel free to propose other data sets!_ This part can be discussed in more detail when we meet during November 12 and 13.
 
 
 === Part f): Presentation ===
@@ -316,7 +316,10 @@ We recommend reading chapter 8 on optimization from the textbook of "Goodfellow,
 o For a discussion and derivation of the variances and mean squared errors using linear regression, see the "Lecture notes on ridge regression by Wessel N. van Wieringen":"https://arxiv.org/abs/1509.09169"
 
 o The textbook of "Trevor Hastie, Robert Tibshirani, Jerome H. Friedman, The Elements of Statistical Learning, Springer":"https://www.springer.com/gp/book/9780387848570", chapters 3 and 7 are the most relevant ones for the analysis here. 
-
+o For discussions on the mathematics of deep learning and machine learning, we recommend to recent textbooks:
+  o "Mathematical Introduction to Deep Learning: Methods, Implementations, and Theory, by Arnulf Jentzen, Benno Kuckuck, Philippe von Wurstemberger":"https://arxiv.org/abs/2310.20360"
+  o "Mathematics for deep learning by Marc Peter Deisenroth, A. Aldo Faisal, and Cheng Soon Ong":"https://mml-book.github.io"
+  
 ===== Introduction to numerical projects =====
 
 Here follows a brief recipe and recommendation on how to write a report for each
