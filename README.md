@@ -143,7 +143,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  sessions 4 and 5 | 
 | Sunday and Monday November 12-13 | - _Lecture 815am-10am_: Optimization problems and start discussion of project 1 |
 | Recommended readings | Goodfellow et al, chaptes 4 and 8| 
-| | Video of Lecture at https://youtu.be/ |
+| | Video of Lecture from November 12 at https://youtu.be/e4bF7ztE0ic |
 | | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov122023.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
 | Monday November 20 | - _Lecture 815am-10am_: Optimization problems |
