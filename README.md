@@ -144,20 +144,21 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Sunday and Monday November 12-13 | - _Lecture 815am-10am_: Optimization problems and start discussion of project 1 |
 | Recommended readings | Goodfellow et al, chaptes 4 and 8| 
 | | Video of Lecture from November 12 at https://youtu.be/e4bF7ztE0ic |
-| | Handwritten notes at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov122023.pdf |
+| | Handwritten notes November 12 at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov122023.pdf |
+| | Video of Lecture from November 13 at https://youtu.be/8angq0E9-DA |
+| | Handwritten notes November 13 at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov132023.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
-| Monday November 20 | - _Lecture 815am-10am_: Optimization problems |
+| Monday November 20 | - _Lecture 815am-10am_: Nueral networks |
 | Recommended readings | Goodfellow et al, chaptes 4 and 8|
 | | Video of Lecture at https://youtu.be/ |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2112022.pdf  |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2012023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
-| Monday November 27 | - _Lecture 815am-10am_: Optimization problems and discussions of project 1 |
+| Monday November 27 | - _Lecture 815am-10am_: Nueral networks |
 | Recommended readings | Goodfellow et al, chapters 4 and 8  |
 | | Video of Lecture  at https://youtu.be/ |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2812022.pdf  |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2712023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
 
-### The schedule after November 27 is not yet finalized. Here we simply add what was done last year.
 
 | December 15 and 16 | - _Lectures Thursday 1.15pm-3pm and Friday 10.15am-12pm_:  Start Neural Networks |
 | | Video of lecture on basics of neural networks at https://youtu.be/jIWBe0xZQCw |
