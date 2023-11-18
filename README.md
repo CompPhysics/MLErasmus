@@ -153,7 +153,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of Lecture at https://youtu.be/ |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2012023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
-| Monday November 27 | - _Lecture 815am-10am_: Nueral networks |
+| Monday November 27 | - _Lecture 815am-10am_: Neural networks |
 | Recommended readings | Goodfellow et al, chapters 4 and 8  |
 | | Video of Lecture  at https://youtu.be/ |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2712023.pdf  |
