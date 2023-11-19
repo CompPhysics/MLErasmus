@@ -134,7 +134,7 @@ The teaching material is produced in various formats for printing and on-screen 
    * "ipynb file": "https://compphysics.github.io/MLErasmus/doc/pub/day8/ipynb/day8.ipynb"
 
 
-===== Session 9: Deep Learning, Convolutional and Recurrent  Networks =====
+===== Session 9: Deep Learning, Convolutional =====
 
 
 
