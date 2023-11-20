@@ -149,9 +149,9 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Handwritten notes November 13 at https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov132023.pdf |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 5 |
 | Monday November 20 | - _Lecture 815am-10am_: Neural networks, basic elements |
-| Recommended readings | Goodfellow et al, chaptes 6-7, see also chaoter 8|
+| Recommended readings | Goodfellow et al, chapters 6-7, see also chapter 8|
 | | Video of Lecture at https://youtu.be/ |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2012023.pdf  |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov202023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 |
 | Monday November 27 | - _Lecture 815am-10am_: Neural networks, building our own code |
 | Recommended readings | Goodfellow et al, chapters 6-7  |
