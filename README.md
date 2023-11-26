@@ -156,34 +156,24 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Monday November 27 | - _Lecture 815am-10am_: Neural networks, building our own code |
 | Recommended readings | Goodfellow et al, chapters 6-7  |
 | | Video of Lecture  at https://youtu.be/ |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov2712023.pdf  |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov272023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 |
+| Monday December 4 | - _Lecture 815am-10am_: Solving differential equations with neural networks |
+| Recommended readings | Slides for sessions 7  |
+| | Video of Lecture  at https://youtu.be/ |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec42023.pdf  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 |
+| Monday December 11 | - _Lecture 815am-10am_: Convolutional Neural Networks |
+| Recommended readings | Slides for sessions 8 and Goodfellow et al chapter 9, see also chapters 11 and 12  |
+| | Video of Lecture  at https://youtu.be/ |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec112023.pdf  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
+| Monday December 18 | - _Lecture 815am-10am_: Convolutional Neural Networks and Recurrent neural networks |
+| Recommended readings | Slides for sessions 9 and Goodfellow et al chapters 9 and 10, see also chapters 11 and 12  |
+| | Video of Lecture  at https://youtu.be/ |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec182023.pdf  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 |
 
-
-| December 15 and 16 | - _Lectures Thursday 1.15pm-3pm and Friday 10.15am-12pm_:  Start Neural Networks |
-| | Video of lecture on basics of neural networks at https://youtu.be/jIWBe0xZQCw |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesDec152022.pdf  |
-| | Lecture on Back-propagation and automatic differentiation at https://youtu.be/yzbxJI6LgL0  |
-| | Lecture on building a neural network code at https://youtu.be/CPj4mh7M9no  |
-| Recommended readings |  Goodfellow et al chapters 6 and 7 Geron chapter 11 |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  sessions 6 and 7  | 
-| January 12 | - _Solving differential equations with Neural Networks_  |
-| | Video of lecture at https://youtu.be/MdYT6uwOkT0 |
-| Recommended readings |  Goodfellow et al chapter 6 and 7  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  8  | 
-| January 13 | - _Summary of neural networks and start CNNs_  |
-| Recommended readings |  Goodfellow et al chapter 6, 7 and 9  |
-| | Video of lecture at https://youtu.be/3bDkrB-E7cU |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  8  | 
-| January 14 | - _Convolutional Neural Networks_  |
-| Recommended readings |  Goodfellow et al chapter 9  |
-| | Video of lecture at https://youtu.be/Hm6Ay5DS6o0 and  https://youtu.be/JHfgQ77fpqs |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  9  | 
-| January 15 | - _Recurrent neural networks and summary of deep learning and discussion of project 2_  |
-| | Video of lecture at https://youtu.be/YZuFh7_2C3Q |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2022/NotesJan152023.pdf  |
-| Recommended readings |  Goodfellow et al chapter 10, see also lecture notes session 9  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session  9  | 
 
 
 ## Required Technologies
