@@ -155,7 +155,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 |
 | Monday November 27 | - _Lecture 815am-10am_: Neural networks, building our own code |
 | Recommended readings | Goodfellow et al, chapters 6-7  |
-| | Video of Lecture  at https://youtu.be/ |
+| | Video of Lecture  at https://youtu.be/x7nHVCETJLs |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov272023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 |
 | Monday December 4 | - _Lecture 815am-10am_: Solving differential equations with neural networks |
