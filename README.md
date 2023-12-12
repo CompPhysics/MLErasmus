@@ -159,14 +159,14 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesNov272023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 |
 | Tuesday December 12 | - _Lecture 815am-10am_: Solving differential equations with neural networks |
-| Recommended readings | Slides for sessions 7  |
+| Recommended readings | Slides for sessions 8  |
 | | Video of Lecture  at https://youtu.be/ |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec42023.pdf  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec122023.pdf  |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
 | Wednesday December 13 | - _Lecture 815am-10am_: Convolutional Neural Networks |
-| Recommended readings | Slides for sessions 8 and Goodfellow et al chapter 9, see also chapters 11 and 12  |
+| Recommended readings | Slides for sessions 7 and Goodfellow et al chapter 9, see also chapters 11 and 12  |
 | | Video of Lecture  at https://youtu.be/ |
-| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec112023.pdf  |
+| | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec132023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
 | Monday December 18 | - _Lecture 815am-10am_: Convolutional Neural Networks and Recurrent neural networks |
 | Recommended readings | Slides for sessions 9 and Goodfellow et al chapters 9 and 10, see also chapters 11 and 12  |
