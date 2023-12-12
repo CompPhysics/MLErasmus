@@ -160,7 +160,7 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 6 |
 | Tuesday December 12 | - _Lecture 815am-10am_: Solving differential equations with neural networks |
 | Recommended readings | Slides for sessions 8  |
-| | Video of Lecture  at https://youtu.be/ |
+| | Video of Lecture  at https://youtu.be/FCPY9qdP5YU |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec122023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
 | Wednesday December 13 | - _Lecture 815am-10am_: Convolutional Neural Networks |
