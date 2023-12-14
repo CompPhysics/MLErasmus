@@ -167,12 +167,12 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | Recommended readings | Slides for sessions 7 and Goodfellow et al chapter 9, see also chapters 11 and 12  |
 | | Video of Lecture  at https://youtu.be/IiBnw0Vrp0w |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec132023.pdf  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 8 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 |
 | Monday December 18 | - _Lecture 815am-10am_: Convolutional Neural Networks and Recurrent neural networks |
-| Recommended readings | Slides for sessions 9 and Goodfellow et al chapters 9 and 10, see also chapters 11 and 12  |
+| Recommended readings | Slides for sessions 7 and Goodfellow et al chapters 9 and 10, see also chapters 11 and 12  |
 | | Video of Lecture  at https://youtu.be/ |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec182023.pdf  |
-| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 9 |
+| | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 |
 
 
 
