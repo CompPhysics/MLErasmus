@@ -3,19 +3,18 @@ AUTHOR: "Morten Hjorth-Jensen":"http://mhjgit.github.io/info/doc/web/" at Depart
 
 <%
 pub_url = 'https://compphysics.github.io/MLErasmus/doc/pub'
-published = ['Introduction', 'day1', 'day2', 'day3',  'day5', 'day6', 'day7', 'day8', 'day9', 'day10', 'day11',]
+published = ['Introduction', 'day1', 'day2', 'day3',  'day5', 'day6', 'day7', 'day8', 'day9', 'day10',]
 chapters = {
  'Introduction': 'Session 1: Introduction to Data Analysis and Machine Learning',
  'day1': 'Session 2: Linear Regression, from ordinary Least Squares to Ridge and Lasso Regression', 
  'day2': 'Session 3: Linear Regression, Ridge and Lasso Regression',
  'day3': 'Session 4: Resampling methods and Bias-Variance Tradeoff',
  'day5': 'Session 5: Logistic Regression and Optimization',
- 'day6': 'Session 6: Neural Networks, the basics',
- 'day7': 'Session 7: Neural Networks, building our own code using back propagation. Examples of classification and regression problems',
- 'day8': 'Session 8: Deep Learning, More on Neural Networks and start Convolutional Neural Networks', 
- 'day9': 'Session 9: Deep Learning, Convolutional', 
- 'day10': 'Session 10: Deep Learning, Recurrent Neural Networks and Solving differential equations with Neural Networks',
- 'day11': 'Session 11: Decision Trees and Ensemble Methods', 
+ 'day6': 'Session 6: Deep learning, neural networks, the basics, back propagation and building our own code',
+ 'day7': 'Session 7: Deep learning, convolutional neural networks and recurrent neural networks',
+ 'day8': 'Session 8: Deep Learning, solving differential equations with neural networks', 
+ 'day9': 'Session 9: Decision trees and ensemble methods, from random forests to boosting methods', 
+ 'day10': 'Session 10: Support vector machines',
 }
 %>
 
