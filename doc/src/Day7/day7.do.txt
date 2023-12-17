@@ -20,6 +20,7 @@ DATE: today
 
 !bblock  And Lecture material on CNNs
 * "See Michael Nielsen's Lectures":"http://neuralnetworksanddeeplearning.com/chap6.html"
+* "See Raschka, Liu and Mirjalili chapter 14":https://sebastianraschka.com/blog/2022/ml-pytorch-book.html"
 !eblock
 
 
