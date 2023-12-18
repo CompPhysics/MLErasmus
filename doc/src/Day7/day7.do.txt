@@ -810,15 +810,15 @@ retaining only odd output elements.
 !split
 ===== Pooling =====
 
-In addition to discrete convolutions themselves, {\em pooling\/} operations
+In addition to discrete convolutions themselves, _pooling_ operations
 make up another important building block in CNNs. Pooling operations reduce
 the size of feature maps by using some function to summarize subregions, such
 as taking the average or the maximum value.
 
 Pooling works by sliding a window across the input and feeding the content of
-the window to a {\em pooling function}. In some sense, pooling works very much
+the window to a _pooling function_. In some sense, pooling works very much
 like a discrete convolution, but replaces the linear combination described by
-the kernel with some other function. Poolin
+the kernel with some other function. Pooling
 provides an example for average pooling, and 
 does the same for max pooling.
 
