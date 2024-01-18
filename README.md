@@ -173,7 +173,10 @@ _Detailed notes at the link_ https://compphysics.github.io/MachineLearning/doc/L
 | | Video of Lecture  at https://youtu.be/Us0z6ggPRbk |
 | | Handwritten notes https://github.com/CompPhysics/MLErasmus/blob/master/doc/HandwrittenNotes/2023/NotesDec182023.pdf  |
 | | Lecture material at https://compphysics.github.io/MLErasmus/doc/web/course.html  session 7 |
-
+| Wednesday January 17 | - _Lecture 815am-10am_: Recurrent neural networks |
+| Recommended readings | Slides for sessions 7 and Goodfellow et al chapter 10, see also chapters 11 and 12  |
+| | Video of Lecture  https://www.youtube.com/watch?v=z0x-vgyAZUk&ab_channel=MortenHjorth-Jensen |
+| | Handwritten notes  https://github.com/CompPhysics/MachineLearning/blob/master/doc/HandWrittenNotes/2023/NotesNov9.pdf|
 
 
 ## Required Technologies
